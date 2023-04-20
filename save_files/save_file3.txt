@@ -1,0 +1,14 @@
+Last Saved: 04/20/2023 17:05:12
+Player: 
+2 2 3 1000
+Pokemon: 
+Charmander 4 20 20 2 12 13 14 5 0
+	Scratch     . 2
+	Tail Whip   . 4
+Bulbasaur 1 20 20 2 13 12 14 5 0
+	Tackle      . 1
+	Growl       . 3
+Bag:
+Potion      . 1 2
+Super Potion. 2 2
+Pokéball    . 3 5
