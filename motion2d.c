@@ -25,6 +25,7 @@ static int player_y = 10;
 
 void drawBuilding_default(int x, int y, const char* str);
 void drawBuilding(int x, int y, int w, int h, const char* str);
+void drawBox(int x, int y, int w, int h);
 
 void init_town_drawing();
 
@@ -40,7 +41,7 @@ void handle_motion() {
         switch (ch) {
         	case KEY_UP:
         		if (mvinch(player_y-1, player_x) != ' ') { break; }
-                if (player_y > 0) player_y--;
+                if (player_y > 1) player_y--;
                 break;
             case KEY_DOWN:
             	if (mvinch(player_y+1, player_x) != ' ') { break; }
@@ -48,7 +49,7 @@ void handle_motion() {
                 break;
             case KEY_LEFT:
             	if (mvinch(player_y, player_x-1) != ' ') { break; }
-                if (player_x > 0) player_x--;
+                if (player_x > 1) player_x--;
                 break;
             case KEY_RIGHT:
             	if (mvinch(player_y, player_x+1) != ' ') { break; }
@@ -84,8 +85,7 @@ void handle_motion() {
 
 void drawBuilding_default(int x, int y, const char* str) { drawBuilding(x,y,DEFAULT_BUILDING_WIDTH,DEFAULT_BUILDING_HEIGHT,str); }
 
-// Draw a building, max string size is 6
-void drawBuilding(int x, int y, int w, int h, const char* str) {
+void drawBox(int x, int y, int w, int h) {
     mvaddch(y, x, ACS_ULCORNER);  // Top-left corner
     mvaddch(y, x + w - 1, ACS_URCORNER);  // Top-right corner
     mvaddch(y + h - 1, x, ACS_LLCORNER);  // Bottom-left corner
@@ -100,6 +100,11 @@ void drawBuilding(int x, int y, int w, int h, const char* str) {
         mvaddch(i, x, ACS_VLINE);  // Left and right edges
         mvaddch(i, x + w - 1, ACS_VLINE);
     }
+}
+
+// Draw a building, max string size is 6
+void drawBuilding(int x, int y, int w, int h, const char* str) {
+    drawBox(x,h,w,h);
 
     // Print the string (max size 6) inside the box
     if (strlen(str) <= 6) {
@@ -123,6 +128,7 @@ void init_town_drawing() {
     mvprintw(22, 1, "Press 'm' to return to the menu");
     drawBuilding_default(MART_X,MART_Y, "Mart");
     drawBuilding_default(POKE_CENTER_X,POKE_CENTER_Y, "Poke");
+    drawBox(0,0,60,20);  //Draw Town border
     
     mvaddch(player_y, player_x, MOTION_PLAYER_CHARACTER);
 }

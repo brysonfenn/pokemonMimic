@@ -32,11 +32,16 @@ int getValidInput_force(int beginRange, int endRange, const char * request, int 
   int inputNum = INVALID_INPUT;
   bool valid = false;
   char input[100];
+  char c;
+
   
   while (!valid) {
     printf("%s", request);
     fgets(input, 100, stdin);
     sscanf(input, "%d", &inputNum);
+
+    //If the user entered a number greater than they should, get the lowest digit.
+    if (inputNum > endRange) { inputNum = inputNum % 10; }
     
     if (inputNum < beginRange || inputNum > endRange) {
       if (input[0] == '\n') {
