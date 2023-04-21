@@ -1,19 +1,20 @@
 #include "attacks.h"
 
 #include "pokemon.h"
+#include "conditions.h"
 
 #define NUM_ATTACKS 50
 
 attack empty_attack=  {"------------",  0,  0, 100, 0, 0, 0, 0 };
 //				 	           "Name        "  id  pwr acc  ad dd sd acd  pmove
-attack tackle       = {"Tackle      ",  1,  6,  95, 0, 0, 0, 0.0, false, &attack_do_nothing };
-attack scratch      = {"Scratch     ",  2,  5, 100, 0, 0, 0, 0.0, false };
-attack growl        = {"Growl       ",  3,  0, 100, 1, 0, 0, 0.0, false };
-attack tail_whip    = {"Tail Whip   ",  4,  0, 100, 0, 1, 0, 0.0, false };
-attack string_shot  = {"String Shot ",  5,  0,  95, 0, 0, 1, 0.0, false };
-attack poison_sting = {"Poison Sting",  6,	3, 100, 0, 0, 0, 0.0, false };
-attack sand_attack  = {"Sand Attack ",  7,	0, 100, 0, 0, 0, 0.1, false };
-attack quick_attack = {"Quick Attack",  8,  6, 100, 0, 0, 0, 0.0,  true };
+attack tackle       = {"Tackle      ",  1,  6,  95, 0, 0, 0, 0.0, false, &attack_do_nothing, 0, 0 };
+attack scratch      = {"Scratch     ",  2,  5, 100, 0, 0, 0, 0.0, false, &attack_do_nothing, 0, 0 };
+attack growl        = {"Growl       ",  3,  0, 100, 1, 0, 0, 0.0, false, &attack_do_nothing, 0, 0 };
+attack tail_whip    = {"Tail Whip   ",  4,  0, 100, 0, 1, 0, 0.0, false, &attack_do_nothing, 0, 0 };
+attack string_shot  = {"String Shot ",  5,  0,  95, 0, 0, 1, 0.0, false, &attack_do_nothing, 0, 0 };
+attack poison_sting = {"Poison Sting",  6,	3, 100, 0, 0, 0, 0.0, false, &inflict_condition, POISONED, 80 };
+attack sand_attack  = {"Sand Attack ",  7,	0, 100, 0, 0, 0, 0.1, false, &attack_do_nothing, 0, 0 };
+attack quick_attack = {"Quick Attack",  8,  6, 100, 0, 0, 0, 0.0,  true, &attack_do_nothing, 0, 0 };
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting,
                                               &sand_attack };
@@ -110,4 +111,6 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   }
 
   sleep(1);
+
+  chosenAttack.side_effect(chosenAttack.condition, chosenAttack.chance, victim);
 }

@@ -23,6 +23,7 @@ static pokemon * pokList[10] = { &bulbasaur, &charmander, &squirtle, &caterpie, 
 static pokemon newest_pokemon;
 
 void pokemon_set_attacks(pokemon * pok, int numAttacks, attack att1,attack att2,attack att3,attack att4) {
+  pok->current_condition = NO_CONDITION;
   pok->numAttacks = numAttacks;
   pok->attacks[0] = att1;
   pok->attacks[1] = att2;
@@ -51,8 +52,8 @@ pokemon * get_random_pokemon(int level_min, int level_max) {
 
 //Always immediately dereference the return value of this function.
 pokemon * get_random_wild_pokemon(int level_min, int level_max) {
-  newest_pokemon = *(pokList[(rand() % NUM_WILD_POKEMON) + NUM_STARTERS]);
-  // newest_pokemon = rattata;
+  // newest_pokemon = *(pokList[(rand() % NUM_WILD_POKEMON) + NUM_STARTERS]);
+  newest_pokemon = weedle;
   pokemon * new_pok = &newest_pokemon;
   randomize_stats(new_pok, RANDOM_LEVEL, level_min, level_max);
   return new_pok;

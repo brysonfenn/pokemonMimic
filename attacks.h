@@ -8,7 +8,7 @@
 
 struct pokemon;
 
-typedef int (*attack_func_ptr) (Condition, int);
+typedef int (*attack_func_ptr) (Condition, int, struct pokemon*);
 
 typedef struct attack {
   char name[30];

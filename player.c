@@ -92,6 +92,10 @@ void set_current_pokemon(int position) {
   player.current_pokemon = &(emptyPok);
 }
 
+void set_enemy_pokemon(pokemon * pok) {
+  player.enemy_pokemon = pok;
+}
+
 void printPlayer() {
   printf("B:\n");
   printf("Number of Pokemon: %d\n", player.numInParty);

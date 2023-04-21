@@ -17,6 +17,7 @@ struct playerCharacter {
   pokemon * current_pokemon;
   int money;
   bool trainer_battle;
+  pokemon * enemy_pokemon;
 };
 
 extern struct playerCharacter player;
@@ -30,6 +31,8 @@ void printBag();
 bool runAttempt();
 
 void set_current_pokemon(int position);
+
+void set_enemy_pokemon(pokemon * pok);
 
 void printPlayer();
 

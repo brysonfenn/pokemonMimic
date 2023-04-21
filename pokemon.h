@@ -4,6 +4,7 @@
 #include "attacks.h"
 #include "stdbool.h"
 #include "stdint.h"
+#include "conditions.h"
 
 #define NUM_CREATED_POKEMON 8
 #define RANDOM_LEVEL 0
@@ -25,6 +26,7 @@ typedef struct pokemon {
   float accuracy;
   uint8_t level;
   uint32_t exp;
+  Condition current_condition;
   attack attacks[4];
 } pokemon;
 
