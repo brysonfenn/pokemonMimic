@@ -26,25 +26,9 @@ static int player_y = 10;
 void drawBuilding_default(int x, int y, const char* str);
 void drawBuilding(int x, int y, int w, int h, const char* str);
 
-void init_town_drawing() {
-    initscr(); // Initialize ncurses
-    cbreak(); // Disable line buffering
-    noecho(); // Don't display typed characters
-    keypad(stdscr, true); // Enable arrow keys
-    clear();
-    curs_set(0);
+void init_town_drawing();
 
-    mvprintw(22, 1, "Press 'm' to return to the menu");
-    drawBuilding_default(MART_X,MART_Y, "Mart");
-    drawBuilding_default(POKE_CENTER_X,POKE_CENTER_Y, "Poke");
-    
-    mvaddch(player_y, player_x, MOTION_PLAYER_CHARACTER);
-}
-
-void pause_town_drawing() {
-    endwin(); // Clean up ncurses
-    setvbuf(stdout, NULL, _IOLBF, 0);
-}
+void pause_town_drawing();
 
 void handle_motion() {
 	
@@ -126,4 +110,24 @@ void drawBuilding(int x, int y, int w, int h, const char* str) {
     mvaddch(y + h - 1, x + (w / 2), ' ');  // Door frame
     mvaddch(y + h - 1, x + (w / 2) - 1, ACS_LRCORNER);
     mvaddch(y + h - 1, x + (w / 2) + 1, ACS_LLCORNER);
+}
+
+void init_town_drawing() {
+    initscr(); // Initialize ncurses
+    cbreak(); // Disable line buffering
+    noecho(); // Don't display typed characters
+    keypad(stdscr, true); // Enable arrow keys
+    clear();
+    curs_set(0);
+
+    mvprintw(22, 1, "Press 'm' to return to the menu");
+    drawBuilding_default(MART_X,MART_Y, "Mart");
+    drawBuilding_default(POKE_CENTER_X,POKE_CENTER_Y, "Poke");
+    
+    mvaddch(player_y, player_x, MOTION_PLAYER_CHARACTER);
+}
+
+void pause_town_drawing() {
+    endwin(); // Clean up ncurses
+    setvbuf(stdout, NULL, _IOLBF, 0);
 }
