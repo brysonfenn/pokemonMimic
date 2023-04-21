@@ -15,10 +15,13 @@
 
 #define TOTAL_POKE_NUM 3
 
-static enum display { MAIN, WILD, TRAINER, POKECENTER, POKEMON, BAG, PLAYER, SAVE, LOAD, MART, BACK } current_display = MAIN;
+static enum display { MAIN, WILD, TRAINER, POKECENTER, POKEMON, BAG, PLAYER, SAVE, LOAD, MART, BACK, 
+  POWER_OFF } current_display = MAIN;
 
 pokemon wild_pokemon[TOTAL_POKE_NUM];
 pokemon tempPok;
+
+static bool power_off = false;
 
 void control_c_handler();
 
@@ -52,8 +55,8 @@ int main(void) {
     switch (current_display) {
     case MAIN:
       printf("0: Wild Pokemon\n1: Trainer  \n2: PokeCenter\n3: Pokemon  \n4: Bag    \n5: Player\n");
-      printf("6: Save Game \n7: Load Game\n8: Mart \n9: Back\n\n");
-      inputNum = getValidInput(0, 9, "Select an Option: ");
+      printf("6: Save Game \n7: Load Game\n8: Mart \n9: Back\n10: Power Off\n\n");
+      inputNum = getValidInput(0, 10, "Select an Option: ");
       fflush(stdout);
       current_display = inputNum + 1;
       break;
@@ -166,10 +169,16 @@ int main(void) {
       handle_motion();
       current_display = MAIN;
       break;
+    case POWER_OFF:
+      power_off = true;
+      current_display = MAIN;
+      break;
     default:
       printf("Ran into default in main loop\n");
       break;
     }
+
+    if (power_off) break;
   }
 
   //Clear everything and finish

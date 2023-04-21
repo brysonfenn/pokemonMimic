@@ -1,10 +1,14 @@
 #ifndef ATTACKS_H
 #define ATTACKS_H
 
-#include "stdint.h"
-#include "stdbool.h"
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "conditions.h"
 
 struct pokemon;
+
+typedef int (*attack_func_ptr) (Condition, int);
 
 typedef struct attack {
   char name[30];
@@ -16,6 +20,9 @@ typedef struct attack {
   int8_t speed_drop;
   float accuracy_drop;
   bool priority;
+  attack_func_ptr side_effect;
+  int condition;
+  int chance;
 } attack;
 
 extern attack empty_attack;

@@ -15,14 +15,14 @@
 #define NUM_ITEMS 50
 #define MAX_NUM_ITEM 4
 
-typedef int (*func_ptr) (int);
+typedef int (*item_func_ptr) (int);
 
 typedef struct item {
   int id_num;
   char name[30];
   int number;
   int cost;
-  func_ptr execute;
+  item_func_ptr execute;
   int func_arg;
 } item;
 

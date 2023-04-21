@@ -6,7 +6,7 @@
 
 attack empty_attack=  {"------------",  0,  0, 100, 0, 0, 0, 0 };
 //				 	           "Name        "  id  pwr acc  ad dd sd acd  pmove
-attack tackle       = {"Tackle      ",  1,  6,  95, 0, 0, 0, 0.0, false };
+attack tackle       = {"Tackle      ",  1,  6,  95, 0, 0, 0, 0.0, false, &attack_do_nothing };
 attack scratch      = {"Scratch     ",  2,  5, 100, 0, 0, 0, 0.0, false };
 attack growl        = {"Growl       ",  3,  0, 100, 1, 0, 0, 0.0, false };
 attack tail_whip    = {"Tail Whip   ",  4,  0, 100, 0, 1, 0, 0.0, false };
