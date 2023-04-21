@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <ncurses.h>
 
 #include "print_utils.h"
 #include "load_save.h"
@@ -15,7 +16,7 @@
 
 #define TOTAL_POKE_NUM 3
 
-static enum display { MAIN, WILD, TRAINER, POKECENTER, POKEMON, BAG, PLAYER, SAVE, LOAD, MART, BACK, 
+static enum display { MAIN, WILD, TRAINER, POKEMON, BAG, PLAYER, SAVE, LOAD, BACK, 
   POWER_OFF } current_display = MAIN;
 
 pokemon wild_pokemon[TOTAL_POKE_NUM];
@@ -54,8 +55,8 @@ int main(void) {
 
     switch (current_display) {
     case MAIN:
-      printf("0: Wild Pokemon\n1: Trainer  \n2: PokeCenter\n3: Pokemon  \n4: Bag    \n5: Player\n");
-      printf("6: Save Game \n7: Load Game\n8: Mart \n9: Back\n10: Power Off\n\n");
+      printf("0: Wild Pokemon\n1: Trainer\n2: Pokemon\n3: Bag\n4: Player\n");
+      printf("5: Save Game\n6: Load Game\n7: Town\n8: Power Off\n\n");
       inputNum = getValidInput(0, 10, "Select an Option: ");
       fflush(stdout);
       current_display = inputNum + 1;
@@ -86,12 +87,6 @@ int main(void) {
         printf("All Pokemon have fainted, please heal them.\n");
         sleep(3);
       }
-      current_display = MAIN;
-      break;
-    case POKECENTER:
-      heal_party();
-      printParty();
-      sleep(2);
       current_display = MAIN;
       break;
     case POKEMON:
@@ -161,10 +156,6 @@ int main(void) {
       load_game(inputNum);
       current_display = MAIN;
       break;
-    case MART:
-      if (handle_mart() == ITEM_FAILURE) { continue; }
-      current_display = MAIN;
-      break;
     case BACK:
       handle_motion();
       current_display = MAIN;
@@ -190,5 +181,7 @@ int main(void) {
 
 void control_c_handler() {
   clearTerminal();
+  endwin(); // Clean up ncurses
+  setvbuf(stdout, NULL, _IOLBF, 0);
   exit(0);
 }
