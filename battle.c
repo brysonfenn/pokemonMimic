@@ -1,10 +1,12 @@
+#include <stdbool.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #include "battle.h"
 #include "player.h"
+#include "conditions.h"
+
 #include "print_utils.h"
-#include "stdbool.h"
-#include <stdlib.h>
-#include <unistd.h>
 
 static enum display { MAIN, FIGHT, BAG, POKEMON } current_display = MAIN;
 static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;
@@ -41,6 +43,14 @@ int initiate_battle(pokemon enemyPoke) {
 
   while (1) {
     clearTerminal();
+
+    // Allow loop to break if enemyHP is 0 or less
+    if (enemy.currentHP <= 0) {
+      enemy.currentHP = 0; clearTerminal();
+      printBattle(currentPok, &(enemy)); sleep(2);
+      printf("Enemy %s fainted.\n", enemy.name); sleep(2);
+      break;
+    }
 
     // If current pokemon faints, select a different pokemon.
     if (currentPok->currentHP == 0) {
@@ -228,8 +238,7 @@ int initiate_battle(pokemon enemyPoke) {
 
     // Allow loop to break if enemyHP is 0 or less
     if (enemy.currentHP <= 0) {
-      enemy.currentHP = 0;
-      clearTerminal();
+      enemy.currentHP = 0; clearTerminal();
       printBattle(currentPok, &(enemy)); sleep(2);
       printf("Enemy %s fainted.\n", enemy.name); sleep(2);
       break;
@@ -240,6 +249,8 @@ int initiate_battle(pokemon enemyPoke) {
       perform_enemy_attack(currentPok, &enemy, enemy_attack_num);
     }
     fainted_switch = false;
+
+    handle_poison(currentPok, &enemy);
 
     clearTerminal();
   }

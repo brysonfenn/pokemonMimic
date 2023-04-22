@@ -63,8 +63,9 @@ void handle_motion() {
         if (player_x == POKE_CENTER_ENTER_X && player_y == POKE_CENTER_ENTER_Y) {
             sleep(1);
             pause_town_drawing();
-            heal_party(); printParty(); sleep(2); clearTerminal();
-            mvaddch(player_y, player_x, ' ');
+            // mvaddch(player_y, player_x, ' ');
+            handle_poke_center();
+            clearTerminal();
             player_y += 1;
             init_town_drawing();
         }

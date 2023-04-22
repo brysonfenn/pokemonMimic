@@ -1,6 +1,7 @@
 #include "player.h"
 #include "stdlib.h"
 #include "unistd.h"
+#include "conditions.h"
 
 struct playerCharacter player;
 
@@ -37,10 +38,12 @@ void default_load() {
 void printParty() {
   printf("Pokemon:\n");
   for (int i = 0; i < player.numInParty; i++) {
-    int current = player.party[i].currentHP;
-    int max = player.party[i].maxHP;
-    printf("%d: %s\tLVL %d\tHP: %d/%d", i, player.party[i].name, player.party[i].level, current, max);
-    if (!(current)) printf("  (Fainted)");
+    pokemon current_pok = player.party[i];
+    int current = current_pok.currentHP;
+    int max = current_pok.maxHP;
+    printf("%d: %s\tLVL %d\tHP: %d/%d  ", i, current_pok.name, current_pok.level, current, max);
+    if (!(current)) printf(" (Fainted)");
+    else if (current_pok.condition != NO_CONDITION) print_condition(&current_pok);
     printf("\n");
   }
 }
@@ -69,10 +72,23 @@ bool runAttempt() {
 void heal_party() {
   for (int i = 0; i < player.numInParty; i++) {
     player.party[i].currentHP = player.party[i].maxHP;
+    player.party[i].condition = NO_CONDITION;
   }
   player.numAlive = player.numInParty;
   printf("Your Pokemon were restored to full health!\n");
   sleep(2);
+}
+
+void handle_poke_center() {
+  int inputNum;
+  printf("Welcome to the Pokémon Center\n\n");
+  printf("0: Exit\n1: Heal Pokémon\n\n");
+  inputNum = getValidInput(0, 1, "Select an Option: ");
+  if (!inputNum) return;
+  else if (inputNum == 1) {
+    heal_party(); clearTerminal();
+    printParty(); sleep(2); clearTerminal();
+  }
 }
 
 void set_current_pokemon(int position) {

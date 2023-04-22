@@ -30,6 +30,8 @@ void printBag();
 
 bool runAttempt();
 
+void handle_poke_center();
+
 void set_current_pokemon(int position);
 
 void set_enemy_pokemon(pokemon * pok);

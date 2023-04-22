@@ -32,7 +32,7 @@ int handle_mart() {
   int inputNum;
   char example_string[50];
 
-  printf("0: Cancel\n");
+  printf("Mart\n\n0: Exit\n");
   print_mart();
   printf("\nYou have $%d\n", player.money);
   inputNum = getValidInput(0, MAX_NUM_ITEM, "Select item to buy: "); 

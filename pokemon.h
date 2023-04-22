@@ -26,7 +26,7 @@ typedef struct pokemon {
   float accuracy;
   uint8_t level;
   uint32_t exp;
-  Condition current_condition;
+  Condition condition;
   attack attacks[4];
 } pokemon;
 

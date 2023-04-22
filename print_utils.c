@@ -4,28 +4,18 @@
 #include <stdlib.h>
 #include <string.h>
 #include "stdbool.h"
-#include "termios.h"
 
-struct termios orig_termios, new_termios;
-
-void ignoreInput() {
-  tcgetattr(0, &orig_termios);
-  new_termios = orig_termios;
-  new_termios.c_lflag &= ~(ICANON | ECHO);
-  tcsetattr(0, TCSANOW, &new_termios);
-}
-
-void acceptInput() {
-  tcsetattr(0, TCSANOW, &orig_termios);
-}
+#include "conditions.h"
 
 void clearTerminal() { printf("\033[2J\033[1;1H"); }
 
 void printBattle(pokemon *pok1, pokemon *pok2) {
-  printf("\t\t\t\t%s  Lvl %d\n", pok2->name, pok2->level);
-  printf("\t\t\t\tHP: %d/%d\n\n", pok2->currentHP, pok2->maxHP);
-  printf("%s  Lvl %d\n", pok1->name, pok1->level);
-  printf("HP: %d/%d\n\n", pok1->currentHP, pok1->maxHP);
+  printf("\t\t\t\t%s  Lvl %d  ", pok2->name, pok2->level);
+  print_condition(pok2);
+  printf("\n\t\t\t\tHP: %d/%d\n\n", pok2->currentHP, pok2->maxHP);
+  printf("%s  Lvl %d  ", pok1->name, pok1->level);
+  print_condition(pok1);
+  printf("\nHP: %d/%d\n\n", pok1->currentHP, pok1->maxHP);
 }
 
 int getValidInput_force(int beginRange, int endRange, const char * request, int erase_lines) {

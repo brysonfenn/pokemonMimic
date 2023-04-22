@@ -23,7 +23,7 @@ static pokemon * pokList[10] = { &bulbasaur, &charmander, &squirtle, &caterpie, 
 static pokemon newest_pokemon;
 
 void pokemon_set_attacks(pokemon * pok, int numAttacks, attack att1,attack att2,attack att3,attack att4) {
-  pok->current_condition = NO_CONDITION;
+  pok->condition = NO_CONDITION;
   pok->numAttacks = numAttacks;
   pok->attacks[0] = att1;
   pok->attacks[1] = att2;
