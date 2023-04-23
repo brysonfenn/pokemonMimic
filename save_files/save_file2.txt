@@ -4,9 +4,10 @@ Player:
 Pokemon: 
 Rattata 19 17 17 1 10 10 11 4 21
 	Tackle      . 1
-Bulbasaur 1 20 20 2 13 12 14 5 15
+Bulbasaur 1 20 20 3 13 12 14 5 15
 	Tackle      . 1
 	Growl       . 3
+	String Shot . 5
 Charmander 4 22 22 2 13 14 15 6 17
 	Scratch     . 2
 	Tail Whip   . 4

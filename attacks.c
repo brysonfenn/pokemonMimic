@@ -20,6 +20,9 @@ attack defense_curl = {"Defense Curl",  9, 40,   0, 100, 0,-1, 0, 0.0, false, &a
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, &tackle, &scratch, &growl, &tail_whip, 
                                               &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl };
 
+
+int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim);
+
 void attacks_init() {
 	
 }
@@ -53,26 +56,20 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   }
 
   //Drop HP only if attack has damage power
-  if (perp->attacks[move_num].power != 0) {
-    // damage = (perp->attacks[move_num].power + perp->currAttack - victim->currDefense);
-    float damage_f = ( ((2.0 * perp->level / 5) + 2) * perp->attacks[move_num].power * perp->currAttack / victim->currDefense) / 50.0;
-    damage_f += 2;
-
-    damage = (int) damage_f;
-
-    damage = (damage <= 0) ? 1 : damage;  // Pokemon should always be able to do 1 damage
+  if (chosenAttack.power != 0) {
+    damage = getDamage(perp, move_num, victim);
     victim->currentHP -= damage;
   }
 
   //Drop Attack unless we are already 6 below baseAttack
   if (chosenAttack.attack_drop > 0) {
     if (!enemy) printf("Enemy ");
-    if ((victim->baseAttack - victim->currAttack) >= 6) {
+    if (victim->atk_stage <= -6) {
       printf("%s's attack won't go any lower!\n", victim->name);
     }
     else {
       printf("%s's attack fell\n", victim->name);
-      victim->currAttack *= 0.5;
+      victim->atk_stage -= chosenAttack.attack_drop;
     }
     sleep(1);
   }
@@ -80,23 +77,23 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   //Drop Defense unless we are already 6 below baseDefense
   if (chosenAttack.defense_drop > 0) {
     if (!enemy) printf("Enemy ");
-    if ((victim->baseDefense - victim->currDefense) >= 6) {
+    if (victim->def_stage <= -6) {
       printf("%s's defense won't go any lower!\n", victim->name);
     }
     else {
       printf("%s's defense fell\n", victim->name); 
-      victim->currDefense *= 0.5;
+      victim->def_stage -= chosenAttack.defense_drop;
     }
     sleep(1);
   }
   else if (chosenAttack.defense_drop < 0) {
     if (enemy) printf("Enemy ");
-    if ((perp->baseDefense - perp->currDefense) <= -6) {
+    if (perp->def_stage >= 6) {
       printf("%s's defense won't go any higher!\n", perp->name);
     }
     else {
       printf("%s's defense rose\n", perp->name); 
-      perp->currDefense *= 1.5;
+      perp->def_stage -= chosenAttack.defense_drop;
     }
     sleep(1);
   }
@@ -104,12 +101,12 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   //Drop Speed unless we are already 6 below baseSpeed
   if (chosenAttack.speed_drop > 0) {
     if (!enemy) printf("Enemy ");
-    if ((victim->baseSpeed - victim->currSpeed) >= 6) {
+    if (victim->spd_stage <= -6) {
       printf("%s's speed won't go any lower!\n", victim->name);
     }
     else {
-      printf("%s's speed fell\n", victim->name); 
-      victim->currSpeed *= 0.5;
+      printf("%s's speed fell\n", victim->name);
+      victim->spd_stage -= chosenAttack.speed_drop;
     }
     sleep(1);
   }
@@ -130,4 +127,31 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   sleep(1);
 
   chosenAttack.side_effect(chosenAttack.condition, chosenAttack.chance, victim);
+}
+
+
+//Return how much damage should be caused
+int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
+  attack chosenAttack = perp->attacks[move_num];
+
+  // Basic Equation
+  float damage_f = ( ((2.0 * perp->level / 5) + 2) * chosenAttack.power * perp->baseAttack / victim->baseDefense) / 50.0;
+  damage_f += 2;
+
+  // Damage modifier stages
+  float perp_attack_modifier = get_stat_modifier(perp->atk_stage);
+  float victim_defense_modifier = get_stat_modifier(victim->def_stage);
+  damage_f = damage_f * (perp_attack_modifier / victim_defense_modifier);
+
+  int damage = (int) damage_f;
+
+  damage = (damage <= 0) ? 1 : damage;  // Pokemon should always be able to do 1 damage
+
+  //Critical Hit 1/16 Chance
+  if ((rand() % 16) == 0) {
+    printf("A critical hit!\n"); sleep(2);
+    damage *= 2;
+  }
+
+  return damage;
 }

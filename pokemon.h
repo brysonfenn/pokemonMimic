@@ -20,10 +20,12 @@ typedef struct pokemon {
   int16_t baseSpeed;
 
   int numAttacks;
-  int16_t currAttack;
-  int16_t currDefense;
-  int16_t currSpeed;
+
+  int16_t atk_stage;
+  int16_t def_stage;
+  int16_t spd_stage;
   float accuracy;
+
   uint8_t level;
   uint32_t exp;
   Condition condition;
@@ -54,5 +56,7 @@ void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max)
 void reset_base_stats(pokemon *pok);
 
 void print_pokemon_summary(pokemon *pok);
+
+float get_stat_modifier(int16_t stage);
 
 #endif // POKEMON_H

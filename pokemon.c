@@ -52,8 +52,8 @@ pokemon * get_random_pokemon(int level_min, int level_max) {
 
 //Always immediately dereference the return value of this function.
 pokemon * get_random_wild_pokemon(int level_min, int level_max) {
-  // newest_pokemon = *(pokList[(rand() % NUM_WILD_POKEMON) + NUM_STARTERS]);
-  newest_pokemon = weedle;
+  newest_pokemon = *(pokList[(rand() % NUM_WILD_POKEMON) + NUM_STARTERS]);
+  // newest_pokemon = caterpie;
   pokemon * new_pok = &newest_pokemon;
   randomize_stats(new_pok, RANDOM_LEVEL, level_min, level_max);
   return new_pok;
@@ -74,9 +74,9 @@ void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max)
 }
 
 void reset_base_stats(pokemon *pok) {
-  pok->currAttack = pok->baseAttack;
-  pok->currDefense = pok->baseDefense;
-  pok->currSpeed = pok->baseSpeed;
+  pok->atk_stage = 0;
+  pok->def_stage = 0;
+  pok->spd_stage = 0;
   pok->accuracy  = 1.0;
 }
 
@@ -91,3 +91,9 @@ void print_pokemon_summary(pokemon *pok) {
   printf("\t%s\t%s\n\t%s\t%s\n", pok->attacks[0].name, pok->attacks[1].name, pok->attacks[2].name, pok->attacks[3].name);
 }
 
+float get_stat_modifier(int16_t stage) {
+  float modified_stat = 1.0;
+  if (stage >= 0) { modified_stat = (2.0 + stage) / 2.0; }  // positive means 3/2, 4/2, etc.
+  if (stage < 0) { modified_stat = 2.0 / (2.0 - stage); }   // negative means 2/3, 2/4, etc.
+  return modified_stat;
+}

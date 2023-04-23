@@ -161,18 +161,22 @@ int initiate_battle(pokemon enemyPoke) {
 
     ///////// EXECUTE DECISION /////////
     bool enemy_priority, player_priority;
+    int player_speed, enemy_speed;
 
     switch (current_decision) {
     case NONE:
       break;
     case ATTACK:
+
+      player_speed = (int) (currentPok->baseSpeed * get_stat_modifier(currentPok->spd_stage));
+      enemy_speed = (int) (enemy.baseSpeed * get_stat_modifier(enemy.spd_stage));
       
       //Handle Priority
       enemy_priority = enemy.attacks[enemy_attack_num].priority;
       player_priority = currentPok->attacks[attack_num].priority;
       if (enemy_priority && !player_priority)       { speed_difference = -1; }
       else if (!enemy_priority && player_priority)  { speed_difference =  1; }
-      else { speed_difference = currentPok->currSpeed - enemy.currSpeed; }
+      else { speed_difference = player_speed - enemy_speed; }
       
       //Select random first turn if pokemon speeds are equal
       if (speed_difference == 0) {
@@ -329,9 +333,9 @@ void handle_exp(int exp) {
       currentPok->level++;
       currentPok->exp = (currentPok->exp - next_level_exp);
       currentPok->maxHP += 2; currentPok->currentHP += 2;
-      currentPok->baseAttack++; currentPok->currAttack++; 
-      currentPok->baseDefense++; currentPok->currDefense++;
-      currentPok->baseSpeed++; currentPok->currSpeed++;
+      currentPok->baseAttack++;
+      currentPok->baseDefense++;
+      currentPok->baseSpeed++;
       printf("%s has grown to level %d!\n", currentPok->name, currentPok->level);
       sleep(2);
     }
