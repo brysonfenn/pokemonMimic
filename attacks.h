@@ -13,6 +13,7 @@ typedef int (*attack_func_ptr) (Condition, int, struct pokemon*);
 typedef struct attack {
   char name[30];
   int id_num;
+  int pp;
   int power; 
   uint8_t accuracy;
   int8_t attack_drop;
@@ -37,6 +38,7 @@ extern attack poison_sting;
 extern attack string_shot;
 extern attack sand_attack;
 extern attack quick_attack;
+extern attack defense_curl;
 
 
 void attacks_init();

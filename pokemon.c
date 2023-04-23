@@ -4,7 +4,7 @@
 #include "stdbool.h"
 #include "stdlib.h"
 
-// pok  varName   = {"name here",  id  hp chp   ba   bd    bs  na ca cd cs  acc lvl exp}
+// pok  varName   = {"name here",  id  hp chp   ba   bd    bs  num_att ca cd cs  acc lvl exp}
 pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0 };
 pokemon bulbasaur = {"Bulbasaur",   1,  9,  9,   4,   4,    4 };
 pokemon charmander = {"Charmander", 4,  9,  9,   4,   4,    4 };
@@ -40,7 +40,7 @@ void pokemon_init() {
   pokemon_set_attacks(&weedle,      1, poison_sting,   empty_attack,   empty_attack,   empty_attack);
   pokemon_set_attacks(&pidgey,      2, tackle,         sand_attack,    empty_attack,   empty_attack);
   pokemon_set_attacks(&rattata,     2, tackle,         quick_attack,   empty_attack,   empty_attack);
-  pokemon_set_attacks(&sandshrew,   2, tackle,         sand_attack,    empty_attack,   empty_attack);
+  pokemon_set_attacks(&sandshrew,   2, scratch,         sand_attack,    empty_attack,   empty_attack);
 }
 
 pokemon * get_random_pokemon(int level_min, int level_max) {

@@ -1,6 +1,7 @@
 #include "conditions.h"
 
 #include "pokemon.h"
+#include "player.h"
 
 int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 	int random = rand() % 100;
@@ -8,6 +9,7 @@ int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 		if (pok->condition != NO_CONDITION) {
 			return 1;
 		}
+		if (pok != player.current_pokemon) printf("Enemy ");
 		printf("%s was badly poisoned!\n", pok->name); sleep(2);
 		pok->condition = POISONED;
 	}
@@ -26,7 +28,7 @@ int handle_poison(struct pokemon * pok1, struct pokemon * pok2) {
 		sleep(2);
 	}
 	if (pok2->condition == POISONED) {
-		printf("%s was hurt by poison!\n", pok2->name);
+		printf("Enemy %s was hurt by poison!\n", pok2->name);
 		pok2->currentHP -= ((pok2->maxHP / 16) + 1);
 		if (pok2->currentHP < 0) pok2->currentHP = 0;
 		sleep(2);

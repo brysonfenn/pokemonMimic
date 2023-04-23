@@ -1,9 +1,10 @@
-Last Saved: 04/21/2023 23:15:10
+Last Saved: 04/23/2023 09:59:52
 Player: 
 5 5 4 2900
 Pokemon: 
-Weedle 13 19 19 1 12 10 11 5 29
-	Poison Sting. 6
+Sandshrew 27 18 18 2 12 13 9 5 30
+	Scratch     . 2
+	Defense Curl. 9
 Bulbasaur 1 22 22 2 15 15 16 7 19
 	Tackle      . 1
 	Growl       . 3
@@ -13,9 +14,8 @@ Squirtle 7 20 20 2 14 13 15 6 41
 Charmander 4 22 22 2 14 15 16 7 15
 	Scratch     . 2
 	Tail Whip   . 4
-Sandshrew 27 18 18 2 12 13 9 5 23
-	Tackle      . 1
-	Sand Attack . 7
+Weedle 13 19 19 1 12 10 11 5 29
+	Poison Sting. 6
 Bag:
 Potion      . 1 2
 Super Potion. 2 3
