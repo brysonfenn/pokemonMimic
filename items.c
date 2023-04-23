@@ -23,7 +23,7 @@ void print_mart() {
   item * currItem;
   for (int i = 1; i <= MAX_NUM_ITEM; i++) {
     currItem = item_array[i];
-    printf("%d: %s\t\t$%d\n", i, currItem->name, currItem->cost);
+    printf("%d: %s\t\t$%d\n\r", i, currItem->name, currItem->cost);
   }
 }
 
@@ -32,9 +32,9 @@ int handle_mart() {
   int inputNum;
   char example_string[50];
 
-  printf("Mart\n\n0: Exit\n");
+  printf("Mart\n\n\r0: Exit\n\r");
   print_mart();
-  printf("\nYou have $%d\n", player.money);
+  printf("\nYou have $%d\n\r", player.money);
   inputNum = getValidInput(0, MAX_NUM_ITEM, "Select item to buy: "); 
   if (inputNum == 0) { }
   else {

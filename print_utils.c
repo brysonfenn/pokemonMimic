@@ -1,9 +1,14 @@
 #include "print_utils.h"
+
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
-#include "stdbool.h"
+#include <stdbool.h>
+
+#include <fcntl.h>
+#include <termios.h>
+#include <sys/ioctl.h>
 
 #include "conditions.h"
 
@@ -23,7 +28,6 @@ int getValidInput_force(int beginRange, int endRange, const char * request, int 
   bool valid = false;
   char input[100];
   char c;
-
   
   while (!valid) {
     printf("%s", request);
@@ -61,3 +65,34 @@ void clearLastLine() {
   printf("\033[K"); // Clear the line
 }
 
+void disable_scrolling() {
+    int fd = open("/dev/tty", O_RDWR);
+    if (fd == -1) {
+        perror("open");
+        return 1;
+    }
+
+    struct termios term;
+    if (tcgetattr(fd, &term) == -1) {
+        perror("tcgetattr");
+        return 1;
+    }
+
+    term.c_oflag &= ~OPOST;
+    term.c_lflag &= ~(ECHO | ICANON | ISIG | IEXTEN);
+    term.c_cc[VMIN] = 1;
+    term.c_cc[VTIME] = 0;
+
+    if (tcsetattr(fd, TCSAFLUSH, &term) == -1) {
+        perror("tcsetattr");
+        return 1;
+    }
+
+    int val = 0;
+    if (ioctl(fd, TIOCNXCL, &val) == -1) {
+        perror("ioctl");
+        return 1;
+    }
+
+    close(fd);
+}

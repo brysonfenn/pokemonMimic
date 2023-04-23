@@ -21,13 +21,13 @@ int attack_do_nothing(Condition condition, int accuracy, struct pokemon* pok) {
 int handle_poison(struct pokemon * pok1, struct pokemon * pok2) {
 	if (pok1->condition == POISONED) {
 		printf("%s was hurt by poison!\n", pok1->name);
-		pok1->currentHP -= (pok1->maxHP / 16);
+		pok1->currentHP -= ((pok1->maxHP / 16) + 1);
 		if (pok1->currentHP < 0) pok1->currentHP = 0;
 		sleep(2);
 	}
 	if (pok2->condition == POISONED) {
 		printf("%s was hurt by poison!\n", pok2->name);
-		pok2->currentHP -= (pok2->maxHP / 16);
+		pok2->currentHP -= ((pok2->maxHP / 16) + 1);
 		if (pok2->currentHP < 0) pok2->currentHP = 0;
 		sleep(2);
 	}

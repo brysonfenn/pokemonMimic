@@ -15,4 +15,6 @@ int getValidInput(int beginRange, int endRange, const char * request);
 
 void clearLastLine();
 
+void disable_scrolling();
+
 #endif // PRINT_UTILS_H

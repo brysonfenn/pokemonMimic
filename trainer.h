@@ -4,4 +4,6 @@
 
 int battleTrainer();
 
+char * get_random_name();
+
 #endif // TRAINER_H

@@ -1,15 +1,23 @@
 #include "trainer.h"
 
+#include <stdio.h>
+
 #include "battle.h"
 #include "pokemon.h"
 #include "player.h"
 
+#define NAME_MAX_LENGTH 20
+
+static char name[NAME_MAX_LENGTH];
+
 int battleTrainer() {
-  int num_trainer_pokemon = 3;
+  int num_trainer_pokemon = (rand() % 3) + 2;
   int inputNum, battle_result, return_execute;
   pokemon trainer_pokemon[num_trainer_pokemon];
-  char trainer_name[50] = "G";
+  char * trainer_name;
   battle_result = WIN;
+
+  trainer_name = get_random_name();
 
   printf("Trainer %s wants to fight!\n", trainer_name); sleep(2);
   clearTerminal();
@@ -63,8 +71,9 @@ int battleTrainer() {
     battle_result = initiate_battle(trainer_pokemon[last_pokemon_pos]);
     printf("B defeated Trainer %s\n", trainer_name);
     sleep(2);
-    printf("B gained $%d for defeating Trainer %s\n", num_trainer_pokemon * 100, trainer_name);
-    player.money += num_trainer_pokemon * 100;
+    int money_earned = (num_trainer_pokemon * 200) - 100;
+    printf("B gained $%d for defeating Trainer %s\n", money_earned, trainer_name);
+    player.money += money_earned;
     sleep(2);
   }
   
@@ -74,4 +83,29 @@ int battleTrainer() {
   else {
     return WIN;
   }
+}
+
+
+char * get_random_name() {
+  FILE *og_file;
+  // Open the file for reading
+  og_file = fopen("names.txt", "r");
+  char line[50];
+
+  // Check if the file was opened successfully
+  if (og_file == NULL) {
+      printf("File does not exist.\n"); sleep(2);
+      return 1;
+  }
+
+  int name_pos = rand() % 2781;
+  int count = 0;
+
+  while (count < name_pos) {
+    fgets(line, NAME_MAX_LENGTH, og_file);
+    sscanf(line, "%s", name);
+    count++;
+  }
+
+  return name;
 }
