@@ -4,6 +4,10 @@
 #include "stdbool.h"
 #include "stdlib.h"
 
+#include <string.h>
+
+#define LINE_SIZE 100
+
 // pok  varName   = {"name here",  id  hp chp   ba   bd    bs   type1     type2    num_att ca cd cs  acc lvl exp}
 pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0, NO_TYPE,  NO_TYPE };
 pokemon bulbasaur = {"Bulbasaur",   1,  9,  9,   4,   4,    4, GRASS,    POISON };
@@ -53,7 +57,7 @@ pokemon * get_random_pokemon(int level_min, int level_max) {
 //Always immediately dereference the return value of this function.
 pokemon * get_random_wild_pokemon(int level_min, int level_max) {
   newest_pokemon = *(pokList[(rand() % NUM_WILD_POKEMON) + NUM_STARTERS]);
-  newest_pokemon = bulbasaur;
+  // newest_pokemon = bulbasaur;
   pokemon * new_pok = &newest_pokemon;
   randomize_stats(new_pok, RANDOM_LEVEL, level_min, level_max);
   return new_pok;
@@ -96,4 +100,55 @@ float get_stat_modifier(int16_t stage) {
   if (stage >= 0) { modified_stat = (2.0 + stage) / 2.0; }  // positive means 3/2, 4/2, etc.
   if (stage < 0) { modified_stat = 2.0 / (2.0 - stage); }   // negative means 2/3, 2/4, etc.
   return modified_stat;
+}
+
+void pokemon_level_up(pokemon *pok, int next_level_exp) {
+  pok->level++;
+  pok->exp = (pok->exp - next_level_exp);
+
+  //Upgrade stats
+  pok->maxHP += 2; pok->currentHP += 2;
+  pok->baseAttack++;
+  pok->baseDefense++;
+  pok->baseSpeed++;
+  printf("%s has grown to level %d!\n", pok->name, pok->level);
+  sleep(2);
+
+  //Check and add levels
+  FILE *fp;
+  char filename[50];
+  sprintf(filename, "learnsets/pok_id%03d.txt", pok->id_num);
+  char line[LINE_SIZE];
+
+  // Open the file for reading
+  fp = fopen(filename, "r");
+
+  // Check if the file was opened successfully
+  if (fp == NULL) {
+      printf("Learnset file does not exist.\n"); sleep(2);
+      return;
+  }
+
+  // Read lines from the file and put them into game values
+  fgets(line, LINE_SIZE, fp);	// Format first line
+
+  int level_target, move_id;
+  attack new_attack;
+
+  while (fgets(line, LINE_SIZE, fp)) {
+    // if (strstr(line, "end") != NULL) break;
+    sscanf(line, "%d,%d", &level_target, &move_id);
+    if (level_target == pok->level) {
+      new_attack = *(get_attack_by_id(move_id));
+      pok->attacks[pok->numAttacks] = new_attack;
+      pok->numAttacks++;
+      printf("%s learned %s\n", pok->name, new_attack.name); sleep(2);
+    }
+  }
+
+  fclose(fp);
+}
+
+void pokemon_give_moves(pokemon *pok) {
+
 }

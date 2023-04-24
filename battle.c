@@ -330,14 +330,8 @@ void handle_exp(int exp) {
 
     //Update levels
     while (currentPok->exp >= next_level_exp) {
-      currentPok->level++;
-      currentPok->exp = (currentPok->exp - next_level_exp);
-      currentPok->maxHP += 2; currentPok->currentHP += 2;
-      currentPok->baseAttack++;
-      currentPok->baseDefense++;
-      currentPok->baseSpeed++;
-      printf("%s has grown to level %d!\n", currentPok->name, currentPok->level);
-      sleep(2);
+      pokemon_level_up(currentPok, next_level_exp);
+      next_level_exp = currentPok->level * 8;
     }
   }
   

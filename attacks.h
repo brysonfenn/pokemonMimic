@@ -42,6 +42,7 @@ extern attack string_shot;
 extern attack sand_attack;
 extern attack quick_attack;
 extern attack defense_curl;
+extern attack vine_whip;
 
 
 void attacks_init();

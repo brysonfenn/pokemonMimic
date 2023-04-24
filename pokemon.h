@@ -63,4 +63,8 @@ void print_pokemon_summary(pokemon *pok);
 
 float get_stat_modifier(int16_t stage);
 
+void pokemon_level_up(pokemon *pok, int next_level_exp);
+
+void pokemon_give_moves(pokemon *pok);
+
 #endif // POKEMON_H
