@@ -37,7 +37,7 @@ int main(void) {
 
   //Initiate Everything
   pokemon_init();
-  player_init();
+  player_init(0);
   items_init();
   attacks_init();
   srand(time(0));
@@ -97,7 +97,8 @@ int main(void) {
       if (inputNum != player.numInParty) {
         clearTerminal();
         print_pokemon_summary(&(player.party[inputNum]));
-        inputNum2 = getValidInput_force(0, 2, "\n0: Cancel\n1: Switch\n2: Release\nSelect an Option: ", 6);
+        printf("\n0: Cancel\n1: Switch\n2: Release\n");
+        inputNum2 = getValidInput_force(0, 2, "Select an Option: ", 6);
 
         if (!inputNum2) { break; } //Break if inputNum2 is 0 (cancel)
         else if (inputNum2 == 1) {

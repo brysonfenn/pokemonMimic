@@ -22,7 +22,7 @@ struct playerCharacter {
 
 extern struct playerCharacter player;
 
-void player_init();
+void player_init(int save_file);
 
 void printParty();
 

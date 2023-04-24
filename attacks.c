@@ -19,7 +19,7 @@ attack defense_curl = {"Defense Curl",  9, 40,   0, 100, NO_TYPE,  0,-1, 0, 0.0,
 attack vine_whip    = {"Vine whip   ", 10, 25,  45, 100, GRASS,    0, 0, 0, 0.0, false, &attack_do_nothing, 0, 0 };
 
 static attack * local_array[NUM_ATTACKS] = 
-    { &empty_attack, &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl,
+    { &empty_attack, &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl,  // #0-#9
       &vine_whip };
 
 

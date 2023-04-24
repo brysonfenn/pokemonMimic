@@ -7,10 +7,13 @@ struct playerCharacter player;
 
 void default_load();
 
-void player_init() {
+void player_init(int save_file) {
   player.bag = malloc(sizeof(item) * 30);
   
-  default_load();
+  if (!save_file)
+    default_load();
+  else 
+    load_game(save_file);
 
   player.current_pokemon = &(player.party[0]);
   player.trainer_battle = false;
