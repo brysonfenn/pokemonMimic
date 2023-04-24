@@ -5,6 +5,7 @@
 #include <stdbool.h>
 
 #include "conditions.h"
+#include "typings.h"
 
 struct pokemon;
 
@@ -16,6 +17,8 @@ typedef struct attack {
   int pp;
   int power; 
   uint8_t accuracy;
+  Type type;
+
   int8_t attack_drop;
   int8_t defense_drop;
   int8_t speed_drop;

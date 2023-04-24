@@ -5,6 +5,7 @@
 #include "stdbool.h"
 #include "stdint.h"
 #include "conditions.h"
+#include "typings.h"
 
 #define NUM_CREATED_POKEMON 8
 #define RANDOM_LEVEL 0
@@ -19,8 +20,10 @@ typedef struct pokemon {
   int16_t baseDefense;
   int16_t baseSpeed;
 
-  int numAttacks;
+  Type type1;
+  Type type2;
 
+  int numAttacks;
   int16_t atk_stage;
   int16_t def_stage;
   int16_t spd_stage;
@@ -29,6 +32,7 @@ typedef struct pokemon {
   uint8_t level;
   uint32_t exp;
   Condition condition;
+
   attack attacks[4];
 } pokemon;
 
