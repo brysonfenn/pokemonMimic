@@ -36,7 +36,6 @@ int main(void) {
   int return_execute;
 
   //Initiate Everything
-  pokemon_init();
   player_init(0);
   items_init();
   attacks_init();

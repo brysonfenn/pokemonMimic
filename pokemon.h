@@ -49,13 +49,11 @@ extern pokemon rattata;
 extern pokemon sandshrew;
 
 
-void pokemon_init();
+void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max);
 
 pokemon * get_random_pokemon(int level_min, int level_max);
 
 pokemon * get_random_wild_pokemon(int level_min, int level_max);
-
-void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max);
 
 void reset_base_stats(pokemon *pok);
 

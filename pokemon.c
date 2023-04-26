@@ -26,31 +26,19 @@ static pokemon * pokList[10] = { &bulbasaur, &charmander, &squirtle, &caterpie, 
 
 static pokemon newest_pokemon;
 
-void pokemon_set_attacks(pokemon * pok, int numAttacks, attack att1,attack att2,attack att3,attack att4) {
-  pok->condition = NO_CONDITION;
-  pok->numAttacks = numAttacks;
-  pok->attacks[0] = att1;
-  pok->attacks[1] = att2;
-  pok->attacks[2] = att3;
-  pok->attacks[3] = att4;
-}
+void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max);
 
-void pokemon_init() {
-  //                    Name        numattacks
-  pokemon_set_attacks(&bulbasaur,   2, tackle,         growl,          empty_attack,   empty_attack);
-  pokemon_set_attacks(&charmander,  2, scratch,        tail_whip,      empty_attack,   empty_attack);
-  pokemon_set_attacks(&squirtle,    2, tackle,         tail_whip,      empty_attack,   empty_attack);
-  pokemon_set_attacks(&caterpie,    2, tackle,         string_shot,    empty_attack,   empty_attack);
-  pokemon_set_attacks(&weedle,      1, poison_sting,   empty_attack,   empty_attack,   empty_attack);
-  pokemon_set_attacks(&pidgey,      2, tackle,         sand_attack,    empty_attack,   empty_attack);
-  pokemon_set_attacks(&rattata,     2, tackle,         quick_attack,   empty_attack,   empty_attack);
-  pokemon_set_attacks(&sandshrew,   2, scratch,         sand_attack,    empty_attack,   empty_attack);
+void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
+  randomize_stats(new_pok, level, level_min, level_max);
+  new_pok->condition = NO_CONDITION;
+  new_pok->numAttacks = 0;
+  pokemon_give_moves(new_pok);
 }
 
 pokemon * get_random_pokemon(int level_min, int level_max) {
   newest_pokemon = *(pokList[rand() %  NUM_CREATED_POKEMON]);
   pokemon * new_pok = &newest_pokemon;
-  randomize_stats(new_pok, RANDOM_LEVEL, level_min, level_max);
+  pokemon_init(new_pok, RANDOM_LEVEL, level_min, level_max);
   return new_pok;
 }
 
@@ -59,7 +47,7 @@ pokemon * get_random_wild_pokemon(int level_min, int level_max) {
   newest_pokemon = *(pokList[(rand() % NUM_WILD_POKEMON) + NUM_STARTERS]);
   // newest_pokemon = bulbasaur;
   pokemon * new_pok = &newest_pokemon;
-  randomize_stats(new_pok, RANDOM_LEVEL, level_min, level_max);
+  pokemon_init(new_pok, RANDOM_LEVEL, level_min, level_max);
   return new_pok;
 }
 
@@ -114,10 +102,10 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   printf("%s has grown to level %d!\n", pok->name, pok->level);
   sleep(2);
 
-  //Check and add levels
+  //Add moves
   FILE *fp;
   char filename[50];
-  sprintf(filename, "learnsets/pok_id%03d.txt", pok->id_num);
+  sprintf(filename, "learnsets/%03d_%s.txt", pok->id_num, pok->name);
   char line[LINE_SIZE];
 
   // Open the file for reading
@@ -130,7 +118,8 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   }
 
   // Read lines from the file and put them into game values
-  fgets(line, LINE_SIZE, fp);	// Format first line
+  fgets(line, LINE_SIZE, fp);	// Name first line
+  fgets(line, LINE_SIZE, fp);	// Format second line
 
   int level_target, move_id;
   attack new_attack;
@@ -150,5 +139,49 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
 }
 
 void pokemon_give_moves(pokemon *pok) {
+  pok->numAttacks = 0;
 
+  //Add moves
+  FILE *fp;
+  char filename[50];
+  sprintf(filename, "learnsets/%03d_%s.txt", pok->id_num, pok->name);
+  char line[LINE_SIZE];
+
+  // Open the file for reading
+  fp = fopen(filename, "r");
+
+  // Check if the file was opened successfully
+  if (fp == NULL) {
+      printf("Learnset file does not exist.\n"); sleep(2);
+      return;
+  }
+
+  // Read lines from the file and put them into game values
+  fgets(line, LINE_SIZE, fp);	// Name first line
+  fgets(line, LINE_SIZE, fp);	// Format second line
+
+  int level_target, move_id;
+  attack new_attack;
+  uint8_t attack_position = 0;
+
+  while (fgets(line, LINE_SIZE, fp)) {
+    // if (strstr(line, "end") != NULL) break;
+    sscanf(line, "%d,%d", &level_target, &move_id);
+    if (level_target <= pok->level) {
+      new_attack = *(get_attack_by_id(move_id));
+      pok->attacks[attack_position] = new_attack;
+      attack_position++;
+      if (pok->numAttacks < 4) pok->numAttacks++;   //Only 4 attacks can exist
+      if (attack_position > 3) attack_position = 0; //Cycle through position to get highest level attacks
+    }
+  }
+
+  //Fill in with empty attacks if less than 4
+  if (pok->numAttacks < 4) {
+    for (int i = pok->numAttacks; i < 4; i++) {
+      pok->attacks[i] = *(get_attack_by_id(0));
+    }
+  }
+
+  fclose(fp);
 }

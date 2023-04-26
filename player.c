@@ -25,7 +25,7 @@ void default_load() {
   player.party[0] = charmander;
   player.party[1] = bulbasaur;
   for (int i = 0; i < player.numInParty; i++) {
-    randomize_stats(&(player.party[i]), 5, 0, 0);
+    pokemon_init(&(player.party[i]), 5, 0, 0);
   }
   
   player.numInBag = 3;
