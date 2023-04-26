@@ -1,0 +1,5 @@
+Bulbasaur
+level,move_id
+1,1
+4,3
+8,10

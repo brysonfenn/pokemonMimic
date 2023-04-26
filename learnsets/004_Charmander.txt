@@ -1,0 +1,4 @@
+Charmander
+level,move_id
+1,2
+2,3

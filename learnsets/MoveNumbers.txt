@@ -1,0 +1,10 @@
+1	Tackle
+2	Scratch
+3	Growl
+4	Tail Whip
+5	String Shot
+6	Poison Sting
+7	Sand Attack
+8	Quick Attack
+9	Defense Curl
+10	Vine Whip
