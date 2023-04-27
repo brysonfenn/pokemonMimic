@@ -42,56 +42,6 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
     victim->currentHP -= damage;
   }
 
-  //Drop Attack unless we are already 6 below baseAttack
-  if (chosenAttack.attack_drop > 0) {
-    if (!enemy) printf("Enemy ");
-    if (victim->atk_stage <= -6) {
-      printf("%s's attack won't go any lower!\n", victim->name);
-    }
-    else {
-      printf("%s's attack fell\n", victim->name);
-      victim->atk_stage -= chosenAttack.attack_drop;
-    }
-    sleep(1);
-  }
-
-  //Drop Defense unless we are already 6 below baseDefense
-  if (chosenAttack.defense_drop > 0) {
-    if (!enemy) printf("Enemy ");
-    if (victim->def_stage <= -6) {
-      printf("%s's defense won't go any lower!\n", victim->name);
-    }
-    else {
-      printf("%s's defense fell\n", victim->name); 
-      victim->def_stage -= chosenAttack.defense_drop;
-    }
-    sleep(1);
-  }
-  else if (chosenAttack.defense_drop < 0) {
-    if (enemy) printf("Enemy ");
-    if (perp->def_stage >= 6) {
-      printf("%s's defense won't go any higher!\n", perp->name);
-    }
-    else {
-      printf("%s's defense rose\n", perp->name); 
-      perp->def_stage -= chosenAttack.defense_drop;
-    }
-    sleep(1);
-  }
-
-  //Drop Speed unless we are already 6 below baseSpeed
-  if (chosenAttack.speed_drop > 0) {
-    if (!enemy) printf("Enemy ");
-    if (victim->spd_stage <= -6) {
-      printf("%s's speed won't go any lower!\n", victim->name);
-    }
-    else {
-      printf("%s's speed fell\n", victim->name);
-      victim->spd_stage -= chosenAttack.speed_drop;
-    }
-    sleep(1);
-  }
-
   //Drop Accuracy unless we are already at 0.4 accuracy
   if (chosenAttack.accuracy_drop > 0) {
     if (!enemy) printf("Enemy ");

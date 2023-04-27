@@ -19,9 +19,6 @@ typedef struct attack {
   uint8_t accuracy;
   Type type;
 
-  int8_t attack_drop;
-  int8_t defense_drop;
-  int8_t speed_drop;
   float accuracy_drop;
   bool priority;
   attack_func_ptr side_effect;
@@ -51,6 +48,8 @@ attack * get_attack_by_id(int id_num);
 
 void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy);
 
+int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim);
 
+int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* victim);
 
 #endif // ATTACKS_H

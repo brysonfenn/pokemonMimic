@@ -3,7 +3,8 @@
 
 struct pokemon;
 
-typedef enum { NO_CONDITION, POISONED, PARALYZED, ASLEEP, BURNED, FROZEN, SEEDED } Condition;
+typedef enum { NO_CONDITION, SPEED_STAT, ATTACK_STAT, DEFENSE_STAT, ACCURACY_STAT, 
+                POISONED, PARALYZED, ASLEEP, BURNED, FROZEN, SEEDED } Condition;
 
 int inflict_condition(Condition condition, int accuracy, struct pokemon * pok);
 

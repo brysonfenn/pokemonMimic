@@ -2,3 +2,4 @@ Squirtle
 level,move_id
 1,1
 4,4
+7,13
