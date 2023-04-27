@@ -33,6 +33,7 @@ int initiate_battle(pokemon enemyPoke) {
 
   pokemon enemy = enemyPoke;
   pokemon *currentPok = player.current_pokemon;
+  player.enemy_pokemon = &enemy;
 
   //First used pokemon needs exp
   for (int i = 0; i < player.numInParty; i++) {
@@ -47,7 +48,7 @@ int initiate_battle(pokemon enemyPoke) {
     // Allow loop to break if enemyHP is 0 or less
     if (enemy.currentHP <= 0) {
       enemy.currentHP = 0; clearTerminal();
-      printBattle(currentPok, &(enemy)); sleep(2);
+      printBattle(); sleep(2);
       printf("Enemy %s fainted.\n", enemy.name); sleep(2);
       break;
     }
@@ -82,7 +83,7 @@ int initiate_battle(pokemon enemyPoke) {
       switch (current_display) {
         
       case MAIN:
-        printBattle(currentPok, &(enemy));
+        printBattle();
         printf("0: Fight   \t\t1: Bag     \n2: Pokemon\t\t3: Run\n\n");
         inputNum = getValidInput(0, 3, "What will B do? Select an Option: ");
         run_success = false;
@@ -95,7 +96,7 @@ int initiate_battle(pokemon enemyPoke) {
         break;
         
       case FIGHT:
-        printBattle(currentPok, &(enemy));
+        printBattle();
         printf("0: %s\t\t1: %s\n2: %s\t\t3: %s\t\t4: Cancel\n\n", currentPok->attacks[0].name,
                currentPok->attacks[1].name, currentPok->attacks[2].name,
                currentPok->attacks[3].name);
@@ -191,7 +192,7 @@ int initiate_battle(pokemon enemyPoke) {
       else if (speed_difference < 0) {
         perform_enemy_attack(currentPok, &enemy, enemy_attack_num);
         clearTerminal();
-        printBattle(currentPok, &enemy);
+        printBattle();
         //Player Pokemon can only attack if still alive
         if (currentPok->currentHP > 0) {
           printf("\n\n\n\n");
@@ -243,7 +244,7 @@ int initiate_battle(pokemon enemyPoke) {
     // Allow loop to break if enemyHP is 0 or less
     if (enemy.currentHP <= 0) {
       enemy.currentHP = 0; clearTerminal();
-      printBattle(currentPok, &(enemy)); sleep(2);
+      printBattle(); sleep(2);
       printf("Enemy %s fainted.\n", enemy.name); sleep(2);
       break;
     }
@@ -254,7 +255,7 @@ int initiate_battle(pokemon enemyPoke) {
     }
     fainted_switch = false;
 
-    handle_poison(currentPok, &enemy);
+    handle_end_conditions();
 
     clearTerminal();
   }
@@ -268,14 +269,14 @@ int initiate_battle(pokemon enemyPoke) {
 // Handle an enemy attack
 void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num) {
   clearTerminal();
-  printBattle(currentPok, enemy);
+  printBattle();
 
   perform_attack(enemy, attack_num, currentPok, true);
   if (currentPok->currentHP <= 0) {
     currentPok->currentHP = 0;
     player.numAlive--;
     clearTerminal();
-    printBattle(currentPok, enemy);
+    printBattle();
   }
 }
 

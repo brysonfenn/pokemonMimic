@@ -138,7 +138,7 @@ int attempt_catch(int catch_rate) {
 
   int random = rand() % 100;
   clearTerminal();
-  printBattle(player.current_pokemon, enemy_pok);
+  printBattle();
 
   printf("B threw a Ball with catch_rate: %d\n", catch_rate); sleep(2);
 

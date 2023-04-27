@@ -12,7 +12,8 @@ void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max)
 
 void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
   randomize_stats(new_pok, level, level_min, level_max);
-  new_pok->condition = NO_CONDITION;
+  new_pok->visible_condition = NO_CONDITION;
+  new_pok->hidden_condition = NO_CONDITION;
   new_pok->numAttacks = 0;
   pokemon_give_moves(new_pok);
 }
@@ -36,6 +37,7 @@ void reset_base_stats(pokemon *pok) {
   pok->def_stage = 0;
   pok->spd_stage = 0;
   pok->accuracy  = 1.0;
+  pok->hidden_condition = NO_CONDITION;
 }
 
 void print_pokemon_summary(pokemon *pok) {

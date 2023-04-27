@@ -31,7 +31,9 @@ typedef struct pokemon {
 
   uint8_t level;
   uint32_t exp;
-  Condition condition;
+
+  Condition visible_condition;
+  Condition hidden_condition;
 
   attack attacks[4];
 } pokemon;

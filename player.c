@@ -46,7 +46,7 @@ void printParty() {
     int max = current_pok.maxHP;
     printf("%d: %s\tLVL %d\tHP: %d/%d  ", i, current_pok.name, current_pok.level, current, max);
     if (!(current)) printf(" (Fainted)");
-    else if (current_pok.condition != NO_CONDITION) print_condition(&current_pok);
+    print_condition(&current_pok);
     printf("\n");
   }
 }
@@ -75,7 +75,7 @@ bool runAttempt() {
 void heal_party() {
   for (int i = 0; i < player.numInParty; i++) {
     player.party[i].currentHP = player.party[i].maxHP;
-    player.party[i].condition = NO_CONDITION;
+    player.party[i].visible_condition = NO_CONDITION;
   }
   player.numAlive = player.numInParty;
   printf("Your Pokemon were restored to full health!\n");

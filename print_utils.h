@@ -7,7 +7,7 @@
 
 void clearTerminal();
 
-void printBattle(pokemon *pok1, pokemon *pok2);
+void printBattle();
 
 int getValidInput_force(int beginRange, int endRange, const char * request, int erase_lines);
 

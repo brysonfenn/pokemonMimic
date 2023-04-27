@@ -11,16 +11,20 @@
 #include <sys/ioctl.h>
 
 #include "conditions.h"
+#include "player.h"
+#include "pokemon.h"
 
 void clearTerminal() { printf("\033[2J\033[1;1H"); }
 
-void printBattle(pokemon *pok1, pokemon *pok2) {
-  printf("\t\t\t\t%s  Lvl %d  ", pok2->name, pok2->level);
-  print_condition(pok2);
-  printf("\n\t\t\t\tHP: %d/%d\n\n", pok2->currentHP, pok2->maxHP);
-  printf("%s  Lvl %d  ", pok1->name, pok1->level);
-  print_condition(pok1);
-  printf("\nHP: %d/%d\n\n", pok1->currentHP, pok1->maxHP);
+void printBattle() {
+  pokemon * player_pok = player.current_pokemon;
+  pokemon * enemy_pok = player.enemy_pokemon;
+  printf("\t\t\t\t%s  Lvl %d  ", enemy_pok->name, enemy_pok->level);
+  print_condition(enemy_pok);
+  printf("\n\t\t\t\tHP: %d/%d\n\n", enemy_pok->currentHP, enemy_pok->maxHP);
+  printf("%s  Lvl %d  ", player_pok->name, player_pok->level);
+  print_condition(player_pok);
+  printf("\nHP: %d/%d\n\n", player_pok->currentHP, player_pok->maxHP);
 }
 
 int getValidInput_force(int beginRange, int endRange, const char * request, int erase_lines) {
