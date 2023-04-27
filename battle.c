@@ -97,7 +97,7 @@ int initiate_battle(pokemon enemyPoke) {
         
       case FIGHT:
         printBattle();
-        printf("0: %s\t\t1: %s\n2: %s\t\t3: %s\t\t4: Cancel\n\n", currentPok->attacks[0].name,
+        printf("0: %s\r\t\t\t1: %s\n2: %s\r\t\t\t3: %s\r\t\t\t\t\t\t4: Cancel\n\n", currentPok->attacks[0].name,
                currentPok->attacks[1].name, currentPok->attacks[2].name,
                currentPok->attacks[3].name);
         inputNum = getValidInput(0, 4, "Select an Attack: ");

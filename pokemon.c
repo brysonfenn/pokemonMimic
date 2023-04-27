@@ -48,7 +48,7 @@ void print_pokemon_summary(pokemon *pok) {
   printf("\nBase Attack: %d\nBase Defense: %d\n", pok->baseAttack, pok->baseDefense);
   printf("Base Speed: %d\n\n", pok->baseSpeed);
   printf("Attacks: \n");
-  printf("\t%s\t%s\n\t%s\t%s\n", pok->attacks[0].name, pok->attacks[1].name, pok->attacks[2].name, pok->attacks[3].name);
+  printf("\t%s\r\t\t\t%s\n\t%s\r\t\t\t%s\n", pok->attacks[0].name, pok->attacks[1].name, pok->attacks[2].name, pok->attacks[3].name);
 }
 
 float get_stat_modifier(int16_t stage) {
