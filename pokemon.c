@@ -3,12 +3,14 @@
 #include "unistd.h"
 #include "stdbool.h"
 #include "stdlib.h"
+#include "print_utils.h"
 
 #include <string.h>
 
 #define LINE_SIZE 100
 
 void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max);
+void learn_move(pokemon * pok, attack * new_attack);
 
 void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
   randomize_stats(new_pok, level, level_min, level_max);
@@ -28,7 +30,7 @@ void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max)
   new_pok->currentHP = new_pok->maxHP;
   new_pok->baseAttack += (level + 2) + (rand() % 3);
   new_pok->baseDefense += (level + 3) + (rand() % 2);
-  new_pok->baseSpeed += (level + 2) + (rand() % 5);
+  new_pok->baseSpeed += (level + 2) + (rand() % 3);
   reset_base_stats(new_pok);
 }
 
@@ -97,13 +99,37 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
     sscanf(line, "%d,%d", &level_target, &move_id);
     if (level_target == pok->level) {
       new_attack = *(get_attack_by_id(move_id));
-      pok->attacks[pok->numAttacks] = new_attack;
-      pok->numAttacks++;
-      printf("%s learned %s\n", pok->name, new_attack.name); sleep(2);
+      learn_move(pok, &new_attack);
     }
   }
 
   fclose(fp);
+}
+
+void learn_move(pokemon * pok, attack * new_attack) {
+  int input_num;
+
+  //If there are not 4 moves, auto-learn, if not, forget.
+  if (pok->numAttacks < 4) {
+    pok->attacks[pok->numAttacks] = *new_attack;
+    pok->numAttacks++;
+  }
+  else {
+    printf("\n%s wants to learn %s, but %s already knows 4 moves.\n\n", pok->name, new_attack->name, pok->name); 
+    sleep(2);
+    printf("0: %s\r\t\t\t1: %s\n2: %s\r\t\t\t3: %s\r\t\t\t\t\t\t4: Do Not Learn\n\n", pok->attacks[0].name,
+               pok->attacks[1].name, pok->attacks[2].name, pok->attacks[3].name);
+
+    input_num = getValidInput(0, 4, "Select a move to forget, or select 4 to cancel: ");
+    if (input_num == 4) {
+      printf("%s did not learn %s!\n", pok->name, new_attack->name); sleep(2); return;
+    }
+    printf("1...2...and...poof!\n"); sleep(2);
+    printf("%s forgot %s, and...\n", pok->name, pok->attacks[input_num]); sleep(2);
+    pok->attacks[input_num] = *new_attack;
+  }
+
+  printf("%s learned %s!\n", pok->name, new_attack->name); sleep(2);
 }
 
 void pokemon_give_moves(pokemon *pok) {

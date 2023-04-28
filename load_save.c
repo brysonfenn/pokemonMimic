@@ -121,7 +121,7 @@ int load_game(int file_num) {
 		if (matched_elements != 10) {
 			printf("ERROR with load file. Expected a POKEMON line with 10 elements.\n");
 			printf("Only matched %d elements.\n", matched_elements); sleep(4);
-			printf("Offending line begins with: \"%s\"\n", curr_pok->name); sleep(3);
+			printf("Offending line is: %s\n", line); sleep(3);
 			printf("Reloading...\n"); sleep(1);
 			player_init(current_save_file);
 			return 2;
@@ -137,7 +137,7 @@ int load_game(int file_num) {
 			if (matched_elements != 2) {
 				printf("ERROR with load file. Expected a MOVE line with 2 elements.\n");
 				printf("Only matched %d elements.\n", matched_elements); sleep(4); 
-				printf("Offending line begins with: \"%s\"\n", temp_name); sleep(3); 
+				printf("Offending line is: %s\n", line); sleep(3);
 				printf("Reloading...\n"); sleep(1);
 				player_init(current_save_file);	// reinitialize player
 				return 2;
@@ -167,7 +167,7 @@ int load_game(int file_num) {
 		if (matched_elements != 3) {
 			printf("ERROR with load file. Expected an ITEM line with 3 elements.\n");
 			printf("Only matched %d elements.\n", matched_elements); sleep(4);
-			printf("Offending line begins with: \"%s\"\n", temp_name); sleep(3);
+			printf("Offending line is: %s\n", line); sleep(3);
 			printf("Reloading...\n"); sleep(1);
 			player_init(current_save_file);	// reinitialize player
 			return 2;

@@ -2,11 +2,10 @@ Last Saved: 04/26/2023 18:00:53
 Player: 
 5 5 4 3700
 Pokemon: 
-Bulbasaur 1 24 19 4 16 16 17 8 9
+Bulbasaur 1 24 19 3 16 16 17 8 71
 	Tackle      . 1
 	Growl       . 3
 	Leech seed  . 11
-	Vine whip   . 10
 Weedle 13 21 17 1 13 11 12 6 28
 	Poison Sting. 6
 Squirtle 7 20 20 2 14 13 15 6 41
