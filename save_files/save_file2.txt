@@ -1,17 +1,14 @@
-Last Saved: 04/20/2023 11:58:22
+Last Saved: 04/28/2023 07:21:23
 Player: 
-3 3 3 1300
+2 1 3 1700
 Pokemon: 
-Rattata 19 17 17 1 10 10 11 4 21
-	Tackle      . 1
-Bulbasaur 1 20 20 3 13 12 14 5 15
-	Tackle      . 1
-	Growl       . 3
-	String Shot . 5
-Charmander 4 22 22 2 13 14 15 6 17
-	Scratch     . 2
-	Tail Whip   . 4
+Charmander 4 20 5 2 12 13 13 5 23
+	Scratch. 2
+	Growl. 3
+Bulbasaur 1 20 0 2 13 12 13 5 26
+	Tackle. 1
+	Growl. 3
 Bag:
-Potion      . 1 1
+Potion      . 1 2
 Super Potion. 2 2
-Pokéball    . 3 1
+Pokéball    . 3 5

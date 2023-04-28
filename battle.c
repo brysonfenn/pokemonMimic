@@ -23,7 +23,7 @@ void handle_exp(int exp);
 
 //Begin a Battle
 int initiate_battle(pokemon enemyPoke) {
-  int inputNum, max_input;
+  int inputNum, min_input;
   bool enemy_attacks, fainted_switch;
   int return_execute, attack_num, enemy_attack_num, item_num, pokemon_selected, speed_difference;
   attack_num = item_num = pokemon_selected = speed_difference = 0;
@@ -84,35 +84,30 @@ int initiate_battle(pokemon enemyPoke) {
         
       case MAIN:
         printBattle();
-        printf("0: Fight   \t\t1: Bag     \n2: Pokemon\t\t3: Run\n\n");
-        inputNum = getValidInput(0, 3, "What will B do? Select an Option: ");
+        printf("1: Fight   \t\t2: Bag     \n3: Pokemon\t\t4: Run\n\n");
+        inputNum = getValidInput(1, 4, "What will B do? Select an Option: ");
         run_success = false;
-        if (inputNum == 3) {
+        if (inputNum == 4) {
           current_decision = RUN;
           break;
         }
-        current_display = inputNum + 1;
+        current_display = inputNum; //In this case, this already is the correct enum position
         enemy_attacks = false;
         break;
         
       case FIGHT:
         printBattle();
-        printf("0: %s\r\t\t\t1: %s\n2: %s\r\t\t\t3: %s\r\t\t\t\t\t\t4: Cancel\n\n", currentPok->attacks[0].name,
+        printf("1: %s\r\t\t\t2: %s\n3: %s\r\t\t\t4: %s\r\t\t\t\t\t\t0: Cancel\n\n", currentPok->attacks[0].name,
                currentPok->attacks[1].name, currentPok->attacks[2].name,
                currentPok->attacks[3].name);
-        inputNum = getValidInput(0, 4, "Select an Attack: ");
+        inputNum = getValidInput(0, currentPok->numAttacks, "Select an Attack: ");
+
         //Handle Cancel
-        if (inputNum == 4) {
+        if (!inputNum) {
           current_display = MAIN;
           break;
         }
-        if (inputNum >= currentPok->numAttacks) inputNum = INVALID_INPUT;
-        if (inputNum == INVALID_INPUT) {
-          sleep(1);
-          printf("Please enter a valid number between 0 and %d, or 4.\n", currentPok->numAttacks-1);
-          sleep(1);
-          continue; // Repeat While loop if input is invalid
-        }
+        inputNum--; //Adjust input to array position
         attack_num = inputNum;
         current_decision = ATTACK;
         current_display = MAIN;
@@ -121,28 +116,30 @@ int initiate_battle(pokemon enemyPoke) {
       case BAG:
         printBag();
         inputNum = getValidInput(0, player.numInBag, "Select an item to use: ");
-        if (inputNum == player.numInBag) {
+        if (!inputNum) {
           current_display = MAIN;
           break;
         }
+        inputNum--; //Adjust input number to array position
         item_num = inputNum;
         current_decision = ITEM;
         current_display = MAIN;
         break;
         
       case POKEMON:
-        max_input = player.numInParty - 1;
+        min_input = 1;
         printParty();
         if (player.current_pokemon->currentHP != 0) {
-          max_input++;
-          printf("%d: Cancel\n", player.numInParty);
+          min_input = 0;;
+          printf("0: Cancel\n");
         }
         printf("\n");
-        inputNum = getValidInput(0, max_input, "Select a Pokemon to use: ");
-        if (inputNum == player.numInParty) {
+        inputNum = getValidInput(min_input, player.numInParty, "Select a Pokemon to use: ");
+        if (!inputNum) {
           current_display = MAIN;
           continue;
         }
+        inputNum--; //Adjust input number to array position
         if (player.party[inputNum].currentHP == 0) {
           printf("%s can't fight anymore! Select a different pokemon.\n", player.party[inputNum].name);
           sleep(2);

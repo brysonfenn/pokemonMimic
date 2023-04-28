@@ -43,15 +43,16 @@ int battleTrainer() {
 
     clearTerminal();
     printf("Trainer %s is about to send out %s\n", trainer_name, trainer_pokemon[i+1].name);
-    inputNum = getValidInput(0,1, "Will B change Pokemon?\n0: Yes\t1:No\n");
+    inputNum = getValidInput(0,1, "Will B change Pokemon?\n1: Yes\t0:No\n");
 
     //Get player input for pokemon
-    if (!inputNum) {
+    if (inputNum == 1) {
       clearTerminal();
       printParty();
       printf("\n");
       while (1) {
-        inputNum = getValidInput(0, player.numInParty - 1, "Select a Pokemon to use: ");
+        inputNum = getValidInput(1, player.numInParty, "Select a Pokemon to use: ");
+        inputNum--; //Adjust inputNum to array position
         if (player.party[inputNum].currentHP == 0) {
           printf("You must select a different pokemon.\n"); sleep(2);
           clearLastLine(); clearLastLine();

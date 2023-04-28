@@ -7,8 +7,7 @@
 #include <stdbool.h>
 
 #include <fcntl.h>
-#include <termios.h>
-#include <sys/ioctl.h>
+#include <ncurses.h>
 
 #include "conditions.h"
 #include "player.h"

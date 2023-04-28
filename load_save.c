@@ -26,9 +26,9 @@ int save_game(int file_num) {
 	if (file_num !=  current_save_file && fp != NULL) {
 		printf("You selected file %d, which contains data that would be lost if you save ", file_num);
 		printf("here.\nAre you sure you want to save to file %d?\n", file_num);
-		printf("0: Yes\n1: No\n\n");
+		printf("1: Yes\n0: No\n\n");
 		inputNum = getValidInput(0, 1, "Select an option: ");
-		if (inputNum) return 0;
+		if (!inputNum) return 0;
 	}
 
 	// Open the file for writing
@@ -190,8 +190,7 @@ void print_save_files() {
     char filename[50];
     char line[LINE_SIZE];
 
-    printf("0: Cancel\n");
-    for (int i = 0; i <= 10; i++) {
+    for (int i = 1; i <= 10; i++) {
     	sprintf(filename, "save_files/save_file%d.txt", i);
 	    char line[LINE_SIZE];
 	    fp = fopen(filename, "r");
@@ -201,7 +200,7 @@ void print_save_files() {
 	    fgets(line, LINE_SIZE, fp);
 	    printf("%d: %s", i, line);
     }
-    printf("\n");
+	printf("0: Cancel\n\n");
 
     if (!current_save_file) {
     	printf("Current Save File: None\n\n");

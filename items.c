@@ -32,11 +32,12 @@ int handle_mart() {
   int inputNum;
   char example_string[50];
 
-  printf("Mart\n\n\r0: Exit\n\r");
+  printf("Mart\n\n");
   print_mart();
+  printf("0: Exit\n");
   printf("\nYou have $%d\n\r", player.money);
   inputNum = getValidInput(0, MAX_NUM_ITEM, "Select item to buy: "); 
-  if (inputNum == 0) { }
+  if (!inputNum) { return ITEM_SUCCESS; }
   else {
     example_item = *(get_item_by_id(inputNum));
     clearTerminal();
@@ -101,11 +102,16 @@ int use_item(int item_num, pokemon * enemy) {
 int execute_potion(int input_num) {
   clearTerminal();
   printParty();
-  int input = getValidInput(0, player.numInParty - 1, "\nSelect a pokemon to apply the potion on: ");
+  printf("0: Cancel\n");
+
+  int input = getValidInput(0, player.numInParty, "\nSelect a pokemon to apply the potion on: ");
+  if (!input) return ITEM_FAILURE;
+  input--; //Adjust input number to array position
+
   int currentHP = player.party[input].currentHP;
 
   if (currentHP == 0 || currentHP == player.party[input].maxHP) {
-    printf("Could not apply.\n"); sleep(1);
+    printf("Could not apply potion on %s.\n", player.party[input].name); sleep(1);
     return ITEM_FAILURE;
   }
 

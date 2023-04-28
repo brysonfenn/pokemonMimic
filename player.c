@@ -44,7 +44,7 @@ void printParty() {
     pokemon current_pok = player.party[i];
     int current = current_pok.currentHP;
     int max = current_pok.maxHP;
-    printf("%d: %s\tLVL %d\tHP: %d/%d  ", i, current_pok.name, current_pok.level, current, max);
+    printf("%d: %s\tLVL %d\tHP: %d/%d  ", i+1, current_pok.name, current_pok.level, current, max);
     if (!(current)) printf(" (Fainted)");
     print_condition(&current_pok);
     printf("\n");
@@ -54,9 +54,9 @@ void printParty() {
 void printBag() {
   printf("Bag:\n");
   for (int i = 0; i < player.numInBag; i++) {
-    printf("%d: %s\t%d\n", i, player.bag[i].name, player.bag[i].number);
+    printf("%d: %s\t%d\n", i+1, player.bag[i].name, player.bag[i].number);
   }
-  printf("%d: Cancel\n\n", player.numInBag);
+  printf("0: Cancel\n\n");
 }
 
 bool runAttempt() {
@@ -85,7 +85,7 @@ void heal_party() {
 void handle_poke_center() {
   int inputNum;
   printf("Welcome to the Pokémon Center\n\n");
-  printf("0: Exit\n1: Heal Pokémon\n\n");
+  printf("1: Heal Pokémon\n0: Exit\n\n");
   inputNum = getValidInput(0, 1, "Select an Option: ");
   if (!inputNum) return;
   else if (inputNum == 1) {
