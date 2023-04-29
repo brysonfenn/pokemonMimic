@@ -1,7 +1,11 @@
 #include "player.h"
+
 #include "stdlib.h"
 #include "unistd.h"
+
 #include "conditions.h"
+#include "maps/location.h"
+#include "maps/map_drawing.h"
 
 struct playerCharacter player;
 
@@ -36,6 +40,11 @@ void default_load() {
   player.bag[2] = pokeball;
   player.bag[2].number += 5;
   player.money = 1000;
+
+  player.loc = malloc(sizeof(Location));
+
+  player.loc->x = MAP_X + 10;
+  player.loc->y = MAP_Y + 10;
 }
 
 void printParty() {

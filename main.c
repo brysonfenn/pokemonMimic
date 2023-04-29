@@ -180,7 +180,7 @@ int main(void) {
   }
 
   //Clear everything and finish
-  clearTerminal();
+  control_c_handler();
 
   return 0;
 }
@@ -190,5 +190,8 @@ void control_c_handler() {
   clearTerminal();
   endwin(); // Clean up ncurses
   setvbuf(stdout, NULL, _IOLBF, 0);
+
+  free(player.loc);
+
   exit(0);
 }

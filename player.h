@@ -5,6 +5,8 @@
 #include "pokemon.h"
 #include "stdbool.h"
 
+struct Location;
+
 #define PLAYER_DEFAULT_POKEMON -1
 
 
@@ -18,6 +20,7 @@ struct playerCharacter {
   int money;
   bool trainer_battle;
   pokemon * enemy_pokemon;
+  struct Location * loc;
 };
 
 extern struct playerCharacter player;

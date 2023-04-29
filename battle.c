@@ -66,7 +66,7 @@ int initiate_battle(pokemon enemyPoke) {
       }
       printf("You must select a different pokemon.\n"); sleep(2);
       clearTerminal();
-      fainted_switch = true;       //Do not allow an attack for this switch
+      fainted_switch = true;      //Do not allow an attack for this switch
       current_display = POKEMON;  //Force a Switch
     }
 
@@ -91,7 +91,7 @@ int initiate_battle(pokemon enemyPoke) {
           current_decision = RUN;
           break;
         }
-        current_display = inputNum; //In this case, this already is the correct enum position
+        current_display = inputNum; //In this case, this is already the correct enum position
         enemy_attacks = false;
         break;
         

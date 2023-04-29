@@ -35,8 +35,8 @@ int handle_mart() {
   printf("Mart\n\n");
   print_mart();
   printf("0: Exit\n");
-  printf("\nYou have $%d\n\r", player.money);
-  inputNum = getValidInput(0, MAX_NUM_ITEM, "Select item to buy: "); 
+  printf("\nYou have $%d\n", player.money);
+  inputNum = getValidInput(0, MAX_NUM_ITEM, "Select item to buy: ");
   if (!inputNum) { return ITEM_SUCCESS; }
   else {
     example_item = *(get_item_by_id(inputNum));
