@@ -15,7 +15,10 @@ void pause_town_drawing();
 void init_map();
 
 typedef void (*init_map_func) ();
+typedef int (*map_actions_func) (int, int);
+
 init_map_func draw_map = &draw_map1;
+map_actions_func map_actions = &actions_map1;
 
 void handle_motion() {
     char * player_y = &(player.loc->y);
@@ -47,23 +50,8 @@ void handle_motion() {
         mvaddch(*player_y, *player_x, MOTION_PLAYER_CHARACTER); 
         refresh();
 
-        //Handle building actions
-        if (*player_x == POKE_CENTER_ENTER_X && *player_y == POKE_CENTER_ENTER_Y) {
-            sleep(1);
-            pause_town_drawing();
-            // mvaddch(player_y, player_x, ' ');
-            handle_poke_center();
-            clearTerminal();
-            *player_y += 1;
-            init_map();
-        }
-        else if (*player_x == MART_ENTER_X && *player_y == MART_ENTER_Y) {
-            sleep(1);
-            pause_town_drawing();
-            while (handle_mart() == ITEM_FAILURE) { clearTerminal(); }
-            clearTerminal();
-            mvaddch(*player_y, *player_x, ' ');
-            *player_y += 1;
+        // If we performed an action, reinitialize the map
+        if (map_actions(*player_x, *player_y)) {
             init_map();
         }
     }
@@ -74,9 +62,4 @@ void handle_motion() {
 void init_map() {
     draw_map();
     mvaddch(player.loc->y, player.loc->x, MOTION_PLAYER_CHARACTER);
-}
-
-void pause_town_drawing() {
-    endwin(); // Clean up ncurses
-    setvbuf(stdout, NULL, _IOLBF, 0);
 }

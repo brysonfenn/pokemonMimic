@@ -3,8 +3,9 @@
 #include <ncurses.h>
 
 #include "location.h"
+#include "doors.h"
 
-void drawBuilding_default(int x, int y, const char* str) { drawBuilding(x,y,DEFAULT_BUILDING_WIDTH,DEFAULT_BUILDING_HEIGHT,str); }
+void drawBuilding_default(int x, int y, const char* str, int action) { drawBuilding(x,y,DEFAULT_BUILDING_WIDTH,DEFAULT_BUILDING_HEIGHT,str,action); }
 
 void drawBox(int x, int y, int w, int h) {
     mvaddch(y, x, ACS_ULCORNER);  // Top-left corner
@@ -54,7 +55,7 @@ void draw_town_exit(int side, int position) {
 }
 
 // Draw a building, max string size is 6
-void drawBuilding(int x, int y, int w, int h, const char* str) {
+void drawBuilding(int x, int y, int w, int h, const char* str, int action) {
     drawBox(x,y,w,h);
 
     // Print the string (max size 6) inside the box
@@ -64,6 +65,12 @@ void drawBuilding(int x, int y, int w, int h, const char* str) {
 
     // Draw a door at the bottom of the box
     mvaddch(y + h - 1, x + (w / 2), ' ');  // Door frame
+    add_door(x+ (w/2), y+h-1, action);
     mvaddch(y + h - 1, x + (w / 2) - 1, ACS_LRCORNER);
     mvaddch(y + h - 1, x + (w / 2) + 1, ACS_LLCORNER);
+}
+
+void pause_town_drawing() {
+    endwin(); // Clean up ncurses
+    setvbuf(stdout, NULL, _IOLBF, 0);
 }

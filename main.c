@@ -78,7 +78,6 @@ int main(void) {
       current_display = MAIN;
       break;
     case TRAINER:
-      player.trainer_battle = true;
       if (player.numAlive) {
         battleTrainer();
       }

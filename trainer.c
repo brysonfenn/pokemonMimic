@@ -16,6 +16,7 @@ int battleTrainer() {
   pokemon trainer_pokemon[num_trainer_pokemon];
   char * trainer_name;
   battle_result = WIN;
+  player.trainer_battle = true;
 
   trainer_name = get_random_name();
 

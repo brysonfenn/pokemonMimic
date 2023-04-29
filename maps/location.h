@@ -4,7 +4,7 @@
 typedef struct Location {
     char x;
     char y;
-    int action;
+    short action;
 } Location;
 
 

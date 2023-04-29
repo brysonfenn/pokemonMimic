@@ -5,11 +5,9 @@
 #define POKE_CENTER_Y 3
 #define MART_X 44
 #define MART_Y 14
-#define POKE_CENTER_ENTER_X POKE_CENTER_X + (DEFAULT_BUILDING_WIDTH / 2)
-#define POKE_CENTER_ENTER_Y POKE_CENTER_Y + DEFAULT_BUILDING_HEIGHT - 1
-#define MART_ENTER_X MART_X + (DEFAULT_BUILDING_WIDTH / 2)
-#define MART_ENTER_Y MART_Y + DEFAULT_BUILDING_HEIGHT - 1
 
 void draw_map1();
+
+int actions_map1(int player_x, int player_y);
 
 #endif //MAP1_H
