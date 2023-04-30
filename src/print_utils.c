@@ -9,9 +9,9 @@
 #include <fcntl.h>
 #include <ncurses.h>
 
-#include "conditions.h"
+#include "monsters/conditions.h"
 #include "player.h"
-#include "pokemon.h"
+#include "monsters/pokemon.h"
 
 void clearTerminal() { printf("\033[2J\033[1;1H"); }
 

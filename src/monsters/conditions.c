@@ -1,8 +1,8 @@
 #include "conditions.h"
 
 #include "pokemon.h"
-#include "player.h"
-#include "print_utils.h"
+#include "../player.h"
+#include "../print_utils.h"
 
 int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 	int random = rand() % 100;

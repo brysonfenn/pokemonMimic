@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "player.h"
+#include "../player.h"
 #include "conditions.h"
 
 #define NUM_ATTACKS 50

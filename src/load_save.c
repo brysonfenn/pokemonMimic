@@ -4,8 +4,8 @@
 #include <time.h>
 
 #include "player.h"
-#include "pokemon.h"
-#include "attacks.h"
+#include "monsters/pokemon.h"
+#include "monsters/attacks.h"
 #include "items.h"
 
 #define LINE_SIZE 1024

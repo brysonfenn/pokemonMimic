@@ -3,8 +3,6 @@
 
 #define INVALID_INPUT -9
 
-#include "pokemon.h"
-
 void clearTerminal();
 
 void printBattle();

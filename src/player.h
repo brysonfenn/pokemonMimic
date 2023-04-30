@@ -1,9 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <stdbool.h>
+
+#include "monsters/pokemon.h"
 #include "items.h"
-#include "pokemon.h"
-#include "stdbool.h"
 
 struct Location;
 

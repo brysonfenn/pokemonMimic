@@ -1,9 +1,9 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
+#include <stdint.h>
+
 #include "attacks.h"
-#include "stdbool.h"
-#include "stdint.h"
 #include "conditions.h"
 #include "typings.h"
 

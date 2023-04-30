@@ -1,10 +1,11 @@
 #ifndef ITEMS_H
 #define ITEMS_H
 
-#include "stdio.h"
+#include <stdio.h>
+
 #include "print_utils.h"
 #include "player.h"
-#include "pokemon.h"
+#include "monsters/pokemon.h"
 
 #define ITEM_SUCCESS 1
 #define ITEM_FAILURE 0

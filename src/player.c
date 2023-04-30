@@ -3,7 +3,7 @@
 #include "stdlib.h"
 #include "unistd.h"
 
-#include "conditions.h"
+#include "monsters/conditions.h"
 #include "maps/location.h"
 #include "maps/map_drawing.h"
 

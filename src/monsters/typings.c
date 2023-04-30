@@ -1,7 +1,7 @@
 #include "typings.h"
 
 #include "pokemon.h"
-#include "player.h"
+#include "../player.h"
 
 float get_single_multiplier(Type moveType, Type victimType);
 

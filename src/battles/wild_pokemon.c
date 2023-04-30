@@ -1,7 +1,7 @@
 #include "wild_pokemon.h"
 
 #include "../player.h"
-#include "../pokemon.h"
+#include "../monsters/pokemon.h"
 
 int battle_wild_pokemon() {
     pokemon example_pokemon;

@@ -1,7 +1,6 @@
 #include "attacks.h"
 
 #include "pokemon.h"
-#include "conditions.h"
 
 int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim);
 

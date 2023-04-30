@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 #include "battle.h"
-#include "../pokemon.h"
+#include "../monsters/pokemon.h"
 #include "../player.h"
 
 #define NAME_MAX_LENGTH 20

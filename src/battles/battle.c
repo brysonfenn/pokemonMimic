@@ -4,7 +4,7 @@
 
 #include "battle.h"
 #include "../player.h"
-#include "../conditions.h"
+#include "../monsters/conditions.h"
 
 #include "../print_utils.h"
 

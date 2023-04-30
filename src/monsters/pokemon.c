@@ -1,11 +1,12 @@
 #include "pokemon.h"
-#include "stdio.h"
-#include "unistd.h"
-#include "stdbool.h"
-#include "stdlib.h"
-#include "print_utils.h"
 
+#include <stdio.h>
+#include <unistd.h>
+#include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
+
+#include "../print_utils.h"
 
 #define LINE_SIZE 100
 

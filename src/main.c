@@ -9,7 +9,7 @@
 #include "load_save.h"
 #include "motion2d.h"
 
-#include "pokemon.h"
+#include "monsters/pokemon.h"
 #include "player.h"
 #include "battles/battle.h"
 #include "battles/trainer.h"
