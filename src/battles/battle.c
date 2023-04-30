@@ -3,10 +3,10 @@
 #include <unistd.h>
 
 #include "battle.h"
-#include "player.h"
-#include "conditions.h"
+#include "../player.h"
+#include "../conditions.h"
 
-#include "print_utils.h"
+#include "../print_utils.h"
 
 static enum display { MAIN, FIGHT, BAG, POKEMON } current_display = MAIN;
 static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;

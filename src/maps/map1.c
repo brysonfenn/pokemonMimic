@@ -5,7 +5,7 @@
 #include "../player.h"
 #include "location.h"
 #include "doors.h"
-#include "../trainer.h"
+#include "../battles/trainer.h"
 
 #define MART_ACTION 1
 #define POKE_CENTER_ACTION 2

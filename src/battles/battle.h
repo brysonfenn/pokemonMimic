@@ -1,7 +1,7 @@
 #ifndef BATTLE_H
 #define BATTLE_H
 
-#include "pokemon.h"
+#include "../pokemon.h"
 #include "stdbool.h"
 
 #define BATTLE_WHITE_OUT 1

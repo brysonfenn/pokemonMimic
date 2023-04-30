@@ -1,8 +1,9 @@
 #include "attacks.h"
 
+#include <stdint.h>
+
 #include "player.h"
 #include "conditions.h"
-#include <stdint.h>
 
 #define NUM_ATTACKS 50
 

@@ -1,11 +1,12 @@
 #include "load_save.h"
 
 #include <stdio.h>
+#include <time.h>
+
 #include "player.h"
 #include "pokemon.h"
 #include "attacks.h"
 #include "items.h"
-#include "time.h"
 
 #define LINE_SIZE 1024
 

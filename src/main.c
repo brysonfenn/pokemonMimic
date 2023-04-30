@@ -11,8 +11,8 @@
 
 #include "pokemon.h"
 #include "player.h"
-#include "battle.h"
-#include "trainer.h"
+#include "battles/battle.h"
+#include "battles/trainer.h"
 
 static enum display { MAIN, POWER_OFF, WILD, TRAINER, POKEMON, BAG, PLAYER, SAVE, LOAD,
     TOWN } current_display = MAIN;
