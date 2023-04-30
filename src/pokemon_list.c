@@ -20,6 +20,7 @@ static pokemon newest_pokemon;
 
 pokemon * get_random_pokemon(int level_min, int level_max) {
   newest_pokemon = *(pokList[rand() %  NUM_CREATED_POKEMON]);
+  // newest_pokemon = caterpie;
   pokemon * new_pok = &newest_pokemon;
   pokemon_init(new_pok, RANDOM_LEVEL, level_min, level_max);
   return new_pok;
@@ -28,7 +29,7 @@ pokemon * get_random_pokemon(int level_min, int level_max) {
 //Always immediately dereference the return value of this function.
 pokemon * get_random_wild_pokemon(int level_min, int level_max) {
   newest_pokemon = *(pokList[(rand() % NUM_WILD_POKEMON) + NUM_STARTERS]);
-  // newest_pokemon = bulbasaur;
+  // newest_pokemon = caterpie;
   pokemon * new_pok = &newest_pokemon;
   pokemon_init(new_pok, RANDOM_LEVEL, level_min, level_max);
   return new_pok;

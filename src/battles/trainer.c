@@ -10,7 +10,14 @@
 
 static char name[NAME_MAX_LENGTH];
 
-int battleTrainer() {
+int battle_trainer() {
+
+  if (!player.numAlive) {
+    printf("All Pokemon have fainted, please heal them.\n");
+    sleep(3);
+    return BATTLE_WHITE_OUT;
+  }
+
   int num_trainer_pokemon = (rand() % 3) + 2;
   int inputNum, battle_result, return_execute;
   pokemon trainer_pokemon[num_trainer_pokemon];

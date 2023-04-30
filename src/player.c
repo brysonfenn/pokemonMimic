@@ -54,7 +54,7 @@ void printParty() {
     int current = current_pok.currentHP;
     int max = current_pok.maxHP;
     printf("%d: %s\tLVL %d\tHP: %d/%d  ", i+1, current_pok.name, current_pok.level, current, max);
-    if (!(current)) printf(" (Fainted)");
+    if (!(current)) printf(" (Fainted) ");
     print_condition(&current_pok);
     printf("\n");
   }

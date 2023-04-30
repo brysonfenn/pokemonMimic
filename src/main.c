@@ -66,13 +66,7 @@ int main(void) {
 
     //Battle a trainer
     case TRAINER:
-      if (player.numAlive) {
-        battleTrainer();
-      }
-      else {
-        printf("All Pokemon have fainted, please heal them.\n");
-        sleep(3);
-      }
+      battle_trainer();
       current_display = MAIN;
       break;
 

@@ -50,7 +50,7 @@ int actions_map1(int player_x, int player_y) {
             player.loc->y += 1;
             break;
         case TRAINER_BATTLE_ACTION:
-            battleTrainer();
+            battle_trainer();
             player.loc->x += 1;
             break;
         default:

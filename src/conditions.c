@@ -8,7 +8,7 @@ int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 	int random = rand() % 100;
 	if (condition == POISONED && random < accuracy) {
 		if (pok->visible_condition != NO_CONDITION) {
-			printf("But it failed!\n"); sleep(2);
+			printf("%s could not be poisoned!\n", pok->name); sleep(2);
 			return 1;
 		}
 		if (pok != player.current_pokemon) printf("Enemy ");
@@ -76,7 +76,7 @@ int handle_end_conditions() {
 }
 
 void print_condition(struct pokemon * pok) {
-	if (pok->visible_condition == NO_CONDITION)
+	if (pok->visible_condition == NO_CONDITION || pok->currentHP == 0)
 		printf(" ");
 	else if (pok->visible_condition == POISONED)
 		printf("PSN");
