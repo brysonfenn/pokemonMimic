@@ -57,6 +57,8 @@ int initiate_battle(pokemon enemyPoke) {
     if (currentPok->currentHP == 0) {
       sleep(2);
       printf("%s fainted. \n", currentPok->name);
+      player.numAlive--;
+      
       // Handle White out
       if (player.numAlive == 0) {
         sleep(2);
@@ -271,7 +273,6 @@ void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num)
   perform_attack(enemy, attack_num, currentPok, true);
   if (currentPok->currentHP <= 0) {
     currentPok->currentHP = 0;
-    player.numAlive--;
     clearTerminal();
     printBattle();
   }
