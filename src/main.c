@@ -13,6 +13,7 @@
 #include "player.h"
 #include "battles/battle.h"
 #include "battles/trainer.h"
+#include "battles/wild_pokemon.h"
 
 static enum display { MAIN, POWER_OFF, WILD, TRAINER, POKEMON, BAG, PLAYER, SAVE, LOAD,
     TOWN } current_display = MAIN;
@@ -29,7 +30,6 @@ int main(void) {
   signal(SIGINT, control_c_handler);
 
   int inputNum, inputNum2;
-  pokemon example_pokemon;
   char example_string[100];
   int return_execute;
 
@@ -60,19 +60,7 @@ int main(void) {
 
     //Battle wild pokemon
     case WILD:
-      player.trainer_battle = false;
-      set_current_pokemon(PLAYER_DEFAULT_POKEMON);
-      if (player.numAlive) {
-        example_pokemon = *(get_random_wild_pokemon(2, 4));
-        clearTerminal();
-        printf("A wild %s appeared!\n", example_pokemon.name);
-        sleep(3);
-        initiate_battle(example_pokemon);
-      }
-      else {
-        printf("All Pokemon have fainted, please heal them.\n");
-        sleep(3);
-      }
+      battle_wild_pokemon();
       current_display = MAIN;
       break;
 
