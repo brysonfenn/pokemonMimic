@@ -6,11 +6,11 @@
 #define CURRENT_MAX_NUM 4
 
                 //  id  name           qt  cost    function        arg
-item empty_item =   {0, "No Item     ", 1, 1000,  &do_nothing,      0};
-item potion =       {1, "Potion      ", 0, 300,   &execute_potion,  5};
+item empty_item =   {0, "No Item"     , 1, 1000,  &do_nothing,      0};
+item potion =       {1, "Potion"      , 0, 300,   &execute_potion,  5};
 item super_potion = {2, "Super Potion", 0, 700,   &execute_potion,  10};
-item pokeball =     {3, "Pokéball    ", 0, 200,   &attempt_catch,   60};
-item greatball =    {4, "Great Ball  ", 0, 600,   &attempt_catch,   80};
+item pokeball =     {3, "Pokéball"    , 0, 200,   &attempt_catch,   60};
+item greatball =    {4, "Great Ball"  , 0, 600,   &attempt_catch,   80};
 
 //NOTE: Make sure to add item to this list after creating it
 static * item_array[NUM_ITEMS] = { &empty_item, &potion, &super_potion, &pokeball, &greatball };

@@ -91,9 +91,11 @@ void printParty() {
 void printBag() {
   printw("Bag:\n");
   for (int i = 0; i < player.numInBag; i++) {
-    printw("  %s\t%d\n", player.bag[i].name, player.bag[i].number);
+    mvprintw(i+1,0, "  %s", player.bag[i].name);
+    mvprintw(i+1,20, "%d", player.bag[i].number);
   }
-  printw("  Cancel\n\n");
+  printw("\n  Cancel\n\n");
+  refresh();
 }
 
 void resume_ncurses() {

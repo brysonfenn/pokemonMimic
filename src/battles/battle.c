@@ -269,8 +269,10 @@ int initiate_battle(pokemon enemyPoke) {
     clear();
   }
 
-  handle_exp(enemy.level * 3);
-
+  if (!run_success) {
+    handle_exp(enemy.level * 3);
+  }
+  
   return BATTLE_WIN;
 }
 

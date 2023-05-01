@@ -75,6 +75,7 @@ int main(void) {
 
     //Handle party changes, releases, and viewing stats
     case POKEMON:
+      move(0,0);
       printParty();
       printw("  Cancel\n\n", 0);
       // inputNum = getValidInput(0, player.numInParty, "Select a Pokemon: ");
