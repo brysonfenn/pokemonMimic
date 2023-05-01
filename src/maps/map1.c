@@ -11,6 +11,8 @@
 #define POKE_CENTER_ACTION 2
 #define TRAINER_BATTLE_ACTION 3
 
+#define GRASS_CHAR 'M'
+
 
 void draw_map1() {
     initscr(); // Initialize ncurses
@@ -31,6 +33,8 @@ void draw_map1() {
     draw_town_exit(MAP_LEFT, 10);
     add_door(MAP_X, MAP_Y+10, TRAINER_BATTLE_ACTION);
     draw_town_exit(MAP_RIGHT, 10);
+
+    grass_map1();
 }
 
 int actions_map1(int player_x, int player_y) {
@@ -60,4 +64,10 @@ int actions_map1(int player_x, int player_y) {
     clearTerminal();
 
     return action;
+}
+
+void grass_map1() {
+    mvaddch(MAP_Y+10, MAP_X+40, GRASS_CHAR); 
+    mvaddch(MAP_Y+10, MAP_X+41, GRASS_CHAR); 
+    mvaddch(MAP_Y+10, MAP_X+42, GRASS_CHAR); 
 }

@@ -10,4 +10,6 @@ void draw_map1();
 
 int actions_map1(int player_x, int player_y);
 
+void grass_map1();
+
 #endif //MAP1_H

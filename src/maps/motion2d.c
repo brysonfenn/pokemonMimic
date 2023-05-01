@@ -58,7 +58,8 @@ void handle_motion() {
                 else if (*player_x < 100 && is_movable_space(0,1)) (*player_x)++;
                 break;
         }
-        mvaddch(*player_y, *player_x, player_char); 
+        grass_map1();
+        mvaddch(*player_y, *player_x, player_char);
         refresh();
 
         // If we performed an action, reinitialize the map
@@ -71,11 +72,13 @@ void handle_motion() {
 }
 
 bool is_movable_space(int yInc, int xInc) {
-    bool movable = true;
-
-    movable &= (mvinch(*player_y+yInc, *player_x+xInc) == ' ');
-
-    return movable;
+    char next_tile = mvinch(*player_y+yInc, *player_x+xInc);
+    if (next_tile == ' ' || next_tile == 'M') {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void init_map() {
