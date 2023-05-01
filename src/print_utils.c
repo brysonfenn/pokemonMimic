@@ -13,6 +13,8 @@
 #include "player.h"
 #include "monsters/pokemon.h"
 
+#define SELECTION_CHAR '*'
+
 void clearTerminal() { printf("\033[2J\033[1;1H"); }
 
 void printBattle() {
@@ -68,6 +70,28 @@ void clearLastLine() {
   printf("\033[K"); // Clear the line
 }
 
+void printParty() {
+  printw("Pokemon:\n");
+  for (int i = 0; i < player.numInParty; i++) {
+    pokemon current_pok = player.party[i];
+    int current = current_pok.currentHP;
+    int max = current_pok.maxHP;
+    printw("  %s\tLVL %d\tHP: %d/%d  ", current_pok.name, current_pok.level, current, max);
+    if (!(current)) printw(" (Fainted) ");
+    print_condition(&current_pok);
+    printw("\n");
+  }
+  refresh();
+}
+
+void printBag() {
+  printw("Bag:\n");
+  for (int i = 0; i < player.numInBag; i++) {
+    printw("  %s\t%d\n", player.bag[i].name, player.bag[i].number);
+  }
+  printw("  Cancel\n\n");
+}
+
 void resume_ncurses() {
   initscr(); // Initialize ncurses
   cbreak(); // Disable line buffering
@@ -82,4 +106,39 @@ void pause_ncurses() {
   endwin(); // Clean up ncurses
   setvbuf(stdout, NULL, _IOLBF, 0);
   flushinp();
+}
+
+int get_selection(int first_line, int start, int end, int last_selection) {
+  int cursor_x = 0;
+  int cursor_y = first_line + last_selection;
+  mvaddch(cursor_y, cursor_x, SELECTION_CHAR);
+  refresh();
+
+  int ch;
+  while ((ch = getch()) != 'q') {
+    mvaddch(cursor_y, cursor_x, ' ');
+
+    switch (ch) {
+      case KEY_UP:
+        if (cursor_y == first_line + start) cursor_y = first_line + end;
+        else cursor_y--;
+        break;
+      case KEY_DOWN:
+        if (cursor_y == first_line + end) cursor_y = first_line + start;
+        else cursor_y++;
+        break;
+      case KEY_LEFT:
+        break;
+      case KEY_RIGHT:
+        break;
+      case 'a':
+        clear();
+        return (cursor_y - first_line);
+      default:
+        break;
+    }
+    mvaddch(cursor_y, cursor_x, SELECTION_CHAR);
+    refresh();
+  }
+
 }

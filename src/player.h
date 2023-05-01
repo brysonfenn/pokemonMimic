@@ -28,10 +28,6 @@ extern struct playerCharacter player;
 
 void player_init(int save_file);
 
-void printParty();
-
-void printBag();
-
 bool runAttempt();
 
 void handle_poke_center();

@@ -15,8 +15,8 @@
 #include "battles/trainer.h"
 #include "battles/wild_pokemon.h"
 
-static enum display { MAIN, POWER_OFF, WILD, TRAINER, POKEMON, BAG, PLAYER, SAVE, LOAD,
-    TOWN } current_display = MAIN;
+static enum display { WILD, TRAINER, POKEMON, BAG, PLAYER, SAVE, LOAD,
+    TOWN, POWER_OFF, MAIN } current_display = MAIN;
 
 pokemon tempPok;
 
@@ -29,9 +29,9 @@ int main(void) {
 
   signal(SIGINT, control_c_handler);
 
-  int inputNum, inputNum2;
+  int inputNum, inputNum2, return_execute;
   char example_string[100];
-  int return_execute;
+  int last_selection = 0;
 
   //Initiate Everything
   player_init(0);
@@ -51,11 +51,14 @@ int main(void) {
 
     //This is the actual main menu
     case MAIN:
-      printf("1: Wild Pokemon\n2: Trainer\n3: Pokemon\n4: Bag\n5: Player\n");
-      printf("6: Save Game\n7: Load Game\n8: Town\n0: Power Off\n\n");
-      inputNum = getValidInput(0, 10, "Select an Option: ");
+      resume_ncurses();
+      printw("  Wild Pokemon\n  Trainer\n  Pokemon\n  Bag\n  Player\n");
+      printw("  Save Game\n  Load Game\n  Town\n  Power Off\n\n");
+      inputNum = get_selection(0,0,8,last_selection);
+      last_selection = inputNum;
       fflush(stdout);
-      current_display = inputNum + 1; //Adjust to fit enum position
+      current_display = inputNum;
+      pause_ncurses();
       break;
 
     //Battle wild pokemon
@@ -72,41 +75,48 @@ int main(void) {
 
     //Handle party changes, releases, and viewing stats
     case POKEMON:
+      resume_ncurses();
       printParty();
-      printf("%d: Cancel\n\n", 0);
-      inputNum = getValidInput(0, player.numInParty, "Select a Pokemon: ");
-      if (!inputNum) { current_display = MAIN; break; }
-      inputNum--; //Adjust input number to array position
+      printw("  Cancel\n\n", 0);
+      // inputNum = getValidInput(0, player.numInParty, "Select a Pokemon: ");
+      inputNum = get_selection(1,0,player.numInParty,0);
+      if (inputNum == player.numInParty) { current_display = MAIN; break; }
+      
 
-      clearTerminal();
+      clear();
       print_pokemon_summary(&(player.party[inputNum]));
-      printf("\n1: Switch\n2: Release\n0: Cancel\n");
-      inputNum2 = getValidInput_force(0, 2, "Select an Option: ", 6);
+      printw("\n  Switch\n  Release\n  Cancel\n");
+      // inputNum2 = getValidInput_force(0, 2, "Select an Option: ", 6);
+      inputNum2 = get_selection(12, 0, 2, 0);
 
-      //Break if inputNum2 is 0 (cancel)
-      if (!inputNum2) { break; } 
+      
+
+      //Break if inputNum2 is 2 (cancel)
+      if (inputNum2 == 2) { break; } 
       //Switch
-      else if (inputNum2 == 1) {
-        clearTerminal();
+      else if (inputNum2 == 0) {
+        if (player.numInParty <= 1) {printw("You only have 1 Pokémon!\n"); refresh(); sleep(2); break; }
+        clear();
+        printw("Which pokemon would you like to switch with %s?\n", player.party[inputNum].name);
         printParty();
-        printf("\n");
-        sprintf(example_string, "Select a Pokemon to switch with %s: ", player.party[inputNum].name);
-        inputNum2 = getValidInput(1, player.numInParty, example_string);
-        inputNum2--; //Adjust input number to array position
+        printw("\n");
+        // inputNum2 = getValidInput(1, player.numInParty, example_string);
+        inputNum2 = get_selection(2,0,player.numInParty-1,0);
 
         tempPok = player.party[inputNum];
         player.party[inputNum] = player.party[inputNum2];
         player.party[inputNum2] = tempPok;
       }
       //Release
-      else if (inputNum2 == 2) {
-        if (player.numInParty <= 1) {printf("You only have 1 Pokémon!\n"); sleep(2); break; }
-        clearTerminal();
-        printf("Are you sure you want to release %s?\n1:Yes\n0:No\n", player.party[inputNum].name);
-        inputNum2 = getValidInput(0, 1, "Select an option: ");
-        if (!inputNum2) { break; }
+      else if (inputNum2 == 1) {
+        if (player.numInParty <= 1) {printw("You only have 1 Pokémon!\n"); refresh(); sleep(2); break; }
+        clear();
+        printw("Are you sure you want to release %s?\n  Yes\n  No\n", player.party[inputNum].name);
+        // inputNum2 = getValidInput(0, 1, "Select an option: ");
+        inputNum2 = get_selection(1,0,1,0);
+        if (inputNum2) { break; }
         else {
-          printf("Bye Bye, %s!\n", player.party[inputNum].name); sleep(2);
+          printw("Bye Bye, %s!\n", player.party[inputNum].name); refresh(); sleep(2);
           player.numInParty--;
           for (int i = inputNum; i < player.numInParty; i++) {
             player.party[i] = player.party[i+1];
@@ -114,15 +124,16 @@ int main(void) {
           player.party[player.numInParty] = emptyPok;
         }
       }
+      pause_ncurses();
       current_display = MAIN;
       break;
 
     //Handle items used by player
     case BAG:
       printBag();
-      inputNum = getValidInput(0, player.numInBag, "Select an item to use: ");
-      if (!inputNum) { current_display = MAIN; break; }
-      inputNum--; //Adjust input number to array position
+      // inputNum = getValidInput(0, player.numInBag, "Select an item to use: ");
+      inputNum = get_selection(1,0,player.numInBag,0);
+      if (inputNum == player.numInBag) { current_display = MAIN; break; }
       return_execute = use_item(inputNum, &emptyPok);
 
       //Return to bag menu if item failed, else back to main menu

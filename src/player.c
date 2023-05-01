@@ -49,27 +49,6 @@ void default_load() {
   player.loc->y = MAP_Y + 10;
 }
 
-void printParty() {
-  printf("Pokemon:\n");
-  for (int i = 0; i < player.numInParty; i++) {
-    pokemon current_pok = player.party[i];
-    int current = current_pok.currentHP;
-    int max = current_pok.maxHP;
-    printf("%d: %s\tLVL %d\tHP: %d/%d  ", i+1, current_pok.name, current_pok.level, current, max);
-    if (!(current)) printf(" (Fainted) ");
-    print_condition(&current_pok);
-    printf("\n");
-  }
-}
-
-void printBag() {
-  printf("Bag:\n");
-  for (int i = 0; i < player.numInBag; i++) {
-    printf("%d: %s\t%d\n", i+1, player.bag[i].name, player.bag[i].number);
-  }
-  printf("0: Cancel\n\n");
-}
-
 bool runAttempt() {
   int success = ((rand() % 4) > 0);
   if (success) {
@@ -89,20 +68,26 @@ void heal_party() {
     player.party[i].visible_condition = NO_CONDITION;
   }
   player.numAlive = player.numInParty;
-  printf("Your Pokemon were restored to full health!\n");
+  printw("Your Pokemon were restored to full health!\n"); refresh();
   sleep(2);
 }
 
 void handle_poke_center() {
+  resume_ncurses();
+
   int inputNum;
-  printf("Welcome to the Pokémon Center\n\n");
-  printf("1: Heal Pokémon\n0: Exit\n\n");
-  inputNum = getValidInput(0, 1, "Select an Option: ");
-  if (!inputNum) return;
-  else if (inputNum == 1) {
-    heal_party(); clearTerminal();
-    printParty(); sleep(2); clearTerminal();
+  printw("Welcome to the Pokémon Center\n\n");
+  printw("  Heal Pokémon\n  Exit\n\n");
+  // inputNum = getValidInput(0, 1, "Select an Option: ");
+  inputNum = get_selection(2,0,1,0);
+
+  if (inputNum == 1) return;
+  else if (inputNum == 0) {
+    heal_party(); clear();
+    printParty(); sleep(2); clear();
   }
+
+  pause_ncurses();
 }
 
 void set_current_pokemon(int position) {

@@ -4,6 +4,7 @@
 #define INVALID_INPUT -9
 
 void clearTerminal();
+void clearLastLine();
 
 void printBattle();
 
@@ -11,9 +12,12 @@ int getValidInput_force(int beginRange, int endRange, const char * request, int 
 
 int getValidInput(int beginRange, int endRange, const char * request);
 
-void clearLastLine();
+void printParty();
+void printBag();
 
 void resume_ncurses();
 void pause_ncurses();
+
+int get_selection(int first_line, int start, int end, int last_selection);
 
 #endif // PRINT_UTILS_H

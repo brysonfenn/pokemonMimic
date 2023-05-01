@@ -44,14 +44,18 @@ void reset_base_stats(pokemon *pok) {
 }
 
 void print_pokemon_summary(pokemon *pok) {
-  printf("%s  LVL %d:\n", pok->name, pok->level);
-  printf("EXP to next Level: %d\n\n", (pok->level * 8) - pok->exp);
-  printf("HP: %d/%d", pok->currentHP, pok->maxHP);
-  if (!(pok->currentHP)) printf("  (Fainted)");
-  printf("\nBase Attack: %d\nBase Defense: %d\n", pok->baseAttack, pok->baseDefense);
-  printf("Base Speed: %d\n\n", pok->baseSpeed);
-  printf("Attacks: \n");
-  printf("\t%s\r\t\t\t%s\n\t%s\r\t\t\t%s\n", pok->attacks[0].name, pok->attacks[1].name, pok->attacks[2].name, pok->attacks[3].name);
+  printw("%s  LVL %d:\n", pok->name, pok->level);
+  printw("EXP to next Level: %d\n\n", (pok->level * 8) - pok->exp);
+  printw("HP: %d/%d", pok->currentHP, pok->maxHP);
+  if (!(pok->currentHP)) printw("  (Fainted)");
+  printw("\nBase Attack: %d\nBase Defense: %d\n", pok->baseAttack, pok->baseDefense);
+  printw("Base Speed: %d\n\n", pok->baseSpeed);
+  printw("Attacks: \n");
+  mvprintw(9, 8, "%s", pok->attacks[0].name);
+  mvprintw(9, 25,"%s", pok->attacks[1].name);
+  mvprintw(10,8, "%s", pok->attacks[2].name);
+  mvprintw(10,25,"%s\n", pok->attacks[3].name);
+  // printw("\t%s\r\t\t\t%s\n\t%s\r\t\t\t%s\n", pok->attacks[0].name, pok->attacks[1].name, pok->attacks[2].name, pok->attacks[3].name);
 }
 
 float get_stat_modifier(int16_t stage) {
