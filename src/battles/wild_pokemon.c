@@ -19,4 +19,8 @@ int battle_wild_pokemon() {
     printf("All Pokemon have fainted, please heal them.\n");
     sleep(3);
     }
+
+    clearTerminal();
+
+    return 0;
 }

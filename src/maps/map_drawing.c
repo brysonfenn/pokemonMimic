@@ -73,4 +73,16 @@ void drawBuilding(int x, int y, int w, int h, const char* str, int action) {
 void pause_town_drawing() {
     endwin(); // Clean up ncurses
     setvbuf(stdout, NULL, _IOLBF, 0);
+    flushinp();
+}
+
+void blink_screen(int num_times, void (*func) ()) {
+    for (int i = 0; i < num_times; i++) {
+        clear();
+        refresh();
+        usleep(100000);
+        func();
+        refresh();
+        usleep(100000);
+    }
 }

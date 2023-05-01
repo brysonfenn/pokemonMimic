@@ -22,4 +22,6 @@ void draw_town_exit(int x, int y);
 
 void pause_town_drawing();
 
+void blink_screen(int num_times, void (*func) ());
+
 #endif //MAP_DRAWING_H

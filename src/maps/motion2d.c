@@ -9,6 +9,7 @@
 #include "location.h"
 #include "map1.h"
 #include "map_drawing.h"
+#include "../battles/wild_pokemon.h"
 
 #define MOVING_DOWN 'v'
 #define MOVING_UP '^'
@@ -59,10 +60,20 @@ void handle_motion() {
                 break;
         }
         grass_map1();
+
+        bool hitGrass = (mvinch(*player_y, *player_x) == 'M');
+
         mvaddch(*player_y, *player_x, player_char);
         refresh();
 
-        // If we performed an action, reinitialize the map
+        if (hitGrass && ((rand() % 100) < 25)) {
+            blink_screen(5, init_map);
+            pause_town_drawing();
+            battle_wild_pokemon();
+            init_map();
+        }
+
+        // If action is executed, reinitialize the map
         if (map_actions(*player_x, *player_y)) {
             init_map();
         }
