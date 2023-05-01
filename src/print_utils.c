@@ -30,6 +30,8 @@ void printBattle() {
   printw("%s  Lvl %d  ", player_pok->name, player_pok->level);
   print_condition(player_pok);
   printw("\nHP: %d/%d\n\n", player_pok->currentHP, player_pok->maxHP);
+
+  refresh();
 }
 
 int getValidInput_force(int beginRange, int endRange, const char * request, int erase_lines) {

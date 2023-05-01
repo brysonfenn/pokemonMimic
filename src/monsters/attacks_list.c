@@ -21,7 +21,7 @@ attack defense_curl = {"Defense Curl" ,  9, 40,   0, 100, NO_TYPE,  0.0, false, 
 attack vine_whip    = {"Vine whip"    , 10, 25,  45, 100, GRASS,    0.0, false, &attack_do_nothing };
 attack leech_seed   = {"Leech seed"   , 11, 10,   0,  90, GRASS,    0.0, false, &inflict_condition, SEEDED, 100 };
 attack ember        = {"Ember"        , 12, 25,  40, 100, FIRE,     0.0, false, &attack_do_nothing };
-attack bubble       = {"Bubble"       , 13, 30,  20, 100, FIRE,     0.0, false, &decrement_opponent_stat, SPEED_STAT, 10 };
+attack bubble       = {"Bubble"       , 13, 30,  20, 100, WATER,     0.0, false, &decrement_opponent_stat, SPEED_STAT, 10 };
 attack poison_powder= {"Poison Powder", 14, 35,   0,  75, POISON,   0.0, false, &inflict_condition, POISONED, 100 };
 attack sleep_powder = {"Sleep Powder" , 15, 35,   0,  75, POISON,   0.0, false, &inflict_condition, POISONED, 100 };
 

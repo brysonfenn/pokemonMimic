@@ -136,12 +136,12 @@ void learn_move(pokemon * pok, attack * new_attack) {
     if (input_num == 5) {
       printw("%s did not learn %s!\n", pok->name, new_attack->name); refresh(); sleep(2); return;
     }
-    printw("1...2...and...poof!\n"); sleep(2);
-    printw("%s forgot %s, and...\n", pok->name, pok->attacks[input_num]); sleep(2);
+    printw("1...2...and...poof!\n"); refresh(); sleep(2);
+    printw("%s forgot %s, and...\n", pok->name, pok->attacks[input_num]); refresh(); sleep(2);
     pok->attacks[input_num] = *new_attack;
   }
 
-  printw("%s learned %s!\n", pok->name, new_attack->name); sleep(2);
+  printw("%s learned %s!\n", pok->name, new_attack->name); refresh(); sleep(2);
 }
 
 void pokemon_give_moves(pokemon *pok) {

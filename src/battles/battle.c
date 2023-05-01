@@ -110,8 +110,8 @@ int initiate_battle(pokemon enemyPoke) {
         mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[0].name); 
         mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  %s", currentPok->attacks[1].name); 
         mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[2].name); 
-        mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  %s\n\n", currentPok->attacks[3].name); 
-        mvprintw(SELECT_Y+1,BATTLE_SELECT_3_X,"  Cancel");
+        mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  %s", currentPok->attacks[3].name); 
+        mvprintw(SELECT_Y+1,BATTLE_SELECT_3_X,"  Cancel\n\n");
         
         inputNum = get_fight_selection(SELECT_Y, currentPok->numAttacks);
 
