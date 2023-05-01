@@ -7,10 +7,10 @@
 
 #include "print_utils.h"
 #include "load_save.h"
-#include "motion2d.h"
+#include "maps/motion2d.h"
 
-#include "monsters/pokemon.h"
 #include "player.h"
+#include "monsters/pokemon.h"
 #include "battles/battle.h"
 #include "battles/trainer.h"
 #include "battles/wild_pokemon.h"
