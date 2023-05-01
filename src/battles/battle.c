@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include "ncurses.h"
+
 #include "battle.h"
 #include "../player.h"
 #include "../monsters/conditions.h"
@@ -43,31 +45,31 @@ int initiate_battle(pokemon enemyPoke) {
   }
 
   while (1) {
-    clearTerminal();
+    clear();
 
     // Allow loop to break if enemyHP is 0 or less
     if (enemy.currentHP <= 0) {
-      enemy.currentHP = 0; clearTerminal();
+      enemy.currentHP = 0; clear();
       printBattle(); sleep(2);
-      printf("Enemy %s fainted.\n", enemy.name); sleep(2);
+      printw("Enemy %s fainted.\n", enemy.name); refresh(); sleep(2);
       break;
     }
 
     // If current pokemon faints, select a different pokemon.
     if (currentPok->currentHP == 0) {
       sleep(2);
-      printf("%s fainted. \n", currentPok->name);
+      printw("%s fainted. \n", currentPok->name); refresh();
       player.numAlive--;
       
       // Handle White out
       if (player.numAlive == 0) {
         sleep(2);
-        printf("\nB is out of usable pokemon...\n"); sleep(3);
-        printf("B whited out.\n"); sleep(5);
+        printw("\nB is out of usable pokemon...\n"); refresh(); sleep(3);
+        printw("B whited out.\n"); refresh(); sleep(5);
         return BATTLE_WHITE_OUT;
       }
-      printf("You must select a different pokemon.\n"); sleep(2);
-      clearTerminal();
+      printw("You must select a different pokemon.\n"); refresh(); sleep(2);
+      clear();
       fainted_switch = true;      //Do not allow an attack for this switch
       current_display = POKEMON;  //Force a Switch
     }
@@ -76,9 +78,11 @@ int initiate_battle(pokemon enemyPoke) {
 
     current_decision = NONE;
 
+    int last_selection = 1;
+
     ///////// GET DECISION /////////
     while (current_decision == NONE) {
-      clearTerminal();
+      clear();
 
       enemy_attack_num = get_move(&enemy);
 
@@ -86,8 +90,12 @@ int initiate_battle(pokemon enemyPoke) {
         
       case MAIN:
         printBattle();
-        printf("1: Fight   \t\t2: Bag     \n3: Pokemon\t\t4: Run\n\n");
-        inputNum = getValidInput(1, 4, "What will B do? Select an Option: ");
+        mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  Fight"); mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  Bag");
+        mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  Pokémon"); mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  Run\n\n");
+        printw("What will B do?"); refresh();
+
+        inputNum = get_battle_selection(SELECT_Y, last_selection);
+        last_selection = inputNum;
         run_success = false;
         if (inputNum == 4) {
           current_decision = RUN;
@@ -99,17 +107,20 @@ int initiate_battle(pokemon enemyPoke) {
         
       case FIGHT:
         printBattle();
-        printf("1: %s\r\t\t\t2: %s\n3: %s\r\t\t\t4: %s\r\t\t\t\t\t\t0: Cancel\n\n", currentPok->attacks[0].name,
-               currentPok->attacks[1].name, currentPok->attacks[2].name,
-               currentPok->attacks[3].name);
-        inputNum = getValidInput(0, currentPok->numAttacks, "Select an Attack: ");
+        mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[0].name); 
+        mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  %s", currentPok->attacks[1].name); 
+        mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[2].name); 
+        mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  %s\n\n", currentPok->attacks[3].name); 
+        mvprintw(SELECT_Y+1,BATTLE_SELECT_3_X,"  Cancel");
+        
+        inputNum = get_fight_selection(SELECT_Y, currentPok->numAttacks);
 
         //Handle Cancel
-        if (!inputNum) {
+        if (inputNum == 5) {
           current_display = MAIN;
           break;
         }
-        inputNum--; //Adjust input to array position
+        inputNum--;
         attack_num = inputNum;
         current_decision = ATTACK;
         current_display = MAIN;
@@ -117,12 +128,11 @@ int initiate_battle(pokemon enemyPoke) {
         
       case BAG:
         printBag();
-        inputNum = getValidInput(0, player.numInBag, "Select an item to use: ");
-        if (!inputNum) {
+        inputNum = get_selection(1,0,player.numInBag,0);
+        if (inputNum == player.numInBag) {
           current_display = MAIN;
           break;
         }
-        inputNum--; //Adjust input number to array position
         item_num = inputNum;
         current_decision = ITEM;
         current_display = MAIN;
@@ -130,21 +140,21 @@ int initiate_battle(pokemon enemyPoke) {
         
       case POKEMON:
         min_input = 1;
+        printw("Select a pokemon to use.\n");
         printParty();
         if (player.current_pokemon->currentHP != 0) {
           min_input = 0;;
-          printf("0: Cancel\n");
+          printw("  Cancel\n");
         }
-        printf("\n");
-        inputNum = getValidInput(min_input, player.numInParty, "Select a Pokemon to use: ");
-        if (!inputNum) {
+        printw("\n");
+        inputNum = get_selection(2,0, player.numInParty, 0);
+        if (inputNum == player.numInParty) {
           current_display = MAIN;
           continue;
         }
-        inputNum--; //Adjust input number to array position
         if (player.party[inputNum].currentHP == 0) {
-          printf("%s can't fight anymore! Select a different pokemon.\n", player.party[inputNum].name);
-          sleep(2);
+          printw("%s can't fight anymore! Select a different pokemon.\n", player.party[inputNum].name);
+          refresh(); sleep(2);
           continue;
         }
         pokemon_selected = inputNum;
@@ -190,11 +200,10 @@ int initiate_battle(pokemon enemyPoke) {
       }
       else if (speed_difference < 0) {
         perform_enemy_attack(currentPok, &enemy, enemy_attack_num);
-        clearTerminal();
+        clear();
         printBattle();
         //Player Pokemon can only attack if still alive
         if (currentPok->currentHP > 0) {
-          printf("\n\n\n\n");
           perform_attack(currentPok, attack_num, &(enemy), false);
         }
       }
@@ -226,7 +235,8 @@ int initiate_battle(pokemon enemyPoke) {
       break;
     case RUN:
       if (player.trainer_battle) {
-        printf("You can't run from a trainer battle!\n"); sleep(2);
+        move(10,0);
+        printw("You can't run from a trainer battle!\n"); refresh(); sleep(2);
       }
       else {
         run_success = runAttempt();
@@ -242,9 +252,9 @@ int initiate_battle(pokemon enemyPoke) {
 
     // Allow loop to break if enemyHP is 0 or less
     if (enemy.currentHP <= 0) {
-      enemy.currentHP = 0; clearTerminal();
+      enemy.currentHP = 0; clear();
       printBattle(); sleep(2);
-      printf("Enemy %s fainted.\n", enemy.name); sleep(2);
+      printw("Enemy %s fainted.\n", enemy.name); refresh(); sleep(2);
       break;
     }
 
@@ -256,7 +266,7 @@ int initiate_battle(pokemon enemyPoke) {
 
     handle_end_conditions();
 
-    clearTerminal();
+    clear();
   }
 
   handle_exp(enemy.level * 3);
@@ -267,13 +277,13 @@ int initiate_battle(pokemon enemyPoke) {
 
 // Handle an enemy attack
 void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num) {
-  clearTerminal();
+  clear();
   printBattle();
 
   perform_attack(enemy, attack_num, currentPok, true);
   if (currentPok->currentHP <= 0) {
     currentPok->currentHP = 0;
-    clearTerminal();
+    clear();
     printBattle();
   }
 }
@@ -309,7 +319,7 @@ void handle_exp(int exp) {
     if (pokemon_needing_exp[i]) num_exp_earned_pokemon++;
   }
 
-  if (num_exp_earned_pokemon == 0) { printf("Problem in handle_exp()!\n"); sleep(2); return; }
+  if (num_exp_earned_pokemon == 0) { printw("Problem in handle_exp()!\n"); refresh(); sleep(2); return; }
 
   exp = (exp / num_exp_earned_pokemon) + 1;
 
@@ -320,9 +330,9 @@ void handle_exp(int exp) {
 
     //Give active pokemon experience points if it is alive and didn't run away.
     if (player.numAlive && !run_success) {
-      printf("%s gained %d experience points!\n", currentPok->name, exp);
+      printw("%s gained %d experience points!\n", currentPok->name, exp);
       currentPok->exp += (exp);
-      sleep(2);
+      refresh(); sleep(2);
     }
 
     next_level_exp = currentPok->level * 8;

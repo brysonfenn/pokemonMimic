@@ -15,16 +15,16 @@ int handle_effectiveness(Type moveType, struct pokemon * pok, int damage) {
     damage *= multiplier;
 
     if (multiplier < 1.0) {
-        printf("It's not very effective...\n"); sleep(2);
+        printw("It's not very effective...\n"); refresh();  sleep(2);
         damage = (damage < 1) ? 1 : damage;
     }
     else if (multiplier > 1.0) {
-        printf("It's super effective!\n"); sleep(2);
+        printw("It's super effective!\n"); refresh(); sleep(2);
     }
     else if (multiplier == 0) {
-        printf("It didn't effect ");
-        if (pok != player.current_pokemon) printf("Enemy ");
-        printf("%s\n", pok->name); sleep(2);
+        printw("It didn't effect ");
+        if (pok != player.current_pokemon) printw("Enemy ");
+        printw("%s\n", pok->name); refresh(); sleep(2);
     }
 
     return damage;

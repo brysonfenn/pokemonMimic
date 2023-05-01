@@ -37,11 +37,12 @@ int actions_map1(int player_x, int player_y) {
     if (!action) return 0;
 
     sleep(1);
-    pause_town_drawing();
+
+    clear();
 
     switch (action) {
         case MART_ACTION:
-            while (handle_mart() == ITEM_FAILURE) { clearTerminal(); }
+            while (handle_mart() == ITEM_FAILURE) { clear(); }
             player.loc->y += 1;
             break;
         case POKE_CENTER_ACTION:
@@ -56,7 +57,7 @@ int actions_map1(int player_x, int player_y) {
             break;
     }
 
-    clearTerminal();
+    clear();
 
     return action;
 }

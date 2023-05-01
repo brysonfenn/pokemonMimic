@@ -51,12 +51,14 @@ void default_load() {
 
 bool runAttempt() {
   int success = ((rand() % 4) > 0);
+  move(10,0);
   if (success) {
-    printf("Got away safely.\n");
+    printw("Got away safely.\n");
   }
   else {
-    printf("Can't escape!\n");
+    printw("Can't escape!\n");
   }
+  refresh();
   sleep(2);
 
   return success;
@@ -73,21 +75,19 @@ void heal_party() {
 }
 
 void handle_poke_center() {
-  resume_ncurses();
-
   int inputNum;
+  clear();
   printw("Welcome to the Pokémon Center\n\n");
   printw("  Heal Pokémon\n  Exit\n\n");
   // inputNum = getValidInput(0, 1, "Select an Option: ");
   inputNum = get_selection(2,0,1,0);
 
+  clear();
   if (inputNum == 1) return;
   else if (inputNum == 0) {
     heal_party(); clear();
     printParty(); sleep(2); clear();
   }
-
-  pause_ncurses();
 }
 
 void set_current_pokemon(int position) {
@@ -112,8 +112,6 @@ void set_enemy_pokemon(pokemon * pok) {
 }
 
 void printPlayer() {
-  resume_ncurses();
-
   move(0,0);
   printw("  B:\n");
   printw("  Number of Pokemon: %d\n", player.numInParty);
@@ -148,6 +146,4 @@ void printPlayer() {
     mvaddch(cursor_y, cursor_x, '*');
     refresh();
   }
-
-  pause_ncurses();
 }

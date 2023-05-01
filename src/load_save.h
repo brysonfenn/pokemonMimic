@@ -6,6 +6,6 @@ int save_game(int file_num);
 
 int load_game(int file_num);
 
-void print_save_files();
+int print_save_files();
 
 #endif // LOAD_SAVE_H

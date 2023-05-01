@@ -1,21 +1,21 @@
-Last Saved: 04/26/2023 18:00:53
+Last Saved: 05/01/2023 13:27:46
 Player: 
 5 5 4 3700
 Pokemon: 
 Bulbasaur 1 24 19 3 16 16 17 8 71
-	Tackle      . 1
-	Growl       . 3
-	Leech seed  . 11
+	Tackle. 1
+	Growl. 3
+	Leech seed. 11
 Weedle 13 21 17 1 13 11 12 6 28
 	Poison Sting. 6
 Squirtle 7 20 20 2 14 13 15 6 41
-	Tackle      . 1
-	Tail Whip   . 4
+	Tackle. 1
+	Tail Whip. 4
 Charmander 4 22 22 2 14 15 16 7 15
-	Scratch     . 2
-	Tail Whip   . 4
+	Scratch. 2
+	Tail Whip. 4
 Sandshrew 27 22 22 2 14 15 11 7 11
-	Scratch     . 2
+	Scratch. 2
 	Defense Curl. 9
 Bag:
 Potion      . 1 2

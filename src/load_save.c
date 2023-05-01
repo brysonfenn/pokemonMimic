@@ -25,11 +25,11 @@ int save_game(int file_num) {
 
 	//Double check save file
 	if (file_num !=  current_save_file && fp != NULL) {
-		printf("You selected file %d, which contains data that would be lost if you save ", file_num);
-		printf("here.\nAre you sure you want to save to file %d?\n", file_num);
-		printf("1: Yes\n0: No\n\n");
-		inputNum = getValidInput(0, 1, "Select an option: ");
-		if (!inputNum) return 0;
+		printw("You selected file %d, which contains data that would be lost if you save ", file_num);
+		printw("here.\nAre you sure you want to save to file %d?\n", file_num);
+		printw("  Yes\n  No\n\n");
+		inputNum = get_selection(2,0,1,0);
+		if (inputNum) return 0;
 	}
 
 	// Open the file for writing
@@ -37,7 +37,7 @@ int save_game(int file_num) {
 
 	// Check if the file was opened successfully
 	if (fp == NULL) {
-	    printf("Failed to open file.\n");
+	    printw("Failed to open file.\n");
 	    return 1;
 	}
 
@@ -73,12 +73,15 @@ int save_game(int file_num) {
 	// Close the file
 	fclose(fp);
 
-	printf("Game File %d Saved Successfully!\n", file_num); sleep(2);
+	clear();
+	printw("Game File %d Saved Successfully!\n", file_num); refresh(); sleep(2);
 	current_save_file = file_num;
+
 	return 0;
 }
 
 int load_game(int file_num) {
+
 	pokemon * curr_pok;
 	attack * curr_att;
 	item * curr_item;
@@ -97,7 +100,7 @@ int load_game(int file_num) {
 
     // Check if the file was opened successfully
     if (fp == NULL) {
-        printf("That Load File does not exist.\n"); sleep(2);
+        printw("That Load File does not exist.\n"); refresh(); sleep(2);
         return 1;
     }
 
@@ -120,10 +123,10 @@ int load_game(int file_num) {
 
 		//Check if the line matched correctly
 		if (matched_elements != 10) {
-			printf("ERROR with load file. Expected a POKEMON line with 10 elements.\n");
-			printf("Only matched %d elements.\n", matched_elements); sleep(4);
-			printf("Offending line is: %s\n", line); sleep(3);
-			printf("Reloading...\n"); sleep(1);
+			printw("ERROR with load file. Expected a POKEMON line with 10 elements.\n");
+			printw("Only matched %d elements.\n", matched_elements); refresh(); sleep(4);
+			printw("Offending line is: %s\n", line); refresh(); sleep(3);
+			printw("Reloading...\n"); refresh(); sleep(1);
 			player_init(current_save_file);
 			return 2;
 		}
@@ -136,10 +139,10 @@ int load_game(int file_num) {
 
 			//Check if the line matched correctly
 			if (matched_elements != 2) {
-				printf("ERROR with load file. Expected a MOVE line with 2 elements.\n");
-				printf("Only matched %d elements.\n", matched_elements); sleep(4); 
-				printf("Offending line is: %s\n", line); sleep(3);
-				printf("Reloading...\n"); sleep(1);
+				printw("ERROR with load file. Expected a MOVE line with 2 elements.\n");
+				printw("Only matched %d elements.\n", matched_elements); refresh(); sleep(4); 
+				printw("Offending line is: %s\n", line); refresh(); sleep(3);
+				printw("Reloading...\n"); refresh(); sleep(1);
 				player_init(current_save_file);	// reinitialize player
 				return 2;
 			}
@@ -155,9 +158,9 @@ int load_game(int file_num) {
 
 		//Check if there were not enough items
 		if (fgets(line, LINE_SIZE, fp) == NULL) {
-			printf("ERROR with load file. Too many bag items listed\n");
-			printf("Expected: %d, But got %d.\n", player.numInBag, i-1); sleep(4);
-			printf("Reloading...\n"); sleep(1);
+			printw("ERROR with load file. Too many bag items listed\n");
+			printw("Expected: %d, But got %d.\n", player.numInBag, i-1); sleep(4);
+			printw("Reloading...\n"); sleep(1);
 			player_init(current_save_file); // reinitialize player
 			return 2;
 		}
@@ -166,10 +169,10 @@ int load_game(int file_num) {
 
 		//Check if the line matched correctly
 		if (matched_elements != 3) {
-			printf("ERROR with load file. Expected an ITEM line with 3 elements.\n");
-			printf("Only matched %d elements.\n", matched_elements); sleep(4);
-			printf("Offending line is: %s\n", line); sleep(3);
-			printf("Reloading...\n"); sleep(1);
+			printw("ERROR with load file. Expected an ITEM line with 3 elements.\n");
+			printw("Only matched %d elements.\n", matched_elements); refresh(); sleep(4);
+			printw("Offending line is: %s\n", line); refresh(); sleep(3);
+			printw("Reloading...\n"); refresh(); sleep(1);
 			player_init(current_save_file);	// reinitialize player
 			return 2;
 		}
@@ -180,16 +183,18 @@ int load_game(int file_num) {
 
     // Close the file
     fclose(fp);
-
-    printf("Game File %d Loaded Successfully!\n", file_num); sleep(2);
+	clear();
+    printw("Game File %d Loaded Successfully!\n", file_num); refresh(); sleep(2);
     current_save_file = file_num;
     return 0;
 }
 
-void print_save_files() {
+int print_save_files() {
 	FILE *fp;
     char filename[50];
     char line[LINE_SIZE];
+
+	int num_save_files = 0;
 
     for (int i = 1; i <= 10; i++) {
     	sprintf(filename, "save_files/save_file%d.txt", i);
@@ -200,6 +205,7 @@ void print_save_files() {
 	    if (fp == NULL) { continue; }
 	    fgets(line, LINE_SIZE, fp);
 	    printf("%d: %s", i, line);
+		num_save_files++;
     }
 	printf("0: Cancel\n\n");
 
@@ -209,5 +215,7 @@ void print_save_files() {
     else {
     	printf("Current Save File: %d\n\n", current_save_file);
     }
+
+	return num_save_files;
 }
 

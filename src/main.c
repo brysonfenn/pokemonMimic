@@ -58,7 +58,7 @@ int main(void) {
       last_selection = inputNum;
       fflush(stdout);
       current_display = inputNum;
-      pause_ncurses();
+      clear();
       break;
 
     //Battle wild pokemon
@@ -75,7 +75,6 @@ int main(void) {
 
     //Handle party changes, releases, and viewing stats
     case POKEMON:
-      resume_ncurses();
       printParty();
       printw("  Cancel\n\n", 0);
       // inputNum = getValidInput(0, player.numInParty, "Select a Pokemon: ");
@@ -116,6 +115,7 @@ int main(void) {
         inputNum2 = get_selection(1,0,1,0);
         if (inputNum2) { break; }
         else {
+          clear();
           printw("Bye Bye, %s!\n", player.party[inputNum].name); refresh(); sleep(2);
           player.numInParty--;
           for (int i = inputNum; i < player.numInParty; i++) {
@@ -124,14 +124,12 @@ int main(void) {
           player.party[player.numInParty] = emptyPok;
         }
       }
-      pause_ncurses();
       current_display = MAIN;
       break;
 
     //Handle items used by player
     case BAG:
       printBag();
-      // inputNum = getValidInput(0, player.numInBag, "Select an item to use: ");
       inputNum = get_selection(1,0,player.numInBag,0);
       if (inputNum == player.numInBag) { current_display = MAIN; break; }
       return_execute = use_item(inputNum, &emptyPok);
@@ -149,18 +147,24 @@ int main(void) {
 
     //Save game data to a file
     case SAVE:
+      pause_ncurses();
       print_save_files();
       inputNum = getValidInput(0, 10, "Enter a save file to save to: ");
+      clearTerminal();
       if (inputNum == 0) { current_display = MAIN; break; }
+      resume_ncurses();
       save_game(inputNum);
       current_display = MAIN;
       break;
 
     //Load game data from a file
     case LOAD:
+      pause_ncurses();
       print_save_files();
       inputNum = getValidInput(0, 10, "Enter a save file to load: ");
+      clearTerminal();
       if (inputNum == 0) { current_display = MAIN; break; }
+      resume_ncurses();
       load_game(inputNum);
       current_display = MAIN;
       break;
@@ -179,7 +183,7 @@ int main(void) {
 
     //This should never happen.
     default:
-      printf("Ran into default in main loop\n"); sleep(1);
+      printw("Ran into default in main loop\n"); refresh(); sleep(1);
       break;
     }
 

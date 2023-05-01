@@ -13,8 +13,8 @@ static char name[NAME_MAX_LENGTH];
 int battle_trainer() {
 
   if (!player.numAlive) {
-    printf("All Pokemon have fainted, please heal them.\n");
-    sleep(3);
+    printw("All Pokemon have fainted, please heal them.\n");
+    refresh(); sleep(3);
     return BATTLE_WHITE_OUT;
   }
 
@@ -27,47 +27,47 @@ int battle_trainer() {
 
   trainer_name = get_random_name();
 
-  printf("Trainer %s wants to fight!\n", trainer_name); sleep(2);
-  clearTerminal();
-  printf("Trainer %s Pokemon: ", trainer_name);;
+  printw("Trainer %s wants to fight!\n", trainer_name); refresh(); sleep(2);
+  clear();
+  printw("Trainer %s Pokemon: ", trainer_name);
 
   for (int i = 0; i < num_trainer_pokemon; i++) {
     trainer_pokemon[i] = *(get_random_pokemon(3,6));
-    printf("*");
+    printw("*");
   }
-  printf("\n"); sleep(2);
+  printw("\n"); refresh(); sleep(2);
 
   set_current_pokemon(PLAYER_DEFAULT_POKEMON);
-  printf("B sent out %s\n", player.current_pokemon->name); sleep(2);
+  printw("B sent out %s\n", player.current_pokemon->name); refresh(); sleep(2);
 
   int last_pokemon_pos = num_trainer_pokemon - 1;
 
   for (int i = 0; i < last_pokemon_pos; i++) {
-    printf("Trainer %s sent out %s\n", trainer_name, trainer_pokemon[i].name);
-    sleep(2);
+    printw("Trainer %s sent out %s\n", trainer_name, trainer_pokemon[i].name);
+    refresh(); sleep(2);
     battle_result = initiate_battle(trainer_pokemon[i]);
 
     if (battle_result == BATTLE_WHITE_OUT) { break; }
 
-    clearTerminal();
-    printf("Trainer %s is about to send out %s\n", trainer_name, trainer_pokemon[i+1].name);
+    clear();
+    printw("Trainer %s is about to send out %s\n", trainer_name, trainer_pokemon[i+1].name);
     inputNum = getValidInput(0,1, "Will B change Pokemon?\n1: Yes\t0:No\n");
 
     //Get player input for pokemon
     if (inputNum == 1) {
-      clearTerminal();
+      clear();
       printParty();
-      printf("\n");
+      printw("\n");
       while (1) {
         inputNum = getValidInput(1, player.numInParty, "Select a Pokemon to use: ");
         inputNum--; //Adjust inputNum to array position
         if (player.party[inputNum].currentHP == 0) {
-          printf("You must select a different pokemon.\n"); sleep(2);
+          printw("You must select a different pokemon.\n"); refresh(); sleep(2);
           clearLastLine(); clearLastLine();
         }
         else {
           set_current_pokemon(inputNum);
-          printf("B sent out %s\n", player.current_pokemon->name); sleep(2);
+          printw("B sent out %s\n", player.current_pokemon->name); refresh(); sleep(2);
           break;
         }
       }
@@ -75,15 +75,15 @@ int battle_trainer() {
   }
 
   if (battle_result == BATTLE_WIN) {
-    printf("Trainer %s sent out %s\n", trainer_name, trainer_pokemon[last_pokemon_pos].name);
-    sleep(2);
+    printw("Trainer %s sent out %s\n", trainer_name, trainer_pokemon[last_pokemon_pos].name);
+    refresh(); sleep(2);
     battle_result = initiate_battle(trainer_pokemon[last_pokemon_pos]);
-    printf("B defeated Trainer %s\n", trainer_name);
-    sleep(2);
+    printw("B defeated Trainer %s\n", trainer_name);
+    refresh(); sleep(2);
     int money_earned = (num_trainer_pokemon * 200) - 100;
-    printf("B gained $%d for defeating Trainer %s\n", money_earned, trainer_name);
+    printw("B gained $%d for defeating Trainer %s\n", money_earned, trainer_name);
     player.money += money_earned;
-    sleep(2);
+    refresh(); sleep(2);
   }
   
   if (battle_result == BATTLE_WHITE_OUT) {
@@ -103,7 +103,7 @@ char * get_random_name() {
 
   // Check if the file was opened successfully
   if (og_file == NULL) {
-      printf("File does not exist.\n"); sleep(2);
+      printw("File does not exist.\n"); refresh(); sleep(2);
       return 1;
   }
 

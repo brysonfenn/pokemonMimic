@@ -1,5 +1,7 @@
 #include "attacks.h"
 
+#include <ncurses.h> 
+
 #include "pokemon.h"
 
 int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim);
@@ -13,9 +15,11 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
 
   attack chosenAttack = perp->attacks[move_num];
 
-  if (enemy) printf("\n\n\n\nEnemy ");
-  printf("%s used %s\n", perp->name, chosenAttack.name);
-  sleep(1);
+  move(10,0);
+
+  if (enemy) printw("Enemy ");
+  printw("%s used %s\n", perp->name, chosenAttack.name);
+  refresh(); sleep(1);
 
   //Calculate current accuracy
   int curr_accuracy =  perp->accuracy * chosenAttack.accuracy;
@@ -23,13 +27,13 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
 
   if (missed) {
     if (chosenAttack.power) {
-      if (enemy) printf("Enemy ");
-      printf("%s's attack missed.\n", perp->name);
+      if (enemy) printw("Enemy ");
+      printw("%s's attack missed.\n", perp->name);
     }
     else {
-      printf("But it failed!\n");
+      printw("But it failed!\n");
     }
-    sleep(2); return;
+    refresh(); sleep(2); return;
   }
 
   //Drop HP only if attack has damage power
@@ -40,15 +44,15 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
 
   //Drop Accuracy unless we are already at 0.4 accuracy
   if (chosenAttack.accuracy_drop > 0) {
-    if (!enemy) printf("Enemy ");
+    if (!enemy) printw("Enemy ");
     if (victim->accuracy <= 0.4) {
-      printf("%s's accuracy won't go any lower!\n", victim->name);
+      printw("%s's accuracy won't go any lower!\n", victim->name);
     }
     else {
-      printf("%s's accuracy fell\n", victim->name); 
+      printw("%s's accuracy fell\n", victim->name); 
       victim->accuracy -= chosenAttack.accuracy_drop;
     }
-    sleep(1);
+    refresh(); sleep(1);
   }
 
   sleep(1);
@@ -76,7 +80,7 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
 
   //Critical Hit 1/16 Chance -- This should probably check for doesn't affect
   if ((rand() % 16) == 0) {
-    printf("A critical hit!\n"); sleep(2);
+    printw("A critical hit!\n"); refresh(); sleep(2);
     damage *= 2;
   }
 

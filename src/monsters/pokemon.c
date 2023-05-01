@@ -7,6 +7,7 @@
 #include <string.h>
 
 #include "../print_utils.h"
+#include "../battles/battle.h"
 
 #define LINE_SIZE 100
 
@@ -74,8 +75,8 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   pok->baseAttack++;
   pok->baseDefense++;
   pok->baseSpeed++;
-  printf("%s has grown to level %d!\n", pok->name, pok->level);
-  sleep(2);
+  printw("%s has grown to level %d!\n", pok->name, pok->level);
+  refresh(); sleep(2);
 
   //Add moves
   FILE *fp;
@@ -88,7 +89,7 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
 
   // Check if the file was opened successfully
   if (fp == NULL) {
-      printf("Learnset file does not exist.\n"); sleep(2);
+      printw("Learnset file does not exist.\n"); refresh(); sleep(2);
       return;
   }
 
@@ -120,21 +121,27 @@ void learn_move(pokemon * pok, attack * new_attack) {
     pok->numAttacks++;
   }
   else {
-    printf("\n%s wants to learn %s, but %s already knows 4 moves.\n\n", pok->name, new_attack->name, pok->name); 
-    sleep(2);
-    printf("0: %s\r\t\t\t1: %s\n2: %s\r\t\t\t3: %s\r\t\t\t\t\t\t4: Do Not Learn\n\n", pok->attacks[0].name,
-               pok->attacks[1].name, pok->attacks[2].name, pok->attacks[3].name);
+    printw("\n%s wants to learn %s, but %s already knows 4 moves.\n\n", pok->name, new_attack->name, pok->name); 
+    refresh(); sleep(2);
+    mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  %s", pok->attacks[0].name); 
+    mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  %s", pok->attacks[1].name); 
+    mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  %s", pok->attacks[2].name); 
+    mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  %s\n\n", pok->attacks[3].name); 
+    mvprintw(SELECT_Y+1,BATTLE_SELECT_3_X,"  Cancel\n\n");
 
-    input_num = getValidInput(0, 4, "Select a move to forget, or select 4 to cancel: ");
-    if (input_num == 4) {
-      printf("%s did not learn %s!\n", pok->name, new_attack->name); sleep(2); return;
+    printw("Select a move to forget.\n");
+        
+    input_num = get_fight_selection(SELECT_Y, pok->numAttacks);
+
+    if (input_num == 5) {
+      printw("%s did not learn %s!\n", pok->name, new_attack->name); refresh(); sleep(2); return;
     }
-    printf("1...2...and...poof!\n"); sleep(2);
-    printf("%s forgot %s, and...\n", pok->name, pok->attacks[input_num]); sleep(2);
+    printw("1...2...and...poof!\n"); sleep(2);
+    printw("%s forgot %s, and...\n", pok->name, pok->attacks[input_num]); sleep(2);
     pok->attacks[input_num] = *new_attack;
   }
 
-  printf("%s learned %s!\n", pok->name, new_attack->name); sleep(2);
+  printw("%s learned %s!\n", pok->name, new_attack->name); sleep(2);
 }
 
 void pokemon_give_moves(pokemon *pok) {
@@ -151,7 +158,7 @@ void pokemon_give_moves(pokemon *pok) {
 
   // Check if the file was opened successfully
   if (fp == NULL) {
-      printf("Learnset file does not exist.\n"); sleep(2);
+      printw("Learnset file does not exist.\n"); refresh(); sleep(2);
       return;
   }
 
