@@ -42,9 +42,6 @@ int getValidInput_force(int beginRange, int endRange, const char * request, int 
     printf("%s", request);
     fgets(input, 100, stdin);
     sscanf(input, "%d", &inputNum);
-
-    //If the user entered a number greater than they should, get the lowest digit.
-    if (inputNum > endRange) { inputNum = inputNum % 10; }
     
     if (inputNum < beginRange || inputNum > endRange) {
       if (input[0] == '\n') {
@@ -139,6 +136,8 @@ int get_selection(int first_line, int start, int end, int last_selection) {
         break;
       case 'a':
         return (cursor_y - first_line);
+      case 'b':
+        return (end);
       default:
         break;
     }
@@ -215,6 +214,8 @@ int get_fight_selection(int first_line, int num_attacks) {
         break;
       case 'a':
         return (selection);
+      case 'b':
+        return (5);
       default:
         break;
     }

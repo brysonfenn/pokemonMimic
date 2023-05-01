@@ -72,10 +72,12 @@ int handle_mart() {
     }
     else {
       printf("You do not have enough money to buy that!\n"); sleep(2);
+      clearTerminal();
       resume_ncurses();
       return ITEM_FAILURE;
     }
   }
+  clearTerminal();
   resume_ncurses();
   return ITEM_SUCCESS;
 }

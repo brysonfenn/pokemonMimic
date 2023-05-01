@@ -117,33 +117,6 @@ void printPlayer() {
   printw("  Number of Pokemon: %d\n", player.numInParty);
   printw("  Money: $%d\n", player.money);
   refresh();
-
-  int cursor_x = 0;
-  int cursor_y = 1;
-  mvaddch(cursor_y, cursor_x, '*');
-  refresh();
-
-  int ch;
-  while ((ch = getch()) != 'q') {
-    mvaddch(cursor_y, cursor_x, ' ');
-
-    switch (ch) {
-      case KEY_UP:
-        if (cursor_y == 0) cursor_y = 2;
-        else cursor_y--;
-        break;
-      case KEY_DOWN:
-        if (cursor_y == 2) cursor_y = 0;
-        else cursor_y++;
-        break;
-      case KEY_LEFT:
-        break;
-      case KEY_RIGHT:
-        break;
-      default:
-        break;
-    }
-    mvaddch(cursor_y, cursor_x, '*');
-    refresh();
-  }
+  sleep(2);
+  
 }
