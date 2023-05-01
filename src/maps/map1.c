@@ -6,6 +6,7 @@
 #include "location.h"
 #include "doors.h"
 #include "../battles/trainer.h"
+#include "../print_utils.h"
 
 #define MART_ACTION 1
 #define POKE_CENTER_ACTION 2
@@ -15,12 +16,6 @@
 
 
 void draw_map1() {
-    initscr(); // Initialize ncurses
-    cbreak(); // Disable line buffering
-    noecho(); // Don't display typed characters
-    keypad(stdscr, true); // Enable arrow keys
-    clear();
-    curs_set(0);
 
     mvprintw(22, 1, "Press 'm' to return to the menu");
     drawBuilding_default(MART_X,MART_Y, "Mart", MART_ACTION);

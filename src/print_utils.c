@@ -67,3 +67,19 @@ void clearLastLine() {
   printf("\033[1A"); // Move cursor up one line
   printf("\033[K"); // Clear the line
 }
+
+void resume_ncurses() {
+  initscr(); // Initialize ncurses
+  cbreak(); // Disable line buffering
+  noecho(); // Don't display typed characters
+  keypad(stdscr, true); // Enable arrow keys
+  clear();
+  curs_set(0);
+}
+
+
+void pause_ncurses() {
+  endwin(); // Clean up ncurses
+  setvbuf(stdout, NULL, _IOLBF, 0);
+  flushinp();
+}

@@ -13,4 +13,7 @@ int getValidInput(int beginRange, int endRange, const char * request);
 
 void clearLastLine();
 
+void resume_ncurses();
+void pause_ncurses();
+
 #endif // PRINT_UTILS_H

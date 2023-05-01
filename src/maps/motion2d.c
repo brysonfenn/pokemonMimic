@@ -10,6 +10,7 @@
 #include "map1.h"
 #include "map_drawing.h"
 #include "../battles/wild_pokemon.h"
+#include "../print_utils.h"
 
 #define MOVING_DOWN 'v'
 #define MOVING_UP '^'
@@ -35,6 +36,8 @@ bool is_movable_space(int yInc, int xInc);
 void handle_motion() {
     player_y = &(player.loc->y);
     player_x = &(player.loc->x);
+
+    resume_ncurses();
 	
     init_map();
 
@@ -94,5 +97,6 @@ bool is_movable_space(int yInc, int xInc) {
 
 void init_map() {
     draw_map();
+
     mvaddch(player.loc->y, player.loc->x, player_char);
 }

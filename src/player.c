@@ -1,11 +1,13 @@
 #include "player.h"
 
-#include "stdlib.h"
-#include "unistd.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include <ncurses.h>
 
 #include "monsters/conditions.h"
 #include "maps/location.h"
 #include "maps/map_drawing.h"
+#include "print_utils.h"
 
 struct playerCharacter player;
 
@@ -125,7 +127,42 @@ void set_enemy_pokemon(pokemon * pok) {
 }
 
 void printPlayer() {
-  printf("B:\n");
-  printf("Number of Pokemon: %d\n", player.numInParty);
-  printf("Money: $%d\n", player.money);
+  resume_ncurses();
+
+  move(0,0);
+  printw("  B:\n");
+  printw("  Number of Pokemon: %d\n", player.numInParty);
+  printw("  Money: $%d\n", player.money);
+  refresh();
+
+  int cursor_x = 0;
+  int cursor_y = 1;
+  mvaddch(cursor_y, cursor_x, '*');
+  refresh();
+
+  int ch;
+  while ((ch = getch()) != 'q') {
+    mvaddch(cursor_y, cursor_x, ' ');
+
+    switch (ch) {
+      case KEY_UP:
+        if (cursor_y == 0) cursor_y = 2;
+        else cursor_y--;
+        break;
+      case KEY_DOWN:
+        if (cursor_y == 2) cursor_y = 0;
+        else cursor_y++;
+        break;
+      case KEY_LEFT:
+        break;
+      case KEY_RIGHT:
+        break;
+      default:
+        break;
+    }
+    mvaddch(cursor_y, cursor_x, '*');
+    refresh();
+  }
+
+  pause_ncurses();
 }

@@ -133,7 +133,6 @@ int main(void) {
     //Display player data
     case PLAYER:
       printPlayer();
-      sleep(3);
       current_display = MAIN;
       break;
 
