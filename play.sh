@@ -1,0 +1,2 @@
+cd ~/PokemonMimic
+./PokemonMimic
