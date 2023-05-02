@@ -8,6 +8,8 @@
 #include "../battles/trainer.h"
 #include "../print_utils.h"
 
+#include "motion2d.h"
+
 #define MART_ACTION 1
 #define POKE_CENTER_ACTION 2
 #define TRAINER_BATTLE_ACTION 3
@@ -24,17 +26,28 @@ void draw_map1() {
 
     //Draw Doors
     draw_town_exit(MAP_TOP, 10);
+    add_portal(MAP_X+10, MAP_Y, MAP_X+10, MAP_Y+TOWN_HEIGHT-2, 2);
+
     draw_town_exit(MAP_BOTTOM, 10);
     draw_town_exit(MAP_LEFT, 10);
     add_door(MAP_X, MAP_Y+10, TRAINER_BATTLE_ACTION);
     draw_town_exit(MAP_RIGHT, 10);
 
     grass_map1();
+
+    refresh();
 }
 
 int actions_map1(int player_x, int player_y) {
-    int action = get_door_action(player_x, player_y);
+    Location door = *(get_door(player_x, player_y));
+    int action = door.action;
     if (!action) return 0;
+
+    //Handle portal
+    if (action == -1) {
+        change_map(door.next_map, door.next_x, door.next_y);
+        return -1;
+    }
 
     sleep(1);
 

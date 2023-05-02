@@ -7,6 +7,8 @@
 static Location doors[MAX_DOOR_COUNT];
 static int door_count = 0;
 
+static Location empty_door = {0,0,0,0,0,0,0};
+
 void add_door(char x, char y, short action) {
     doors[door_count].x = x;
     doors[door_count].y = y;
@@ -14,13 +16,23 @@ void add_door(char x, char y, short action) {
     door_count++;
 }
 
-int get_door_action(int player_x, int player_y) {
+void add_portal(char x, char y, char next_x, char next_y, char next_map) {
+    doors[door_count].x = x;
+    doors[door_count].y = y;
+    doors[door_count].action = -1;
+    doors[door_count].next_x = next_x;
+    doors[door_count].next_y = next_y;
+    doors[door_count].next_map = next_map;
+    door_count++;
+}
+
+struct Location * get_door(int player_x, int player_y) {
     for (int i = 0; i < door_count; i++) {
         if (player_x == doors[i].x && player_y == doors[i].y) {
-            return doors[i].action;
+            return &(doors[i]);
         }
     }
-    return 0;
+    return &(empty_door);
 }
 
 int get_door_count() {

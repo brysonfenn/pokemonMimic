@@ -8,9 +8,11 @@
 #include "../player.h"
 #include "location.h"
 #include "map1.h"
+#include "map2.h"
 #include "map_drawing.h"
 #include "../battles/wild_pokemon.h"
 #include "../print_utils.h"
+#include "doors.h"
 
 #define MOVING_DOWN 'v'
 #define MOVING_UP '^'
@@ -23,8 +25,9 @@ void init_map();
 typedef void (*init_map_func) ();
 typedef int (*map_actions_func) (int, int);
 
-init_map_func draw_map = &draw_map1;
-map_actions_func map_actions = &actions_map1;
+static init_map_func draw_map = &draw_map1;
+static map_actions_func map_actions = &actions_map1;
+static init_map_func grass_map = &grass_map1;
 
 static char player_char = MOVING_DOWN;
 
@@ -62,7 +65,7 @@ void handle_motion() {
                 else if (*player_x < 100 && is_movable_space(0,1)) (*player_x)++;
                 break;
         }
-        grass_map1();
+        grass_map();
 
         bool hitGrass = (mvinch(*player_y, *player_x) == 'M');
 
@@ -99,4 +102,32 @@ void init_map() {
     draw_map();
 
     mvaddch(player.loc->y, player.loc->x, player_char);
+}
+
+
+void change_map(int map, int x, int y) {
+    clear();
+    clear_doors();
+    sleep(1);
+
+    switch (map) {
+        case 1:
+            mvprintw(23, 1, "Switched to map 1"); refresh();
+            draw_map = &draw_map1;
+            map_actions = &actions_map1;
+            grass_map = &grass_map1;
+            *player_x = x;
+            *player_y = y;
+            break;
+        case 2:
+            mvprintw(23, 1, "Switched to map 2"); refresh();
+            draw_map = &draw_map2;
+            map_actions = &actions_map2;
+            grass_map = &grass_map2;
+            *player_x = x;
+            *player_y = y;
+            break;
+    }
+
+    init_map();
 }
