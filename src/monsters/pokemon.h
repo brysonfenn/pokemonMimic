@@ -27,15 +27,13 @@ typedef struct pokemon {
   int16_t atk_stage;
   int16_t def_stage;
   int16_t spd_stage;
-  float accuracy;
-
   uint8_t level;
+  uint8_t sleep_count;
   uint32_t exp;
+  float accuracy;
 
   Condition visible_condition;
   Condition hidden_condition;
-
-  uint8_t sleep_count;
 
   attack attacks[4];
 } pokemon;
