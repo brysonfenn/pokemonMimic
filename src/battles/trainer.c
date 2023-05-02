@@ -43,7 +43,7 @@ int battle_trainer() {
   int last_pokemon_pos = num_trainer_pokemon - 1;
 
   for (int i = 0; i < last_pokemon_pos; i++) {
-    printw("Trainer %s sent out %s\n", trainer_name, trainer_pokemon[i].name);
+    mvprintw(5,0,"Trainer %s sent out %s\n", trainer_name, trainer_pokemon[i].name);
     refresh(); sleep(2);
     battle_result = initiate_battle(trainer_pokemon[i]);
 
@@ -51,25 +51,32 @@ int battle_trainer() {
 
     clear();
     printw("Trainer %s is about to send out %s\n", trainer_name, trainer_pokemon[i+1].name);
-    inputNum = getValidInput(0,1, "Will B change Pokemon?\n1: Yes\t0:No\n");
+    printw("Will B change Pokemon?\n  Yes\n  No\n");
+    inputNum = get_selection(2,0,1,0);
 
     //Get player input for pokemon
-    if (inputNum == 1) {
-      clear();
-      printParty();
-      printw("\n");
-      while (1) {
-        inputNum = getValidInput(1, player.numInParty, "Select a Pokemon to use: ");
-        inputNum--; //Adjust inputNum to array position
+    while (1) {
+      if (inputNum == 0) {
+        clear();
+        printw("Select a Pokemon to use:\n");
+        printParty();
+        printw("\n");
+      
+        inputNum = get_selection(2,0,player.numInParty-1,0);
+
         if (player.party[inputNum].currentHP == 0) {
+          move(player.numInParty+3,0);
           printw("You must select a different pokemon.\n"); refresh(); sleep(2);
-          clearLastLine(); clearLastLine();
         }
         else {
           set_current_pokemon(inputNum);
+          move(player.numInParty+3,0);
           printw("B sent out %s\n", player.current_pokemon->name); refresh(); sleep(2);
           break;
         }
+      }
+      else {
+        break;
       }
     }
   }

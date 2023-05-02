@@ -77,6 +77,7 @@ void pause_town_drawing() {
 }
 
 void blink_screen(int num_times, void (*func) ()) {
+    usleep(200000);
     for (int i = 0; i < num_times; i++) {
         clear();
         refresh();

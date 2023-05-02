@@ -44,6 +44,10 @@ void handle_motion() {
 	
     init_map();
 
+    // Define color pairs
+    init_pair(1, COLOR_WHITE, COLOR_BLACK);
+    init_pair(2, COLOR_CYAN, COLOR_BLACK);
+
     int ch;
     while ((ch = getch()) != 'm') {
     	mvaddch(*player_y, *player_x, ' '); 
@@ -67,12 +71,16 @@ void handle_motion() {
         }
         grass_map();
 
-        bool hitGrass = (mvinch(*player_y, *player_x) == 'M');
+        bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == 'M');
 
+        // Set attributes for next character
+        attrset(COLOR_PAIR(2));
         mvaddch(*player_y, *player_x, player_char);
+        attrset(COLOR_PAIR(1));
         refresh();
+        int random = rand() % 100;
 
-        if (hitGrass && ((rand() % 100) < 25)) {
+        if (hitGrass && (random < 10)) {
             blink_screen(5, init_map);
             pause_town_drawing();
             battle_wild_pokemon();
@@ -101,14 +109,16 @@ bool is_movable_space(int yInc, int xInc) {
 void init_map() {
     draw_map();
 
-    mvaddch(player.loc->y, player.loc->x, player_char);
+    attrset(COLOR_PAIR(2));
+    mvaddch(*player_y, *player_x, player_char);
+    attrset(COLOR_PAIR(1));
 }
 
 
 void change_map(int map, int x, int y) {
     clear();
     clear_doors();
-    sleep(1);
+    usleep(200000);
 
     switch (map) {
         case 1:

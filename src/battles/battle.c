@@ -25,7 +25,7 @@ void handle_exp(int exp);
 
 //Begin a Battle
 int initiate_battle(pokemon enemyPoke) {
-  int inputNum, min_input;
+  int inputNum, max_input;
   bool enemy_attacks, fainted_switch;
   int return_execute, attack_num, enemy_attack_num, item_num, pokemon_selected, speed_difference;
   attack_num = item_num = pokemon_selected = speed_difference = 0;
@@ -139,21 +139,21 @@ int initiate_battle(pokemon enemyPoke) {
         break;
         
       case POKEMON:
-        min_input = 1;
+        max_input = player.numInParty-1;
         printw("Select a pokemon to use.\n");
         printParty();
         if (player.current_pokemon->currentHP != 0) {
-          min_input = 0;;
+          max_input++;
           printw("  Cancel\n");
         }
         printw("\n");
-        inputNum = get_selection(2,0, player.numInParty, 0);
+        inputNum = get_selection(2,0,max_input, 0);
         if (inputNum == player.numInParty) {
           current_display = MAIN;
           continue;
         }
         if (player.party[inputNum].currentHP == 0) {
-          printw("%s can't fight anymore! Select a different pokemon.\n", player.party[inputNum].name);
+          mvprintw(player.numInParty+3, 0, "%s can't fight anymore! Select a different pokemon.\n", player.party[inputNum].name);
           refresh(); sleep(2);
           continue;
         }

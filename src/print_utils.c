@@ -104,6 +104,7 @@ void resume_ncurses() {
   keypad(stdscr, true); // Enable arrow keys
   clear();
   curs_set(0);
+  start_color();
 }
 
 
