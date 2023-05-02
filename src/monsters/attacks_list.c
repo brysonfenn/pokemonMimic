@@ -23,11 +23,11 @@ attack leech_seed   = {"Leech seed"   , 11, 10,   0,  90, GRASS,    0.0, false, 
 attack ember        = {"Ember"        , 12, 25,  40, 100, FIRE,     0.0, false, &attack_do_nothing };
 attack bubble       = {"Bubble"       , 13, 30,  20, 100, WATER,     0.0, false, &decrement_opponent_stat, SPEED_STAT, 10 };
 attack poison_powder= {"Poison Powder", 14, 35,   0,  75, POISON,   0.0, false, &inflict_condition, POISONED, 100 };
-attack sleep_powder = {"Sleep Powder" , 15, 35,   0,  75, POISON,   0.0, false, &inflict_condition, POISONED, 100 };
+attack sleep_powder = {"Sleep Powder" , 15, 35,   0,  75, GRASS,   0.0, false, &inflict_condition, ASLEEP, 100 };
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
     &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl, &vine_whip, // #1-10
-    &leech_seed, &ember, &bubble, &poison_powder }; // #11-14
+    &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder }; // #11-15
 
 
 attack * get_attack_by_id(id_num) {
@@ -82,7 +82,7 @@ int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
 }
 
 int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim) {
-    //Adjust victim depending
+    //Adjust victim depending on if the victim is the player's or the enemy's
     pokemon * self;
     if (player.current_pokemon == victim) self = player.enemy_pokemon;
     else self = player.current_pokemon;

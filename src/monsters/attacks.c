@@ -3,6 +3,7 @@
 #include <ncurses.h> 
 
 #include "pokemon.h"
+#include "../print_utils.h"
 
 int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim);
 
@@ -18,6 +19,23 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   move(10,0);
 
   if (enemy) printw("Enemy ");
+
+  //Handle sleep
+  if (perp->visible_condition == ASLEEP) {
+    if (perp->sleep_count > 0) {
+      printw("%s is fast asleep...\n", perp->name);
+      refresh(); sleep(2);
+      perp->sleep_count--;
+      return;
+    }
+    else {
+      printw("%s woke up!\n", perp->name);
+      perp->visible_condition = NO_CONDITION;
+      refresh(); sleep(2);
+      clear(); printBattle();
+    }
+  }
+
   printw("%s used %s\n", perp->name, chosenAttack.name);
   refresh(); sleep(1);
 

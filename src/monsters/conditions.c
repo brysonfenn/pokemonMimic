@@ -15,6 +15,16 @@ int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 		printw("%s was badly poisoned!\n", pok->name); refresh(); sleep(2);
 		pok->visible_condition = POISONED;
 	}
+	else if (condition == ASLEEP && random < accuracy) {
+		if (pok->visible_condition != NO_CONDITION) {
+			printw("%s could not be put to sleep!\n", pok->name); refresh(); sleep(2);
+			return 1;
+		}
+		if (pok != player.current_pokemon) printw("Enemy ");
+		printw("%s fell asleep!\n", pok->name); refresh(); sleep(2);
+		pok->visible_condition = ASLEEP;
+		pok->sleep_count = (rand() % 4) + 1;
+	}
 	else if (condition == SEEDED && random < accuracy) {
 		if (pok->hidden_condition != NO_CONDITION) {
 			printw("But it failed!\n"); refresh(); sleep(2);
@@ -80,5 +90,7 @@ void print_condition(struct pokemon * pok) {
 		printw(" ");
 	else if (pok->visible_condition == POISONED)
 		printw("PSN");
+	else if (pok->visible_condition == ASLEEP)
+		printw("SLP");
 	refresh(); 
 }

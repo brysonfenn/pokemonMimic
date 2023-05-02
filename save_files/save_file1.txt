@@ -1,17 +1,18 @@
-Last Saved: 05/01/2023 16:33:16
+Last Saved: 05/01/2023 18:55:01
 Player: 
 5 5 4 3700
 Pokemon: 
-Squirtle 7 22 13 3 15 14 16 7 3
-	Tackle. 1
-	Tail Whip. 4
-	Bubble. 13
-Weedle 13 21 21 1 13 11 12 6 28
-	Poison Sting. 6
-Bulbasaur 1 26 26 3 17 17 18 9 14
+Bulbasaur 1 26 26 4 17 17 18 9 14
 	Tackle. 1
 	Growl. 3
 	Leech seed. 11
+	Sleep Powder. 15
+Weedle 13 21 21 1 13 11 12 6 28
+	Poison Sting. 6
+Squirtle 7 22 22 3 15 14 16 7 3
+	Tackle. 1
+	Tail Whip. 4
+	Bubble. 13
 Charmander 4 22 22 2 14 15 16 7 15
 	Scratch. 2
 	Tail Whip. 4

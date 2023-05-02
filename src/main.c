@@ -78,7 +78,6 @@ int main(void) {
       move(0,0);
       printParty();
       printw("  Cancel\n\n", 0);
-      // inputNum = getValidInput(0, player.numInParty, "Select a Pokemon: ");
       inputNum = get_selection(1,0,player.numInParty,0);
       if (inputNum == player.numInParty) { current_display = MAIN; break; }
       
@@ -86,10 +85,7 @@ int main(void) {
       clear();
       print_pokemon_summary(&(player.party[inputNum]));
       printw("\n  Switch\n  Release\n  Cancel\n");
-      // inputNum2 = getValidInput_force(0, 2, "Select an Option: ", 6);
       inputNum2 = get_selection(12, 0, 2, 0);
-
-      
 
       //Break if inputNum2 is 2 (cancel)
       if (inputNum2 == 2) { break; } 
@@ -100,7 +96,6 @@ int main(void) {
         printw("Which pokemon would you like to switch with %s?\n", player.party[inputNum].name);
         printParty();
         printw("\n");
-        // inputNum2 = getValidInput(1, player.numInParty, example_string);
         inputNum2 = get_selection(2,0,player.numInParty-1,0);
 
         tempPok = player.party[inputNum];
@@ -112,7 +107,6 @@ int main(void) {
         if (player.numInParty <= 1) {printw("You only have 1 Pokémon!\n"); refresh(); sleep(2); break; }
         clear();
         printw("Are you sure you want to release %s?\n  Yes\n  No\n", player.party[inputNum].name);
-        // inputNum2 = getValidInput(0, 1, "Select an option: ");
         inputNum2 = get_selection(1,0,1,0);
         if (inputNum2) { break; }
         else {

@@ -35,6 +35,8 @@ typedef struct pokemon {
   Condition visible_condition;
   Condition hidden_condition;
 
+  uint8_t sleep_count;
+
   attack attacks[4];
 } pokemon;
 
