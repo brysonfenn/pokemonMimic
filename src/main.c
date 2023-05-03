@@ -76,7 +76,7 @@ int main(void) {
 
     //Handle party changes, releases, and viewing stats
     case POKEMON:
-      move(0,0);
+      clear();
       printParty();
       printw("  Cancel\n\n", 0);
       inputNum = get_selection(1,0,player.numInParty,0);
@@ -125,6 +125,7 @@ int main(void) {
 
     //Handle items used by player
     case BAG:
+      clear();
       printBag();
       inputNum = get_selection(1,0,player.numInBag,0);
       if (inputNum == player.numInBag) { current_display = MAIN; break; }

@@ -49,6 +49,8 @@ void handle_motion() {
     init_pair(2, COLOR_CYAN, COLOR_BLACK);
 
     int ch;
+
+    flushinp();
     while ((ch = getch()) != 'm') {
     	mvaddch(*player_y, *player_x, ' '); 
         switch (ch) {

@@ -18,8 +18,7 @@ int battle_trainer() {
     return BATTLE_WHITE_OUT;
   }
 
-  // int num_trainer_pokemon = (rand() % 3) + 2;
-  int num_trainer_pokemon = 1;
+  int num_trainer_pokemon = (rand() % 3) + 2;
   int inputNum, battle_result, return_execute;
   pokemon trainer_pokemon[num_trainer_pokemon];
   char * trainer_name;

@@ -122,7 +122,11 @@ int get_selection(int first_line, int start, int end, int last_selection) {
   refresh();
 
   int ch;
-  while ((ch = getch()) != 'q') {
+
+  flushinp();
+  while (1) {
+    ch = getch();
+
     mvaddch(cursor_y, cursor_x, ' ');
 
     switch (ch) {
@@ -165,7 +169,11 @@ int get_battle_selection(int first_line, int last_selection) {
   adjust_cursors(selection, first_line);
 
   int ch;
-  while ((ch = getch()) != 'q') {
+
+  flushinp();
+  while (1) {
+    ch = getch();
+
     mvaddch(cursor_y, cursor_x, ' ');
 
     switch (ch) {
@@ -198,7 +206,11 @@ int get_fight_selection(int first_line, int num_attacks) {
   adjust_cursors(selection, first_line);
 
   int ch;
-  while ((ch = getch()) != 'q') {
+
+  flushinp();
+  while (1) {
+    (ch = getch());
+
     mvaddch(cursor_y, cursor_x, ' ');
 
     switch (ch) {
