@@ -53,7 +53,7 @@ bool runAttempt() {
   int success = ((rand() % 4) > 0);
   clear_text_box();
   
-  text_box_cursors(0);
+  text_box_cursors(TEXT_BOX_BEGINNING);
   if (success) {
     printw("Got away safely.");
   }

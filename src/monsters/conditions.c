@@ -7,7 +7,7 @@
 int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 	int random = rand() % 100;
 	
-	text_box_cursors(0);
+	text_box_cursors(TEXT_BOX_BEGINNING);
 
 	if (condition == POISONED && random < accuracy) {
 		if (pok->visible_condition != NO_CONDITION) {
@@ -50,7 +50,7 @@ int handle_end_conditions() {
 
 	clear(); printBattle();
 	if (player_pok->visible_condition == POISONED) {
-		text_box_cursors(0);
+		text_box_cursors(TEXT_BOX_BEGINNING);
 		printw("%s was hurt by poison!", player_pok->name);
 		player_pok->currentHP -= ((player_pok->maxHP / 16) + 1);
 		if (player_pok->currentHP < 0) player_pok->currentHP = 0;
@@ -58,7 +58,7 @@ int handle_end_conditions() {
 	}
 
 	if (enemy_pok->visible_condition == POISONED) {
-		text_box_cursors(1);
+		text_box_cursors(TEXT_BOX_BEGINNING);
 		printw("Enemy %s was hurt by poison!", enemy_pok->name);
 		enemy_pok->currentHP -= ((enemy_pok->maxHP / 16) + 1);
 		if (enemy_pok->currentHP < 0) enemy_pok->currentHP = 0;
@@ -70,7 +70,7 @@ int handle_end_conditions() {
 	
 	int sappedHP;
 	if (player_pok->hidden_condition == SEEDED) {
-		text_box_cursors(0);
+		text_box_cursors(TEXT_BOX_BEGINNING);
 		printw("%s's HP was sapped!", player_pok->name);
 		sappedHP = ((player_pok->maxHP / 8) + 1);
 		//Give HP equal to taken HP
@@ -80,7 +80,7 @@ int handle_end_conditions() {
 		refresh(); sleep(2);
 	}
 	if (enemy_pok->hidden_condition == SEEDED) {
-		text_box_cursors(1);
+		text_box_cursors(TEXT_BOX_BEGINNING);
 		printw("Enemy %s's HP was sapped!", enemy_pok->name);
 		sappedHP = ((enemy_pok->maxHP / 8) + 1);
 		//Give HP equal to taken HP

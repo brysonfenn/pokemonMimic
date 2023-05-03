@@ -16,7 +16,7 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
 
   attack chosenAttack = perp->attacks[move_num];
 
-  text_box_cursors(0);
+  text_box_cursors(TEXT_BOX_BEGINNING);
 
   //Handle sleep
   if (perp->visible_condition == ASLEEP) {
@@ -35,7 +35,7 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
     }
   }
 
-  text_box_cursors(0);
+  text_box_cursors(TEXT_BOX_BEGINNING);
 
   if (enemy) printw("Enemy ");
   printw("%s used %s", perp->name, chosenAttack.name);
@@ -45,8 +45,8 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   int curr_accuracy =  perp->accuracy * chosenAttack.accuracy;
   bool missed = (rand() % 100) >= curr_accuracy;
 
-  text_box_cursors(2);
   if (missed) {
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
     if (chosenAttack.power) {
       if (enemy) printw("Enemy ");
       printw("%s's attack missed.", perp->name);
@@ -65,6 +65,7 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
 
   //Drop Accuracy unless we are already at 0.4 accuracy
   if (chosenAttack.accuracy_drop > 0) {
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
     if (!enemy) printw("Enemy ");
     if (victim->accuracy <= 0.4) {
       printw("%s's accuracy won't go any lower!", victim->name);
@@ -99,10 +100,9 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
 
   damage = (damage <= 0) ? 1 : damage;  // Pokemon should always be able to do 1 damage
 
-  text_box_cursors(2);
-
   //Critical Hit 1/16 Chance -- This should probably check for doesn't affect
   if ((rand() % 16) == 0) {
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("A critical hit!"); refresh(); sleep(2);
     damage *= 2;
   }

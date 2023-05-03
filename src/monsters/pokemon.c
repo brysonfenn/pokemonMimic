@@ -76,7 +76,7 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   pok->baseDefense++;
   pok->baseSpeed++;
 
-  text_box_cursors(0);
+  text_box_cursors(TEXT_BOX_BEGINNING);
   printw("%s has grown to level %d!\n", pok->name, pok->level);
   refresh(); sleep(2);
 
@@ -129,16 +129,16 @@ void learn_move(pokemon * pok, attack * new_attack) {
     mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  %s", pok->attacks[3].name); 
     mvprintw(SELECT_Y+1,BATTLE_SELECT_3_X,"  Cancel");
 
-    text_box_cursors(0);
+    text_box_cursors(TEXT_BOX_BEGINNING);
     printw("\n%s wants to learn %s, but %s already knows 4 moves.", pok->name, new_attack->name, pok->name); 
     refresh(); sleep(2);
 
-    text_box_cursors(1);
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("Select a move to forget.");
         
     input_num = get_fight_selection(SELECT_Y, pok->numAttacks);
 
-    text_box_cursors(2);
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
 
     if (input_num == 5) {
       printw("%s did not learn %s!\n", pok->name, new_attack->name); refresh(); sleep(2); return;

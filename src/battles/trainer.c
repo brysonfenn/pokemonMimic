@@ -18,7 +18,8 @@ int battle_trainer() {
     return BATTLE_WHITE_OUT;
   }
 
-  int num_trainer_pokemon = (rand() % 3) + 2;
+  // int num_trainer_pokemon = (rand() % 3) + 2;
+  int num_trainer_pokemon = 1;
   int inputNum, battle_result, return_execute;
   pokemon trainer_pokemon[num_trainer_pokemon];
   char * trainer_name;
@@ -43,7 +44,8 @@ int battle_trainer() {
   int last_pokemon_pos = num_trainer_pokemon - 1;
 
   for (int i = 0; i < last_pokemon_pos; i++) {
-    mvprintw(player.numInParty+3,0,"Trainer %s sent out %s\n", trainer_name, trainer_pokemon[i].name);
+    clear();
+    mvprintw(0,0,"Trainer %s sent out %s\n", trainer_name, trainer_pokemon[i].name);
     refresh(); sleep(2);
     battle_result = initiate_battle(trainer_pokemon[i]);
 
@@ -82,13 +84,19 @@ int battle_trainer() {
   }
 
   if (battle_result == BATTLE_WIN) {
-    mvprintw(player.numInParty+3,0,"Trainer %s sent out %s\n", trainer_name, trainer_pokemon[last_pokemon_pos].name);
+    printw("Trainer %s sent out %s\n", trainer_name, trainer_pokemon[last_pokemon_pos].name);
     refresh(); sleep(2);
     battle_result = initiate_battle(trainer_pokemon[last_pokemon_pos]);
-    printw("B defeated Trainer %s\n", trainer_name);
+    
+    if (battle_result == BATTLE_WHITE_OUT) return BATTLE_WHITE_OUT;
+
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("B defeated Trainer %s", trainer_name);
     refresh(); sleep(2);
     int money_earned = (num_trainer_pokemon * 200) - 100;
-    printw("B gained $%d for defeating Trainer %s\n", money_earned, trainer_name);
+
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("B gained $%d for defeating Trainer %s", money_earned, trainer_name);
     player.money += money_earned;
     refresh(); sleep(2);
   }

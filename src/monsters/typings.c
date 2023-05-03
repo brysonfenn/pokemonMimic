@@ -2,6 +2,7 @@
 
 #include "pokemon.h"
 #include "../player.h"
+#include "../print_utils.h"
 
 float get_single_multiplier(Type moveType, Type victimType);
 
@@ -14,17 +15,19 @@ int handle_effectiveness(Type moveType, struct pokemon * pok, int damage) {
 
     damage *= multiplier;
 
+    if (multiplier != 1.0) text_box_cursors(TEXT_BOX_NEXT_LINE);
+
     if (multiplier < 1.0) {
-        printw("It's not very effective...\n"); refresh();  sleep(2);
+        printw("It's not very effective..."); refresh();  sleep(2);
         damage = (damage < 1) ? 1 : damage;
     }
     else if (multiplier > 1.0) {
-        printw("It's super effective!\n"); refresh(); sleep(2);
+        printw("It's super effective!"); refresh(); sleep(2);
     }
     else if (multiplier == 0) {
         printw("It didn't effect ");
         if (pok != player.current_pokemon) printw("Enemy ");
-        printw("%s\n", pok->name); refresh(); sleep(2);
+        printw("%s", pok->name); refresh(); sleep(2);
     }
 
     return damage;

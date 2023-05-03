@@ -52,7 +52,8 @@ int initiate_battle(pokemon enemyPoke) {
     if (enemy.currentHP <= 0) {
       enemy.currentHP = 0; clear();
       printBattle(); sleep(2);
-      printw("Enemy %s fainted.\n", enemy.name); refresh(); sleep(2);
+      text_box_cursors(TEXT_BOX_BEGINNING);
+      printw("Enemy %s fainted.", enemy.name); refresh(); sleep(2);
       break;
     }
 
@@ -236,8 +237,8 @@ int initiate_battle(pokemon enemyPoke) {
       break;
     case RUN:
       if (player.trainer_battle) {
-        move(10,0);
-        text_box_msg("You can't run from a trainer battle!\n"); sleep(2);
+        text_box_cursors(TEXT_BOX_BEGINNING);
+        printw("You can't run from a trainer battle!\n"); refresh(); sleep(2);
       }
       else {
         run_success = runAttempt();
@@ -255,8 +256,8 @@ int initiate_battle(pokemon enemyPoke) {
     if (enemy.currentHP <= 0) {
       enemy.currentHP = 0; clear();
       printBattle(); sleep(2);
-      sprintf(tempString, "Enemy %s fainted.", enemy.name);
-      text_box_msg(tempString); sleep(2);
+      text_box_cursors(TEXT_BOX_BEGINNING);
+      printw(tempString, "Enemy %s fainted.", enemy.name); refresh(); sleep(2);
       break;
     }
 
@@ -334,7 +335,7 @@ void handle_exp(int exp) {
 
     //Give active pokemon experience points if it is alive and didn't run away.
     if (player.numAlive && !run_success) {
-      text_box_cursors(1);
+      text_box_cursors(TEXT_BOX_NEXT_LINE);
       printw("%s gained %d experience points!", currentPok->name, exp);
       currentPok->exp += (exp);
       refresh(); sleep(2);

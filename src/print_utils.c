@@ -275,9 +275,17 @@ void text_box_msg(const char * message) {
   refresh();
 }
 
-void text_box_cursors(int line_num) {
-  if (line_num == 0) clear_text_box();
-  move(TEXT_BOX_Y+5+line_num, TEXT_BOX_X+3);
+static int text_box_cursor_y = 0;
+
+void text_box_cursors(int next_line) {
+  if (text_box_cursor_y == 4) next_line = 0;  //Only print 4 lines in text box
+  //Clear and reseet if next_line is 0
+  if (!next_line) {
+    clear_text_box();
+    text_box_cursor_y = 0;
+  }           
+  else text_box_cursor_y++;                   //Increment if next_line is 1
+  move(TEXT_BOX_Y+5 + text_box_cursor_y, TEXT_BOX_X+3);
 }
 
 void clear_text_box() {

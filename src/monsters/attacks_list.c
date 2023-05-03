@@ -56,6 +56,8 @@ int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
             break;
     }
 
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    
     //Drop Stat unless we are already 6 below base stat
     if (stage_number < 0) {
         if (pok == player.enemy_pokemon) printw("Enemy ");
