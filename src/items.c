@@ -2,6 +2,8 @@
 
 #include <ncurses.h>
 
+#include "print_utils.h"
+
 #define NUM_ITEMS 50
 #define CURRENT_MAX_NUM 4
 
@@ -143,13 +145,13 @@ int execute_potion(int input_num) {
 }
 
 int attempt_catch(int catch_rate) {
-  move(10,0);
+  clear();
   if (enemy_pok->id_num == 0 || player.trainer_battle) {
-    printw("You can't use that!\n"); refresh(); sleep(2);
+    printw("You can't use that!"); refresh(); sleep(2);
     return ITEM_FAILURE;
   }
   else if (player.numInParty >= 6) {
-    printw("You already have 6 Pokemon!\n"); refresh(); sleep(2);
+    printw("You already have 6 Pokemon!"); refresh(); sleep(2);
     return ITEM_FAILURE;
   }
 
@@ -160,16 +162,18 @@ int attempt_catch(int catch_rate) {
   clear();
   printBattle();
 
-  printw("B threw a Ball with catch_rate: %d\n", catch_rate); refresh(); sleep(2);
+  text_box_cursors(TEXT_BOX_BEGINNING);
+  printw("B threw a Ball with catch_rate: %d", catch_rate); refresh(); sleep(2);
 
+  text_box_cursors(TEXT_BOX_NEXT_LINE);
   if (random < catch_rate) {
-    printw("%s was caught!\n", enemy_pok->name); refresh(); sleep(2);
+    printw("%s was caught!", enemy_pok->name); refresh(); sleep(2);
     player.party[player.numInParty] = (*enemy_pok);
     player.numInParty++;
     return ITEM_CATCH_SUCCESS;
   }
   else {
-    printw("Catch unsuccessful!\n"); refresh(); sleep(2);
+    printw("Catch unsuccessful!"); refresh(); sleep(2);
     return ITEM_CATCH_FAILURE;
   }
 }
