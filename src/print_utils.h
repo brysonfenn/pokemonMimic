@@ -3,6 +3,11 @@
 
 #define INVALID_INPUT -9
 
+#define TEXT_BOX_X 0
+#define TEXT_BOX_Y 5
+#define TEXT_BOX_WIDTH 50
+#define TEXT_BOX_HEIGHT 10
+
 void clearTerminal();
 void clearLastLine();
 
@@ -21,5 +26,10 @@ void pause_ncurses();
 int get_selection(int first_line, int start, int end, int last_selection);
 int get_battle_selection(int first_line, int last_selection);
 int get_fight_selection(int first_line, int num_attacks);
+
+void draw_text_box();
+void text_box_msg(const char * message);
+void text_box_cursors(int line_num);
+void clear_text_box();
 
 #endif // PRINT_UTILS_H

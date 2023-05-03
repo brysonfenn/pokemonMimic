@@ -16,6 +16,7 @@ static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;
 static bool pokemon_needing_exp[6] = {false, false, false, false, false, false};
 
 static bool run_success;
+static char tempString[1024];
 
 void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num);
 
@@ -91,8 +92,8 @@ int initiate_battle(pokemon enemyPoke) {
       case MAIN:
         printBattle();
         mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  Fight"); mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  Bag");
-        mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  Pokémon"); mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  Run\n\n");
-        printw("What will B do?"); refresh();
+        mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  Pokémon"); mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  Run");
+        text_box_msg("What will B do?");
 
         inputNum = get_battle_selection(SELECT_Y, last_selection);
         last_selection = inputNum;
@@ -111,7 +112,7 @@ int initiate_battle(pokemon enemyPoke) {
         mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  %s", currentPok->attacks[1].name); 
         mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[2].name); 
         mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  %s", currentPok->attacks[3].name); 
-        mvprintw(SELECT_Y+1,BATTLE_SELECT_3_X,"  Cancel\n\n");
+        mvprintw(SELECT_Y+1,BATTLE_SELECT_3_X,"  Cancel");
         
         inputNum = get_fight_selection(SELECT_Y, currentPok->numAttacks);
 
@@ -236,7 +237,7 @@ int initiate_battle(pokemon enemyPoke) {
     case RUN:
       if (player.trainer_battle) {
         move(10,0);
-        printw("You can't run from a trainer battle!\n"); refresh(); sleep(2);
+        text_box_msg("You can't run from a trainer battle!\n"); sleep(2);
       }
       else {
         run_success = runAttempt();
@@ -254,7 +255,8 @@ int initiate_battle(pokemon enemyPoke) {
     if (enemy.currentHP <= 0) {
       enemy.currentHP = 0; clear();
       printBattle(); sleep(2);
-      printw("Enemy %s fainted.\n", enemy.name); refresh(); sleep(2);
+      sprintf(tempString, "Enemy %s fainted.", enemy.name);
+      text_box_msg(tempString); sleep(2);
       break;
     }
 
@@ -332,7 +334,8 @@ void handle_exp(int exp) {
 
     //Give active pokemon experience points if it is alive and didn't run away.
     if (player.numAlive && !run_success) {
-      printw("%s gained %d experience points!\n", currentPok->name, exp);
+      text_box_cursors(1);
+      printw("%s gained %d experience points!", currentPok->name, exp);
       currentPok->exp += (exp);
       refresh(); sleep(2);
     }

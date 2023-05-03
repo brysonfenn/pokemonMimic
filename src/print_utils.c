@@ -31,6 +31,7 @@ void printBattle() {
   print_condition(player_pok);
   printw("\nHP: %d/%d\n\n", player_pok->currentHP, player_pok->maxHP);
 
+  draw_text_box();
   refresh();
 }
 
@@ -250,4 +251,37 @@ void adjust_cursors(int selection, int first_line) {
 
   mvaddch(cursor_y, cursor_x, SELECTION_CHAR);
   refresh();
+}
+
+void draw_text_box() {
+  mvaddch(TEXT_BOX_Y, TEXT_BOX_X, ACS_ULCORNER);  // Top-left corner
+  mvaddch(TEXT_BOX_Y, TEXT_BOX_X + TEXT_BOX_WIDTH - 1, ACS_URCORNER);  // Top-right corner
+  mvaddch(TEXT_BOX_Y + TEXT_BOX_HEIGHT - 1, TEXT_BOX_X, ACS_LLCORNER);  // Bottom-left corner
+  mvaddch(TEXT_BOX_Y + TEXT_BOX_HEIGHT - 1, TEXT_BOX_X + TEXT_BOX_WIDTH - 1, ACS_LRCORNER);  // Bottom-right corner
+
+  for (int i = TEXT_BOX_X + 1; i < TEXT_BOX_X + TEXT_BOX_WIDTH - 1; i++) {
+      mvaddch(TEXT_BOX_Y, i, ACS_HLINE);  // Top and bottom edges
+      mvaddch(TEXT_BOX_Y + TEXT_BOX_HEIGHT - 1, i, ACS_HLINE);
+  }
+
+  for (int i = TEXT_BOX_Y + 1; i < TEXT_BOX_Y + TEXT_BOX_HEIGHT - 1; i++) {
+      mvaddch(i, TEXT_BOX_X, ACS_VLINE);  // Left and right edges
+      mvaddch(i, TEXT_BOX_X + TEXT_BOX_WIDTH - 1, ACS_VLINE);
+  }
+}
+
+void text_box_msg(const char * message) {
+  mvprintw(TEXT_BOX_Y+5, TEXT_BOX_X+3, message);
+  refresh();
+}
+
+void text_box_cursors(int line_num) {
+  if (line_num == 0) clear_text_box();
+  move(TEXT_BOX_Y+5+line_num, TEXT_BOX_X+3);
+}
+
+void clear_text_box() {
+  for (int i = 0; i < 4; i++) {
+    mvprintw(TEXT_BOX_Y+5+i, TEXT_BOX_X+3, "\t\t\t\t\t\t");
+  }
 }

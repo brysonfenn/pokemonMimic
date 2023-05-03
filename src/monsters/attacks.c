@@ -16,40 +16,43 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
 
   attack chosenAttack = perp->attacks[move_num];
 
-  move(10,0);
-
-  if (enemy) printw("Enemy ");
+  text_box_cursors(0);
 
   //Handle sleep
   if (perp->visible_condition == ASLEEP) {
+    if (enemy) printw("Enemy ");
     if (perp->sleep_count > 0) {
-      printw("%s is fast asleep...\n", perp->name);
+      printw("%s is fast asleep...", perp->name);
       refresh(); sleep(2);
       perp->sleep_count--;
       return;
     }
     else {
-      printw("%s woke up!\n", perp->name);
+      printw("%s woke up!", perp->name);
       perp->visible_condition = NO_CONDITION;
       refresh(); sleep(2);
       clear(); printBattle();
     }
   }
 
-  printw("%s used %s\n", perp->name, chosenAttack.name);
+  text_box_cursors(0);
+
+  if (enemy) printw("Enemy ");
+  printw("%s used %s", perp->name, chosenAttack.name);
   refresh(); sleep(1);
 
   //Calculate current accuracy
   int curr_accuracy =  perp->accuracy * chosenAttack.accuracy;
   bool missed = (rand() % 100) >= curr_accuracy;
 
+  text_box_cursors(2);
   if (missed) {
     if (chosenAttack.power) {
       if (enemy) printw("Enemy ");
-      printw("%s's attack missed.\n", perp->name);
+      printw("%s's attack missed.", perp->name);
     }
     else {
-      printw("But it failed!\n");
+      printw("But it failed!");
     }
     refresh(); sleep(2); return;
   }
@@ -64,10 +67,10 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   if (chosenAttack.accuracy_drop > 0) {
     if (!enemy) printw("Enemy ");
     if (victim->accuracy <= 0.4) {
-      printw("%s's accuracy won't go any lower!\n", victim->name);
+      printw("%s's accuracy won't go any lower!", victim->name);
     }
     else {
-      printw("%s's accuracy fell\n", victim->name); 
+      printw("%s's accuracy fell", victim->name); 
       victim->accuracy -= chosenAttack.accuracy_drop;
     }
     refresh(); sleep(1);
@@ -96,9 +99,11 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
 
   damage = (damage <= 0) ? 1 : damage;  // Pokemon should always be able to do 1 damage
 
+  text_box_cursors(2);
+
   //Critical Hit 1/16 Chance -- This should probably check for doesn't affect
   if ((rand() % 16) == 0) {
-    printw("A critical hit!\n"); refresh(); sleep(2);
+    printw("A critical hit!"); refresh(); sleep(2);
     damage *= 2;
   }
 

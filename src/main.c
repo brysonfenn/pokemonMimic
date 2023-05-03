@@ -54,6 +54,7 @@ int main(void) {
       resume_ncurses();
       printw("  Wild Pokemon\n  Trainer\n  Pokemon\n  Bag\n  Player\n");
       printw("  Save Game\n  Load Game\n  Town\n  Power Off\n\n");
+
       inputNum = get_selection(0,0,8,last_selection);
       last_selection = inputNum;
       fflush(stdout);

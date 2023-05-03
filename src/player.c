@@ -51,12 +51,14 @@ void default_load() {
 
 bool runAttempt() {
   int success = ((rand() % 4) > 0);
-  move(10,0);
+  clear_text_box();
+  
+  text_box_cursors(0);
   if (success) {
-    printw("Got away safely.\n");
+    printw("Got away safely.");
   }
   else {
-    printw("Can't escape!\n");
+    printw("Can't escape!");
   }
   refresh();
   sleep(2);

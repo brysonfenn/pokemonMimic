@@ -60,10 +60,10 @@ int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
     if (stage_number < 0) {
         if (pok == player.enemy_pokemon) printw("Enemy ");
         if ((*stat_stage) <= -6) {
-            printw("%s's %s won't go any lower!\n", pok->name, stat_type_str);
+            printw("%s's %s won't go any lower!", pok->name, stat_type_str);
         }
         else {
-            printw("%s's %s fell\n", pok->name, stat_type_str);
+            printw("%s's %s fell", pok->name, stat_type_str);
             (*stat_stage) += stage_number;
         }
         refresh(); sleep(1);
@@ -71,10 +71,10 @@ int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
     else if (stage_number > 0) {
         if (pok == player.enemy_pokemon) printw("Enemy ");
         if ((*stat_stage) >= 6) {
-            printw("%s's %s won't go any higher!\n", pok->name, stat_type_str);
+            printw("%s's %s won't go any higher!", pok->name, stat_type_str);
         }
         else {
-            printw("%s's %s rose\n", pok->name, stat_type_str); 
+            printw("%s's %s rose", pok->name, stat_type_str); 
             (*stat_stage) += stage_number;
         }
         refresh(); sleep(1);
