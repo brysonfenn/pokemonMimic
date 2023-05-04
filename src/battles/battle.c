@@ -9,6 +9,7 @@
 #include "../monsters/conditions.h"
 
 #include "../print_utils.h"
+#include "../print_defines.h"
 
 static enum display { MAIN, FIGHT, BAG, POKEMON } current_display = MAIN;
 static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;
@@ -94,7 +95,8 @@ int initiate_battle(pokemon enemyPoke) {
         printBattle();
         mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  Fight"); mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  Bag");
         mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  Pokémon"); mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  Run");
-        text_box_msg("What will B do?");
+        text_box_cursors(TEXT_BOX_BEGINNING);
+        printw("What will B do?");
 
         inputNum = get_battle_selection(SELECT_Y, last_selection);
         last_selection = inputNum;
@@ -226,10 +228,17 @@ int initiate_battle(pokemon enemyPoke) {
           }
         }
 
+        //Make switch
         reset_base_stats(currentPok);
         set_current_pokemon(pokemon_selected);
         currentPok = player.current_pokemon;
         enemy_attacks = true;
+
+        //Advise
+        clear();
+        printBattle();
+        text_box_cursors(TEXT_BOX_BEGINNING);
+        printw("B sent out %s!", player.current_pokemon->name); refresh(); sleep(2);
 
         // New pokemon needs exp
         pokemon_needing_exp[pokemon_selected] = true;

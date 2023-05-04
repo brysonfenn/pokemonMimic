@@ -15,12 +15,12 @@ int battle_wild_pokemon() {
     if (player.numAlive) {
         example_pokemon = *(get_random_wild_pokemon(2, 4));
         clear();
-        printw("A wild %s appeared!\n", example_pokemon.name); refresh();
+        printw("  A wild %s appeared!\n", example_pokemon.name); refresh();
         sleep(3);
         initiate_battle(example_pokemon);
     }
     else {
-        printw("All Pokemon have fainted, please heal them.\n");
+        printw("  All Pokemon have fainted, please heal them.\n");
         sleep(3);
     }
 

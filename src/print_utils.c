@@ -13,6 +13,7 @@
 #include "player.h"
 #include "monsters/pokemon.h"
 #include "battles/battle.h"
+#include "print_defines.h"
 
 #define SELECTION_CHAR '*'
 
@@ -21,15 +22,15 @@ void adjust_cursors(int selection, int first_line);
 void clearTerminal() { printf("\033[2J\033[1;1H"); }
 
 void printBattle() {
-  move(0,0);
   pokemon * player_pok = player.current_pokemon;
   pokemon * enemy_pok = player.enemy_pokemon;
-  printw("\t\t\t\t%s  Lvl %d  ", enemy_pok->name, enemy_pok->level);
+  draw_battle_box();
+  mvprintw(BATTLE_BOX_Y+1, BATTLE_BOX_X+3, "\t\t\t%s  Lvl %d  ", enemy_pok->name, enemy_pok->level);
   print_condition(enemy_pok);
-  printw("\n\t\t\t\tHP: %d/%d\n\n", enemy_pok->currentHP, enemy_pok->maxHP);
-  printw("%s  Lvl %d  ", player_pok->name, player_pok->level);
+  mvprintw(BATTLE_BOX_Y+2, BATTLE_BOX_X+3, "\t\t\tHP: %d/%d", enemy_pok->currentHP, enemy_pok->maxHP);
+  mvprintw(BATTLE_BOX_Y+4, BATTLE_BOX_X+3, "%s  Lvl %d  ", player_pok->name, player_pok->level);
   print_condition(player_pok);
-  printw("\nHP: %d/%d\n\n", player_pok->currentHP, player_pok->maxHP);
+  mvprintw(BATTLE_BOX_Y+5, BATTLE_BOX_X+3, "HP: %d/%d", player_pok->currentHP, player_pok->maxHP);
 
   draw_text_box();
   refresh();
@@ -265,26 +266,26 @@ void adjust_cursors(int selection, int first_line) {
   refresh();
 }
 
-void draw_text_box() {
-  mvaddch(TEXT_BOX_Y, TEXT_BOX_X, ACS_ULCORNER);  // Top-left corner
-  mvaddch(TEXT_BOX_Y, TEXT_BOX_X + TEXT_BOX_WIDTH - 1, ACS_URCORNER);  // Top-right corner
-  mvaddch(TEXT_BOX_Y + TEXT_BOX_HEIGHT - 1, TEXT_BOX_X, ACS_LLCORNER);  // Bottom-left corner
-  mvaddch(TEXT_BOX_Y + TEXT_BOX_HEIGHT - 1, TEXT_BOX_X + TEXT_BOX_WIDTH - 1, ACS_LRCORNER);  // Bottom-right corner
+//Draw simple box
+void drawBox(int x, int y, int w, int h) {
+    mvaddch(y, x, ACS_ULCORNER);  // Top-left corner
+    mvaddch(y, x + w - 1, ACS_URCORNER);  // Top-right corner
+    mvaddch(y + h - 1, x, ACS_LLCORNER);  // Bottom-left corner
+    mvaddch(y + h - 1, x + w - 1, ACS_LRCORNER);  // Bottom-right corner
 
-  for (int i = TEXT_BOX_X + 1; i < TEXT_BOX_X + TEXT_BOX_WIDTH - 1; i++) {
-      mvaddch(TEXT_BOX_Y, i, ACS_HLINE);  // Top and bottom edges
-      mvaddch(TEXT_BOX_Y + TEXT_BOX_HEIGHT - 1, i, ACS_HLINE);
-  }
+    for (int i = x + 1; i < x + w - 1; i++) {
+        mvaddch(y, i, ACS_HLINE);  // Top and bottom edges
+        mvaddch(y + h - 1, i, ACS_HLINE);
+    }
 
-  for (int i = TEXT_BOX_Y + 1; i < TEXT_BOX_Y + TEXT_BOX_HEIGHT - 1; i++) {
-      mvaddch(i, TEXT_BOX_X, ACS_VLINE);  // Left and right edges
-      mvaddch(i, TEXT_BOX_X + TEXT_BOX_WIDTH - 1, ACS_VLINE);
-  }
+    for (int i = y + 1; i < y + h - 1; i++) {
+        mvaddch(i, x, ACS_VLINE);  // Left and right edges
+        mvaddch(i, x + w - 1, ACS_VLINE);
+    }
 }
 
-void text_box_msg(const char * message) {
-  mvprintw(TEXT_BOX_Y+5, TEXT_BOX_X+3, message);
-  refresh();
+void draw_text_box() {
+  drawBox(TEXT_BOX_X, TEXT_BOX_Y, TEXT_BOX_WIDTH, TEXT_BOX_HEIGHT);
 }
 
 static int text_box_cursor_y = 0;
@@ -304,4 +305,8 @@ void clear_text_box() {
   for (int i = 0; i < 4; i++) {
     mvprintw(TEXT_BOX_Y+5+i, TEXT_BOX_X+3, "\t\t\t\t\t\t");
   }
+}
+
+void draw_battle_box() {
+  drawBox(BATTLE_BOX_X, BATTLE_BOX_Y, BATTLE_BOX_WIDTH, BATTLE_BOX_HEIGHT);
 }

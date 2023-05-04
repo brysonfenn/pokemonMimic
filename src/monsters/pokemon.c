@@ -7,7 +7,7 @@
 #include <string.h>
 
 #include "../print_utils.h"
-#include "../battles/battle.h"
+#include "../print_defines.h"
 
 #define LINE_SIZE 100
 

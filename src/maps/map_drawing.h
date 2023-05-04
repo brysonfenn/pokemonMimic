@@ -16,8 +16,6 @@ void drawBuilding_default(int x, int y, const char* str, int action);
 //Includes adding door
 void drawBuilding(int x, int y, int w, int h, const char* str, int action);
 
-void drawBox(int x, int y, int w, int h);
-
 void draw_town_exit(int x, int y);
 
 void pause_town_drawing();

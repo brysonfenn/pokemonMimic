@@ -4,25 +4,9 @@
 
 #include "location.h"
 #include "doors.h"
+#include "../print_utils.h"
 
 void drawBuilding_default(int x, int y, const char* str, int action) { drawBuilding(x,y,DEFAULT_BUILDING_WIDTH,DEFAULT_BUILDING_HEIGHT,str,action); }
-
-void drawBox(int x, int y, int w, int h) {
-    mvaddch(y, x, ACS_ULCORNER);  // Top-left corner
-    mvaddch(y, x + w - 1, ACS_URCORNER);  // Top-right corner
-    mvaddch(y + h - 1, x, ACS_LLCORNER);  // Bottom-left corner
-    mvaddch(y + h - 1, x + w - 1, ACS_LRCORNER);  // Bottom-right corner
-
-    for (int i = x + 1; i < x + w - 1; i++) {
-        mvaddch(y, i, ACS_HLINE);  // Top and bottom edges
-        mvaddch(y + h - 1, i, ACS_HLINE);
-    }
-
-    for (int i = y + 1; i < y + h - 1; i++) {
-        mvaddch(i, x, ACS_VLINE);  // Left and right edges
-        mvaddch(i, x + w - 1, ACS_VLINE);
-    }
-}
 
 void draw_town_exit(int side, int position) {
     int min_x = MAP_X + position;

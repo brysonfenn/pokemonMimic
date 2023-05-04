@@ -13,7 +13,7 @@ static char name[NAME_MAX_LENGTH];
 int battle_trainer() {
 
   if (!player.numAlive) {
-    printw("All Pokemon have fainted, please heal them.\n");
+    printw("  All Pokemon have fainted, please heal them.\n");
     refresh(); sleep(3);
     return BATTLE_WHITE_OUT;
   }
@@ -27,9 +27,9 @@ int battle_trainer() {
 
   trainer_name = get_random_name();
 
-  printw("Trainer %s wants to fight!\n", trainer_name); refresh(); sleep(2);
+  printw("  Trainer %s wants to fight!\n", trainer_name); refresh(); sleep(2);
   clear();
-  printw("Trainer %s Pokemon: ", trainer_name);
+  printw("  Trainer %s Pokemon: ", trainer_name);
 
   for (int i = 0; i < num_trainer_pokemon; i++) {
     // trainer_pokemon[i] = *(get_random_pokemon(3,7));
@@ -39,21 +39,21 @@ int battle_trainer() {
   printw("\n"); refresh(); sleep(2);
 
   set_current_pokemon(PLAYER_DEFAULT_POKEMON);
-  printw("B sent out %s\n", player.current_pokemon->name); refresh(); sleep(2);
+  printw("  B sent out %s\n", player.current_pokemon->name); refresh(); sleep(2);
 
   int last_pokemon_pos = num_trainer_pokemon - 1;
 
   for (int i = 0; i < last_pokemon_pos; i++) {
     clear();
-    mvprintw(0,0,"Trainer %s sent out %s\n", trainer_name, trainer_pokemon[i].name);
+    mvprintw(0,0,"  Trainer %s sent out %s\n", trainer_name, trainer_pokemon[i].name);
     refresh(); sleep(2);
     battle_result = initiate_battle(trainer_pokemon[i]);
 
     if (battle_result == BATTLE_WHITE_OUT) { break; }
 
     clear();
-    printw("Trainer %s is about to send out %s\n", trainer_name, trainer_pokemon[i+1].name);
-    printw("Will B change Pokemon?\n  Yes\n  No\n");
+    printw("  Trainer %s is about to send out %s\n", trainer_name, trainer_pokemon[i+1].name);
+    printw("  Will B change Pokemon?\n  Yes\n  No\n");
     inputNum = get_selection(2,0,1,0);
 
     //Get player input for pokemon
