@@ -32,7 +32,8 @@ int battle_trainer() {
   printw("Trainer %s Pokemon: ", trainer_name);
 
   for (int i = 0; i < num_trainer_pokemon; i++) {
-    trainer_pokemon[i] = *(get_random_pokemon(3,6));
+    // trainer_pokemon[i] = *(get_random_pokemon(3,7));
+    trainer_pokemon[i] = *get_random_pokemon(30,33);
     printw("*");
   }
   printw("\n"); refresh(); sleep(2);

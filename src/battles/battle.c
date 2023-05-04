@@ -60,17 +60,17 @@ int initiate_battle(pokemon enemyPoke) {
     // If current pokemon faints, select a different pokemon.
     if (currentPok->currentHP == 0) {
       sleep(2);
-      printw("%s fainted. \n", currentPok->name); refresh();
+      printw("%s fainted. ", currentPok->name); refresh();
       player.numAlive--;
       
       // Handle White out
       if (player.numAlive == 0) {
         sleep(2);
-        printw("\nB is out of usable pokemon...\n"); refresh(); sleep(3);
-        printw("B whited out.\n"); refresh(); sleep(5);
+        printw("\nB is out of usable pokemon... "); refresh(); sleep(3);
+        printw("B whited out."); refresh(); sleep(5);
         return BATTLE_WHITE_OUT;
       }
-      printw("You must select a different pokemon.\n"); refresh(); sleep(2);
+      printw("\nYou must select a different pokemon."); refresh(); sleep(2);
       clear();
       fainted_switch = true;      //Do not allow an attack for this switch
       current_display = POKEMON;  //Force a Switch
@@ -238,7 +238,8 @@ int initiate_battle(pokemon enemyPoke) {
     case RUN:
       if (player.trainer_battle) {
         text_box_cursors(TEXT_BOX_BEGINNING);
-        printw("You can't run from a trainer battle!\n"); refresh(); sleep(2);
+        printw("You can't run from a trainer battle!"); refresh(); sleep(2);
+        enemy_attacks = false;
       }
       else {
         run_success = runAttempt();
