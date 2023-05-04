@@ -1,6 +1,7 @@
-Last Saved: 04/28/2023 07:21:23
+Last Saved: 05/04/2023 09:53:46
 Player: 
 2 1 3 1700
+Location: {1,(20,11)}
 Pokemon: 
 Charmander 4 20 5 2 12 13 13 5 23
 	Scratch. 2
@@ -9,6 +10,6 @@ Bulbasaur 1 20 0 2 13 12 13 5 26
 	Tackle. 1
 	Growl. 3
 Bag:
-Potion      . 1 2
+Potion. 1 2
 Super Potion. 2 2
-Pokéball    . 3 5
+Pokéball. 3 5

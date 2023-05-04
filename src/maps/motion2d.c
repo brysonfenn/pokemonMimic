@@ -25,9 +25,9 @@ void init_map();
 typedef void (*init_map_func) ();
 typedef int (*map_actions_func) (int, int);
 
-static init_map_func draw_map = &draw_map1;
-static map_actions_func map_actions = &actions_map1;
-static init_map_func grass_map = &grass_map1;
+static init_map_func draw_map;
+static map_actions_func map_actions;
+static init_map_func grass_map;
 
 static char player_char = MOVING_DOWN;
 
@@ -40,9 +40,13 @@ void handle_motion() {
     player_y = &(player.loc->y);
     player_x = &(player.loc->x);
 
-    resume_ncurses();
-	
-    init_map();
+    if (player.loc->map == 0) {
+        mvprintw(22, 1, "Got player map as 0", player.loc->map); refresh(); sleep(3);
+        pause_town_drawing();
+        return;
+    }
+
+    change_map(player.loc->map, *player_x, *player_y);
 
     // Define color pairs
     init_pair(1, COLOR_WHITE, COLOR_BLACK);
@@ -111,6 +115,8 @@ bool is_movable_space(int yInc, int xInc) {
 void init_map() {
     draw_map();
 
+    mvprintw(23, 1, "Map: %d", player.loc->map); refresh();
+
     attrset(COLOR_PAIR(2));
     mvaddch(*player_y, *player_x, player_char);
     attrset(COLOR_PAIR(1));
@@ -124,20 +130,20 @@ void change_map(int map, int x, int y) {
 
     switch (map) {
         case 1:
-            mvprintw(23, 1, "Switched to map 1"); refresh();
             draw_map = &draw_map1;
             map_actions = &actions_map1;
             grass_map = &grass_map1;
-            *player_x = x;
-            *player_y = y;
+            player.loc->x = x;
+            player.loc->y = y;
+            player.loc->map = 1;
             break;
         case 2:
-            mvprintw(23, 1, "Switched to map 2"); refresh();
             draw_map = &draw_map2;
             map_actions = &actions_map2;
             grass_map = &grass_map2;
-            *player_x = x;
-            *player_y = y;
+            player.loc->x = x;
+            player.loc->y = y;
+            player.loc->map = 2;
             break;
     }
 

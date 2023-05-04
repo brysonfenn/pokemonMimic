@@ -179,8 +179,11 @@ int get_battle_selection(int first_line, int last_selection) {
 
     switch (ch) {
       case KEY_UP:
-        break;
       case KEY_DOWN:
+        if (selection == 1) selection = 3;
+        else if (selection == 2) selection = 4;
+        else if (selection == 3) selection = 1;
+        else if (selection == 4) selection = 2;
         break;
       case KEY_LEFT:
         if (selection == 1) selection = 4;
@@ -216,8 +219,13 @@ int get_fight_selection(int first_line, int num_attacks) {
 
     switch (ch) {
       case KEY_UP:
-        break;
       case KEY_DOWN:
+        if (selection == 1 && player.current_pokemon->numAttacks > 2) 
+          selection = 3;
+        else if (selection == 2 && player.current_pokemon->numAttacks > 3) 
+          selection = 4;
+        else if (selection == 3) selection = 1;
+        else if (selection == 4) selection = 2;
         break;
       case KEY_LEFT:
         if (selection == 1) selection = 5;
@@ -225,7 +233,7 @@ int get_fight_selection(int first_line, int num_attacks) {
         else selection--;
         break;
       case KEY_RIGHT:
-         if (selection == num_attacks) selection = 5;
+         if (selection == num_attacks || selection == 4) selection = 5;
          else if (selection == 5) selection = 1;
          else selection++;
         break;

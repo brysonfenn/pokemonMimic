@@ -7,6 +7,7 @@
 #include "monsters/pokemon.h"
 #include "monsters/attacks.h"
 #include "items.h"
+#include "maps/location.h"
 
 #define LINE_SIZE 1024
 
@@ -54,6 +55,7 @@ int save_game(int file_num) {
 
 	// Write the message to the file
 	fprintf(fp, "Player: \n%d %d %d %d\n", player.numInParty, player.numAlive, player.numInBag, player.money);
+	fprintf(fp, "Location: {%d,(%d,%d)}\n", player.loc->map, player.loc->x, player.loc->y);
 	fprintf(fp, "Pokemon: \n");
 	for (int i = 0; i < player.numInParty; i++) {
 		curr_pok = player.party[i];
@@ -109,6 +111,14 @@ int load_game(int file_num) {
     fgets(line, LINE_SIZE, fp);	// Player: 
     fgets(line, LINE_SIZE, fp);
     sscanf(line, "%d %d %d %d", &(player.numInParty), &(player.numAlive), &(player.numInBag), &(player.money));
+
+	fgets(line, LINE_SIZE, fp);
+	int map, new_x, new_y;
+	sscanf(line, "Location: {%d,(%d,%d)}", &map, &(new_x), &(new_y));
+
+	player.loc->map = map;
+	player.loc->x = new_x;
+	player.loc->y = new_y;
 
 	int matched_elements;
 

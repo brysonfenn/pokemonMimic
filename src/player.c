@@ -15,6 +15,7 @@ void default_load();
 
 void player_init(int save_file) {
   player.bag = malloc(sizeof(item) * 30);
+  player.loc = malloc(sizeof(Location));
   
   if (!save_file)
     default_load();
@@ -43,10 +44,9 @@ void default_load() {
   player.bag[2].number += 5;
   player.money = 1000;
 
-  player.loc = malloc(sizeof(Location));
-
   player.loc->x = MAP_X + 10;
   player.loc->y = MAP_Y + 10;
+  player.loc->map = 1;
 }
 
 bool runAttempt() {

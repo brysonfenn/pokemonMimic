@@ -1,14 +1,15 @@
-Last Saved: 04/23/2023 16:43:38
+Last Saved: 05/04/2023 09:53:54
 Player: 
 2 2 3 1500
+Location: {1,(20,11)}
 Pokemon: 
 Bulbasaur 1 20 20 2 13 12 14 5 30
-	Tackle      . 1
-	Growl       . 3
+	Tackle. 1
+	Growl. 3
 Charmander 4 20 20 2 12 13 14 5 20
-	Scratch     . 2
-	Tail Whip   . 4
+	Scratch. 2
+	Tail Whip. 4
 Bag:
-Potion      . 1 2
+Potion. 1 2
 Super Potion. 2 1
-Pokéball    . 3 5
+Pokéball. 3 5
