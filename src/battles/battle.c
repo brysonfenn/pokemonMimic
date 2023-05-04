@@ -7,6 +7,7 @@
 #include "battle.h"
 #include "../player.h"
 #include "../monsters/conditions.h"
+#include "../monsters/pokemon.h"
 
 #include "../print_utils.h"
 #include "../print_defines.h"
@@ -19,14 +20,17 @@ static bool pokemon_needing_exp[6] = {false, false, false, false, false, false};
 static bool run_success;
 static char tempString[1024];
 
+//Handle an enemy attacking the player's current pokemon
 void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num);
 
+//Get a move number randomly (moves with higher damage have a higher chance)
 int get_move(pokemon * pok);
 
+//Give all pokemon exp that need it, and level up
 void handle_exp(int exp);
 
-//Begin a Battle
-int initiate_battle(pokemon enemyPoke) {
+//Begin a Battle with a given pokemon
+int initiate_battle(struct pokemon * enemyPoke) {
   int inputNum, max_input;
   bool enemy_attacks, fainted_switch;
   int return_execute, attack_num, enemy_attack_num, item_num, pokemon_selected, speed_difference;
@@ -35,7 +39,7 @@ int initiate_battle(pokemon enemyPoke) {
   fainted_switch = false;
   run_success = false;
 
-  pokemon enemy = enemyPoke;
+  pokemon enemy = *enemyPoke;
   pokemon *currentPok = player.current_pokemon;
   player.enemy_pokemon = &enemy;
 
@@ -290,7 +294,7 @@ int initiate_battle(pokemon enemyPoke) {
 }
 
 
-// Handle an enemy attack
+//Handle an enemy attacking the player's current pokemon
 void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num) {
   clear();
   printBattle();
@@ -304,8 +308,7 @@ void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num)
 }
 
 
-// Return a move number for a given pokemon
-// Moves with higher power are more likely
+//Get a move number randomly (moves with higher damage have a higher chance)
 int get_move(pokemon * pok) {
 
   int max_move_index = 0;
@@ -324,7 +327,7 @@ int get_move(pokemon * pok) {
 }
 
 
-//Give EXP to proper pokemon
+//Give all pokemon exp that need it, and level up
 void handle_exp(int exp) {
   pokemon * currentPok;
   int next_level_exp;

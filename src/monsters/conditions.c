@@ -4,6 +4,7 @@
 #include "../player.h"
 #include "../print_utils.h"
 
+//Inflict condition on pok given, handle accuracy
 int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 	int random = rand() % 100;
 	
@@ -40,10 +41,12 @@ int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 	return 0;
 }
 
+//Filler side-effect function that does nothing
 int attack_do_nothing(Condition condition, int accuracy, struct pokemon* pok) {
 	return 0;
 }
 
+//Handle poisoning, leech seed, etc.
 int handle_end_conditions() {
 	pokemon * player_pok = player.current_pokemon;
 	pokemon * enemy_pok = player.enemy_pokemon;
@@ -93,6 +96,7 @@ int handle_end_conditions() {
 	return 0;
 }
 
+//print a pokemon's condition abbreviation
 void print_condition(struct pokemon * pok) {
 	if (pok->visible_condition == NO_CONDITION || pok->currentHP == 0)
 		printw(" ");

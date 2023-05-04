@@ -50,21 +50,38 @@ extern pokemon pidgey;
 extern pokemon rattata;
 extern pokemon sandshrew;
 
+//pokemon.c
 
+//Initialize a given pokemon new_pok and get randomized stats
+  //level = particular level
+  //if level = 0, get random level from range level_min:level_max
 void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max);
 
-pokemon * get_random_pokemon(int level_min, int level_max);
-
-pokemon * get_random_wild_pokemon(int level_min, int level_max);
-
+//Reset stat stages whenever pokemon is switched out or battle ends
 void reset_base_stats(pokemon *pok);
 
+//Print stats, attacks, etc of a given pokemon
 void print_pokemon_summary(pokemon *pok);
 
+//Return the fraction modifier for a stat given the stage (stage 0 return 1.0)
 float get_stat_modifier(int16_t stage);
 
+//Handle leveling up - also handles learning moves from new level
 void pokemon_level_up(pokemon *pok, int next_level_exp);
 
+//Give highest possible level moves to a pokemon
+//This is called upon initializing a new pokemon
 void pokemon_give_moves(pokemon *pok);
+
+
+
+//pokemon_list.c
+
+//Return a random pokemon of any possible
+pokemon * get_random_pokemon(int level_min, int level_max);
+
+//Return a random pokemon, excluding starters
+//Always immediately dereference the return value of this function.
+pokemon * get_random_wild_pokemon(int level_min, int level_max);
 
 #endif // POKEMON_H

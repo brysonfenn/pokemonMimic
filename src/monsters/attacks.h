@@ -41,15 +41,26 @@ extern attack quick_attack;
 extern attack defense_curl;
 extern attack vine_whip;
 
+//// attacks.c ////
 
-void attacks_init();
-
-attack * get_attack_by_id(int id_num);
-
+//Handle all operations for an attack, indicate whether this is an enemy attack (true)
 void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy);
 
+//Get damage that should be dealt with a given move from one pokemon to another
+int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim);
+
+
+
+
+//// attacks_list.c ////
+
+//Return an attack given an attack id number
+attack * get_attack_by_id(int id_num);
+
+//Certain attacks can increment a pokemon's own stat
 int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim);
 
+//Certain attacks can decrement an enemy pokemon's stat
 int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* victim);
 
 #endif // ATTACKS_H

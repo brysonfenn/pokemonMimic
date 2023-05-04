@@ -5,6 +5,7 @@
 #include "../player.h"
 #include "../monsters/pokemon.h"
 
+//Battle a random wild pokemon
 int battle_wild_pokemon() {
     resume_ncurses();
 
@@ -17,7 +18,7 @@ int battle_wild_pokemon() {
         clear();
         printw("  A wild %s appeared!\n", example_pokemon.name); refresh();
         sleep(3);
-        initiate_battle(example_pokemon);
+        initiate_battle(&example_pokemon);
     }
     else {
         printw("  All Pokemon have fainted, please heal them.\n");

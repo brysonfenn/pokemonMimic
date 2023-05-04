@@ -6,10 +6,13 @@
 
 float get_single_multiplier(Type moveType, Type victimType);
 
-int handle_effectiveness(Type moveType, struct pokemon * pok, int damage) {
+//Returns damage after applying effectiveness
+//Also prints message about effectiveness, if applicable
+int get_damage_after_effectiveness(Type moveType, struct pokemon * pok, int damage) {
 
     float multiplier = 1.0;
 
+    //Many pokemon have two types
     multiplier *= get_single_multiplier(moveType, pok->type1);
     multiplier *= get_single_multiplier(moveType, pok->type2);
 
@@ -33,7 +36,7 @@ int handle_effectiveness(Type moveType, struct pokemon * pok, int damage) {
     return damage;
 }
 
-
+//Return an effectiveness multiplier depending on move type and one victimType
 float get_single_multiplier(Type moveType, Type victimType) {
     float multiplier = 1.0;
 

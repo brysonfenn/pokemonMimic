@@ -14,6 +14,9 @@
 void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max);
 void learn_move(pokemon * pok, attack * new_attack);
 
+//Initialize a given pokemon new_pok and get randomized stats
+  //level = particular level
+  //if level = 0, get random level from range level_min:level_max
 void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
   randomize_stats(new_pok, level, level_min, level_max);
   new_pok->visible_condition = NO_CONDITION;
@@ -22,6 +25,9 @@ void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
   pokemon_give_moves(new_pok);
 }
 
+//Give random stats to pokemon based on level
+  //level = particular level
+  //if level = 0, get random level from range level_min:level_max
 void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max) {
   if (!level) {
     level = (rand() % (level_max - level_min)) + level_min;
@@ -36,6 +42,7 @@ void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max)
   reset_base_stats(new_pok);
 }
 
+//Reset stat stages whenever pokemon is switched out or battle ends
 void reset_base_stats(pokemon *pok) {
   pok->atk_stage = 0;
   pok->def_stage = 0;
@@ -44,6 +51,7 @@ void reset_base_stats(pokemon *pok) {
   pok->hidden_condition = NO_CONDITION;
 }
 
+//Print stats, attacks, etc of a given pokemon
 void print_pokemon_summary(pokemon *pok) {
   printw("%s  LVL %d:\n", pok->name, pok->level);
   printw("EXP to next Level: %d\n\n", (pok->level * 8) - pok->exp);
@@ -56,9 +64,9 @@ void print_pokemon_summary(pokemon *pok) {
   mvprintw(9, 25,"%s", pok->attacks[1].name);
   mvprintw(10,8, "%s", pok->attacks[2].name);
   mvprintw(10,25,"%s\n", pok->attacks[3].name);
-  // printw("\t%s\r\t\t\t%s\n\t%s\r\t\t\t%s\n", pok->attacks[0].name, pok->attacks[1].name, pok->attacks[2].name, pok->attacks[3].name);
 }
 
+//Return the fraction modifier for a stat given the stage (stage 0 return 1.0)
 float get_stat_modifier(int16_t stage) {
   float modified_stat = 1.0;
   if (stage >= 0) { modified_stat = (2.0 + stage) / 2.0; }  // positive means 3/2, 4/2, etc.
@@ -66,6 +74,7 @@ float get_stat_modifier(int16_t stage) {
   return modified_stat;
 }
 
+//Handle leveling up - also handles learning moves from new level
 void pokemon_level_up(pokemon *pok, int next_level_exp) {
   pok->level++;
   pok->exp = (pok->exp - next_level_exp);
@@ -114,6 +123,7 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   fclose(fp);
 }
 
+//Give a single move to a pokemon - also handle forgetting moves
 void learn_move(pokemon * pok, attack * new_attack) {
   int input_num;
 
@@ -151,6 +161,8 @@ void learn_move(pokemon * pok, attack * new_attack) {
   printw("%s learned %s!\n", pok->name, new_attack->name); refresh(); sleep(2);
 }
 
+//Give highest possible level moves to a pokemon
+//This is called upon initializing a new pokemon
 void pokemon_give_moves(pokemon *pok) {
   pok->numAttacks = 0;
 

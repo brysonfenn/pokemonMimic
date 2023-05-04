@@ -9,6 +9,7 @@ static int door_count = 0;
 
 static Location empty_door = {0,0,0,0,0,0,0};
 
+//Add a door at a given location associated with an action
 void add_door(char x, char y, short action) {
     doors[door_count].x = x;
     doors[door_count].y = y;
@@ -16,6 +17,9 @@ void add_door(char x, char y, short action) {
     door_count++;
 }
 
+//Add a door to another map
+    // x and y are the location of the door
+    // next_* variables are where the door leads
 void add_portal(char x, char y, char next_x, char next_y, char next_map) {
     doors[door_count].x = x;
     doors[door_count].y = y;
@@ -26,6 +30,7 @@ void add_portal(char x, char y, char next_x, char next_y, char next_map) {
     door_count++;
 }
 
+// Return a door (if there is one) at player location, else return zero-door
 struct Location * get_door(int player_x, int player_y) {
     for (int i = 0; i < door_count; i++) {
         if (player_x == doors[i].x && player_y == doors[i].y) {
@@ -35,10 +40,7 @@ struct Location * get_door(int player_x, int player_y) {
     return &(empty_door);
 }
 
-int get_door_count() {
-    return door_count;
-}
-
+//Erase door list (called when changing or resetting map)
 void clear_doors() {
     door_count = 0;
 }

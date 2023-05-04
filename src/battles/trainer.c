@@ -10,6 +10,7 @@
 
 static char name[NAME_MAX_LENGTH];
 
+//Battle a trainer with a random name and random # of pokemon
 int battle_trainer() {
 
   if (!player.numAlive) {
@@ -47,7 +48,7 @@ int battle_trainer() {
     clear();
     mvprintw(0,0,"  Trainer %s sent out %s\n", trainer_name, trainer_pokemon[i].name);
     refresh(); sleep(2);
-    battle_result = initiate_battle(trainer_pokemon[i]);
+    battle_result = initiate_battle(&(trainer_pokemon[i]));
 
     if (battle_result == BATTLE_WHITE_OUT) { break; }
 
@@ -86,7 +87,7 @@ int battle_trainer() {
   if (battle_result == BATTLE_WIN) {
     printw("Trainer %s sent out %s\n", trainer_name, trainer_pokemon[last_pokemon_pos].name);
     refresh(); sleep(2);
-    battle_result = initiate_battle(trainer_pokemon[last_pokemon_pos]);
+    battle_result = initiate_battle(&(trainer_pokemon[last_pokemon_pos]));
     
     if (battle_result == BATTLE_WHITE_OUT) return BATTLE_WHITE_OUT;
 
@@ -109,7 +110,7 @@ int battle_trainer() {
   }
 }
 
-
+//Get a random name (could be female or male)
 char * get_random_name() {
   FILE *og_file;
   // Open the file for reading

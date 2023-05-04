@@ -36,7 +36,6 @@ int main(void) {
   //Initiate Everything
   player_init(0);
   items_init();
-  attacks_init();
   srand(time(0));
 
   //This is the main while loop.

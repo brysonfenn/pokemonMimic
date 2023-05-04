@@ -3,13 +3,18 @@
 
 struct Location;
 
+//Add a door at a given location associated with an action
 void add_door(char x, char y, short action);
+
+//Add a door to another map
+    // x and y are the location of the door
+    // next_* variables are where the door leads
 void add_portal(char x, char y, char next_x, char next_y, char next_map);
 
+// Return a door (if there is one) at player location, else return zero-door
 struct Location * get_door(int player_x, int player_y);
 
-int get_door_count();
-
+//Erase door list (called when changing or resetting map)
 void clear_doors();
 
 #endif //DOORS_H

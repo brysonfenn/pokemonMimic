@@ -29,7 +29,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl, &vine_whip, // #1-10
     &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder }; // #11-15
 
-
+//Return an attack given an attack id number
 attack * get_attack_by_id(id_num) {
 	return local_array[id_num];
 }
@@ -58,7 +58,7 @@ int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
 
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     
-    //Drop Stat unless we are already 6 below base stat
+    //Drop Stat unless we are already 6 stages below
     if (stage_number < 0) {
         if (pok == player.enemy_pokemon) printw("Enemy ");
         if ((*stat_stage) <= -6) {
@@ -83,6 +83,7 @@ int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
     }
 }
 
+//Certain attacks can increment a pokemon's own stat
 int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim) {
     //Adjust victim depending on if the victim is the player's or the enemy's
     pokemon * self;
@@ -99,6 +100,7 @@ int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim)
     }
 }
 
+//Certain attacks can decrement an enemy pokemon's stat
 int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* victim) {
     int random = rand() % 100;
     if (random < chance) {

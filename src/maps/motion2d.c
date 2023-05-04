@@ -19,7 +19,6 @@
 #define MOVING_LEFT '<'
 #define MOVING_RIGHT '>'
 
-void pause_town_drawing();
 void init_map();
 
 typedef void (*init_map_func) ();
@@ -36,13 +35,13 @@ static char * player_x;
 
 bool is_movable_space(int yInc, int xInc);
 
+// Draw the current map to the screen and handle player motion until user returns to the menu
 void handle_motion() {
     player_y = &(player.loc->y);
     player_x = &(player.loc->x);
 
     if (player.loc->map == 0) {
         mvprintw(22, 1, "Got player map as 0", player.loc->map); refresh(); sleep(3);
-        pause_town_drawing();
         return;
     }
 
@@ -88,7 +87,6 @@ void handle_motion() {
 
         if (hitGrass && (random < 10)) {
             blink_screen(5, init_map);
-            pause_town_drawing();
             battle_wild_pokemon();
             init_map();
         }
@@ -98,31 +96,9 @@ void handle_motion() {
             init_map();
         }
     }
-
-    pause_town_drawing();
 }
 
-bool is_movable_space(int yInc, int xInc) {
-    char next_tile = mvinch(*player_y+yInc, *player_x+xInc);
-    if (next_tile == ' ' || next_tile == 'M') {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-void init_map() {
-    draw_map();
-
-    mvprintw(23, 1, "Map: %d", player.loc->map); refresh();
-
-    attrset(COLOR_PAIR(2));
-    mvaddch(*player_y, *player_x, player_char);
-    attrset(COLOR_PAIR(1));
-}
-
-
+//Change and redraw the map and player
 void change_map(int map, int x, int y) {
     clear();
     clear_doors();
@@ -148,4 +124,26 @@ void change_map(int map, int x, int y) {
     }
 
     init_map();
+}
+
+//Check if a given space movement would result in a collision
+bool is_movable_space(int yInc, int xInc) {
+    char next_tile = mvinch(*player_y+yInc, *player_x+xInc);
+    if (next_tile == ' ' || next_tile == 'M') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+//Draw map and player onto the screen
+void init_map() {
+    draw_map();
+
+    mvprintw(23, 1, "Map: %d", player.loc->map); refresh();
+
+    attrset(COLOR_PAIR(2));
+    mvaddch(*player_y, *player_x, player_char);
+    attrset(COLOR_PAIR(1));
 }

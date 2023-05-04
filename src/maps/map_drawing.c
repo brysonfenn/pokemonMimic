@@ -6,8 +6,28 @@
 #include "doors.h"
 #include "../print_utils.h"
 
-void drawBuilding_default(int x, int y, const char* str, int action) { drawBuilding(x,y,DEFAULT_BUILDING_WIDTH,DEFAULT_BUILDING_HEIGHT,str,action); }
+//Draw a house-sized building with a name, door at the bottom-center, and an action attached to the door
+void drawBuilding_default(int x, int y, const char* name, int action) { 
+    drawBuilding(x,y,DEFAULT_BUILDING_WIDTH,DEFAULT_BUILDING_HEIGHT,name,action); 
+}
 
+//Draw a custom-sized building with a name, door at the bottom-center, and an action attached to the door
+void drawBuilding(int x, int y, int w, int h, const char* name, int action) {
+    drawBox(x,y,w,h);
+
+    // Print the string (max size 6) inside the box
+    if (strlen(name) <= 6) {
+        mvprintw(y+1, x+1, "%s", name);
+    }
+
+    // Draw a door at the bottom of the box
+    mvaddch(y + h - 1, x + (w / 2), ' ');  // Door frame
+    add_door(x+ (w/2), y+h-1, action);
+    mvaddch(y + h - 1, x + (w / 2) - 1, ACS_LRCORNER);
+    mvaddch(y + h - 1, x + (w / 2) + 1, ACS_LLCORNER);
+}
+
+//Draw an exit on a given side of the map at a given position
 void draw_town_exit(int side, int position) {
     int min_x = MAP_X + position;
     int min_y = MAP_Y + position;
@@ -38,35 +58,13 @@ void draw_town_exit(int side, int position) {
     }
 }
 
-// Draw a building, max string size is 6
-void drawBuilding(int x, int y, int w, int h, const char* str, int action) {
-    drawBox(x,y,w,h);
-
-    // Print the string (max size 6) inside the box
-    if (strlen(str) <= 6) {
-        mvprintw(y+1, x+1, "%s", str);
-    }
-
-    // Draw a door at the bottom of the box
-    mvaddch(y + h - 1, x + (w / 2), ' ');  // Door frame
-    add_door(x+ (w/2), y+h-1, action);
-    mvaddch(y + h - 1, x + (w / 2) - 1, ACS_LRCORNER);
-    mvaddch(y + h - 1, x + (w / 2) + 1, ACS_LLCORNER);
-}
-
-void pause_town_drawing() {
-    endwin(); // Clean up ncurses
-    setvbuf(stdout, NULL, _IOLBF, 0);
-    flushinp();
-}
-
-void blink_screen(int num_times, void (*func) ()) {
+void blink_screen(int num_times, void (*draw_map_func) ()) {
     usleep(200000);
     for (int i = 0; i < num_times; i++) {
         clear();
         refresh();
         usleep(100000);
-        func();
+        draw_map_func();
         refresh();
         usleep(100000);
     }

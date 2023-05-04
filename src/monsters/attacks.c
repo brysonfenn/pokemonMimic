@@ -5,12 +5,7 @@
 #include "pokemon.h"
 #include "../print_utils.h"
 
-int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim);
-
-void attacks_init() {
-	
-}
-
+//Handle all operations for an attack, indicate whether this is an enemy attack (true)
 void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy) {
   int damage;
 
@@ -83,7 +78,7 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
 }
 
 
-//Return how much damage should be caused
+//Get damage that should be dealt with a given move from one pokemon to another
 int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
   attack chosenAttack = perp->attacks[move_num];
 
@@ -108,7 +103,7 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
   }
 
   //Calculate effectiveness
-  damage = handle_effectiveness(chosenAttack.type, victim, damage);
+  damage = get_damage_after_effectiveness(chosenAttack.type, victim, damage);
 
   return damage;
 }
