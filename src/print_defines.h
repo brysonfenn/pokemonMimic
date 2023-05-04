@@ -16,4 +16,6 @@
 #define BATTLE_SELECT_3_X (TEXT_BOX_X + 37)
 #define SELECT_Y TEXT_BOX_Y + 1
 
+#define SELECTION_CHAR '*'
+
 #endif // PRINT_DEFINES_H
