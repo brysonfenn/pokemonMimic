@@ -97,7 +97,7 @@ void pause_ncurses() {
   flushinp();
 }
 
-int get_selection(int first_line, int start, int end, int last_selection) {
+int get_selection(int first_line, int start, int end, int last_selection, int is_main) {
   int cursor_x = 0;
   int cursor_y = first_line + last_selection;
   mvaddch(cursor_y, cursor_x, SELECTION_CHAR);
@@ -127,7 +127,10 @@ int get_selection(int first_line, int start, int end, int last_selection) {
       case 'a':
         return (cursor_y - first_line);
       case 'b':
-        return (end);
+        if (!is_main)
+          return (end);
+        else
+          break;
       default:
         break;
     }

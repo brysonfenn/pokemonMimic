@@ -3,10 +3,10 @@ Player:
 2 2 3 1000
 Location: {1,(20,11)}
 Pokemon: 
-Charmander 4 20 20 2 12 13 13 5 0
+Charmander 4 20 20 2 12 13 13 5 0 FIRE NONE
 	Scratch. 2
 	Growl. 3
-Bulbasaur 1 20 20 2 13 12 13 5 0
+Bulbasaur 1 20 20 2 13 12 13 5 0 GRASS NONE
 	Tackle. 1
 	Growl. 3
 Bag:

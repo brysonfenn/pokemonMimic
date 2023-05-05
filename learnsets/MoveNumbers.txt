@@ -8,3 +8,8 @@
 8	Quick Attack
 9	Defense Curl
 10	Vine Whip
+11	Leech Seed
+12	Ember
+13	Bubble
+14	Poison Powder
+15	Sleep Powder

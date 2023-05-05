@@ -8,6 +8,7 @@
 #include "maps/location.h"
 #include "maps/map_drawing.h"
 #include "print_utils.h"
+#include "print_defines.h"
 
 struct playerCharacter player;
 
@@ -82,7 +83,7 @@ void handle_poke_center() {
   printw("Welcome to the Pokémon Center\n\n");
   printw("  Heal Pokémon\n  Exit\n\n");
   // inputNum = getValidInput(0, 1, "Select an Option: ");
-  inputNum = get_selection(2,0,1,0);
+  inputNum = get_selection(2,0,1,0, NOT_MAIN_SELECT);
 
   clear();
   if (inputNum == 1) return;

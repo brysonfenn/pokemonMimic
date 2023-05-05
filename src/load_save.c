@@ -8,6 +8,8 @@
 #include "monsters/attacks.h"
 #include "items.h"
 #include "maps/location.h"
+#include "monsters/typings.h"
+#include "print_defines.h"
 
 #define LINE_SIZE 1024
 
@@ -29,7 +31,7 @@ int save_game(int file_num) {
 		printw("You selected file %d, which contains data that would be lost if you save ", file_num);
 		printw("here.\nAre you sure you want to save to file %d?\n", file_num);
 		printw("  Yes\n  No\n\n");
-		inputNum = get_selection(2,0,1,0);
+		inputNum = get_selection(2,0,1,0,NOT_MAIN_SELECT);
 		if (inputNum) return 0;
 	}
 
@@ -59,8 +61,9 @@ int save_game(int file_num) {
 	fprintf(fp, "Pokemon: \n");
 	for (int i = 0; i < player.numInParty; i++) {
 		curr_pok = player.party[i];
-		fprintf(fp, "%s %d %d %d %d %d %d %d %d %d\n", curr_pok.name, curr_pok.id_num, curr_pok.maxHP, curr_pok.currentHP,
-			curr_pok.numAttacks, curr_pok.baseAttack, curr_pok.baseDefense, curr_pok.baseSpeed, curr_pok.level, curr_pok.exp);
+		fprintf(fp, "%s %d %d %d %d %d %d %d %d %d %s %s\n", curr_pok.name, curr_pok.id_num, curr_pok.maxHP, curr_pok.currentHP,
+			curr_pok.numAttacks, curr_pok.baseAttack, curr_pok.baseDefense, curr_pok.baseSpeed, curr_pok.level, curr_pok.exp,
+			get_typing_by_id(curr_pok.type1), get_typing_by_id(curr_pok.type2));
 		for (int j = 0; j < curr_pok.numAttacks; j++) {
 			curr_att = curr_pok.attacks[j];
 			fprintf(fp, "\t%s. %d\n", curr_att.name, curr_att.id_num);
@@ -127,13 +130,21 @@ int load_game(int file_num) {
 		player.party[i] = emptyPok;
 		curr_pok = &(player.party[i]);
 		fgets(line, LINE_SIZE, fp);
-		matched_elements = sscanf(line, "%s %d %d %d %d %d %d %d %d %d", &(curr_pok->name), &(curr_pok->id_num), 
+
+		char type1[20];
+		char type2[20];
+
+		matched_elements = sscanf(line, "%s %d %d %d %d %d %d %d %d %d %s %s", &(curr_pok->name), &(curr_pok->id_num), 
 			&(curr_pok->maxHP), &(curr_pok->currentHP), &(curr_pok->numAttacks), &(curr_pok->baseAttack), 
-			&(curr_pok->baseDefense), &(curr_pok->baseSpeed), &(curr_pok->level), &(curr_pok->exp));
+			&(curr_pok->baseDefense), &(curr_pok->baseSpeed), &(curr_pok->level), &(curr_pok->exp),
+			&type1, &type2);
+
+		curr_pok->type1 = get_type_id_by_string(type1);
+		curr_pok->type2 = get_type_id_by_string(type2);
 
 		//Check if the line matched correctly
-		if (matched_elements != 10) {
-			printw("ERROR with load file. Expected a POKEMON line with 10 elements.\n");
+		if (matched_elements != 12) {
+			printw("ERROR with load file. Expected a POKEMON line with 12 elements.\n");
 			printw("Only matched %d elements.\n", matched_elements); refresh(); sleep(4);
 			printw("Offending line is: %s\n", line); refresh(); sleep(3);
 			printw("Reloading...\n"); refresh(); sleep(1);

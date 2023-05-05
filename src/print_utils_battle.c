@@ -147,7 +147,7 @@ void draw_text_box() {
 static int text_box_cursor_y = 0;
 
 void text_box_cursors(int next_line) {
-  if (text_box_cursor_y == 4) next_line = 0;  //Only print 4 lines in text box
+  if (text_box_cursor_y == 3) next_line = 0;  //Only print 4 lines in text box
   //Clear and reseet if next_line is 0
   if (!next_line) {
     clear_text_box();

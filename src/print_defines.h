@@ -18,4 +18,7 @@
 
 #define SELECTION_CHAR '*'
 
+#define MAIN_SELECT 1
+#define NOT_MAIN_SELECT 0
+
 #endif // PRINT_DEFINES_H

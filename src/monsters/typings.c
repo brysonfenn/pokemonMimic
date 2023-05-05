@@ -1,8 +1,17 @@
 #include "typings.h"
 
+#include <string.h>
+
 #include "pokemon.h"
 #include "../player.h"
 #include "../print_utils.h"
+
+#define NUM_TYPES 16
+
+//16 types including none
+static const char string_typings[20][15] = {"NONE", "NORMAL", "FIRE", "WATER", "ELECTRIC", "GRASS", "ICE", 
+                "FIGHTING", "POISON", "GROUND", "FLYING", "PSYCHIC", "BUG", 
+                "ROCK", "GHOST", "DRAGON" };
 
 float get_single_multiplier(Type moveType, Type victimType);
 
@@ -144,4 +153,18 @@ float get_single_multiplier(Type moveType, Type victimType) {
     }
 
     return multiplier;
+}
+
+char * get_typing_by_id(Type type) {
+    return string_typings[type];
+}
+
+Type get_type_id_by_string(char * str) {
+    for (int i = 0; i < NUM_TYPES; i++) {
+        if (strcmp(str,string_typings[i]) == 0) {
+            return i;
+        }
+    }
+
+    return NO_TYPE;
 }

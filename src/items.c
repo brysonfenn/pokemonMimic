@@ -3,6 +3,7 @@
 #include <ncurses.h>
 
 #include "print_utils.h"
+#include "print_defines.h"
 
 #define NUM_ITEMS 50
 #define CURRENT_MAX_NUM 4
@@ -43,7 +44,7 @@ int handle_mart() {
   print_mart();
   printw("  Exit\n");
   printw("\nYou have $%d\n", player.money);
-  inputNum = get_selection(1,0,CURRENT_MAX_NUM,0);
+  inputNum = get_selection(1,0,CURRENT_MAX_NUM,0,NOT_MAIN_SELECT);
   inputNum++; //Align with ID number
   if (inputNum == CURRENT_MAX_NUM+1) { clear(); return ITEM_SUCCESS; }
   else {
@@ -117,7 +118,7 @@ int execute_potion(int input_num) {
   printParty();
   printw("  Cancel\n");
 
-  int input = get_selection(2,0,player.numInParty,0);
+  int input = get_selection(2,0,player.numInParty,0,NOT_MAIN_SELECT);
   if (input == player.numInParty) return ITEM_FAILURE;
 
   int currentHP = player.party[input].currentHP;

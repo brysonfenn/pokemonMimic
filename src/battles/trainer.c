@@ -5,6 +5,7 @@
 #include "battle.h"
 #include "../monsters/pokemon.h"
 #include "../player.h"
+#include "../print_defines.h"
 
 #define NAME_MAX_LENGTH 20
 
@@ -55,7 +56,7 @@ int battle_trainer() {
     clear();
     printw("  Trainer %s is about to send out %s\n", trainer_name, trainer_pokemon[i+1].name);
     printw("  Will B change Pokemon?\n  Yes\n  No\n");
-    inputNum = get_selection(2,0,1,0);
+    inputNum = get_selection(2,0,1,0, NOT_MAIN_SELECT);
 
     //Get player input for pokemon
     while (1) {
@@ -65,7 +66,7 @@ int battle_trainer() {
         printParty();
         printw("\n");
       
-        inputNum = get_selection(2,0,player.numInParty-1,0);
+        inputNum = get_selection(2,0,player.numInParty-1,0, NOT_MAIN_SELECT);
 
         if (player.party[inputNum].currentHP == 0) {
           move(player.numInParty+3,0);

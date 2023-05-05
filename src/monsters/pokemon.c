@@ -19,6 +19,10 @@ void learn_move(pokemon * pok, attack * new_attack);
   //if level = 0, get random level from range level_min:level_max
 void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
   randomize_stats(new_pok, level, level_min, level_max);
+
+  new_pok->currentHP = new_pok->maxHP;
+  new_pok->exp = 0;
+
   new_pok->visible_condition = NO_CONDITION;
   new_pok->hidden_condition = NO_CONDITION;
   new_pok->numAttacks = 0;
@@ -33,9 +37,7 @@ void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max)
     level = (rand() % (level_max - level_min)) + level_min;
   }
   new_pok->level = level;
-  new_pok->exp = 0;
   new_pok->maxHP +=  (2*level) +  (rand() % 3);
-  new_pok->currentHP = new_pok->maxHP;
   new_pok->baseAttack += (level + 2) + (rand() % 3);
   new_pok->baseDefense += (level + 3) + (rand() % 2);
   new_pok->baseSpeed += (level + 2) + (rand() % 3);
@@ -53,17 +55,19 @@ void reset_base_stats(pokemon *pok) {
 
 //Print stats, attacks, etc of a given pokemon
 void print_pokemon_summary(pokemon *pok) {
-  printw("%s  LVL %d:\n", pok->name, pok->level);
-  printw("EXP to next Level: %d\n\n", (pok->level * 8) - pok->exp);
+  printw("%s  LVL %d\n\t%s ", pok->name, pok->level, get_typing_by_id(pok->type1));
+  if (pok->type2 != NO_TYPE) printw("%s", get_typing_by_id(pok->type2));
+  printw("\n\n");
+  printw("EXP to next Level: %d\n", (pok->level * 8) - pok->exp);
   printw("HP: %d/%d", pok->currentHP, pok->maxHP);
   if (!(pok->currentHP)) printw("  (Fainted)");
   printw("\nBase Attack: %d\nBase Defense: %d\n", pok->baseAttack, pok->baseDefense);
   printw("Base Speed: %d\n\n", pok->baseSpeed);
   printw("Attacks: \n");
-  mvprintw(9, 8, "%s", pok->attacks[0].name);
-  mvprintw(9, 25,"%s", pok->attacks[1].name);
-  mvprintw(10,8, "%s", pok->attacks[2].name);
-  mvprintw(10,25,"%s\n", pok->attacks[3].name);
+  mvprintw(10, 8, "%s", pok->attacks[0].name);
+  mvprintw(10, 25,"%s", pok->attacks[1].name);
+  mvprintw(11,8, "%s", pok->attacks[2].name);
+  mvprintw(11,25,"%s\n", pok->attacks[3].name);
 }
 
 //Return the fraction modifier for a stat given the stage (stage 0 return 1.0)
@@ -92,7 +96,7 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   //Add moves
   FILE *fp;
   char filename[50];
-  sprintf(filename, "learnsets/%03d_%s.txt", pok->id_num, pok->name);
+  sprintf(filename, "learnsets/id_%03d.txt", pok->id_num);
   char line[LINE_SIZE];
 
   // Open the file for reading
@@ -106,7 +110,10 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
 
   // Read lines from the file and put them into game values
   fgets(line, LINE_SIZE, fp);	// Name first line
-  fgets(line, LINE_SIZE, fp);	// Format second line
+  fgets(line, LINE_SIZE, fp);  // Evolve second line
+  fgets(line, LINE_SIZE, fp);	// Move Format third line
+
+
 
   int level_target, move_id;
   attack new_attack;
@@ -133,30 +140,39 @@ void learn_move(pokemon * pok, attack * new_attack) {
     pok->numAttacks++;
   }
   else {
+
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    printw("%s wants to learn %s, ", pok->name, new_attack->name); 
+
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("but %s already knows 4 moves.", pok->name);
+    refresh(); sleep(2);
+
     mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  %s", pok->attacks[0].name); 
     mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  %s", pok->attacks[1].name); 
     mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  %s", pok->attacks[2].name); 
     mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  %s", pok->attacks[3].name); 
     mvprintw(SELECT_Y+1,BATTLE_SELECT_3_X,"  Cancel");
 
-    text_box_cursors(TEXT_BOX_BEGINNING);
-    printw("\n%s wants to learn %s, but %s already knows 4 moves.", pok->name, new_attack->name, pok->name); 
-    refresh(); sleep(2);
-
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("Select a move to forget.");
         
     input_num = get_fight_selection(SELECT_Y, pok->numAttacks);
+    input_num--;  //Adjust to array position
+
+    text_box_cursors(TEXT_BOX_BEGINNING);
+
+    if (input_num == 4) {
+      printw("%s did not learn %s!", pok->name, new_attack->name); refresh(); sleep(2); return;
+    }
+    printw("1...2...and...poof!"); refresh(); sleep(2);
 
     text_box_cursors(TEXT_BOX_NEXT_LINE);
-
-    if (input_num == 5) {
-      printw("%s did not learn %s!\n", pok->name, new_attack->name); refresh(); sleep(2); return;
-    }
-    printw("1...2...and...poof!\n"); refresh(); sleep(2);
-    printw("%s forgot %s, and...\n", pok->name, pok->attacks[input_num]); refresh(); sleep(2);
+    printw("%s forgot %s, and...", pok->name, pok->attacks[input_num]); refresh(); sleep(2);
     pok->attacks[input_num] = *new_attack;
   }
+
+  text_box_cursors(TEXT_BOX_NEXT_LINE);
 
   printw("%s learned %s!\n", pok->name, new_attack->name); refresh(); sleep(2);
 }
@@ -169,7 +185,7 @@ void pokemon_give_moves(pokemon *pok) {
   //Add moves
   FILE *fp;
   char filename[50];
-  sprintf(filename, "learnsets/%03d_%s.txt", pok->id_num, pok->name);
+  sprintf(filename, "learnsets/id_%03d.txt", pok->id_num);
   char line[LINE_SIZE];
 
   // Open the file for reading
@@ -183,6 +199,7 @@ void pokemon_give_moves(pokemon *pok) {
 
   // Read lines from the file and put them into game values
   fgets(line, LINE_SIZE, fp);	// Name first line
+  fgets(line, LINE_SIZE, fp);  // Evolve second line
   fgets(line, LINE_SIZE, fp);	// Format second line
 
   int level_target, move_id;

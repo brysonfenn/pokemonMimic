@@ -1,4 +1,5 @@
-Bulbasaur
+Bulbasaur 1 
+Evolve: 16, 
 level,move_id
 1,1
 4,3

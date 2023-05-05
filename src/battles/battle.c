@@ -136,7 +136,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
         
       case BAG:
         printBag();
-        inputNum = get_selection(1,0,player.numInBag,0);
+        inputNum = get_selection(1,0,player.numInBag,0, NOT_MAIN_SELECT);
         if (inputNum == player.numInBag) {
           current_display = MAIN;
           break;
@@ -155,7 +155,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
           printw("  Cancel\n");
         }
         printw("\n");
-        inputNum = get_selection(2,0,max_input, 0);
+        inputNum = get_selection(2,0,max_input, 0, NOT_MAIN_SELECT);
         if (inputNum == player.numInParty) {
           current_display = MAIN;
           continue;

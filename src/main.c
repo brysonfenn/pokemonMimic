@@ -14,6 +14,7 @@
 #include "battles/battle.h"
 #include "battles/trainer.h"
 #include "battles/wild_pokemon.h"
+#include "print_defines.h"
 
 static enum display { WILD, TRAINER, POKEMON, BAG, PLAYER, SAVE, LOAD,
     TOWN, POWER_OFF, MAIN } current_display = MAIN;
@@ -54,7 +55,7 @@ int main(void) {
       printw("  Wild Pokemon\n  Trainer\n  Pokemon\n  Bag\n  Player\n");
       printw("  Save Game\n  Load Game\n  Town\n  Power Off\n\n");
 
-      inputNum = get_selection(0,0,8,last_selection);
+      inputNum = get_selection(0,0,8,last_selection, MAIN_SELECT);
       last_selection = inputNum;
       fflush(stdout);
       current_display = inputNum;
@@ -78,14 +79,14 @@ int main(void) {
       clear();
       printParty();
       printw("  Cancel\n\n", 0);
-      inputNum = get_selection(1,0,player.numInParty,0);
+      inputNum = get_selection(1,0,player.numInParty,0, NOT_MAIN_SELECT);
       if (inputNum == player.numInParty) { current_display = MAIN; break; }
       
 
       clear();
       print_pokemon_summary(&(player.party[inputNum]));
       printw("\n  Switch\n  Release\n  Cancel\n");
-      inputNum2 = get_selection(12, 0, 2, 0);
+      inputNum2 = get_selection(13, 0, 2, 0, NOT_MAIN_SELECT);
 
       //Break if inputNum2 is 2 (cancel)
       if (inputNum2 == 2) { break; } 
@@ -96,7 +97,7 @@ int main(void) {
         printw("Which pokemon would you like to switch with %s?\n", player.party[inputNum].name);
         printParty();
         printw("\n");
-        inputNum2 = get_selection(2,0,player.numInParty-1,0);
+        inputNum2 = get_selection(2,0,player.numInParty-1,0, NOT_MAIN_SELECT);
 
         tempPok = player.party[inputNum];
         player.party[inputNum] = player.party[inputNum2];
@@ -107,7 +108,7 @@ int main(void) {
         if (player.numInParty <= 1) {printw("You only have 1 Pokémon!\n"); refresh(); sleep(2); break; }
         clear();
         printw("Are you sure you want to release %s?\n  Yes\n  No\n", player.party[inputNum].name);
-        inputNum2 = get_selection(1,0,1,0);
+        inputNum2 = get_selection(1,0,1,0, NOT_MAIN_SELECT);
         if (inputNum2) { break; }
         else {
           clear();
@@ -126,7 +127,7 @@ int main(void) {
     case BAG:
       clear();
       printBag();
-      inputNum = get_selection(1,0,player.numInBag,0);
+      inputNum = get_selection(1,0,player.numInBag,0, NOT_MAIN_SELECT);
       if (inputNum == player.numInBag) { current_display = MAIN; break; }
       return_execute = use_item(inputNum, &emptyPok);
 

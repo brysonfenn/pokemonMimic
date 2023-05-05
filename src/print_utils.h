@@ -21,7 +21,7 @@ void printBag();
 void resume_ncurses();
 void pause_ncurses();
 
-int get_selection(int first_line, int start, int end, int last_selection);
+int get_selection(int first_line, int start, int end, int last_selection, int is_main);
 int get_battle_selection(int first_line, int last_selection);
 int get_fight_selection(int first_line, int num_attacks);
 
