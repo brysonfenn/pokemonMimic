@@ -66,17 +66,21 @@ void print_pokemon_summary(pokemon *pok);
 //Return the fraction modifier for a stat given the stage (stage 0 return 1.0)
 float get_stat_modifier(int16_t stage);
 
+//Give random stats to pokemon based on level
+  //level = particular level
+  //if level = 0, get random level from range level_min:level_max
+void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max);
+
+
+
+//pokemon_progression.c
+
 //Handle leveling up - also handles learning moves from new level
 void pokemon_level_up(pokemon *pok, int next_level_exp);
 
 //Give highest possible level moves to a pokemon
 //This is called upon initializing a new pokemon
 void pokemon_give_moves(pokemon *pok);
-
-//Give random stats to pokemon based on level
-  //level = particular level
-  //if level = 0, get random level from range level_min:level_max
-void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max);
 
 
 
