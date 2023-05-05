@@ -1,0 +1,15 @@
+Last Saved: 05/04/2023 16:49:49
+Player: 
+2 2 3 1000
+Location: {1,(20,11)}
+Pokemon: 
+Charmander 4 20 20 2 12 13 13 5 0 FIRE NONE
+	Scratch. 2
+	Growl. 3
+Bulbasaur 1 20 20 2 13 12 13 5 0 GRASS POISON
+	Tackle. 1
+	Growl. 3
+Bag:
+Potion. 1 2
+Super Potion. 2 2
+Pokéball. 3 5

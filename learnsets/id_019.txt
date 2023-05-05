@@ -1,5 +1,5 @@
 Rattata
-Evolve: 16,2 11 7 7 7
+Evolve: 16,0
 level,move_id
 1,1
 2,4

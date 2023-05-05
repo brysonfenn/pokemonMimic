@@ -73,6 +73,11 @@ void pokemon_level_up(pokemon *pok, int next_level_exp);
 //This is called upon initializing a new pokemon
 void pokemon_give_moves(pokemon *pok);
 
+//Give random stats to pokemon based on level
+  //level = particular level
+  //if level = 0, get random level from range level_min:level_max
+void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max);
+
 
 
 //pokemon_list.c

@@ -1,5 +1,5 @@
-Ivysaur 2 11 7 7 7
-Evolve: 32, 3
+Ivysaur 2 11 7 7 7 GRASS POISON
+Evolve: 32,0
 level,move_id
 1,1
 4,3
@@ -7,3 +7,4 @@ level,move_id
 10,10
 15,14
 15,15
+7,12

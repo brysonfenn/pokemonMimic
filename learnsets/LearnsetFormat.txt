@@ -1,0 +1,4 @@
+Name id hp attack defense speed
+Evolve: level, id
+level, move_id
+{list of learn set}

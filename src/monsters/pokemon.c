@@ -11,8 +11,8 @@
 
 #define LINE_SIZE 100
 
-void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max);
 void learn_move(pokemon * pok, attack * new_attack);
+int evolve(pokemon * pok, int next_pok_id);
 
 //Initialize a given pokemon new_pok and get randomized stats
   //level = particular level
@@ -90,7 +90,7 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   pok->baseSpeed++;
 
   text_box_cursors(TEXT_BOX_BEGINNING);
-  printw("%s has grown to level %d!\n", pok->name, pok->level);
+  printw("%s has grown to level %d!", pok->name, pok->level);
   refresh(); sleep(2);
 
   //Add moves
@@ -98,6 +98,7 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   char filename[50];
   sprintf(filename, "learnsets/id_%03d.txt", pok->id_num);
   char line[LINE_SIZE];
+  char evolve_line[LINE_SIZE];
 
   // Open the file for reading
   fp = fopen(filename, "r");
@@ -110,12 +111,10 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
 
   // Read lines from the file and put them into game values
   fgets(line, LINE_SIZE, fp);	// Name first line
-  fgets(line, LINE_SIZE, fp);  // Evolve second line
+  fgets(evolve_line, LINE_SIZE, fp);  // Evolve second line
   fgets(line, LINE_SIZE, fp);	// Move Format third line
 
-
-
-  int level_target, move_id;
+  int level_target, move_id, evolve_id;
   attack new_attack;
 
   while (fgets(line, LINE_SIZE, fp)) {
@@ -128,6 +127,13 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   }
 
   fclose(fp);
+
+  //Evolve if necessary
+  sscanf(evolve_line, "Evolve: %d, %d", &level_target, &evolve_id);
+  if (evolve_id == 0) { return; } //Handle no evolution
+  else if (pok->level >= level_target) {
+    evolve(pok, evolve_id);
+  }
 }
 
 //Give a single move to a pokemon - also handle forgetting moves
@@ -142,7 +148,7 @@ void learn_move(pokemon * pok, attack * new_attack) {
   else {
 
     text_box_cursors(TEXT_BOX_BEGINNING);
-    printw("%s wants to learn %s, ", pok->name, new_attack->name); 
+    printw("%s wants to learn %s,", pok->name, new_attack->name); 
 
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("but %s already knows 4 moves.", pok->name);
@@ -174,7 +180,7 @@ void learn_move(pokemon * pok, attack * new_attack) {
 
   text_box_cursors(TEXT_BOX_NEXT_LINE);
 
-  printw("%s learned %s!\n", pok->name, new_attack->name); refresh(); sleep(2);
+  printw("%s learned %s!", pok->name, new_attack->name); refresh(); sleep(2);
 }
 
 //Give highest possible level moves to a pokemon
@@ -226,4 +232,51 @@ void pokemon_give_moves(pokemon *pok) {
   }
 
   fclose(fp);
+}
+
+//Return 0 is evolve success, return 1 if failed
+int evolve(pokemon * pok, int next_pok_id) {
+  char og_pok_name[LINE_SIZE];
+
+  //Preserve some information like name and lost hp
+  sprintf(og_pok_name, "%s", pok->name);
+  int lost_hp = pok->maxHP - pok->currentHP;
+
+  // Open the file for reading
+  FILE *fp;
+  char filename[50];
+  sprintf(filename, "learnsets/id_%03d.txt", next_pok_id);
+  char line[LINE_SIZE];
+  fp = fopen(filename, "r");
+
+  text_box_cursors(TEXT_BOX_BEGINNING);
+
+  // Check if the file was opened successfully
+  if (fp == NULL) {
+      printw("Evolution Learnset file does not exist.\n"); refresh(); sleep(2);
+      return 1;
+  }
+
+  printw("%s is evolving!", og_pok_name); refresh(); sleep(3);
+
+  char type1[24];
+	char type2[24];
+  fgets(line, LINE_SIZE, fp);	// Name first line
+
+  //Get new name, stats, and types
+  sscanf(line, "%s %d %d %d %d %d %s %s", &(pok->name), &(pok->id_num), &(pok->maxHP), 
+            &(pok->baseAttack), &(pok->baseDefense), &(pok->baseSpeed), type1, type2);
+  pok->type1 = get_type_id_by_string(type1);
+  pok->type2 = get_type_id_by_string(type2);
+
+  randomize_stats(pok, pok->level, 0, 0);
+
+  pok->currentHP = pok->maxHP - lost_hp;
+
+  text_box_cursors(TEXT_BOX_NEXT_LINE);
+  printw("Congratulations! %s evolved", og_pok_name);
+  text_box_cursors(TEXT_BOX_NEXT_LINE);
+  printw("into %s!", pok->name); refresh(); sleep(3);
+
+  return 0;
 }
