@@ -21,4 +21,6 @@
 #define MAIN_SELECT 1
 #define NOT_MAIN_SELECT 0
 
+#define ENEMY_TEXT "Foe "
+
 #endif // PRINT_DEFINES_H

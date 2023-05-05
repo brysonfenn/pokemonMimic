@@ -5,6 +5,7 @@
 #include "pokemon.h"
 #include "../player.h"
 #include "../print_utils.h"
+#include "../print_defines.h"
 
 #define NUM_TYPES 16
 
@@ -38,7 +39,7 @@ int get_damage_after_effectiveness(Type moveType, struct pokemon * pok, int dama
     }
     else if (multiplier == 0) {
         printw("It didn't effect ");
-        if (pok != player.current_pokemon) printw("Enemy ");
+        if (pok != player.current_pokemon) printw(ENEMY_TEXT);
         printw("%s", pok->name); refresh(); sleep(2);
     }
 

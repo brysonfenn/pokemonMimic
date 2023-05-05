@@ -3,6 +3,7 @@
 #include "pokemon.h"
 #include "../player.h"
 #include "../print_utils.h"
+#include "../print_defines.h"
 
 //Inflict condition on pok given, handle accuracy
 int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
@@ -15,7 +16,7 @@ int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 			printw("%s could not be poisoned!", pok->name); refresh(); sleep(2);
 			return 1;
 		}
-		if (pok != player.current_pokemon) printw("Enemy ");
+		if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 		printw("%s was badly poisoned!", pok->name); refresh(); sleep(2);
 		pok->visible_condition = POISONED;
 	}
@@ -24,7 +25,7 @@ int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 			printw("%s could not be put to sleep!", pok->name); refresh(); sleep(2);
 			return 1;
 		}
-		if (pok != player.current_pokemon) printw("Enemy ");
+		if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 		printw("%s fell asleep!", pok->name); refresh(); sleep(2);
 		pok->visible_condition = ASLEEP;
 		pok->sleep_count = (rand() % 4) + 1;
@@ -34,7 +35,7 @@ int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 			printw("But it failed!"); refresh(); sleep(2);
 			return 1;
 		}
-		if (pok != player.current_pokemon) printw("Enemy ");
+		if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 		printw("%s was seeded!", pok->name); refresh(); sleep(2);
 		pok->hidden_condition = SEEDED;
 	}
@@ -62,7 +63,7 @@ int handle_end_conditions() {
 
 	if (enemy_pok->visible_condition == POISONED) {
 		text_box_cursors(TEXT_BOX_BEGINNING);
-		printw("Enemy %s was hurt by poison!", enemy_pok->name);
+		printw("%s%s was hurt by poison!", ENEMY_TEXT, enemy_pok->name);
 		enemy_pok->currentHP -= ((enemy_pok->maxHP / 16) + 1);
 		if (enemy_pok->currentHP < 0) enemy_pok->currentHP = 0;
 		refresh(); sleep(2);
@@ -84,7 +85,7 @@ int handle_end_conditions() {
 	}
 	if (enemy_pok->hidden_condition == SEEDED) {
 		text_box_cursors(TEXT_BOX_BEGINNING);
-		printw("Enemy %s's HP was sapped!", enemy_pok->name);
+		printw("%s%s's HP was sapped!", ENEMY_TEXT, enemy_pok->name);
 		sappedHP = ((enemy_pok->maxHP / 8) + 1);
 		//Give HP equal to taken HP
 		if (sappedHP > enemy_pok->currentHP) { player_pok->currentHP += enemy_pok->currentHP; enemy_pok->currentHP = 0; }

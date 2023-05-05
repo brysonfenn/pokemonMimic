@@ -4,6 +4,7 @@
 
 #include "pokemon.h"
 #include "../print_utils.h"
+#include "../print_defines.h"
 
 //Handle all operations for an attack, indicate whether this is an enemy attack (true)
 void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy) {
@@ -15,7 +16,7 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
 
   //Handle sleep
   if (perp->visible_condition == ASLEEP) {
-    if (enemy) printw("Enemy ");
+    if (enemy) printw(ENEMY_TEXT);
     if (perp->sleep_count > 0) {
       printw("%s is fast asleep...", perp->name);
       refresh(); sleep(2);
@@ -32,7 +33,7 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
 
   text_box_cursors(TEXT_BOX_BEGINNING);
 
-  if (enemy) printw("Enemy ");
+  if (enemy) printw(ENEMY_TEXT);
   printw("%s used %s", perp->name, chosenAttack.name);
   refresh(); sleep(1);
 
@@ -43,7 +44,7 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   if (missed) {
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     if (chosenAttack.power) {
-      if (enemy) printw("Enemy ");
+      if (enemy) printw(ENEMY_TEXT);
       printw("%s's attack missed.", perp->name);
     }
     else {
@@ -61,7 +62,7 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   //Drop Accuracy unless we are already at 0.4 accuracy
   if (chosenAttack.accuracy_drop > 0) {
     text_box_cursors(TEXT_BOX_NEXT_LINE);
-    if (!enemy) printw("Enemy ");
+    if (!enemy) printw(ENEMY_TEXT);
     if (victim->accuracy <= 0.4) {
       printw("%s's accuracy won't go any lower!", victim->name);
     }
@@ -84,6 +85,8 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
 
   // Basic Equation
   float damage_f = ( ((2.0 * perp->level / 5) + 2) * chosenAttack.power * perp->baseAttack / victim->baseDefense) / 50.0;
+  float random_float = (float) ((rand() % 25) + 85); // Random number between 85 and 110
+  damage_f *= (random_float / 100.0); // Randomize damage a bit
   damage_f += 2;
 
   // Damage modifier stages

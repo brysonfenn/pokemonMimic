@@ -68,6 +68,7 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   }
 }
 
+
 //Give a single move to a pokemon - also handle forgetting moves
 void learn_move(pokemon * pok, attack * new_attack) {
   int input_num;
@@ -114,6 +115,7 @@ void learn_move(pokemon * pok, attack * new_attack) {
 
   printw("%s learned %s!", pok->name, new_attack->name); refresh(); sleep(2);
 }
+
 
 //Give highest possible level moves to a pokemon
 //This is called upon initializing a new pokemon
@@ -165,6 +167,7 @@ void pokemon_give_moves(pokemon *pok) {
 
   fclose(fp);
 }
+
 
 //Return 0 is evolve success, return 1 if failed
 int evolve(pokemon * pok, int next_pok_id) {

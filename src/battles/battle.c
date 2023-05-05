@@ -58,7 +58,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
       enemy.currentHP = 0; clear();
       printBattle(); sleep(2);
       text_box_cursors(TEXT_BOX_BEGINNING);
-      printw("Enemy %s fainted.", enemy.name); refresh(); sleep(2);
+      printw("%s%s fainted.", ENEMY_TEXT, enemy.name); refresh(); sleep(2);
       break;
     }
 

@@ -4,6 +4,7 @@
 
 #include "../player.h"
 #include "conditions.h"
+#include "../print_defines.h"
 
 #define NUM_ATTACKS 50
 
@@ -60,7 +61,7 @@ int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
     
     //Drop Stat unless we are already 6 stages below
     if (stage_number < 0) {
-        if (pok == player.enemy_pokemon) printw("Enemy ");
+        if (pok == player.enemy_pokemon) printw(ENEMY_TEXT);
         if ((*stat_stage) <= -6) {
             printw("%s's %s won't go any lower!", pok->name, stat_type_str);
         }
@@ -71,7 +72,7 @@ int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
         refresh(); sleep(1);
     }
     else if (stage_number > 0) {
-        if (pok == player.enemy_pokemon) printw("Enemy ");
+        if (pok == player.enemy_pokemon) printw(ENEMY_TEXT);
         if ((*stat_stage) >= 6) {
             printw("%s's %s won't go any higher!", pok->name, stat_type_str);
         }
