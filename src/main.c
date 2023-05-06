@@ -37,9 +37,9 @@ int main(void) {
   int last_selection = 0;
 
   //Initiate Everything
+  srand(time(0));
   player_init(0);
   items_init();
-  srand(time(0));
 
   //This is the main while loop.
   while(1) {

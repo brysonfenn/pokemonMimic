@@ -8,8 +8,12 @@
 #include "typings.h"
 #include "pokemon_id_list.h"
 
-#define NUM_CREATED_POKEMON 8
 #define RANDOM_LEVEL 0
+
+#define IV_HP 0
+#define IV_ATTACK 1
+#define IV_DEFENSE 2
+#define IV_SPEED 3
 
 typedef struct pokemon {
   char name[30];
@@ -20,6 +24,7 @@ typedef struct pokemon {
   int baseAttack;
   int baseDefense;
   int baseSpeed;
+  int iv;
 
   Type type1;
   Type type2;
@@ -61,7 +66,7 @@ float get_stat_modifier(int16_t stage);
 //Give random stats to pokemon based on level
   //level = particular level
   //if level = 0, get random level from range level_min:level_max
-void calculate_stats(pokemon * new_pok, int level, int level_min, int level_max);
+void calculate_stats(pokemon * pok, int level, int level_min, int level_max);
 
 
 
@@ -74,6 +79,7 @@ void pokemon_level_up(pokemon *pok, int next_level_exp);
 //This is called upon initializing a new pokemon
 void pokemon_give_moves(pokemon *pok);
 
+int pokemon_get_iv(pokemon * pok, char type);
 
 
 //pokemon_list.c

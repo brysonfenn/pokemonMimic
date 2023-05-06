@@ -13,6 +13,7 @@
   //if level = 0, get random level from range level_min:level_max
 void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
   new_pok->exp = 15;
+  new_pok->iv = rand();
   new_pok->numAttacks = 0;
   new_pok->visible_condition = NO_CONDITION;
   new_pok->hidden_condition = NO_CONDITION;
@@ -27,23 +28,22 @@ void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
 //Give random stats to pokemon based on level
   //level = particular level
   //if level = 0, get random level from range level_min:level_max
-void calculate_stats(pokemon * new_pok, int level, int level_min, int level_max) {
+void calculate_stats(pokemon * pok, int level, int level_min, int level_max) {
   if (!level) {
     level = (rand() % (level_max - level_min)) + level_min;
   }
-  new_pok->level = level;
-  int iv = 31;
+  pok->level = level;
   int ev = 1;
-  int hp = new_pok->maxHP;
-  int att = new_pok->baseAttack;
-  int def = new_pok->baseDefense;
-  int spd = new_pok->baseSpeed;
-  new_pok->maxHP = (((2 * new_pok->maxHP + iv + (ev/4)) * level) / 100) + level + 10;
-  new_pok->baseAttack = (((2 * new_pok->baseAttack + iv + (ev/4)) * level) / 100) + 5;
-  new_pok->baseDefense = (((2 * new_pok->baseDefense + iv + (ev/4)) * level) / 100) + 5;
-  new_pok->baseSpeed = (((2 * new_pok->baseSpeed + iv + (ev/4)) * level) / 100) + 5;
+  int hp_iv = pokemon_get_iv(pok, IV_HP);
+  int att_iv =pokemon_get_iv(pok, IV_ATTACK);
+  int def_iv = pokemon_get_iv(pok, IV_DEFENSE);
+  int spd_iv = pokemon_get_iv(pok, IV_SPEED);
+  pok->maxHP = (((2 * pok->maxHP + hp_iv + (ev/4)) * level) / 100) + level + 10;
+  pok->baseAttack = (((2 * pok->baseAttack + att_iv + (ev/4)) * level) / 100) + 5;
+  pok->baseDefense = (((2 * pok->baseDefense + def_iv + (ev/4)) * level) / 100) + 5;
+  pok->baseSpeed = (((2 * pok->baseSpeed + spd_iv + (ev/4)) * level) / 100) + 5;
 
-  reset_base_stats(new_pok);
+  reset_base_stats(pok);
 }
 
 //Reset stat stages whenever pokemon is switched out or battle ends
