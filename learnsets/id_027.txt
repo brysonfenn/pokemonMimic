@@ -1,4 +1,4 @@
-Sandshrew
+Sandshrew 27
 Evolve: 16,0
 level,move_id
 1,1

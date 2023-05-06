@@ -23,4 +23,6 @@
 
 #define ENEMY_TEXT "Foe "
 
+#define LINE_SIZE 100
+
 #endif // PRINT_DEFINES_H

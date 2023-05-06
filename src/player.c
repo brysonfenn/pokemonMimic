@@ -30,8 +30,8 @@ void player_init(int save_file) {
 void default_load() {
   player.numInParty = 2;
   player.numAlive = player.numInParty;
-  player.party[0] = charmander;
-  player.party[1] = bulbasaur;
+  player.party[0] = *(get_pokemon_frame(4));  //Charmander
+  player.party[1] = *(get_pokemon_frame(1));  //Bulbasaur
   for (int i = 0; i < player.numInParty; i++) {
     pokemon_init(&(player.party[i]), 5, 0, 0);
   }

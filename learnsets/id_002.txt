@@ -1,4 +1,4 @@
-Ivysaur 2 11 7 7 7 GRASS POISON
+Ivysaur 2
 Evolve: 32,0
 level,move_id
 1,1

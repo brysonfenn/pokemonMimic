@@ -30,6 +30,8 @@ int main(void) {
 
   signal(SIGINT, control_c_handler);
 
+  resume_ncurses();
+
   int inputNum, inputNum2, return_execute;
   char example_string[100];
   int last_selection = 0;

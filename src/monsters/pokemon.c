@@ -12,14 +12,15 @@
   //level = particular level
   //if level = 0, get random level from range level_min:level_max
 void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
+  new_pok->exp = 0;
+  new_pok->numAttacks = 0;
+  new_pok->visible_condition = NO_CONDITION;
+  new_pok->hidden_condition = NO_CONDITION;
+
   randomize_stats(new_pok, level, level_min, level_max);
 
   new_pok->currentHP = new_pok->maxHP;
-  new_pok->exp = 0;
-
-  new_pok->visible_condition = NO_CONDITION;
-  new_pok->hidden_condition = NO_CONDITION;
-  new_pok->numAttacks = 0;
+  
   pokemon_give_moves(new_pok);
 }
 
@@ -31,10 +32,17 @@ void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max)
     level = (rand() % (level_max - level_min)) + level_min;
   }
   new_pok->level = level;
-  new_pok->maxHP +=  (2*level) +  (rand() % 3);
-  new_pok->baseAttack += (level + 2) + (rand() % 3);
-  new_pok->baseDefense += (level + 3) + (rand() % 2);
-  new_pok->baseSpeed += (level + 2) + (rand() % 3);
+  int iv = 31;
+  int ev = 1;
+  int hp = new_pok->maxHP;
+  int att = new_pok->baseAttack;
+  int def = new_pok->baseDefense;
+  int spd = new_pok->baseSpeed;
+  new_pok->maxHP = (((2 * new_pok->maxHP + iv + (ev/4)) * level) / 100) + level + 10;
+  new_pok->baseAttack = (((2 * new_pok->baseAttack + iv + (ev/4)) * level) / 100) + 5;
+  new_pok->baseDefense = (((2 * new_pok->baseDefense + iv + (ev/4)) * level) / 100) + 5;
+  new_pok->baseSpeed = (((2 * new_pok->baseSpeed + iv + (ev/4)) * level) / 100) + 5;
+
   reset_base_stats(new_pok);
 }
 
@@ -55,8 +63,8 @@ void print_pokemon_summary(pokemon *pok) {
   printw("EXP to next Level: %d\n", (pok->level * 8) - pok->exp);
   printw("HP: %d/%d", pok->currentHP, pok->maxHP);
   if (!(pok->currentHP)) printw("  (Fainted)");
-  printw("\nBase Attack: %d\nBase Defense: %d\n", pok->baseAttack, pok->baseDefense);
-  printw("Base Speed: %d\n\n", pok->baseSpeed);
+  printw("\nAttack Stat: %d\nDefense Stat: %d\n", pok->baseAttack, pok->baseDefense);
+  printw("Speed Stat: %d\n\n", pok->baseSpeed);
   printw("Attacks: \n");
   mvprintw(10, 8, "%s", pok->attacks[0].name);
   mvprintw(10, 25,"%s", pok->attacks[1].name);

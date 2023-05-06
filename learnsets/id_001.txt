@@ -1,4 +1,4 @@
-Bulbasaur 1 9 4 4 4 GRASS POISON
+Bulbasaur 1
 Evolve: 10,2
 level,move_id
 1,1

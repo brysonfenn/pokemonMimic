@@ -1,4 +1,4 @@
-Charmander
+Charmander 4
 Evolve: 16,0
 level,move_id
 1,2

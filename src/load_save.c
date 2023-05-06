@@ -217,6 +217,8 @@ int print_save_files() {
 
 	int num_save_files = 0;
 
+	clearTerminal();
+
     for (int i = 1; i <= 10; i++) {
     	sprintf(filename, "save_files/save_file%d.txt", i);
 	    char line[LINE_SIZE];

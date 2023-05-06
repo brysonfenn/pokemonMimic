@@ -162,7 +162,7 @@ char * get_typing_by_id(Type type) {
 
 Type get_type_id_by_string(char * str) {
     for (int i = 0; i < NUM_TYPES; i++) {
-        if (strcmp(str,string_typings[i]) == 0) {
+        if (strcasecmp(str,string_typings[i]) == 0) {
             return i;
         }
     }

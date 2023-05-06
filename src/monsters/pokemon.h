@@ -6,14 +6,10 @@
 #include "attacks.h"
 #include "conditions.h"
 #include "typings.h"
+#include "pokemon_id_list.h"
 
 #define NUM_CREATED_POKEMON 8
 #define RANDOM_LEVEL 0
-
-typedef enum { POKEMON_MISSING_NO, POKEMON_BULBASAUR, POKEMON_IVYSAUR, POKEMON_VENUSAUR, POKEMON_CHARMANDER, 
-  POKEMON_CHARMELEON, POKEMON_CHARIZARD, POKEMON_SQUIRTLE, POKEMON_WARTORTLE, POKEMON_BLASTOISE, POKEMON_CATEREPIE
-
-} Pokemon_id;
 
 typedef struct pokemon {
   char name[30];
@@ -21,9 +17,9 @@ typedef struct pokemon {
   int maxHP;
   int currentHP;
   
-  int16_t baseAttack;
-  int16_t baseDefense;
-  int16_t baseSpeed;
+  int baseAttack;
+  int baseDefense;
+  int baseSpeed;
 
   Type type1;
   Type type2;
@@ -45,15 +41,15 @@ typedef struct pokemon {
 
 extern pokemon emptyPok;
 
-extern pokemon bulbasaur;
-extern pokemon charmander;
-extern pokemon squirtle;
+// extern pokemon bulbasaur;
+// extern pokemon charmander;
+// extern pokemon squirtle;
 
-extern pokemon caterpie;
-extern pokemon weedle;
-extern pokemon pidgey;
-extern pokemon rattata;
-extern pokemon sandshrew;
+// extern pokemon caterpie;
+// extern pokemon weedle;
+// extern pokemon pidgey;
+// extern pokemon rattata;
+// extern pokemon sandshrew;
 
 //pokemon.c
 
@@ -97,5 +93,8 @@ pokemon * get_random_pokemon(int level_min, int level_max);
 //Return a random pokemon, excluding starters
 //Always immediately dereference the return value of this function.
 pokemon * get_random_wild_pokemon(int level_min, int level_max);
+
+//Get a pokemon with all its base stats
+pokemon * get_pokemon_frame(Pokemon_id pok_id);
 
 #endif // POKEMON_H

@@ -5,8 +5,6 @@
 #include "../print_defines.h"
 #include "../print_utils.h"
 
-#define LINE_SIZE 100
-
 void learn_move(pokemon * pok, attack * new_attack);
 int evolve(pokemon * pok, int next_pok_id);
 
@@ -177,35 +175,22 @@ int evolve(pokemon * pok, int next_pok_id) {
   sprintf(og_pok_name, "%s", pok->name);
   int lost_hp = pok->maxHP - pok->currentHP;
 
-  // Open the file for reading
-  FILE *fp;
-  char filename[50];
-  sprintf(filename, "learnsets/id_%03d.txt", next_pok_id);
-  char line[LINE_SIZE];
-  fp = fopen(filename, "r");
-
   text_box_cursors(TEXT_BOX_BEGINNING);
-
-  // Check if the file was opened successfully
-  if (fp == NULL) {
-      printw("Evolution Learnset file does not exist.\n"); refresh(); sleep(2);
-      return 1;
-  }
-
   printw("%s is evolving!", og_pok_name); refresh(); sleep(3);
 
-  char type1[24];
-	char type2[24];
-  fgets(line, LINE_SIZE, fp);	// Name first line
+  //Get pokemon evolution frame
+  pokemon evolution = *(get_pokemon_frame(next_pok_id));
 
-  //Get new name, stats, and types
-  sscanf(line, "%s %d %d %d %d %d %s %s", &(pok->name), &(pok->id_num), &(pok->maxHP), 
-            &(pok->baseAttack), &(pok->baseDefense), &(pok->baseSpeed), type1, type2);
-  pok->type1 = get_type_id_by_string(type1);
-  pok->type2 = get_type_id_by_string(type2);
-
+  //Attach essential variables to the new evolution
+  evolution.sleep_count = pok->sleep_count;
+  evolution.visible_condition = pok->visible_condition;
+  pokemon_init(&evolution, pok->level, 0, 0);
   randomize_stats(pok, pok->level, 0, 0);
 
+  //The pokemon can now be changed to the evolution
+  (*pok) = evolution;
+
+  //Same hp loss
   pok->currentHP = pok->maxHP - lost_hp;
 
   text_box_cursors(TEXT_BOX_NEXT_LINE);
