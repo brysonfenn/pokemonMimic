@@ -41,15 +41,6 @@ typedef struct pokemon {
 
 extern pokemon emptyPok;
 
-// extern pokemon bulbasaur;
-// extern pokemon charmander;
-// extern pokemon squirtle;
-
-// extern pokemon caterpie;
-// extern pokemon weedle;
-// extern pokemon pidgey;
-// extern pokemon rattata;
-// extern pokemon sandshrew;
 
 //pokemon.c
 
@@ -70,7 +61,7 @@ float get_stat_modifier(int16_t stage);
 //Give random stats to pokemon based on level
   //level = particular level
   //if level = 0, get random level from range level_min:level_max
-void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max);
+void calculate_stats(pokemon * new_pok, int level, int level_min, int level_max);
 
 
 

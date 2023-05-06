@@ -12,12 +12,18 @@ int evolve(pokemon * pok, int next_pok_id);
 void pokemon_level_up(pokemon *pok, int next_level_exp) {
   pok->level++;
   pok->exp = (pok->exp - next_level_exp);
+  int lost_hp = pok->maxHP - pok->currentHP;
 
-  //Upgrade stats
-  pok->maxHP += 2; pok->currentHP += 2;
-  pok->baseAttack++;
-  pok->baseDefense++;
-  pok->baseSpeed++;
+  //Redo stat calculation
+  pokemon frame = *(get_pokemon_frame(pok->id_num));
+  calculate_stats(&frame, pok->level, 0, 0);
+
+  //Set all the stats to the calculated stats
+  pok->maxHP = frame.maxHP;
+  pok->currentHP = pok->maxHP - lost_hp;
+  pok->baseAttack = frame.baseAttack;     //Keep lost hp the same
+  pok->baseDefense = frame.baseDefense;
+  pok->baseSpeed = frame.baseSpeed;
 
   text_box_cursors(TEXT_BOX_BEGINNING);
   printw("%s has grown to level %d!", pok->name, pok->level);
@@ -151,6 +157,7 @@ void pokemon_give_moves(pokemon *pok) {
       new_attack = *(get_attack_by_id(move_id));
       pok->attacks[attack_position] = new_attack;
       attack_position++;
+
       if (pok->numAttacks < 4) pok->numAttacks++;   //Only 4 attacks can exist
       if (attack_position > 3) attack_position = 0; //Cycle through position to get highest level attacks
     }
@@ -181,16 +188,13 @@ int evolve(pokemon * pok, int next_pok_id) {
   //Get pokemon evolution frame
   pokemon evolution = *(get_pokemon_frame(next_pok_id));
 
-  //Attach essential variables to the new evolution
-  evolution.sleep_count = pok->sleep_count;
-  evolution.visible_condition = pok->visible_condition;
-  pokemon_init(&evolution, pok->level, 0, 0);
-  randomize_stats(pok, pok->level, 0, 0);
+  //Attach name, base stats of evolution to pokemon, then calculate stats
+  sprintf(pok->name, "%s", evolution.name);
+  pok->maxHP = evolution.maxHP; pok->baseAttack = evolution.baseAttack;
+  pok->baseDefense = evolution.baseDefense; pok->baseSpeed = evolution.baseSpeed;
+  calculate_stats(pok, pok->level, 0, 0);
 
-  //The pokemon can now be changed to the evolution
-  (*pok) = evolution;
-
-  //Same hp loss
+  //Pokemon should have the same hp loss
   pok->currentHP = pok->maxHP - lost_hp;
 
   text_box_cursors(TEXT_BOX_NEXT_LINE);

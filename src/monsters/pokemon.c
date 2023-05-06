@@ -12,12 +12,12 @@
   //level = particular level
   //if level = 0, get random level from range level_min:level_max
 void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
-  new_pok->exp = 0;
+  new_pok->exp = 15;
   new_pok->numAttacks = 0;
   new_pok->visible_condition = NO_CONDITION;
   new_pok->hidden_condition = NO_CONDITION;
 
-  randomize_stats(new_pok, level, level_min, level_max);
+  calculate_stats(new_pok, level, level_min, level_max);
 
   new_pok->currentHP = new_pok->maxHP;
   
@@ -27,7 +27,7 @@ void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
 //Give random stats to pokemon based on level
   //level = particular level
   //if level = 0, get random level from range level_min:level_max
-void randomize_stats(pokemon * new_pok, int level, int level_min, int level_max) {
+void calculate_stats(pokemon * new_pok, int level, int level_min, int level_max) {
   if (!level) {
     level = (rand() % (level_max - level_min)) + level_min;
   }
