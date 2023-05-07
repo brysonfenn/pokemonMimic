@@ -83,15 +83,34 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
 int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
   attack chosenAttack = perp->attacks[move_num];
 
+  int perpAttack, victimDefense, perpAtkStage, victimDefStage;
+  Type moveType = perp->attacks[move_num].type;
+
+  //See whether we will use physical or special
+  if ( moveType == NORMAL || moveType == FIGHTING || moveType == POISON || moveType == GROUND || 
+        moveType == FLYING || moveType == BUG || moveType == ROCK || moveType == GHOST ) 
+  {
+    //Physical Stats
+    perpAttack = perp->baseAttack; victimDefense = victim->baseDefense;
+    perpAtkStage = perp->atk_stage; victimDefStage = victim->def_stage;
+  } 
+  else 
+  {
+    //Special Stats
+    perpAttack = perp->baseSpAttack; victimDefense = victim->baseSpDefense;
+    perpAtkStage = perp->sp_atk_stage; victimDefStage = victim->sp_def_stage;
+  }
+
+
   // Basic Equation
-  float damage_f = ( ((2.0 * perp->level / 5) + 2) * chosenAttack.power * perp->baseAttack / victim->baseDefense) / 50.0;
+  float damage_f = ( ((2.0 * perp->level / 5) + 2) * chosenAttack.power * perpAttack / victimDefense) / 50.0;
   float random_float = (float) ((rand() % 25) + 85); // Random number between 85 and 110
   damage_f *= (random_float / 100.0); // Randomize damage a bit
   damage_f += 2;
 
   // Damage modifier stages
-  float perp_attack_modifier = get_stat_modifier(perp->atk_stage);
-  float victim_defense_modifier = get_stat_modifier(victim->def_stage);
+  float perp_attack_modifier = get_stat_modifier(perpAtkStage);
+  float victim_defense_modifier = get_stat_modifier(victimDefStage);
   damage_f = damage_f * (perp_attack_modifier / victim_defense_modifier);
 
   int damage = (int) damage_f;
