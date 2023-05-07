@@ -34,13 +34,19 @@ void calculate_stats(pokemon * pok, int level, int level_min, int level_max) {
   }
   pok->level = level;
   int ev = 1;
+
   int hp_iv = pokemon_get_iv(pok, IV_HP);
-  int att_iv =pokemon_get_iv(pok, IV_ATTACK);
+  int atk_iv =pokemon_get_iv(pok, IV_ATTACK);
   int def_iv = pokemon_get_iv(pok, IV_DEFENSE);
+  int sp_atk_iv = pokemon_get_iv(pok, IV_SP_ATTACK);
+  int sp_def_iv = pokemon_get_iv(pok, IV_SP_DEFENSE);
   int spd_iv = pokemon_get_iv(pok, IV_SPEED);
+
   pok->maxHP = (((2 * pok->maxHP + hp_iv + (ev/4)) * level) / 100) + level + 10;
-  pok->baseAttack = (((2 * pok->baseAttack + att_iv + (ev/4)) * level) / 100) + 5;
+  pok->baseAttack = (((2 * pok->baseAttack + atk_iv + (ev/4)) * level) / 100) + 5;
   pok->baseDefense = (((2 * pok->baseDefense + def_iv + (ev/4)) * level) / 100) + 5;
+  pok->baseSpAttack = (((2 * pok->baseSpAttack + sp_atk_iv + (ev/4)) * level) / 100) + 5;
+  pok->baseSpDefense = (((2 * pok->baseSpDefense + sp_def_iv + (ev/4)) * level) / 100) + 5;
   pok->baseSpeed = (((2 * pok->baseSpeed + spd_iv + (ev/4)) * level) / 100) + 5;
 
   reset_base_stats(pok);
@@ -50,6 +56,8 @@ void calculate_stats(pokemon * pok, int level, int level_min, int level_max) {
 void reset_base_stats(pokemon *pok) {
   pok->atk_stage = 0;
   pok->def_stage = 0;
+  pok->sp_atk_stage = 0;
+  pok->sp_def_stage = 0;
   pok->spd_stage = 0;
   pok->accuracy  = 1.0;
   pok->hidden_condition = NO_CONDITION;
@@ -63,13 +71,14 @@ void print_pokemon_summary(pokemon *pok) {
   printw("EXP to next Level: %d\n", (pok->level * 8) - pok->exp);
   printw("HP: %d/%d", pok->currentHP, pok->maxHP);
   if (!(pok->currentHP)) printw("  (Fainted)");
-  printw("\nAttack Stat: %d\nDefense Stat: %d\n", pok->baseAttack, pok->baseDefense);
-  printw("Speed Stat: %d\n\n", pok->baseSpeed);
+  printw("\n\nATTACK: %d\nDEFENSE: %d\n", pok->baseAttack, pok->baseDefense);
+  printw("SP ATTACK: %d\nSP DEFENSE: %d\n", pok->baseSpAttack, pok->baseSpDefense);
+  printw("SPEED: %d\n\n", pok->baseSpeed);
   printw("Attacks: \n");
-  mvprintw(10, 8, "%s", pok->attacks[0].name);
-  mvprintw(10, 25,"%s", pok->attacks[1].name);
-  mvprintw(11,8, "%s", pok->attacks[2].name);
-  mvprintw(11,25,"%s\n", pok->attacks[3].name);
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN, 8, "%s", pok->attacks[0].name);
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN, 25,"%s", pok->attacks[1].name);
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN+1, 8, "%s", pok->attacks[2].name);
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN+1, 25,"%s\n", pok->attacks[3].name);
 }
 
 //Return the fraction modifier for a stat given the stage (stage 0 return 1.0)

@@ -88,7 +88,7 @@ int main(void) {
       clear();
       print_pokemon_summary(&(player.party[inputNum]));
       printw("\n  Switch\n  Release\n  Cancel\n");
-      inputNum2 = get_selection(13, 0, 2, 0, NOT_MAIN_SELECT);
+      inputNum2 = get_selection(POKE_SUMMARY_SEL_BEGIN, 0, 2, 0, NOT_MAIN_SELECT);
 
       //Break if inputNum2 is 2 (cancel)
       if (inputNum2 == 2) { break; } 

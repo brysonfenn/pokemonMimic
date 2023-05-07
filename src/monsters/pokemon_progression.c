@@ -210,6 +210,8 @@ int evolve(pokemon * pok, int next_pok_id) {
 
 
 int pokemon_get_iv(pokemon * pok, char type) {
+  int shift;
+
   //Each iv occupies 6 bits of the iv random number
   switch (type) {
     case IV_HP:
@@ -221,8 +223,16 @@ int pokemon_get_iv(pokemon * pok, char type) {
     case IV_DEFENSE:
       return ((pok->iv >> 12) & 0x3F);
       break;
-    case IV_SPEED:
+    case IV_SP_ATTACK:
       return ((pok->iv >> 18) & 0x3F);
+      break;
+    case IV_SP_DEFENSE:
+      return ((pok->iv >> 24) & 0x3F);
+      break;
+    case IV_SPEED:
+      shift = ((pok->iv >> 30) & 0x3);  //Get top two bits
+      //Return random 6 bits depending on the top two bits
+      return ((pok->iv >> (shift * 5 + 2)) & 0x3F);
       break;
     default:
       break;

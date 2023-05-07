@@ -6,8 +6,8 @@
 #include "../print_utils.h"
 #include "../print_defines.h"
 
-// pok  varName   = {"name here",  id  hp chp   ba   bd    bs   type1     type2    num_att ca cd cs  acc lvl exp}
-pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0, NO_TYPE,  NO_TYPE };
+// pok  varName   = {"name here",  id  hp chp   ba   bd   bsa   bsd    bs   type1     type2  }
+pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0,    0,    0, NO_TYPE,  NO_TYPE };
 
 #define NUM_CREATED_POKEMON 8
 #define NUM_STARTERS 3
@@ -85,7 +85,8 @@ pokemon * get_pokemon_frame(Pokemon_id pok_id) {
   pok->type2 = get_type_id_by_string(type2);
   sprintf(pok->name, "%s", name);
   pok->id_num = id_num; pok->maxHP = hp; pok->baseAttack = att; 
-  pok->baseDefense = def; pok->baseSpeed = spd;
+  pok->baseDefense = def; pok->baseSpAttack = sp_Attack; 
+  pok->baseSpDefense = sp_Defense; pok->baseSpeed = spd;
 
   fclose(fp);
 

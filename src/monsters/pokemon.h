@@ -13,26 +13,33 @@
 #define IV_HP 0
 #define IV_ATTACK 1
 #define IV_DEFENSE 2
-#define IV_SPEED 3
+#define IV_SP_ATTACK 3
+#define IV_SP_DEFENSE 4
+#define IV_SPEED 5
 
 typedef struct pokemon {
   char name[30];
-  int id_num;
-  int maxHP;
-  int currentHP;
+  int16_t id_num;
+  int16_t maxHP;
+  int16_t currentHP;
   
-  int baseAttack;
-  int baseDefense;
-  int baseSpeed;
-  int iv;
+  int16_t baseAttack;
+  int16_t baseDefense;
+  int16_t baseSpAttack;
+  int16_t baseSpDefense;
+  int16_t baseSpeed;
+  int16_t iv;
 
   Type type1;
   Type type2;
 
-  int numAttacks;
+  int16_t numAttacks;
   int16_t atk_stage;
   int16_t def_stage;
+  int16_t sp_atk_stage;
+  int16_t sp_def_stage;
   int16_t spd_stage;
+
   uint8_t level;
   uint8_t sleep_count;
   uint32_t exp;

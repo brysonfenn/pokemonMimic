@@ -1,12 +1,12 @@
-Last Saved: 05/06/2023 15:45:29
+Last Saved: 05/07/2023 12:53:33
 Player: 
-2 2 3 1300
+2 2 3 1000
 Location: {1,(20,11)}
 Pokemon: 
-Charmander 4 20 4 2 11 10 13 5 13 FIRE NONE
+Charmander 4 20 20 2 10 9 11 10 12 5 15 FIRE NONE
 	Scratch. 2
 	Growl. 3
-Bulbasaur 1 21 17 2 11 11 11 5 10 GRASS POISON
+Bulbasaur 1 22 22 2 11 12 14 14 12 5 15 GRASS POISON
 	Tackle. 1
 	Growl. 3
 Bag:
