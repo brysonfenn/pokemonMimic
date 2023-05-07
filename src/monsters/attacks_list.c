@@ -22,13 +22,16 @@ attack defense_curl = {"Defense Curl" ,  9, 40,   0, 100, NO_TYPE,  0.0, false, 
 attack vine_whip    = {"Vine whip"    , 10, 25,  45, 100, GRASS,    0.0, false, &attack_do_nothing };
 attack leech_seed   = {"Leech seed"   , 11, 10,   0,  90, GRASS,    0.0, false, &inflict_condition, SEEDED, 100 };
 attack ember        = {"Ember"        , 12, 25,  40, 100, FIRE,     0.0, false, &attack_do_nothing };
-attack bubble       = {"Bubble"       , 13, 30,  20, 100, WATER,     0.0, false, &decrement_opponent_stat, SPEED_STAT, 10 };
+attack bubble       = {"Bubble"       , 13, 30,  20, 100, WATER,    0.0, false, &decrement_opponent_stat, SPEED_STAT, 10 };
 attack poison_powder= {"Poison Powder", 14, 35,   0,  75, POISON,   0.0, false, &inflict_condition, POISONED, 100 };
-attack sleep_powder = {"Sleep Powder" , 15, 35,   0,  75, GRASS,   0.0, false, &inflict_condition, ASLEEP, 100 };
+attack sleep_powder = {"Sleep Powder" , 15, 35,   0,  75, GRASS,    0.0, false, &inflict_condition, ASLEEP, 100 };
+attack razor_leaf   = {"Razor Leaf"   , 16, 25,  55,  95, GRASS,    0.0, false, &attack_do_nothing };
+attack metal_claw   = {"Metal Claw"   , 17, 35,  50,  95, FIGHTING, 0.0, false, &attack_do_nothing };
+attack smoke_screen = {"Smoke Screen" , 17, 20,   0, 100, NORMAL,   0.1, false, &attack_do_nothing };
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
     &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl, &vine_whip, // #1-10
-    &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder }; // #11-15
+    &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder, &razor_leaf, &metal_claw, &smoke_screen }; // #11-17
 
 //Return an attack given an attack id number
 attack * get_attack_by_id(id_num) {

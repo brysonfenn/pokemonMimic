@@ -10,6 +10,9 @@ int evolve(pokemon * pok, int next_pok_id);
 
 //Handle leveling up - also handles learning moves from new level
 void pokemon_level_up(pokemon *pok, int next_level_exp) {
+
+  if (pok->level >= 100) return;
+
   pok->level++;
   pok->exp = (pok->exp - next_level_exp);
   int lost_hp = pok->maxHP - pok->currentHP;

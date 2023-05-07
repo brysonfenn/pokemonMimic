@@ -14,7 +14,7 @@ typedef int (*attack_func_ptr) (Condition, int, struct pokemon*);
 typedef struct attack {
   char name[30];
   int id_num;
-  int pp;
+  int max_pp;
   int power; 
   uint8_t accuracy;
   Type type;
@@ -24,6 +24,8 @@ typedef struct attack {
   attack_func_ptr side_effect;
   int condition;
   int chance;
+
+  int curr_pp;
 } attack;
 
 extern attack empty_attack;

@@ -347,7 +347,7 @@ void handle_exp(int exp) {
     currentPok = &(player.party[i]);
 
     //Give active pokemon experience points if it is alive and didn't run away.
-    if (player.numAlive && !run_success) {
+    if (player.numAlive && !run_success && (currentPok->level < 100)) {
       text_box_cursors(TEXT_BOX_NEXT_LINE);
       printw("%s gained %d experience points!", currentPok->name, exp);
       currentPok->exp += (exp);
