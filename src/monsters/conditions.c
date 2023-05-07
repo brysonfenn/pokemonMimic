@@ -93,6 +93,7 @@ int handle_end_conditions() {
 		if (player_pok->currentHP > player_pok->maxHP) player_pok->currentHP = player_pok->maxHP;
 		refresh(); sleep(2);
 	}
+	if (player_pok->currentHP == 0 || enemy_pok->currentHP == 0) return 2;
 
 	return 0;
 }

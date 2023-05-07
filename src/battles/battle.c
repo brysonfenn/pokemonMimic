@@ -220,6 +220,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
       return_execute = use_item(inputNum, &enemy);
       if (return_execute == ITEM_FAILURE) { continue; }
       else if (return_execute == ITEM_CATCH_SUCCESS) { run_success = true; }
+      else { enemy_attacks = true; }
       break;
     case SWITCH:
       if (currentPok != &(player.party[pokemon_selected])) {

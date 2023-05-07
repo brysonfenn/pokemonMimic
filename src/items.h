@@ -16,7 +16,7 @@
 #define NUM_ITEMS 50
 #define MAX_NUM_ITEM 4
 
-typedef int (*item_func_ptr) (int);
+typedef int (*item_func_ptr) (int, char *);
 
 typedef struct item {
   int id_num;
@@ -43,9 +43,9 @@ item * get_item_by_id(int id_num);
 
 int use_item(int item_num, pokemon * enemy);
 
-int execute_potion(int input_num);
+int execute_potion(int input_num, char * name);
 
-int attempt_catch(int catch_rate);
+int attempt_catch(int catch_rate, char * name);
 
 int do_nothing(int input_num);
 

@@ -10,8 +10,8 @@
 
                 //  id  name           qt  cost    function        arg
 item empty_item =   {0, "No Item"     , 1, 1000,  &do_nothing,      0};
-item potion =       {1, "Potion"      , 0, 300,   &execute_potion,  5};
-item super_potion = {2, "Super Potion", 0, 700,   &execute_potion,  10};
+item potion =       {1, "Potion"      , 0, 300,   &execute_potion,  20};
+item super_potion = {2, "Super Potion", 0, 700,   &execute_potion,  50};
 item pokeball =     {3, "Pokéball"    , 0, 200,   &attempt_catch,   60};
 item greatball =    {4, "Great Ball"  , 0, 600,   &attempt_catch,   80};
 
@@ -93,7 +93,7 @@ int use_item(int item_num, pokemon * enemy) {
   item * this_item = &(player.bag[item_num]);
   enemy_pok = enemy;
 
-  int return_execute = this_item->execute(this_item->func_arg);
+  int return_execute = this_item->execute(this_item->func_arg, this_item->name);
   if (return_execute == ITEM_SUCCESS || return_execute == ITEM_CATCH_SUCCESS || return_execute == ITEM_CATCH_FAILURE) {
     this_item->number--;
     //If number of items there is zero, adjust entire bag
@@ -112,9 +112,9 @@ int use_item(int item_num, pokemon * enemy) {
   return return_execute;
 }
 
-int execute_potion(int input_num) {
+int execute_potion(int input_num, char * name) {
   clear();
-  printw("Select a pokemon to apply the potion on.\n");
+  printw("Select a pokemon to apply the %s on.\n", name);
   printParty();
   printw("  Cancel\n");
 
@@ -126,7 +126,7 @@ int execute_potion(int input_num) {
   if (currentHP == 0 || currentHP == player.party[input].maxHP) {
     clear();
     move(player.numInParty+4,0);
-    printw("Could not apply potion on %s.\n", player.party[input].name); refresh(); sleep(1);
+    printw("Could not apply %s on %s.\n", name, player.party[input].name); refresh(); sleep(1);
     return ITEM_FAILURE;
   }
 
@@ -145,7 +145,7 @@ int execute_potion(int input_num) {
   return ITEM_SUCCESS;
 }
 
-int attempt_catch(int catch_rate) {
+int attempt_catch(int catch_rate, char * name) {
   clear();
   if (enemy_pok->id_num == 0 || player.trainer_battle) {
     printw("You can't use that!"); refresh(); sleep(2);
@@ -164,7 +164,7 @@ int attempt_catch(int catch_rate) {
   printBattle();
 
   text_box_cursors(TEXT_BOX_BEGINNING);
-  printw("B threw a Ball with catch_rate: %d", catch_rate); refresh(); sleep(2);
+  printw("B threw a %s!", name); refresh(); sleep(2);
 
   text_box_cursors(TEXT_BOX_NEXT_LINE);
   if (random < catch_rate) {
