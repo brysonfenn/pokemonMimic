@@ -44,6 +44,7 @@ typedef struct pokemon {
   uint8_t sleep_count;
   uint32_t exp;
   float accuracy;
+  float evasiveness;
 
   Condition visible_condition;
   Condition hidden_condition;

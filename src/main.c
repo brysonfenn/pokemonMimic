@@ -45,7 +45,7 @@ int main(void) {
   while(1) {
     clearTerminal();
     for (int i = 0; i < player.numInParty; i++) {
-      reset_base_stats(&(player.party[i]));
+      reset_stat_stages(&(player.party[i]));
     }
 
     //Handle changing the display

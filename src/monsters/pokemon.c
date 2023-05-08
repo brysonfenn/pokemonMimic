@@ -60,6 +60,7 @@ void reset_base_stats(pokemon *pok) {
   pok->sp_def_stage = 0;
   pok->spd_stage = 0;
   pok->accuracy  = 1.0;
+  pok->evasiveness = 1.0;
   pok->hidden_condition = NO_CONDITION;
 }
 

@@ -38,9 +38,11 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   refresh(); sleep(1);
 
   //Calculate current accuracy
-  int curr_accuracy =  perp->accuracy * chosenAttack.accuracy;
+  int curr_accuracy =  perp->accuracy * chosenAttack.accuracy / victim->evasiveness;
+  if (curr_accuracy < 5) curr_accuracy = 5;
   bool missed = (rand() % 100) >= curr_accuracy;
 
+  //Check if missed
   if (missed) {
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     if (chosenAttack.power) {
