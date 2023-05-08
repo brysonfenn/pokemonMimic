@@ -63,7 +63,7 @@ extern pokemon emptyPok;
 void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max);
 
 //Reset stat stages whenever pokemon is switched out or battle ends
-void reset_base_stats(pokemon *pok);
+void reset_stat_stages(pokemon *pok);
 
 //Print stats, attacks, etc of a given pokemon
 void print_pokemon_summary(pokemon *pok);

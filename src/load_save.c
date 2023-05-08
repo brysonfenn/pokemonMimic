@@ -153,7 +153,7 @@ int load_game(int file_num) {
 			return 2;
 		}
 
-		reset_base_stats(curr_pok);
+		reset_stat_stages(curr_pok);
 
 		for (j = 0; j < curr_pok->numAttacks; j++) {
 			fgets(line, LINE_SIZE, fp);

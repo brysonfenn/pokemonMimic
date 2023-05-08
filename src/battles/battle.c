@@ -234,7 +234,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
         }
 
         //Make switch
-        reset_base_stats(currentPok);
+        reset_stat_stages(currentPok);
         set_current_pokemon(pokemon_selected);
         currentPok = player.current_pokemon;
         enemy_attacks = true;
