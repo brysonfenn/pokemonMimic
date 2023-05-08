@@ -35,6 +35,7 @@ pokemon * get_random_wild_pokemon(int level_min, int level_max) {
   // newest_pokemon = *(get_pokemon_frame(POKEMON_CATERPIE));
   pokemon * new_pok = &newest_pokemon;
   pokemon_init(new_pok, RANDOM_LEVEL, level_min, level_max);
+  // pokemon_init(new_pok, 0, 15, 20);
   return new_pok;
 }
 

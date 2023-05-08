@@ -51,20 +51,19 @@ void default_load() {
 }
 
 bool runAttempt() {
-  int success = ((rand() % 4) > 0);
+  int random = (rand() % 256);
+  int chance = (player.current_pokemon->baseSpeed * 128 / player.enemy_pokemon->baseSpeed);
   clear_text_box();
   
   text_box_cursors(TEXT_BOX_BEGINNING);
-  if (success) {
-    printw("Got away safely.");
+  if (random < chance) {
+    printw("Got away safely."); refresh(); sleep(2);
+    return true;
   }
   else {
-    printw("Can't escape!");
+    printw("Can't escape!"); refresh(); sleep(2);
+    return false;
   }
-  refresh();
-  sleep(2);
-
-  return success;
 }
 
 void heal_party() {
