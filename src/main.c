@@ -52,7 +52,6 @@ int main(void) {
 
     //This is the actual main menu
     case MAIN:
-      resume_ncurses();
       printw("  Wild Pokemon\n  Trainer\n  Pokemon\n  Bag\n  Player\n");
       printw("  Save Game\n  Load Game\n  Town\n  Power Off\n\n");
 
@@ -198,10 +197,10 @@ int main(void) {
 
 
 void control_c_handler() {
-  clearTerminal();
-  endwin(); // Clean up ncurses
-  setvbuf(stdout, NULL, _IOLBF, 0);
+  clear();
+  pause_ncurses();
 
+  clearTerminal();
   free(player.loc);
 
   exit(0);

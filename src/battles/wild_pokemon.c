@@ -7,7 +7,6 @@
 
 //Battle a random wild pokemon
 int battle_wild_pokemon() {
-    resume_ncurses();
 
     pokemon example_pokemon;
     player.trainer_battle = false;
@@ -26,8 +25,6 @@ int battle_wild_pokemon() {
     }
 
     clear();
-
-    pause_ncurses();
 
     return 0;
 }
