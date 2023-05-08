@@ -53,7 +53,7 @@ void calculate_stats(pokemon * pok, int level, int level_min, int level_max) {
 }
 
 //Reset stat stages whenever pokemon is switched out or battle ends
-void reseet_stat_stages(pokemon *pok) {
+void reset_stat_stages(pokemon *pok) {
   pok->atk_stage = 0;
   pok->def_stage = 0;
   pok->sp_atk_stage = 0;

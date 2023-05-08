@@ -32,7 +32,7 @@ int main(void) {
 
   resume_ncurses();
 
-  int inputNum, inputNum2, return_execute;
+  int inputNum, inputNum2, return_execute, num_files;
   char example_string[100];
   int last_selection = 0;
 
@@ -43,7 +43,6 @@ int main(void) {
 
   //This is the main while loop.
   while(1) {
-    clearTerminal();
     for (int i = 0; i < player.numInParty; i++) {
       reset_stat_stages(&(player.party[i]));
     }
@@ -146,25 +145,27 @@ int main(void) {
 
     //Save game data to a file
     case SAVE:
-      pause_ncurses();
+      clear();
+      printw("Select a save file to save to: \n");
       print_save_files();
-      inputNum = getValidInput(0, 10, "Enter a save file to save to: ");
-      clearTerminal();
-      if (inputNum == 0) { current_display = MAIN; break; }
-      resume_ncurses();
-      save_game(inputNum);
+      inputNum = get_current_save_file();
+      inputNum = (inputNum == 0) ? 0 : inputNum-1;  //Adjust to current save file position
+      inputNum = get_selection(1, 0, 9, inputNum, NOT_MAIN_SELECT);
+      clear();
+      if (inputNum == 9) { current_display = MAIN; break; }
+      save_game(inputNum+1);
       current_display = MAIN;
       break;
 
     //Load game data from a file
     case LOAD:
-      pause_ncurses();
+      clear();
+      printw("Select a save file to load: \n");
       print_save_files();
-      inputNum = getValidInput(0, 10, "Enter a save file to load: ");
-      clearTerminal();
-      if (inputNum == 0) { current_display = MAIN; break; }
-      resume_ncurses();
-      load_game(inputNum);
+      inputNum = get_selection(1, 0, 9, 0, NOT_MAIN_SELECT);
+      clear();
+      if (inputNum == 9) { current_display = MAIN; break; }
+      load_game(inputNum+1);
       current_display = MAIN;
       break;
     

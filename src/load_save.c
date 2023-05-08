@@ -218,28 +218,33 @@ int print_save_files() {
 
 	int num_save_files = 0;
 
-	clearTerminal();
-
-    for (int i = 1; i <= 10; i++) {
+    for (int i = 1; i <= 9; i++) {
     	sprintf(filename, "save_files/save_file%d.txt", i);
 	    char line[LINE_SIZE];
 	    fp = fopen(filename, "r");
 
 	    // Check if the file was opened successfully
-	    if (fp == NULL) { continue; }
+	    if (fp == NULL) { 
+			printw("  %d: Empty\n", i);
+			continue; 
+		}
 	    fgets(line, LINE_SIZE, fp);
-	    printf("%d: %s", i, line);
+	    printw("  %d: %s", i, line);
+
 		num_save_files++;
     }
-	printf("0: Cancel\n\n");
+	printw("  Cancel\n\n");
 
     if (!current_save_file) {
-    	printf("Current Save File: None\n\n");
+    	printw("Current Save File: None\n\n");
     }
     else {
-    	printf("Current Save File: %d\n\n", current_save_file);
+    	printw("Current Save File: %d\n\n", current_save_file);
     }
 
 	return num_save_files;
 }
 
+int get_current_save_file() {
+	return current_save_file;
+}

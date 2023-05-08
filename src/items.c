@@ -19,6 +19,7 @@ item greatball =    {4, "Great Ball"  , 0, 600,   &attempt_catch,   80};
 static * item_array[NUM_ITEMS] = { &empty_item, &potion, &super_potion, &pokeball, &greatball };
 
 static pokemon * enemy_pok;
+static int last_selection = 0;
 
 void items_init() {
 
@@ -35,7 +36,7 @@ void print_mart() {
 
 int handle_mart() {
   item example_item;
-  int inputNum;
+  int inputNum, ch, maximum;
   char example_string[50];
   clear();
   move(0,0);
@@ -44,44 +45,74 @@ int handle_mart() {
   print_mart();
   printw("  Exit\n");
   printw("\nYou have $%d\n", player.money);
-  inputNum = get_selection(1,0,CURRENT_MAX_NUM,0,NOT_MAIN_SELECT);
+
+  inputNum = get_selection(1,0,CURRENT_MAX_NUM,last_selection,NOT_MAIN_SELECT);
+  last_selection = inputNum;
+
   inputNum++; //Align with ID number
   if (inputNum == CURRENT_MAX_NUM+1) { clear(); return ITEM_SUCCESS; }
-  else {
-    example_item = *(get_item_by_id(inputNum));
-    clear();
-    sprintf(example_string, "Select a quantity of %s\nto buy: ", example_item.name);
-    pause_ncurses();
-    inputNum = getValidInput_force(0, 99, example_string, 3);
-    if (inputNum * example_item.cost < player.money) {
-      player.money -= inputNum * example_item.cost;
 
-      bool foundItem = false;
-      //Find if there were any of those in the bag
-      for (int i = 0; i < player.numInBag; i++) {
-        if (player.bag[i].id_num == example_item.id_num) {
-          foundItem = true;
-          player.bag[i].number += inputNum;
-        }
-      }
+  example_item = *(get_item_by_id(inputNum));
+  clear();
+  maximum = player.money / example_item.cost;
 
-      if (!foundItem) {
-        player.bag[player.numInBag] = example_item;
-        player.bag[player.numInBag].number = inputNum;
-        player.numInBag++;
-      }
+  //Don't even let the player try if they can't buy something
+  if (maximum == 0) {
+    printw("You do not have enough money to buy that!\n"); refresh(); sleep(2);
+    clear(); return ITEM_FAILURE;
+  }
 
-      printf("You bought %d %s\n", inputNum, example_item.name); sleep(2);
+  inputNum = 0;
+  printw("Select a quantity of %s(s) to buy: %02d", example_item.name, inputNum); refresh();
+
+  int done_selecting = 0;
+  
+  while (1) {
+    ch = getch();
+    switch (ch) {
+      case KEY_UP:
+        if (inputNum == maximum) inputNum = 0;
+        else inputNum++;
+        break;
+      case KEY_DOWN:
+        if (inputNum == 0) inputNum = maximum;
+        else inputNum--;
+        break;
+      case 'a':
+        done_selecting = 1;
+        break;
+      case 'b':
+        return ITEM_FAILURE;
+        break;
+      default:
+        break;
     }
-    else {
-      printf("You do not have enough money to buy that!\n"); sleep(2);
-      clearTerminal();
-      resume_ncurses();
-      return ITEM_FAILURE;
+    clear();
+    if (done_selecting) break;
+    else { printw("Select a quantity of %s(s) to buy: %02d", example_item.name, inputNum); refresh(); }
+  }
+
+  //Buy the item
+  player.money -= inputNum * example_item.cost;
+
+  bool foundItem = false;
+  //Find if there were any of those in the bag
+  for (int i = 0; i < player.numInBag; i++) {
+    if (player.bag[i].id_num == example_item.id_num) {
+      foundItem = true;
+      player.bag[i].number += inputNum;
     }
   }
-  clearTerminal();
-  resume_ncurses();
+
+  if (!foundItem) {
+    player.bag[player.numInBag] = example_item;
+    player.bag[player.numInBag].number = inputNum;
+    player.numInBag++;
+  }
+
+  printw("You bought %d %s(s)\n", inputNum, example_item.name); refresh(); sleep(2); 
+
+  clear();
   return ITEM_SUCCESS;
 }
 
