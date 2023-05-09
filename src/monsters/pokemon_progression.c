@@ -116,6 +116,7 @@ void learn_move(pokemon * pok, attack * new_attack) {
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("%s forgot %s, and...", pok->name, pok->attacks[input_num]); refresh(); sleep(2);
     pok->attacks[input_num] = *new_attack;
+    pok->attacks[input_num].curr_pp = pok->attacks[input_num].max_pp;
   }
 
   text_box_cursors(TEXT_BOX_NEXT_LINE);
@@ -151,6 +152,7 @@ void pokemon_give_moves(pokemon *pok) {
 
   int level_target, move_id;
   attack new_attack;
+  attack * pok_attack;
   uint8_t attack_position = 0;
 
   while (fgets(line, LINE_SIZE, fp)) {
@@ -158,7 +160,10 @@ void pokemon_give_moves(pokemon *pok) {
     sscanf(line, "%d,%d", &level_target, &move_id);
     if (level_target <= pok->level) {
       new_attack = *(get_attack_by_id(move_id));
-      pok->attacks[attack_position] = new_attack;
+      pok_attack = &(pok->attacks[attack_position]);
+
+      *(pok_attack) = new_attack;
+      pok_attack->curr_pp = pok_attack->max_pp;
       attack_position++;
 
       if (pok->numAttacks < 4) pok->numAttacks++;   //Only 4 attacks can exist

@@ -71,6 +71,7 @@ int get_fight_selection(int first_line, int num_attacks) {
   int selection = 1;
   cursor_x = BATTLE_SELECT_1_X;
   cursor_y = first_line;
+  attack currAttack;
 
   adjust_cursors(selection, first_line);
 
@@ -78,8 +79,15 @@ int get_fight_selection(int first_line, int num_attacks) {
 
   flushinp();
   while (1) {
-    (ch = getch());
 
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    if (selection != 5) {
+      currAttack = player.current_pokemon->attacks[selection-1];
+      mvprintw(TEXT_BOX_Y+5, TEXT_BOX_X+3, "%s", get_typing_by_id(currAttack.type));
+      mvprintw(TEXT_BOX_Y+5, TEXT_BOX_X+15, "PP: %d/%d", currAttack.curr_pp, currAttack.max_pp);
+    }
+
+    (ch = getch());
     mvaddch(cursor_y, cursor_x, ' ');
 
     switch (ch) {

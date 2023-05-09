@@ -130,6 +130,13 @@ int initiate_battle(struct pokemon * enemyPoke) {
           break;
         }
         inputNum--;
+        if (player.current_pokemon->attacks[inputNum].curr_pp == 0) {
+          text_box_cursors(TEXT_BOX_BEGINNING);
+          printw("There is no PP left for %s", currentPok->attacks[attack_num]); refresh(); sleep(2);
+          current_display = MAIN;
+          break;
+        }
+
         attack_num = inputNum;
         current_decision = ATTACK;
         current_display = MAIN;
@@ -204,8 +211,8 @@ int initiate_battle(struct pokemon * enemyPoke) {
 
       //Pokemon with the higher speed goes first
       if (speed_difference > 0) {
-        perform_attack(currentPok, attack_num, &(enemy), false);
-        enemy_attacks = true;
+        return_execute = perform_attack(currentPok, attack_num, &(enemy), false);
+        if (return_execute == 0) enemy_attacks = true;
       }
       else if (speed_difference < 0) {
         perform_enemy_attack(currentPok, &enemy, enemy_attack_num);
@@ -213,7 +220,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
         printBattle();
         //Player Pokemon can only attack if still alive
         if (currentPok->currentHP > 0) {
-          perform_attack(currentPok, attack_num, &(enemy), false);
+          return_execute = perform_attack(currentPok, attack_num, &(enemy), false);
         }
       }
       break;
@@ -300,8 +307,8 @@ int initiate_battle(struct pokemon * enemyPoke) {
 void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num) {
   clear();
   printBattle();
-
   perform_attack(enemy, attack_num, currentPok, true);
+
   if (currentPok->currentHP <= 0) {
     currentPok->currentHP = 0;
     clear();
@@ -312,20 +319,31 @@ void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num)
 
 //Get a move number randomly (moves with higher damage have a higher chance)
 int get_move(pokemon * pok) {
+  int num_available_attacks = 0;
+  int available_attacks[4];
+  int curr_attack;
 
-  int max_move_index = 0;
-  int move =  0;
+  for (int i = 0; i < pok->numAttacks; i++) {
+    if (pok->attacks[i].curr_pp) {
+      available_attacks[num_available_attacks] = i;
+      num_available_attacks++;
+    }
+  }
+  if (num_available_attacks == 0) return -1;
+
+  int max_move_index = available_attacks[0];
 
   //Get move with the maximum power.
-  for (int i = 0; i < pok->numAttacks; i++) {
-    if (pok->attacks[i].power > pok->attacks[max_move_index].power) {
-      max_move_index = i;
+  for (int i = 0; i < num_available_attacks; i++) {
+    curr_attack = available_attacks[i];
+    if (pok->attacks[curr_attack].power > pok->attacks[max_move_index].power) {
+      max_move_index = available_attacks[i];
     }
   }
 
   int random = rand() % 100;
-  if (random < 66) return max_move_index;
-  else return (rand() % pok->numAttacks);
+  if (random < 67) return max_move_index;
+  else return available_attacks[rand() % num_available_attacks];
 }
 
 

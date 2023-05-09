@@ -67,7 +67,7 @@ int save_game(int file_num) {
 			
 		for (int j = 0; j < curr_pok.numAttacks; j++) {
 			curr_att = curr_pok.attacks[j];
-			fprintf(fp, "\t%s. %d\n", curr_att.name, curr_att.id_num);
+			fprintf(fp, "\t%s. %d %d\n", curr_att.name, curr_att.id_num, curr_att.curr_pp);
 		}
 	}
 	fprintf(fp, "Bag:\n");
@@ -94,7 +94,7 @@ int load_game(int file_num) {
 	int i, j;
 
 	char temp_name[50];
-	int numOfItem, temp_id_num;
+	int numOfItem, temp_id_num, temp_pp;
 
 	FILE *fp;
     char filename[50];
@@ -155,13 +155,14 @@ int load_game(int file_num) {
 
 		reset_stat_stages(curr_pok);
 
+		//Attacks
 		for (j = 0; j < curr_pok->numAttacks; j++) {
 			fgets(line, LINE_SIZE, fp);
-			matched_elements = sscanf(line, "\t%[^.]. %d", &temp_name, &temp_id_num);
+			matched_elements = sscanf(line, "\t%[^.]. %d %d", &temp_name, &temp_id_num, &temp_pp);
 
 			//Check if the line matched correctly
-			if (matched_elements != 2) {
-				printw("ERROR with load file. Expected a MOVE line with 2 elements.\n");
+			if (matched_elements != 3) {
+				printw("ERROR with load file. Expected a MOVE line with 3 elements.\n");
 				printw("Only matched %d elements.\n", matched_elements); refresh(); sleep(4); 
 				printw("Offending line is: %s\n", line); refresh(); sleep(3);
 				printw("Reloading...\n"); refresh(); sleep(1);
@@ -169,6 +170,7 @@ int load_game(int file_num) {
 				return LOAD_FAILURE;
 			}
 			curr_pok->attacks[j] = *(get_attack_by_id(temp_id_num));
+			curr_pok->attacks[j].curr_pp = temp_pp;
 		}
 		for (; j < 4; j++) {
 			curr_pok->attacks[j] = empty_attack;

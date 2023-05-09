@@ -1,23 +1,23 @@
-Last Saved: 05/07/2023 12:50:40
+Last Saved: 05/08/2023 20:50:09
 Player: 
 5 5 3 1100
 Location: {1,(48,17)}
 Pokemon: 
 Bulbasaur 1 26 26 3 16 15 16 15 17 8 40 GRASS POISON
-	Tackle. 1
-	Growl. 3
-	Leech seed. 11
+	Tackle. 1 35
+	Growl. 3 40
+	Leech seed. 11 10
 Charmander 4 22 22 2 13 14 13 14 15 6 3 FIRE NONE
-	Scratch. 2
-	Tail Whip. 4
+	Scratch. 2 35
+	Tail Whip. 4 30
 Caterpie 10 14 14 2 7 8 7 8 10 3 0 BUG NONE
-	Tackle. 1
-	String Shot. 5
+	Tackle. 1 35
+	String Shot. 5 40
 Pidgey 16 14 14 1 9 9 9 9 9 3 0 NORMAL FLYING
-	Tackle. 1
+	Tackle. 1 35
 Rattata 19 11 11 2 7 9 7 9 8 2 0 NORMAL NONE
-	Tackle. 1
-	Tail Whip. 4
+	Tackle. 1 35
+	Tail Whip. 4 30
 Bag:
 Potion. 1 2
 Pokéball. 3 2

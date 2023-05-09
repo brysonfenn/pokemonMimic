@@ -6,11 +6,20 @@
 #include "../print_utils.h"
 #include "../print_defines.h"
 
-//Handle all operations for an attack, indicate whether this is an enemy attack (true)
-void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy) {
-  int damage;
+int perform_struggle(struct pokemon *perp, struct pokemon *victim, bool enemy);
 
+//Handle all operations for an attack, indicate whether this is an enemy attack (true)
+int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy) {
+  //Struggle
+  if (move_num == -1) {
+    perform_struggle(perp, victim, enemy);
+    return 0;
+  }
+
+  perp->attacks[move_num].curr_pp--;
   attack chosenAttack = perp->attacks[move_num];
+
+  int damage;
 
   text_box_cursors(TEXT_BOX_BEGINNING);
 
@@ -21,7 +30,7 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
       printw("%s is fast asleep...", perp->name);
       refresh(); sleep(2);
       perp->sleep_count--;
-      return;
+      return 0;
     }
     else {
       printw("%s woke up!", perp->name);
@@ -78,6 +87,8 @@ void perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, 
   sleep(1);
 
   chosenAttack.side_effect(chosenAttack.condition, chosenAttack.chance, victim);
+
+  return 0;
 }
 
 
@@ -130,4 +141,13 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
   damage = get_damage_after_effectiveness(chosenAttack.type, victim, damage);
 
   return damage;
+}
+
+int perform_struggle(struct pokemon *perp, struct pokemon *victim, bool enemy) {
+  text_box_cursors(TEXT_BOX_BEGINNING);
+  if (enemy) printw(ENEMY_TEXT);
+  printw("%s used Struggle!", perp->name);
+  refresh(); sleep(2);
+  perp->currentHP -= (perp->maxHP / 16 + 1);
+  victim->currentHP -= (perp->maxHP / 16 + 1);
 }

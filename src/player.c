@@ -70,9 +70,16 @@ bool runAttempt() {
 }
 
 void heal_party() {
+  pokemon * curr_pok;
+  
   for (int i = 0; i < player.numInParty; i++) {
-    player.party[i].currentHP = player.party[i].maxHP;
-    player.party[i].visible_condition = NO_CONDITION;
+    curr_pok = &(player.party[i]);
+    curr_pok->currentHP = curr_pok->maxHP;
+    curr_pok->visible_condition = NO_CONDITION;
+
+    for (int j = 0; j < curr_pok->numAttacks; j++) {
+      curr_pok->attacks[j].curr_pp = curr_pok->attacks[j].max_pp;
+    }
   }
   player.numAlive = player.numInParty;
   printw("Your Pokemon were restored to full health!\n"); refresh();
