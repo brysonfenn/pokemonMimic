@@ -3,10 +3,10 @@
 
 #include <stdint.h>
 
-#include "attacks.h"
 #include "conditions.h"
 #include "typings.h"
 #include "pokemon_id_list.h"
+#include "attacks.h"
 
 #define RANDOM_LEVEL 0
 

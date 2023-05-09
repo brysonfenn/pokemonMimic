@@ -5,10 +5,12 @@
 #include <ncurses.h>
 
 #include "monsters/conditions.h"
+#include "monsters/pokemon.h"
 #include "maps/location.h"
 #include "maps/map_drawing.h"
 #include "print_utils.h"
 #include "print_defines.h"
+#include "items.h"
 
 struct playerCharacter player;
 
@@ -17,6 +19,7 @@ void default_load();
 void player_init(int save_file) {
   player.bag = malloc(sizeof(item) * 30);
   player.loc = malloc(sizeof(Location));
+  player.party = malloc(sizeof(pokemon) * 6);
   
   if (!save_file)
     default_load();
@@ -109,7 +112,7 @@ void set_current_pokemon(int position) {
   player.current_pokemon = &(emptyPok);
 }
 
-void set_enemy_pokemon(pokemon * pok) {
+void set_enemy_pokemon(struct pokemon * pok) {
   player.enemy_pokemon = pok;
 }
 

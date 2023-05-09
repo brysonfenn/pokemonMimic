@@ -7,6 +7,7 @@
 #include "doors.h"
 #include "../battles/trainer.h"
 #include "../print_utils.h"
+#include "../items.h"
 
 #include "motion2d.h"
 

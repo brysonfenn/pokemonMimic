@@ -14,6 +14,7 @@
 #include "monsters/pokemon.h"
 #include "battles/battle.h"
 #include "print_defines.h"
+#include "items.h"
 
 void clearTerminal() { printf("\033[2J\033[1;1H"); }
 

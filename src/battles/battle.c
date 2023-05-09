@@ -11,6 +11,7 @@
 
 #include "../print_utils.h"
 #include "../print_defines.h"
+#include "../items.h"
 
 static enum display { MAIN, FIGHT, BAG, POKEMON } current_display = MAIN;
 static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;

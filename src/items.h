@@ -1,12 +1,6 @@
 #ifndef ITEMS_H
 #define ITEMS_H
 
-#include <stdio.h>
-
-#include "print_utils.h"
-#include "player.h"
-#include "monsters/pokemon.h"
-
 #define ITEM_SUCCESS 1
 #define ITEM_FAILURE 0
 #define ITEM_CATCH_SUCCESS 2
@@ -15,6 +9,8 @@
 
 #define NUM_ITEMS 50
 #define MAX_NUM_ITEM 4
+
+struct pokemon;
 
 typedef int (*item_func_ptr) (int, char *);
 
@@ -41,7 +37,7 @@ int handle_mart();
 
 item * get_item_by_id(int id_num);
 
-int use_item(int item_num, pokemon * enemy);
+int use_item(int item_num, struct pokemon * enemy);
 
 int execute_potion(int input_num, char * name);
 

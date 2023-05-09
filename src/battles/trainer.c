@@ -6,6 +6,7 @@
 #include "../monsters/pokemon.h"
 #include "../player.h"
 #include "../print_defines.h"
+#include "../print_utils.h"
 
 #define NAME_MAX_LENGTH 20
 

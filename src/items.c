@@ -4,6 +4,8 @@
 
 #include "print_utils.h"
 #include "print_defines.h"
+#include "player.h"
+#include "monsters/pokemon.h"
 
 #define NUM_ITEMS 50
 #define CURRENT_MAX_NUM 4
@@ -120,7 +122,7 @@ item * get_item_by_id(int id_num) {
   return item_array[id_num];
 }
 
-int use_item(int item_num, pokemon * enemy) {
+int use_item(int item_num, struct pokemon * enemy) {
   item * this_item = &(player.bag[item_num]);
   enemy_pok = enemy;
 
