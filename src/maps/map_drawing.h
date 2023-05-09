@@ -9,6 +9,12 @@
 #define MAP_X 10
 #define MAP_Y 1
 
+#define DEFAULT_COLOR 1
+#define PLAYER_COLOR 2
+#define GRASS_COLOR 3
+
+#define GRASS_CHAR 'M'
+
 //Sides of map - used to call "draw_town_exit()"
 enum town_side { MAP_TOP, MAP_BOTTOM, MAP_LEFT, MAP_RIGHT };
 

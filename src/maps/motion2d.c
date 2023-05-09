@@ -47,10 +47,6 @@ void handle_motion() {
 
     change_map(player.loc->map, *player_x, *player_y);
 
-    // Define color pairs
-    init_pair(1, COLOR_WHITE, COLOR_BLACK);
-    init_pair(2, COLOR_CYAN, COLOR_BLACK);
-
     int ch;
 
     flushinp();
@@ -67,10 +63,22 @@ void handle_motion() {
                 break;
             case KEY_LEFT:
                 if (player_char != MOVING_LEFT) player_char = MOVING_LEFT;
+                //Move only one space if next space is surrounded (door);
+                else if (*player_x > 1 && !is_movable_space(-1,-1) && !is_movable_space(1,-1) && is_movable_space(0,-1)) 
+                    (*player_x)--;
+                //Default movement for horizontal is 2 spaces
+                else if (*player_x > 1 && is_movable_space(0,-1) && is_movable_space(0,-2)) (*player_x)-=2;
+                //Only move one space if there is only one space to move
                 else if (*player_x > 1 && is_movable_space(0,-1)) (*player_x)--;
                 break;
             case KEY_RIGHT:
                 if (player_char != MOVING_RIGHT) player_char = MOVING_RIGHT;
+                //Move only one space if next space is surrounded (door);
+                else if (*player_x < 100 && !is_movable_space(-1,1) && !is_movable_space(1,1) && is_movable_space(0,1)) 
+                    (*player_x)++;
+                //Default movement for horizontal is 2 spaces
+                else if (*player_x < 100 && is_movable_space(0,1) && is_movable_space(0,2)) (*player_x)+=2;
+                //Only move one space if there is only one space to move
                 else if (*player_x < 100 && is_movable_space(0,1)) (*player_x)++;
                 break;
         }
@@ -79,9 +87,9 @@ void handle_motion() {
         bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == 'M');
 
         // Set attributes for next character
-        attrset(COLOR_PAIR(2));
+        attrset(COLOR_PAIR(PLAYER_COLOR));
         mvaddch(*player_y, *player_x, player_char);
-        attrset(COLOR_PAIR(1));
+        attrset(COLOR_PAIR(DEFAULT_COLOR));
         refresh();
         int random = rand() % 100;
 
@@ -141,9 +149,11 @@ bool is_movable_space(int yInc, int xInc) {
 void init_map() {
     draw_map();
 
+    attrset(COLOR_PAIR(DEFAULT_COLOR));
+
     mvprintw(23, 1, "Map: %d", player.loc->map); refresh();
 
-    attrset(COLOR_PAIR(2));
+    attrset(COLOR_PAIR(PLAYER_COLOR));
     mvaddch(*player_y, *player_x, player_char);
-    attrset(COLOR_PAIR(1));
+    attrset(COLOR_PAIR(DEFAULT_COLOR));
 }

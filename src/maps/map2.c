@@ -12,9 +12,6 @@
 #define POKE_CENTER_ACTION 2
 #define TRAINER_BATTLE_ACTION 3
 
-#define GRASS_CHAR 'M'
-
-
 void draw_map2() {
 
     mvprintw(22, 1, "Press 'm' to return to the menu");
@@ -24,7 +21,7 @@ void draw_map2() {
     draw_town_exit(MAP_TOP, 10);
 
     draw_town_exit(MAP_BOTTOM, 10);
-    add_portal(MAP_X+10, MAP_Y+TOWN_HEIGHT-1, MAP_X+10, MAP_Y+1, 1);
+    add_portal(MAP_X+10, MAP_Y+TOWN_HEIGHT-1, MAP_X+10, MAP_Y+1, 1, true);
 
     grass_map2();
 
@@ -57,9 +54,12 @@ int actions_map2(int player_x, int player_y) {
 }
 
 void grass_map2() {
+
+    attrset(COLOR_PAIR(GRASS_COLOR));
     for (int i = 5; i < 30; i++) {
         mvaddch(MAP_Y+13, MAP_X+i, GRASS_CHAR); 
         mvaddch(MAP_Y+14, MAP_X+i, GRASS_CHAR); 
         mvaddch(MAP_Y+15, MAP_X+i, GRASS_CHAR); 
     }
+    attrset(COLOR_PAIR(DEFAULT_COLOR));
 }

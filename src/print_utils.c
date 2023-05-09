@@ -15,6 +15,7 @@
 #include "battles/battle.h"
 #include "print_defines.h"
 #include "items.h"
+#include "maps/map_drawing.h"
 
 void clearTerminal() { printf("\033[2J\033[1;1H"); }
 
@@ -89,6 +90,11 @@ void resume_ncurses() {
   clear();
   curs_set(0);
   start_color();
+
+  // Define color pairs
+  init_pair(DEFAULT_COLOR, COLOR_WHITE, COLOR_BLACK);
+  init_pair(PLAYER_COLOR, COLOR_MAGENTA, COLOR_BLACK);
+  init_pair(GRASS_COLOR, COLOR_GREEN, COLOR_BLACK);
 }
 
 

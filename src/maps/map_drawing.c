@@ -22,9 +22,10 @@ void drawBuilding(int x, int y, int w, int h, const char* name, int action) {
 
     // Draw a door at the bottom of the box
     mvaddch(y + h - 1, x + (w / 2), ' ');  // Door frame
-    add_door(x+ (w/2), y+h-1, action);
+    mvaddch(y + h - 1, x + (w / 2) + 1, ' ');  // Door frame
+    add_door(x+ (w/2), y+h-1, action, 1);
     mvaddch(y + h - 1, x + (w / 2) - 1, ACS_LRCORNER);
-    mvaddch(y + h - 1, x + (w / 2) + 1, ACS_LLCORNER);
+    mvaddch(y + h - 1, x + (w / 2) + 2, ACS_LLCORNER);
 }
 
 //Draw an exit on a given side of the map at a given position
@@ -38,12 +39,14 @@ void draw_town_exit(int side, int position) {
         case MAP_TOP:
             mvaddch(MAP_Y, min_x-1, ACS_LRCORNER);  // Bottom-right corner
             mvaddch(MAP_Y, min_x, ' ');
-            mvaddch(MAP_Y, min_x+1, ACS_LLCORNER);  // Bottom-left corner
+             mvaddch(MAP_Y, min_x+1, ' ');
+            mvaddch(MAP_Y, min_x+2, ACS_LLCORNER);  // Bottom-left corner
             break;
         case MAP_BOTTOM:
             mvaddch(max_y, min_x-1, ACS_URCORNER);  // Top-right corner
             mvaddch(max_y, min_x, ' ');
-            mvaddch(max_y, min_x+1, ACS_ULCORNER);  // Top-left corner
+            mvaddch(max_y, min_x+1, ' ');
+            mvaddch(max_y, min_x+2, ACS_ULCORNER);  // Top-left corner
             break;
         case MAP_RIGHT:
             mvaddch(min_y-1, max_x, ACS_LLCORNER);  // Bottom-left corner
