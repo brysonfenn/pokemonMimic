@@ -144,6 +144,9 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
 }
 
 int perform_struggle(struct pokemon *perp, struct pokemon *victim, bool enemy) {
+  clear();
+  printBattle();
+
   text_box_cursors(TEXT_BOX_BEGINNING);
   if (enemy) printw(ENEMY_TEXT);
   printw("%s used Struggle!", perp->name);

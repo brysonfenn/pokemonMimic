@@ -33,7 +33,7 @@ void handle_exp(int exp);
 //Begin a Battle with a given pokemon
 int initiate_battle(struct pokemon * enemyPoke) {
   int inputNum, max_input;
-  bool enemy_attacks, fainted_switch;
+  bool enemy_attacks, fainted_switch, out_of_pp;
   int return_execute, attack_num, enemy_attack_num, item_num, pokemon_selected, speed_difference;
   attack_num = item_num = pokemon_selected = speed_difference = 0;
   enemy_attacks = false;
@@ -115,6 +115,21 @@ int initiate_battle(struct pokemon * enemyPoke) {
         break;
         
       case FIGHT:
+        //See if pokemon has pp
+        out_of_pp = true;
+        for (int i = 0; i < currentPok->numAttacks; i++) {
+          if (currentPok->attacks[i].curr_pp > 0) {
+            out_of_pp = false;
+          }
+        }
+        if (out_of_pp) {
+          current_display = MAIN;
+          current_decision = ATTACK;
+          attack_num = -1;
+          break;
+        }
+
+        //If any pp, get attack choice
         printBattle();
         mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[0].name); 
         mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  %s", currentPok->attacks[1].name); 
@@ -216,8 +231,9 @@ int initiate_battle(struct pokemon * enemyPoke) {
       }
       else if (speed_difference < 0) {
         perform_enemy_attack(currentPok, &enemy, enemy_attack_num);
-        clear();
-        printBattle();
+        // clear();
+        // printBattle();
+        clear_text_box();
         //Player Pokemon can only attack if still alive
         if (currentPok->currentHP > 0) {
           return_execute = perform_attack(currentPok, attack_num, &(enemy), false);

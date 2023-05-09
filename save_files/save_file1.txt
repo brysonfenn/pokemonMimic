@@ -9,7 +9,7 @@ Bulbasaur 1 26 26 4 17 17 17 17 18 9 67 GRASS POISON
 	Leech seed. 11 10
 	Sleep Powder. 15 35
 Weedle 13 21 21 1 13 11 13 11 12 6 28 BUG POISON
-	Poison Sting. 6 35
+	Poison Sting. 6 1
 Squirtle 7 22 22 3 15 14 15 14 16 7 3 WATER NONE
 	Tackle. 1 35
 	Tail Whip. 4 30
