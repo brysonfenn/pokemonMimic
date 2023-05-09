@@ -107,7 +107,7 @@ int load_game(int file_num) {
     // Check if the file was opened successfully
     if (fp == NULL) {
         printw("That Load File does not exist.\n"); refresh(); sleep(2);
-        return 1;
+        return LOAD_FAILURE;
     }
 
     // Read lines from the file and put them into game values
@@ -150,7 +150,7 @@ int load_game(int file_num) {
 			printw("Offending line is: %s\n", line); refresh(); sleep(3);
 			printw("Reloading...\n"); refresh(); sleep(1);
 			player_init(current_save_file);
-			return 2;
+			return LOAD_FAILURE;
 		}
 
 		reset_stat_stages(curr_pok);
@@ -166,7 +166,7 @@ int load_game(int file_num) {
 				printw("Offending line is: %s\n", line); refresh(); sleep(3);
 				printw("Reloading...\n"); refresh(); sleep(1);
 				player_init(current_save_file);	// reinitialize player
-				return 2;
+				return LOAD_FAILURE;
 			}
 			curr_pok->attacks[j] = *(get_attack_by_id(temp_id_num));
 		}
@@ -184,7 +184,7 @@ int load_game(int file_num) {
 			printw("Expected: %d, But got %d.\n", player.numInBag, i-1); sleep(4);
 			printw("Reloading...\n"); sleep(1);
 			player_init(current_save_file); // reinitialize player
-			return 2;
+			return LOAD_FAILURE;
 		}
 
 		matched_elements = sscanf(line, "%[^.]. %d %d", &temp_name, &temp_id_num, &numOfItem);
@@ -196,7 +196,7 @@ int load_game(int file_num) {
 			printw("Offending line is: %s\n", line); refresh(); sleep(3);
 			printw("Reloading...\n"); refresh(); sleep(1);
 			player_init(current_save_file);	// reinitialize player
-			return 2;
+			return LOAD_FAILURE;
 		}
 		player.bag[i] = *(get_item_by_id(temp_id_num));
 		player.bag[i].number = numOfItem;
@@ -208,7 +208,7 @@ int load_game(int file_num) {
 	clear();
     printw("Game File %d Loaded Successfully!\n", file_num); refresh(); sleep(2);
     current_save_file = file_num;
-    return 0;
+    return LOAD_SUCCESS;
 }
 
 int print_save_files() {

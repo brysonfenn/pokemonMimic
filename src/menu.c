@@ -8,7 +8,7 @@
 #include "items.h"
 
 static enum display { WILD, TRAINER, POKEMON, BAG, PLAYER, SAVE, LOAD,
-    TOWN, POWER_OFF, MAIN } current_display = MAIN;
+    TOWN, POWER_OFF, MAIN } current_display = TOWN;
 
 static bool power_off = false;
 
