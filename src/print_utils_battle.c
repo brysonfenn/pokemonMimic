@@ -23,6 +23,7 @@ void printBattle() {
   print_condition(player_pok);
   mvprintw(BATTLE_BOX_Y+5, BATTLE_BOX_X+3, "HP: %d/%d", player_pok->currentHP, player_pok->maxHP);
 
+  print_btn_instructions(BATTLE_BOX_X+BATTLE_BOX_WIDTH+1, TEXT_BOX_Y);
   draw_text_box();
   refresh();
 }
@@ -151,6 +152,7 @@ void adjust_cursors(int selection, int first_line) {
 void draw_text_box() {
   drawBox(TEXT_BOX_X, TEXT_BOX_Y, TEXT_BOX_WIDTH, TEXT_BOX_HEIGHT);
 }
+
 
 static int text_box_cursor_y = 0;
 

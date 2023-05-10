@@ -26,6 +26,7 @@ int main(void) {
   while (1) {
     clear();
     printw("\n  New Game\n  Load Game\n");
+    print_btn_instructions(20,0);
     input_num = get_selection(1, 0, 1, 0, MAIN_SELECT);
 
     //Handle main select returning -1

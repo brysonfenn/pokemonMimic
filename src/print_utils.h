@@ -6,10 +6,10 @@
 #define TEXT_BOX_BEGINNING 0
 #define TEXT_BOX_NEXT_LINE 1
 
+//print_utils.c
+
 void clearTerminal();
 void clearLastLine();
-
-void printBattle();
 
 int getValidInput_force(int beginRange, int endRange, const char * request, int erase_lines);
 
@@ -22,10 +22,18 @@ void resume_ncurses();
 void pause_ncurses();
 
 int get_selection(int first_line, int start, int end, int last_selection, int is_main);
-int get_battle_selection(int first_line, int last_selection);
-int get_fight_selection(int first_line, int num_attacks);
 
 void drawBox(int x, int y, int w, int h);
+
+void print_btn_instructions(int x, int y);
+
+
+//print_utils_battle.c
+
+void printBattle();
+
+int get_battle_selection(int first_line, int last_selection);
+int get_fight_selection(int first_line, int num_attacks);
 
 void draw_text_box();
 void text_box_cursors(int next_line);

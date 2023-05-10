@@ -18,10 +18,12 @@
 void draw_map1() {
 
     mvprintw(22, 1, "Press 'm' to return to the menu");
+    drawBox(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
+    print_btn_instructions(MAP_X+MAP_WIDTH+5, MAP_Y+5);
+
     drawBuilding_default(MART_X,MART_Y, "Mart", MART_ACTION);
     drawBuilding_default(POKE_CENTER_X,POKE_CENTER_Y, "Poke", POKE_CENTER_ACTION);
-    drawBox(MAP_X,MAP_Y,TOWN_WIDTH,TOWN_HEIGHT);  //Draw Town border
-
+    
     //Draw Doors
     draw_town_exit(MAP_TOP, 10); 
     add_exit_portal(MAP_TOP, 10, 2);

@@ -87,7 +87,9 @@ void handle_motion() {
 
         // Set attributes for next character
         attrset(COLOR_PAIR(PLAYER_COLOR));
-        mvaddch(*player_y, *player_x, player_char);
+        // mvaddch(*player_y, *player_x, player_char);
+        move(*player_y, *player_x);
+        addch(player_char);
         attrset(COLOR_PAIR(DEFAULT_COLOR));
         refresh();
         int random = rand() % 100;

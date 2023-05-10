@@ -8,12 +8,14 @@
 
 void draw_generic_map() {
 
-    drawBox(MAP_X,MAP_Y,TOWN_WIDTH,TOWN_HEIGHT);  //Draw Town border
+    drawBox(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
 
     mvprintw(MAP_Y+5, MAP_X+5, "Generic Map: look in maps.c to add maps");
 
     draw_town_exit(MAP_RIGHT, 10);
-    add_portal(MAP_X+TOWN_WIDTH-1, MAP_Y+10, MAP_X+10, MAP_Y+10, 1, true);
+    add_portal(MAP_X+MAP_WIDTH-1, MAP_Y+10, MAP_X+10, MAP_Y+10, 1, true);
+
+    grass_generic_map();
 
     refresh();
 }

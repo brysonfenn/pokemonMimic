@@ -32,8 +32,8 @@ void drawBuilding(int x, int y, int w, int h, const char* name, int action) {
 void draw_town_exit(int side, int position) {
     int min_x = MAP_X + position;
     int min_y = MAP_Y + position;
-    int max_x = TOWN_WIDTH + MAP_X - 1;
-    int max_y = TOWN_HEIGHT + MAP_Y - 1;
+    int max_x = MAP_WIDTH + MAP_X - 1;
+    int max_y = MAP_HEIGHT + MAP_Y - 1;
 
     switch (side) {
         case MAP_TOP:

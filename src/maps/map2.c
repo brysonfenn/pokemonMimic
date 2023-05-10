@@ -15,7 +15,8 @@
 void draw_map2() {
 
     mvprintw(22, 1, "Press 'm' to return to the menu");
-    drawBox(MAP_X,MAP_Y,TOWN_WIDTH,TOWN_HEIGHT);  //Draw Town border
+    drawBox(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
+    print_btn_instructions(MAP_X+MAP_WIDTH+5, MAP_Y+5);
 
     //Draw Doors
     draw_town_exit(MAP_TOP, 10);

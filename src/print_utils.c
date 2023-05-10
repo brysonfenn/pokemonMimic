@@ -8,6 +8,7 @@
 
 #include <fcntl.h>
 #include <ncurses.h>
+#include <locale.h>
 
 #include "monsters/conditions.h"
 #include "player.h"
@@ -18,6 +19,11 @@
 #include "maps/map_drawing.h"
 
 void clearTerminal() { printf("\033[2J\033[1;1H"); }
+
+void clearLastLine() {
+  printf("\033[1A"); // Move cursor up one line
+  printf("\033[K"); // Clear the line
+}
 
 int getValidInput_force(int beginRange, int endRange, const char * request, int erase_lines) {
   int inputNum = INVALID_INPUT;
@@ -53,11 +59,6 @@ int getValidInput(int beginRange, int endRange, const char * request) {
   return getValidInput_force(beginRange, endRange, request, 2);
 }
 
-void clearLastLine() {
-  printf("\033[1A"); // Move cursor up one line
-  printf("\033[K"); // Clear the line
-}
-
 void printParty() {
   printw("Pokemon:\n");
   for (int i = 0; i < player.numInParty; i++) {
@@ -83,14 +84,21 @@ void printBag() {
 }
 
 void resume_ncurses() {
+
+  //Allow unicode symbols (like arrow keys)
+  setlocale(LC_ALL, "");
+  setenv("NCURSES_UNICODE", "1", 1);
+
+  //Initialize
   initscr(); // Initialize ncurses
   cbreak(); // Disable line buffering
   noecho(); // Don't display typed characters
   keypad(stdscr, true); // Enable arrow keys
   clear();
   curs_set(0);
-  start_color();
 
+  //Color
+  start_color();
   // Define color pairs
   init_pair(DEFAULT_COLOR, COLOR_WHITE, COLOR_BLACK);
   init_pair(PLAYER_COLOR, COLOR_MAGENTA, COLOR_BLACK);
@@ -168,3 +176,15 @@ void drawBox(int x, int y, int w, int h) {
     }
 }
 
+
+void print_btn_instructions(int x, int y) {
+  drawBox(x,y,15,7);
+  mvprintw(y+1,x+3, "a: Select");
+  mvprintw(y+2,x+3, "b: Cancel");
+
+  // Print the arrow symbols
+  mvprintw(y+4,x+2, "  \u2191");
+  mvprintw(y+5,x+2, "\u2190 \u2193 \u2192 Move");
+
+  refresh();
+}
