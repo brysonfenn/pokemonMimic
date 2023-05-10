@@ -1,6 +1,7 @@
 #include "doors.h"
 
 #include "location.h"
+#include "map_drawing.h"
 
 #define MAX_DOOR_COUNT 60
 
@@ -37,6 +38,28 @@ void add_portal(char x, char y, char next_x, char next_y, char next_map, bool ve
 
     if (vertical)
         add_portal(x+1, y, next_x+1, next_y, next_map, false);
+}
+
+void add_exit_portal(int side, int position, int map) {
+    int min_x = MAP_X + position;
+    int min_y = MAP_Y + position;
+    int max_x = TOWN_WIDTH + MAP_X - 1;
+    int max_y = TOWN_HEIGHT + MAP_Y - 1;
+
+    switch (side) {
+        case MAP_TOP:
+            add_portal(min_x, MAP_Y, min_x, max_y-1, map, true);
+            break;
+        case MAP_BOTTOM:
+            add_portal(min_x, max_y, min_x, MAP_Y+1, map, true);
+            break;
+        case MAP_RIGHT:
+            add_portal(max_x, min_y, MAP_X+1, min_y, map, false);
+            break;
+        case MAP_LEFT:
+            add_portal(MAP_X, min_y, max_x-1, min_y, map, false);
+            break;
+    }
 }
 
 // Return a door (if there is one) at player location, else return zero-door

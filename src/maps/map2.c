@@ -21,7 +21,7 @@ void draw_map2() {
     draw_town_exit(MAP_TOP, 10);
 
     draw_town_exit(MAP_BOTTOM, 10);
-    add_portal(MAP_X+10, MAP_Y+TOWN_HEIGHT-1, MAP_X+10, MAP_Y+1, 1, true);
+    add_exit_portal(MAP_BOTTOM, 10, 1);
 
     grass_map2();
 

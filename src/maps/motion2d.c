@@ -7,8 +7,7 @@
 
 #include "../player.h"
 #include "location.h"
-#include "map1.h"
-#include "map2.h"
+#include "maps.h"
 #include "map_drawing.h"
 #include "../battles/wild_pokemon.h"
 #include "../print_utils.h"
@@ -112,24 +111,10 @@ void change_map(int map, int x, int y) {
     clear_doors();
     usleep(200000);
 
-    switch (map) {
-        case 1:
-            draw_map = &draw_map1;
-            map_actions = &actions_map1;
-            grass_map = &grass_map1;
-            player.loc->x = x;
-            player.loc->y = y;
-            player.loc->map = 1;
-            break;
-        case 2:
-            draw_map = &draw_map2;
-            map_actions = &actions_map2;
-            grass_map = &grass_map2;
-            player.loc->x = x;
-            player.loc->y = y;
-            player.loc->map = 2;
-            break;
-    }
+    player.loc->x = x;
+    player.loc->y = y;
+    player.loc->map = map;
+    change_map_funcs(map, &draw_map, &map_actions, &grass_map);
 
     init_map();
 }

@@ -13,6 +13,9 @@ void add_door(char x, char y, short action, bool vertical);
     // next_* variables are where the door leads
 void add_portal(char x, char y, char next_x, char next_y, char next_map, bool vertical);
 
+//Auto add exit
+void add_exit_portal(int side, int position, int map);
+
 // Return a door (if there is one) at player location, else return zero-door
 struct Location * get_door(int player_x, int player_y);
 

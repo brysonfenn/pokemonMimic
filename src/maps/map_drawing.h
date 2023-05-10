@@ -18,6 +18,9 @@
 //Sides of map - used to call "draw_town_exit()"
 enum town_side { MAP_TOP, MAP_BOTTOM, MAP_LEFT, MAP_RIGHT };
 
+
+//Functions
+
 //Draw a house-sized building with a door and an action attached
 void drawBuilding_default(int x, int y, const char* str, int action);
 

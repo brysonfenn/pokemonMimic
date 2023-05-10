@@ -23,13 +23,17 @@ void draw_map1() {
     drawBox(MAP_X,MAP_Y,TOWN_WIDTH,TOWN_HEIGHT);  //Draw Town border
 
     //Draw Doors
-    draw_town_exit(MAP_TOP, 10);
-    add_portal(MAP_X+10, MAP_Y, MAP_X+10, MAP_Y+TOWN_HEIGHT-2, 2, true);
+    draw_town_exit(MAP_TOP, 10); 
+    add_exit_portal(MAP_TOP, 10, 2);
+    
+    draw_town_exit(MAP_BOTTOM, 25); 
+    add_exit_portal(MAP_BOTTOM, 25, 3);
 
-    draw_town_exit(MAP_BOTTOM, 10);
     draw_town_exit(MAP_LEFT, 10);
     add_door(MAP_X, MAP_Y+10, TRAINER_BATTLE_ACTION, 0);
+
     draw_town_exit(MAP_RIGHT, 10);
+    add_exit_portal(MAP_RIGHT, 10, 4);
 
     grass_map1();
 
