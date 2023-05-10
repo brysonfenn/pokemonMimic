@@ -28,6 +28,9 @@ int main(void) {
     printw("\n  New Game\n  Load Game\n");
     input_num = get_selection(1, 0, 1, 0, MAIN_SELECT);
 
+    //Handle main select returning -1
+    if (input_num == -1) {control_c_handler(); return 0;}
+
     if (input_num == 1) {
       clear();
       printw("Select a save file to load: \n");

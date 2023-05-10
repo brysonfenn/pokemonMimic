@@ -231,8 +231,8 @@ int initiate_battle(struct pokemon * enemyPoke) {
       }
       else if (speed_difference < 0) {
         perform_enemy_attack(currentPok, &enemy, enemy_attack_num);
-        // clear();
-        // printBattle();
+        clear();
+        printBattle();
         clear_text_box();
         //Player Pokemon can only attack if still alive
         if (currentPok->currentHP > 0) {

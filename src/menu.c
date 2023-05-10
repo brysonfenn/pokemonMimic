@@ -7,8 +7,8 @@
 #include "monsters/pokemon.h"
 #include "items.h"
 
-static enum display { WILD, TRAINER, POKEMON, BAG, PLAYER, SAVE, LOAD,
-    TOWN, POWER_OFF, MAIN } current_display = TOWN;
+static enum display { WILD, TRAINER, TOWN, POKEMON, BAG, PLAYER, SAVE, LOAD,
+    POWER_OFF, MAIN } current_display = TOWN;
 
 static bool power_off = false;
 
@@ -32,10 +32,12 @@ void main_menu() {
 
         //This is the actual main menu
         case MAIN:
-        printw("  Wild Pokemon\n  Trainer\n  Pokemon\n  Bag\n  Player\n");
-        printw("  Save Game\n  Load Game\n  Town\n  Power Off\n\n");
+        printw("  Wild Pokemon\n  Trainer\n  Back\n  Pokemon\n  Bag\n  Player\n");
+        printw("  Save Game\n  Load Game\n  Power Off\n\n");
 
         inputNum = get_selection(0,0,8,last_selection, MAIN_SELECT);
+        if (inputNum == -1) inputNum = TOWN;
+
         last_selection = inputNum;
         current_display = inputNum;
         clear();

@@ -136,8 +136,9 @@ int get_selection(int first_line, int start, int end, int last_selection, int is
       case 'b':
         if (!is_main)
           return (end);
-        else
-          break;
+        else if (is_main)
+          return -1;
+        break;
       default:
         break;
     }

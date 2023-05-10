@@ -80,6 +80,8 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
 void learn_move(pokemon * pok, attack * new_attack) {
   int input_num;
 
+  new_attack->curr_pp = new_attack->max_pp;
+
   //If there are not 4 moves, auto-learn, if not, forget.
   if (pok->numAttacks < 4) {
     pok->attacks[pok->numAttacks] = *new_attack;
@@ -116,12 +118,13 @@ void learn_move(pokemon * pok, attack * new_attack) {
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("%s forgot %s, and...", pok->name, pok->attacks[input_num]); refresh(); sleep(2);
     pok->attacks[input_num] = *new_attack;
-    pok->attacks[input_num].curr_pp = pok->attacks[input_num].max_pp;
   }
 
   text_box_cursors(TEXT_BOX_NEXT_LINE);
 
   printw("%s learned %s!", pok->name, new_attack->name); refresh(); sleep(2);
+
+  
 }
 
 
@@ -199,7 +202,8 @@ int evolve(pokemon * pok, int next_pok_id) {
   //Attach name, base stats of evolution to pokemon, then calculate stats
   sprintf(pok->name, "%s", evolution.name);
   pok->maxHP = evolution.maxHP; pok->baseAttack = evolution.baseAttack;
-  pok->baseDefense = evolution.baseDefense; pok->baseSpeed = evolution.baseSpeed;
+  pok->baseDefense = evolution.baseDefense; pok->baseSpAttack = evolution.baseSpAttack;
+  pok->baseSpDefense = evolution.baseSpDefense; pok->baseSpeed = evolution.baseSpeed;
   calculate_stats(pok, pok->level, 0, 0);
 
   //Pokemon should have the same hp loss

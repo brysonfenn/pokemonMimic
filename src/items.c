@@ -65,7 +65,8 @@ int handle_mart() {
   }
 
   inputNum = 0;
-  printw("Select a quantity of %s(s) to buy: %02d", example_item.name, inputNum); refresh();
+  printw("Select a quantity of %s(s) to buy: %02d\n\n", example_item.name, inputNum);
+  printw("Cost: $%d\nYou have $%d\n", 0, player.money); refresh();
 
   int done_selecting = 0;
   
@@ -91,7 +92,10 @@ int handle_mart() {
     }
     clear();
     if (done_selecting) break;
-    else { printw("Select a quantity of %s(s) to buy: %02d", example_item.name, inputNum); refresh(); }
+    else { 
+      printw("Select a quantity of %s(s) to buy: %02d\n\n", example_item.name, inputNum); 
+      printw("Cost: $%d\nYou have $%d\n", example_item.cost*inputNum, player.money); refresh();
+    }
   }
 
   //Buy the item
@@ -115,7 +119,7 @@ int handle_mart() {
   printw("You bought %d %s(s)\n", inputNum, example_item.name); refresh(); sleep(2); 
 
   clear();
-  return ITEM_SUCCESS;
+  return ITEM_FAILURE;
 }
 
 item * get_item_by_id(int id_num) {

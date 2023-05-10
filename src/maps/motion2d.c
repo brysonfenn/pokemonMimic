@@ -109,7 +109,7 @@ void handle_motion() {
 void change_map(int map, int x, int y) {
     clear();
     clear_doors();
-    usleep(200000);
+    usleep(10000);
 
     player.loc->x = x;
     player.loc->y = y;
