@@ -17,6 +17,6 @@ int attack_do_nothing(Condition condition, int accuracy, struct pokemon * pok);
 int handle_end_conditions();
 
 //print a pokemon's condition abbreviation
-void print_condition(struct pokemon * pok);
+void add_condition(char * str, struct pokemon * pok);
 
 #endif // CONDITIONS_H

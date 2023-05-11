@@ -4,6 +4,7 @@
 
 #include "player.h"
 #include "print_defines.h"
+#include "print_utils.h"
 #include "monsters/pokemon.h"
 #include "items.h"
 
@@ -15,7 +16,7 @@ static bool power_off = false;
 void main_menu() {
 
     int inputNum, inputNum2, return_execute, num_files;
-    char example_string[100];
+    char example_string[4096];
     int last_selection = 0;
     pokemon tempPok;
 
@@ -32,10 +33,11 @@ void main_menu() {
 
         //This is the actual main menu
         case MAIN:
-        printw("  Wild Pokemon\n  Trainer\n  Back\n  Pokemon\n  Bag\n  Player\n");
-        printw("  Save Game\n  Load Game\n  Power Off\n\n");
+        begin_list();
+        print_to_list("  Wild Pokemon\n  Trainer\n  Back\n  Pokemon\n  Bag\n  Player\n");
+        print_to_list("  Save Game\n  Load Game\n  Power Off\n\n");
 
-        inputNum = get_selection(0,0,8,last_selection, MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+1,0,8,last_selection, MAIN_SELECT);
         if (inputNum == -1) inputNum = TOWN;
 
         last_selection = inputNum;
@@ -57,28 +59,28 @@ void main_menu() {
 
         //Handle party changes, releases, and viewing stats
         case POKEMON:
-        clear();
+        begin_list();
         printParty();
-        printw("  Cancel\n\n", 0);
-        inputNum = get_selection(1,0,player.numInParty,0, NOT_MAIN_SELECT);
+        mvprintw(LIST_BOX_Y+player.numInParty+2, LIST_BOX_X+1, "  Cancel", 0);
+        inputNum = get_selection(LIST_BOX_Y+2,0,player.numInParty,0, NOT_MAIN_SELECT);
         if (inputNum == player.numInParty) { current_display = MAIN; break; }
         
 
-        clear();
+        begin_list();
         print_pokemon_summary(&(player.party[inputNum]));
-        printw("\n  Switch\n  Release\n  Cancel\n");
+        print_to_list(" \n \n \n  Switch\n  Release\n  Cancel\n");
         inputNum2 = get_selection(POKE_SUMMARY_SEL_BEGIN, 0, 2, 0, NOT_MAIN_SELECT);
 
         //Break if inputNum2 is 2 (cancel)
         if (inputNum2 == 2) { break; } 
         //Switch
         else if (inputNum2 == 0) {
-            if (player.numInParty <= 1) {printw("You only have 1 Pokémon!\n"); refresh(); sleep(2); break; }
-            clear();
-            printw("Which pokemon would you like to switch with %s?\n", player.party[inputNum].name);
+            begin_list();
+            if (player.numInParty <= 1) { print_to_list("You only have 1 Pokémon!\n"); sleep(2); break; }
+            sprintf(example_string, "Which pokemon would you like to switch with %s?\n", player.party[inputNum].name);
+            print_to_list(example_string);
             printParty();
-            printw("\n");
-            inputNum2 = get_selection(2,0,player.numInParty-1,0, NOT_MAIN_SELECT);
+            inputNum2 = get_selection(LIST_BOX_Y+3,0,player.numInParty-1,0, NOT_MAIN_SELECT);
 
             tempPok = player.party[inputNum];
             player.party[inputNum] = player.party[inputNum2];
@@ -86,14 +88,15 @@ void main_menu() {
         }
         //Release
         else if (inputNum2 == 1) {
-            if (player.numInParty <= 1) {printw("You only have 1 Pokémon!\n"); refresh(); sleep(2); break; }
-            clear();
-            printw("Are you sure you want to release %s?\n  Yes\n  No\n", player.party[inputNum].name);
-            inputNum2 = get_selection(1,0,1,0, NOT_MAIN_SELECT);
+            begin_list();
+            if (player.numInParty <= 1) { print_to_list("You only have 1 Pokémon!\n"); sleep(2); break; }
+            sprintf(example_string, "Are you sure you want to release %s?\n  Yes\n  No\n", player.party[inputNum].name);
+            print_to_list(example_string);
+            inputNum2 = get_selection(LIST_BOX_Y+2,0,1,0, NOT_MAIN_SELECT);
             if (inputNum2) { break; }
             else {
-            clear();
-            printw("Bye Bye, %s!\n", player.party[inputNum].name); refresh(); sleep(2);
+            sprintf(example_string, "Bye Bye, %s!\n", player.party[inputNum].name);
+            print_to_list(example_string); sleep(2);
             player.numInParty--;
             for (int i = inputNum; i < player.numInParty; i++) {
                 player.party[i] = player.party[i+1];
@@ -106,9 +109,9 @@ void main_menu() {
 
         //Handle items used by player
         case BAG:
-        clear();
+        begin_list();
         printBag();
-        inputNum = get_selection(1,0,player.numInBag,0, NOT_MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+2,0,player.numInBag,0, NOT_MAIN_SELECT);
         if (inputNum == player.numInBag) { current_display = MAIN; break; }
         return_execute = use_item(inputNum, &emptyPok);
 
@@ -119,18 +122,19 @@ void main_menu() {
         
         //Display player data
         case PLAYER:
+        begin_list();
         printPlayer();
         current_display = MAIN;
         break;
 
         //Save game data to a file
         case SAVE:
-        clear();
-        printw("Select a save file to save to: \n");
+        begin_list();
+        print_to_list("Select a save file to save to: \n");
         print_save_files();
         inputNum = get_current_save_file();
         inputNum = (inputNum == 0) ? 0 : inputNum-1;  //Adjust to current save file position
-        inputNum = get_selection(1, 0, 9, inputNum, NOT_MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+2, 0, 9, inputNum, NOT_MAIN_SELECT);
         clear();
         if (inputNum == 9) { current_display = MAIN; break; }
         save_game(inputNum+1);
@@ -139,10 +143,10 @@ void main_menu() {
 
         //Load game data from a file
         case LOAD:
-        clear();
-        printw("Select a save file to load: \n");
+        begin_list();
+        print_to_list("Select a save file to load: \n");
         print_save_files();
-        inputNum = get_selection(1, 0, 9, 0, NOT_MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+2, 0, 9, 0, NOT_MAIN_SELECT);
         clear();
         if (inputNum == 9) { current_display = MAIN; break; }
         load_game(inputNum+1);

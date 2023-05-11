@@ -15,12 +15,18 @@ static int cursor_y;
 void printBattle() {
   pokemon * player_pok = player.current_pokemon;
   pokemon * enemy_pok = player.enemy_pokemon;
+  char poke_string[128];
+
   draw_battle_box();
-  mvprintw(BATTLE_BOX_Y+1, BATTLE_BOX_X+3, "\t\t\t%s  Lvl %d  ", enemy_pok->name, enemy_pok->level);
-  print_condition(enemy_pok);
+
+  sprintf(poke_string, "\t\t\t%s  Lvl %d ", enemy_pok->name, enemy_pok->level);
+  add_condition(poke_string, enemy_pok);
+  mvprintw(BATTLE_BOX_Y+1, BATTLE_BOX_X+3, poke_string);
   mvprintw(BATTLE_BOX_Y+2, BATTLE_BOX_X+3, "\t\t\tHP: %d/%d", enemy_pok->currentHP, enemy_pok->maxHP);
-  mvprintw(BATTLE_BOX_Y+4, BATTLE_BOX_X+3, "%s  Lvl %d  ", player_pok->name, player_pok->level);
-  print_condition(player_pok);
+
+  sprintf(poke_string,  "%s  Lvl %d  ", player_pok->name, player_pok->level);
+  add_condition(poke_string, player_pok);
+  mvprintw(BATTLE_BOX_Y+4, BATTLE_BOX_X+3, poke_string);
   mvprintw(BATTLE_BOX_Y+5, BATTLE_BOX_X+3, "HP: %d/%d", player_pok->currentHP, player_pok->maxHP);
 
   print_btn_instructions(BATTLE_BOX_X+BATTLE_BOX_WIDTH+1, TEXT_BOX_Y);

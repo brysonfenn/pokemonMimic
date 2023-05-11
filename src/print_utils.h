@@ -6,6 +6,11 @@
 #define TEXT_BOX_BEGINNING 0
 #define TEXT_BOX_NEXT_LINE 1
 
+#define LIST_BOX_X 8
+#define LIST_BOX_Y 1
+#define LIST_BOX_WIDTH 50
+#define LIST_BOX_HEIGHT 22
+
 //print_utils.c
 
 void clearTerminal();
@@ -26,6 +31,9 @@ int get_selection(int first_line, int start, int end, int last_selection, int is
 void drawBox(int x, int y, int w, int h);
 
 void print_btn_instructions(int x, int y);
+
+void begin_list();
+void print_to_list(const char * list_str);
 
 
 //print_utils_battle.c

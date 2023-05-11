@@ -7,6 +7,7 @@
 #include "doors.h"
 #include "../battles/trainer.h"
 #include "../print_utils.h"
+#include "../print_defines.h"
 
 #define MART_ACTION 1
 #define POKE_CENTER_ACTION 2
@@ -16,7 +17,7 @@ void draw_map2() {
 
     mvprintw(22, 1, "Press 'm' to return to the menu");
     drawBox(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, MAP_Y+5);
+    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y);
 
     //Draw Doors
     draw_town_exit(MAP_TOP, 10);

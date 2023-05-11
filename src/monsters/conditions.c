@@ -99,12 +99,11 @@ int handle_end_conditions() {
 }
 
 //print a pokemon's condition abbreviation
-void print_condition(struct pokemon * pok) {
+void add_condition(char * str, struct pokemon * pok) {
 	if (pok->visible_condition == NO_CONDITION || pok->currentHP == 0)
-		printw(" ");
+		sprintf(str, "%s ", str);
 	else if (pok->visible_condition == POISONED)
-		printw("PSN");
+		sprintf(str, "%s PSN", str);
 	else if (pok->visible_condition == ASLEEP)
-		printw("SLP");
-	refresh(); 
+		sprintf(str, "%s slp", str);
 }

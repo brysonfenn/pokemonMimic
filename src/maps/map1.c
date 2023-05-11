@@ -8,6 +8,7 @@
 #include "../battles/trainer.h"
 #include "../print_utils.h"
 #include "../items.h"
+#include "../print_defines.h"
 
 #include "motion2d.h"
 
@@ -19,7 +20,7 @@ void draw_map1() {
 
     mvprintw(22, 1, "Press 'm' to return to the menu");
     drawBox(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, MAP_Y+5);
+    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y);
 
     drawBuilding_default(MART_X,MART_Y, "Mart", MART_ACTION);
     drawBuilding_default(POKE_CENTER_X,POKE_CENTER_Y, "Poke", POKE_CENTER_ACTION);

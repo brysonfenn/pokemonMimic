@@ -66,20 +66,25 @@ void reset_stat_stages(pokemon *pok) {
 
 //Print stats, attacks, etc of a given pokemon
 void print_pokemon_summary(pokemon *pok) {
-  printw("%s  LVL %d\n\t%s ", pok->name, pok->level, get_typing_by_id(pok->type1));
-  if (pok->type2 != NO_TYPE) printw("%s", get_typing_by_id(pok->type2));
-  printw("\n\n");
-  printw("EXP to next Level: %d\n", (pok->level * 8) - pok->exp);
-  printw("HP: %d/%d", pok->currentHP, pok->maxHP);
-  if (!(pok->currentHP)) printw("  (Fainted)");
-  printw("\n\nATTACK: %d\nDEFENSE: %d\n", pok->baseAttack, pok->baseDefense);
-  printw("SP ATTACK: %d\nSP DEFENSE: %d\n", pok->baseSpAttack, pok->baseSpDefense);
-  printw("SPEED: %d\n\n", pok->baseSpeed);
-  printw("Attacks: \n");
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN, 8, "%s", pok->attacks[0].name);
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN, 25,"%s", pok->attacks[1].name);
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN+1, 8, "%s", pok->attacks[2].name);
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN+1, 25,"%s\n", pok->attacks[3].name);
+  char print_str[8192];
+
+  sprintf(print_str, "%s  LVL %d\n\t%s ", pok->name, pok->level, get_typing_by_id(pok->type1));
+  if (pok->type2 != NO_TYPE) sprintf(print_str, "%s%s", print_str, get_typing_by_id(pok->type2));
+  sprintf(print_str, "%s\n \n", print_str);
+  sprintf(print_str, "%sEXP to next Level: %d\n", print_str, (pok->level * 8) - pok->exp);
+  sprintf(print_str, "%sHP: %d/%d", print_str, pok->currentHP, pok->maxHP);
+  if (!(pok->currentHP)) sprintf(print_str, "%s  (Fainted)", print_str);
+  sprintf(print_str, "%s\n \nATTACK: %d\nDEFENSE: %d\n", print_str, pok->baseAttack, pok->baseDefense);
+  sprintf(print_str, "%sSP ATTACK: %d\nSP DEFENSE: %d\n", print_str, pok->baseSpAttack, pok->baseSpDefense);
+  sprintf(print_str, "%sSPEED: %d\n\n", print_str, pok->baseSpeed);
+  sprintf(print_str, "%sAttacks: \n", print_str);
+
+  print_to_list(print_str);
+
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN+LIST_BOX_Y+1, LIST_BOX_X+8, "%s", pok->attacks[0].name);
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN+LIST_BOX_Y+1, LIST_BOX_X+25,"%s", pok->attacks[1].name);
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN+LIST_BOX_Y+2, LIST_BOX_X+8, "%s", pok->attacks[2].name);
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN+LIST_BOX_Y+2, LIST_BOX_X+25,"%s", pok->attacks[3].name);
 }
 
 //Return the fraction modifier for a stat given the stage (stage 0 return 1.0)

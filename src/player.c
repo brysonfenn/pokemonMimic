@@ -82,23 +82,23 @@ void heal_party() {
     }
   }
   player.numAlive = player.numInParty;
-  printw("Your Pokemon were restored to full health!\n"); refresh();
+  print_to_list("Your Pokemon were restored to full health!\n \n");
   sleep(2);
 }
 
 void handle_poke_center() {
   int inputNum;
-  clear();
-  printw("Welcome to the Pokémon Center\n\n");
-  printw("  Heal Pokémon\n  Exit\n\n");
-  // inputNum = getValidInput(0, 1, "Select an Option: ");
-  inputNum = get_selection(2,0,1,0, NOT_MAIN_SELECT);
+  begin_list();
+  print_to_list("Welcome to the Pokémon Center\n \n");
+  print_to_list("  Heal Pokémon\n  Exit");
+  inputNum = get_selection(LIST_BOX_Y+3, 0, 1,0, NOT_MAIN_SELECT);
 
   clear();
   if (inputNum == 1) return;
   else if (inputNum == 0) {
-    heal_party(); clear();
-    printParty(); sleep(2); clear();
+    begin_list();
+    heal_party();
+    printParty(); sleep(2);
   }
 }
 
@@ -124,11 +124,11 @@ void set_enemy_pokemon(struct pokemon * pok) {
 }
 
 void printPlayer() {
-  move(0,0);
-  printw("  B:\n");
-  printw("  Number of Pokemon: %d\n", player.numInParty);
-  printw("  Money: $%d\n", player.money);
-  refresh();
-  sleep(2);
-  
+  char print_str[128] = "";
+  sprintf(print_str, "%s  B:\n", print_str);
+  sprintf(print_str, "%s  Number of Pokemon: %d\n", print_str, player.numInParty);
+  sprintf(print_str, "%s  Money: $%d\n", print_str, player.money);
+
+  print_to_list(print_str);
+  refresh(); sleep(2);
 }

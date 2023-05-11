@@ -217,6 +217,7 @@ int print_save_files() {
 	FILE *fp;
     char filename[50];
     char line[LINE_SIZE];
+	char print_str[4096] = "";
 
 	int num_save_files = 0;
 
@@ -227,22 +228,24 @@ int print_save_files() {
 
 	    // Check if the file was opened successfully
 	    if (fp == NULL) { 
-			printw("  %d: Empty\n", i);
+			sprintf(print_str, "%s  %d: Empty\n", print_str, i);
 			continue; 
 		}
 	    fgets(line, LINE_SIZE, fp);
-	    printw("  %d: %s", i, line);
+	    sprintf(print_str, "%s  %d: %s", print_str, i, line);
 
 		num_save_files++;
     }
-	printw("  Cancel\n\n");
+	sprintf(print_str, "%s  Cancel\n\n", print_str);
 
     if (!current_save_file) {
-    	printw("Current Save File: None\n\n");
+    	sprintf(print_str, "%sCurrent Save File: None\n \n", print_str);
     }
     else {
-    	printw("Current Save File: %d\n\n", current_save_file);
+    	sprintf(print_str, "%sCurrent Save File: %d\n \n", print_str, current_save_file);
     }
+
+	print_to_list(print_str);
 
 	return num_save_files;
 }

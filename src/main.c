@@ -24,20 +24,24 @@ int main(void) {
   int input_num;
   
   while (1) {
-    clear();
-    printw("\n  New Game\n  Load Game\n");
-    print_btn_instructions(20,0);
-    input_num = get_selection(1, 0, 1, 0, MAIN_SELECT);
+    begin_list();
+    print_to_list("  New Game\n  Load Game\n");
+    input_num = get_selection(LIST_BOX_Y+1, 0, 1, 0, MAIN_SELECT);
 
     //Handle main select returning -1
     if (input_num == -1) {control_c_handler(); return 0;}
 
     if (input_num == 1) {
-      clear();
-      printw("Select a save file to load: \n");
+      begin_list();
+      print_to_list("Select a save file to load: \n");
       print_save_files();
-      input_num = get_selection(1, 0, 9, 0, NOT_MAIN_SELECT);
+      input_num = get_selection(LIST_BOX_Y+2, 0, 9, 0, NOT_MAIN_SELECT);
       clear();
+      
+      //Get proper input
+      if (input_num == 9) {
+        continue;
+      }
       if (load_game(input_num+1) == LOAD_SUCCESS) {
         break;
       }

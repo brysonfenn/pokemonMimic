@@ -158,8 +158,9 @@ int initiate_battle(struct pokemon * enemyPoke) {
         break;
         
       case BAG:
+        begin_list();
         printBag();
-        inputNum = get_selection(1,0,player.numInBag,0, NOT_MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+2, 0, player.numInBag, 0, NOT_MAIN_SELECT);
         if (inputNum == player.numInBag) {
           current_display = MAIN;
           break;
@@ -171,14 +172,14 @@ int initiate_battle(struct pokemon * enemyPoke) {
         
       case POKEMON:
         max_input = player.numInParty-1;
-        printw("Select a pokemon to use.\n");
+        begin_list();
+        print_to_list("Select a pokemon to use.\n");
         printParty();
         if (player.current_pokemon->currentHP != 0) {
           max_input++;
-          printw("  Cancel\n");
+          print_to_list("  Cancel\n");
         }
-        printw("\n");
-        inputNum = get_selection(2,0,max_input, 0, NOT_MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+3, 0, max_input, 0, NOT_MAIN_SELECT);
         if (inputNum == player.numInParty) {
           current_display = MAIN;
           continue;

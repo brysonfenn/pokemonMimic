@@ -60,26 +60,34 @@ int getValidInput(int beginRange, int endRange, const char * request) {
 }
 
 void printParty() {
-  printw("Pokemon:\n");
+  char party_str[1024] = "";
+
+  sprintf(party_str, "%sPokemon:\n", party_str);
   for (int i = 0; i < player.numInParty; i++) {
     pokemon current_pok = player.party[i];
     int current = current_pok.currentHP;
     int max = current_pok.maxHP;
-    printw("  %s\tLVL %d\tHP: %d/%d  ", current_pok.name, current_pok.level, current, max);
-    if (!(current)) printw(" (Fainted) ");
-    print_condition(&current_pok);
-    printw("\n");
+    sprintf(party_str, "%s  %s\tLVL %d\tHP: %d/%d ", party_str, current_pok.name, current_pok.level, current, max);
+    if (!(current)) sprintf(party_str, "%s (Fainted) ", party_str);
+    add_condition(party_str, &current_pok);
+    sprintf(party_str, "%s\n", party_str);
   }
+  print_to_list(party_str);
   refresh();
 }
 
 void printBag() {
-  printw("Bag:\n");
+  char bag_str[1024] = "";
+  sprintf(bag_str, "%sBag:\n", bag_str);
   for (int i = 0; i < player.numInBag; i++) {
-    mvprintw(i+1,0, "  %s", player.bag[i].name);
-    mvprintw(i+1,20, "%d", player.bag[i].number);
+    sprintf(bag_str, "%s  %s", bag_str, player.bag[i].name);
+
+    //Space number properly
+    for (int j = strlen(player.bag[i].name); j < 20; j++) sprintf(bag_str, "%s ", bag_str);
+    sprintf(bag_str, "%s%d\n", bag_str, player.bag[i].number);
   }
-  printw("\n  Cancel\n\n");
+  sprintf(bag_str, "%s\n  Cancel", bag_str);
+  print_to_list(bag_str);
   refresh();
 }
 
@@ -113,7 +121,8 @@ void pause_ncurses() {
 }
 
 int get_selection(int first_line, int start, int end, int last_selection, int is_main) {
-  int cursor_x = 0;
+
+  int cursor_x = LIST_BOX_X+1;
   int cursor_y = first_line + last_selection;
   mvaddch(cursor_y, cursor_x, SELECTION_CHAR);
   refresh();
@@ -186,5 +195,37 @@ void print_btn_instructions(int x, int y) {
   mvprintw(y+4,x+2, "  \u2191");
   mvprintw(y+5,x+2, "\u2190 \u2193 \u2192 Move");
 
+  refresh();
+}
+
+int list_item_num = 0;
+
+void begin_list() {
+  list_item_num = 0;
+  clear();
+  drawBox(LIST_BOX_X, LIST_BOX_Y, LIST_BOX_WIDTH, LIST_BOX_HEIGHT);
+  
+  //print button instructons where they will be in battle
+  print_btn_instructions(LIST_BOX_X+LIST_BOX_WIDTH+1, TEXT_BOX_Y);
+  refresh();
+}
+
+void print_to_list(const char * list_str) {
+  char * token;
+  char* input = strdup(list_str); //input is mutable version of input str
+
+  if (input == NULL) {
+    // Error handling for memory allocation failure
+    mvprintw(2, 2, "Failed to allocate memory."); refresh(); sleep(2); 
+    return;
+  }
+
+  // Tokenize the string by endlines
+  token = strtok(input, "\n");
+  while (token != NULL) {
+    mvprintw(LIST_BOX_Y+1+list_item_num, LIST_BOX_X+ 1, "%s", token);
+    token = strtok(NULL, "\n");
+    list_item_num++;
+  }
   refresh();
 }
