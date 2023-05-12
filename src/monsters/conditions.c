@@ -105,5 +105,5 @@ void add_condition(char * str, struct pokemon * pok) {
 	else if (pok->visible_condition == POISONED)
 		sprintf(str, "%s PSN", str);
 	else if (pok->visible_condition == ASLEEP)
-		sprintf(str, "%s slp", str);
+		sprintf(str, "%s SLP", str);
 }
