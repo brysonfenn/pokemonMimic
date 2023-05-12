@@ -36,7 +36,6 @@ int main(void) {
       print_to_list("Select a save file to load: \n");
       print_save_files();
       input_num = get_selection(LIST_BOX_Y+2, 0, 9, 0, NOT_MAIN_SELECT);
-      clear();
       
       //Get proper input
       if (input_num == 9) {

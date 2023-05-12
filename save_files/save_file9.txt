@@ -1,4 +1,4 @@
-Last Saved: 05/08/2023 20:50:59
+Last Saved: 05/11/2023 17:16:53
 Player: 
 2 2 3 1000
 Location: {1,(48,17)}
@@ -12,4 +12,4 @@ Bulbasaur 1 22 22 2 10 10 11 11 10 5 15 GRASS POISON
 Bag:
 Potion. 1 2
 Super Potion. 2 2
-Pokéball. 3 5
+Pokeball. 3 5

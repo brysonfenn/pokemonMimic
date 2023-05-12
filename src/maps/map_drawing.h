@@ -4,9 +4,9 @@
 #define DEFAULT_BUILDING_WIDTH 9
 #define DEFAULT_BUILDING_HEIGHT 3
 
-#define MAP_WIDTH 60
+#define MAP_WIDTH 58
 #define MAP_HEIGHT 20
-#define MAP_X 5
+#define MAP_X 3
 #define MAP_Y 1
 
 #define DEFAULT_COLOR 1

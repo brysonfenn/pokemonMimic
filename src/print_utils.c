@@ -67,7 +67,12 @@ void printParty() {
     pokemon current_pok = player.party[i];
     int current = current_pok.currentHP;
     int max = current_pok.maxHP;
-    sprintf(party_str, "%s  %s\tLVL %d\tHP: %d/%d ", party_str, current_pok.name, current_pok.level, current, max);
+    sprintf(party_str, "%s  %s" , party_str, current_pok.name);
+
+    //handle spacing
+    for (int j = strlen(current_pok.name); j < 15; j++) sprintf(party_str, "%s ", party_str);
+
+    sprintf(party_str, "%sLVL %d\tHP: %d/%d ", party_str, current_pok.level, current, max);
     if (!(current)) sprintf(party_str, "%s (Fainted) ", party_str);
     add_condition(party_str, &current_pok);
     sprintf(party_str, "%s\n", party_str);
@@ -206,7 +211,7 @@ void begin_list() {
   drawBox(LIST_BOX_X, LIST_BOX_Y, LIST_BOX_WIDTH, LIST_BOX_HEIGHT);
   
   //print button instructons where they will be in battle
-  print_btn_instructions(LIST_BOX_X+LIST_BOX_WIDTH+1, TEXT_BOX_Y);
+  print_btn_instructions(LIST_BOX_X+LIST_BOX_WIDTH+2, TEXT_BOX_Y);
   refresh();
 }
 
@@ -216,7 +221,7 @@ void print_to_list(const char * list_str) {
 
   if (input == NULL) {
     // Error handling for memory allocation failure
-    mvprintw(2, 2, "Failed to allocate memory."); refresh(); sleep(2); 
+    mvprintw(2, 2, "Failed to allocate memory for printing to list."); refresh(); sleep(2); 
     return;
   }
 

@@ -6,9 +6,9 @@
 #define TEXT_BOX_BEGINNING 0
 #define TEXT_BOX_NEXT_LINE 1
 
-#define LIST_BOX_X 8
+#define LIST_BOX_X 3
 #define LIST_BOX_Y 1
-#define LIST_BOX_WIDTH 50
+#define LIST_BOX_WIDTH 58
 #define LIST_BOX_HEIGHT 22
 
 //print_utils.c

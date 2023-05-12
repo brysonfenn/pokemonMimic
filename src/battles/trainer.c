@@ -14,10 +14,12 @@ static char name[NAME_MAX_LENGTH];
 
 //Battle a trainer with a random name and random # of pokemon
 int battle_trainer() {
+  char print_str[1024];
 
   if (!player.numAlive) {
-    printw("  All Pokemon have fainted, please heal them.\n");
-    refresh(); sleep(3);
+    begin_list();
+    print_to_list("  All Pokemon have fainted, please heal them.\n");
+    sleep(3);
     return BATTLE_WHITE_OUT;
   }
 
@@ -30,65 +32,71 @@ int battle_trainer() {
 
   trainer_name = get_random_name();
 
-  printw("  Trainer %s wants to fight!\n", trainer_name); refresh(); sleep(2);
-  clear();
-  printw("  Trainer %s Pokemon: ", trainer_name);
+  begin_list();
+
+  sprintf(print_str, "  Trainer %s wants to fight!\n", trainer_name);
+  print_to_list(print_str); sleep(2);
+  
+  begin_list();
+  sprintf(print_str, "  Trainer %s Pokemon: ", trainer_name);
 
   for (int i = 0; i < num_trainer_pokemon; i++) {
     trainer_pokemon[i] = *(get_random_pokemon(3,7));
     // trainer_pokemon[i] = *get_random_pokemon(30,33);
-    printw("*");
+    sprintf(print_str, "%s*", print_str);
   }
-  printw("\n"); refresh(); sleep(2);
+  sprintf(print_str, "%s\n", print_str); 
+
+  print_to_list(print_str); sleep(2);
 
   set_current_pokemon(PLAYER_DEFAULT_POKEMON);
-  printw("  B sent out %s\n", player.current_pokemon->name); refresh(); sleep(2);
+  sprintf(print_str, "  B sent out %s\n", player.current_pokemon->name);
+  print_to_list(print_str); sleep(2);
 
   int last_pokemon_pos = num_trainer_pokemon - 1;
 
   for (int i = 0; i < last_pokemon_pos; i++) {
-    clear();
-    mvprintw(0,0,"  Trainer %s sent out %s\n", trainer_name, trainer_pokemon[i].name);
-    refresh(); sleep(2);
+    begin_list();
+    sprintf(print_str, "  Trainer %s sent out %s\n", trainer_name, trainer_pokemon[i].name);
+    print_to_list(print_str); sleep(2);
     battle_result = initiate_battle(&(trainer_pokemon[i]));
 
     if (battle_result == BATTLE_WHITE_OUT) { break; }
 
-    clear();
-    printw("  Trainer %s is about to send out %s\n", trainer_name, trainer_pokemon[i+1].name);
-    printw("  Will B change Pokemon?\n  Yes\n  No\n");
-    inputNum = get_selection(2,0,1,0, NOT_MAIN_SELECT);
+    begin_list();
+    sprintf(print_str, "  Trainer %s is about to send out %s\n", trainer_name, trainer_pokemon[i+1].name);
+    sprintf(print_str, "%s  Will B change Pokemon?\n  Yes\n  No\n", print_str);
+    print_to_list(print_str);
+    inputNum = get_selection(LIST_BOX_Y+3,0,1,0, NOT_MAIN_SELECT);
 
     //Get player input for pokemon
-    while (1) {
-      if (inputNum == 0) {
-        clear();
-        printw("Select a Pokemon to use:\n");
+    if (inputNum == 0) {
+      while (1) {
+        begin_list();
+        print_to_list("Select a pokemon to use.\n");
         printParty();
-        printw("\n");
       
-        inputNum = get_selection(2,0,player.numInParty-1,0, NOT_MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+3,0,player.numInParty-1,0, NOT_MAIN_SELECT);
 
         if (player.party[inputNum].currentHP == 0) {
           move(player.numInParty+3,0);
-          printw("You must select a different pokemon.\n"); refresh(); sleep(2);
+          print_to_list(" \nYou must select a different pokemon.\n"); sleep(2);
         }
         else {
           set_current_pokemon(inputNum);
           move(player.numInParty+3,0);
-          printw("B sent out %s\n", player.current_pokemon->name); refresh(); sleep(2);
+          sprintf(print_str, "B sent out %s\n", player.current_pokemon->name);
+          print_to_list(print_str); sleep(2);
           break;
         }
-      }
-      else {
-        break;
       }
     }
   }
 
   if (battle_result == BATTLE_WIN) {
-    printw("Trainer %s sent out %s\n", trainer_name, trainer_pokemon[last_pokemon_pos].name);
-    refresh(); sleep(2);
+    begin_list();
+    sprintf(print_str, "  Trainer %s sent out %s\n", trainer_name, trainer_pokemon[last_pokemon_pos].name);
+    print_to_list(print_str); sleep(2);
     battle_result = initiate_battle(&(trainer_pokemon[last_pokemon_pos]));
     
     if (battle_result == BATTLE_WHITE_OUT) return BATTLE_WHITE_OUT;

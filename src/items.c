@@ -188,7 +188,9 @@ int execute_potion(int input_num, char * name) {
 
   sprintf(print_str, " \n%s gained %d HP!\n", player.party[input].name, player.party[input].currentHP - tempHP);
   print_to_list(print_str); sleep(2);
-  clear(); printParty(); refresh(); sleep(2);
+
+  begin_list();
+  printParty(); refresh(); sleep(2);
 
   return ITEM_SUCCESS;
 }

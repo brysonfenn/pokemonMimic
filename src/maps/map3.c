@@ -50,7 +50,7 @@ int actions_map3(int player_x, int player_y) {
 void grass_map3() {
     attrset(COLOR_PAIR(GRASS_COLOR));
 
-    int right = MAP_X + 29;
+    int right = MAP_X + 27;
     int left = MAP_X + 4;
 
     for (int i = 1; i < 30; i++) {

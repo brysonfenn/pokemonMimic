@@ -10,6 +10,7 @@
 #include "maps/location.h"
 #include "monsters/typings.h"
 #include "print_defines.h"
+#include "print_utils.h"
 
 #define LINE_SIZE 1024
 
@@ -20,6 +21,7 @@ int save_game(int file_num) {
 	attack curr_att;
 	item curr_item;
 	int inputNum;
+	char print_str[1024];
 
 	FILE *fp;
 	char filename[50];
@@ -28,10 +30,12 @@ int save_game(int file_num) {
 
 	//Double check save file
 	if (file_num !=  current_save_file && fp != NULL) {
-		printw("You selected file %d, which contains data that would be lost if you save ", file_num);
-		printw("here.\nAre you sure you want to save to file %d?\n", file_num);
-		printw("  Yes\n  No\n\n");
-		inputNum = get_selection(2,0,1,0,NOT_MAIN_SELECT);
+		begin_list();
+		sprintf(print_str, "You selected file %d, which contains data that would\n", file_num);
+		sprintf(print_str, "%sbe lost if you save here. Are you sure you want to\nsave to file %d?\n", print_str, file_num);
+		sprintf(print_str, "%s \n  Yes\n  No", print_str);
+		print_to_list(print_str);
+		inputNum = get_selection(LIST_BOX_Y+5,0,1,0,NOT_MAIN_SELECT);
 		if (inputNum) return 0;
 	}
 
@@ -79,8 +83,8 @@ int save_game(int file_num) {
 	// Close the file
 	fclose(fp);
 
-	clear();
-	printw("Game File %d Saved Successfully!\n", file_num); refresh(); sleep(2);
+	sprintf(print_str, " \nGame File %d Saved Successfully!\n", file_num);
+	print_to_list(print_str); sleep(2);
 	current_save_file = file_num;
 
 	return 0;
@@ -92,6 +96,7 @@ int load_game(int file_num) {
 	attack * curr_att;
 	item * curr_item;
 	int i, j;
+	char print_str[1024];
 
 	char temp_name[50];
 	int numOfItem, temp_id_num, temp_pp;
@@ -207,8 +212,9 @@ int load_game(int file_num) {
 
     // Close the file
     fclose(fp);
-	clear();
-    printw("Game File %d Loaded Successfully!\n", file_num); refresh(); sleep(2);
+
+	sprintf(print_str, "Game File %d Loaded Successfully!\n", file_num);
+    print_to_list(print_str); sleep(2);
     current_save_file = file_num;
     return LOAD_SUCCESS;
 }

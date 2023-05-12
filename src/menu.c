@@ -61,7 +61,7 @@ void main_menu() {
         case POKEMON:
         begin_list();
         printParty();
-        mvprintw(LIST_BOX_Y+player.numInParty+2, LIST_BOX_X+1, "  Cancel", 0);
+        print_to_list("  Cancel");
         inputNum = get_selection(LIST_BOX_Y+2,0,player.numInParty,0, NOT_MAIN_SELECT);
         if (inputNum == player.numInParty) { current_display = MAIN; break; }
         
@@ -135,7 +135,7 @@ void main_menu() {
         inputNum = get_current_save_file();
         inputNum = (inputNum == 0) ? 0 : inputNum-1;  //Adjust to current save file position
         inputNum = get_selection(LIST_BOX_Y+2, 0, 9, inputNum, NOT_MAIN_SELECT);
-        clear();
+
         if (inputNum == 9) { current_display = MAIN; break; }
         save_game(inputNum+1);
         current_display = MAIN;
@@ -147,7 +147,7 @@ void main_menu() {
         print_to_list("Select a save file to load: \n");
         print_save_files();
         inputNum = get_selection(LIST_BOX_Y+2, 0, 9, 0, NOT_MAIN_SELECT);
-        clear();
+
         if (inputNum == 9) { current_display = MAIN; break; }
         load_game(inputNum+1);
         current_display = MAIN;

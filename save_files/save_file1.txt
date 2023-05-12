@@ -1,27 +1,27 @@
-Last Saved: 05/08/2023 20:49:53
+Last Saved: 05/11/2023 17:51:08
 Player: 
 5 5 4 3700
 Location: {2,(20,17)}
 Pokemon: 
-Bulbasaur 1 26 26 4 17 17 17 17 18 9 67 GRASS POISON
-	Tackle. 1 35
-	Growl. 3 40
-	Leech seed. 11 10
-	Sleep Powder. 15 35
+Charmander 4 22 22 2 14 15 14 15 16 7 15 FIRE NONE
+	Scratch. 2 35
+	Tail Whip. 4 30
 Weedle 13 21 21 1 13 11 13 11 12 6 28 BUG POISON
 	Poison Sting. 6 1
 Squirtle 7 22 22 3 15 14 15 14 16 7 3 WATER NONE
 	Tackle. 1 35
 	Tail Whip. 4 30
 	Bubble. 13 30
-Charmander 4 22 22 2 14 15 14 15 16 7 15 FIRE NONE
-	Scratch. 2 35
-	Tail Whip. 4 30
+Bulbasaur 1 26 26 4 17 17 17 17 18 9 67 GRASS POISON
+	Tackle. 1 35
+	Growl. 3 40
+	Leech seed. 11 10
+	Sleep Powder. 15 35
 Sandshrew 27 22 22 2 14 15 14 15 11 7 11 GROUND NONE
 	Scratch. 2 35
 	Defense Curl. 9 40
 Bag:
 Potion. 1 2
 Super Potion. 2 3
-Pokéball. 3 1
+Pokeball. 3 1
 Great Ball. 4 1
