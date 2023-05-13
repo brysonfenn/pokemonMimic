@@ -7,6 +7,7 @@
 
 #include "../print_utils.h"
 #include "../print_defines.h"
+#include "../player.h"
 
 //Initialize a given pokemon new_pok and get randomized stats
   //level = particular level
@@ -70,21 +71,88 @@ void print_pokemon_summary(pokemon *pok) {
 
   sprintf(print_str, "%s  LVL %d\n\t%s ", pok->name, pok->level, get_typing_by_id(pok->type1));
   if (pok->type2 != NO_TYPE) sprintf(print_str, "%s%s", print_str, get_typing_by_id(pok->type2));
-  sprintf(print_str, "%s\n \n", print_str);
+  sprintf(print_str, "%s\n", print_str);
   sprintf(print_str, "%sEXP to next Level: %d\n", print_str, (pok->level * 8) - pok->exp);
   sprintf(print_str, "%sHP: %d/%d", print_str, pok->currentHP, pok->maxHP);
   if (!(pok->currentHP)) sprintf(print_str, "%s  (Fainted)", print_str);
   sprintf(print_str, "%s\n \nATTACK: %d\nDEFENSE: %d\n", print_str, pok->baseAttack, pok->baseDefense);
   sprintf(print_str, "%sSP ATTACK: %d\nSP DEFENSE: %d\n", print_str, pok->baseSpAttack, pok->baseSpDefense);
   sprintf(print_str, "%sSPEED: %d\n\n", print_str, pok->baseSpeed);
-  sprintf(print_str, "%sAttacks: \n", print_str);
+  sprintf(print_str, "%s\nAttacks: \n", print_str);
 
   print_to_list(print_str);
 
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN+LIST_BOX_Y+1, LIST_BOX_X+8, "%s", pok->attacks[0].name);
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN+LIST_BOX_Y+1, LIST_BOX_X+25,"%s", pok->attacks[1].name);
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN+LIST_BOX_Y+2, LIST_BOX_X+8, "%s", pok->attacks[2].name);
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN+LIST_BOX_Y+2, LIST_BOX_X+25,"%s", pok->attacks[3].name);
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN, POKE_SUMMARY_ATKS_X, "%s", pok->attacks[0].name);
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN, POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING, "%s", pok->attacks[1].name);
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN+1, POKE_SUMMARY_ATKS_X, "%s", pok->attacks[2].name);
+  mvprintw(POKE_SUMMARY_ATKS_BEGIN+1, POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING, "%s", pok->attacks[3].name);
+}
+
+//Control all actions for the pokemon menu
+int handle_pokemon_menu(int input_num1) {
+  int input_num2;
+  char print_str[256];
+  pokemon tempPok;
+
+  begin_list();
+  print_pokemon_summary(&(player.party[input_num1]));
+  print_to_list(" \n \n \n \n  Switch\n  Release\n  Attacks\n  Cancel\n");
+  input_num2 = get_selection(POKE_SUMMARY_SEL_BEGIN, 0, 3, 0, NOT_MAIN_SELECT);
+
+  //Break if inputNum2 is 2 (cancel)
+  if (input_num2 == 3) { return RETURN_TO_PARTY; }
+  //Switch
+  else if (input_num2 == 0) {
+      begin_list();
+      if (player.numInParty <= 1) { print_to_list("You only have 1 Pokémon!\n"); sleep(2); return RETURN_TO_SUMMARY; }
+      sprintf(print_str, "Which pokemon would you like to switch with %s?\n", player.party[input_num1].name);
+      print_to_list(print_str);
+      printParty();
+      print_to_list("  Cancel");
+      input_num2 = get_selection(LIST_BOX_Y+3,0,player.numInParty,input_num1, NOT_MAIN_SELECT);
+
+      if (input_num2 == player.numInParty) { return RETURN_TO_SUMMARY; }
+      if (input_num2 == input_num1) { return RETURN_TO_SUMMARY; }
+
+      tempPok = player.party[input_num1];
+      player.party[input_num1] = player.party[input_num2];
+      player.party[input_num2] = tempPok;
+
+      sprintf(print_str, " \n \nB switched %s with %s!", player.party[input_num2].name, player.party[input_num1].name);
+      print_to_list(print_str); sleep(2);
+  }
+  //Release
+  else if (input_num2 == 1) {
+      begin_list();
+      if (player.numInParty <= 1) { print_to_list("You only have 1 Pokémon!\n"); sleep(2); return RETURN_TO_SUMMARY; }
+      sprintf(print_str, "Are you sure you want to release %s?\n  Yes\n  No\n", player.party[input_num1].name);
+      print_to_list(print_str);
+      input_num2 = get_selection(LIST_BOX_Y+2,0,1,0, NOT_MAIN_SELECT);
+      if (input_num2) { return RETURN_TO_SUMMARY; }
+      else {
+      sprintf(print_str, "Bye Bye, %s!\n", player.party[input_num1].name);
+      print_to_list(print_str); sleep(2);
+      player.numInParty--;
+      for (int i = input_num1; i < player.numInParty; i++) {
+          player.party[i] = player.party[i+1];
+      }
+      player.party[player.numInParty] = emptyPok;
+      }
+  }
+  //View attack stats
+  else if (input_num2 == 2) {
+    input_num2 = 0;
+    while (input_num2 != 5) {
+      begin_list();
+      print_pokemon_summary(&(player.party[input_num1]));
+      mvprintw(POKE_SUMMARY_ATKS_BEGIN+1,POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING*2, "  Cancel");
+      input_num2 = 
+        get_move_selection(POKE_SUMMARY_ATKS_X-2, POKE_SUMMARY_ATKS_BEGIN, &(player.party[input_num1]));
+    }
+    return RETURN_TO_SUMMARY;
+  }
+
+  return RETURN_TO_MENU;
 }
 
 //Return the fraction modifier for a stat given the stage (stage 0 return 1.0)

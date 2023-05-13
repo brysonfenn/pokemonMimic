@@ -17,6 +17,10 @@
 #define IV_SP_DEFENSE 4
 #define IV_SPEED 5
 
+#define RETURN_TO_SUMMARY 0
+#define RETURN_TO_MENU 1
+#define RETURN_TO_PARTY 2
+
 typedef struct pokemon {
   char name[30];
   int16_t id_num;
@@ -67,6 +71,9 @@ void reset_stat_stages(pokemon *pok);
 
 //Print stats, attacks, etc of a given pokemon
 void print_pokemon_summary(pokemon *pok);
+
+//Control all actions for the pokemon menu
+int handle_pokemon_menu(int input_num1);
 
 //Return the fraction modifier for a stat given the stage (stage 0 return 1.0)
 float get_stat_modifier(int16_t stage);

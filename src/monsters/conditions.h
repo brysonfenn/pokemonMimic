@@ -4,7 +4,7 @@
 struct pokemon;
 
 //All condition types
-typedef enum { NO_CONDITION, SPEED_STAT, ATTACK_STAT, DEFENSE_STAT, ACCURACY_STAT, 
+typedef enum { NO_CONDITION, SPEED_STAT, ATTACK_STAT, DEFENSE_STAT, ACCURACY_STAT, EVASIVENESS_STAT,
                 POISONED, PARALYZED, ASLEEP, BURNED, FROZEN, SEEDED } Condition;
 
 //Inflict condition on pok given, handle accuracy

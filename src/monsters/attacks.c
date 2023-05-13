@@ -10,20 +10,9 @@ int perform_struggle(struct pokemon *perp, struct pokemon *victim, bool enemy);
 
 //Handle all operations for an attack, indicate whether this is an enemy attack (true)
 int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy) {
-  //Struggle
-  if (move_num == -1) {
-    perform_struggle(perp, victim, enemy);
-    return 0;
-  }
-
-  perp->attacks[move_num].curr_pp--;
-  attack chosenAttack = perp->attacks[move_num];
-
-  int damage;
-
-  text_box_cursors(TEXT_BOX_BEGINNING);
 
   //Handle sleep
+  text_box_cursors(TEXT_BOX_BEGINNING);
   if (perp->visible_condition == ASLEEP) {
     if (enemy) printw(ENEMY_TEXT);
     if (perp->sleep_count > 0) {
@@ -40,8 +29,28 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
     }
   }
 
-  text_box_cursors(TEXT_BOX_BEGINNING);
+  //Handle Paralysis
+  if (perp->visible_condition == PARALYZED) {
+    if ((rand() % 100) < 25) {
+      printw("%s is paralyzed, it can't move!", perp->name);
+      refresh(); sleep(2);
+      return 0;
+    }
+  }
 
+  //Struggle
+  if (move_num == -1) {
+    perform_struggle(perp, victim, enemy);
+    return 0;
+  }
+
+  //Decrement pp and assign attack
+  perp->attacks[move_num].curr_pp--;
+  attack chosenAttack = perp->attacks[move_num];
+
+  //Use attack
+  int damage;
+  text_box_cursors(TEXT_BOX_BEGINNING);
   if (enemy) printw(ENEMY_TEXT);
   printw("%s used %s", perp->name, chosenAttack.name);
   refresh(); sleep(1);

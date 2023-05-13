@@ -20,6 +20,15 @@ int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 		printw("%s was badly poisoned!", pok->name); refresh(); sleep(2);
 		pok->visible_condition = POISONED;
 	}
+	else if (condition == PARALYZED && PARALYZED && random < accuracy) {
+		if (pok->visible_condition != NO_CONDITION) {
+			printw("%s could not be paralyzed!", pok->name); refresh(); sleep(2);
+			return 1;
+		}
+		if (pok != player.current_pokemon) printw(ENEMY_TEXT);
+		printw("%s was paralyzed. It may be unable to move!", pok->name); refresh(); sleep(2);
+		pok->visible_condition = PARALYZED;
+	}
 	else if (condition == ASLEEP && random < accuracy) {
 		if (pok->visible_condition != NO_CONDITION) {
 			printw("%s could not be put to sleep!", pok->name); refresh(); sleep(2);
@@ -104,6 +113,8 @@ void add_condition(char * str, struct pokemon * pok) {
 		sprintf(str, "%s ", str);
 	else if (pok->visible_condition == POISONED)
 		sprintf(str, "%s PSN", str);
+	else if (pok->visible_condition == PARALYZED)
+		sprintf(str, "%s PRZ", str);
 	else if (pok->visible_condition == ASLEEP)
 		sprintf(str, "%s SLP", str);
 }

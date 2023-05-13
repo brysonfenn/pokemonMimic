@@ -33,7 +33,12 @@ void print_mart() {
 
   for (int i = 1; i <= CURRENT_MAX_NUM; i++) {
     currItem = item_array[i];
-    sprintf(print_str, "  %s\t\t$%d\n", currItem->name, currItem->cost);
+    sprintf(print_str, "  %s", currItem->name);
+    
+    //handle spacing
+    for (int j = strlen(currItem->name); j < 17; j++) sprintf(print_str, "%s ", print_str);
+
+    sprintf(print_str, "%s$%d\n", print_str, currItem->cost);
     print_to_list(print_str);
   }
 }

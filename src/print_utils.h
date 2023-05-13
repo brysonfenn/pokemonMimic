@@ -6,10 +6,7 @@
 #define TEXT_BOX_BEGINNING 0
 #define TEXT_BOX_NEXT_LINE 1
 
-#define LIST_BOX_X 3
-#define LIST_BOX_Y 1
-#define LIST_BOX_WIDTH 58
-#define LIST_BOX_HEIGHT 22
+struct pokemon;
 
 //print_utils.c
 
@@ -41,7 +38,7 @@ void print_to_list(const char * list_str);
 void printBattle();
 
 int get_battle_selection(int first_line, int last_selection);
-int get_fight_selection(int first_line, int num_attacks);
+int get_move_selection(int start_x, int start_y, struct pokemon* pok);
 
 void draw_text_box();
 void text_box_cursors(int next_line);

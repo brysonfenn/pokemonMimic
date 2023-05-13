@@ -1,24 +1,24 @@
-Last Saved: 05/08/2023 20:50:09
+Last Saved: 05/13/2023 07:41:09
 Player: 
 5 5 3 1100
 Location: {1,(48,17)}
 Pokemon: 
-Bulbasaur 1 26 26 3 16 15 16 15 17 8 40 GRASS POISON
+Bulbasaur 1 26 26 3 16 15 16 15 17 8 40 GRASS POISON 0 0
 	Tackle. 1 35
 	Growl. 3 40
 	Leech seed. 11 10
-Charmander 4 22 22 2 13 14 13 14 15 6 3 FIRE NONE
+Charmander 4 22 22 2 13 14 13 14 15 6 3 FIRE NONE 0 0
 	Scratch. 2 35
 	Tail Whip. 4 30
-Caterpie 10 14 14 2 7 8 7 8 10 3 0 BUG NONE
+Caterpie 10 14 14 2 7 8 7 8 10 3 0 BUG NONE 0 0
 	Tackle. 1 35
 	String Shot. 5 40
-Pidgey 16 14 14 1 9 9 9 9 9 3 0 NORMAL FLYING
+Pidgey 16 14 14 1 9 9 9 9 9 3 0 NORMAL FLYING 0 0
 	Tackle. 1 35
-Rattata 19 11 11 2 7 9 7 9 8 2 0 NORMAL NONE
+Rattata 19 11 11 2 7 9 7 9 8 2 0 NORMAL NONE 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 Bag:
 Potion. 1 2
-Pokéball. 3 2
+Pokeball. 3 2
 Great Ball. 4 1

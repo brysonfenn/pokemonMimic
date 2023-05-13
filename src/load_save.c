@@ -16,6 +16,8 @@
 
 static int current_save_file = 0;
 
+void notify_error(char * expected, char * line, int expected_elements, int matched_elements);
+
 int save_game(int file_num) {
 	pokemon curr_pok;
 	attack curr_att;
@@ -65,9 +67,10 @@ int save_game(int file_num) {
 	fprintf(fp, "Pokemon: \n");
 	for (int i = 0; i < player.numInParty; i++) {
 		curr_pok = player.party[i];
-		fprintf(fp, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s\n", curr_pok.name, curr_pok.id_num, curr_pok.maxHP, curr_pok.currentHP,
+		fprintf(fp, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %d %d\n", curr_pok.name, curr_pok.id_num, curr_pok.maxHP, curr_pok.currentHP,
 			curr_pok.numAttacks, curr_pok.baseAttack, curr_pok.baseDefense, curr_pok.baseSpAttack, curr_pok.baseSpDefense,
-			curr_pok.baseSpeed, curr_pok.level, curr_pok.exp, get_typing_by_id(curr_pok.type1), get_typing_by_id(curr_pok.type2));
+			curr_pok.baseSpeed, curr_pok.level, curr_pok.exp, get_typing_by_id(curr_pok.type1), get_typing_by_id(curr_pok.type2),
+			curr_pok.visible_condition, curr_pok.sleep_count);
 			
 		for (int j = 0; j < curr_pok.numAttacks; j++) {
 			curr_att = curr_pok.attacks[j];
@@ -140,21 +143,17 @@ int load_game(int file_num) {
 		char type1[20];
 		char type2[20];
 
-		matched_elements = sscanf(line, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s", &(curr_pok->name), &(curr_pok->id_num), 
+		matched_elements = sscanf(line, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %d %d", &(curr_pok->name), &(curr_pok->id_num), 
 			&(curr_pok->maxHP), &(curr_pok->currentHP), &(curr_pok->numAttacks), &(curr_pok->baseAttack), 
 			&(curr_pok->baseDefense), &(curr_pok->baseSpAttack), &(curr_pok->baseSpDefense), &(curr_pok->baseSpeed), 
-			&(curr_pok->level), &(curr_pok->exp), &type1, &type2);
+			&(curr_pok->level), &(curr_pok->exp), &type1, &type2, &(curr_pok->visible_condition), &(curr_pok->sleep_count));
 
 		curr_pok->type1 = get_type_id_by_string(type1);
 		curr_pok->type2 = get_type_id_by_string(type2);
 
 		//Check if the line matched correctly
-		if (matched_elements != 14) {
-			printw("ERROR with load file. Expected a POKEMON line with 12 elements.\n");
-			printw("Only matched %d elements.\n", matched_elements); refresh(); sleep(4);
-			printw("Offending line is: %s\n", line); refresh(); sleep(3);
-			printw("Reloading...\n"); refresh(); sleep(1);
-			player_init(current_save_file);
+		if (matched_elements != 16) {
+			notify_error("POKEMON", line, 16, matched_elements);
 			return LOAD_FAILURE;
 		}
 
@@ -167,11 +166,7 @@ int load_game(int file_num) {
 
 			//Check if the line matched correctly
 			if (matched_elements != 3) {
-				printw("ERROR with load file. Expected a MOVE line with 3 elements.\n");
-				printw("Only matched %d elements.\n", matched_elements); refresh(); sleep(4); 
-				printw("Offending line is: %s\n", line); refresh(); sleep(3);
-				printw("Reloading...\n"); refresh(); sleep(1);
-				player_init(current_save_file);	// reinitialize player
+				notify_error("MOVE", line, 3, matched_elements);
 				return LOAD_FAILURE;
 			}
 			curr_pok->attacks[j] = *(get_attack_by_id(temp_id_num));
@@ -187,9 +182,11 @@ int load_game(int file_num) {
 
 		//Check if there were not enough items
 		if (fgets(line, LINE_SIZE, fp) == NULL) {
-			printw("ERROR with load file. Too many bag items listed\n");
-			printw("Expected: %d, But got %d.\n", player.numInBag, i-1); sleep(4);
-			printw("Reloading...\n"); sleep(1);
+			begin_list();
+			sprintf(print_str, "ERROR with load file. Not enough bag items found\n");
+			sprintf(print_str, "%sExpected: %d, But got %d.\n", print_str, player.numInBag, i); 
+			print_to_list(print_str); sleep(4);
+			print_to_list("Reloading...\n"); sleep(1);
 			player_init(current_save_file); // reinitialize player
 			return LOAD_FAILURE;
 		}
@@ -198,11 +195,7 @@ int load_game(int file_num) {
 
 		//Check if the line matched correctly
 		if (matched_elements != 3) {
-			printw("ERROR with load file. Expected an ITEM line with 3 elements.\n");
-			printw("Only matched %d elements.\n", matched_elements); refresh(); sleep(4);
-			printw("Offending line is: %s\n", line); refresh(); sleep(3);
-			printw("Reloading...\n"); refresh(); sleep(1);
-			player_init(current_save_file);	// reinitialize player
+			notify_error("ITEM", line, 3, matched_elements);
 			return LOAD_FAILURE;
 		}
 		player.bag[i] = *(get_item_by_id(temp_id_num));
@@ -258,4 +251,17 @@ int print_save_files() {
 
 int get_current_save_file() {
 	return current_save_file;
+}
+
+void notify_error(char * expected, char * line, int expected_elements, int matched_elements) {
+	char print_str[256];
+
+	begin_list();
+	sprintf(print_str, "ERROR with load file. Expected a %s line with \n%d elements. ", expected, expected_elements);
+	sprintf(print_str, "%sOnly matched %d elements.\n", print_str, matched_elements);
+	print_to_list(print_str); sleep(4);
+	sprintf(print_str, "Offending line is: \n  %s\n", line);
+	print_to_list(print_str); sleep(3);
+	print_to_list("Reloading...\n"); sleep(1);
+	player_init(current_save_file);
 }

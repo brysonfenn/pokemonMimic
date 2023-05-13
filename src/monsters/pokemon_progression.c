@@ -89,7 +89,7 @@ void learn_move(pokemon * pok, attack * new_attack) {
   }
   else {
 
-    text_box_cursors(TEXT_BOX_BEGINNING);
+    text_box_cursors(TEXT_BOX_BEGINNING); text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("%s wants to learn %s,", pok->name, new_attack->name); 
 
     text_box_cursors(TEXT_BOX_NEXT_LINE);
@@ -105,14 +105,16 @@ void learn_move(pokemon * pok, attack * new_attack) {
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("Select a move to forget.");
         
-    input_num = get_fight_selection(SELECT_Y, pok->numAttacks);
+    input_num = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, pok);
     input_num--;  //Adjust to array position
 
+    clear(); printBattle();
     text_box_cursors(TEXT_BOX_BEGINNING);
 
     if (input_num == 4) {
       printw("%s did not learn %s!", pok->name, new_attack->name); refresh(); sleep(2); return;
     }
+
     printw("1...2...and...poof!"); refresh(); sleep(2);
 
     text_box_cursors(TEXT_BOX_NEXT_LINE);
@@ -192,6 +194,9 @@ int evolve(pokemon * pok, int next_pok_id) {
   //Preserve some information like name and lost hp
   sprintf(og_pok_name, "%s", pok->name);
   int lost_hp = pok->maxHP - pok->currentHP;
+
+  clear();
+  printBattle();
 
   text_box_cursors(TEXT_BOX_BEGINNING);
   printw("%s is evolving!", og_pok_name); refresh(); sleep(3);

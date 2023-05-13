@@ -15,9 +15,10 @@ static bool power_off = false;
 
 void main_menu() {
 
-    int inputNum, inputNum2, return_execute, num_files;
+    int inputNum, inputNum2, return_execute, num_files, selected_poke;
     char example_string[4096];
     int last_selection = 0;
+    selected_poke = 0;
     pokemon tempPok;
 
     //This is the main menu while loop.
@@ -59,51 +60,21 @@ void main_menu() {
 
         //Handle party changes, releases, and viewing stats
         case POKEMON:
-        begin_list();
-        printParty();
-        print_to_list("  Cancel");
-        inputNum = get_selection(LIST_BOX_Y+2,0,player.numInParty,0, NOT_MAIN_SELECT);
-        if (inputNum == player.numInParty) { current_display = MAIN; break; }
-        
+        return_execute = RETURN_TO_PARTY;
+        selected_poke = 0;   //Start party selection at position zero
 
-        begin_list();
-        print_pokemon_summary(&(player.party[inputNum]));
-        print_to_list(" \n \n \n  Switch\n  Release\n  Cancel\n");
-        inputNum2 = get_selection(POKE_SUMMARY_SEL_BEGIN, 0, 2, 0, NOT_MAIN_SELECT);
-
-        //Break if inputNum2 is 2 (cancel)
-        if (inputNum2 == 2) { break; } 
-        //Switch
-        else if (inputNum2 == 0) {
-            begin_list();
-            if (player.numInParty <= 1) { print_to_list("You only have 1 Pokémon!\n"); sleep(2); break; }
-            sprintf(example_string, "Which pokemon would you like to switch with %s?\n", player.party[inputNum].name);
-            print_to_list(example_string);
-            printParty();
-            inputNum2 = get_selection(LIST_BOX_Y+3,0,player.numInParty-1,0, NOT_MAIN_SELECT);
-
-            tempPok = player.party[inputNum];
-            player.party[inputNum] = player.party[inputNum2];
-            player.party[inputNum2] = tempPok;
-        }
-        //Release
-        else if (inputNum2 == 1) {
-            begin_list();
-            if (player.numInParty <= 1) { print_to_list("You only have 1 Pokémon!\n"); sleep(2); break; }
-            sprintf(example_string, "Are you sure you want to release %s?\n  Yes\n  No\n", player.party[inputNum].name);
-            print_to_list(example_string);
-            inputNum2 = get_selection(LIST_BOX_Y+2,0,1,0, NOT_MAIN_SELECT);
-            if (inputNum2) { break; }
-            else {
-            sprintf(example_string, "Bye Bye, %s!\n", player.party[inputNum].name);
-            print_to_list(example_string); sleep(2);
-            player.numInParty--;
-            for (int i = inputNum; i < player.numInParty; i++) {
-                player.party[i] = player.party[i+1];
+        while (1) {
+            if (return_execute == RETURN_TO_PARTY) {
+                begin_list();
+                printParty();
+                print_to_list("  Cancel");
+                inputNum = get_selection(LIST_BOX_Y+2,0,player.numInParty,selected_poke, NOT_MAIN_SELECT);
+                if (inputNum == player.numInParty) { break; }   //Cancel
             }
-            player.party[player.numInParty] = emptyPok;
-            }
+            return_execute = handle_pokemon_menu(inputNum);
+            if (return_execute == RETURN_TO_MENU) break;    //Break if requested
         }
+
         current_display = MAIN;
         break;
 

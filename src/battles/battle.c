@@ -132,12 +132,12 @@ int initiate_battle(struct pokemon * enemyPoke) {
         //If any pp, get attack choice
         printBattle();
         mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[0].name); 
-        mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  %s", currentPok->attacks[1].name); 
+        mvprintw(SELECT_Y,BATTLE_SELECT_1_X+MOVE_SELECT_SPACING,"  %s", currentPok->attacks[1].name); 
         mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[2].name); 
-        mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  %s", currentPok->attacks[3].name); 
-        mvprintw(SELECT_Y+1,BATTLE_SELECT_3_X,"  Cancel");
+        mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X+MOVE_SELECT_SPACING,"  %s", currentPok->attacks[3].name); 
+        mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X+MOVE_SELECT_SPACING*2,"  Cancel");
         
-        inputNum = get_fight_selection(SELECT_Y, currentPok->numAttacks);
+        inputNum = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, currentPok);
 
         //Handle Cancel
         if (inputNum == 5) {
@@ -209,9 +209,19 @@ int initiate_battle(struct pokemon * enemyPoke) {
     case NONE:
       break;
     case ATTACK:
-
+      //Get base attack
       player_speed = (int) (currentPok->baseSpeed * get_stat_modifier(currentPok->spd_stage));
       enemy_speed = (int) (enemy.baseSpeed * get_stat_modifier(enemy.spd_stage));
+
+      //Handle paralysis
+      if (currentPok->visible_condition == PARALYZED) {
+        player_speed *= 0.25;
+        player_speed = (player_speed <= 0) ? 1 : player_speed;
+      }
+      if (enemy.visible_condition == PARALYZED) {
+        enemy_speed *= 0.25;
+        enemy_speed = (enemy_speed <= 0) ? 1 : enemy_speed;
+      }
       
       //Handle Priority
       enemy_priority = enemy.attacks[enemy_attack_num].priority;

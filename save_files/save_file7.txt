@@ -1,20 +1,20 @@
-Last Saved: 05/09/2023 20:21:08
+Last Saved: 05/13/2023 07:41:37
 Player: 
 4 4 2 300
 Location: {1,(49,17)}
 Pokemon: 
-Charmander 4 22 22 3 12 11 11 10 14 7 12 FIRE NONE
+Charmander 4 22 22 3 12 11 11 10 14 7 12 FIRE NONE 0 0
 	Scratch. 2 35
 	Growl. 3 40
 	Ember. 12 25
-Pidgey 16 17 17 1 8 8 6 6 9 4 18 NORMAL FLYING
+Pidgey 16 17 17 1 8 8 6 6 9 4 18 NORMAL FLYING 0 0
 	Tackle. 1 35
-Sandshrew 27 18 18 1 11 11 8 8 8 4 16 GROUND NONE
+Sandshrew 27 18 18 1 11 11 8 8 8 4 16 GROUND NONE 0 0
 	Tackle. 1 35
-Bulbasaur 1 23 23 3 11 11 14 14 11 7 10 GRASS POISON
+Bulbasaur 1 23 23 3 11 11 14 14 11 7 10 GRASS POISON 0 0
 	Tackle. 1 35
 	Growl. 3 40
 	Leech seed. 11 10
 Bag:
 Super Potion. 2 2
-Pokéball. 3 6
+Pokeball. 3 6

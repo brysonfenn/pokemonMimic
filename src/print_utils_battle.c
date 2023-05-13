@@ -7,7 +7,7 @@
 
 #include "monsters/pokemon.h"
 
-void adjust_cursors(int selection, int first_line);
+void adjust_cursors(int selection, int start_x, int start_y);
 
 static int cursor_x;
 static int cursor_y;
@@ -39,7 +39,7 @@ int get_battle_selection(int first_line, int last_selection) {
   cursor_x = BATTLE_SELECT_1_X;
   cursor_y = first_line;
 
-  adjust_cursors(selection, first_line);
+  adjust_cursors(selection, BATTLE_SELECT_1_X, first_line);
 
   int ch;
 
@@ -70,28 +70,27 @@ int get_battle_selection(int first_line, int last_selection) {
       default:
         break;
     }
-    adjust_cursors(selection, first_line);
+    adjust_cursors(selection, BATTLE_SELECT_1_X, first_line);
   }
 }
 
-int get_fight_selection(int first_line, int num_attacks) {
+int get_move_selection(int start_x, int start_y, struct pokemon* pok) {
   int selection = 1;
-  cursor_x = BATTLE_SELECT_1_X;
-  cursor_y = first_line;
+  cursor_x = start_x;
+  cursor_y = start_y;
   attack currAttack;
 
-  adjust_cursors(selection, first_line);
+  adjust_cursors(selection, start_x, start_y);
 
   int ch;
 
   flushinp();
   while (1) {
-
-    text_box_cursors(TEXT_BOX_BEGINNING);
+    mvprintw(start_y+3, start_x+2, "\t\t\t\t\t");
     if (selection != 5) {
-      currAttack = player.current_pokemon->attacks[selection-1];
-      mvprintw(TEXT_BOX_Y+5, TEXT_BOX_X+3, "%s", get_typing_by_id(currAttack.type));
-      mvprintw(TEXT_BOX_Y+5, TEXT_BOX_X+15, "PP: %d/%d", currAttack.curr_pp, currAttack.max_pp);
+      currAttack = pok->attacks[selection-1];
+      mvprintw(start_y+3, start_x+2, "%s", get_typing_by_id(currAttack.type));
+      mvprintw(start_y+3, start_x+14, "PP: %d/%d", currAttack.curr_pp, currAttack.max_pp);
     }
 
     (ch = getch());
@@ -109,11 +108,11 @@ int get_fight_selection(int first_line, int num_attacks) {
         break;
       case KEY_LEFT:
         if (selection == 1) selection = 5;
-        else if (selection == 5) selection = num_attacks;
+        else if (selection == 5) selection = pok->numAttacks;
         else selection--;
         break;
       case KEY_RIGHT:
-         if (selection == num_attacks || selection == 4) selection = 5;
+         if (selection == pok->numAttacks || selection == 4) selection = 5;
          else if (selection == 5) selection = 1;
          else selection++;
         break;
@@ -124,29 +123,29 @@ int get_fight_selection(int first_line, int num_attacks) {
       default:
         break;
     }
-    adjust_cursors(selection, first_line);
+    adjust_cursors(selection, start_x, start_y);
   }
 }
 
-void adjust_cursors(int selection, int first_line) {
+void adjust_cursors(int selection, int start_x, int start_y) {
   switch (selection) {
     case 1:
-      cursor_x = BATTLE_SELECT_1_X; cursor_y = first_line;
+      cursor_x = start_x; cursor_y = start_y;
       break;
     case 2:
-      cursor_x = BATTLE_SELECT_2_X; cursor_y = first_line;
+      cursor_x = start_x+MOVE_SELECT_SPACING; cursor_y = start_y;
       break;
     case 3:
-      cursor_x = BATTLE_SELECT_1_X; cursor_y = first_line+1;
+      cursor_x = start_x; cursor_y = start_y+1;
       break;
     case 4:
-      cursor_x = BATTLE_SELECT_2_X; cursor_y = first_line+1;
+      cursor_x = start_x+MOVE_SELECT_SPACING; cursor_y = start_y+1;
       break;
     case 5:
-      cursor_x = BATTLE_SELECT_3_X; cursor_y = first_line+1;
+      cursor_x = start_x+MOVE_SELECT_SPACING*2; cursor_y = start_y+1;
       break;
     default:
-      cursor_x = BATTLE_SELECT_3_X; cursor_y = first_line;
+      cursor_x = start_x+MOVE_SELECT_SPACING*2; cursor_y = start_y;
       break;
   }
 
