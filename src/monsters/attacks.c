@@ -70,7 +70,7 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
     else {
       printw("But it failed!");
     }
-    refresh(); sleep(2); return;
+    refresh(); sleep(2); return 0;
   }
 
   //Drop HP only if attack has damage power

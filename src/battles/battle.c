@@ -323,7 +323,9 @@ int initiate_battle(struct pokemon * enemyPoke) {
   }
 
   if (!run_success) {
-    handle_exp(enemy.level * 3);
+    int exp = enemy.level * 3;
+    if (player.trainer_battle) exp *= 1.5;
+    handle_exp(exp);
   }
   
   return BATTLE_WIN;

@@ -3,7 +3,7 @@ Player:
 5 5 4 3700
 Location: {2,(20,17)}
 Pokemon: 
-Charmander 4 22 16 3 14 15 14 15 16 7 25 FIRE NONE 7 0
+Charmander 4 22 16 3 14 15 14 15 16 7 25 FIRE NONE 0 0
 	Scratch. 2 34
 	Tail Whip. 4 28
 	Ember. 12 25
