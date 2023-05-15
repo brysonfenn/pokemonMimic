@@ -17,7 +17,7 @@ int battle_wild_pokemon() {
     
     set_current_pokemon(PLAYER_DEFAULT_POKEMON);
     if (player.numAlive) {
-        example_pokemon = *(get_random_wild_pokemon(2, 4));
+        example_pokemon = *(get_random_wild_pokemon(20, 25));
         sprintf(print_str, "  A wild %s appeared!\n", example_pokemon.name);
         print_to_list(print_str);
         sleep(2);

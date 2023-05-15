@@ -39,7 +39,7 @@ void main_menu() {
         print_to_list("  Save Game\n  Load Game\n  Power Off\n\n");
 
         inputNum = get_selection(LIST_BOX_Y+1,0,8,last_selection, MAIN_SELECT);
-        if (inputNum == -1) inputNum = TOWN;
+        if (inputNum == PRESSED_B) inputNum = TOWN;
 
         last_selection = inputNum;
         current_display = inputNum;
@@ -69,7 +69,7 @@ void main_menu() {
                 printParty();
                 print_to_list("  Cancel");
                 inputNum = get_selection(LIST_BOX_Y+2,0,player.numInParty,selected_poke, NOT_MAIN_SELECT);
-                if (inputNum == player.numInParty) { break; }   //Cancel
+                if (inputNum == player.numInParty || inputNum == PRESSED_B) { break; }   //Cancel
             }
             return_execute = handle_pokemon_menu(inputNum);
             if (return_execute == RETURN_TO_MENU) break;    //Break if requested
@@ -83,7 +83,7 @@ void main_menu() {
         begin_list();
         printBag();
         inputNum = get_selection(LIST_BOX_Y+2,0,player.numInBag,0, NOT_MAIN_SELECT);
-        if (inputNum == player.numInBag) { current_display = MAIN; break; }
+        if (inputNum == player.numInBag || inputNum == PRESSED_B) { current_display = MAIN; break; }
         return_execute = use_item(inputNum, &emptyPok);
 
         //Return to bag menu if item failed, else back to main menu
@@ -107,7 +107,7 @@ void main_menu() {
         inputNum = (inputNum == 0) ? 0 : inputNum-1;  //Adjust to current save file position
         inputNum = get_selection(LIST_BOX_Y+2, 0, 9, inputNum, NOT_MAIN_SELECT);
 
-        if (inputNum == 9) { current_display = MAIN; break; }
+        if (inputNum == 9 || inputNum == PRESSED_B) { current_display = MAIN; break; }
         save_game(inputNum+1);
         current_display = MAIN;
         break;

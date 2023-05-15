@@ -78,7 +78,10 @@ int battle_trainer() {
       
         inputNum = get_selection(LIST_BOX_Y+3,0,player.numInParty-1,0, NOT_MAIN_SELECT);
 
-        if (player.party[inputNum].currentHP == 0) {
+        if (inputNum == PRESSED_B) {
+          break;
+        }
+        else if (player.party[inputNum].currentHP == 0) {
           move(player.numInParty+3,0);
           print_to_list(" \nYou must select a different pokemon.\n"); sleep(2);
         }

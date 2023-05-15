@@ -35,6 +35,8 @@ int initiate_battle(struct pokemon * enemyPoke) {
   int inputNum, max_input;
   bool enemy_attacks, fainted_switch, out_of_pp;
   int return_execute, attack_num, enemy_attack_num, item_num, pokemon_selected, speed_difference;
+  char print_str[512];
+
   attack_num = item_num = pokemon_selected = speed_difference = 0;
   enemy_attacks = false;
   fainted_switch = false;
@@ -161,7 +163,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
         begin_list();
         printBag();
         inputNum = get_selection(LIST_BOX_Y+2, 0, player.numInBag, 0, NOT_MAIN_SELECT);
-        if (inputNum == player.numInBag) {
+        if (inputNum == player.numInBag || inputNum == PRESSED_B) {
           current_display = MAIN;
           break;
         }
@@ -180,13 +182,22 @@ int initiate_battle(struct pokemon * enemyPoke) {
           print_to_list("  Cancel\n");
         }
         inputNum = get_selection(LIST_BOX_Y+3, 0, max_input, 0, NOT_MAIN_SELECT);
+
+        //Handle interesting 'pressed B' condition
+        if (inputNum == PRESSED_B) {
+          //If the cancel is an option (not fainted switch), treat as a cancel
+          if (max_input == player.numInParty) inputNum = player.numInParty;
+          //If this is a fainted switch, keep getting selection
+          else continue;
+        }
+
         if (inputNum == player.numInParty) {
           current_display = MAIN;
           continue;
         }
         if (player.party[inputNum].currentHP == 0) {
-          mvprintw(player.numInParty+3, 0, "%s can't fight anymore! Select a different pokemon.\n", player.party[inputNum].name);
-          refresh(); sleep(2);
+          sprintf(print_str, " \n%s can't fight anymore! \nSelect a different pokemon.\n", player.party[inputNum].name);
+          print_to_list(print_str); sleep(2);
           continue;
         }
         pokemon_selected = inputNum;

@@ -156,10 +156,7 @@ int get_selection(int first_line, int start, int end, int last_selection, int is
       case 'a':
         return (cursor_y - first_line);
       case 'b':
-        if (!is_main)
-          return (end);
-        else if (is_main)
-          return -1;
+        return (PRESSED_B);
         break;
       default:
         break;

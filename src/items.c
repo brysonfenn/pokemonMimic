@@ -56,6 +56,7 @@ int handle_mart() {
   print_to_list(print_str);
 
   inputNum = get_selection(LIST_BOX_Y+2, 0, CURRENT_MAX_NUM,last_selection,NOT_MAIN_SELECT);
+  if (inputNum == PRESSED_B) inputNum = CURRENT_MAX_NUM;
   last_selection = inputNum;
 
   inputNum++; //Align with ID number
@@ -173,7 +174,7 @@ int execute_potion(int input_num, char * name) {
   print_to_list("  Cancel\n");
 
   int input = get_selection(LIST_BOX_Y+3,0,player.numInParty,0,NOT_MAIN_SELECT);
-  if (input == player.numInParty) return ITEM_FAILURE;
+  if (input == player.numInParty || input == PRESSED_B) return ITEM_FAILURE;
 
   int currentHP = player.party[input].currentHP;
 

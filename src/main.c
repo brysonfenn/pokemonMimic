@@ -29,7 +29,7 @@ int main(void) {
     input_num = get_selection(LIST_BOX_Y+1, 0, 1, 0, MAIN_SELECT);
 
     //Handle main select returning -1
-    if (input_num == -1) {control_c_handler(); return 0;}
+    if (input_num == PRESSED_B) {control_c_handler(); return 0;}
 
     if (input_num == 1) {
       begin_list();
@@ -38,7 +38,7 @@ int main(void) {
       input_num = get_selection(LIST_BOX_Y+2, 0, 9, 0, NOT_MAIN_SELECT);
       
       //Get proper input
-      if (input_num == 9) {
+      if (input_num == 9 || input_num == PRESSED_B) {
         continue;
       }
       if (load_game(input_num+1) == LOAD_SUCCESS) {

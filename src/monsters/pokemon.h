@@ -83,6 +83,9 @@ float get_stat_modifier(int16_t stage);
   //if level = 0, get random level from range level_min:level_max
 void calculate_stats(pokemon * pok, int level, int level_min, int level_max);
 
+//Get the catch rate for a pokemon with pok_id
+int pokemon_get_catch_rate(int pok_id);
+
 
 
 //pokemon_progression.c

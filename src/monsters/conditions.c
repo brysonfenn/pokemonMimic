@@ -7,6 +7,14 @@
 
 //Inflict condition on pok given, handle accuracy
 int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
+	//Do not inflict a condition if fainted
+	if (pok->currentHP <= 0) {
+		return 0;
+	}
+
+	clear();
+	printBattle();
+
 	int random = rand() % 100;
 	
 	text_box_cursors(TEXT_BOX_NEXT_LINE);
@@ -61,6 +69,12 @@ int handle_end_conditions() {
 	pokemon * player_pok = player.current_pokemon;
 	pokemon * enemy_pok = player.enemy_pokemon;
 
+	//If either pokemon fainted, do not handle conditions
+	if (player_pok->currentHP <= 0 || enemy_pok->currentHP <= 0) {
+		return 0;
+	}
+
+	//Poison
 	clear(); printBattle();
 	if (player_pok->visible_condition == POISONED) {
 		text_box_cursors(TEXT_BOX_BEGINNING);
@@ -79,8 +93,8 @@ int handle_end_conditions() {
 	}
 	if (player_pok->currentHP == 0 || enemy_pok->currentHP == 0) return 2;
 
+	//Leech Seed
 	clear(); printBattle();
-	
 	int sappedHP;
 	if (player_pok->hidden_condition == SEEDED) {
 		text_box_cursors(TEXT_BOX_BEGINNING);

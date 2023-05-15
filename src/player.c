@@ -94,7 +94,7 @@ void handle_poke_center() {
   inputNum = get_selection(LIST_BOX_Y+3, 0, 1,0, NOT_MAIN_SELECT);
 
   clear();
-  if (inputNum == 1) return;
+  if (inputNum == 1 || inputNum == PRESSED_B) return;
   else if (inputNum == 0) {
     begin_list();
     heal_party();

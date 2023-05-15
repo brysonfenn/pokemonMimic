@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "../print_utils.h"
 #include "../print_defines.h"
@@ -100,7 +101,7 @@ int handle_pokemon_menu(int input_num1) {
   input_num2 = get_selection(POKE_SUMMARY_SEL_BEGIN, 0, 3, 0, NOT_MAIN_SELECT);
 
   //Break if inputNum2 is 2 (cancel)
-  if (input_num2 == 3) { return RETURN_TO_PARTY; }
+  if (input_num2 == 3 || input_num2 == PRESSED_B) { return RETURN_TO_PARTY; }
   //Switch
   else if (input_num2 == 0) {
       begin_list();
@@ -111,7 +112,7 @@ int handle_pokemon_menu(int input_num1) {
       print_to_list("  Cancel");
       input_num2 = get_selection(LIST_BOX_Y+3,0,player.numInParty,input_num1, NOT_MAIN_SELECT);
 
-      if (input_num2 == player.numInParty) { return RETURN_TO_SUMMARY; }
+      if (input_num2 == player.numInParty || input_num2 == PRESSED_B) { return RETURN_TO_SUMMARY; }
       if (input_num2 == input_num1) { return RETURN_TO_SUMMARY; }
 
       tempPok = player.party[input_num1];
@@ -128,7 +129,7 @@ int handle_pokemon_menu(int input_num1) {
       sprintf(print_str, "Are you sure you want to release %s?\n  Yes\n  No\n", player.party[input_num1].name);
       print_to_list(print_str);
       input_num2 = get_selection(LIST_BOX_Y+2,0,1,0, NOT_MAIN_SELECT);
-      if (input_num2) { return RETURN_TO_SUMMARY; }
+      if (input_num2 == 1 || input_num2 == PRESSED_B) { return RETURN_TO_SUMMARY; }
       else {
       sprintf(print_str, "Bye Bye, %s!\n", player.party[input_num1].name);
       print_to_list(print_str); sleep(2);
@@ -163,3 +164,20 @@ float get_stat_modifier(int16_t stage) {
   return modified_stat;
 }
 
+//Get the catch rate for a pokemon with pok_id
+int pokemon_get_catch_rate(int pok_id) {
+  FILE *fp;
+  char filename[50];
+  sprintf(filename, "catch_rates.txt", pok_id);
+  char line[LINE_SIZE];
+  char evolve_line[LINE_SIZE];
+
+  // Open the file for reading
+  fp = fopen(filename, "r");
+
+  // Check if the file was opened successfully
+  if (fp == NULL) {
+      printw("Learnset file does not exist.\n"); refresh(); sleep(2);
+      return;
+  }
+}
