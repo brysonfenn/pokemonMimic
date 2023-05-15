@@ -38,7 +38,7 @@ void main_menu() {
         print_to_list("  Wild Pokemon\n  Trainer\n  Back\n  Pokemon\n  Bag\n  Player\n");
         print_to_list("  Save Game\n  Load Game\n  Power Off\n\n");
 
-        inputNum = get_selection(LIST_BOX_Y+1,0,8,last_selection, MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+1,0,8,last_selection);
         if (inputNum == PRESSED_B) inputNum = TOWN;
 
         last_selection = inputNum;
@@ -68,7 +68,7 @@ void main_menu() {
                 begin_list();
                 printParty();
                 print_to_list("  Cancel");
-                inputNum = get_selection(LIST_BOX_Y+2,0,player.numInParty,selected_poke, NOT_MAIN_SELECT);
+                inputNum = get_selection(LIST_BOX_Y+2,0,player.numInParty,selected_poke);
                 if (inputNum == player.numInParty || inputNum == PRESSED_B) { break; }   //Cancel
             }
             return_execute = handle_pokemon_menu(inputNum);
@@ -82,7 +82,7 @@ void main_menu() {
         case BAG:
         begin_list();
         printBag();
-        inputNum = get_selection(LIST_BOX_Y+2,0,player.numInBag,0, NOT_MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+2,0,player.numInBag,0);
         if (inputNum == player.numInBag || inputNum == PRESSED_B) { current_display = MAIN; break; }
         return_execute = use_item(inputNum, &emptyPok);
 
@@ -105,7 +105,7 @@ void main_menu() {
         print_save_files();
         inputNum = get_current_save_file();
         inputNum = (inputNum == 0) ? 0 : inputNum-1;  //Adjust to current save file position
-        inputNum = get_selection(LIST_BOX_Y+2, 0, 9, inputNum, NOT_MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+2, 0, 9, inputNum);
 
         if (inputNum == 9 || inputNum == PRESSED_B) { current_display = MAIN; break; }
         save_game(inputNum+1);
@@ -117,7 +117,7 @@ void main_menu() {
         begin_list();
         print_to_list("Select a save file to load: \n");
         print_save_files();
-        inputNum = get_selection(LIST_BOX_Y+2, 0, 9, 0, NOT_MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+2, 0, 9, 0);
 
         if (inputNum == 9) { current_display = MAIN; break; }
         load_game(inputNum+1);

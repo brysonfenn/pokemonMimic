@@ -71,6 +71,8 @@ bool runAttempt() {
 
 void heal_party() {
   pokemon * curr_pok;
+
+  begin_list();
   
   for (int i = 0; i < player.numInParty; i++) {
     curr_pok = &(player.party[i]);
@@ -84,6 +86,7 @@ void heal_party() {
   player.numAlive = player.numInParty;
   print_to_list("Your Pokemon were restored to full health!\n \n");
   sleep(2);
+  printParty(); sleep(2);
 }
 
 void handle_poke_center() {
@@ -91,14 +94,12 @@ void handle_poke_center() {
   begin_list();
   print_to_list("Welcome to the Pokémon Center\n \n");
   print_to_list("  Heal Pokémon\n  Exit");
-  inputNum = get_selection(LIST_BOX_Y+3, 0, 1,0, NOT_MAIN_SELECT);
+  inputNum = get_selection(LIST_BOX_Y+3, 0, 1,0);
 
   clear();
   if (inputNum == 1 || inputNum == PRESSED_B) return;
   else if (inputNum == 0) {
-    begin_list();
     heal_party();
-    printParty(); sleep(2);
   }
 }
 

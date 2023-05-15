@@ -26,7 +26,7 @@ int main(void) {
   while (1) {
     begin_list();
     print_to_list("  New Game\n  Load Game\n");
-    input_num = get_selection(LIST_BOX_Y+1, 0, 1, 0, MAIN_SELECT);
+    input_num = get_selection(LIST_BOX_Y+1, 0, 1, 0);
 
     //Handle main select returning -1
     if (input_num == PRESSED_B) {control_c_handler(); return 0;}
@@ -35,7 +35,7 @@ int main(void) {
       begin_list();
       print_to_list("Select a save file to load: \n");
       print_save_files();
-      input_num = get_selection(LIST_BOX_Y+2, 0, 9, 0, NOT_MAIN_SELECT);
+      input_num = get_selection(LIST_BOX_Y+2, 0, 9, 0);
       
       //Get proper input
       if (input_num == 9 || input_num == PRESSED_B) {

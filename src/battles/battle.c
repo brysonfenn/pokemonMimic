@@ -12,6 +12,8 @@
 #include "../print_utils.h"
 #include "../print_defines.h"
 #include "../items.h"
+#include "../maps/motion2d.h"
+#include "../maps/maps.h"
 
 static enum display { MAIN, FIGHT, BAG, POKEMON } current_display = MAIN;
 static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;
@@ -67,18 +69,28 @@ int initiate_battle(struct pokemon * enemyPoke) {
 
     // If current pokemon faints, select a different pokemon.
     if (currentPok->currentHP == 0) {
+      printBattle();
       sleep(2);
-      printw("%s fainted. ", currentPok->name); refresh();
+      text_box_cursors(TEXT_BOX_BEGINNING);
+      printw("%s fainted. ", currentPok->name); refresh(); sleep(2);
       player.numAlive--;
       
       // Handle White out
       if (player.numAlive == 0) {
         sleep(2);
-        printw("\nB is out of usable pokemon... "); refresh(); sleep(3);
-        printw("B whited out."); refresh(); sleep(5);
+        text_box_cursors(TEXT_BOX_NEXT_LINE);
+        printw("B is out of usable pokemon... "); refresh(); sleep(3);
+        text_box_cursors(TEXT_BOX_NEXT_LINE);
+        printw("B whited out."); refresh(); sleep(4);
+
+        //Go to pokecenter and then heal
+        back_to_poke_center();
+
         return BATTLE_WHITE_OUT;
       }
-      printw("\nYou must select a different pokemon."); refresh(); sleep(2);
+
+      text_box_cursors(TEXT_BOX_NEXT_LINE);
+      printw("You must select a different pokemon."); refresh(); sleep(2);
       clear();
       fainted_switch = true;      //Do not allow an attack for this switch
       current_display = POKEMON;  //Force a Switch
@@ -162,7 +174,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
       case BAG:
         begin_list();
         printBag();
-        inputNum = get_selection(LIST_BOX_Y+2, 0, player.numInBag, 0, NOT_MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+2, 0, player.numInBag, 0);
         if (inputNum == player.numInBag || inputNum == PRESSED_B) {
           current_display = MAIN;
           break;
@@ -181,7 +193,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
           max_input++;
           print_to_list("  Cancel\n");
         }
-        inputNum = get_selection(LIST_BOX_Y+3, 0, max_input, 0, NOT_MAIN_SELECT);
+        inputNum = get_selection(LIST_BOX_Y+3, 0, max_input, 0);
 
         //Handle interesting 'pressed B' condition
         if (inputNum == PRESSED_B) {

@@ -98,7 +98,7 @@ int handle_pokemon_menu(int input_num1) {
   begin_list();
   print_pokemon_summary(&(player.party[input_num1]));
   print_to_list(" \n \n \n \n  Switch\n  Release\n  Attacks\n  Cancel\n");
-  input_num2 = get_selection(POKE_SUMMARY_SEL_BEGIN, 0, 3, 0, NOT_MAIN_SELECT);
+  input_num2 = get_selection(POKE_SUMMARY_SEL_BEGIN, 0, 3, 0);
 
   //Break if inputNum2 is 2 (cancel)
   if (input_num2 == 3 || input_num2 == PRESSED_B) { return RETURN_TO_PARTY; }
@@ -110,7 +110,7 @@ int handle_pokemon_menu(int input_num1) {
       print_to_list(print_str);
       printParty();
       print_to_list("  Cancel");
-      input_num2 = get_selection(LIST_BOX_Y+3,0,player.numInParty,input_num1, NOT_MAIN_SELECT);
+      input_num2 = get_selection(LIST_BOX_Y+3,0,player.numInParty,input_num1);
 
       if (input_num2 == player.numInParty || input_num2 == PRESSED_B) { return RETURN_TO_SUMMARY; }
       if (input_num2 == input_num1) { return RETURN_TO_SUMMARY; }
@@ -128,7 +128,7 @@ int handle_pokemon_menu(int input_num1) {
       if (player.numInParty <= 1) { print_to_list("You only have 1 Pokémon!\n"); sleep(2); return RETURN_TO_SUMMARY; }
       sprintf(print_str, "Are you sure you want to release %s?\n  Yes\n  No\n", player.party[input_num1].name);
       print_to_list(print_str);
-      input_num2 = get_selection(LIST_BOX_Y+2,0,1,0, NOT_MAIN_SELECT);
+      input_num2 = get_selection(LIST_BOX_Y+2,0,1,0);
       if (input_num2 == 1 || input_num2 == PRESSED_B) { return RETURN_TO_SUMMARY; }
       else {
       sprintf(print_str, "Bye Bye, %s!\n", player.party[input_num1].name);

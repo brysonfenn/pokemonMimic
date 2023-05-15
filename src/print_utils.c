@@ -125,7 +125,7 @@ void pause_ncurses() {
   flushinp();
 }
 
-int get_selection(int first_line, int start, int end, int last_selection, int is_main) {
+int get_selection(int first_line, int start, int end, int last_selection) {
 
   int cursor_x = LIST_BOX_X+1;
   int cursor_y = first_line + last_selection;
