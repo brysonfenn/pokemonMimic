@@ -1,16 +1,16 @@
 #include "map1.h"
 
-#include "ncurses.h"
-#include "map_drawing.h"
-#include "../player.h"
-#include "location.h"
-#include "doors.h"
-#include "../battles/trainer.h"
-#include "../print_utils.h"
-#include "../items.h"
-#include "../print_defines.h"
+#include <ncurses.h>
 
-#include "motion2d.h"
+#include "../map_drawing.h"
+#include "../location.h"
+#include "../doors.h"
+
+#include "../../player.h"
+#include "../../battles/trainer.h"
+#include "../../print_utils.h"
+#include "../../items.h"
+#include "../../print_defines.h"
 
 #define MART_ACTION 1
 #define POKE_CENTER_ACTION 2

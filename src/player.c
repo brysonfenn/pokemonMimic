@@ -6,8 +6,8 @@
 
 #include "monsters/conditions.h"
 #include "monsters/pokemon.h"
-#include "maps/location.h"
-#include "maps/map_drawing.h"
+#include "motion/location.h"
+#include "motion/map_drawing.h"
 #include "print_utils.h"
 #include "print_defines.h"
 #include "items.h"

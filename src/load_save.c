@@ -7,7 +7,7 @@
 #include "monsters/pokemon.h"
 #include "monsters/attacks.h"
 #include "items.h"
-#include "maps/location.h"
+#include "motion/location.h"
 #include "monsters/typings.h"
 #include "print_defines.h"
 #include "print_utils.h"

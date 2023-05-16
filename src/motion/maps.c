@@ -2,10 +2,10 @@
 
 #include <ncurses.h>
 
-#include "generic_map.h"
-#include "map1.h"
-#include "map2.h"
-#include "map3.h"
+#include "maps/generic_map.h"
+#include "maps/map1.h"
+#include "maps/map2.h"
+#include "maps/map3.h"
 #include "motion2d.h"
 #include "../player.h"
 #include "../print_utils.h"

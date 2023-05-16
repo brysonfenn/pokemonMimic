@@ -12,8 +12,8 @@
 #include "../print_utils.h"
 #include "../print_defines.h"
 #include "../items.h"
-#include "../maps/motion2d.h"
-#include "../maps/maps.h"
+#include "../motion/motion2d.h"
+#include "../motion/maps.h"
 
 static enum display { MAIN, FIGHT, BAG, POKEMON } current_display = MAIN;
 static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;
@@ -21,7 +21,6 @@ static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;
 static bool pokemon_needing_exp[6] = {false, false, false, false, false, false};
 
 static bool run_success;
-static char tempString[1024];
 
 //Handle an enemy attacking the player's current pokemon
 void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num);
@@ -168,7 +167,6 @@ int initiate_battle(struct pokemon * enemyPoke) {
 
         attack_num = inputNum;
         current_decision = ATTACK;
-        current_display = MAIN;
         break;
         
       case BAG:
@@ -180,8 +178,8 @@ int initiate_battle(struct pokemon * enemyPoke) {
           break;
         }
         item_num = inputNum;
+
         current_decision = ITEM;
-        current_display = MAIN;
         break;
         
       case POKEMON:
@@ -273,12 +271,17 @@ int initiate_battle(struct pokemon * enemyPoke) {
           return_execute = perform_attack(currentPok, attack_num, &(enemy), false);
         }
       }
+
+      current_display = MAIN;
       break;
     case ITEM:
       return_execute = use_item(inputNum, &enemy);
-      if (return_execute == ITEM_FAILURE) { continue; }
+      //Return to bag menu if item failed, else back to main menu
+      if (return_execute == ITEM_FAILURE || return_execute == ITEM_CATCH_FAILURE) { continue; }
       else if (return_execute == ITEM_CATCH_SUCCESS) { run_success = true; }
       else { enemy_attacks = true; }
+
+      current_display = MAIN;
       break;
     case SWITCH:
       if (currentPok != &(player.party[pokemon_selected])) {
@@ -297,7 +300,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
         currentPok = player.current_pokemon;
         enemy_attacks = true;
 
-        //Advise
+        //Advise the player of the switch
         clear();
         printBattle();
         text_box_cursors(TEXT_BOX_BEGINNING);
@@ -341,12 +344,12 @@ int initiate_battle(struct pokemon * enemyPoke) {
     fainted_switch = false;
 
     handle_end_conditions();
-
-    clear();
   }
 
   if (!run_success) {
     int exp = enemy.level * 3;
+    float random = (float) (rand() % 25);
+    exp *= (1.0 + (random / 100.0));
     if (player.trainer_battle) exp *= 1.5;
     handle_exp(exp);
   }

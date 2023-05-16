@@ -14,8 +14,8 @@
 item empty_item =   {0, "No Item"     , 1, 1000,  &do_nothing,      0};
 item potion =       {1, "Potion"      , 0, 300,   &execute_potion,  20};
 item super_potion = {2, "Super Potion", 0, 700,   &execute_potion,  50};
-item pokeball =     {3, "Pokeball"    , 0, 200,   &attempt_catch,   60};
-item greatball =    {4, "Great Ball"  , 0, 600,   &attempt_catch,   80};
+item pokeball =     {3, "Pokeball"    , 0, 200,   &attempt_catch,   100};
+item greatball =    {4, "Great Ball"  , 0, 600,   &attempt_catch,   150};
 
 //NOTE: Make sure to add item to this list after creating it
 static * item_array[NUM_ITEMS] = { &empty_item, &potion, &super_potion, &pokeball, &greatball };
@@ -201,6 +201,7 @@ int execute_potion(int input_num, char * name) {
   return ITEM_SUCCESS;
 }
 
+
 int attempt_catch(int catch_rate, char * name) {
   if (enemy_pok->id_num == 0 || player.trainer_battle) {
     begin_list();
@@ -213,15 +214,26 @@ int attempt_catch(int catch_rate, char * name) {
     return ITEM_FAILURE;
   }
 
-  catch_rate -= (enemy_pok->currentHP / 2);
+  //Catch rate calculations
+  float ball_rate = (float) catch_rate;
+  ball_rate = ball_rate / 100;
+  catch_rate = pokemon_get_catch_rate(enemy_pok->id_num);
+  float hp_rate = (3.0*enemy_pok->maxHP - 2.0*enemy_pok->currentHP) / (3.0*enemy_pok->maxHP);
+  catch_rate = (int) (catch_rate * ball_rate * hp_rate);
+
+  //Add condition rates
+  Condition condition = enemy_pok->visible_condition;
+  if (condition == PARALYZED || condition == POISONED) catch_rate *= 1.5;
+  if (condition == ASLEEP || condition == FROZEN) catch_rate *= 2.0;
+  
   if (catch_rate < 1) catch_rate = 1;
 
-  int random = rand() % 100;
+  int random = rand() % 256;
   clear();
   printBattle();
 
   text_box_cursors(TEXT_BOX_BEGINNING);
-  printw("B threw a %s!", name); refresh(); sleep(2);
+  printw("B threw a %s with catch rate %d/255", name, catch_rate); refresh(); sleep(2);
 
   text_box_cursors(TEXT_BOX_NEXT_LINE);
   if (random < catch_rate) {

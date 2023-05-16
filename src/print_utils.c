@@ -16,7 +16,7 @@
 #include "battles/battle.h"
 #include "print_defines.h"
 #include "items.h"
-#include "maps/map_drawing.h"
+#include "motion/map_drawing.h"
 
 void clearTerminal() { printf("\033[2J\033[1;1H"); }
 

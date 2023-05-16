@@ -1,10 +1,12 @@
 #include "map3.h"
 
-#include "ncurses.h"
-#include "map_drawing.h"
-#include "location.h"
-#include "doors.h"
-#include "../print_defines.h"
+#include <ncurses.h>
+
+#include "../map_drawing.h"
+#include "../location.h"
+#include "../doors.h"
+
+#include "../../print_defines.h"
 
 
 void draw_map3() {

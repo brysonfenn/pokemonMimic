@@ -166,18 +166,38 @@ float get_stat_modifier(int16_t stage) {
 
 //Get the catch rate for a pokemon with pok_id
 int pokemon_get_catch_rate(int pok_id) {
+
+  char line[LINE_SIZE];
+
+  //only allow pok_id's for pokemon between 1 and 151
+  if (pok_id > 151 || pok_id < 1) {
+    begin_list();
+    sprintf(line, "catch rate not available for id # %d", pok_id);
+    print_to_list(line);
+    return 127;
+  }
+
   FILE *fp;
   char filename[50];
   sprintf(filename, "catch_rates.txt", pok_id);
-  char line[LINE_SIZE];
-  char evolve_line[LINE_SIZE];
 
   // Open the file for reading
   fp = fopen(filename, "r");
 
   // Check if the file was opened successfully
   if (fp == NULL) {
-      printw("Learnset file does not exist.\n"); refresh(); sleep(2);
+      printw("Catch Rate file does not exist.\n"); refresh(); sleep(2);
       return;
   }
+
+  for (int i = 0; i <= pok_id; i++) {
+    fgets(line, LINE_SIZE, fp);	// keep getting lines up to pok_id
+  }
+
+  int curr_id, catch_rate;
+  char name[256];
+  
+  sscanf(line, "%d %[^,], %d", &curr_id, &name, &catch_rate);
+
+  return catch_rate;
 }

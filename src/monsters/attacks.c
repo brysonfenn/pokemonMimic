@@ -75,7 +75,7 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
 
   //Drop HP only if attack has damage power
   if (chosenAttack.power != 0) {
-    damage = getDamage(perp, move_num, victim);
+    damage = getDamage(perp, move_num, victim, true);
     victim->currentHP -= damage;
   }
 
@@ -102,7 +102,7 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
 
 
 //Get damage that should be dealt with a given move from one pokemon to another
-int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
+int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements) {
   attack chosenAttack = perp->attacks[move_num];
 
   int perpAttack, victimDefense, perpAtkStage, victimDefStage;
@@ -123,7 +123,6 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
     perpAtkStage = perp->sp_atk_stage; victimDefStage = victim->sp_def_stage;
   }
 
-
   // Basic Equation
   float damage_f = ( ((2.0 * perp->level / 5) + 2) * chosenAttack.power * perpAttack / victimDefense) / 50.0;
   float random_float = (float) ((rand() % 25) + 85); // Random number between 85 and 110
@@ -139,15 +138,16 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim) {
 
   damage = (damage <= 0) ? 1 : damage;  // Pokemon should always be able to do 1 damage
 
-  //Critical Hit 1/16 Chance -- This should probably check for doesn't affect
-  if ((rand() % 16) == 0) {
+  //Critical Hit 1/16 Chance - Only apply if we are printing (getting damage for an attack)
+  //This should probably check for doesn't affect
+  if ((rand() % 16) == 0 && print_statements) {
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("A critical hit!"); refresh(); sleep(2);
     damage *= 2;
   }
 
   //Calculate effectiveness
-  damage = get_damage_after_effectiveness(chosenAttack.type, victim, damage);
+  damage = get_damage_after_effectiveness(chosenAttack.type, victim, damage, print_statements);
 
   return damage;
 }
