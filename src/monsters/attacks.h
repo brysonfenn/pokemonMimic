@@ -7,7 +7,7 @@
 #include "conditions.h"
 #include "typings.h"
 
-#define ALWAYS 1000
+#define NO_MISS 1000
 
 struct pokemon;
 

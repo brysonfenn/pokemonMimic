@@ -51,7 +51,7 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
 
   //Calculate current accuracy
   int curr_accuracy;
-  if (chosenAttack.accuracy != ALWAYS) {
+  if (chosenAttack.accuracy != NO_MISS) {
     curr_accuracy =  pokemon_get_accuracy(perp, move_num, victim);
   }
   else {
