@@ -18,7 +18,7 @@ attack growl        = {"Growl"        ,  3, 40,   0, 100, NORMAL,   false, &decr
 attack tail_whip    = {"Tail Whip"    ,  4, 30,   0, 100, NORMAL,   false, &decrement_opponent_stat, DEFENSE_STAT, 100 };
 attack string_shot  = {"String Shot"  ,  5, 40,   0,  95, NORMAL,   false, &decrement_opponent_stat, SPEED_STAT, 100 };
 attack poison_sting = {"Poison Sting" ,  6, 35,  25, 100, POISON,   false, &inflict_condition, POISONED, 30 };
-attack sand_attack  = {"Sand Attack"  ,  7, 15,   0, 100, NORMAL,   false, &decrement_opponent_stat, EVASIVENESS_STAT, 100 };
+attack sand_attack  = {"Sand Attack"  ,  7, 15,   0, 100, NORMAL,   false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
 attack quick_attack = {"Quick Attack" ,  8, 30,  40, 100, NORMAL,   true, &attack_do_nothing };
 attack defense_curl = {"Defense Curl" ,  9, 40,   0, 100, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
 attack vine_whip    = {"Vine whip"    , 10, 25,  45, 100, GRASS,    false, &attack_do_nothing };
@@ -29,11 +29,12 @@ attack poison_powder= {"Poison Powder", 14, 35,   0,  75, POISON,   false, &infl
 attack sleep_powder = {"Sleep Powder" , 15, 35,   0,  75, GRASS,    false, &inflict_condition, ASLEEP, 100 };
 attack razor_leaf   = {"Razor Leaf"   , 16, 25,  55,  95, GRASS,    false, &attack_do_nothing };
 attack metal_claw   = {"Metal Claw"   , 17, 35,  50,  95, FIGHTING, false, &attack_do_nothing };
-attack smoke_screen = {"Smoke Screen" , 17, 20,   0, 100, NORMAL,   false, &attack_do_nothing };
+attack smoke_screen = {"Smoke Screen" , 18, 20,   0, 100, NORMAL,   false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
+attack sweet_scent  = {"Sweet Scent"  , 19, 20,   0, 100, GRASS,    false, &increment_self_stat, EVASIVENESS_STAT, 100 };
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
     &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl, &vine_whip, // #1-10
-    &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder, &razor_leaf, &metal_claw, &smoke_screen }; // #11-17
+    &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder, &razor_leaf, &metal_claw, &smoke_screen, &sweet_scent }; // #11-19
 
 //Return an attack given an attack id number
 attack * get_attack_by_id(id_num) {
