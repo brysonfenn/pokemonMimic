@@ -7,6 +7,8 @@
 #include "conditions.h"
 #include "typings.h"
 
+#define ALWAYS 1000
+
 struct pokemon;
 
 typedef int (*attack_func_ptr) (Condition, int, struct pokemon*);
@@ -16,7 +18,7 @@ typedef struct attack {
   int id_num;
   int max_pp;
   int power; 
-  uint8_t accuracy;
+  int accuracy;
   Type type;
   
   bool priority;

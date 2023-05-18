@@ -11,26 +11,27 @@
 #define NUM_ATTACKS 50
 
 attack empty_attack=  {"-------------",  0,  0, 100, 100, NO_TYPE,  false, &attack_do_nothing };
-//				 	   "Name         "  id  pp  pwr  acc   type     acd  priority    effect         params
-attack tackle       = {"Tackle"       ,  1, 35,  40,  95, NORMAL,   false, &attack_do_nothing };
-attack scratch      = {"Scratch"      ,  2, 35,  40, 100, NORMAL,   false, &attack_do_nothing };
-attack growl        = {"Growl"        ,  3, 40,   0, 100, NORMAL,   false, &decrement_opponent_stat, ATTACK_STAT, 100 };
-attack tail_whip    = {"Tail Whip"    ,  4, 30,   0, 100, NORMAL,   false, &decrement_opponent_stat, DEFENSE_STAT, 100 };
-attack string_shot  = {"String Shot"  ,  5, 40,   0,  95, NORMAL,   false, &decrement_opponent_stat, SPEED_STAT, 100 };
-attack poison_sting = {"Poison Sting" ,  6, 35,  25, 100, POISON,   false, &inflict_condition, POISONED, 30 };
-attack sand_attack  = {"Sand Attack"  ,  7, 15,   0, 100, NORMAL,   false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
-attack quick_attack = {"Quick Attack" ,  8, 30,  40, 100, NORMAL,   true, &attack_do_nothing };
-attack defense_curl = {"Defense Curl" ,  9, 40,   0, 100, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
-attack vine_whip    = {"Vine whip"    , 10, 25,  45, 100, GRASS,    false, &attack_do_nothing };
-attack leech_seed   = {"Leech seed"   , 11, 10,   0,  90, GRASS,    false, &inflict_condition, SEEDED, 100 };
-attack ember        = {"Ember"        , 12, 25,  40, 100, FIRE,     false, &attack_do_nothing };
-attack bubble       = {"Bubble"       , 13, 30,  20, 100, WATER,    false, &decrement_opponent_stat, SPEED_STAT, 10 };
-attack poison_powder= {"Poison Powder", 14, 35,   0,  75, POISON,   false, &inflict_condition, POISONED, 100 };
-attack sleep_powder = {"Sleep Powder" , 15, 35,   0,  75, GRASS,    false, &inflict_condition, ASLEEP, 100 };
-attack razor_leaf   = {"Razor Leaf"   , 16, 25,  55,  95, GRASS,    false, &attack_do_nothing };
-attack metal_claw   = {"Metal Claw"   , 17, 35,  50,  95, FIGHTING, false, &attack_do_nothing };
-attack smoke_screen = {"Smoke Screen" , 18, 20,   0, 100, NORMAL,   false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
-attack sweet_scent  = {"Sweet Scent"  , 19, 20,   0, 100, GRASS,    false, &increment_self_stat, EVASIVENESS_STAT, 100 };
+//				 	   "Name         "  id  pp  pwr  acc    type     priority    effect         params
+attack tackle       = {"Tackle"       ,  1, 35,  40,     95,   NORMAL,   false, &attack_do_nothing };
+attack scratch      = {"Scratch"      ,  2, 35,  40,    100,   NORMAL,   false, &attack_do_nothing };
+attack growl        = {"Growl"        ,  3, 40,   0,    100,   NORMAL,   false, &decrement_opponent_stat, ATTACK_STAT, 100 };
+attack tail_whip    = {"Tail Whip"    ,  4, 30,   0,    100,   NORMAL,   false, &decrement_opponent_stat, DEFENSE_STAT, 100 };
+attack string_shot  = {"String Shot"  ,  5, 40,   0,     95,   NORMAL,   false, &decrement_opponent_stat, SPEED_STAT, 100 };
+attack poison_sting = {"Poison Sting" ,  6, 35,  25,    100,   POISON,   false, &inflict_condition, POISONED, 30 };
+attack sand_attack  = {"Sand Attack"  ,  7, 15,   0,    100,   NORMAL,   false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
+attack quick_attack = {"Quick Attack" ,  8, 30,  40,    100,   NORMAL,   true,  &attack_do_nothing };
+attack defense_curl = {"Defense Curl" ,  9, 40,   0,    100,   NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
+attack vine_whip    = {"Vine whip"    , 10, 25,  45,    100,   GRASS,    false, &attack_do_nothing };
+attack leech_seed   = {"Leech seed"   , 11, 10,   0,     90,   GRASS,    false, &inflict_condition, SEEDED, 100 };
+attack ember        = {"Ember"        , 12, 25,  40,    100,   FIRE,     false, &attack_do_nothing };
+attack bubble       = {"Bubble"       , 13, 30,  20,    100,   WATER,    false, &decrement_opponent_stat, SPEED_STAT, 10 };
+attack poison_powder= {"Poison Powder", 14, 35,   0,     75,   POISON,   false, &inflict_condition, POISONED, 100 };
+attack sleep_powder = {"Sleep Powder" , 15, 35,   0,     75,   GRASS,    false, &inflict_condition, ASLEEP, 100 };
+attack razor_leaf   = {"Razor Leaf"   , 16, 25,  55,     95,   GRASS,    false, &attack_do_nothing };
+attack metal_claw   = {"Metal Claw"   , 17, 35,  50,     95,   FIGHTING, false, &attack_do_nothing };
+attack smoke_screen = {"Smoke Screen" , 18, 20,   0,    100,   NORMAL,   false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
+attack sweet_scent  = {"Sweet Scent"  , 19, 20,   0, ALWAYS,   GRASS,    false, &increment_self_stat, EVASIVENESS_STAT, 100 };
+attack growth       = {"Growth"       , 20, 40,   0, ALWAYS,   GRASS,    false, &increment_self_stat, SP_ATTACK_STAT, 100 };
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
     &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl, &vine_whip, // #1-10
@@ -47,13 +48,21 @@ int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
     int16_t * stat_stage;
 
     switch (stat_type) {
-         case ATTACK_STAT:
+        case ATTACK_STAT:
             sprintf(stat_type_str, "%s", "attack");
             stat_stage = &(pok->atk_stage);
             break;
-         case DEFENSE_STAT:
+        case DEFENSE_STAT:
             sprintf(stat_type_str, "%s", "defense");
             stat_stage = &(pok->def_stage);
+            break;
+        case SP_ATTACK_STAT:
+            sprintf(stat_type_str, "%s", "sp. attack");
+            stat_stage = &(pok->sp_atk_stage);
+            break;
+        case SP_DEFENSE_STAT:
+            sprintf(stat_type_str, "%s", "sp. defense");
+            stat_stage = &(pok->sp_def_stage);
             break;
         case SPEED_STAT:
             sprintf(stat_type_str, "%s", "speed");
