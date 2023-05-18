@@ -48,17 +48,15 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
   perp->attacks[move_num].curr_pp--;
   attack chosenAttack = perp->attacks[move_num];
 
+  //Calculate current accuracy
+  int curr_accuracy =  pokemon_get_accuracy(perp, move_num, victim);
+  bool missed = (rand() % 100) >= curr_accuracy;
+
   //Use attack
-  int damage;
   text_box_cursors(TEXT_BOX_BEGINNING);
   if (enemy) printw(ENEMY_TEXT);
-  printw("%s used %s", perp->name, chosenAttack.name);
+  printw("%s used %s! Accuracy: %d%%", perp->name, chosenAttack.name, curr_accuracy);
   refresh(); sleep(1);
-
-  //Calculate current accuracy
-  int curr_accuracy =  perp->accuracy * chosenAttack.accuracy / victim->evasiveness;
-  if (curr_accuracy < 5) curr_accuracy = 5;
-  bool missed = (rand() % 100) >= curr_accuracy;
 
   //Check if missed
   if (missed) {
@@ -75,22 +73,8 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
 
   //Drop HP only if attack has damage power
   if (chosenAttack.power != 0) {
-    damage = getDamage(perp, move_num, victim, true);
+    int damage = getDamage(perp, move_num, victim, true);
     victim->currentHP -= damage;
-  }
-
-  //Drop Accuracy unless we are already at 0.4 accuracy
-  if (chosenAttack.accuracy_drop > 0) {
-    text_box_cursors(TEXT_BOX_NEXT_LINE);
-    if (!enemy) printw(ENEMY_TEXT);
-    if (victim->accuracy <= 0.4) {
-      printw("%s's accuracy won't go any lower!", victim->name);
-    }
-    else {
-      printw("%s's accuracy fell", victim->name); 
-      victim->accuracy -= chosenAttack.accuracy_drop;
-    }
-    refresh(); sleep(1);
   }
 
   sleep(1);

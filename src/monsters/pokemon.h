@@ -38,17 +38,20 @@ typedef struct pokemon {
   Type type2;
 
   int16_t numAttacks;
+
   int16_t atk_stage;
   int16_t def_stage;
   int16_t sp_atk_stage;
   int16_t sp_def_stage;
   int16_t spd_stage;
+  int16_t acc_stage;
+  int16_t evade_stage;
 
   uint8_t level;
   uint8_t sleep_count;
   uint32_t exp;
-  float accuracy;
-  float evasiveness;
+  
+  
 
   Condition visible_condition;
   Condition hidden_condition;
@@ -85,6 +88,8 @@ void calculate_stats(pokemon * pok, int level, int level_min, int level_max);
 
 //Get the catch rate for a pokemon with pok_id
 int pokemon_get_catch_rate(int pok_id);
+
+int pokemon_get_accuracy(pokemon * perp, int move_num, pokemon * victim);
 
 
 

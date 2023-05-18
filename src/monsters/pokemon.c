@@ -61,8 +61,8 @@ void reset_stat_stages(pokemon *pok) {
   pok->sp_atk_stage = 0;
   pok->sp_def_stage = 0;
   pok->spd_stage = 0;
-  pok->accuracy  = 1.0;
-  pok->evasiveness = 1.0;
+  pok->acc_stage  = 0;
+  pok->evade_stage = 0;
   pok->hidden_condition = NO_CONDITION;
 }
 
@@ -200,4 +200,24 @@ int pokemon_get_catch_rate(int pok_id) {
   sscanf(line, "%d %[^,], %d", &curr_id, &name, &catch_rate);
 
   return catch_rate;
+}
+
+
+int pokemon_get_accuracy(pokemon * perp, int move_num, pokemon * victim) {
+  float modified_accuracy = (float) (perp->attacks[move_num].accuracy);
+
+  //Accuracy is determined based on perp's accuracy and victim's evasiveness
+  //The difference can only be +6 at most or -6 at least
+  float stage = (float) perp->acc_stage - victim->evade_stage;
+  if (stage > 6) stage = 6;
+  if (stage < -6) stage = -6;
+
+  if (stage >= 0) { modified_accuracy *= ((3.0 + stage) / 3.0); }  // positive means 4/3, 5/3, etc.
+  if (stage < 0) { modified_accuracy *= (3.0 / (3.0 - stage)); }   // negative means 3/4, 3/5, etc.
+
+  int accuracy = (int) modified_accuracy;
+  if (accuracy < 5) accuracy = 5;
+  if (accuracy > 100) accuracy = 100;
+
+  return accuracy;
 }

@@ -18,8 +18,7 @@ typedef struct attack {
   int power; 
   uint8_t accuracy;
   Type type;
-
-  float accuracy_drop;
+  
   bool priority;
   attack_func_ptr side_effect;
   int condition;
