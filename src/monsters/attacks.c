@@ -124,14 +124,17 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool p
   int perpAttack, victimDefense, perpAtkStage, victimDefStage;
   Type moveType = perp->attacks[move_num].type;
 
-  //See whether we will use physical or special
+  //See whether we will use physical or special attack and defense stats
   if ( moveType == NORMAL || moveType == FIGHTING || moveType == POISON || moveType == GROUND || 
-        moveType == FLYING || moveType == BUG || moveType == ROCK || moveType == GHOST ) 
+        moveType == FLYING || moveType == BUG || moveType == ROCK || moveType == GHOST || moveType == STEEL)
   {
     //Physical Stats
     perpAttack = perp->baseAttack; victimDefense = victim->baseDefense;
     perpAtkStage = perp->atk_stage; victimDefStage = victim->def_stage;
-  } 
+
+    //Burned Status condition cuts attack in half
+    if (perp->visible_condition == BURNED) perpAttack = perpAttack / 2;
+  }
   else 
   {
     //Special Stats

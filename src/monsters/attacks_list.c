@@ -24,7 +24,7 @@ attack defense_curl = {"Defense Curl" ,  9, 40,   0,      100, NORMAL,   false, 
 attack vine_whip    = {"Vine whip"    , 10, 25,  45,      100, GRASS,    false, &attack_do_nothing, NO_CONDITION, 0 };
 
 attack leech_seed   = {"Leech seed"   , 11, 10,   0,       90, GRASS,    false, &inflict_condition, SEEDED, 100 };
-attack ember        = {"Ember"        , 12, 25,  40,      100, FIRE,     false, &attack_do_nothing, NO_CONDITION, 0 };
+attack ember        = {"Ember"        , 12, 25,  40,      100, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack bubble       = {"Bubble"       , 13, 30,  20,      100, WATER,    false, &decrement_opponent_stat, SPEED_STAT, 10 };
 attack poison_powder= {"Poison Powder", 14, 35,   0,       75, POISON,   false, &inflict_condition, POISONED, 100 };
 attack sleep_powder = {"Sleep Powder" , 15, 35,   0,       75, GRASS,    false, &inflict_condition, ASLEEP, 100 };
@@ -35,7 +35,7 @@ attack sweet_scent  = {"Sweet Scent"  , 19, 20,   0,  NO_MISS, GRASS,    false, 
 attack growth       = {"Growth"       , 20, 40,   0,  NO_MISS, GRASS,    false, &increment_self_stat, SP_ATTACK_STAT, 100 };
 
 attack scary_face   = {"Scary Face"   , 21, 15,   0,       90, NORMAL,   false, &decrement_opponent_stat2, SPEED_STAT, 100 };
-attack flame_thrower= {"Flame Thrower", 22, 15,  95,      100, FIRE,     false, &attack_do_nothing, NO_CONDITION, 0 };
+attack flame_thrower= {"Flame Thrower", 22, 15,  95,      100, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack slash        = {"Slash"        , 23, 20,  70,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack dragon_rage  = {"Dragon Rage"  , 24, 10,   0,      100, DRAGON,   false, &deal_specific_damage, NO_CONDITION, 40};
 attack fire_spin    = {"Fire Spin"    , 25, 15,  15,       70, FIRE,     false, &attack_do_nothing, NO_CONDITION, 0 };

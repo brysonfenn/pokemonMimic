@@ -223,7 +223,7 @@ int attempt_catch(int catch_rate, char * name) {
 
   //Add condition rates
   Condition condition = enemy_pok->visible_condition;
-  if (condition == PARALYZED || condition == POISONED) catch_rate *= 1.5;
+  if (condition == PARALYZED || condition == POISONED || condition == BURNED) catch_rate *= 1.5;
   if (condition == ASLEEP || condition == FROZEN) catch_rate *= 2.0;
   
   if (catch_rate < 1) catch_rate = 1;
