@@ -93,3 +93,14 @@ pokemon * get_pokemon_frame(Pokemon_id pok_id) {
 
   return pok;
 }
+
+//Get a starter pokemon
+pokemon * get_starter(int starter) {
+  if (starter == 0) newest_pokemon = *(get_pokemon_frame(POKEMON_BULBASAUR));
+  else if (starter == 1) newest_pokemon = *(get_pokemon_frame(POKEMON_CHARMANDER));
+  else newest_pokemon = *(get_pokemon_frame(POKEMON_SQUIRTLE));
+  
+  pokemon * new_pok = &newest_pokemon;
+  pokemon_init(new_pok, 5, 0, 0);
+  return new_pok;
+}

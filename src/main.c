@@ -8,6 +8,7 @@
 #include "print_defines.h"
 #include "load_save.h"
 #include "player.h"
+#include "monsters/pokemon.h"
 #include "menu.h"
 
 void control_c_handler();
@@ -46,6 +47,17 @@ int main(void) {
       }
     }
     else if (input_num == 0) {
+      begin_list();
+      print_to_list("Select a starter Pokémon: \n  Bulbasaur\n  Charmander\n  Squirtle\n  Cancel");
+      input_num = get_selection(LIST_BOX_Y+2, 0, 3, 0);
+      if (input_num == PRESSED_B || input_num == 3) {
+        continue;
+      }
+      
+      player.numInParty = 1;
+      player.numAlive = player.numInParty;
+      player.party[0] = *(get_starter(input_num));  //Charmander
+
       break;
     }
   }

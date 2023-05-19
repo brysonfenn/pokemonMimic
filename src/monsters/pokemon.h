@@ -117,4 +117,7 @@ pokemon * get_random_wild_pokemon(int level_min, int level_max);
 //Get a pokemon with all its base stats
 pokemon * get_pokemon_frame(Pokemon_id pok_id);
 
+//Get a starter pokemon
+pokemon * get_starter(int starter);
+
 #endif // POKEMON_H
