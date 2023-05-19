@@ -1,0 +1,13 @@
+Blastoise 9
+Evolve: 101,0
+level,move_id
+1,1 tackle
+1,4 tail whip
+1,13 bubble
+10,27 withdraw
+13,28 water gun
+19,29 bite
+25,30 rapid spin
+31,31 protect
+45,32 skull bash
+53,33 hydro pump

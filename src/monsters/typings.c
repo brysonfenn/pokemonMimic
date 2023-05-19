@@ -7,12 +7,12 @@
 #include "../print_utils.h"
 #include "../print_defines.h"
 
-#define NUM_TYPES 16
+#define NUM_TYPES 18
 
 //16 types including none
-static const char string_typings[20][15] = {"NONE", "NORMAL", "FIRE", "WATER", "ELECTRIC", "GRASS", "ICE", 
+static const char string_typings[21][15] = {"NONE", "NORMAL", "FIRE", "WATER", "ELECTRIC", "GRASS", "ICE", 
                 "FIGHTING", "POISON", "GROUND", "FLYING", "PSYCHIC", "BUG", 
-                "ROCK", "GHOST", "DRAGON" };
+                "ROCK", "GHOST", "DRAGON", "DARK", "STEEL" };
 
 float get_single_multiplier(Type moveType, Type victimType);
 
@@ -59,11 +59,11 @@ float get_single_multiplier(Type moveType, Type victimType) {
         case NO_TYPE:
             break;
         case NORMAL:
-            if (victimType == ROCK) multiplier = 0.5;
+            if (victimType == ROCK || victimType == STEEL) multiplier = 0.5;
             else if (victimType == GHOST) multiplier = 0;
             break;
         case FIRE:
-            if (victimType == GRASS || victimType == ICE || victimType == BUG)
+            if (victimType == GRASS || victimType == ICE || victimType == BUG || victimType == STEEL)
                 multiplier = 2.0;
             else if (victimType == FIRE || victimType == WATER || victimType == ROCK || victimType == DRAGON)
                 multiplier = 0.5;
@@ -86,17 +86,17 @@ float get_single_multiplier(Type moveType, Type victimType) {
             if (victimType == WATER || victimType == GROUND || victimType == ROCK)
                 multiplier = 2.0;
             else if (victimType == FIRE || victimType == GRASS || victimType == POISON || victimType == FLYING 
-                        || victimType == BUG || victimType == DRAGON)
+                        || victimType == BUG || victimType == DRAGON || victimType == STEEL)
                 multiplier = 0.5;
             break;
         case ICE:
             if (victimType == GRASS || victimType == GROUND || victimType == FLYING || victimType == DRAGON)
                 multiplier = 2.0;
-            else if (victimType == FIRE || victimType == WATER || victimType == ICE)
+            else if (victimType == FIRE || victimType == WATER || victimType == ICE || victimType == STEEL)
                 multiplier = 0.5;
             break;
         case FIGHTING:
-            if (victimType == NORMAL || victimType == ICE || victimType == ROCK)
+            if (victimType == NORMAL || victimType == ICE || victimType == ROCK || victimType == DARK || victimType == STEEL)
                 multiplier = 2.0;
             else if (victimType == POISON || victimType == FLYING || victimType == PSYCHIC || victimType == BUG)
                 multiplier = 0.5;
@@ -108,9 +108,11 @@ float get_single_multiplier(Type moveType, Type victimType) {
                 multiplier = 2.0;
             else if (victimType == POISON || victimType == GROUND || victimType == ROCK || victimType == GHOST)
                 multiplier = 0.5;
+            else if (victimType == STEEL)
+                multiplier = 0;
             break;
         case GROUND:
-            if (victimType == FIRE || victimType == ELECTRIC || victimType == POISON || victimType == ROCK)
+            if (victimType == FIRE || victimType == ELECTRIC || victimType == POISON || victimType == ROCK || victimType == STEEL)
                 multiplier = 2.0;
             else if (victimType == GRASS || victimType == BUG)
                 multiplier = 0.5;
@@ -120,37 +122,55 @@ float get_single_multiplier(Type moveType, Type victimType) {
         case FLYING:
             if (victimType == GRASS || victimType == FIGHTING || victimType == BUG)
                 multiplier = 2.0;
-            else if (victimType == ELECTRIC || victimType == ROCK)
+            else if (victimType == ELECTRIC || victimType == ROCK || victimType == STEEL)
                 multiplier = 0.5;
             break;
         case PSYCHIC:
             if (victimType == FIGHTING || victimType == POISON)
                 multiplier = 2.0;
-            else if (victimType == PSYCHIC)
+            else if (victimType == PSYCHIC || victimType == STEEL)
                 multiplier = 0.5;
+            else if (victimType == DARK)
+                multiplier = 0;
             break;
         case BUG:
-            if (victimType == GRASS || victimType == PSYCHIC)
+            if (victimType == GRASS || victimType == PSYCHIC || victimType == DARK)
                 multiplier = 2.0;
             else if (victimType == FIRE || victimType == FIGHTING || victimType == POISON || victimType == FLYING
-                        || victimType == GHOST)
+                        || victimType == GHOST || victimType == STEEL)
                 multiplier = 0.5;
             break;
         case ROCK:
             if (victimType == FIRE || victimType == ICE || victimType == FLYING || victimType == BUG)
                 multiplier = 2.0;
-            else if (victimType == FIGHTING || victimType == GROUND)
+            else if (victimType == FIGHTING || victimType == GROUND || victimType == STEEL)
                 multiplier = 0.5;
             break;
         case GHOST:
             if (victimType == PSYCHIC || victimType == GHOST)
                 multiplier = 2.0;
+            else if (victimType == DARK)
+                multiplier = 0.5;
             else if (victimType == NORMAL)
                 multiplier = 0;
             break;
         case DRAGON:
             if (victimType == DRAGON)
                 multiplier = 2.0;
+            else if (victimType == STEEL)
+                multiplier = 0.5;
+            break;
+        case DARK:
+            if (victimType == PSYCHIC || victimType == GHOST)
+                multiplier = 2.0;
+            else if (victimType == FIGHTING || victimType == DARK)
+                multiplier = 0.5;
+            break;
+        case STEEL:
+            if (victimType == ICE || victimType == ROCK)
+                multiplier = 2.0;
+            else if (victimType == FIRE || victimType == WATER || victimType == ELECTRIC || victimType == STEEL)
+                multiplier = 0.5;
             break;
         default:
             break;

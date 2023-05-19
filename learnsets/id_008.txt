@@ -1,0 +1,13 @@
+Wartortle 8
+Evolve: 36,9
+level,move_id
+1,1 tackle
+1,4 tail whip
+1,13 bubble
+1,27 withdraw
+13,28 water gun
+19,29 bite
+25,30 rapid spin
+31,31 protect
+55,32 skull bash
+68,33 hydro pump

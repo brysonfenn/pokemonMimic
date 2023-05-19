@@ -31,19 +31,6 @@ typedef struct attack {
 
 extern attack empty_attack;
 
-extern attack tackle;
-extern attack scratch;
-extern attack growl;
-extern attack tail_whip;
-extern attack string_shot;
-
-extern attack poison_sting;
-extern attack string_shot;
-extern attack sand_attack;
-extern attack quick_attack;
-extern attack defense_curl;
-extern attack vine_whip;
-
 //// attacks.c ////
 
 //Handle all operations for an attack, indicate whether this is an enemy attack (true)
@@ -51,9 +38,6 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
 
 //Get damage that should be dealt with a given move from one pokemon to another
 int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements);
-
-
-
 
 //// attacks_list.c ////
 
@@ -65,5 +49,10 @@ int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim)
 
 //Certain attacks can decrement an enemy pokemon's stat
 int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* victim);
+
+//Certain attacks can double decrement an enemy pokemon's stat
+int decrement_opponent_stat2(Condition stat_type, int chance, struct pokemon* victim);
+
+int deal_specific_damage(Condition nothing, int hp, struct pokemon* victim);
 
 #endif // ATTACKS_H

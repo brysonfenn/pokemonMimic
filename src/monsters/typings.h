@@ -8,7 +8,7 @@ struct pokemon;
 //Typings
 typedef enum {NO_TYPE, NORMAL, FIRE, WATER, ELECTRIC, GRASS, ICE, 
                 FIGHTING, POISON, GROUND, FLYING, PSYCHIC, BUG, 
-                ROCK, GHOST, DRAGON } Type;
+                ROCK, GHOST, DRAGON, DARK, STEEL } Type;
 
 //Returns damage after applying effectiveness
 //Also prints message about effectiveness, if applicable

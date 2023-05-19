@@ -1,6 +1,13 @@
 Squirtle 7
-Evolve: 16,0
+Evolve: 16,8
 level,move_id
-1,1
-4,4
-7,13
+1,1 tackle
+4,4 tail whip
+7,13 bubble
+10,27 withdraw
+13,28 water gun
+18,29 bite
+23,30 rapid spin
+28,31 protect
+40,32 skull bash
+47,33 hydro pump
