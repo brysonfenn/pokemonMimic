@@ -27,6 +27,9 @@ int main(void) {
   while (1) {
     begin_list();
     print_to_list("  New Game\n  Load Game\n");
+    print_to_list(" \n \n  \u2642 \u2640 🔥 💧");
+    print_to_list("  \U000026A1 🌿 \U0001FAA8 👊 ✊ 🟥 🔴");
+
     input_num = get_selection(LIST_BOX_Y+1, 0, 1, 0);
 
     //Handle main select returning -1
@@ -54,9 +57,10 @@ int main(void) {
         continue;
       }
       
-      player.numInParty = 1;
+      player.numInParty = 2;
       player.numAlive = player.numInParty;
       player.party[0] = *(get_starter(input_num));  //Charmander
+      player.party[1] = *get_random_wild_pokemon(8,10);
 
       break;
     }

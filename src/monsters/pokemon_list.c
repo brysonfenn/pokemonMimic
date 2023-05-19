@@ -32,9 +32,9 @@ pokemon * get_random_pokemon(int level_min, int level_max) {
 pokemon * get_random_wild_pokemon(int level_min, int level_max) {
   int pok_position = (rand() % NUM_WILD_POKEMON) + NUM_STARTERS;
   newest_pokemon = *(get_pokemon_frame(pok_id_list[pok_position]));
-  // newest_pokemon = *(get_pokemon_frame(POKEMON_METAPOD));
+  newest_pokemon = *(get_pokemon_frame(POKEMON_CATERPIE));
   pokemon * new_pok = &newest_pokemon;
-  pokemon_init(new_pok, RANDOM_LEVEL, level_min, level_max);
+  pokemon_init(new_pok, 1, level_min, level_max);
   // pokemon_init(new_pok, 0, 15, 20);
   return new_pok;
 }

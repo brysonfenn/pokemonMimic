@@ -87,7 +87,7 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
   //Use attack
   text_box_cursors(TEXT_BOX_BEGINNING);
   if (enemy) printw(ENEMY_TEXT);
-  printw("%s used %s! Accuracy: %d%%", perp->name, chosenAttack.name, curr_accuracy);
+  printw("%s used %s!", perp->name, chosenAttack.name);
   refresh(); sleep(1);
 
   //Check if missed

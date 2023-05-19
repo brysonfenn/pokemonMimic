@@ -7,6 +7,7 @@
 
 void learn_move(pokemon * pok, attack * new_attack);
 int evolve(pokemon * pok, int next_pok_id);
+void learn_moves_at_level_up(pokemon * pok, int * level_target, int * evolve_id);
 
 //Handle leveling up - also handles learning moves from new level
 void pokemon_level_up(pokemon *pok, int next_level_exp) {
@@ -32,12 +33,28 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   printw("%s has grown to level %d!", pok->name, pok->level);
   refresh(); sleep(2);
 
+  //learn_moves again
+  int level_target, evolve_id;
+  learn_moves_at_level_up(pok, &level_target, &evolve_id);
+
+  if (evolve_id == 0) { return; } //Handle no evolution
+  else if (pok->level >= level_target) {
+    evolve(pok, evolve_id);
+    learn_moves_at_level_up(pok, &level_target, &evolve_id);
+  }
+}
+
+
+//Cause a pokemon to learn moves at its current level
+void learn_moves_at_level_up(pokemon * pok, int * level_target, int * evolve_id) {
+  char line[LINE_SIZE];
+  char evolve_line[LINE_SIZE];
+  char print_str[256];
+
   //Add moves
   FILE *fp;
   char filename[50];
   sprintf(filename, "learnsets/id_%03d.txt", pok->id_num);
-  char line[LINE_SIZE];
-  char evolve_line[LINE_SIZE];
 
   // Open the file for reading
   fp = fopen(filename, "r");
@@ -53,26 +70,22 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   fgets(evolve_line, LINE_SIZE, fp);  // Evolve second line
   fgets(line, LINE_SIZE, fp);	// Move Format third line
 
-  int level_target, move_id, evolve_id;
   attack new_attack;
+  int move_id;
 
   while (fgets(line, LINE_SIZE, fp)) {
     // if (strstr(line, "end") != NULL) break;
-    sscanf(line, "%d,%d", &level_target, &move_id);
-    if (level_target == pok->level) {
+    sscanf(line, "%d,%d", level_target, &move_id);
+    if (*level_target == pok->level) {
       new_attack = *(get_attack_by_id(move_id));
       learn_move(pok, &new_attack);
     }
   }
 
-  fclose(fp);
-
   //Evolve if necessary
-  sscanf(evolve_line, "Evolve: %d, %d", &level_target, &evolve_id);
-  if (evolve_id == 0) { return; } //Handle no evolution
-  else if (pok->level >= level_target) {
-    evolve(pok, evolve_id);
-  }
+  sscanf(evolve_line, "Evolve: %d, %d", level_target, evolve_id);
+
+  fclose(fp);
 }
 
 
@@ -163,7 +176,16 @@ void pokemon_give_moves(pokemon *pok) {
   while (fgets(line, LINE_SIZE, fp)) {
     // if (strstr(line, "end") != NULL) break;
     sscanf(line, "%d,%d", &level_target, &move_id);
+
     if (level_target <= pok->level) {
+      //Don't get a move twice
+      bool double_attack = false;
+      for (int i = 0; i < pok->numAttacks; i++) {
+        if (pok->attacks[i].id_num == move_id)
+          double_attack = true;
+      }
+      if (double_attack) continue;
+
       new_attack = *(get_attack_by_id(move_id));
       pok_attack = &(pok->attacks[attack_position]);
 
@@ -206,6 +228,7 @@ int evolve(pokemon * pok, int next_pok_id) {
 
   //Attach name, base stats of evolution to pokemon, then calculate stats
   sprintf(pok->name, "%s", evolution.name);
+  pok->id_num = next_pok_id;
   pok->maxHP = evolution.maxHP; pok->baseAttack = evolution.baseAttack;
   pok->baseDefense = evolution.baseDefense; pok->baseSpAttack = evolution.baseSpAttack;
   pok->baseSpDefense = evolution.baseSpDefense; pok->baseSpeed = evolution.baseSpeed;
