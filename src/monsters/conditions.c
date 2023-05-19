@@ -12,7 +12,6 @@ int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 		return 0;
 	}
 
-	clear();
 	printBattle();
 
 	int random = rand() % 100;
@@ -55,6 +54,17 @@ int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 		if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 		printw("%s was seeded!", pok->name); refresh(); sleep(2);
 		pok->hidden_condition = SEEDED;
+	}
+	else if (condition == CONFUSED && random < accuracy) {
+		if (pok->hidden_condition != NO_CONDITION) {
+			printw("%s could not be confused!", pok->name); refresh(); sleep(2);
+			return 1;
+		}
+		if (pok != player.current_pokemon) printw(ENEMY_TEXT);
+		printw("%s is now confused!", pok->name); refresh(); sleep(2);
+		pok->hidden_condition = CONFUSED;
+		pok->confusion_count = (rand() % 4) + 1;
+
 	}
 	return 0;
 }

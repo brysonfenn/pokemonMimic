@@ -64,6 +64,7 @@ void reset_stat_stages(pokemon *pok) {
   pok->acc_stage  = 0;
   pok->evade_stage = 0;
   pok->hidden_condition = NO_CONDITION;
+  pok->confusion_count = 0;
 }
 
 //Print stats, attacks, etc of a given pokemon

@@ -119,6 +119,9 @@ int battle_trainer() {
     return BATTLE_WHITE_OUT;
   }
   else {
+    for (int i = 0; i < player.numInParty; i++) {
+      reset_stat_stages(&(player.party[i]));
+    }
     return BATTLE_WIN;
   }
 }

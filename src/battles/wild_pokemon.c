@@ -31,5 +31,9 @@ int battle_wild_pokemon() {
 
     clear();
 
+    //Reset stats at the end of a battle
+    for (int i = 0; i < player.numInParty; i++) {
+      reset_stat_stages(&(player.party[i]));
+    }
     return 0;
 }

@@ -7,6 +7,7 @@
 #include "../print_defines.h"
 
 int perform_struggle(struct pokemon *perp, struct pokemon *victim, bool enemy);
+int get_basic_damage(int perp_level, int attack_power, int perp_atk, int victim_def, int perp_atk_stage, int victim_def_stage);
 
 //Handle all operations for an attack, indicate whether this is an enemy attack (true)
 int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy) {
@@ -38,7 +39,30 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
     }
   }
 
-  //Struggle
+  //Handle Confusion
+  if (perp->hidden_condition == CONFUSED) {
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    if (perp->confusion_count <= 0) {
+      printw("%s snapped out of confusion!", perp->name); refresh(); sleep(2);
+      perp->hidden_condition = NO_CONDITION;
+    }
+    else {
+      perp->confusion_count--;
+      printw("%s is confused...", perp->name); refresh(); sleep(2);
+      //Hurt self in 50% of cases
+      if (rand() % 2 == 0) {
+        text_box_cursors(TEXT_BOX_NEXT_LINE);
+        printw("%s hurt itself in its confusion!", perp->name); refresh(); sleep(2);
+
+        //Player attacks itself with base power 40
+        int damage = get_basic_damage(perp->level, 40, perp->baseAttack, perp->baseDefense, perp->atk_stage, perp->def_stage);
+        perp->currentHP -= damage;
+        return 0;
+      }
+    }
+  }
+
+  //Struggle if PP is zero
   if (move_num == -1) {
     perform_struggle(perp, victim, enemy);
     return 0;
@@ -115,18 +139,8 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool p
     perpAtkStage = perp->sp_atk_stage; victimDefStage = victim->sp_def_stage;
   }
 
-  // Basic Equation
-  float damage_f = ( ((2.0 * perp->level / 5) + 2) * chosenAttack.power * perpAttack / victimDefense) / 50.0;
-  float random_float = (float) ((rand() % 25) + 85); // Random number between 85 and 110
-  damage_f *= (random_float / 100.0); // Randomize damage a bit
-  damage_f += 2;
-
-  // Damage modifier stages
-  float perp_attack_modifier = get_stat_modifier(perpAtkStage);
-  float victim_defense_modifier = get_stat_modifier(victimDefStage);
-  damage_f = damage_f * (perp_attack_modifier / victim_defense_modifier);
-
-  int damage = (int) damage_f;
+  // Baseline damage
+  int damage = get_basic_damage(perp->level, chosenAttack.power, perpAttack, victimDefense, perpAtkStage, victimDefStage);
 
   damage = (damage <= 0) ? 1 : damage;  // Pokemon should always be able to do 1 damage
 
@@ -140,6 +154,23 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool p
 
   //Calculate effectiveness
   damage = get_damage_after_effectiveness(chosenAttack.type, victim, damage, print_statements);
+
+  return damage;
+}
+
+int get_basic_damage(int perp_level, int attack_power, int perp_atk, int victim_def, int perp_atk_stage, int victim_def_stage) {
+  //Basic Equation
+  float damage_f = ( ((2.0 * perp_level / 5) + 2) * attack_power * perp_atk / victim_def) / 50.0;
+  float random_float = (float) ((rand() % 25) + 85); // Random number between 85 and 110
+  damage_f *= (random_float / 100.0); // Randomize damage a bit
+  damage_f += 2;
+
+  // Damage modifier stages
+  float perp_attack_modifier = get_stat_modifier(perp_atk_stage);
+  float victim_defense_modifier = get_stat_modifier(victim_def_stage);
+  damage_f = damage_f * (perp_attack_modifier / victim_defense_modifier);
+
+  int damage = (int) damage_f;
 
   return damage;
 }

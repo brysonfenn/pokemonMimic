@@ -24,7 +24,7 @@ void main_menu() {
     //This is the main menu while loop.
     while(1) {
         for (int i = 0; i < player.numInParty; i++) {
-        reset_stat_stages(&(player.party[i]));
+            reset_stat_stages(&(player.party[i]));
         }
 
         clear();
