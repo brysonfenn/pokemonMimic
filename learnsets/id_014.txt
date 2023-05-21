@@ -1,0 +1,5 @@
+Kakuna 14
+Evolve: 101,0
+level,move_id
+1,34
+7,34

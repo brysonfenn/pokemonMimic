@@ -23,7 +23,7 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   pokemon frame = *(get_pokemon_frame(pok->id_num));
   calculate_stats(&frame, pok->level, 0, 0);
 
-  //Set all the stats to the calculated stats
+  //Set all pokemon stats to the new calculated stats
   pok->maxHP = frame.maxHP;
   pok->currentHP = pok->maxHP - lost_hp;
   pok->baseAttack = frame.baseAttack;     //Keep lost hp the same
@@ -39,7 +39,9 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   handle_learnset(pok);
   get_evolve_level_and_id(pok->id_num, &level_target, &evolve_id);
 
-  if (evolve_id == 0) { return; } //Handle no evolution
+  //If evolution id is 0, this pokemon has no evolves
+  if (evolve_id == 0) { return; } 
+  //Evolve the pokemon and learn any new moves if pokemon has reached evolution level or higher
   else if (pok->level >= level_target) {
     evolve(pok, evolve_id);
     handle_learnset(pok);
@@ -258,6 +260,10 @@ int evolve(pokemon * pok, int next_pok_id) {
   pok->baseDefense = evolution.baseDefense; pok->baseSpAttack = evolution.baseSpAttack;
   pok->baseSpDefense = evolution.baseSpDefense; pok->baseSpeed = evolution.baseSpeed;
   calculate_stats(pok, pok->level, 0, 0);
+
+  //Pokemon should gain typings of evolution
+  pok->type1 = evolution.type1;
+  pok->type2 = evolution.type2;
 
   //Pokemon should have the same hp loss
   pok->currentHP = pok->maxHP - lost_hp;

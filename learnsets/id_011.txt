@@ -1,5 +1,5 @@
 Metapod 11
-Evolve: 16,0
+Evolve: 10,12
 level,move_id
 1,34 Harden
 7,34 Harden

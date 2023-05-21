@@ -1,5 +1,5 @@
 Weedle 13
-Evolve: 16,0
+Evolve: 7,14
 level,move_id
 1,6
 2,5

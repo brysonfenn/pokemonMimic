@@ -27,7 +27,7 @@ attack leech_seed   = {"Leech seed"   , 11, 10,   0,       90, GRASS,    false, 
 attack ember        = {"Ember"        , 12, 25,  40,      100, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack bubble       = {"Bubble"       , 13, 30,  20,      100, WATER,    false, &decrement_opponent_stat, SPEED_STAT, 10 };
 attack poison_powder= {"Poison Powder", 14, 35,   0,       75, POISON,   false, &inflict_condition, POISONED, 100 };
-attack sleep_powder = {"Sleep Powder" , 15, 35,   0,       75, GRASS,    false, &inflict_condition, ASLEEP, 100 };
+attack sleep_powder = {"Sleep Powder" , 15, 15,   0,       75, GRASS,    false, &inflict_condition, ASLEEP, 100 };
 attack razor_leaf   = {"Razor Leaf"   , 16, 25,  55,       95, GRASS,    false, &attack_do_nothing, NO_CONDITION, 0 };
 attack metal_claw   = {"Metal Claw"   , 17, 35,  50,       95, STEEL,    false, &attack_do_nothing, NO_CONDITION, 0 };
 attack smoke_screen = {"Smoke Screen" , 18, 20,   0,      100, NORMAL,   false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
@@ -50,12 +50,14 @@ attack skull_bash   = {"Skull Bash"   , 32, 15, 100,      100, NORMAL,   false, 
 attack hydro_pump   = {"Hydro Pump"   , 33,  5, 120,       80, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
 attack harden       = {"Harden"       , 34, 30,   0,  NO_MISS, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
 attack supersonic   = {"Supersonic"   , 35, 35,   0,      100, NORMAL,   false, &inflict_condition, CONFUSED, 100 };
+attack confusion    = {"Confusion"    , 36, 25,  50,      100, NORMAL,   false, &inflict_condition, CONFUSED, 10 };
+attack stun_spore   = {"Stun Spore"   , 37, 30,   0,       75, GRASS,    false, &inflict_condition, PARALYZED, 100 };
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
     &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl, &vine_whip,    // #01-10
     &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder, &razor_leaf, &metal_claw, &smoke_screen, &sweet_scent, &growth,   // #11-20
     &scary_face, &flame_thrower, &slash, &dragon_rage, &fire_spin, &wing_attack, &withdraw, &water_gun, &bite, &rapid_spin,        // #21-30
-    &protect, &skull_bash, &hydro_pump, &harden, &supersonic };
+    &protect, &skull_bash, &hydro_pump, &harden, &supersonic, &confusion, &stun_spore };
 
 
 //Return an attack given an attack id number
