@@ -100,6 +100,7 @@ void blinkPokemon(bool enemy) {
   sprintf(poke_string, "%s  Lvl %d ", pok->name, pok->level);
   add_condition(poke_string, pok);
 
+  attrset(COLOR_PAIR(DAMAGED_COLOR));
   //Blink pokemon
   for (int i = 0; i < 3; i++) {
     mvprintw(text_y, text_x, "                       ");
@@ -109,6 +110,7 @@ void blinkPokemon(bool enemy) {
     mvprintw(text_y+1, text_x, "HP: %d/%d", pok->currentHP, pok->maxHP);
     refresh(); usleep(BLINK_TIME_MICROS);
   }
+  attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
 
 

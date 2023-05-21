@@ -9,9 +9,10 @@
 #include "location.h"
 #include "maps.h"
 #include "map_drawing.h"
+#include "doors.h"
 #include "../battles/wild_pokemon.h"
 #include "../print_utils.h"
-#include "doors.h"
+#include "../print_defines.h"
 
 #define MOVING_DOWN 'v'
 #define MOVING_UP '^'

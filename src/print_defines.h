@@ -36,4 +36,10 @@
 #define ENEMY_TEXT "Foe "
 #define LINE_SIZE 100
 
+//Colors
+#define DEFAULT_COLOR 1
+#define PLAYER_COLOR 2
+#define GRASS_COLOR 3
+#define DAMAGED_COLOR 4
+
 #endif // PRINT_DEFINES_H
