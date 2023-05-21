@@ -7,7 +7,8 @@
 
 void learn_move(pokemon * pok, attack * new_attack);
 int evolve(pokemon * pok, int next_pok_id);
-void learn_moves_at_level_up(pokemon * pok, int * level_target, int * evolve_id);
+void handle_learnset(pokemon * pok);
+void get_evolve_level_and_id(int pok_id, int * level_target, int * evolve_id);
 
 //Handle leveling up - also handles learning moves from new level
 void pokemon_level_up(pokemon *pok, int next_level_exp) {
@@ -35,20 +36,20 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
 
   //learn_moves again
   int level_target, evolve_id;
-  learn_moves_at_level_up(pok, &level_target, &evolve_id);
+  handle_learnset(pok);
+  get_evolve_level_and_id(pok->id_num, &level_target, &evolve_id);
 
   if (evolve_id == 0) { return; } //Handle no evolution
   else if (pok->level >= level_target) {
     evolve(pok, evolve_id);
-    learn_moves_at_level_up(pok, &level_target, &evolve_id);
+    handle_learnset(pok);
   }
 }
 
 
 //Cause a pokemon to learn moves at its current level
-void learn_moves_at_level_up(pokemon * pok, int * level_target, int * evolve_id) {
+void handle_learnset(pokemon * pok) {
   char line[LINE_SIZE];
-  char evolve_line[LINE_SIZE];
   char print_str[256];
 
   //Add moves
@@ -67,25 +68,49 @@ void learn_moves_at_level_up(pokemon * pok, int * level_target, int * evolve_id)
 
   // Read lines from the file and put them into game values
   fgets(line, LINE_SIZE, fp);	// Name first line
-  fgets(evolve_line, LINE_SIZE, fp);  // Evolve second line
+  fgets(line, LINE_SIZE, fp);  // Evolve second line
   fgets(line, LINE_SIZE, fp);	// Move Format third line
 
   attack new_attack;
-  int move_id;
+  int level_target, move_id;
 
   while (fgets(line, LINE_SIZE, fp)) {
     // if (strstr(line, "end") != NULL) break;
-    sscanf(line, "%d,%d", level_target, &move_id);
-    if (*level_target == pok->level) {
+    sscanf(line, "%d,%d", &level_target, &move_id);
+    if (level_target == pok->level) {
       new_attack = *(get_attack_by_id(move_id));
       learn_move(pok, &new_attack);
     }
   }
 
-  //Evolve if necessary
-  sscanf(evolve_line, "Evolve: %d, %d", level_target, evolve_id);
-
   fclose(fp);
+}
+
+
+//Put evolution level for pokemon with ID # pok_id in level_target and ID # of evolution in evolve_id
+void get_evolve_level_and_id(int pok_id, int * level_target, int * evolve_id) {
+  char line[LINE_SIZE];
+  char print_str[256];
+
+  //Add moves
+  FILE *fp;
+  char filename[50];
+  sprintf(filename, "learnsets/id_%03d.txt", pok_id);
+
+  // Open the file for reading
+  fp = fopen(filename, "r");
+
+  // Check if the file was opened successfully
+  if (fp == NULL) {
+      printw("Learnset file does not exist.\n"); refresh(); sleep(2);
+      return;
+  }
+
+  // Read lines from the file and put them into game values
+  fgets(line, LINE_SIZE, fp);	// Name first line
+  fgets(line, LINE_SIZE, fp);  // Evolve second line
+
+  sscanf(line, "Evolve: %d, %d", level_target, evolve_id);
 }
 
 
