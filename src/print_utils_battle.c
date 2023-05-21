@@ -111,6 +111,9 @@ void blinkPokemon(bool enemy) {
     refresh(); usleep(BLINK_TIME_MICROS);
   }
   attrset(COLOR_PAIR(DEFAULT_COLOR));
+  mvprintw(text_y, text_x, poke_string);
+  mvprintw(text_y+1, text_x, "HP: %d/%d", pok->currentHP, pok->maxHP);
+  refresh();
 }
 
 
@@ -157,6 +160,7 @@ int get_move_selection(int start_x, int start_y, struct pokemon* pok) {
          else selection++;
         break;
       case 'a':
+        clear_selection_text();
         return (selection);
       case 'b':
         return (5);
@@ -212,9 +216,15 @@ void text_box_cursors(int next_line) {
   move(TEXT_BOX_Y+5 + text_box_cursor_y, TEXT_BOX_X+3);
 }
 
+void clear_selection_text() {
+  for (int i = 0; i < 4; i++) {
+    mvprintw(TEXT_BOX_Y+1+i, TEXT_BOX_X+1, "                                               ");                           
+  }
+}
+
 void clear_text_box() {
   for (int i = 0; i < 4; i++) {
-    mvprintw(TEXT_BOX_Y+5+i, TEXT_BOX_X+3, "\t\t\t\t\t\t");
+    mvprintw(TEXT_BOX_Y+5+i, TEXT_BOX_X+1, "                                               ");                           
   }
 }
 

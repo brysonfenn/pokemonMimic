@@ -1,0 +1,9 @@
+Beedrill 15
+Evolve: 101,0
+level,move_id
+1,41 Fury Attack
+10,41 Fury Attack
+20,44 Twineedle
+30,42 Pursuit
+35,45 Pin Missile
+40,43 Agility

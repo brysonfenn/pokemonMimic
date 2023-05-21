@@ -3,9 +3,10 @@ Player:
 3 3 3 1000
 Location: {1,(13,11)}
 Pokemon: 
-Weedle 13 21 21 2 13 11 13 11 12 6 50 BUG NONE 0 0
+Kakuna 14 21 21 3 13 11 13 11 12 9 100 BUG NONE 0 0
 	Poison Sting. 6 35
 	String Shot. 5 40
+	Harden. 34 20
 Charmander 4 20 20 4 11 9 12 11 13 5 0 FIRE NONE 0 0
 	Scratch. 2 35
 	Growl. 3 40

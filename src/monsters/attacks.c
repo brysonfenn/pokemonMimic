@@ -103,15 +103,17 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
     refresh(); sleep(2); return 0;
   }
 
+  int damage = 0;
+
   //Drop HP only if attack has damage power
   if (chosenAttack.power != 0) {
-    int damage = getDamage(perp, move_num, victim, true);
+    damage = getDamage(perp, move_num, victim, true);
     victim->currentHP -= damage;
     if (victim->currentHP < 0) victim->currentHP = 0;
     blinkPokemon(enemy);
   }
 
-  chosenAttack.side_effect(chosenAttack.condition, chosenAttack.chance, victim);
+  chosenAttack.side_effect(chosenAttack.condition, chosenAttack.chance, victim, damage);
 
   return 0;
 }

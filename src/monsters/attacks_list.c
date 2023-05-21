@@ -56,8 +56,11 @@ attack gust         = {"Gust"         , 38, 35,  40,      100, FLYING,   false, 
 attack psybeam      = {"Psybeam"      , 39, 20,  65,      100, PSYCHIC,  false, &inflict_condition, CONFUSED, 10 };
 attack silver_wind  = {"Silver Wind"  , 40,  5,  60,      100, BUG,      false, &increment_self_stat, SP_ATTACK_STAT, 10 };
 
-attack pursuit      = {"Pursuit"      , 41, 10,  40,      100, DARK,     false, &attack_do_nothing, NO_CONDITION, 0 };
-attack agility      = {"Sweet Scent"  , 19, 20,   0,  NO_MISS, PSYCHIC,    false, &increment_self_stat2, SPEED_STAT, 100 };
+attack fury_attack  = {"Fury Attack"  , 41, 20,  15,       85, NORMAL,   false, &hit_multiple_times, 2, 5 };
+attack pursuit      = {"Pursuit"      , 42, 10,  40,      100, DARK,     false, &attack_do_nothing, NO_CONDITION, 0 };
+attack agility      = {"Agility"      , 43, 20,   0,  NO_MISS, PSYCHIC,  false, &increment_self_stat2, SPEED_STAT, 100 };
+attack twineedle    = {"Twineedle"    , 44, 20,  25,      100, BUG,      false, &hit_multiple_times, 2, 2 };
+attack pin_missile  = {"Pin Missile"  , 45, 20,  14,       85, BUG,      false, &hit_multiple_times, 2, 5 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -65,7 +68,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder, &razor_leaf, &metal_claw, &smoke_screen, &sweet_scent, &growth,   // #11-20
     &scary_face, &flame_thrower, &slash, &dragon_rage, &fire_spin, &wing_attack, &withdraw, &water_gun, &bite, &rapid_spin,        // #21-30
     &protect, &skull_bash, &hydro_pump, &harden, &supersonic, &confusion, &stun_spore, &gust, &psybeam, &silver_wind,              // #31-40
-    &pursuit, };
+    &fury_attack, &pursuit, &agility, &twineedle, &pin_missile };
 
 
 //Return an attack given an attack id number
@@ -147,7 +150,7 @@ int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
 }
 
 //Certain attacks can increment a pokemon's own stat
-int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim) {
+int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim, int damage) {
     //Adjust victim depending on if the victim is the player's or the enemy's
     pokemon * self;
     if (player.current_pokemon == victim) self = player.enemy_pokemon;
@@ -163,7 +166,7 @@ int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim)
 
 
 //Certain attacks can increment a pokemon's own stat
-int increment_self_stat2(Condition stat_type, int chance, struct pokemon* victim) {
+int increment_self_stat2(Condition stat_type, int chance, struct pokemon* victim, int damage) {
     //Adjust victim depending on if the victim is the player's or the enemy's
     pokemon * self;
     if (player.current_pokemon == victim) self = player.enemy_pokemon;
@@ -178,7 +181,7 @@ int increment_self_stat2(Condition stat_type, int chance, struct pokemon* victim
 }
 
 //Certain attacks can decrement an enemy pokemon's stat
-int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* victim) {
+int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* victim, int damage) {
     int random = rand() % 100;
     if (random < chance) {
         change_stat(stat_type, -1, victim);
@@ -187,7 +190,7 @@ int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* vic
     else return 1;
 }
 
-int decrement_opponent_stat2(Condition stat_type, int chance, struct pokemon* victim) {
+int decrement_opponent_stat2(Condition stat_type, int chance, struct pokemon* victim, int damage) {
     int random = rand() % 100;
     if (random < chance) {
         change_stat(stat_type, -2, victim);
@@ -196,6 +199,39 @@ int decrement_opponent_stat2(Condition stat_type, int chance, struct pokemon* vi
     else return 1;
 }
 
-int deal_specific_damage(Condition nothing, int hp, struct pokemon* victim) {
+int deal_specific_damage(Condition nothing, int hp, struct pokemon* victim, int damage) {
     victim->currentHP -= hp;
+    return 0;
+}
+
+//Some attacks hit multiple times
+int hit_multiple_times(int min_times, int max_times, struct pokemon* victim, int damage) {
+
+    bool enemy = (victim != player.enemy_pokemon);
+    int rand_times;
+    int i = 0;
+
+    //If max times is the same as min times, this is a specific number of times > 1
+    if (max_times != min_times) {
+        rand_times = (rand() % (max_times - min_times)) + min_times;
+        rand_times--;
+    }
+    else {
+        rand_times = min_times;
+    }
+
+    // Do not hit again if victim has fainted
+    while (victim->currentHP > 0 && i < rand_times) {
+        sleep(1);
+        victim->currentHP -= damage;
+        if (victim->currentHP < 0) victim->currentHP = 0;
+        blinkPokemon(enemy);
+        i++;
+    }
+
+    sleep(1);
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    printw("Hit %d time(s)", i+1); refresh(); sleep(2);
+
+    return 0;
 }

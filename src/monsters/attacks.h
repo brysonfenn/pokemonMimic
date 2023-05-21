@@ -11,7 +11,7 @@
 
 struct pokemon;
 
-typedef int (*attack_func_ptr) (Condition, int, struct pokemon*);
+typedef int (*attack_func_ptr) (Condition, int, struct pokemon*, int);
 
 typedef struct attack {
   char name[30];
@@ -45,16 +45,20 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool p
 attack * get_attack_by_id(int id_num);
 
 //Certain attacks can increment a pokemon's own stat
-int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim);
+int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim, int damage);
 
-int increment_self_stat2(Condition stat_type, int chance, struct pokemon* victim);
+int increment_self_stat2(Condition stat_type, int chance, struct pokemon* victim, int damage);
 
 //Certain attacks can decrement an enemy pokemon's stat
-int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* victim);
+int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* victim, int damage);
 
 //Certain attacks can double decrement an enemy pokemon's stat
-int decrement_opponent_stat2(Condition stat_type, int chance, struct pokemon* victim);
+int decrement_opponent_stat2(Condition stat_type, int chance, struct pokemon* victim, int damage);
 
-int deal_specific_damage(Condition nothing, int hp, struct pokemon* victim);
+//Some attacks do a specific amount of damage
+int deal_specific_damage(Condition nothing, int hp, struct pokemon* victim, int damage);
+
+//Some attacks hit multiple times
+int hit_multiple_times(int min_times, int max_times, struct pokemon* victim, int damage);
 
 #endif // ATTACKS_H
