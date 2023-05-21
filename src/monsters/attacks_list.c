@@ -50,14 +50,22 @@ attack skull_bash   = {"Skull Bash"   , 32, 15, 100,      100, NORMAL,   false, 
 attack hydro_pump   = {"Hydro Pump"   , 33,  5, 120,       80, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
 attack harden       = {"Harden"       , 34, 30,   0,  NO_MISS, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
 attack supersonic   = {"Supersonic"   , 35, 35,   0,      100, NORMAL,   false, &inflict_condition, CONFUSED, 100 };
-attack confusion    = {"Confusion"    , 36, 25,  50,      100, NORMAL,   false, &inflict_condition, CONFUSED, 10 };
+attack confusion    = {"Confusion"    , 36, 25,  50,      100, PSYCHIC,  false, &inflict_condition, CONFUSED, 10 };
 attack stun_spore   = {"Stun Spore"   , 37, 30,   0,       75, GRASS,    false, &inflict_condition, PARALYZED, 100 };
+attack gust         = {"Gust"         , 38, 35,  40,      100, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack psybeam      = {"Psybeam"      , 39, 20,  65,      100, PSYCHIC,  false, &inflict_condition, CONFUSED, 10 };
+attack silver_wind  = {"Silver Wind"  , 40,  5,  60,      100, BUG,      false, &increment_self_stat, SP_ATTACK_STAT, 10 };
+
+attack pursuit      = {"Pursuit"      , 41, 10,  40,      100, DARK,     false, &attack_do_nothing, NO_CONDITION, 0 };
+attack agility      = {"Sweet Scent"  , 19, 20,   0,  NO_MISS, PSYCHIC,    false, &increment_self_stat2, SPEED_STAT, 100 };
+
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
     &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl, &vine_whip,    // #01-10
     &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder, &razor_leaf, &metal_claw, &smoke_screen, &sweet_scent, &growth,   // #11-20
     &scary_face, &flame_thrower, &slash, &dragon_rage, &fire_spin, &wing_attack, &withdraw, &water_gun, &bite, &rapid_spin,        // #21-30
-    &protect, &skull_bash, &hydro_pump, &harden, &supersonic, &confusion, &stun_spore };
+    &protect, &skull_bash, &hydro_pump, &harden, &supersonic, &confusion, &stun_spore, &gust, &psybeam, &silver_wind,              // #31-40
+    &pursuit, };
 
 
 //Return an attack given an attack id number
@@ -148,6 +156,22 @@ int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim)
     int random = rand() % 100;
     if (random < chance) {
         change_stat(stat_type, 1, self);
+        return 0;
+    }
+    else return 1;
+}
+
+
+//Certain attacks can increment a pokemon's own stat
+int increment_self_stat2(Condition stat_type, int chance, struct pokemon* victim) {
+    //Adjust victim depending on if the victim is the player's or the enemy's
+    pokemon * self;
+    if (player.current_pokemon == victim) self = player.enemy_pokemon;
+    else self = player.current_pokemon;
+
+    int random = rand() % 100;
+    if (random < chance) {
+        change_stat(stat_type, 2, self);
         return 0;
     }
     else return 1;

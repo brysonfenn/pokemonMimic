@@ -47,6 +47,8 @@ attack * get_attack_by_id(int id_num);
 //Certain attacks can increment a pokemon's own stat
 int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim);
 
+int increment_self_stat2(Condition stat_type, int chance, struct pokemon* victim);
+
 //Certain attacks can decrement an enemy pokemon's stat
 int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* victim);
 
