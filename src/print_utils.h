@@ -1,6 +1,8 @@
 #ifndef PRINT_UTILS_H
 #define PRINT_UTILS_H
 
+#include <stdbool.h>
+
 #define INVALID_INPUT -9
 
 #define TEXT_BOX_BEGINNING 0
@@ -37,7 +39,11 @@ void print_to_list(const char * list_str);
 
 //print_utils_battle.c
 
+//Print Battle Box and basic pokemon information
 void printBattle();
+
+//Blink enemy if enemy is true, if not, blink player
+void blinkPokemon(bool enemy);
 
 int get_battle_selection(int first_line, int last_selection);
 int get_move_selection(int start_x, int start_y, struct pokemon* pok);

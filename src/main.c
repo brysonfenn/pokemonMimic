@@ -57,10 +57,9 @@ int main(void) {
         continue;
       }
       
-      player.numInParty = 2;
+      player.numInParty = 1;
       player.numAlive = player.numInParty;
-      player.party[0] = *(get_starter(input_num));  //Charmander
-      player.party[1] = *get_random_wild_pokemon(8,10);
+      player.party[0] = *(get_starter(input_num));  //Give the player a starter based on selection
 
       break;
     }

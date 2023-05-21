@@ -107,9 +107,9 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
   if (chosenAttack.power != 0) {
     int damage = getDamage(perp, move_num, victim, true);
     victim->currentHP -= damage;
+    if (victim->currentHP < 0) victim->currentHP = 0;
+    blinkPokemon(enemy);
   }
-
-  sleep(1);
 
   chosenAttack.side_effect(chosenAttack.condition, chosenAttack.chance, victim);
 

@@ -4,14 +4,16 @@
 
 #include "print_defines.h"
 #include "player.h"
-
 #include "monsters/pokemon.h"
+
+#define BLINK_TIME_MICROS 100000
 
 void adjust_cursors(int selection, int start_x, int start_y);
 
 static int cursor_x;
 static int cursor_y;
 
+//Print Battle Box and basic pokemon information
 void printBattle() {
   pokemon * player_pok = player.current_pokemon;
   pokemon * enemy_pok = player.enemy_pokemon;
@@ -19,15 +21,15 @@ void printBattle() {
 
   draw_battle_box();
 
-  sprintf(poke_string, "\t\t\t%s  Lvl %d ", enemy_pok->name, enemy_pok->level);
+  sprintf(poke_string, "%s  Lvl %d ", enemy_pok->name, enemy_pok->level);
   add_condition(poke_string, enemy_pok);
-  mvprintw(BATTLE_BOX_Y+1, BATTLE_BOX_X+3, poke_string);
-  mvprintw(BATTLE_BOX_Y+2, BATTLE_BOX_X+3, "\t\t\tHP: %d/%d", enemy_pok->currentHP, enemy_pok->maxHP);
+  mvprintw(BATTLE_BOX_ENEMY_Y, BATTLE_BOX_ENEMY_X, poke_string);
+  mvprintw(BATTLE_BOX_ENEMY_Y+1, BATTLE_BOX_ENEMY_X, "HP: %d/%d", enemy_pok->currentHP, enemy_pok->maxHP);
 
   sprintf(poke_string,  "%s  Lvl %d  ", player_pok->name, player_pok->level);
   add_condition(poke_string, player_pok);
-  mvprintw(BATTLE_BOX_Y+4, BATTLE_BOX_X+3, poke_string);
-  mvprintw(BATTLE_BOX_Y+5, BATTLE_BOX_X+3, "HP: %d/%d", player_pok->currentHP, player_pok->maxHP);
+  mvprintw(BATTLE_BOX_PLAYER_Y, BATTLE_BOX_PLAYER_X, poke_string);
+  mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "HP: %d/%d", player_pok->currentHP, player_pok->maxHP);
 
   print_btn_instructions(BATTLE_BOX_X+BATTLE_BOX_WIDTH+1, TEXT_BOX_Y);
   draw_text_box();
@@ -73,6 +75,42 @@ int get_battle_selection(int first_line, int last_selection) {
     adjust_cursors(selection, BATTLE_SELECT_1_X, first_line);
   }
 }
+
+
+//Blink enemy if enemy is true, if not, blink player
+void blinkPokemon(bool enemy) {
+  pokemon * pok;
+  char poke_string[128];
+  int text_x, text_y;
+
+  //Set up location and pokemon depending on whether enemy attacked
+  if (!enemy) {
+    pok = player.enemy_pokemon;
+    text_x = BATTLE_BOX_ENEMY_X;
+    text_y = BATTLE_BOX_ENEMY_Y;
+    
+  }
+  else {
+    pok = player.current_pokemon;
+    text_x = BATTLE_BOX_PLAYER_X;
+    text_y = BATTLE_BOX_PLAYER_Y;
+  }
+
+  //Prepare string
+  sprintf(poke_string, "%s  Lvl %d ", pok->name, pok->level);
+  add_condition(poke_string, pok);
+
+  //Blink pokemon
+  for (int i = 0; i < 3; i++) {
+    mvprintw(text_y, text_x, "                       ");
+    mvprintw(text_y+1, text_x, "                       ");
+    refresh(); usleep(BLINK_TIME_MICROS);
+    mvprintw(text_y, text_x, poke_string);
+    mvprintw(text_y+1, text_x, "HP: %d/%d", pok->currentHP, pok->maxHP);
+    refresh(); usleep(BLINK_TIME_MICROS);
+  }
+}
+
 
 int get_move_selection(int start_x, int start_y, struct pokemon* pok) {
   int selection = 1;
