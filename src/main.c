@@ -3,6 +3,8 @@
 #include <string.h>
 #include <time.h>
 #include <ncurses.h>
+#include <termios.h>
+#include <unistd.h>
 
 #include "print_utils.h"
 #include "print_defines.h"
@@ -15,6 +17,7 @@ void control_c_handler();
 
 //This is currently the main menu
 int main(void) {
+
   signal(SIGINT, control_c_handler);
   resume_ncurses();
   

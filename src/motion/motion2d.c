@@ -84,7 +84,7 @@ void handle_motion() {
         }
         grass_map();
 
-        bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == 'M');
+        bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR);
 
         // Set attributes for next character
         attrset(COLOR_PAIR(PLAYER_COLOR));
@@ -125,7 +125,7 @@ void change_map(int map, int x, int y) {
 //Check if a given space movement would result in a collision
 bool is_movable_space(int yInc, int xInc) {
     char next_tile = mvinch(*player_y+yInc, *player_x+xInc);
-    if (next_tile == ' ' || next_tile == 'M') {
+    if (next_tile == ' ' || next_tile == GRASS_CHAR) {
         return true;
     }
     else {

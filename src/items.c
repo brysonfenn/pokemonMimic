@@ -233,13 +233,14 @@ int attempt_catch(int catch_rate, char * name) {
   printBattle();
 
   text_box_cursors(TEXT_BOX_BEGINNING);
-  printw("B threw a %s with catch rate %d/255", name, catch_rate); refresh(); sleep(2);
+  printw("B threw a %s!", name); refresh(); sleep(2);
 
   text_box_cursors(TEXT_BOX_NEXT_LINE);
   if (random < catch_rate) {
     printw("%s was caught!", enemy_pok->name); refresh(); sleep(2);
     player.party[player.numInParty] = (*enemy_pok);
     player.numInParty++;
+    player.numAlive++;
     return ITEM_CATCH_SUCCESS;
   }
   else {

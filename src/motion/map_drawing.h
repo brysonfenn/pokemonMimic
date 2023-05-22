@@ -9,7 +9,7 @@
 #define MAP_X 3
 #define MAP_Y 1
 
-#define GRASS_CHAR 'M'
+#define GRASS_CHAR 'W'
 
 //Sides of map - used to call "draw_town_exit()"
 enum town_side { MAP_TOP, MAP_BOTTOM, MAP_LEFT, MAP_RIGHT };
