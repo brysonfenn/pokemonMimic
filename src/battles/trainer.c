@@ -16,7 +16,7 @@ static char name[NAME_MAX_LENGTH];
 int battle_trainer() {
   char print_str[1024];
 
-  if (!player.numAlive) {
+  if (!player_get_num_alive()) {
     begin_list();
     print_to_list("  All Pokemon have fainted, please heal them.\n");
     sleep(3);
@@ -64,7 +64,7 @@ int battle_trainer() {
     if (battle_result == BATTLE_WHITE_OUT) { break; }
 
     //If the player has more than one pokemon, they should be able to switch now
-    if (player.numAlive > 1) {
+    if (player_get_num_alive() > 1) {
       begin_list();
       sprintf(print_str, "  Trainer %s is about to send out %s\n", trainer_name, trainer_pokemon[i+1].name);
       sprintf(print_str, "%s  Will B change Pokemon?\n  Yes\n  No\n", print_str);

@@ -1,6 +1,6 @@
 Last Saved: 05/13/2023 07:41:09
 Player: 
-5 5 3 1100
+5 3 1100
 Location: {1,(48,17)}
 Pokemon: 
 Bulbasaur 1 26 26 3 16 15 16 15 17 8 40 GRASS POISON 0 0

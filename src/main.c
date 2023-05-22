@@ -61,7 +61,6 @@ int main(void) {
       }
       
       player.numInParty = 1;
-      player.numAlive = player.numInParty;
       player.party[0] = *(get_starter(input_num));  //Give the player a starter based on selection
 
       break;

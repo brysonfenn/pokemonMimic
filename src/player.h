@@ -13,7 +13,6 @@ struct item;
 struct playerCharacter {
   struct pokemon * party;
   int numInParty;
-  int numAlive;
   struct item * bag;
   int numInBag;
   struct pokemon * current_pokemon;
@@ -30,6 +29,8 @@ void player_init(int save_file);
 bool runAttempt();
 
 void handle_poke_center();
+
+int player_get_num_alive();
 
 void set_current_pokemon(int position);
 

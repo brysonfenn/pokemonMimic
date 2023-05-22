@@ -1,6 +1,6 @@
 Last Saved: 05/13/2023 07:41:37
 Player: 
-4 4 2 300
+4 2 300
 Location: {1,(49,17)}
 Pokemon: 
 Charmander 4 22 22 3 12 11 11 10 14 7 12 FIRE NONE 0 0

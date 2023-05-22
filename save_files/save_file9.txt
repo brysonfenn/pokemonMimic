@@ -1,6 +1,6 @@
 Last Saved: 05/18/2023 20:07:14
 Player: 
-3 3 3 1000
+3 3 1000
 Location: {1,(13,11)}
 Pokemon: 
 Kakuna 14 21 21 3 13 11 13 11 12 9 100 BUG NONE 0 0

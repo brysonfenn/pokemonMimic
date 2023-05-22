@@ -240,7 +240,6 @@ int attempt_catch(int catch_rate, char * name) {
     printw("%s was caught!", enemy_pok->name); refresh(); sleep(2);
     player.party[player.numInParty] = (*enemy_pok);
     player.numInParty++;
-    player.numAlive++;
     return ITEM_CATCH_SUCCESS;
   }
   else {

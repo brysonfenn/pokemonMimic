@@ -76,7 +76,6 @@ void heal_party() {
       curr_pok->attacks[j].curr_pp = curr_pok->attacks[j].max_pp;
     }
   }
-  player.numAlive = player.numInParty;
   print_to_list("Your Pokemon were restored to full health!\n \n");
   sleep(2);
   printParty(); sleep(2);
@@ -94,6 +93,14 @@ void handle_poke_center() {
   else if (inputNum == 0) {
     heal_party();
   }
+}
+
+int player_get_num_alive() {
+  int numAlive = 0;
+  for (int i = 0; i < player.numInParty; i++) {
+    if (player.party[i].currentHP > 0) numAlive++;
+  }
+  return numAlive;
 }
 
 void set_current_pokemon(int position) {

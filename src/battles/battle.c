@@ -72,10 +72,9 @@ int initiate_battle(struct pokemon * enemyPoke) {
       sleep(2);
       text_box_cursors(TEXT_BOX_BEGINNING);
       printw("%s fainted. ", currentPok->name); refresh(); sleep(2);
-      player.numAlive--;
       
       // Handle White out
-      if (player.numAlive == 0) {
+      if (player_get_num_alive() == 0) {
         sleep(2);
         text_box_cursors(TEXT_BOX_NEXT_LINE);
         printw("B is out of usable pokemon... "); refresh(); sleep(3);
@@ -422,7 +421,7 @@ void handle_exp(int exp) {
     currentPok = &(player.party[i]);
 
     //Give active pokemon experience points if it is alive and didn't run away.
-    if (player.numAlive && !run_success && (currentPok->level < 100)) {
+    if (player_get_num_alive() && !run_success && (currentPok->level < 100)) {
       text_box_cursors(TEXT_BOX_NEXT_LINE);
       printw("%s gained %d experience points!", currentPok->name, exp);
       currentPok->exp += (exp);
