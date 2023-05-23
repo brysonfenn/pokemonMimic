@@ -63,11 +63,6 @@ extern pokemon emptyPok;
 
 //pokemon.c
 
-//Initialize a given pokemon new_pok and get randomized stats
-  //level = particular level
-  //if level = 0, get random level from range level_min:level_max
-void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max);
-
 //Reset stat stages whenever pokemon is switched out or battle ends
 void reset_stat_stages(pokemon *pok);
 
@@ -106,6 +101,9 @@ int pokemon_get_iv(pokemon * pok, char type);
 
 //pokemon_list.c
 
+//Create a new pokemon. **Immediately dereference the returned pokemon**
+pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int level_max);
+
 //Return a random pokemon of any possible
 pokemon * get_random_pokemon(int level_min, int level_max);
 
@@ -113,10 +111,10 @@ pokemon * get_random_pokemon(int level_min, int level_max);
 //Always immediately dereference the return value of this function.
 pokemon * get_random_wild_pokemon(int level_min, int level_max);
 
-//Get a pokemon with all its base stats
-pokemon * get_pokemon_frame(Pokemon_id pok_id);
-
 //Get a starter pokemon
 pokemon * get_starter(int starter);
+
+//Get a pokemon with all its base stats
+pokemon * get_pokemon_frame(Pokemon_id pok_id);
 
 #endif // POKEMON_H

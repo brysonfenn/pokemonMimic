@@ -28,14 +28,38 @@ static Pokemon_id wild_pok_lists[10][10] = {
 
 static pokemon newest_pokemon;
 
+
+//Initialize a given pokemon new_pok and get randomized stats
+  //level = particular level
+  //if level = 0, get random level from range level_min:level_max
+void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
+  new_pok->exp = 15;
+  new_pok->iv = rand();
+  new_pok->numAttacks = 0;
+  new_pok->visible_condition = NO_CONDITION;
+  new_pok->hidden_condition = NO_CONDITION;
+
+  calculate_stats(new_pok, level, level_min, level_max);
+  new_pok->currentHP = new_pok->maxHP;
+  pokemon_give_moves(new_pok);
+}
+
+
+//Create a new pokemon. **Immediately dereference the returned pokemon**
+pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int level_max) {
+  newest_pokemon = *get_pokemon_frame(pok_id);
+  pokemon_init(&newest_pokemon, level, level_min, level_max);
+  return (&newest_pokemon);
+}
+
+
 //Return a random pokemon of any possible
 pokemon * get_random_pokemon(int level_min, int level_max) {
   int pok_position = rand() % NUM_CREATED_POKEMON;
-  newest_pokemon = *(get_pokemon_frame(pok_id_list[pok_position]));
-  pokemon * new_pok = &newest_pokemon;
-  pokemon_init(new_pok, RANDOM_LEVEL, level_min, level_max);
+  pokemon * new_pok = create_new_pokemon(pok_id_list[pok_position], RANDOM_LEVEL, level_min, level_max);
   return new_pok;
 }
+
 
 //Return a random pokemon, excluding starters
 //Always immediately dereference the return value of this function.
@@ -57,13 +81,23 @@ pokemon * get_random_wild_pokemon(int level_min, int level_max) {
     min_level = wild_pok_lists[player.loc->map][1];
     max_level = wild_pok_lists[player.loc->map][2];
   }
-  
-  newest_pokemon = *(get_pokemon_frame(new_pok_id));
-  // newest_pokemon = *(get_pokemon_frame(POKEMON_CATERPIE));
-  pokemon * new_pok = &newest_pokemon;
-  pokemon_init(new_pok, set_level, min_level, max_level);
+
+  // new_pok_id = POKEMON_CATERPIE;
+  pokemon * new_pok = create_new_pokemon(new_pok_id, set_level, min_level, max_level);
 
   return new_pok;
+}
+
+
+//Get a starter pokemon
+pokemon * get_starter(int starter) {
+  int pok_id;
+
+  if (starter == 0) pok_id = POKEMON_BULBASAUR;
+  else if (starter == 1) pok_id = POKEMON_CHARMANDER;
+  else pok_id = POKEMON_SQUIRTLE;
+
+  return create_new_pokemon(pok_id, 5, 0, 0);
 }
 
 
@@ -119,15 +153,4 @@ pokemon * get_pokemon_frame(Pokemon_id pok_id) {
   fclose(fp);
 
   return pok;
-}
-
-//Get a starter pokemon
-pokemon * get_starter(int starter) {
-  if (starter == 0) newest_pokemon = *(get_pokemon_frame(POKEMON_BULBASAUR));
-  else if (starter == 1) newest_pokemon = *(get_pokemon_frame(POKEMON_CHARMANDER));
-  else newest_pokemon = *(get_pokemon_frame(POKEMON_SQUIRTLE));
-  
-  pokemon * new_pok = &newest_pokemon;
-  pokemon_init(new_pok, 5, 0, 0);
-  return new_pok;
 }

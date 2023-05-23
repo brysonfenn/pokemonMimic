@@ -12,6 +12,9 @@
 
 static char name[NAME_MAX_LENGTH];
 
+
+void print_trainer_pokemon(Trainer * trainer, pokemon * trainer_pokemon);
+
 //Battle a trainer with a random name and random # of pokemon
 int battle_trainer(Trainer * trainer) {
   char print_str[1024];
@@ -28,29 +31,16 @@ int battle_trainer(Trainer * trainer) {
   battle_result = BATTLE_WIN;
   player.trainer_battle = true;
 
-  // char * name = get_random_name();
-  // sprintf(trainer->name, "%s", name);
-
   begin_list();
 
-  sprintf(print_str, "  Trainer %s wants to fight!\n", trainer->name);
+  sprintf(print_str, "  %s wants to fight!\n", trainer->name);
   print_to_list(print_str); sleep(2);
-  
-  begin_list();
-  sprintf(print_str, "  Trainer %s Pokemon: ", trainer->name);
 
   for (int i = 0; i < trainer->num_in_party; i++) {
-    // trainer_pokemon[i] = *(get_random_pokemon(3,7));
-    // trainer_pokemon[i] = *get_random_pokemon(30,33);
-
-    trainer_pokemon[i] = *get_pokemon_frame(trainer->party_id_list[i]);
-    pokemon_init(&(trainer_pokemon[i]), 5, 0, 0);
-    
-    sprintf(print_str, "%s*", print_str);
+    trainer_pokemon[i] = *create_new_pokemon(trainer->party_id_list[i], 5, 0, 0);
   }
-  sprintf(print_str, "%s\n", print_str); 
 
-  print_to_list(print_str); sleep(2);
+  print_trainer_pokemon(trainer, trainer_pokemon); sleep(2);
 
   set_current_pokemon(PLAYER_DEFAULT_POKEMON);
   sprintf(print_str, "  B sent out %s\n", player.current_pokemon->name);
@@ -60,7 +50,7 @@ int battle_trainer(Trainer * trainer) {
 
   for (int i = 0; i < last_pokemon_pos; i++) {
     begin_list();
-    sprintf(print_str, "  Trainer %s sent out %s\n", trainer->name, trainer_pokemon[i].name);
+    sprintf(print_str, "  %s sent out %s\n", trainer->name, trainer_pokemon[i].name);
     print_to_list(print_str); sleep(2);
     battle_result = initiate_battle(&(trainer_pokemon[i]));
 
@@ -69,7 +59,7 @@ int battle_trainer(Trainer * trainer) {
     //If the player has more than one pokemon, they should be able to switch now
     if (player_get_num_alive() > 1) {
       begin_list();
-      sprintf(print_str, "  Trainer %s is about to send out %s\n", trainer->name, trainer_pokemon[i+1].name);
+      sprintf(print_str, "  %s is about to send out %s\n", trainer->name, trainer_pokemon[i+1].name);
       sprintf(print_str, "%s  Will B change Pokemon?\n  Yes\n  No\n", print_str);
       print_to_list(print_str);
       inputNum = get_selection(LIST_BOX_Y+3,0,1,0);
@@ -100,24 +90,26 @@ int battle_trainer(Trainer * trainer) {
         }
       }
     }
+
+    print_trainer_pokemon(trainer, trainer_pokemon); sleep(2);
   }
 
   //Handle last pokemon
   if (battle_result == BATTLE_WIN) {
     begin_list();
-    sprintf(print_str, "  Trainer %s sent out %s\n", trainer->name, trainer_pokemon[last_pokemon_pos].name);
+    sprintf(print_str, "  %s sent out %s\n", trainer->name, trainer_pokemon[last_pokemon_pos].name);
     print_to_list(print_str); sleep(2);
     battle_result = initiate_battle(&(trainer_pokemon[last_pokemon_pos]));
     
     if (battle_result == BATTLE_WHITE_OUT) return BATTLE_WHITE_OUT;
 
     text_box_cursors(TEXT_BOX_NEXT_LINE);
-    printw("B defeated Trainer %s", trainer->name);
+    printw("B defeated %s", trainer->name);
     refresh(); sleep(2);
     int money_earned = (trainer->num_in_party * 200) - 100;
 
     text_box_cursors(TEXT_BOX_NEXT_LINE);
-    printw("B gained $%d for defeating Trainer %s", money_earned, trainer->name);
+    printw("B gained $%d for defeating %s", money_earned, trainer->name);
     player.money += money_earned;
     refresh(); sleep(2);
   }
@@ -132,6 +124,24 @@ int battle_trainer(Trainer * trainer) {
     return BATTLE_WIN;
   }
 }
+
+
+void print_trainer_pokemon(Trainer * trainer, pokemon * trainer_pokemon) {
+  char print_str[128];
+  begin_list();
+  sprintf(print_str, "  %s Pokemon: ", trainer->name);
+
+  for (int i = 0; i < trainer->num_in_party; i++) {
+    if (trainer_pokemon[i].currentHP > 0) 
+      sprintf(print_str, "%s o", print_str);
+    else
+      sprintf(print_str, "%s x", print_str);
+  }
+
+  sprintf(print_str, "%s\n", print_str);
+  print_to_list(print_str);
+}
+
 
 //Get a random name (could be female or male)
 char * get_random_name() {

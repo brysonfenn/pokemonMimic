@@ -10,23 +10,6 @@
 #include "../print_defines.h"
 #include "../player.h"
 
-//Initialize a given pokemon new_pok and get randomized stats
-  //level = particular level
-  //if level = 0, get random level from range level_min:level_max
-void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
-  new_pok->exp = 15;
-  new_pok->iv = rand();
-  new_pok->numAttacks = 0;
-  new_pok->visible_condition = NO_CONDITION;
-  new_pok->hidden_condition = NO_CONDITION;
-
-  calculate_stats(new_pok, level, level_min, level_max);
-
-  new_pok->currentHP = new_pok->maxHP;
-  
-  pokemon_give_moves(new_pok);
-}
-
 //Give random stats to pokemon based on level
   //level = particular level
   //if level = 0, get random level from range level_min:level_max

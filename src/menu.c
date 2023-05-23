@@ -14,7 +14,7 @@ static enum display { WILD, TRAINER, TOWN, POKEMON, BAG, PLAYER, SAVE, LOAD,
 
 static bool power_off = false;
 
-Trainer trainer2 = {"Mark", 3, {POKEMON_CATERPIE, POKEMON_SANDSHREW, POKEMON_IVYSAUR} };
+Trainer trainer2 = {"Trainer Mark", 3, {POKEMON_CATERPIE, POKEMON_SANDSHREW, POKEMON_IVYSAUR} };
 
 void main_menu() {
 
