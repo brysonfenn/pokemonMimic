@@ -51,7 +51,7 @@ pokemon * get_random_wild_pokemon(int level_min, int level_max) {
     set_level = 99;
   }
   else {
-    //Get the position of a random pokemon based don the the player's current map
+    //Get the position of a random pokemon based on the the player's current map
     pok_position = (rand() % wild_pok_lists[player.loc->map][0]) + 3;
     new_pok_id = wild_pok_lists[player.loc->map][pok_position];
     min_level = wild_pok_lists[player.loc->map][1];
