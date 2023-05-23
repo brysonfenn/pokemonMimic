@@ -16,6 +16,8 @@
 #define POKE_CENTER_ACTION 2
 #define TRAINER_BATTLE_ACTION 3
 
+Trainer trainer1 = {"Joseph", 3, {POKEMON_WEEDLE, POKEMON_PIDGEY, POKEMON_BULBASAUR} };
+
 void draw_map1() {
 
     mvprintw(22, 1, "Press 'm' to return to the menu");
@@ -68,7 +70,7 @@ int actions_map1(int player_x, int player_y) {
             player.loc->y += 1;
             break;
         case TRAINER_BATTLE_ACTION:
-            battle_trainer();
+            battle_trainer(&trainer1);
             player.loc->x += 1;
             break;
         default:

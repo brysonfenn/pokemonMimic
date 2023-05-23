@@ -7,11 +7,14 @@
 #include "print_utils.h"
 #include "monsters/pokemon.h"
 #include "items.h"
+#include "battles/trainer.h"
 
 static enum display { WILD, TRAINER, TOWN, POKEMON, BAG, PLAYER, SAVE, LOAD,
     POWER_OFF, MAIN } current_display = TOWN;
 
 static bool power_off = false;
+
+Trainer trainer2 = {"Mark", 3, {POKEMON_CATERPIE, POKEMON_SANDSHREW, POKEMON_IVYSAUR} };
 
 void main_menu() {
 
@@ -54,7 +57,7 @@ void main_menu() {
 
         //Battle a trainer
         case TRAINER:
-        battle_trainer();
+        battle_trainer(&trainer2);
         current_display = MAIN;
         break;
 
