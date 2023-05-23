@@ -22,8 +22,8 @@ static bool pokemon_needing_exp[6] = {false, false, false, false, false, false};
 
 static bool run_success;
 
-//Handle an enemy attacking the player's current pokemon
-void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num);
+//Handle an enemyPok attacking the player's current pokemon
+void perform_enemy_attack(pokemon * currentPok, pokemon * enemyPok, int attack_num);
 
 //Get a move number randomly (moves with higher damage have a higher chance)
 int get_move(pokemon * pok);
@@ -32,7 +32,7 @@ int get_move(pokemon * pok);
 void handle_exp(int exp);
 
 //Begin a Battle with a given pokemon
-int initiate_battle(struct pokemon * enemyPoke) {
+int initiate_battle(struct pokemon * enemyPok) {
   int inputNum, max_input;
   bool enemy_attacks, fainted_switch, out_of_pp;
   int return_execute, attack_num, enemy_attack_num, item_num, pokemon_selected, speed_difference;
@@ -43,9 +43,8 @@ int initiate_battle(struct pokemon * enemyPoke) {
   fainted_switch = false;
   run_success = false;
 
-  pokemon enemy = *enemyPoke;
   pokemon *currentPok = player.current_pokemon;
-  player.enemy_pokemon = &enemy;
+  player.enemy_pokemon = enemyPok;
 
   //First used pokemon needs exp
   for (int i = 0; i < player.numInParty; i++) {
@@ -58,11 +57,11 @@ int initiate_battle(struct pokemon * enemyPoke) {
     clear();
 
     // Allow loop to break if enemyHP is 0 or less
-    if (enemy.currentHP <= 0) {
-      enemy.currentHP = 0; clear();
+    if (enemyPok->currentHP <= 0) {
+      enemyPok->currentHP = 0; clear();
       printBattle(); sleep(2);
       text_box_cursors(TEXT_BOX_BEGINNING);
-      printw("%s%s fainted.", ENEMY_TEXT, enemy.name); refresh(); sleep(2);
+      printw("%s%s fainted.", ENEMY_TEXT, enemyPok->name); refresh(); sleep(2);
       break;
     }
 
@@ -104,7 +103,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
     while (current_decision == NONE) {
       clear();
 
-      enemy_attack_num = get_move(&enemy);
+      enemy_attack_num = get_move(enemyPok);
 
       switch (current_display) {
         
@@ -231,20 +230,20 @@ int initiate_battle(struct pokemon * enemyPoke) {
     case ATTACK:
       //Get base attack
       player_speed = (int) (currentPok->baseSpeed * get_stat_modifier(currentPok->spd_stage));
-      enemy_speed = (int) (enemy.baseSpeed * get_stat_modifier(enemy.spd_stage));
+      enemy_speed = (int) (enemyPok->baseSpeed * get_stat_modifier(enemyPok->spd_stage));
 
       //Handle paralysis
       if (currentPok->visible_condition == PARALYZED) {
         player_speed *= 0.25;
         player_speed = (player_speed <= 0) ? 1 : player_speed;
       }
-      if (enemy.visible_condition == PARALYZED) {
+      if (enemyPok->visible_condition == PARALYZED) {
         enemy_speed *= 0.25;
         enemy_speed = (enemy_speed <= 0) ? 1 : enemy_speed;
       }
       
       //Handle Priority
-      enemy_priority = enemy.attacks[enemy_attack_num].priority;
+      enemy_priority = enemyPok->attacks[enemy_attack_num].priority;
       player_priority = currentPok->attacks[attack_num].priority;
       if (enemy_priority && !player_priority)       { speed_difference = -1; }
       else if (!enemy_priority && player_priority)  { speed_difference =  1; }
@@ -257,24 +256,24 @@ int initiate_battle(struct pokemon * enemyPoke) {
 
       //Pokemon with the higher speed goes first
       if (speed_difference > 0) {
-        return_execute = perform_attack(currentPok, attack_num, &(enemy), false);
+        return_execute = perform_attack(currentPok, attack_num, enemyPok, false);
         if (return_execute == 0) enemy_attacks = true;
       }
       else if (speed_difference < 0) {
-        perform_enemy_attack(currentPok, &enemy, enemy_attack_num);
+        perform_enemy_attack(currentPok, enemyPok, enemy_attack_num);
         clear();
         printBattle();
         clear_text_box();
         //Player Pokemon can only attack if still alive
         if (currentPok->currentHP > 0) {
-          return_execute = perform_attack(currentPok, attack_num, &(enemy), false);
+          return_execute = perform_attack(currentPok, attack_num, enemyPok, false);
         }
       }
 
       current_display = MAIN;
       break;
     case ITEM:
-      return_execute = use_item(inputNum, &enemy);
+      return_execute = use_item(inputNum, enemyPok);
       //Return to bag menu if item failed, else back to main menu
       if (return_execute == ITEM_FAILURE) { continue; }
       else if (return_execute == ITEM_CATCH_SUCCESS) { run_success = true; }
@@ -328,17 +327,17 @@ int initiate_battle(struct pokemon * enemyPoke) {
     if (run_success) break;  //Handle Run Away
 
     // Allow loop to break if enemyHP is 0 or less
-    if (enemy.currentHP <= 0) {
-      enemy.currentHP = 0; clear();
+    if (enemyPok->currentHP <= 0) {
+      enemyPok->currentHP = 0; clear();
       printBattle(); sleep(2);
       text_box_cursors(TEXT_BOX_BEGINNING);
-      printw("%s%s fainted.", ENEMY_TEXT, enemy.name); refresh(); sleep(2);
+      printw("%s%s fainted.", ENEMY_TEXT, enemyPok->name); refresh(); sleep(2);
       break;
     }
 
     // Enemy performs attack if we just did something
     if (enemy_attacks && !fainted_switch) {
-      perform_enemy_attack(currentPok, &enemy, enemy_attack_num);
+      perform_enemy_attack(currentPok, enemyPok, enemy_attack_num);
     }
     fainted_switch = false;
 
@@ -346,7 +345,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
   }
 
   if (!run_success) {
-    int exp = enemy.level * 3;
+    int exp = enemyPok->level * 3;
     float random = (float) (rand() % 25);
     exp *= (1.0 + (random / 100.0));
     if (player.trainer_battle) exp *= 1.5;
@@ -357,11 +356,11 @@ int initiate_battle(struct pokemon * enemyPoke) {
 }
 
 
-//Handle an enemy attacking the player's current pokemon
-void perform_enemy_attack(pokemon * currentPok, pokemon * enemy, int attack_num) {
+//Handle an enemyPok attacking the player's current pokemon
+void perform_enemy_attack(pokemon * currentPok, pokemon * enemyPok, int attack_num) {
   clear();
   printBattle();
-  perform_attack(enemy, attack_num, currentPok, true);
+  perform_attack(enemyPok, attack_num, currentPok, true);
 
   if (currentPok->currentHP <= 0) {
     currentPok->currentHP = 0;

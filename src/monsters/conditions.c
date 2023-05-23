@@ -171,6 +171,8 @@ void add_condition(char * str, struct pokemon * pok) {
 		sprintf(str, "%s ", str);
 	else if (pok->visible_condition == POISONED)
 		sprintf(str, "%s PSN", str);
+	else if (pok->visible_condition == BURNED)
+		sprintf(str, "%s BRN", str);
 	else if (pok->visible_condition == PARALYZED)
 		sprintf(str, "%s PRZ", str);
 	else if (pok->visible_condition == ASLEEP)
