@@ -31,13 +31,17 @@ typedef struct attack {
 
 extern attack empty_attack;
 
+
+
 //// attacks.c ////
 
 //Handle all operations for an attack, indicate whether this is an enemy attack (true)
 int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy);
 
 //Get damage that should be dealt with a given move from one pokemon to another
-int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements);
+int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements, int *flags);
+
+
 
 //// attacks_list.c ////
 

@@ -6,6 +6,8 @@
 #include "../print_utils.h"
 #include "../print_defines.h"
 
+#define CRITICAL_HIT_FLAG 0x01
+
 int perform_struggle(struct pokemon *perp, struct pokemon *victim, bool enemy);
 int get_basic_damage(int perp_level, int attack_power, int perp_atk, int victim_def, int perp_atk_stage, int victim_def_stage);
 
@@ -104,13 +106,32 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
   }
 
   int damage = 0;
+  int flags = 0; //These flags are used to detect critical hits + effectiveness
 
   //Drop HP only if attack has damage power
   if (chosenAttack.power != 0) {
-    damage = getDamage(perp, move_num, victim, true);
+    damage = getDamage(perp, move_num, victim, true, &flags);
     victim->currentHP -= damage;
     if (victim->currentHP < 0) victim->currentHP = 0;
     blinkPokemon(enemy);
+  }
+
+  //Print critical & effectiveness messages
+  if (flags & CRITICAL_HIT_FLAG) {
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("A critical hit!"); refresh(); sleep(2);
+  }
+  if (flags & SUPER_EFFECTIVE_FLAG) {
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("It's super effective!"); refresh(); sleep(2);
+  }
+  if (flags & NOT_VERY_EFFECTIVE_FLAG) {
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("It's not very effective..."); refresh(); sleep(2);
+  }
+  if (flags & DOES_NOT_AFFECT_FLAG) {
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("It had no effect."); refresh(); sleep(2);
   }
 
   chosenAttack.side_effect(chosenAttack.condition, chosenAttack.chance, victim, damage);
@@ -120,7 +141,7 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
 
 
 //Get damage that should be dealt with a given move from one pokemon to another
-int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements) {
+int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements, int *flags) {
   attack chosenAttack = perp->attacks[move_num];
 
   int perpAttack, victimDefense, perpAtkStage, victimDefStage;
@@ -144,6 +165,7 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool p
     perpAtkStage = perp->sp_atk_stage; victimDefStage = victim->sp_def_stage;
   }
 
+
   // Baseline damage
   int damage = get_basic_damage(perp->level, chosenAttack.power, perpAttack, victimDefense, perpAtkStage, victimDefStage);
 
@@ -152,13 +174,12 @@ int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool p
   //Critical Hit 1/16 Chance - Only apply if we are printing (getting damage for an attack)
   //This should probably check for doesn't affect
   if ((rand() % 16) == 0 && print_statements) {
-    text_box_cursors(TEXT_BOX_NEXT_LINE);
-    printw("A critical hit!"); refresh(); sleep(2);
+    *flags |= CRITICAL_HIT_FLAG;
     damage *= 2;
   }
 
   //Calculate effectiveness
-  damage = get_damage_after_effectiveness(chosenAttack.type, victim, damage, print_statements);
+  damage = get_damage_after_effectiveness(chosenAttack.type, victim, damage, print_statements, flags);
 
   return damage;
 }

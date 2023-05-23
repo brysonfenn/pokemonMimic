@@ -18,7 +18,7 @@ float get_single_multiplier(Type moveType, Type victimType);
 
 //Returns damage after applying effectiveness
 //Also prints message about effectiveness, if applicable
-int get_damage_after_effectiveness(Type moveType, struct pokemon * pok, int damage, bool print_statements) {
+int get_damage_after_effectiveness(Type moveType, struct pokemon * pok, int damage, bool print_statements, int *flags) {
     char print_str[128];
     float multiplier = 1.0;
 
@@ -29,21 +29,14 @@ int get_damage_after_effectiveness(Type moveType, struct pokemon * pok, int dama
     damage *= multiplier;
 
     if (multiplier < 1.0) {
-        sprintf(print_str, "It's not very effective...");
+        *flags |= NOT_VERY_EFFECTIVE_FLAG;
         damage = (damage < 1) ? 1 : damage;
     }
     else if (multiplier > 1.0) {
-        sprintf(print_str, "It's super effective!");
+        *flags |= SUPER_EFFECTIVE_FLAG;
     }
     else if (multiplier == 0) {
-        sprintf(print_str, "It didn't effect ");
-        if (pok != player.current_pokemon) sprintf("%s%s", print_str, ENEMY_TEXT);
-        sprintf("%s%s", print_str, pok->name);
-    }
-
-    if (print_statements && multiplier != 1.0) {
-        text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw(print_str); refresh(); sleep(2);
+        *flags |= DOES_NOT_AFFECT_FLAG;
     }
 
     return damage;
