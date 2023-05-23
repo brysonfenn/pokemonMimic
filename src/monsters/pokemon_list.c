@@ -5,6 +5,8 @@
 
 #include "../print_utils.h"
 #include "../print_defines.h"
+#include "../player.h"
+#include "../motion/location.h"
 
 // pok  varName   = {"name here",  id  hp chp   ba   bd   bsa   bsd    bs   type1     type2  }
 pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0,    0,    0, NO_TYPE,  NO_TYPE };
@@ -15,6 +17,14 @@ pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0,    0,    0, NO_TY
 
 static Pokemon_id pok_id_list[10] = { POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE, POKEMON_CATERPIE, POKEMON_WEEDLE,
   POKEMON_PIDGEY, POKEMON_RATTATA, POKEMON_SANDSHREW };
+
+static Pokemon_id wild_pok_lists[10][10] = {
+//Map #, levels, ID'S...
+  { 3,   5, 7,  POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE }, //No Map is #0
+  { 2,   5, 8,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #1
+  { 3,   4, 8,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_SANDSHREW }, //Map #2
+  { 2,   2, 5,  POKEMON_PIDGEY, POKEMON_RATTATA } //Map #3
+};
 
 static pokemon newest_pokemon;
 
@@ -30,12 +40,29 @@ pokemon * get_random_pokemon(int level_min, int level_max) {
 //Return a random pokemon, excluding starters
 //Always immediately dereference the return value of this function.
 pokemon * get_random_wild_pokemon(int level_min, int level_max) {
-  int pok_position = (rand() % NUM_WILD_POKEMON) + NUM_STARTERS;
-  newest_pokemon = *(get_pokemon_frame(pok_id_list[pok_position]));
-  newest_pokemon = *(get_pokemon_frame(POKEMON_CATERPIE));
+  int pok_position, new_pok_id;
+  int min_level = 2;
+  int max_level = 6;
+  int set_level = RANDOM_LEVEL;
+
+  //Get pokemon according to map, if it is an unknown map, get level 99 ivysaur
+  if (player.loc->map < 1 || player.loc->map > 3) {
+    new_pok_id = POKEMON_IVYSAUR;
+    set_level = 99;
+  }
+  else {
+    //Get the position of a random pokemon based don the the player's current map
+    pok_position = (rand() % wild_pok_lists[player.loc->map][0]) + 3;
+    new_pok_id = wild_pok_lists[player.loc->map][pok_position];
+    min_level = wild_pok_lists[player.loc->map][1];
+    max_level = wild_pok_lists[player.loc->map][2];
+  }
+  
+  newest_pokemon = *(get_pokemon_frame(new_pok_id));
+  // newest_pokemon = *(get_pokemon_frame(POKEMON_CATERPIE));
   pokemon * new_pok = &newest_pokemon;
-  pokemon_init(new_pok, 1, level_min, level_max);
-  // pokemon_init(new_pok, 0, 15, 20);
+  pokemon_init(new_pok, set_level, min_level, max_level);
+
   return new_pok;
 }
 

@@ -27,6 +27,10 @@ void draw_map2() {
     draw_town_exit(MAP_BOTTOM, 10);
     add_exit_portal(MAP_BOTTOM, 10, 1);
 
+    attrset(COLOR_PAIR(TRAINER_COLOR));
+    mvprintw(MAP_Y+8,MAP_X+1,">");
+    attrset(COLOR_PAIR(DEFAULT_COLOR));
+
     grass_map2();
 
     refresh();

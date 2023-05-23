@@ -117,6 +117,7 @@ void resume_ncurses() {
   init_pair(PLAYER_COLOR, COLOR_MAGENTA, COLOR_BLACK);
   init_pair(GRASS_COLOR, COLOR_GREEN, COLOR_BLACK);
   init_pair(DAMAGED_COLOR, COLOR_RED, COLOR_BLACK);
+  init_pair(TRAINER_COLOR, COLOR_RED, COLOR_BLACK);
 }
 
 

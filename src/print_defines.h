@@ -41,5 +41,6 @@
 #define PLAYER_COLOR 2
 #define GRASS_COLOR 3
 #define DAMAGED_COLOR 4
+#define TRAINER_COLOR 5
 
 #endif // PRINT_DEFINES_H

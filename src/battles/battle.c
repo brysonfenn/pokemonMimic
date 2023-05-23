@@ -276,7 +276,7 @@ int initiate_battle(struct pokemon * enemyPoke) {
     case ITEM:
       return_execute = use_item(inputNum, &enemy);
       //Return to bag menu if item failed, else back to main menu
-      if (return_execute == ITEM_FAILURE || return_execute == ITEM_CATCH_FAILURE) { continue; }
+      if (return_execute == ITEM_FAILURE) { continue; }
       else if (return_execute == ITEM_CATCH_SUCCESS) { run_success = true; }
       else { enemy_attacks = true; }
 

@@ -70,7 +70,7 @@ void grass_map3() {
     for (int i = 4; i < 15; i++) {
         mvaddch(MAP_Y+i, right, GRASS_CHAR); 
         mvaddch(MAP_Y+i, right+1, GRASS_CHAR); 
-        mvaddch(MAP_Y+i, right-2, GRASS_CHAR); 
+        mvaddch(MAP_Y+i, right-1, GRASS_CHAR); 
     }
     
     
