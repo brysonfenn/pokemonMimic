@@ -69,11 +69,14 @@ int actions_map1(int player_x, int player_y) {
     return action;
 }
 
-void grass_map1() {
-
+void grass_map1() { 
     attrset(COLOR_PAIR(GRASS_COLOR));
-    mvaddch(MAP_Y+10, MAP_X+40, GRASS_CHAR); 
-    mvaddch(MAP_Y+10, MAP_X+41, GRASS_CHAR); 
-    mvaddch(MAP_Y+10, MAP_X+42, GRASS_CHAR); 
+
+    for (int i = 1; i < 12; i++) {
+        mvaddch(MAP_Y+1, MAP_X+i, GRASS_CHAR); 
+        mvaddch(MAP_Y+2, MAP_X+i+1, GRASS_CHAR); 
+        mvaddch(MAP_Y+3, MAP_X+i+1, GRASS_CHAR); 
+    }
+
     attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
