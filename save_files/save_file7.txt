@@ -1,17 +1,18 @@
-Last Saved: 05/23/2023 07:43:56
+Last Saved: 05/24/2023 19:47:59
 Player: 
-4 2 800
+4 2 1900
 Location: {1,(32,10)}
 Pokemon: 
-Charmander 4 24 24 3 13 11 11 10 15 8 19 FIRE NONE 0 0
+Charmander 4 26 26 3 14 12 11 10 16 9 46 FIRE NONE 0 0
 	Scratch. 2 35
 	Growl. 3 40
 	Ember. 12 25
 Pidgey 16 17 17 1 8 8 6 6 9 4 18 NORMAL FLYING 0 0
 	Tackle. 1 35
-Sandshrew 27 18 18 1 11 11 8 8 8 4 16 GROUND NONE 0 0
+Sandshrew 27 22 22 2 14 15 8 8 9 6 2 GROUND NONE 0 0
 	Tackle. 1 35
-Bulbasaur 1 23 23 3 11 11 14 14 11 7 38 GRASS POISON 0 0
+	Defense Curl. 9 40
+Bulbasaur 1 25 25 3 12 12 14 14 12 8 11 GRASS POISON 0 0
 	Tackle. 1 35
 	Growl. 3 40
 	Leech seed. 11 10

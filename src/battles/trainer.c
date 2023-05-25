@@ -37,7 +37,7 @@ int battle_trainer(Trainer * trainer) {
   print_to_list(print_str); sleep(2);
 
   for (int i = 0; i < trainer->num_in_party; i++) {
-    trainer_pokemon[i] = *create_new_pokemon(trainer->party_id_list[i], 5, 0, 0);
+    trainer_pokemon[i] = *create_new_pokemon(trainer->party_id_list[i], trainer->levels[i], 0, 0);
   }
 
   print_trainer_pokemon(trainer, trainer_pokemon); sleep(2);

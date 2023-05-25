@@ -5,19 +5,17 @@
 #include <string.h>
 #include <stdbool.h>
 
-#include "../player.h"
 #include "location.h"
 #include "maps.h"
 #include "map_drawing.h"
 #include "doors.h"
+#include "selectables.h"
+
 #include "../battles/wild_pokemon.h"
 #include "../print_utils.h"
 #include "../print_defines.h"
-
-#define MOVING_DOWN 'v'
-#define MOVING_UP '^'
-#define MOVING_LEFT '<'
-#define MOVING_RIGHT '>'
+#include "../player.h"
+#include "../battles/trainer.h"
 
 void init_map();
 
@@ -28,7 +26,7 @@ static init_map_func draw_map;
 static map_actions_func map_actions;
 static init_map_func grass_map;
 
-static char player_char = MOVING_DOWN;
+static char player_char = PLAYER_MOVING_DOWN;
 
 static char * player_y;
 static char * player_x;
@@ -39,6 +37,12 @@ bool is_movable_space(int yInc, int xInc);
 void handle_motion() {
     player_y = &(player.loc->y);
     player_x = &(player.loc->x);
+    bool is_trainer = false;
+
+    void * selected_ptr;
+    Trainer * trainer_ptr;
+    char * message_ptr;
+
 
     if (player.loc->map == 0) {
         mvprintw(22, 1, "Got player map as 0", player.loc->map); refresh(); sleep(3);
@@ -51,18 +55,18 @@ void handle_motion() {
 
     flushinp();
     while ((ch = getch()) != 'm') {
-    	mvaddch(*player_y, *player_x, ' '); 
+        mvaddch(*player_y, *player_x, ' '); 
         switch (ch) {
         	case KEY_UP:
-                if (player_char != MOVING_UP) player_char = MOVING_UP;
+                if (player_char != PLAYER_MOVING_UP) player_char = PLAYER_MOVING_UP;
                 else if (*player_y > 1 && is_movable_space(-1,0)) (*player_y)--;
                 break;
             case KEY_DOWN:
-                if (player_char != MOVING_DOWN) player_char = MOVING_DOWN;
+                if (player_char != PLAYER_MOVING_DOWN) player_char = PLAYER_MOVING_DOWN;
             	else if (*player_y < 20 && is_movable_space(1,0)) (*player_y)++;
                 break;
             case KEY_LEFT:
-                if (player_char != MOVING_LEFT) player_char = MOVING_LEFT;
+                if (player_char != PLAYER_MOVING_LEFT) player_char = PLAYER_MOVING_LEFT;
                 //Move only one space if next space is surrounded (door);
                 else if (*player_x > 1 && !is_movable_space(-1,-1) && !is_movable_space(1,-1) && is_movable_space(0,-1)) 
                     (*player_x)--;
@@ -72,7 +76,7 @@ void handle_motion() {
                 else if (*player_x > 1 && is_movable_space(0,-1)) (*player_x)--;
                 break;
             case KEY_RIGHT:
-                if (player_char != MOVING_RIGHT) player_char = MOVING_RIGHT;
+                if (player_char != PLAYER_MOVING_RIGHT) player_char = PLAYER_MOVING_RIGHT;
                 //Move only one space if next space is surrounded (door);
                 else if (*player_x < 100 && !is_movable_space(-1,1) && !is_movable_space(1,1) && is_movable_space(0,1)) 
                     (*player_x)++;
@@ -80,6 +84,22 @@ void handle_motion() {
                 else if (*player_x < 100 && is_movable_space(0,1) && is_movable_space(0,2)) (*player_x)+=2;
                 //Only move one space if there is only one space to move
                 else if (*player_x < 100 && is_movable_space(0,1)) (*player_x)++;
+                break;
+            case 'a':
+                //Redraw player
+                attrset(COLOR_PAIR(PLAYER_COLOR)); mvaddch(*player_y, *player_x, player_char); 
+                selected_ptr = get_selectable(*player_x, *player_y, player_char, &is_trainer);
+                if (is_trainer) {
+                    trainer_ptr = (Trainer *) selected_ptr;
+                    battle_trainer(trainer_ptr);
+                    init_map();
+                    continue;
+                }
+                else {
+                    message_ptr = (char *) selected_ptr;
+                    if (strcmp(message_ptr,"NONE") == 0) continue;
+                    mvprintw(23,35,message_ptr);
+                }
                 break;
         }
         grass_map();
@@ -112,6 +132,7 @@ void handle_motion() {
 void change_map(int map, int x, int y) {
     clear();
     clear_doors();
+    clear_selectables();
     usleep(10000);
 
     player.loc->x = x;
@@ -135,6 +156,7 @@ bool is_movable_space(int yInc, int xInc) {
 
 //Draw map and player onto the screen
 void init_map() {
+    clear();
     draw_map();
 
     attrset(COLOR_PAIR(DEFAULT_COLOR));

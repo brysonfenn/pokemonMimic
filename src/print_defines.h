@@ -36,6 +36,11 @@
 #define ENEMY_TEXT "Foe "
 #define LINE_SIZE 100
 
+#define PLAYER_MOVING_DOWN 'v'
+#define PLAYER_MOVING_UP '^'
+#define PLAYER_MOVING_LEFT '<'
+#define PLAYER_MOVING_RIGHT '>'
+
 //Colors
 #define DEFAULT_COLOR 1
 #define PLAYER_COLOR 2

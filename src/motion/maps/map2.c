@@ -5,6 +5,7 @@
 #include "../map_drawing.h"
 #include "../location.h"
 #include "../doors.h"
+#include "../selectables.h"
 
 #include "../../player.h"
 #include "../../battles/trainer.h"
@@ -14,6 +15,9 @@
 #define MART_ACTION 1
 #define POKE_CENTER_ACTION 2
 #define TRAINER_BATTLE_ACTION 3
+
+static Trainer trainer3 = {"Trainer John", 3, {POKEMON_IVYSAUR, POKEMON_CHARMELEON, POKEMON_WARTORTLE}, {4,5,6} };
+static Trainer trainer4 = {"Bugcatcher David", 1, {POKEMON_KAKUNA}, {7} };
 
 void draw_map2() {
 
@@ -26,10 +30,9 @@ void draw_map2() {
 
     draw_town_exit(MAP_BOTTOM, 10);
     add_exit_portal(MAP_BOTTOM, 10, 1);
-
-    attrset(COLOR_PAIR(TRAINER_COLOR));
-    mvprintw(MAP_Y+8,MAP_X+1,">");
-    attrset(COLOR_PAIR(DEFAULT_COLOR));
+    
+    add_trainer(MAP_X+1, MAP_Y+8, &trainer3, PLAYER_MOVING_RIGHT);
+    add_trainer(MAP_X+15, MAP_Y+5, &trainer4, PLAYER_MOVING_LEFT);
 
     grass_map2();
 

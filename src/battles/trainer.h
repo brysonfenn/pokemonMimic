@@ -8,6 +8,7 @@ typedef struct Trainer {
     char name[32];
     int8_t num_in_party;
     Pokemon_id party_id_list[6];
+    int8_t levels[6];
 } Trainer;
 
 //Battle a trainer with a random name and random # of pokemon
