@@ -5,6 +5,7 @@
 #include "../map_drawing.h"
 #include "../location.h"
 #include "../doors.h"
+#include "../maps.h"
 
 #include "../../print_defines.h"
 
@@ -18,10 +19,10 @@ void draw_map3() {
     
     //Draw Doors
     draw_town_exit(MAP_TOP, 25);
-    add_exit_portal(MAP_TOP, 25, 1);
+    add_exit_portal(MAP_TOP, 25, MAP_VIRIDIAN);
 
     draw_town_exit(MAP_BOTTOM, 41);
-    add_exit_portal(MAP_BOTTOM, 41, 4);
+    add_exit_portal(MAP_BOTTOM, 41, MAP_STARTER_TOWN);
 
     grass_map3();
 

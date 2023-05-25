@@ -38,19 +38,16 @@ bool is_movable_space(int yInc, int xInc);
 
 // Draw the current map to the screen and handle player motion until user returns to the menu
 void handle_motion() {
-    player_y = &(player.loc->y);
-    player_x = &(player.loc->x);
     bool is_trainer = false;
     char print_str[256];
+
+    player_y = &(player.loc->y);
+    player_x = &(player.loc->x);
 
     void * selected_ptr;
     Trainer * trainer_ptr;
     char * message_ptr;
 
-    if (player.loc->map == 0) {
-        mvprintw(22, 1, "Got player map as 0", player.loc->map); refresh(); sleep(3);
-        return;
-    }
 
     change_map(player.loc->map, *player_x, *player_y);
 
@@ -58,7 +55,10 @@ void handle_motion() {
     char next_char;
 
     flushinp();
-    while ((ch = getch()) != 'm') {
+    while (1) {
+        flushinp();
+        if ((ch = getch()) == 'm') break;
+
         mvaddch(*player_y, *player_x, ' '); 
         switch (ch) {
         	case KEY_UP:

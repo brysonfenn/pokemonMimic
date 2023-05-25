@@ -5,6 +5,7 @@
 #include "../map_drawing.h"
 #include "../location.h"
 #include "../doors.h"
+#include "../maps.h"
 
 #include "../../print_defines.h"
 #include "../../player.h"

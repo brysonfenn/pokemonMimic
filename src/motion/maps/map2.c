@@ -6,6 +6,7 @@
 #include "../location.h"
 #include "../doors.h"
 #include "../selectables.h"
+#include "../maps.h"
 
 #include "../../player.h"
 #include "../../battles/trainer.h"
@@ -26,7 +27,7 @@ void draw_map2() {
 
     //Draw Doors
     draw_town_exit(MAP_BOTTOM, 10);
-    add_exit_portal(MAP_BOTTOM, 10, 1);
+    add_exit_portal(MAP_BOTTOM, 10, MAP_VIRIDIAN);
     
     add_trainer(MAP_X+1, MAP_Y+8, &trainer3, PLAYER_MOVING_RIGHT);
     add_trainer(MAP_X+15, MAP_Y+5, &trainer4, PLAYER_MOVING_LEFT);

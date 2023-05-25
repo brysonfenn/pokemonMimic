@@ -5,6 +5,7 @@
 #include "../map_drawing.h"
 #include "../location.h"
 #include "../doors.h"
+#include "../maps.h"
 
 #include "../../player.h"
 #include "../../battles/trainer.h"
@@ -29,10 +30,10 @@ void draw_map1() {
     
     //Draw Doors
     draw_town_exit(MAP_TOP, 10); 
-    add_exit_portal(MAP_TOP, 10, 2);
+    add_exit_portal(MAP_TOP, 10, MAP_R2);
     
     draw_town_exit(MAP_BOTTOM, 25); 
-    add_exit_portal(MAP_BOTTOM, 25, 3);
+    add_exit_portal(MAP_BOTTOM, 25, MAP_R1);
 
     grass_map1();
 
