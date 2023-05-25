@@ -190,9 +190,6 @@ void init_map() {
     draw_map();
     draw_box(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5); //Draw message box
 
-    attrset(COLOR_PAIR(DEFAULT_COLOR));
-    mvprintw(MAP_Y+MAP_HEIGHT+1, MAP_X+1, "Map: %d", player.loc->map); refresh();
-
     attrset(COLOR_PAIR(PLAYER_COLOR));
     mvaddch(*player_y, *player_x, player_char);
     attrset(COLOR_PAIR(DEFAULT_COLOR));

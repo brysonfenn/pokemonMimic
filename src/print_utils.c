@@ -203,6 +203,8 @@ void print_btn_instructions(int x, int y, bool on_map) {
   refresh();
 }
 
+
+//List functions
 int list_item_num = 0;
 
 void begin_list() {

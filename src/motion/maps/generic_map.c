@@ -13,8 +13,8 @@ void draw_generic_map() {
 
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
     print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
-
-    mvprintw(MAP_Y+5, MAP_X+5, "Generic Map: look in maps.c to add maps");
+    begin_message_box();
+    print_to_message_box("Unknown Location: look in maps.c to add maps");
 
     draw_town_exit(MAP_RIGHT, 10);
     add_portal(MAP_X+MAP_WIDTH-1, MAP_Y+10, MAP_X+10, MAP_Y+10, 1, true);

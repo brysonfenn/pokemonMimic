@@ -7,6 +7,31 @@
 #include "../print_utils.h"
 #include "../print_defines.h"
 
+#define MESSAGE_BOX_X MAP_X
+#define MESSAGE_BOX_Y (MAP_Y+MAP_HEIGHT)
+
+static int message_line = 0;
+
+//Clear message box and start at the beginning
+void begin_message_box() {
+    //Clear box
+    int start_y = MESSAGE_BOX_Y+1;
+    int start_x = MESSAGE_BOX_X+1;
+    for (int i = 0; i < 2; i++) {
+        mvprintw(start_y+i, start_x, "                                                        ");
+    }
+    
+    message_line = 0;
+}
+
+
+//Print a message to the bottom box
+void print_to_message_box(const char * message_str) {
+    if (message_line > 2) begin_message_box();
+    mvprintw(MESSAGE_BOX_Y+1 + message_line, MESSAGE_BOX_X+1, message_str);
+    message_line++;
+}
+
 
 //Draw a house-sized building with a name, door at the bottom-center, and an action attached to the door
 void drawBuilding_default(int x, int y, const char* name, int action) { 

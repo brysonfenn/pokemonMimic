@@ -18,7 +18,6 @@ void clearTerminal();
 void clearLastLine();
 
 int getValidInput_force(int beginRange, int endRange, const char * request, int erase_lines);
-
 int getValidInput(int beginRange, int endRange, const char * request);
 
 void printParty();

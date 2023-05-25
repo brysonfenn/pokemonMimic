@@ -25,6 +25,12 @@ enum town_side { MAP_TOP, MAP_BOTTOM, MAP_LEFT, MAP_RIGHT };
 
 //Functions
 
+//Clear message box and start at the beginning
+void begin_message_box();
+
+//Print a message to the bottom box
+void print_to_message_box(const char * message_str);
+
 //Draw a house-sized building with a door and an action attached
 void drawBuilding_default(int x, int y, const char* str, int action);
 
