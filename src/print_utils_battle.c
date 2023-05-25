@@ -199,7 +199,7 @@ void adjust_cursors(int selection, int start_x, int start_y) {
 
 
 void draw_text_box() {
-  drawBox(TEXT_BOX_X, TEXT_BOX_Y, TEXT_BOX_WIDTH, TEXT_BOX_HEIGHT);
+  draw_box(TEXT_BOX_X, TEXT_BOX_Y, TEXT_BOX_WIDTH, TEXT_BOX_HEIGHT);
 }
 
 
@@ -236,5 +236,5 @@ void clear_text_box() {
 }
 
 void draw_battle_box() {
-  drawBox(BATTLE_BOX_X, BATTLE_BOX_Y, BATTLE_BOX_WIDTH, BATTLE_BOX_HEIGHT);
+  draw_box(BATTLE_BOX_X, BATTLE_BOX_Y, BATTLE_BOX_WIDTH, BATTLE_BOX_HEIGHT);
 }

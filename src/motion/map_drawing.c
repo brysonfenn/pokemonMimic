@@ -16,7 +16,7 @@ void drawBuilding_default(int x, int y, const char* name, int action) {
 
 //Draw a custom-sized building with a name, door at the bottom-center, and an action attached to the door
 void drawBuilding(int x, int y, int w, int h, const char* name, int action) {
-    drawBox(x,y,w,h);
+    draw_box(x,y,w,h);
 
     // Print the string (max size 6) inside the box
     if (strlen(name) <= 6) {
@@ -39,7 +39,7 @@ void draw_interior(int exit_map_x, int exit_map_y, int exit_map) {
     int min_x = INTERIROR_X+10;
     int max_y = INTERIOR_Y+INTERIOR_HEIGHT-1;
 
-    drawBox(INTERIROR_X,INTERIOR_Y,INTERIOR_WIDTH,INTERIOR_HEIGHT);  //Draw Town border
+    draw_box(INTERIROR_X,INTERIOR_Y,INTERIOR_WIDTH,INTERIOR_HEIGHT);  //Draw Town border
     print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
     mvaddch(max_y, min_x-1, ACS_URCORNER);  // Top-right corner
     mvaddch(max_y, min_x, ' ');

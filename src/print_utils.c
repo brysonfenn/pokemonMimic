@@ -172,7 +172,7 @@ int get_selection(int first_line, int start, int end, int last_selection) {
 }
 
 //Draw simple box
-void drawBox(int x, int y, int w, int h) {
+void draw_box(int x, int y, int w, int h) {
     mvaddch(y, x, ACS_ULCORNER);  // Top-left corner
     mvaddch(y, x + w - 1, ACS_URCORNER);  // Top-right corner
     mvaddch(y + h - 1, x, ACS_LLCORNER);  // Bottom-left corner
@@ -191,7 +191,7 @@ void drawBox(int x, int y, int w, int h) {
 
 
 void print_btn_instructions(int x, int y, bool on_map) {
-  drawBox(x,y,15,7);
+  draw_box(x,y,15,7);
   mvprintw(y+1,x+3, "a: Select");
   mvprintw(y+2,x+3, "b: Cancel");
   if (on_map) mvprintw(y+3,x+3, "m: menu");
@@ -208,7 +208,7 @@ int list_item_num = 0;
 void begin_list() {
   list_item_num = 0;
   clear();
-  drawBox(LIST_BOX_X, LIST_BOX_Y, LIST_BOX_WIDTH, LIST_BOX_HEIGHT);
+  draw_box(LIST_BOX_X, LIST_BOX_Y, LIST_BOX_WIDTH, LIST_BOX_HEIGHT);
   
   //print button instructons where they will be in battle
   print_btn_instructions(LIST_BOX_X+LIST_BOX_WIDTH+2, TEXT_BOX_Y, false);

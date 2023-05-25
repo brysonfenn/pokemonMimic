@@ -11,7 +11,7 @@
 
 void draw_generic_map() {
 
-    drawBox(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
+    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
     print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
 
     mvprintw(MAP_Y+5, MAP_X+5, "Generic Map: look in maps.c to add maps");

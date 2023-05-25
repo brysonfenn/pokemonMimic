@@ -44,7 +44,6 @@ void handle_motion() {
     Trainer * trainer_ptr;
     char * message_ptr;
 
-
     if (player.loc->map == 0) {
         mvprintw(22, 1, "Got player map as 0", player.loc->map); refresh(); sleep(3);
         return;
@@ -119,12 +118,11 @@ void handle_motion() {
         grass_map();
 
         bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR);
+        int random = rand() % 100;
 
-        // Set attributes for next character
+        // Set player color, move, and unset
         attrset(COLOR_PAIR(PLAYER_COLOR));
-        // mvaddch(*player_y, *player_x, player_char);
-        move(*player_y, *player_x);
-        addch(player_char);
+        mvaddch(*player_y, *player_x, player_char);
         attrset(COLOR_PAIR(DEFAULT_COLOR));
 
         //Display player location
@@ -132,7 +130,6 @@ void handle_motion() {
         // mvprintw(21,4, print_str); 
 
         refresh();
-        int random = rand() % 100;
 
         if (hitGrass && (random < 10)) {
             blink_screen(5, init_map);
@@ -165,22 +162,19 @@ void change_map(int map, int x, int y) {
 //Check if a given space movement would result in a collision
 bool is_movable_space(int yInc, int xInc) {
     char next_tile = mvinch(*player_y+yInc, *player_x+xInc);
-    if (next_tile == ' ' || next_tile == GRASS_CHAR) {
+    if (next_tile == ' ' || next_tile == GRASS_CHAR)
         return true;
-    }
-    else {
+    else
         return false;
-    }
 }
 
 //Draw map and player onto the screen
 void init_map() {
     clear();
     draw_map();
-    drawBox(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5);
+    draw_box(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5); //Draw message box
 
     attrset(COLOR_PAIR(DEFAULT_COLOR));
-
     mvprintw(MAP_Y+MAP_HEIGHT+1, MAP_X+1, "Map: %d", player.loc->map); refresh();
 
     attrset(COLOR_PAIR(PLAYER_COLOR));

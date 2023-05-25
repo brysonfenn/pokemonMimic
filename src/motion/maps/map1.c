@@ -20,7 +20,7 @@ Trainer trainer1 = {"Trainer Joseph", 3, {POKEMON_WEEDLE, POKEMON_PIDGEY, POKEMO
 
 void draw_map1() {
 
-    drawBox(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
+    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
     print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
 
     drawBuilding_default(MART_X,MART_Y, "Mart", MART_ACTION);
