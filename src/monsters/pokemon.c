@@ -27,12 +27,12 @@ void calculate_stats(Pokemon * pok, int level, int level_min, int level_max) {
   int sp_def_iv = pokemon_get_iv(pok, IV_SP_DEFENSE);
   int spd_iv = pokemon_get_iv(pok, IV_SPEED);
 
-  pok->maxHP = (((2 * pok->maxHP + hp_iv + (ev/4)) * level) / 100) + level + 10;
-  pok->baseAttack = (((2 * pok->baseAttack + atk_iv + (ev/4)) * level) / 100) + 5;
-  pok->baseDefense = (((2 * pok->baseDefense + def_iv + (ev/4)) * level) / 100) + 5;
-  pok->baseSpAttack = (((2 * pok->baseSpAttack + sp_atk_iv + (ev/4)) * level) / 100) + 5;
-  pok->baseSpDefense = (((2 * pok->baseSpDefense + sp_def_iv + (ev/4)) * level) / 100) + 5;
-  pok->baseSpeed = (((2 * pok->baseSpeed + spd_iv + (ev/4)) * level) / 100) + 5;
+  pok->maxHP = (((2.0 * pok->maxHP + hp_iv + (ev/4)) * level) / 100) + level + 10;
+  pok->baseAttack = (((2.0 * pok->baseAttack + atk_iv + (ev/4)) * level) / 100) + 5;
+  pok->baseDefense = (((2.0 * pok->baseDefense + def_iv + (ev/4)) * level) / 100) + 5;
+  pok->baseSpAttack = (((2.0 * pok->baseSpAttack + sp_atk_iv + (ev/4)) * level) / 100) + 5;
+  pok->baseSpDefense = (((2.0 * pok->baseSpDefense + sp_def_iv + (ev/4)) * level) / 100) + 5;
+  pok->baseSpeed = (((2.0 * pok->baseSpeed + spd_iv + (ev/4)) * level) / 100) + 5;
 
   reset_stat_stages(pok);
 }

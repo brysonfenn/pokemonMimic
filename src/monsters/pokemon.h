@@ -32,23 +32,24 @@ typedef struct Pokemon {
   int16_t baseSpAttack;
   int16_t baseSpDefense;
   int16_t baseSpeed;
-  int16_t iv;
+
+  int32_t iv;
 
   Type type1;
   Type type2;
 
-  int16_t numAttacks;
+  int8_t numAttacks;
 
-  int16_t atk_stage;
-  int16_t def_stage;
-  int16_t sp_atk_stage;
-  int16_t sp_def_stage;
-  int16_t spd_stage;
-  int16_t acc_stage;
-  int16_t evade_stage;
+  int8_t atk_stage;
+  int8_t def_stage;
+  int8_t sp_atk_stage;
+  int8_t sp_def_stage;
+  int8_t spd_stage;
+  int8_t acc_stage;
+  int8_t evade_stage;
 
-  uint8_t level;
-  uint8_t sleep_count;
+  int8_t level;
+  int8_t sleep_count;
   uint8_t confusion_count;
   uint32_t exp;
   

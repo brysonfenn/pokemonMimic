@@ -22,7 +22,7 @@ int main(void) {
   resume_ncurses();
   
   //Initiate Everything
-  srand(time(0));
+  srand(time(NULL));
   player_init(0);
 
   int input_num;
