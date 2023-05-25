@@ -9,6 +9,11 @@
 #define MAP_X 3
 #define MAP_Y 1
 
+#define INTERIROR_X 13
+#define INTERIOR_Y 2
+#define INTERIOR_WIDTH 28
+#define INTERIOR_HEIGHT 8
+
 #define GRASS_CHAR 'W'
 
 //Sides of map - used to call "draw_town_exit()"
@@ -22,6 +27,9 @@ void drawBuilding_default(int x, int y, const char* str, int action);
 
 //Draw a custom-sized building with a door and an action attached
 void drawBuilding(int x, int y, int w, int h, const char* str, int action);
+
+//Draw building interior
+void draw_interior(int exit_map_x, int exit_map_y, int exit_map);
 
 //Draw an exit on a given side of the map at a given position
 void draw_town_exit(int side, int position);

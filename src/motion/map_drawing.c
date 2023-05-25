@@ -5,11 +5,14 @@
 #include "location.h"
 #include "doors.h"
 #include "../print_utils.h"
+#include "../print_defines.h"
+
 
 //Draw a house-sized building with a name, door at the bottom-center, and an action attached to the door
 void drawBuilding_default(int x, int y, const char* name, int action) { 
     drawBuilding(x,y,DEFAULT_BUILDING_WIDTH,DEFAULT_BUILDING_HEIGHT,name,action); 
 }
+
 
 //Draw a custom-sized building with a name, door at the bottom-center, and an action attached to the door
 void drawBuilding(int x, int y, int w, int h, const char* name, int action) {
@@ -29,6 +32,25 @@ void drawBuilding(int x, int y, int w, int h, const char* name, int action) {
     if (action != -1) add_door(x+ (w/2), y+h-1, action, 1);
     
 }
+
+
+//Draw building interior
+void draw_interior(int exit_map_x, int exit_map_y, int exit_map) {
+    int min_x = INTERIROR_X+10;
+    int max_y = INTERIOR_Y+INTERIOR_HEIGHT-1;
+
+    drawBox(INTERIROR_X,INTERIOR_Y,INTERIOR_WIDTH,INTERIOR_HEIGHT);  //Draw Town border
+    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
+    mvaddch(max_y, min_x-1, ACS_URCORNER);  // Top-right corner
+    mvaddch(max_y, min_x, ' ');
+    mvaddch(max_y, min_x+1, ' ');
+    mvaddch(max_y, min_x+2, ACS_ULCORNER);  // Top-left corner
+
+    add_portal(min_x, max_y, exit_map_x, exit_map_y, exit_map, true);
+
+    refresh();
+}
+
 
 //Draw an exit on a given side of the map at a given position
 void draw_town_exit(int side, int position) {

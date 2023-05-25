@@ -12,24 +12,14 @@
 
 #define POKE_CENTER_ACTION 1
 
-#define BUILDING_X 13
-#define BUILDING_Y 2
-#define BUILDING_WIDTH 28
-#define BUILDING_HEIGHT 8
+#define INTERIROR_X 13
+#define INTERIOR_Y 2
+#define INTERIOR_WIDTH 28
+#define INTERIOR_HEIGHT 8
 
 void draw_b1() {
 
-    int min_x = BUILDING_X+10;
-    int max_y = BUILDING_Y+BUILDING_HEIGHT-1;
-
-    drawBox(BUILDING_X,BUILDING_Y,BUILDING_WIDTH,BUILDING_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
-    mvaddch(max_y, min_x-1, ACS_URCORNER);  // Top-right corner
-    mvaddch(max_y, min_x, ' ');
-    mvaddch(max_y, min_x+1, ' ');
-    mvaddch(max_y, min_x+2, ACS_ULCORNER);  // Top-left corner
-
-    add_portal(min_x, max_y, MAP_X+24, MAP_Y+MAP_HEIGHT-3, 4, true);
+    draw_interior(MAP_X+24, MAP_Y+MAP_HEIGHT-3, 4);
 
     refresh();
 }

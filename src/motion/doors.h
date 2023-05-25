@@ -13,6 +13,9 @@ void add_door(char x, char y, short action, bool vertical);
     // next_* variables are where the door leads
 void add_portal(char x, char y, char next_x, char next_y, char next_map, bool vertical);
 
+//Auto add portal to a building
+void add_building_portal(char building_x, char building_y, char next_map);
+
 //Auto add exit
 void add_exit_portal(int side, int position, int map);
 

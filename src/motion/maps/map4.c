@@ -19,7 +19,7 @@ void draw_map4() {
     drawBuilding_default(MAP_X+6,MAP_Y+7, "Poke", POKE_CENTER_ACTION);
 
     drawBuilding_default(MAP_X+20,MAP_Y+12, "LAB", -1);
-    add_portal(MAP_X+20+(9/2), MAP_Y+12+3-1, 23, 8, 5, true);
+    add_building_portal(MAP_X+20, MAP_Y+12, 5);
     
     //Draw Doors
     draw_town_exit(MAP_TOP, 41);

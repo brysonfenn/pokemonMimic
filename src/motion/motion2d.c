@@ -38,6 +38,7 @@ void handle_motion() {
     player_y = &(player.loc->y);
     player_x = &(player.loc->x);
     bool is_trainer = false;
+    char print_str[256];
 
     void * selected_ptr;
     Trainer * trainer_ptr;
@@ -125,6 +126,11 @@ void handle_motion() {
         move(*player_y, *player_x);
         addch(player_char);
         attrset(COLOR_PAIR(DEFAULT_COLOR));
+
+        //Display player location
+        // sprintf(print_str, "Player location (%d,%d)", *player_x, *player_y);
+        // mvprintw(21,4, print_str); 
+
         refresh();
         int random = rand() % 100;
 
