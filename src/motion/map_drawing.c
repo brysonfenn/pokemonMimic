@@ -23,9 +23,11 @@ void drawBuilding(int x, int y, int w, int h, const char* name, int action) {
     // Draw a door at the bottom of the box
     mvaddch(y + h - 1, x + (w / 2), ' ');  // Door frame
     mvaddch(y + h - 1, x + (w / 2) + 1, ' ');  // Door frame
-    add_door(x+ (w/2), y+h-1, action, 1);
     mvaddch(y + h - 1, x + (w / 2) - 1, ACS_LRCORNER);
     mvaddch(y + h - 1, x + (w / 2) + 2, ACS_LLCORNER);
+
+    if (action != -1) add_door(x+ (w/2), y+h-1, action, 1);
+    
 }
 
 //Draw an exit on a given side of the map at a given position

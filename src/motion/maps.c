@@ -7,21 +7,24 @@
 #include "maps/map2.h"
 #include "maps/map3.h"
 #include "maps/map4.h"
+#include "maps/building1.h"
 
 #include "motion2d.h"
 #include "location.h"
 #include "../player.h"
 #include "../print_utils.h"
 
-static void (*draw_funcs[10])() = { &draw_generic_map, &draw_map1, &draw_map2, &draw_map3, &draw_map4 };
+void no_grass() {}
 
-static int (*actions_funcs[10])(int, int) = { &actions_generic_map, &actions_map1, &actions_map2, &actions_map3, &actions_map4 };
+static void (*draw_funcs[10])() = { &draw_generic_map, &draw_map1, &draw_map2, &draw_map3, &draw_map4, &draw_b1 };
 
-static void (*grass_funcs[10])() = { &grass_generic_map, &grass_map1, &grass_map2, &grass_map3, &draw_map4 };
+static int (*actions_funcs[10])(int, int) = { &actions_generic_map, &actions_map1, &actions_map2, &actions_map3, &actions_map4, &actions_b1 };
+
+static void (*grass_funcs[10])() = { &grass_generic_map, &grass_map1, &grass_map2, &grass_map3, &draw_map4, &no_grass };
 
 void change_map_funcs(int map_num, void (**draw_map)(), int (**actions) (int, int), void (**grass_map)() ) {
 
-    if (map_num < 1 || map_num > 4) {
+    if (map_num < 1 || map_num > 5) {
         *draw_map = &draw_generic_map;
         *actions = &actions_generic_map;
         *grass_map = &grass_generic_map;
