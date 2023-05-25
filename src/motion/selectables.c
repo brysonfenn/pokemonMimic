@@ -60,6 +60,7 @@ void * get_selectable(int player_x, int player_y, char player_char, bool * is_tr
             attrset(COLOR_PAIR(TRAINER_COLOR));
             mvprintw(player_y, player_x, "%c", trainer_char); refresh();
             attrset(COLOR_PAIR(DEFAULT_COLOR));
+            mvprintw(21,5,"Let's battle!"); refresh();
             sleep(2);
             return selectables[i].data;
         }

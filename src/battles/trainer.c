@@ -49,7 +49,6 @@ int battle_trainer(Trainer * trainer) {
   int last_pokemon_pos = trainer->num_in_party - 1;
 
   for (int i = 0; i < last_pokemon_pos; i++) {
-    begin_list();
     sprintf(print_str, "  %s sent out %s\n", trainer->name, trainer_pokemon[i].name);
     print_to_list(print_str); sleep(2);
     battle_result = initiate_battle(&(trainer_pokemon[i]));
@@ -96,7 +95,6 @@ int battle_trainer(Trainer * trainer) {
 
   //Handle last pokemon
   if (battle_result == BATTLE_WIN) {
-    begin_list();
     sprintf(print_str, "  %s sent out %s\n", trainer->name, trainer_pokemon[last_pokemon_pos].name);
     print_to_list(print_str); sleep(2);
     battle_result = initiate_battle(&(trainer_pokemon[last_pokemon_pos]));

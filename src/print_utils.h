@@ -50,6 +50,7 @@ int get_move_selection(int start_x, int start_y, struct pokemon* pok);
 
 void draw_text_box();
 void text_box_cursors(int next_line);
+void clear_battle_box();
 void clear_selection_text();
 void clear_text_box();
 

@@ -385,12 +385,17 @@ int get_move(pokemon * pok) {
   if (num_available_attacks == 0) return -1;
 
   int max_move_index = available_attacks[0];
+  int max_damage = 0;
+  int curr_damage = 0;
+  int flags_var;  //Filler int for the get_damage function
 
   //Get move with the maximum power.
   for (int i = 0; i < num_available_attacks; i++) {
     curr_attack = available_attacks[i];
-    if (pok->attacks[curr_attack].power > pok->attacks[max_move_index].power) {
+    curr_damage = get_damage(pok, curr_attack, player.current_pokemon, false, &flags_var);
+    if (curr_damage > max_damage) {
       max_move_index = available_attacks[i];
+      max_damage = curr_damage;
     }
   }
 

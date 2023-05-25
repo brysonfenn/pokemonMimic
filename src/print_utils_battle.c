@@ -216,6 +216,13 @@ void text_box_cursors(int next_line) {
   move(TEXT_BOX_Y+5 + text_box_cursor_y, TEXT_BOX_X+3);
 }
 
+void clear_battle_box() {
+  for (int i = 0; i < (BATTLE_BOX_HEIGHT - 2); i++) {
+    mvprintw(BATTLE_BOX_Y+1+i, BATTLE_BOX_X+1, "                                               ");                           
+  }
+  refresh();
+}
+
 void clear_selection_text() {
   for (int i = 0; i < 4; i++) {
     mvprintw(TEXT_BOX_Y+1+i, TEXT_BOX_X+1, "                                               ");                           

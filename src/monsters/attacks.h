@@ -39,7 +39,7 @@ extern attack empty_attack;
 int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy);
 
 //Get damage that should be dealt with a given move from one pokemon to another
-int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements, int *flags);
+int get_damage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements, int *flags);
 
 
 

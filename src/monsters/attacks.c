@@ -110,7 +110,7 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
 
   //Drop HP only if attack has damage power
   if (chosenAttack.power != 0) {
-    damage = getDamage(perp, move_num, victim, true, &flags);
+    damage = get_damage(perp, move_num, victim, true, &flags);
     victim->currentHP -= damage;
     if (victim->currentHP < 0) victim->currentHP = 0;
     blinkPokemon(enemy);
@@ -141,7 +141,7 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
 
 
 //Get damage that should be dealt with a given move from one pokemon to another
-int getDamage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements, int *flags) {
+int get_damage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements, int *flags) {
   attack chosenAttack = perp->attacks[move_num];
 
   int perpAttack, victimDefense, perpAtkStage, victimDefStage;
