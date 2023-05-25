@@ -98,7 +98,7 @@ void handle_motion() {
                 else {
                     message_ptr = (char *) selected_ptr;
                     if (strcmp(message_ptr,"NONE") == 0) continue;
-                    mvprintw(23,35,message_ptr);
+                    mvprintw(21,MAP_X,message_ptr);
                 }
                 break;
         }
@@ -158,10 +158,11 @@ bool is_movable_space(int yInc, int xInc) {
 void init_map() {
     clear();
     draw_map();
+    drawBox(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5);
 
     attrset(COLOR_PAIR(DEFAULT_COLOR));
 
-    mvprintw(23, 1, "Map: %d", player.loc->map); refresh();
+    mvprintw(MAP_Y+MAP_HEIGHT+1, MAP_X+1, "Map: %d", player.loc->map); refresh();
 
     attrset(COLOR_PAIR(PLAYER_COLOR));
     mvaddch(*player_y, *player_x, player_char);

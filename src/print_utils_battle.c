@@ -31,7 +31,7 @@ void printBattle() {
   mvprintw(BATTLE_BOX_PLAYER_Y, BATTLE_BOX_PLAYER_X, poke_string);
   mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "HP: %d/%d", player_pok->currentHP, player_pok->maxHP);
 
-  print_btn_instructions(BATTLE_BOX_X+BATTLE_BOX_WIDTH+1, TEXT_BOX_Y);
+  print_btn_instructions(BATTLE_BOX_X+BATTLE_BOX_WIDTH+1, TEXT_BOX_Y, false);
   draw_text_box();
   refresh();
 }

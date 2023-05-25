@@ -5,6 +5,7 @@
 #include <ncurses.h>
 
 #include "../battles/trainer.h"
+#include "map_drawing.h"
 #include "../print_defines.h"
 
 typedef struct Selectable {
@@ -60,7 +61,7 @@ void * get_selectable(int player_x, int player_y, char player_char, bool * is_tr
             attrset(COLOR_PAIR(TRAINER_COLOR));
             mvprintw(player_y, player_x, "%c", trainer_char); refresh();
             attrset(COLOR_PAIR(DEFAULT_COLOR));
-            mvprintw(21,5,"Let's battle!"); refresh();
+            mvprintw(MAP_Y+MAP_HEIGHT+1,MAP_X+1,"Let's battle!"); refresh();
             sleep(2);
             return selectables[i].data;
         }

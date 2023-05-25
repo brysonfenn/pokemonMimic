@@ -31,7 +31,7 @@ int get_selection(int first_line, int start, int end, int last_selection);
 
 void drawBox(int x, int y, int w, int h);
 
-void print_btn_instructions(int x, int y);
+void print_btn_instructions(int x, int y, bool on_map);
 
 void begin_list();
 void print_to_list(const char * list_str);

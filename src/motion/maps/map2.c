@@ -16,23 +16,22 @@
 #define POKE_CENTER_ACTION 2
 #define TRAINER_BATTLE_ACTION 3
 
-static Trainer trainer3 = {"Trainer John", 3, {POKEMON_IVYSAUR, POKEMON_CHARMELEON, POKEMON_WARTORTLE}, {4,5,6} };
+static Trainer trainer3 = {"Trainer John", 3, {POKEMON_BEEDRILL, POKEMON_SANDSHREW, POKEMON_PIDGEY}, {7,4,6} };
 static Trainer trainer4 = {"Bugcatcher David", 1, {POKEMON_KAKUNA}, {7} };
+static Trainer trainer5 = {"Trainer Steven", 3, {POKEMON_IVYSAUR, POKEMON_CHARMELEON, POKEMON_WARTORTLE}, {5,6,7} };
 
 void draw_map2() {
 
-    mvprintw(22, 1, "Press 'm' to return to the menu");
     drawBox(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y);
+    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
 
     //Draw Doors
-    draw_town_exit(MAP_TOP, 10);
-
     draw_town_exit(MAP_BOTTOM, 10);
     add_exit_portal(MAP_BOTTOM, 10, 1);
     
     add_trainer(MAP_X+1, MAP_Y+8, &trainer3, PLAYER_MOVING_RIGHT);
     add_trainer(MAP_X+15, MAP_Y+5, &trainer4, PLAYER_MOVING_LEFT);
+    add_trainer(MAP_X+1, MAP_Y+2, &trainer5, PLAYER_MOVING_RIGHT);
 
     grass_map2();
 

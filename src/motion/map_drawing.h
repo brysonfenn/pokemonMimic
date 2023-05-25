@@ -5,7 +5,7 @@
 #define DEFAULT_BUILDING_HEIGHT 3
 
 #define MAP_WIDTH 58
-#define MAP_HEIGHT 20
+#define MAP_HEIGHT 18
 #define MAP_X 3
 #define MAP_Y 1
 

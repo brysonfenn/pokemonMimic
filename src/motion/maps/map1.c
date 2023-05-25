@@ -20,9 +20,8 @@ Trainer trainer1 = {"Trainer Joseph", 3, {POKEMON_WEEDLE, POKEMON_PIDGEY, POKEMO
 
 void draw_map1() {
 
-    mvprintw(22, 1, "Press 'm' to return to the menu");
     drawBox(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y);
+    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
 
     drawBuilding_default(MART_X,MART_Y, "Mart", MART_ACTION);
     drawBuilding_default(POKE_CENTER_X,POKE_CENTER_Y, "Poke", POKE_CENTER_ACTION);
@@ -33,12 +32,6 @@ void draw_map1() {
     
     draw_town_exit(MAP_BOTTOM, 25); 
     add_exit_portal(MAP_BOTTOM, 25, 3);
-
-    draw_town_exit(MAP_LEFT, 10);
-    add_door(MAP_X, MAP_Y+10, TRAINER_BATTLE_ACTION, 0);
-
-    draw_town_exit(MAP_RIGHT, 10);
-    add_exit_portal(MAP_RIGHT, 10, 4);
 
     grass_map1();
 
@@ -68,10 +61,6 @@ int actions_map1(int player_x, int player_y) {
         case POKE_CENTER_ACTION:
             handle_poke_center();
             player.loc->y += 1;
-            break;
-        case TRAINER_BATTLE_ACTION:
-            battle_trainer(&trainer1);
-            player.loc->x += 1;
             break;
         default:
             break;

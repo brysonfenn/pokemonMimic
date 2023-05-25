@@ -190,10 +190,11 @@ void drawBox(int x, int y, int w, int h) {
 }
 
 
-void print_btn_instructions(int x, int y) {
+void print_btn_instructions(int x, int y, bool on_map) {
   drawBox(x,y,15,7);
   mvprintw(y+1,x+3, "a: Select");
   mvprintw(y+2,x+3, "b: Cancel");
+  if (on_map) mvprintw(y+3,x+3, "m: menu");
 
   // Print the arrow symbols
   mvprintw(y+4,x+2, "  \u2191");
@@ -210,7 +211,7 @@ void begin_list() {
   drawBox(LIST_BOX_X, LIST_BOX_Y, LIST_BOX_WIDTH, LIST_BOX_HEIGHT);
   
   //print button instructons where they will be in battle
-  print_btn_instructions(LIST_BOX_X+LIST_BOX_WIDTH+2, TEXT_BOX_Y);
+  print_btn_instructions(LIST_BOX_X+LIST_BOX_WIDTH+2, TEXT_BOX_Y, false);
   refresh();
 }
 
