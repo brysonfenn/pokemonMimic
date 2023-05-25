@@ -115,7 +115,8 @@ int load_game(int file_num) {
 
     // Check if the file was opened successfully
     if (fp == NULL) {
-        printw("That Load File does not exist.\n"); refresh(); sleep(2);
+		sprintf(print_str, " \n  Load File %d does not exist.\n", file_num);
+        print_to_list(print_str); sleep(2);
         return LOAD_FAILURE;
     }
 
@@ -248,10 +249,10 @@ int print_save_files() {
 	sprintf(print_str, "%s  Cancel\n\n", print_str);
 
     if (!current_save_file) {
-    	sprintf(print_str, "%sCurrent Save File: None\n \n", print_str);
+    	sprintf(print_str, "%s \n  Current Save File: None\n", print_str);
     }
     else {
-    	sprintf(print_str, "%sCurrent Save File: %d\n \n", print_str, current_save_file);
+    	sprintf(print_str, "%s \n  Current Save File: %d\n", print_str, current_save_file);
     }
 
 	print_to_list(print_str);

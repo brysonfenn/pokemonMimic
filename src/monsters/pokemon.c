@@ -62,8 +62,8 @@ void print_pokemon_summary(pokemon *pok) {
   if (!(pok->currentHP)) sprintf(print_str, "%s  (Fainted)", print_str);
   sprintf(print_str, "%s\n \nATTACK: %d\nDEFENSE: %d\n", print_str, pok->baseAttack, pok->baseDefense);
   sprintf(print_str, "%sSP ATTACK: %d\nSP DEFENSE: %d\n", print_str, pok->baseSpAttack, pok->baseSpDefense);
-  sprintf(print_str, "%sSPEED: %d\n\n", print_str, pok->baseSpeed);
-  sprintf(print_str, "%s\nAttacks: \n", print_str);
+  sprintf(print_str, "%sSPEED: %d\n", print_str, pok->baseSpeed);
+  sprintf(print_str, "%s \nAttacks: \n", print_str);
 
   print_to_list(print_str);
 
@@ -81,7 +81,7 @@ int handle_pokemon_menu(int input_num1) {
 
   begin_list();
   print_pokemon_summary(&(player.party[input_num1]));
-  print_to_list(" \n \n \n \n  Switch\n  Release\n  Attacks\n  Cancel\n");
+  print_to_list(" \n \n \n  Switch\n  Release\n  Attacks\n  Cancel\n");
   input_num2 = get_selection(POKE_SUMMARY_SEL_BEGIN, 0, 3, 0);
 
   //Break if inputNum2 is 2 (cancel)
