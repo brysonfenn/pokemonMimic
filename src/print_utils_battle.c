@@ -15,8 +15,8 @@ static int cursor_y;
 
 //Print Battle Box and basic pokemon information
 void printBattle() {
-  pokemon * player_pok = player.current_pokemon;
-  pokemon * enemy_pok = player.enemy_pokemon;
+  Pokemon * player_pok = player.current_pokemon;
+  Pokemon * enemy_pok = player.enemy_pokemon;
   char poke_string[128];
 
   draw_battle_box();
@@ -79,7 +79,7 @@ int get_battle_selection(int first_line, int last_selection) {
 
 //Blink enemy if enemy is true, if not, blink player
 void blinkPokemon(bool enemy) {
-  pokemon * pok;
+  Pokemon * pok;
   char poke_string[128];
   int text_x, text_y;
 
@@ -117,7 +117,7 @@ void blinkPokemon(bool enemy) {
 }
 
 
-int get_move_selection(int start_x, int start_y, struct pokemon* pok) {
+int get_move_selection(int start_x, int start_y, struct Pokemon* pok) {
   int selection = 1;
   cursor_x = start_x;
   cursor_y = start_y;

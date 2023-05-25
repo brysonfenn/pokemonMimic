@@ -17,10 +17,10 @@ struct playerCharacter player;
 void default_load();
 
 void player_init(int save_file) {
-  player.bag = malloc(sizeof(item) * 30);
+  player.bag = malloc(sizeof(Item) * 30);
   player.loc = malloc(sizeof(Location));
   player.blackout_center = malloc(sizeof(Location));
-  player.party = malloc(sizeof(pokemon) * 6);
+  player.party = malloc(sizeof(Pokemon) * 6);
   
   if (!save_file)
     default_load();
@@ -68,7 +68,7 @@ bool runAttempt() {
 }
 
 void heal_party() {
-  pokemon * curr_pok;
+  Pokemon * curr_pok;
 
   begin_list();
   
@@ -130,7 +130,7 @@ void set_current_pokemon(int position) {
   player.current_pokemon = &(emptyPok);
 }
 
-void set_enemy_pokemon(struct pokemon * pok) {
+void set_enemy_pokemon(struct Pokemon * pok) {
   player.enemy_pokemon = pok;
 }
 

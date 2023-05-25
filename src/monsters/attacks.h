@@ -9,9 +9,9 @@
 
 #define NO_MISS 1000
 
-struct pokemon;
+struct Pokemon;
 
-typedef int (*attack_func_ptr) (Condition, int, struct pokemon*, int);
+typedef int (*attack_func_ptr) (Condition, int, struct Pokemon*, int);
 
 typedef struct attack {
   char name[30];
@@ -36,10 +36,10 @@ extern attack empty_attack;
 //// attacks.c ////
 
 //Handle all operations for an attack, indicate whether this is an enemy attack (true)
-int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy);
+int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, bool enemy);
 
 //Get damage that should be dealt with a given move from one pokemon to another
-int get_damage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements, int *flags);
+int get_damage(struct Pokemon *perp, int move_num, struct Pokemon *victim, bool print_statements, int *flags);
 
 
 
@@ -49,20 +49,20 @@ int get_damage(struct pokemon *perp, int move_num, struct pokemon *victim, bool 
 attack * get_attack_by_id(int id_num);
 
 //Certain attacks can increment a pokemon's own stat
-int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim, int damage);
+int increment_self_stat(Condition stat_type, int chance, struct Pokemon* victim, int damage);
 
-int increment_self_stat2(Condition stat_type, int chance, struct pokemon* victim, int damage);
+int increment_self_stat2(Condition stat_type, int chance, struct Pokemon* victim, int damage);
 
 //Certain attacks can decrement an enemy pokemon's stat
-int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* victim, int damage);
+int decrement_opponent_stat(Condition stat_type, int chance, struct Pokemon* victim, int damage);
 
 //Certain attacks can double decrement an enemy pokemon's stat
-int decrement_opponent_stat2(Condition stat_type, int chance, struct pokemon* victim, int damage);
+int decrement_opponent_stat2(Condition stat_type, int chance, struct Pokemon* victim, int damage);
 
 //Some attacks do a specific amount of damage
-int deal_specific_damage(Condition nothing, int hp, struct pokemon* victim, int damage);
+int deal_specific_damage(Condition nothing, int hp, struct Pokemon* victim, int damage);
 
 //Some attacks hit multiple times
-int hit_multiple_times(int min_times, int max_times, struct pokemon* victim, int damage);
+int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int damage);
 
 #endif // ATTACKS_H

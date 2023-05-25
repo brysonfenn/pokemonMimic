@@ -64,7 +64,7 @@ void printParty() {
 
   sprintf(party_str, "%sPokemon:\n", party_str);
   for (int i = 0; i < player.numInParty; i++) {
-    pokemon current_pok = player.party[i];
+    Pokemon current_pok = player.party[i];
     int current = current_pok.currentHP;
     int max = current_pok.maxHP;
     sprintf(party_str, "%s  %s" , party_str, current_pok.name);

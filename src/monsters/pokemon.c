@@ -13,7 +13,7 @@
 //Give random stats to pokemon based on level
   //level = particular level
   //if level = 0, get random level from range level_min:level_max
-void calculate_stats(pokemon * pok, int level, int level_min, int level_max) {
+void calculate_stats(Pokemon * pok, int level, int level_min, int level_max) {
   if (!level) {
     level = (rand() % (level_max - level_min)) + level_min;
   }
@@ -38,7 +38,7 @@ void calculate_stats(pokemon * pok, int level, int level_min, int level_max) {
 }
 
 //Reset stat stages whenever pokemon is switched out or battle ends
-void reset_stat_stages(pokemon *pok) {
+void reset_stat_stages(Pokemon *pok) {
   pok->atk_stage = 0;
   pok->def_stage = 0;
   pok->sp_atk_stage = 0;
@@ -51,7 +51,7 @@ void reset_stat_stages(pokemon *pok) {
 }
 
 //Print stats, attacks, etc of a given pokemon
-void print_pokemon_summary(pokemon *pok) {
+void print_pokemon_summary(Pokemon *pok) {
   char print_str[8192];
 
   sprintf(print_str, "%s  LVL %d\n\t%s ", pok->name, pok->level, get_typing_by_id(pok->type1));
@@ -77,7 +77,7 @@ void print_pokemon_summary(pokemon *pok) {
 int handle_pokemon_menu(int input_num1) {
   int input_num2;
   char print_str[256];
-  pokemon tempPok;
+  Pokemon tempPok;
 
   begin_list();
   print_pokemon_summary(&(player.party[input_num1]));
@@ -187,7 +187,7 @@ int pokemon_get_catch_rate(int pok_id) {
 }
 
 
-int pokemon_get_accuracy(pokemon * perp, int move_num, pokemon * victim) {
+int pokemon_get_accuracy(Pokemon * perp, int move_num, Pokemon * victim) {
   float modified_accuracy = (float) (perp->attacks[move_num].accuracy);
 
   //Accuracy is determined based on perp's accuracy and victim's evasiveness

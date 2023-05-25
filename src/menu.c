@@ -22,7 +22,7 @@ void main_menu() {
     char example_string[4096];
     int last_selection = 0;
     selected_poke = 0;
-    pokemon tempPok;
+    Pokemon tempPok;
 
     //This is the main menu while loop.
     while(1) {

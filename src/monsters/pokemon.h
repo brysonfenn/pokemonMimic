@@ -21,7 +21,7 @@
 #define RETURN_TO_MENU 1
 #define RETURN_TO_PARTY 2
 
-typedef struct pokemon {
+typedef struct Pokemon {
   char name[30];
   int16_t id_num;
   int16_t maxHP;
@@ -56,18 +56,18 @@ typedef struct pokemon {
   Condition hidden_condition;
 
   attack attacks[4];
-} pokemon;
+} Pokemon;
 
-extern pokemon emptyPok;
+extern Pokemon emptyPok;
 
 
 //pokemon.c
 
 //Reset stat stages whenever pokemon is switched out or battle ends
-void reset_stat_stages(pokemon *pok);
+void reset_stat_stages(Pokemon *pok);
 
 //Print stats, attacks, etc of a given pokemon
-void print_pokemon_summary(pokemon *pok);
+void print_pokemon_summary(Pokemon *pok);
 
 //Control all actions for the pokemon menu
 int handle_pokemon_menu(int input_num1);
@@ -78,43 +78,43 @@ float get_stat_modifier(int16_t stage);
 //Give random stats to pokemon based on level
   //level = particular level
   //if level = 0, get random level from range level_min:level_max
-void calculate_stats(pokemon * pok, int level, int level_min, int level_max);
+void calculate_stats(Pokemon * pok, int level, int level_min, int level_max);
 
 //Get the catch rate for a pokemon with pok_id
 int pokemon_get_catch_rate(int pok_id);
 
-int pokemon_get_accuracy(pokemon * perp, int move_num, pokemon * victim);
+int pokemon_get_accuracy(Pokemon * perp, int move_num, Pokemon * victim);
 
 
 
 //pokemon_progression.c
 
 //Handle leveling up - also handles learning moves from new level
-void pokemon_level_up(pokemon *pok, int next_level_exp);
+void pokemon_level_up(Pokemon *pok, int next_level_exp);
 
 //Give highest possible level moves to a pokemon
 //This is called upon initializing a new pokemon
-void pokemon_give_moves(pokemon *pok);
+void pokemon_give_moves(Pokemon *pok);
 
-int pokemon_get_iv(pokemon * pok, char type);
+int pokemon_get_iv(Pokemon * pok, char type);
 
 
 //pokemon_list.c
 
 //Create a new pokemon. **Immediately dereference the returned pokemon**
-pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int level_max);
+Pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int level_max);
 
 //Return a random pokemon of any possible
-pokemon * get_random_pokemon(int level_min, int level_max);
+Pokemon * get_random_pokemon(int level_min, int level_max);
 
 //Return a random pokemon, excluding starters
 //Always immediately dereference the return value of this function.
-pokemon * get_random_wild_pokemon(int level_min, int level_max);
+Pokemon * get_random_wild_pokemon(int level_min, int level_max);
 
 //Get a starter pokemon
-pokemon * get_starter(int starter);
+Pokemon * get_starter(int starter);
 
 //Get a pokemon with all its base stats
-pokemon * get_pokemon_frame(Pokemon_id pok_id);
+Pokemon * get_pokemon_frame(Pokemon_id pok_id);
 
 #endif // POKEMON_H

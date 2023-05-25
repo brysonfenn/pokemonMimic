@@ -23,16 +23,16 @@ static bool pokemon_needing_exp[6] = {false, false, false, false, false, false};
 static bool run_success;
 
 //Handle an enemyPok attacking the player's current pokemon
-void perform_enemy_attack(pokemon * currentPok, pokemon * enemyPok, int attack_num);
+void perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_num);
 
 //Get a move number randomly (moves with higher damage have a higher chance)
-int get_move(pokemon * pok);
+int get_move(Pokemon * pok);
 
 //Give all pokemon exp that need it, and level up
 void handle_exp(int exp);
 
 //Begin a Battle with a given pokemon
-int initiate_battle(struct pokemon * enemyPok) {
+int initiate_battle(struct Pokemon * enemyPok) {
   int inputNum, max_input;
   bool enemy_attacks, fainted_switch, out_of_pp;
   int return_execute, attack_num, enemy_attack_num, item_num, pokemon_selected, speed_difference;
@@ -43,7 +43,7 @@ int initiate_battle(struct pokemon * enemyPok) {
   fainted_switch = false;
   run_success = false;
 
-  pokemon *currentPok = player.current_pokemon;
+  Pokemon *currentPok = player.current_pokemon;
   player.enemy_pokemon = enemyPok;
 
   //First used pokemon needs exp
@@ -357,7 +357,7 @@ int initiate_battle(struct pokemon * enemyPok) {
 
 
 //Handle an enemyPok attacking the player's current pokemon
-void perform_enemy_attack(pokemon * currentPok, pokemon * enemyPok, int attack_num) {
+void perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_num) {
   clear();
   printBattle();
   perform_attack(enemyPok, attack_num, currentPok, true);
@@ -371,7 +371,7 @@ void perform_enemy_attack(pokemon * currentPok, pokemon * enemyPok, int attack_n
 
 
 //Get a move number randomly (moves with higher damage have a higher chance)
-int get_move(pokemon * pok) {
+int get_move(Pokemon * pok) {
   int num_available_attacks = 0;
   int available_attacks[4];
   int curr_attack;
@@ -407,7 +407,7 @@ int get_move(pokemon * pok) {
 
 //Give all pokemon exp that need it, and level up
 void handle_exp(int exp) {
-  pokemon * currentPok;
+  Pokemon * currentPok;
   int next_level_exp;
   int num_exp_earned_pokemon = 0;
 

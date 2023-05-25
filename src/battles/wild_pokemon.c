@@ -9,7 +9,7 @@
 
 //Battle a random wild pokemon
 int battle_wild_pokemon() {
-    pokemon example_pokemon;
+    Pokemon example_pokemon;
     char print_str[256];
 
     player.trainer_battle = false;

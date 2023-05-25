@@ -19,9 +19,9 @@ static int current_save_file = 0;
 void notify_error(char * expected, char * line, int expected_elements, int matched_elements);
 
 int save_game(int file_num) {
-	pokemon curr_pok;
+	Pokemon curr_pok;
 	attack curr_att;
-	item curr_item;
+	Item curr_item;
 	int inputNum;
 	char print_str[1024];
 
@@ -96,9 +96,9 @@ int save_game(int file_num) {
 
 int load_game(int file_num) {
 
-	pokemon * curr_pok;
+	Pokemon * curr_pok;
 	attack * curr_att;
-	item * curr_item;
+	Item * curr_item;
 	int i, j;
 	char print_str[1024];
 

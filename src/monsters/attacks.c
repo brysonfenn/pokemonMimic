@@ -8,11 +8,11 @@
 
 #define CRITICAL_HIT_FLAG 0x01
 
-int perform_struggle(struct pokemon *perp, struct pokemon *victim, bool enemy);
+int perform_struggle(struct Pokemon *perp, struct Pokemon *victim, bool enemy);
 int get_basic_damage(int perp_level, int attack_power, int perp_atk, int victim_def, int perp_atk_stage, int victim_def_stage);
 
 //Handle all operations for an attack, indicate whether this is an enemy attack (true)
-int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, bool enemy) {
+int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, bool enemy) {
 
   //Handle sleep
   text_box_cursors(TEXT_BOX_BEGINNING);
@@ -141,7 +141,7 @@ int perform_attack(struct pokemon *perp, int move_num, struct pokemon *victim, b
 
 
 //Get damage that should be dealt with a given move from one pokemon to another
-int get_damage(struct pokemon *perp, int move_num, struct pokemon *victim, bool print_statements, int *flags) {
+int get_damage(struct Pokemon *perp, int move_num, struct Pokemon *victim, bool print_statements, int *flags) {
   attack chosenAttack = perp->attacks[move_num];
 
   int perpAttack, victimDefense, perpAtkStage, victimDefStage;
@@ -201,7 +201,7 @@ int get_basic_damage(int perp_level, int attack_power, int perp_atk, int victim_
   return damage;
 }
 
-int perform_struggle(struct pokemon *perp, struct pokemon *victim, bool enemy) {
+int perform_struggle(struct Pokemon *perp, struct Pokemon *victim, bool enemy) {
   clear();
   printBattle();
 

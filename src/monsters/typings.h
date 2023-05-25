@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-struct pokemon;
+struct Pokemon;
 
 //Typings
 typedef enum {NO_TYPE, NORMAL, FIRE, WATER, ELECTRIC, GRASS, ICE, 
@@ -16,7 +16,7 @@ typedef enum {NO_TYPE, NORMAL, FIRE, WATER, ELECTRIC, GRASS, ICE,
 
 //Returns damage after applying effectiveness
 //Also prints message about effectiveness, if applicable
-int get_damage_after_effectiveness(Type moveType, struct pokemon * pok, int damage, bool print_statements, int *flags);
+int get_damage_after_effectiveness(Type moveType, struct Pokemon * pok, int damage, bool print_statements, int *flags);
 
 char * get_typing_by_id(Type type);
 

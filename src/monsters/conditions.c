@@ -6,7 +6,7 @@
 #include "../print_defines.h"
 
 //Inflict condition on pok given, handle accuracy
-int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
+int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok) {
 	//Do not inflict a condition if fainted
 	if (pok->currentHP <= 0) {
 		return 0;
@@ -92,14 +92,14 @@ int inflict_condition(Condition condition, int accuracy, struct pokemon* pok) {
 }
 
 //Filler side-effect function that does nothing
-int attack_do_nothing(Condition condition, int accuracy, struct pokemon* pok) {
+int attack_do_nothing(Condition condition, int accuracy, struct Pokemon* pok) {
 	return 0;
 }
 
 //Handle poisoning, leech seed, etc.
 int handle_end_conditions() {
-	pokemon * player_pok = player.current_pokemon;
-	pokemon * enemy_pok = player.enemy_pokemon;
+	Pokemon * player_pok = player.current_pokemon;
+	Pokemon * enemy_pok = player.enemy_pokemon;
 	char player_condition_text[16] = "NOT FOUND";
 	char enemy_condition_text[16] = "NOT FOUND";
 
@@ -166,7 +166,7 @@ int handle_end_conditions() {
 }
 
 //print a pokemon's condition abbreviation
-void add_condition(char * str, struct pokemon * pok) {
+void add_condition(char * str, struct Pokemon * pok) {
 	if (pok->visible_condition == NO_CONDITION || pok->currentHP == 0)
 		sprintf(str, "%s ", str);
 	else if (pok->visible_condition == POISONED)

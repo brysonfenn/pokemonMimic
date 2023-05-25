@@ -10,7 +10,7 @@
 
 #define PRESSED_B -1
 
-struct pokemon;
+struct Pokemon;
 
 //print_utils.c
 
@@ -46,7 +46,7 @@ void printBattle();
 void blinkPokemon(bool enemy);
 
 int get_battle_selection(int first_line, int last_selection);
-int get_move_selection(int start_x, int start_y, struct pokemon* pok);
+int get_move_selection(int start_x, int start_y, struct Pokemon* pok);
 
 void draw_text_box();
 void text_box_cursors(int next_line);

@@ -3,22 +3,22 @@
 
 #include <stdbool.h>
 
-struct pokemon;
+struct Pokemon;
 struct Location;
-struct item;
+struct Item;
 
 #define PLAYER_DEFAULT_POKEMON -1
 
 
 struct playerCharacter {
-  struct pokemon * party;
+  struct Pokemon * party;
   int numInParty;
-  struct item * bag;
+  struct Item * bag;
   int numInBag;
-  struct pokemon * current_pokemon;
+  struct Pokemon * current_pokemon;
   int money;
   bool trainer_battle;
-  struct pokemon * enemy_pokemon;
+  struct Pokemon * enemy_pokemon;
   struct Location * loc;
   struct Location * blackout_center;
 };
@@ -35,7 +35,7 @@ int player_get_num_alive();
 
 void set_current_pokemon(int position);
 
-void set_enemy_pokemon(struct pokemon * pok);
+void set_enemy_pokemon(struct Pokemon * pok);
 
 void printPlayer();
 

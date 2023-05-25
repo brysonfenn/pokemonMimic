@@ -1,7 +1,7 @@
 #ifndef CONDITIONS_H
 #define CONDITIONS_H
 
-struct pokemon;
+struct Pokemon;
 
 //All condition types
 typedef enum { NO_CONDITION, SPEED_STAT, ATTACK_STAT, DEFENSE_STAT, SP_ATTACK_STAT, 
@@ -9,15 +9,15 @@ typedef enum { NO_CONDITION, SPEED_STAT, ATTACK_STAT, DEFENSE_STAT, SP_ATTACK_ST
                 POISONED, PARALYZED, ASLEEP, BURNED, FROZEN, CONFUSED, SEEDED, FIRE_SPINNED } Condition;
 
 //Inflict condition on pok given, handle accuracy
-int inflict_condition(Condition condition, int accuracy, struct pokemon * pok);
+int inflict_condition(Condition condition, int accuracy, struct Pokemon * pok);
 
 //Filler side-effect function that does nothing
-int attack_do_nothing(Condition condition, int accuracy, struct pokemon * pok);
+int attack_do_nothing(Condition condition, int accuracy, struct Pokemon * pok);
 
 //Handle poisoning, leech seed, etc.
 int handle_end_conditions();
 
 //print a pokemon's condition abbreviation
-void add_condition(char * str, struct pokemon * pok);
+void add_condition(char * str, struct Pokemon * pok);
 
 #endif // CONDITIONS_H

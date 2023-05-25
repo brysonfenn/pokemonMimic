@@ -77,7 +77,7 @@ attack * get_attack_by_id(id_num) {
 }
 
 //Change the stat of a pok (stat_type is the type of stat, stage_number is the number of stages to increment (+) or decrement (-))
-int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
+int change_stat(Condition stat_type, int stage_number, struct Pokemon* pok) {
     char stat_type_str[50];
     int16_t * stat_stage;
 
@@ -150,9 +150,9 @@ int change_stat(Condition stat_type, int stage_number, struct pokemon* pok) {
 }
 
 //Certain attacks can increment a pokemon's own stat
-int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim, int damage) {
+int increment_self_stat(Condition stat_type, int chance, struct Pokemon* victim, int damage) {
     //Adjust victim depending on if the victim is the player's or the enemy's
-    pokemon * self;
+    Pokemon * self;
     if (player.current_pokemon == victim) self = player.enemy_pokemon;
     else self = player.current_pokemon;
 
@@ -166,9 +166,9 @@ int increment_self_stat(Condition stat_type, int chance, struct pokemon* victim,
 
 
 //Certain attacks can increment a pokemon's own stat
-int increment_self_stat2(Condition stat_type, int chance, struct pokemon* victim, int damage) {
+int increment_self_stat2(Condition stat_type, int chance, struct Pokemon* victim, int damage) {
     //Adjust victim depending on if the victim is the player's or the enemy's
-    pokemon * self;
+    Pokemon * self;
     if (player.current_pokemon == victim) self = player.enemy_pokemon;
     else self = player.current_pokemon;
 
@@ -181,7 +181,7 @@ int increment_self_stat2(Condition stat_type, int chance, struct pokemon* victim
 }
 
 //Certain attacks can decrement an enemy pokemon's stat
-int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* victim, int damage) {
+int decrement_opponent_stat(Condition stat_type, int chance, struct Pokemon* victim, int damage) {
     int random = rand() % 100;
     if (random < chance) {
         change_stat(stat_type, -1, victim);
@@ -190,7 +190,7 @@ int decrement_opponent_stat(Condition stat_type, int chance, struct pokemon* vic
     else return 1;
 }
 
-int decrement_opponent_stat2(Condition stat_type, int chance, struct pokemon* victim, int damage) {
+int decrement_opponent_stat2(Condition stat_type, int chance, struct Pokemon* victim, int damage) {
     int random = rand() % 100;
     if (random < chance) {
         change_stat(stat_type, -2, victim);
@@ -199,13 +199,13 @@ int decrement_opponent_stat2(Condition stat_type, int chance, struct pokemon* vi
     else return 1;
 }
 
-int deal_specific_damage(Condition nothing, int hp, struct pokemon* victim, int damage) {
+int deal_specific_damage(Condition nothing, int hp, struct Pokemon* victim, int damage) {
     victim->currentHP -= hp;
     return 0;
 }
 
 //Some attacks hit multiple times
-int hit_multiple_times(int min_times, int max_times, struct pokemon* victim, int damage) {
+int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int damage) {
 
     bool enemy = (victim != player.enemy_pokemon);
     int rand_times;

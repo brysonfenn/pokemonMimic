@@ -13,7 +13,7 @@
 static char name[NAME_MAX_LENGTH];
 
 
-void print_trainer_pokemon(Trainer * trainer, pokemon * trainer_pokemon);
+void print_trainer_pokemon(Trainer * trainer, Pokemon * trainer_pokemon);
 
 //Battle a trainer with a random name and random # of pokemon
 int battle_trainer(Trainer * trainer) {
@@ -27,7 +27,7 @@ int battle_trainer(Trainer * trainer) {
   }
 
   int inputNum, battle_result, return_execute;
-  pokemon trainer_pokemon[trainer->num_in_party];
+  Pokemon trainer_pokemon[trainer->num_in_party];
   battle_result = BATTLE_WIN;
   player.trainer_battle = true;
 
@@ -124,7 +124,7 @@ int battle_trainer(Trainer * trainer) {
 }
 
 
-void print_trainer_pokemon(Trainer * trainer, pokemon * trainer_pokemon) {
+void print_trainer_pokemon(Trainer * trainer, Pokemon * trainer_pokemon) {
   char print_str[128];
   begin_list();
   sprintf(print_str, "  %s Pokemon: ", trainer->name);

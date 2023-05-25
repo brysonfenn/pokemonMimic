@@ -5,13 +5,13 @@
 #include "../print_defines.h"
 #include "../print_utils.h"
 
-void learn_move(pokemon * pok, attack * new_attack);
-int evolve(pokemon * pok, int next_pok_id);
-void handle_learnset(pokemon * pok);
+void learn_move(Pokemon * pok, attack * new_attack);
+int evolve(Pokemon * pok, int next_pok_id);
+void handle_learnset(Pokemon * pok);
 void get_evolve_level_and_id(int pok_id, int * level_target, int * evolve_id);
 
 //Handle leveling up - also handles learning moves from new level
-void pokemon_level_up(pokemon *pok, int next_level_exp) {
+void pokemon_level_up(Pokemon *pok, int next_level_exp) {
 
   if (pok->level >= 100) return;
 
@@ -20,7 +20,7 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
   int lost_hp = pok->maxHP - pok->currentHP;
 
   //Redo stat calculation
-  pokemon frame = *(get_pokemon_frame(pok->id_num));
+  Pokemon frame = *(get_pokemon_frame(pok->id_num));
   calculate_stats(&frame, pok->level, 0, 0);
 
   //Set all pokemon stats to the new calculated stats
@@ -50,7 +50,7 @@ void pokemon_level_up(pokemon *pok, int next_level_exp) {
 
 
 //Cause a pokemon to learn moves at its current level
-void handle_learnset(pokemon * pok) {
+void handle_learnset(Pokemon * pok) {
   char line[LINE_SIZE];
   char print_str[256];
 
@@ -117,7 +117,7 @@ void get_evolve_level_and_id(int pok_id, int * level_target, int * evolve_id) {
 
 
 //Give a single move to a pokemon - also handle forgetting moves
-void learn_move(pokemon * pok, attack * new_attack) {
+void learn_move(Pokemon * pok, attack * new_attack) {
   int input_num;
 
   new_attack->curr_pp = new_attack->max_pp;
@@ -172,7 +172,7 @@ void learn_move(pokemon * pok, attack * new_attack) {
 
 //Give highest possible level moves to a pokemon
 //This is called upon initializing a new pokemon
-void pokemon_give_moves(pokemon *pok) {
+void pokemon_give_moves(Pokemon *pok) {
   pok->numAttacks = 0;
 
   //Add moves
@@ -237,7 +237,7 @@ void pokemon_give_moves(pokemon *pok) {
 
 
 //Return 0 is evolve success, return 1 if failed
-int evolve(pokemon * pok, int next_pok_id) {
+int evolve(Pokemon * pok, int next_pok_id) {
   char og_pok_name[LINE_SIZE];
 
   //Preserve some information like name and lost hp
@@ -251,7 +251,7 @@ int evolve(pokemon * pok, int next_pok_id) {
   printw("%s is evolving!", og_pok_name); refresh(); sleep(3);
 
   //Get pokemon evolution frame
-  pokemon evolution = *(get_pokemon_frame(next_pok_id));
+  Pokemon evolution = *(get_pokemon_frame(next_pok_id));
 
   //Attach name, base stats of evolution to pokemon, then calculate stats
   sprintf(pok->name, "%s", evolution.name);
@@ -277,7 +277,7 @@ int evolve(pokemon * pok, int next_pok_id) {
 }
 
 
-int pokemon_get_iv(pokemon * pok, char type) {
+int pokemon_get_iv(Pokemon * pok, char type) {
   int shift;
 
   //Each iv occupies 5 bits of the iv random number

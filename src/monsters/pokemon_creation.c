@@ -9,7 +9,7 @@
 #include "../motion/location.h"
 
 // pok  varName   = {"name here",  id  hp chp   ba   bd   bsa   bsd    bs   type1     type2  }
-pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0,    0,    0, NO_TYPE,  NO_TYPE };
+Pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0,    0,    0, NO_TYPE,  NO_TYPE };
 
 #define NUM_CREATED_POKEMON 8
 #define NUM_STARTERS 3
@@ -26,13 +26,13 @@ static Pokemon_id wild_pok_lists[10][10] = {
   { 2,   2, 5,  POKEMON_PIDGEY, POKEMON_RATTATA } //Map #3
 };
 
-static pokemon newest_pokemon;
+static Pokemon newest_pokemon;
 
 
 //Initialize a given pokemon new_pok and get randomized stats
   //level = particular level
   //if level = 0, get random level from range level_min:level_max
-void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
+void pokemon_init(Pokemon * new_pok, int level, int level_min, int level_max) {
   new_pok->exp = 15;
   new_pok->iv = rand();
   new_pok->numAttacks = 0;
@@ -46,7 +46,7 @@ void pokemon_init(pokemon * new_pok, int level, int level_min, int level_max) {
 
 
 //Create a new pokemon. **Immediately dereference the returned pokemon**
-pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int level_max) {
+Pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int level_max) {
   newest_pokemon = *get_pokemon_frame(pok_id);
   pokemon_init(&newest_pokemon, level, level_min, level_max);
   return (&newest_pokemon);
@@ -54,16 +54,16 @@ pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int le
 
 
 //Return a random pokemon of any possible
-pokemon * get_random_pokemon(int level_min, int level_max) {
+Pokemon * get_random_pokemon(int level_min, int level_max) {
   int pok_position = rand() % NUM_CREATED_POKEMON;
-  pokemon * new_pok = create_new_pokemon(pok_id_list[pok_position], RANDOM_LEVEL, level_min, level_max);
+  Pokemon * new_pok = create_new_pokemon(pok_id_list[pok_position], RANDOM_LEVEL, level_min, level_max);
   return new_pok;
 }
 
 
 //Return a random pokemon, excluding starters
 //Always immediately dereference the return value of this function.
-pokemon * get_random_wild_pokemon(int level_min, int level_max) {
+Pokemon * get_random_wild_pokemon(int level_min, int level_max) {
   int pok_position, new_pok_id;
   int min_level = 2;
   int max_level = 6;
@@ -83,14 +83,14 @@ pokemon * get_random_wild_pokemon(int level_min, int level_max) {
   }
 
   // new_pok_id = POKEMON_CATERPIE;
-  pokemon * new_pok = create_new_pokemon(new_pok_id, set_level, min_level, max_level);
+  Pokemon * new_pok = create_new_pokemon(new_pok_id, set_level, min_level, max_level);
 
   return new_pok;
 }
 
 
 //Get a starter pokemon
-pokemon * get_starter(int starter) {
+Pokemon * get_starter(int starter) {
   int pok_id;
 
   if (starter == 0) pok_id = POKEMON_BULBASAUR;
@@ -102,9 +102,9 @@ pokemon * get_starter(int starter) {
 
 
 //Get a pokemon with all its base stats
-pokemon * get_pokemon_frame(Pokemon_id pok_id) {
+Pokemon * get_pokemon_frame(Pokemon_id pok_id) {
   newest_pokemon = emptyPok;
-  pokemon * pok = &newest_pokemon;
+  Pokemon * pok = &newest_pokemon;
 
   // Open the file for reading
   FILE *fp;

@@ -12,16 +12,16 @@
 #define CURRENT_MAX_NUM 4
 
                 //  id  name           qt  cost    function        arg
-item empty_item =   {0, "No Item"     , 1, 1000,  &do_nothing,      0};
-item potion =       {1, "Potion"      , 0, 300,   &execute_potion,  20};
-item super_potion = {2, "Super Potion", 0, 700,   &execute_potion,  50};
-item pokeball =     {3, "Pokeball"    , 0, 200,   &attempt_catch,   100};
-item greatball =    {4, "Great Ball"  , 0, 600,   &attempt_catch,   150};
+Item empty_item =   {0, "No Item"     , 1, 1000,  &do_nothing,      0};
+Item potion =       {1, "Potion"      , 0, 300,   &execute_potion,  20};
+Item super_potion = {2, "Super Potion", 0, 700,   &execute_potion,  50};
+Item pokeball =     {3, "Pokeball"    , 0, 200,   &attempt_catch,   100};
+Item greatball =    {4, "Great Ball"  , 0, 600,   &attempt_catch,   150};
 
 //NOTE: Make sure to add item to this list after creating it
 static * item_array[NUM_ITEMS] = { &empty_item, &potion, &super_potion, &pokeball, &greatball };
 
-static pokemon * enemy_pok;
+static Pokemon * enemy_pok;
 static int last_selection = 0;
 
 void items_init() {
@@ -29,7 +29,7 @@ void items_init() {
 }
 
 void print_mart() {
-  item * currItem;
+  Item * currItem;
   char print_str[128];
 
   for (int i = 1; i <= CURRENT_MAX_NUM; i++) {
@@ -45,7 +45,7 @@ void print_mart() {
 }
 
 int handle_mart() {
-  item example_item;
+  Item example_item;
   int inputNum, ch, maximum;
   char print_str[1024];
 
@@ -140,12 +140,12 @@ int handle_mart() {
   return ITEM_FAILURE;
 }
 
-item * get_item_by_id(int id_num) {
+Item * get_item_by_id(int id_num) {
   return item_array[id_num];
 }
 
-int use_item(int item_num, struct pokemon * enemy) {
-  item * this_item = &(player.bag[item_num]);
+int use_item(int item_num, struct Pokemon * enemy) {
+  Item * this_item = &(player.bag[item_num]);
   enemy_pok = enemy;
 
   int return_execute = this_item->execute(this_item->func_arg, this_item->name);

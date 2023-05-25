@@ -10,24 +10,24 @@
 #define NUM_ITEMS 50
 #define MAX_NUM_ITEM 4
 
-struct pokemon;
+struct Pokemon;
 
 typedef int (*item_func_ptr) (int, char *);
 
-typedef struct item {
+typedef struct Item {
   int id_num;
   char name[30];
   int number;
   int cost;
   item_func_ptr execute;
   int func_arg;
-} item;
+} Item;
 
-extern item empty_item;
-extern item potion;
-extern item super_potion;
-extern item pokeball;
-extern item greatball;
+extern Item empty_item;
+extern Item potion;
+extern Item super_potion;
+extern Item pokeball;
+extern Item greatball;
 
 void items_init();
 
@@ -35,9 +35,9 @@ void print_mart();
 
 int handle_mart();
 
-item * get_item_by_id(int id_num);
+Item * get_item_by_id(int id_num);
 
-int use_item(int item_num, struct pokemon * enemy);
+int use_item(int item_num, struct Pokemon * enemy);
 
 int execute_potion(int input_num, char * name);
 
