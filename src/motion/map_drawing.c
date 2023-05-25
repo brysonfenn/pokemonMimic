@@ -28,7 +28,9 @@ void begin_message_box() {
 //Print a message to the bottom box
 void print_to_message_box(const char * message_str) {
     if (message_line > 2) begin_message_box();
-    mvprintw(MESSAGE_BOX_Y+1 + message_line, MESSAGE_BOX_X+1, message_str);
+
+    mvprintw(MESSAGE_BOX_Y+1 + message_line, MESSAGE_BOX_X+2, message_str);
+    refresh();
     message_line++;
 }
 

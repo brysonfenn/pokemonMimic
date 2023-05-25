@@ -59,10 +59,8 @@ void * get_selectable(int player_x, int player_y, char player_char, bool * is_tr
         if (player_x == selectables[i].x && player_y == selectables[i].y) {
             *is_trainer = selectables[i].is_trainer;
             attrset(COLOR_PAIR(TRAINER_COLOR));
-            mvprintw(player_y, player_x, "%c", trainer_char); refresh();
+            mvaddch(player_y, player_x, trainer_char); refresh();
             attrset(COLOR_PAIR(DEFAULT_COLOR));
-            mvprintw(MAP_Y+MAP_HEIGHT+1,MAP_X+1,"Let's battle!"); refresh();
-            sleep(2);
             return selectables[i].data;
         }
     }

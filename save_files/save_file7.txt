@@ -1,7 +1,7 @@
-Last Saved: 05/24/2023 22:09:24
+Last Saved: 05/25/2023 16:38:30
 Player: 
 4 2 1900
-Location: {1,(32,10)}
+Location: {2,(4,11)}
 Heal Center: {1,(33,10)}
 Pokemon: 
 Charmander 4 26 26 3 14 12 11 10 16 9 46 FIRE NONE 0 0

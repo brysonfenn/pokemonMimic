@@ -48,13 +48,11 @@ void handle_motion() {
     Trainer * trainer_ptr;
     char * message_ptr;
 
-
     change_map(player.loc->map, *player_x, *player_y);
 
     int ch;
     char next_char;
 
-    flushinp();
     while (1) {
         flushinp();
         if ((ch = getch()) == 'm') break;
@@ -65,6 +63,7 @@ void handle_motion() {
                 if (player_char != PLAYER_MOVING_UP) player_char = PLAYER_MOVING_UP;
                 else if (*player_y > 1 && is_movable_space(-1,0)) (*player_y)--;
                 break;
+
             case KEY_DOWN:
                 next_char = mvinch(*player_y+1, *player_x);
                 if (player_char != PLAYER_MOVING_DOWN) player_char = PLAYER_MOVING_DOWN;
@@ -81,6 +80,7 @@ void handle_motion() {
                 //Else just move one down
             	else if (*player_y < 20 && is_movable_space(1,0)) (*player_y)++;
                 break;
+
             case KEY_LEFT:
                 if (player_char != PLAYER_MOVING_LEFT) player_char = PLAYER_MOVING_LEFT;
                 //Move only one space if next space is surrounded (door);
@@ -91,6 +91,7 @@ void handle_motion() {
                 //Only move one space if there is only one space to move
                 else if (*player_x > 1 && is_movable_space(0,-1)) (*player_x)--;
                 break;
+
             case KEY_RIGHT:
                 if (player_char != PLAYER_MOVING_RIGHT) player_char = PLAYER_MOVING_RIGHT;
                 //Move only one space if next space is surrounded (door);
@@ -101,12 +102,14 @@ void handle_motion() {
                 //Only move one space if there is only one space to move
                 else if (*player_x < 100 && is_movable_space(0,1)) (*player_x)++;
                 break;
+
             case 'a':
                 //Redraw player
                 attrset(COLOR_PAIR(PLAYER_COLOR)); mvaddch(*player_y, *player_x, player_char); 
                 selected_ptr = get_selectable(*player_x, *player_y, player_char, &is_trainer);
                 if (is_trainer) {
                     trainer_ptr = (Trainer *) selected_ptr;
+                    print_to_message_box("\"Let's battle!\""); sleep(2);
                     battle_trainer(trainer_ptr);
                     init_map();
                     continue;
