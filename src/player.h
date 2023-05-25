@@ -20,6 +20,7 @@ struct playerCharacter {
   bool trainer_battle;
   struct pokemon * enemy_pokemon;
   struct Location * loc;
+  struct Location * blackout_center;
 };
 
 extern struct playerCharacter player;

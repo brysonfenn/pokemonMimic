@@ -6,6 +6,7 @@
 #include "print_defines.h"
 #include "player.h"
 #include "monsters/pokemon.h"
+#include "motion/location.h"
 
 #define NUM_ITEMS 50
 #define CURRENT_MAX_NUM 4
@@ -47,6 +48,8 @@ int handle_mart() {
   item example_item;
   int inputNum, ch, maximum;
   char print_str[1024];
+
+  player.loc->y += 1; //Set player location to south
   
   begin_list();
   print_to_list("Mart\n");

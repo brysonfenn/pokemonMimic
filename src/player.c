@@ -19,6 +19,7 @@ void default_load();
 void player_init(int save_file) {
   player.bag = malloc(sizeof(item) * 30);
   player.loc = malloc(sizeof(Location));
+  player.blackout_center = malloc(sizeof(Location));
   player.party = malloc(sizeof(pokemon) * 6);
   
   if (!save_file)
@@ -43,7 +44,11 @@ void default_load() {
 
   player.loc->x = MAP_X + 10;
   player.loc->y = MAP_Y + 10;
-  player.loc->map = 1;
+  player.loc->map = 4;
+
+  player.blackout_center->x = MAP_X + 10;
+  player.blackout_center->y = MAP_Y + 10;
+  player.blackout_center->map = 4;
 }
 
 bool runAttempt() {
@@ -88,9 +93,14 @@ void handle_poke_center() {
   print_to_list("  Heal Pokémon\n  Exit");
   inputNum = get_selection(LIST_BOX_Y+3, 0, 1,0);
 
+  player.loc->y += 1; //Set player location to outside
+
   clear();
   if (inputNum == 1 || inputNum == PRESSED_B) return;
   else if (inputNum == 0) {
+    player.blackout_center->x = player.loc->x;
+    player.blackout_center->y = player.loc->y;
+    player.blackout_center->map = player.loc->map;
     heal_party();
   }
 }

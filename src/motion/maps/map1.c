@@ -56,11 +56,9 @@ int actions_map1(int player_x, int player_y) {
     switch (action) {
         case MART_ACTION:
             while (handle_mart() == ITEM_FAILURE) { clear(); }
-            player.loc->y += 1;
             break;
         case POKE_CENTER_ACTION:
             handle_poke_center();
-            player.loc->y += 1;
             break;
         default:
             break;

@@ -52,6 +52,7 @@ void handle_motion() {
     change_map(player.loc->map, *player_x, *player_y);
 
     int ch;
+    char next_char;
 
     flushinp();
     while ((ch = getch()) != 'm') {
@@ -62,7 +63,19 @@ void handle_motion() {
                 else if (*player_y > 1 && is_movable_space(-1,0)) (*player_y)--;
                 break;
             case KEY_DOWN:
+                next_char = mvinch(*player_y+1, *player_x);
                 if (player_char != PLAYER_MOVING_DOWN) player_char = PLAYER_MOVING_DOWN;
+                //If it is a fence, jump it
+                else if (next_char == '-') {
+                    attrset(COLOR_PAIR(PLAYER_COLOR));
+                    mvaddch(++(*player_y), *player_x, player_char); refresh();
+                    usleep(300000);
+                    mvaddch(++(*player_y), *player_x, player_char); refresh();
+                    attrset(COLOR_PAIR(DEFAULT_COLOR));
+                    mvaddch((*player_y-1), *player_x, '-');
+                    flushinp(); continue;
+                }
+                //Else just move one down
             	else if (*player_y < 20 && is_movable_space(1,0)) (*player_y)++;
                 break;
             case KEY_LEFT:

@@ -64,6 +64,7 @@ int save_game(int file_num) {
 	// Write the message to the file
 	fprintf(fp, "Player: \n%d %d %d\n", player.numInParty, player.numInBag, player.money);
 	fprintf(fp, "Location: {%d,(%d,%d)}\n", player.loc->map, player.loc->x, player.loc->y);
+	fprintf(fp, "Heal Center: {%d,(%d,%d)}\n", player.blackout_center->map, player.blackout_center->x, player.blackout_center->y);
 	fprintf(fp, "Pokemon: \n");
 	for (int i = 0; i < player.numInParty; i++) {
 		curr_pok = player.party[i];
@@ -124,13 +125,20 @@ int load_game(int file_num) {
     fgets(line, LINE_SIZE, fp);
     sscanf(line, "%d %d %d", &(player.numInParty), &(player.numInBag), &(player.money));
 
-	fgets(line, LINE_SIZE, fp);
 	int map, new_x, new_y;
+	fgets(line, LINE_SIZE, fp);
 	sscanf(line, "Location: {%d,(%d,%d)}", &map, &(new_x), &(new_y));
 
 	player.loc->map = map;
 	player.loc->x = new_x;
 	player.loc->y = new_y;
+
+	fgets(line, LINE_SIZE, fp);
+	sscanf(line, "Heal Center: {%d,(%d,%d)}", &map, &(new_x), &(new_y));
+
+	player.blackout_center->map = map;
+	player.blackout_center->x = new_x;
+	player.blackout_center->y = new_y;
 
 	int matched_elements;
 

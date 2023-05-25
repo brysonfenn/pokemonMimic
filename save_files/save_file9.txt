@@ -1,7 +1,8 @@
-Last Saved: 05/18/2023 20:07:14
+Last Saved: 05/24/2023 22:09:32
 Player: 
 3 3 1000
 Location: {1,(13,11)}
+Heal Center: {1,(33,10)}
 Pokemon: 
 Kakuna 14 21 21 3 13 11 13 11 12 9 100 BUG NONE 0 0
 	Poison Sting. 6 35
@@ -11,7 +12,7 @@ Charmander 4 20 20 4 11 9 12 11 13 5 0 FIRE NONE 0 0
 	Scratch. 2 35
 	Growl. 3 40
 	Metal Claw. 17 15
-	Bite. 32 15
+	Skull Bash. 32 15
 Bulbasaur 1 20 20 2 11 10 13 13 11 5 0 GRASS POISON 0 0
 	Tackle. 1 35
 	Growl. 3 40
