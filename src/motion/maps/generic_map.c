@@ -24,19 +24,6 @@ void draw_generic_map() {
     refresh();
 }
 
-int actions_generic_map(int player_x, int player_y) {
-    Location door = *(get_door(player_x, player_y));
-    int action = door.action;
-    if (!action) return 0;
-
-    //Handle portal
-    if (action == -1) {
-        change_map(door.next_map, door.next_x, door.next_y);
-        return -1;
-    }
-
-    return 0;
-}
 
 void grass_generic_map() {
     attrset(COLOR_PAIR(GRASS_COLOR));

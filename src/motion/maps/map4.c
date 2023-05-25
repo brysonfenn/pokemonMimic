@@ -9,8 +9,6 @@
 #include "../../print_defines.h"
 #include "../../player.h"
 
-#define POKE_CENTER_ACTION 1
-
 void draw_map4() {
 
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
@@ -30,33 +28,6 @@ void draw_map4() {
     refresh();
 }
 
-int actions_map4(int player_x, int player_y) {
-    Location door = *(get_door(player_x, player_y));
-    int action = door.action;
-    if (!action) return 0;
-
-    //Handle portal
-    if (action == -1) {
-        change_map(door.next_map, door.next_x, door.next_y);
-        return -1;
-    }
-
-    sleep(1);
-
-    clear();
-
-    switch (action) {
-        case POKE_CENTER_ACTION:
-            handle_poke_center();
-            break;
-        default:
-            break;
-    }
-
-    clear();
-
-    return action;
-}
 
 void grass_map4() {
     attrset(COLOR_PAIR(GRASS_COLOR));

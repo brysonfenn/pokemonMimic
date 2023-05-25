@@ -12,8 +12,7 @@
 #include "../../items.h"
 #include "../../print_defines.h"
 
-#define MART_ACTION 1
-#define POKE_CENTER_ACTION 2
+
 #define TRAINER_BATTLE_ACTION 3
 
 Trainer trainer1 = {"Trainer Joseph", 3, {POKEMON_WEEDLE, POKEMON_PIDGEY, POKEMON_BULBASAUR}, {3,4,5} };
@@ -38,36 +37,6 @@ void draw_map1() {
     refresh();
 }
 
-int actions_map1(int player_x, int player_y) {
-    Location door = *(get_door(player_x, player_y));
-    int action = door.action;
-    if (!action) return 0;
-
-    //Handle portal
-    if (action == -1) {
-        change_map(door.next_map, door.next_x, door.next_y);
-        return -1;
-    }
-
-    sleep(1);
-
-    clear();
-
-    switch (action) {
-        case MART_ACTION:
-            while (handle_mart() == ITEM_FAILURE) { clear(); }
-            break;
-        case POKE_CENTER_ACTION:
-            handle_poke_center();
-            break;
-        default:
-            break;
-    }
-
-    clear();
-
-    return action;
-}
 
 void grass_map1() { 
     attrset(COLOR_PAIR(GRASS_COLOR));

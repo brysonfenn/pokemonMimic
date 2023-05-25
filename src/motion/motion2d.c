@@ -15,23 +15,26 @@
 #include "../print_utils.h"
 #include "../print_defines.h"
 #include "../player.h"
+#include "../items.h"
 #include "../battles/trainer.h"
 
-void init_map();
-
+//Function pointers
 typedef void (*init_map_func) ();
-typedef int (*map_actions_func) (int, int);
 
 static init_map_func draw_map;
-static map_actions_func map_actions;
 static init_map_func grass_map;
+
 
 static char player_char = PLAYER_MOVING_DOWN;
 
 static char * player_y;
 static char * player_x;
 
+// Forward Declarations
+void init_map();
+void handle_actions(int action_id);
 bool is_movable_space(int yInc, int xInc);
+
 
 // Draw the current map to the screen and handle player motion until user returns to the menu
 void handle_motion() {
@@ -137,12 +140,23 @@ void handle_motion() {
             init_map();
         }
 
-        // If action is executed, reinitialize the map
-        if (map_actions(*player_x, *player_y)) {
+        // Check if action or portal needs to be handled
+        Location door = *(get_door(*player_x, *player_y));
+        int action = door.action;
+
+        //Handle portal
+        if (action == -1) {
+            usleep(300000);
+            change_map(door.next_map, door.next_x, door.next_y);
+        }
+        else if (action != 0) {
+            usleep(300000);
+            handle_actions(action);
             init_map();
         }
     }
 }
+
 
 //Change and redraw the map and player
 void change_map(int map, int x, int y) {
@@ -154,10 +168,11 @@ void change_map(int map, int x, int y) {
     player.loc->x = x;
     player.loc->y = y;
     player.loc->map = map;
-    change_map_funcs(map, &draw_map, &map_actions, &grass_map);
+    change_map_funcs(map, &draw_map, &grass_map);
 
     init_map();
 }
+
 
 //Check if a given space movement would result in a collision
 bool is_movable_space(int yInc, int xInc) {
@@ -167,6 +182,7 @@ bool is_movable_space(int yInc, int xInc) {
     else
         return false;
 }
+
 
 //Draw map and player onto the screen
 void init_map() {
@@ -182,4 +198,20 @@ void init_map() {
     attrset(COLOR_PAIR(DEFAULT_COLOR));
 
     refresh();
+}
+
+
+//Handle all map actions
+void handle_actions(int action_id) {
+    switch (action_id) {
+        case MART_ACTION:
+            while (handle_mart() == ITEM_FAILURE) { clear(); }
+            break;
+        case POKE_CENTER_ACTION:
+            handle_poke_center();
+            break;
+        default:
+            break;
+    }
+    clear();
 }

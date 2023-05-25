@@ -14,6 +14,9 @@
 #define INTERIOR_WIDTH 28
 #define INTERIOR_HEIGHT 8
 
+#define MART_ACTION 1
+#define POKE_CENTER_ACTION 2
+
 #define GRASS_CHAR 'W'
 
 //Sides of map - used to call "draw_town_exit()"

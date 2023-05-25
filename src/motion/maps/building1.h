@@ -3,6 +3,4 @@
 
 void draw_b1();
 
-int actions_b1(int player_x, int player_y);
-
 #endif //BUILDING1_H
