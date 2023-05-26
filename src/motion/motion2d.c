@@ -38,13 +38,12 @@ bool is_movable_space(int yInc, int xInc);
 
 // Draw the current map to the screen and handle player motion until user returns to the menu
 void handle_motion() {
-    bool is_trainer = false;
     char print_str[256];
 
     player_y = &(player.loc->y);
     player_x = &(player.loc->x);
 
-    void * selected_ptr;
+    Selectable * selected_ptr;
     Trainer * trainer_ptr;
     char * message_ptr;
 
@@ -106,16 +105,21 @@ void handle_motion() {
             case 'a':
                 //Redraw player
                 attrset(COLOR_PAIR(PLAYER_COLOR)); mvaddch(*player_y, *player_x, player_char); 
-                selected_ptr = get_selectable(*player_x, *player_y, player_char, &is_trainer);
-                if (is_trainer) {
-                    trainer_ptr = (Trainer *) selected_ptr;
+                selected_ptr = get_selectable(*player_x, *player_y, player_char);
+                if (selected_ptr->is_trainer) {
+                    trainer_ptr = (Trainer *) selected_ptr->data;
+                    if (trainer_ptr->already_battled) {
+                        print_to_message_box("\"We already battled\"");
+                        continue;
+                    }
                     print_to_message_box("\"Let's battle!\""); sleep(2);
                     battle_trainer(trainer_ptr);
+                    trainer_ptr->already_battled = true;
                     init_map();
                     continue;
                 }
                 else {
-                    message_ptr = (char *) selected_ptr;
+                    message_ptr = (char *) selected_ptr->data;
                     if (strcmp(message_ptr,"NONE") == 0) continue;
                     mvprintw(21,MAP_X,message_ptr);
                 }
@@ -141,6 +145,7 @@ void handle_motion() {
             blink_screen(5, init_map);
             battle_wild_pokemon();
             init_map();
+            continue;
         }
 
         // Check if action or portal needs to be handled
@@ -151,11 +156,41 @@ void handle_motion() {
         if (action == -1) {
             usleep(300000);
             change_map(door.next_map, door.next_x, door.next_y);
+            continue;
         }
         else if (action != 0) {
             usleep(300000);
             handle_actions(action);
             init_map();
+            continue;
+        }
+
+        //Handle trainers in range
+        int x_inc, y_inc;
+        int * trainer_x;
+        int * trainer_y;
+        char trainer_ch;
+
+        Selectable * curr_sel = get_triggered_selectable(*player_x, *player_y, &x_inc, &y_inc);
+        if (curr_sel->x != 0) {
+            trainer_ptr = (Trainer *) curr_sel->data;
+            trainer_x = &(curr_sel->x);
+            trainer_y = &(curr_sel->y);
+            trainer_ch = mvinch(*trainer_y, *trainer_x);
+            
+            while (mvinch(*trainer_y + y_inc, *trainer_x + x_inc) == ' ') {
+                attrset(COLOR_PAIR(TRAINER_COLOR));
+                mvaddch(*trainer_y, *trainer_x, ' ');
+                *trainer_y += y_inc; *trainer_x += x_inc;
+                mvaddch(*trainer_y, *trainer_x, trainer_ch);
+                attrset(COLOR_PAIR(DEFAULT_COLOR));
+                refresh();
+                usleep(100000);
+            }
+            print_to_message_box("\"Let's battle!\""); sleep(2);
+            battle_trainer(trainer_ptr);
+            trainer_ptr->already_battled = true;
+            init_map(); continue;
         }
     }
 }

@@ -14,9 +14,9 @@
 #include "../../print_defines.h"
 
 
-static Trainer trainer3 = {"Trainer John", 3, {POKEMON_BEEDRILL, POKEMON_SANDSHREW, POKEMON_PIDGEY}, {7,4,6} };
-static Trainer trainer4 = {"Bugcatcher David", 1, {POKEMON_KAKUNA}, {7} };
-static Trainer trainer5 = {"Trainer Steven", 3, {POKEMON_IVYSAUR, POKEMON_CHARMELEON, POKEMON_WARTORTLE}, {5,6,7} };
+static Trainer trainer3 = {"Trainer John", 3, {POKEMON_BEEDRILL, POKEMON_SANDSHREW, POKEMON_PIDGEY}, {7,4,6}, 0 };
+static Trainer trainer4 = {"Bugcatcher David", 1, {POKEMON_KAKUNA}, {7}, 0 };
+static Trainer trainer5 = {"Trainer Steven", 3, {POKEMON_IVYSAUR, POKEMON_CHARMELEON, POKEMON_WARTORTLE}, {5,6,7}, 0 };
 
 void draw_map2() {
 

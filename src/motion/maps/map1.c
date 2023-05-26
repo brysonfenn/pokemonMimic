@@ -16,7 +16,7 @@
 
 #define TRAINER_BATTLE_ACTION 3
 
-Trainer trainer1 = {"Trainer Joseph", 3, {POKEMON_WEEDLE, POKEMON_PIDGEY, POKEMON_BULBASAUR}, {3,4,5} };
+Trainer trainer1 = {"Trainer Joseph", 3, {POKEMON_WEEDLE, POKEMON_PIDGEY, POKEMON_BULBASAUR}, {3,4,5}, 0 };
 
 void draw_map1() {
 

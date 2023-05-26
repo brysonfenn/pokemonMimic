@@ -8,26 +8,21 @@
 #include "map_drawing.h"
 #include "../print_defines.h"
 
-typedef struct Selectable {
-    int x;
-    int y;
-    bool is_trainer;
-    void * data;
-} Selectable;
+#define VISUAL_DISTANCE 10
 
 static Selectable selectables[30];
 static int num_selectables = 0;
 
-
-static const char * empty_selectable = "NONE";
+static const char * empty_string = "NONE";
+static Selectable empty_selectable = {0, 0, 0, &empty_string};
 
 //Add a trainer at a given location
 void add_trainer(char x, char y, struct Trainer * trainer, char face_direction) {
-    Trainer * new_trainer = malloc(sizeof(Trainer));
-    (*new_trainer) = (*trainer);
+    // Trainer * new_trainer = malloc(sizeof(Trainer));
+    // (*new_trainer) = (*trainer);
 
     Selectable new_selectable;
-    new_selectable.data = new_trainer;
+    new_selectable.data = trainer;
     new_selectable.x = x;
     new_selectable.y = y;
     new_selectable.is_trainer = true;
@@ -46,8 +41,7 @@ void add_selectable_message(char x, char y, char * message) {
 }
 
 // Return a door (if there is one) at player location, else return zero-door
-void * get_selectable(int player_x, int player_y, char player_char, bool * is_trainer) {
-    *is_trainer = false;
+Selectable * get_selectable(int player_x, int player_y, char player_char) {
     char trainer_char;
 
     if (player_char == PLAYER_MOVING_LEFT) { player_x--; trainer_char = PLAYER_MOVING_RIGHT; }
@@ -57,14 +51,14 @@ void * get_selectable(int player_x, int player_y, char player_char, bool * is_tr
 
     for (int i = 0; i < num_selectables; i++) {
         if (player_x == selectables[i].x && player_y == selectables[i].y) {
-            *is_trainer = selectables[i].is_trainer;
+
             attrset(COLOR_PAIR(TRAINER_COLOR));
             mvaddch(player_y, player_x, trainer_char); refresh();
             attrset(COLOR_PAIR(DEFAULT_COLOR));
-            return selectables[i].data;
+            return &(selectables[i]);
         }
     }
-    return empty_selectable;
+    return &empty_selectable;
 }
 
 //Erase selectable list
@@ -73,4 +67,54 @@ void clear_selectables() {
         free(selectables[i].data);
     }
     num_selectables = 0;
+}
+
+
+//Return a selectable containing a trainer if it is within battle distance of the player
+//  x_inc and y_inc will indicate which direction the trainer should move
+Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, int *y_inc) {
+    Selectable * curr_sel;
+    int x = 0;
+    int y = 0;
+    int distance;
+    *x_inc = 0;
+    *y_inc = 0;
+
+    for (int i = 0; i < num_selectables; i++) {
+        curr_sel = &(selectables[i]);
+        if (curr_sel->is_trainer) {
+            Trainer * trainer_ptr = (Trainer *) curr_sel->data;
+            if (trainer_ptr->already_battled) continue;
+            x = curr_sel->x;
+            y = curr_sel->y;
+            char ch = mvinch(y,x);
+            switch (ch) {
+                case PLAYER_MOVING_LEFT:
+                    *x_inc = -1;
+                    distance = x - player_x;
+                    if (distance < VISUAL_DISTANCE && distance > 0 && y == player_y) return curr_sel;
+                    break;
+                case PLAYER_MOVING_RIGHT:
+                    *x_inc = 1;
+                    distance = player_x - x;
+                    if (distance < VISUAL_DISTANCE && distance > 0 && y == player_y) return curr_sel;
+                    break;
+                case PLAYER_MOVING_UP:
+                    *y_inc = -1;
+                    distance = y - player_y;
+                    if (distance < VISUAL_DISTANCE && distance > 0 && x == player_x) return curr_sel;
+                    break;
+                case PLAYER_MOVING_DOWN:
+                    *y_inc = 1;
+                    distance = player_y - y;
+                    if (distance < VISUAL_DISTANCE && distance > 0 && x == player_x) return curr_sel;
+                    break;
+                default:
+                    print_to_message_box("Found incorrect trainer character");
+                    break;
+            }
+        }
+    }
+    
+    return &empty_selectable;
 }

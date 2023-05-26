@@ -17,7 +17,7 @@ void begin_message_box() {
     //Clear box
     int start_y = MESSAGE_BOX_Y+1;
     int start_x = MESSAGE_BOX_X+1;
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 3; i++) {
         mvprintw(start_y+i, start_x, "                                                        ");
     }
     
