@@ -111,14 +111,16 @@ int battle_trainer(Trainer * trainer) {
     player.money += money_earned;
     refresh(); sleep(2);
   }
+
+  for (int i = 0; i < player.numInParty; i++) {
+    reset_stat_stages(&(player.party[i]));
+  }
   
   if (battle_result == BATTLE_WHITE_OUT) {
     return BATTLE_WHITE_OUT;
   }
   else {
-    for (int i = 0; i < player.numInParty; i++) {
-      reset_stat_stages(&(player.party[i]));
-    }
+    trainer->already_battled = true;
     return BATTLE_WIN;
   }
 }

@@ -114,7 +114,6 @@ void handle_motion() {
                     }
                     print_to_message_box("\"Let's battle!\""); sleep(2);
                     battle_trainer(trainer_ptr);
-                    trainer_ptr->already_battled = true;
                     init_map();
                     continue;
                 }
@@ -189,7 +188,6 @@ void handle_motion() {
             }
             print_to_message_box("\"Let's battle!\""); sleep(2);
             battle_trainer(trainer_ptr);
-            trainer_ptr->already_battled = true;
             init_map(); continue;
         }
     }

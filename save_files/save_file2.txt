@@ -1,0 +1,13 @@
+Last Saved: 05/26/2023 07:21:29
+Player: 
+1 3 1000
+Location: {2,(8,11)}
+Heal Center: {1,(32,10)}
+Pokemon: 
+Bulbasaur 1 20 20 2 11 10 12 12 10 5 15 GRASS POISON 0 0
+	Tackle. 1 35
+	Growl. 3 40
+Bag:
+Potion. 1 2
+Super Potion. 2 2
+Pokeball. 3 5

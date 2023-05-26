@@ -122,7 +122,7 @@ void main_menu() {
         print_save_files();
         inputNum = get_selection(LIST_BOX_Y+2, 0, 9, 0);
 
-        if (inputNum == 9) { current_display = MAIN; break; }
+        if (inputNum == 9 || inputNum == PRESSED_B) { current_display = MAIN; break; }
         load_game(inputNum+1);
         current_display = MAIN;
         break;
