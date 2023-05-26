@@ -10,8 +10,8 @@
 
 #include "../../player.h"
 #include "../../battles/trainer.h"
-#include "../../print_utils.h"
-#include "../../print_defines.h"
+#include "../../print/print_utils.h"
+#include "../../print/print_defines.h"
 
 
 static Trainer trainer1 = {"Trainer John", 3, {POKEMON_BEEDRILL, POKEMON_SANDSHREW, POKEMON_PIDGEY}, {7,4,6}, 0 };

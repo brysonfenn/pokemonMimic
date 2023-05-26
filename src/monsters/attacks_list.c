@@ -4,8 +4,8 @@
 
 #include "../player.h"
 #include "conditions.h"
-#include "../print_defines.h"
-#include "../print_utils.h"
+#include "../print/print_defines.h"
+#include "../print/print_utils.h"
 #include "pokemon.h"
 
 #define NUM_ATTACKS 50

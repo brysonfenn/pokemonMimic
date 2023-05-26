@@ -12,8 +12,8 @@
 #include "selectables.h"
 
 #include "../battles/wild_pokemon.h"
-#include "../print_utils.h"
-#include "../print_defines.h"
+#include "../print/print_utils.h"
+#include "../print/print_defines.h"
 #include "../player.h"
 #include "../items.h"
 #include "../battles/trainer.h"

@@ -6,8 +6,8 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "../print_utils.h"
-#include "../print_defines.h"
+#include "../print/print_utils.h"
+#include "../print/print_defines.h"
 #include "../player.h"
 
 //Give random stats to pokemon based on level

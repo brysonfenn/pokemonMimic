@@ -10,13 +10,14 @@
 #include <ncurses.h>
 #include <locale.h>
 
-#include "monsters/conditions.h"
-#include "player.h"
-#include "monsters/pokemon.h"
-#include "battles/battle.h"
+#include "../monsters/conditions.h"
+#include "../player.h"
+#include "../monsters/pokemon.h"
+#include "../battles/battle.h"
+#include "../items.h"
+#include "../motion/map_drawing.h"
+
 #include "print_defines.h"
-#include "items.h"
-#include "motion/map_drawing.h"
 
 void printParty() {
   char party_str[1024] = "";

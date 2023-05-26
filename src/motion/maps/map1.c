@@ -9,9 +9,10 @@
 
 #include "../../player.h"
 #include "../../battles/trainer.h"
-#include "../../print_utils.h"
+#include "../../print/print_utils.h"
+#include "../../print/print_defines.h"
 #include "../../items.h"
-#include "../../print_defines.h"
+
 
 
 #define TRAINER_BATTLE_ACTION 3

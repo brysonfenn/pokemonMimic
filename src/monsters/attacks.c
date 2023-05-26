@@ -3,8 +3,8 @@
 #include <ncurses.h> 
 
 #include "pokemon.h"
-#include "../print_utils.h"
-#include "../print_defines.h"
+#include "../print/print_utils.h"
+#include "../print/print_defines.h"
 
 #define CRITICAL_HIT_FLAG 0x01
 

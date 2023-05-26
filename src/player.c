@@ -8,8 +8,8 @@
 #include "monsters/pokemon.h"
 #include "motion/location.h"
 #include "motion/map_drawing.h"
-#include "print_utils.h"
-#include "print_defines.h"
+#include "print/print_utils.h"
+#include "print/print_defines.h"
 #include "items.h"
 
 struct playerCharacter player;

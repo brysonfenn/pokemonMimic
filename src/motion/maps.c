@@ -12,7 +12,7 @@
 #include "motion2d.h"
 #include "location.h"
 #include "../player.h"
-#include "../print_utils.h"
+#include "../print/print_utils.h"
 
 //Don't draw any grass for building maps
 void no_grass() {}

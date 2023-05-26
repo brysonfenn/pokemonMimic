@@ -4,8 +4,8 @@
 
 #include "../maps.h"
 #include "../map_drawing.h"
-#include "../../print_defines.h"
-#include "../../print_utils.h"
+#include "../../print/print_defines.h"
+#include "../../print/print_utils.h"
 
 void draw_b1() {
     draw_interior(MAP_X+24, MAP_Y+MAP_HEIGHT-3, MAP_STARTER_TOWN);

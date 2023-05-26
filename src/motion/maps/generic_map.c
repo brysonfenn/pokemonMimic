@@ -7,7 +7,7 @@
 #include "../doors.h"
 #include "../maps.h"
 
-#include "../../print_defines.h"
+#include "../../print/print_defines.h"
 
 
 void draw_generic_map() {

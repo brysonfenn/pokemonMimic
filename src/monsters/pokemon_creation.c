@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <ncurses.h>
 
-#include "../print_utils.h"
-#include "../print_defines.h"
+#include "../print/print_utils.h"
+#include "../print/print_defines.h"
 #include "../player.h"
 #include "../motion/location.h"
 

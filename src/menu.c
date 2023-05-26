@@ -5,8 +5,8 @@
 #include <ncurses.h>
 
 #include "player.h"
-#include "print_defines.h"
-#include "print_utils.h"
+#include "print/print_defines.h"
+#include "print/print_utils.h"
 #include "monsters/pokemon.h"
 #include "items.h"
 #include "battles/trainer.h"

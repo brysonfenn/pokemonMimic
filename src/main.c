@@ -6,8 +6,8 @@
 #include <termios.h>
 #include <unistd.h>
 
-#include "print_utils.h"
-#include "print_defines.h"
+#include "print/print_utils.h"
+#include "print/print_defines.h"
 #include "load_save.h"
 #include "player.h"
 #include "monsters/pokemon.h"

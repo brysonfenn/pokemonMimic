@@ -4,7 +4,7 @@
 
 #include "../player.h"
 #include "../monsters/pokemon.h"
-#include "../print_utils.h"
+#include "../print/print_utils.h"
 #include "battle.h"
 
 //Battle a random wild pokemon

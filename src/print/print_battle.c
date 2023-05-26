@@ -3,8 +3,9 @@
 #include <ncurses.h>
 
 #include "print_defines.h"
-#include "player.h"
-#include "monsters/pokemon.h"
+
+#include "../player.h"
+#include "../monsters/pokemon.h"
 
 #define BLINK_TIME_MICROS 100000
 

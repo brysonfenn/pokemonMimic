@@ -6,7 +6,7 @@
 
 #include "../battles/trainer.h"
 #include "map_drawing.h"
-#include "../print_defines.h"
+#include "../print/print_defines.h"
 
 #define VISUAL_DISTANCE 10
 

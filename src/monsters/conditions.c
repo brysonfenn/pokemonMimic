@@ -2,8 +2,8 @@
 
 #include "pokemon.h"
 #include "../player.h"
-#include "../print_utils.h"
-#include "../print_defines.h"
+#include "../print/print_utils.h"
+#include "../print/print_defines.h"
 
 //Inflict condition on pok given, handle accuracy
 int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok) {

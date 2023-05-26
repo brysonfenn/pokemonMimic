@@ -9,8 +9,8 @@
 #include "items.h"
 #include "motion/location.h"
 #include "monsters/typings.h"
-#include "print_defines.h"
-#include "print_utils.h"
+#include "print/print_defines.h"
+#include "print/print_utils.h"
 
 #define LINE_SIZE 1024
 

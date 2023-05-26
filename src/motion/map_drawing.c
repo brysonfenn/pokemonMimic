@@ -4,8 +4,8 @@
 
 #include "location.h"
 #include "doors.h"
-#include "../print_utils.h"
-#include "../print_defines.h"
+#include "../print/print_utils.h"
+#include "../print/print_defines.h"
 
 #define MESSAGE_BOX_X MAP_X
 #define MESSAGE_BOX_Y (MAP_Y+MAP_HEIGHT)

@@ -4,8 +4,8 @@
 
 #include "pokemon.h"
 #include "../player.h"
-#include "../print_utils.h"
-#include "../print_defines.h"
+#include "../print/print_utils.h"
+#include "../print/print_defines.h"
 
 #define NUM_TYPES 18
 
