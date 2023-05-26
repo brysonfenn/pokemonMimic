@@ -14,9 +14,9 @@
 #include "../../print_defines.h"
 
 
-static Trainer trainer3 = {"Trainer John", 3, {POKEMON_BEEDRILL, POKEMON_SANDSHREW, POKEMON_PIDGEY}, {7,4,6}, 0 };
-static Trainer trainer4 = {"Bugcatcher David", 1, {POKEMON_KAKUNA}, {7}, 0 };
-static Trainer trainer5 = {"Trainer Steven", 3, {POKEMON_IVYSAUR, POKEMON_CHARMELEON, POKEMON_WARTORTLE}, {5,6,7}, 0 };
+static Trainer trainer1 = {"Trainer John", 3, {POKEMON_BEEDRILL, POKEMON_SANDSHREW, POKEMON_PIDGEY}, {7,4,6}, 0 };
+static Trainer trainer2 = {"Bugcatcher David", 1, {POKEMON_KAKUNA}, {7}, 0 };
+static Trainer trainer3 = {"Trainer Steven", 3, {POKEMON_IVYSAUR, POKEMON_CHARMELEON, POKEMON_WARTORTLE}, {5,6,7}, 0 };
 
 void draw_map2() {
 
@@ -29,9 +29,9 @@ void draw_map2() {
     draw_town_exit(MAP_BOTTOM, 10);
     add_exit_portal(MAP_BOTTOM, 10, MAP_VIRIDIAN);
     
-    add_trainer(MAP_X+1, MAP_Y+8, &trainer3, PLAYER_MOVING_RIGHT);
-    add_trainer(MAP_X+15, MAP_Y+5, &trainer4, PLAYER_MOVING_LEFT);
-    add_trainer(MAP_X+1, MAP_Y+2, &trainer5, PLAYER_MOVING_RIGHT);
+    add_trainer(MAP_X+1, MAP_Y+8, &trainer1, PLAYER_MOVING_RIGHT);
+    add_trainer(MAP_X+15, MAP_Y+5, &trainer2, PLAYER_MOVING_LEFT);
+    add_trainer(MAP_X+1, MAP_Y+2, &trainer3, PLAYER_MOVING_RIGHT);
 
     grass_map2();
 

@@ -101,11 +101,19 @@ int battle_trainer(Trainer * trainer) {
     
     if (battle_result == BATTLE_WHITE_OUT) return BATTLE_WHITE_OUT;
 
+    //Notify victory
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("B defeated %s", trainer->name);
     refresh(); sleep(2);
-    int money_earned = (trainer->num_in_party * 200) - 100;
 
+    //Calculate money earned
+    int money_earned = 0;
+    for (int i = 0; i < trainer->num_in_party; i++) {
+      money_earned += (trainer->levels[i] * 5) - (rand() % 5);
+    }
+    money_earned *= 5;
+
+    //Notify money earned
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("B gained $%d for defeating %s", money_earned, trainer->name);
     player.money += money_earned;

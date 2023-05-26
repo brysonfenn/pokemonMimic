@@ -255,9 +255,11 @@ void handle_actions(int action_id) {
     switch (action_id) {
         case MART_ACTION:
             while (handle_mart() == ITEM_FAILURE) { clear(); }
+            player.loc->y += 1; //Set player location to outside
             break;
         case POKE_CENTER_ACTION:
             handle_poke_center();
+            player.loc->y += 1; //Set player location to outside
             break;
         default:
             break;

@@ -48,8 +48,6 @@ int handle_mart() {
   Item example_item;
   int inputNum, ch, maximum;
   char print_str[1024];
-
-  player.loc->y += 1; //Set player location to south
   
   begin_list();
   print_to_list("Mart\n");

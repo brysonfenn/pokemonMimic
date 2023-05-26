@@ -16,8 +16,6 @@ static enum display { WILD, TRAINER, TOWN, POKEMON, BAG, PLAYER, SAVE, LOAD,
 
 static bool power_off = false;
 
-Trainer trainer2 = {"Trainer Mark", 3, {POKEMON_CATERPIE, POKEMON_SANDSHREW, POKEMON_IVYSAUR}, {3,4,6}, 0 };
-
 void main_menu() {
 
     int inputNum, inputNum2, return_execute, num_files, selected_poke;
@@ -59,7 +57,6 @@ void main_menu() {
 
         //Battle a trainer
         case TRAINER:
-        battle_trainer(&trainer2);
         current_display = MAIN;
         break;
 

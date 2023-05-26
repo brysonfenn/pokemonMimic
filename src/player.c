@@ -93,8 +93,6 @@ void handle_poke_center() {
   print_to_list("  Heal Pokémon\n  Exit");
   inputNum = get_selection(LIST_BOX_Y+3, 0, 1,0);
 
-  player.loc->y += 1; //Set player location to outside
-
   clear();
   if (inputNum == 1 || inputNum == PRESSED_B) return;
   else if (inputNum == 0) {
