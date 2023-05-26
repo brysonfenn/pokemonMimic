@@ -13,11 +13,14 @@
 static Selectable selectables[30];
 static int num_selectables = 0;
 
-static const char * empty_string = "NONE";
-static Selectable empty_selectable = {0, 0, 0, &empty_string};
+const char * empty_string = "NONE";
+static Selectable empty_selectable = {0, 0, 0};
 
 //Add a trainer at a given location
 void add_trainer(char x, char y, struct Trainer * trainer, char face_direction) {
+    //initialize empty selectable
+    empty_selectable.data = empty_string;
+
     // Trainer * new_trainer = malloc(sizeof(Trainer));
     // (*new_trainer) = (*trainer);
 
@@ -50,13 +53,12 @@ Selectable * get_selectable(int player_x, int player_y, char player_char) {
     else { player_y++; trainer_char = PLAYER_MOVING_UP; }
 
     for (int i = 0; i < num_selectables; i++) {
-        if ((mvinch(player_y, player_x) & A_CHARTEXT) == ' ') continue;
 
         if (player_x == selectables[i].x && player_y == selectables[i].y) {
-
             attrset(COLOR_PAIR(TRAINER_COLOR));
             mvaddch(player_y, player_x, trainer_char); refresh();
             attrset(COLOR_PAIR(DEFAULT_COLOR));
+
             return &(selectables[i]);
         }
     }

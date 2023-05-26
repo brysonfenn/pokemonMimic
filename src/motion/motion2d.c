@@ -122,7 +122,7 @@ void handle_motion() {
                 else {
                     message_ptr = (char *) selectable_ptr->data;
                     if (strcmp(message_ptr,"NONE") == 0) continue;
-                    mvprintw(21,MAP_X,message_ptr);
+                    print_to_message_box(message_ptr);
                 }
                 break;
         }
@@ -180,7 +180,7 @@ void handle_motion() {
             trainer_y = &(curr_sel->y);
             trainer_ch = mvinch(*trainer_y, *trainer_x);
             
-            while (mvinch(*trainer_y + y_inc, *trainer_x + x_inc) == ' ') {
+            while ((mvinch(*trainer_y + y_inc, *trainer_x + x_inc) & A_CHARTEXT) == ' ') {
                 attrset(COLOR_PAIR(TRAINER_COLOR));
                 mvaddch(*trainer_y, *trainer_x, ' ');
                 *trainer_y += y_inc; *trainer_x += x_inc;

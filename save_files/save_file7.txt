@@ -1,16 +1,16 @@
-Last Saved: 05/25/2023 16:38:30
+Last Saved: 05/26/2023 10:27:15
 Player: 
-4 2 1900
-Location: {2,(4,11)}
-Heal Center: {1,(33,10)}
+4 1 2500
+Location: {2,(10,8)}
+Heal Center: {1,(32,10)}
 Pokemon: 
-Charmander 4 26 26 3 14 12 11 10 16 9 46 FIRE NONE 0 0
+Charmander 4 27 27 3 15 13 11 10 18 10 70 FIRE NONE 0 0
 	Scratch. 2 35
 	Growl. 3 40
 	Ember. 12 25
 Pidgey 16 17 17 1 8 8 6 6 9 4 18 NORMAL FLYING 0 0
 	Tackle. 1 35
-Sandshrew 27 22 22 2 14 15 8 8 9 6 2 GROUND NONE 0 0
+Sandshrew 27 22 22 2 14 15 8 8 9 6 24 GROUND NONE 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
 Bulbasaur 1 25 25 3 12 12 14 14 12 8 11 GRASS POISON 0 0
@@ -18,5 +18,4 @@ Bulbasaur 1 25 25 3 12 12 14 14 12 8 11 GRASS POISON 0 0
 	Growl. 3 40
 	Leech seed. 11 10
 Bag:
-Super Potion. 2 2
 Pokeball. 3 6
