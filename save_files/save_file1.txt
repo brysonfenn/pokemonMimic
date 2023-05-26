@@ -1,12 +1,13 @@
-Last Saved: 05/26/2023 11:00:28
+Last Saved: 05/26/2023 14:52:44
 Player: 
-2 3 1000
-Location: {1,(33,10)}
+2 3 1100
+Location: {2,(19,6)}
 Heal Center: {1,(33,10)}
 Pokemon: 
-Bulbasaur 1 21 21 2 10 10 12 12 10 6 40 GRASS POISON 0 0
-	Tackle. 1 35
+Bulbasaur 1 23 23 3 11 11 12 12 11 7 26 GRASS POISON 0 0
+	Tackle. 1 14
 	Growl. 3 40
+	Leech seed. 11 10
 Rattata 19 16 16 2 10 8 7 8 10 4 28 NORMAL NONE 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30

@@ -99,17 +99,8 @@ void main_menu() {
         //Display player data
         case PLAYER:
         begin_list();
-        print_to_list("Original Window");
-        sleep(2);
-        save_print_state();
-        clear();
-
-        begin_list();
         printPlayer();
         sleep(2);
-        restore_print_state();
-        sleep(2);
-
         current_display = MAIN;
         break;
 

@@ -35,6 +35,7 @@ void init_map();
 void handle_actions(int action_id);
 bool is_movable_space(int yInc, int xInc);
 
+static int leave_msg_count = 0;
 
 // Draw the current map to the screen and handle player motion until user returns to the menu
 void handle_motion() {
@@ -56,7 +57,10 @@ void handle_motion() {
         flushinp();
         if ((ch = getch()) == 'm') break;
 
-        begin_message_box();
+        //Leave printed message for 5 movements
+        if (leave_msg_count < 5) leave_msg_count++;
+        else begin_message_box();
+        
 
         mvaddch(*player_y, *player_x, ' '); 
         switch (ch) {
@@ -114,9 +118,11 @@ void handle_motion() {
                         print_to_message_box("\"We already battled\"");
                         continue;
                     }
-                    print_to_message_box("\"Let's battle!\""); sleep(2);
+                    save_print_state();
+                    print_to_message_box("\"Let's battle!\""); sleep(1);
+                    blink_screen(5, restore_print_state);
                     battle_trainer(trainer_ptr);
-                    init_map();
+                    restore_print_state();
                     continue;
                 }
                 else {
@@ -191,7 +197,8 @@ void handle_motion() {
             }
             save_print_state();
 
-            print_to_message_box("\"Let's battle!\""); sleep(2);
+            print_to_message_box("\"Let's battle!\""); sleep(1);
+            blink_screen(5, restore_print_state);
             battle_trainer(trainer_ptr);
 
             restore_print_state();
@@ -233,6 +240,7 @@ void init_map() {
     clear();
     draw_map();
     draw_box(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5); //Draw message box
+    leave_msg_count = 0;    //leave map label for 5 movements
 
     attrset(COLOR_PAIR(PLAYER_COLOR));
     mvaddch(*player_y, *player_x, player_char);
