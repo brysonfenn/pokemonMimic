@@ -35,6 +35,8 @@ void print_btn_instructions(int x, int y, bool on_map);
 void begin_list();
 void print_to_list(const char * list_str);
 
+void save_print_state();
+void restore_print_state();
 
 //print_utils_battle.c
 

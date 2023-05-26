@@ -236,3 +236,31 @@ void print_to_list(const char * list_str) {
   }
   refresh();
 }
+
+
+#define ROWS 30
+#define COLS 100
+
+static int contents[ROWS][COLS];
+
+void save_print_state() {
+
+  for (int row = 0; row < ROWS; ++row) {
+    for (int col = 0; col < COLS; ++col) {
+      contents[row][col] = inch();
+      move(row, col + 1);
+    }
+  }
+}
+
+
+void restore_print_state() {
+  clear(); 
+  for (int row = 0; row < ROWS; row++) {
+    for (int col = 0; col < COLS; col++) {
+      addch(contents[row][col]);
+      move(row, col + 1);
+    }
+  }
+  refresh();
+}

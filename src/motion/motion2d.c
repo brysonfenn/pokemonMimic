@@ -56,6 +56,8 @@ void handle_motion() {
         flushinp();
         if ((ch = getch()) == 'm') break;
 
+        begin_message_box();
+
         mvaddch(*player_y, *player_x, ' '); 
         switch (ch) {
         	case KEY_UP:
@@ -160,6 +162,7 @@ void handle_motion() {
         else if (action != 0) {
             usleep(300000);
             handle_actions(action);
+            player_char = PLAYER_MOVING_DOWN;
             init_map();
             continue;
         }
@@ -186,9 +189,14 @@ void handle_motion() {
                 refresh();
                 usleep(100000);
             }
+            save_print_state();
+
             print_to_message_box("\"Let's battle!\""); sleep(2);
             battle_trainer(trainer_ptr);
-            init_map(); continue;
+
+            restore_print_state();
+            print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true); continue;
+
         }
     }
 }

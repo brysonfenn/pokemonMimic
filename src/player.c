@@ -141,5 +141,5 @@ void printPlayer() {
   sprintf(print_str, "%s  Money: $%d\n", print_str, player.money);
 
   print_to_list(print_str);
-  refresh(); sleep(2);
+  refresh();
 }

@@ -50,6 +50,8 @@ Selectable * get_selectable(int player_x, int player_y, char player_char) {
     else { player_y++; trainer_char = PLAYER_MOVING_UP; }
 
     for (int i = 0; i < num_selectables; i++) {
+        if (mvinch(player_y, player_x) == ' ') continue;
+        
         if (player_x == selectables[i].x && player_y == selectables[i].y) {
 
             attrset(COLOR_PAIR(TRAINER_COLOR));
