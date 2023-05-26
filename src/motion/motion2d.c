@@ -43,7 +43,7 @@ void handle_motion() {
     player_y = &(player.loc->y);
     player_x = &(player.loc->x);
 
-    Selectable * selected_ptr;
+    Selectable * selectable_ptr;
     Trainer * trainer_ptr;
     char * message_ptr;
 
@@ -105,9 +105,9 @@ void handle_motion() {
             case 'a':
                 //Redraw player
                 attrset(COLOR_PAIR(PLAYER_COLOR)); mvaddch(*player_y, *player_x, player_char); 
-                selected_ptr = get_selectable(*player_x, *player_y, player_char);
-                if (selected_ptr->is_trainer) {
-                    trainer_ptr = (Trainer *) selected_ptr->data;
+                selectable_ptr = get_selectable(*player_x, *player_y, player_char);
+                if (selectable_ptr->is_trainer) {
+                    trainer_ptr = (Trainer *) selectable_ptr->data;
                     if (trainer_ptr->already_battled) {
                         print_to_message_box("\"We already battled\"");
                         continue;
@@ -118,7 +118,7 @@ void handle_motion() {
                     continue;
                 }
                 else {
-                    message_ptr = (char *) selected_ptr->data;
+                    message_ptr = (char *) selectable_ptr->data;
                     if (strcmp(message_ptr,"NONE") == 0) continue;
                     mvprintw(21,MAP_X,message_ptr);
                 }
