@@ -1,4 +1,4 @@
-#include "print_utils.h"
+#include "print_battle.h"
 
 #include <ncurses.h>
 
