@@ -244,7 +244,7 @@ void print_to_list(const char * list_str) {
 static int contents[ROWS][COLS];
 
 void save_print_state() {
-
+  move(0,0);
   for (int row = 0; row < ROWS; ++row) {
     for (int col = 0; col < COLS; ++col) {
       contents[row][col] = inch();
