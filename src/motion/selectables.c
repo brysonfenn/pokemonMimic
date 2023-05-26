@@ -64,7 +64,7 @@ Selectable * get_selectable(int player_x, int player_y, char player_char) {
 //Erase selectable list
 void clear_selectables() {
     for (int i = 0; i < num_selectables; i++) {
-        free(selectables[i].data);
+        // free(selectables[i].data);
     }
     num_selectables = 0;
 }
