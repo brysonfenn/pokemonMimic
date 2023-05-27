@@ -7,6 +7,7 @@
 #include "../battles/trainer.h"
 #include "map_drawing.h"
 #include "../print/print_defines.h"
+#include "../player.h"
 
 #define VISUAL_DISTANCE 10
 
@@ -88,7 +89,7 @@ Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, in
         curr_sel = &(selectables[i]);
         if (curr_sel->is_trainer) {
             Trainer * trainer_ptr = (Trainer *) curr_sel->data;
-            if (trainer_ptr->already_battled) continue;
+            if (trainer_already_battled(trainer_ptr->id_num)) continue;
             x = curr_sel->x;
             y = curr_sel->y;
             char ch = mvinch(y,x);

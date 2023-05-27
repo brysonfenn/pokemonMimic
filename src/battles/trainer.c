@@ -128,7 +128,7 @@ int battle_trainer(Trainer * trainer) {
     return BATTLE_WHITE_OUT;
   }
   else {
-    trainer->already_battled = true;
+    add_battled_trainer(trainer->id_num);
     return BATTLE_WIN;
   }
 }

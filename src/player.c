@@ -149,6 +149,7 @@ void printPlayer() {
 
 void add_battled_trainer(int id) {
   player.trainers_battled_id[player.num_trainers_battled] = id;
+  player.num_trainers_battled++;
 }
 
 
