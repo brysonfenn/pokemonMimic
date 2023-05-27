@@ -7,11 +7,8 @@
 #include "../doors.h"
 #include "../maps.h"
 
-#include "../../player.h"
-#include "../../battles/trainer.h"
 #include "../../print/print_utils.h"
 #include "../../print/print_defines.h"
-#include "../../items.h"
 
 
 
