@@ -78,11 +78,20 @@ int save_game(int file_num) {
 			fprintf(fp, "\t%s. %d %d\n", curr_att.name, curr_att.id_num, curr_att.curr_pp);
 		}
 	}
+
+	
 	fprintf(fp, "Bag:\n");
 	for (int i = 0; i < player.numInBag; i++) {
 		curr_item = player.bag[i];
 		fprintf(fp, "%s. %d %d\n", curr_item.name, curr_item.id_num, curr_item.number);
 	}
+
+	fprintf(fp, "\nTrainers Battled: %d\n", player.num_trainers_battled);
+	fprintf(fp, "  ");
+	for (int i = 0; i < player.num_trainers_battled; i++) {
+		fprintf(fp, "%d ", player.trainers_battled_id[i]);
+	}
+	fprintf(fp, "\n");
 
 	// Close the file
 	fclose(fp);
@@ -190,17 +199,7 @@ int load_game(int file_num) {
 
 	fgets(line, LINE_SIZE, fp);	// Bag:
 	for (i = 0; i < player.numInBag; i++) {
-
-		//Check if there were not enough items
-		if (fgets(line, LINE_SIZE, fp) == NULL) {
-			begin_list();
-			sprintf(print_str, "ERROR with load file. Not enough bag items found\n");
-			sprintf(print_str, "%sExpected: %d, But got %d.\n", print_str, player.numInBag, i); 
-			print_to_list(print_str); sleep(4);
-			print_to_list("Reloading...\n"); sleep(1);
-			player_init(current_save_file); // reinitialize player
-			return LOAD_FAILURE;
-		}
+		fgets(line, LINE_SIZE, fp);
 
 		matched_elements = sscanf(line, "%[^.]. %d %d", &temp_name, &temp_id_num, &numOfItem);
 
@@ -213,6 +212,30 @@ int load_game(int file_num) {
 		player.bag[i].number = numOfItem;
 	}
 
+	int id;
+
+	fgets(line, LINE_SIZE, fp); //Empty line
+	fgets(line, LINE_SIZE, fp); //Trainers Battled
+	// sscanf(line, "Trainers Battled: %d\n", &(player.num_trainers_battled));
+
+	fgets(line, LINE_SIZE, fp);
+	char * trainer_id_str = line;
+	trainer_id_str += 2;	//Move up two spaces
+	player.num_trainers_battled = 0; //Reset num trainers battled
+	
+
+	// Scan the string for integers
+    while (sscanf(trainer_id_str, "%d", &id) == 1) {
+        player.trainers_battled_id[player.num_trainers_battled] = id;
+		player.num_trainers_battled++;
+
+        // Move to the next number in the string
+        trainer_id_str = strchr(trainer_id_str, ' ');
+        if (trainer_id_str == NULL) {
+            break;
+        }
+        trainer_id_str++;	//Move up a space
+    }
 
     // Close the file
     fclose(fp);

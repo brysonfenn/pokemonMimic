@@ -1,4 +1,4 @@
-Last Saved: 05/26/2023 14:52:44
+Last Saved: 05/27/2023 16:24:25
 Player: 
 2 3 1100
 Location: {2,(19,6)}
@@ -15,3 +15,6 @@ Bag:
 Potion. 1 1
 Super Potion. 2 2
 Pokeball. 3 4
+
+Trainers Battled: 0
+  

@@ -23,3 +23,6 @@ Bag:
 Potion. 1 2
 Pokeball. 3 2
 Great Ball. 4 1
+
+Trainers Battled: 0
+

@@ -27,3 +27,6 @@ Potion. 1 2
 Super Potion. 2 3
 Pokeball. 3 1
 Great Ball. 4 1
+
+Trainers Battled: 0
+

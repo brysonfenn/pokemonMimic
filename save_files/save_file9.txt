@@ -20,3 +20,6 @@ Bag:
 Potion. 1 2
 Super Potion. 2 2
 Pokeball. 3 5
+
+Trainers Battled: 0
+

@@ -120,7 +120,7 @@ Pokemon * get_pokemon_frame(Pokemon_id pok_id) {
   }
 
   //pok_id is the line number in "pokemon_list.txt"
-  for (int i = 0; i < pok_id+1; i++) {
+  for (int i = 0; i <= pok_id; i++) {
     fgets(line, LINE_SIZE, fp);
   }
   
