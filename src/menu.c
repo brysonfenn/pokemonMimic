@@ -9,9 +9,8 @@
 #include "print/print_utils.h"
 #include "monsters/pokemon.h"
 #include "items.h"
-#include "battles/trainer.h"
 
-static enum display { WILD, TRAINER, TOWN, POKEMON, BAG, PLAYER, SAVE, LOAD,
+static enum display { TOWN, POKEMON, BAG, PLAYER, SAVE, LOAD,
     POWER_OFF, MAIN } current_display = TOWN;
 
 static bool power_off = false;
@@ -38,10 +37,10 @@ void main_menu() {
         //This is the actual main menu
         case MAIN:
         begin_list();
-        print_to_list("  Wild Pokemon\n  Trainer\n  Back\n  Pokemon\n  Bag\n  Player\n");
+        print_to_list("  Back\n  Pokemon\n  Bag\n  Player\n");
         print_to_list("  Save Game\n  Load Game\n  Power Off\n\n");
 
-        inputNum = get_selection(LIST_BOX_Y+1,0,8,last_selection);
+        inputNum = get_selection(LIST_BOX_Y+1,0,6,last_selection);
         if (inputNum == PRESSED_B) inputNum = TOWN;
 
         last_selection = inputNum;
@@ -49,14 +48,9 @@ void main_menu() {
         clear();
         break;
 
-        //Battle wild pokemon
-        case WILD:
-        battle_wild_pokemon();
-        current_display = MAIN;
-        break;
-
-        //Battle a trainer
-        case TRAINER:
+        //Allow player to walk around. PokeCenter and Mart are here
+        case TOWN:
+        handle_motion();
         current_display = MAIN;
         break;
 
@@ -104,7 +98,7 @@ void main_menu() {
         //Save game data to a file
         case SAVE:
         begin_list();
-        print_to_list("Select a save file to save to: \n");
+        print_to_list("Select a save file to SAVE to: \n");
         print_save_files();
         inputNum = get_current_save_file();
         inputNum = (inputNum == 0) ? 0 : inputNum-1;  //Adjust to current save file position
@@ -118,18 +112,12 @@ void main_menu() {
         //Load game data from a file
         case LOAD:
         begin_list();
-        print_to_list("Select a save file to load: \n");
+        print_to_list("Select a save file to LOAD: \n");
         print_save_files();
         inputNum = get_selection(LIST_BOX_Y+2, 0, 9, 0);
 
         if (inputNum == 9 || inputNum == PRESSED_B) { current_display = MAIN; break; }
         load_game(inputNum+1);
-        current_display = MAIN;
-        break;
-        
-        //Allow player to walk around. PokeCenter and Mart are here
-        case TOWN:
-        handle_motion();
         current_display = MAIN;
         break;
 

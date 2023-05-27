@@ -111,7 +111,10 @@ void handle_motion() {
             case 'a':
                 //Redraw player
                 attrset(COLOR_PAIR(PLAYER_COLOR)); mvaddch(*player_y, *player_x, player_char); 
+                attrset(COLOR_PAIR(DEFAULT_COLOR));
+
                 selectable_ptr = get_selectable(*player_x, *player_y, player_char);
+                if (selectable_ptr->x == 0) continue;
                 if (selectable_ptr->is_trainer) {
                     trainer_ptr = (Trainer *) selectable_ptr->data;
                     if (trainer_ptr->already_battled) {
