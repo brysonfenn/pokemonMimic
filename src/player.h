@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <stdbool.h>
+#include <stdint.h>
 
 struct Pokemon;
 struct Location;
@@ -12,13 +13,22 @@ struct Item;
 
 struct playerCharacter {
   struct Pokemon * party;
-  int numInParty;
   struct Item * bag;
-  int numInBag;
-  struct Pokemon * current_pokemon;
-  int money;
+  struct Pokemon * storage;
+
+  uint8_t numInParty;
+  uint8_t numInBag;
+  uint8_t numInStorage;
+
+  uint8_t trainers_battled_id[256];
+  uint16_t num_trainers_battled;
+  int32_t money;
+
   bool trainer_battle;
+  
+  struct Pokemon * current_pokemon;
   struct Pokemon * enemy_pokemon;
+
   struct Location * loc;
   struct Location * blackout_center;
 };
@@ -38,5 +48,9 @@ void set_current_pokemon(int position);
 void set_enemy_pokemon(struct Pokemon * pok);
 
 void printPlayer();
+
+void add_battled_trainer(int id);
+
+bool trainer_already_battled(int id);
 
 #endif // PLAYER_H

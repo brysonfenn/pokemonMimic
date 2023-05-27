@@ -21,6 +21,7 @@ void player_init(int save_file) {
   player.loc = malloc(sizeof(Location));
   player.blackout_center = malloc(sizeof(Location));
   player.party = malloc(sizeof(Pokemon) * 6);
+  player.num_trainers_battled = 0;
   
   if (!save_file)
     default_load();
@@ -140,4 +141,20 @@ void printPlayer() {
 
   print_to_list(print_str);
   refresh();
+}
+
+
+//Handle trainers already battled
+
+
+void add_battled_trainer(int id) {
+  player.trainers_battled_id[player.num_trainers_battled] = id;
+}
+
+
+bool trainer_already_battled(int id) {
+  for (int i = 0; i < player.num_trainers_battled; i++) {
+    if (player.trainers_battled_id[i] == id) return true;
+  }
+  return false;
 }
