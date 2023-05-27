@@ -7,7 +7,8 @@
 #include "../monsters/pokemon_id_list.h"
 
 typedef struct Trainer {
-    char name[32];
+    uint8_t id_num;
+    char name[30];
     int8_t num_in_party;
     Pokemon_id party_id_list[6];
     int8_t levels[6];

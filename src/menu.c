@@ -1,7 +1,6 @@
 #include "menu.h"
 
 #include <stdbool.h>
-
 #include <ncurses.h>
 
 #include "player.h"
