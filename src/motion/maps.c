@@ -20,7 +20,7 @@ void no_grass() {}
 //Map functions
 static void (*draw_funcs[10])() = { &draw_generic_map, &draw_map1, &draw_map2, &draw_map3, &draw_map4, &draw_b1 };
 
-static void (*grass_funcs[10])() = { &grass_generic_map, &grass_map1, &grass_map2, &grass_map3, &draw_map4, &no_grass };
+static void (*grass_funcs[10])() = { &grass_generic_map, &grass_map1, &grass_map2, &grass_map3, &grass_map4, &no_grass };
 
 
 void change_map_funcs(int map_num, void (**draw_map)(), void (**grass_map)() ) {
