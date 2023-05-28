@@ -91,7 +91,7 @@ void handle_motion() {
                 //Move only one space if next space is surrounded (door);
                 else if (*player_x > 1 && !is_movable_space(-1,-1) && !is_movable_space(1,-1) && is_movable_space(0,-1)) 
                     (*player_x)--;
-                //Default movement for horizontal is 2 spaces
+                //Default movement for horizontal is 1 spaces
                 else if (*player_x > 1 && is_movable_space(0,-1) && is_movable_space(0,-2)) (*player_x)-=1;
                 //Only move one space if there is only one space to move
                 else if (*player_x > 1 && is_movable_space(0,-1)) (*player_x)--;
@@ -102,7 +102,7 @@ void handle_motion() {
                 //Move only one space if next space is surrounded (door);
                 else if (*player_x < 100 && !is_movable_space(-1,1) && !is_movable_space(1,1) && is_movable_space(0,1)) 
                     (*player_x)++;
-                //Default movement for horizontal is 2 spaces
+                //Default movement for horizontal is 1 spaces
                 else if (*player_x < 100 && is_movable_space(0,1) && is_movable_space(0,2)) (*player_x)+=1;
                 //Only move one space if there is only one space to move
                 else if (*player_x < 100 && is_movable_space(0,1)) (*player_x)++;
