@@ -9,7 +9,8 @@
 #include "../print/print_defines.h"
 #include "../player.h"
 
-#define VISUAL_DISTANCE 10
+#define HORIZONTAL_DISTANCE 10
+#define VERTICAL_DISTANCE 4
 
 static Selectable selectables[30];
 static int num_selectables = 0;
@@ -97,22 +98,22 @@ Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, in
                 case PLAYER_MOVING_LEFT:
                     *x_inc = -1;
                     distance = x - player_x;
-                    if (distance < VISUAL_DISTANCE && distance > 0 && y == player_y) return curr_sel;
+                    if (distance < HORIZONTAL_DISTANCE && distance > 0 && y == player_y) return curr_sel;
                     break;
                 case PLAYER_MOVING_RIGHT:
                     *x_inc = 1;
                     distance = player_x - x;
-                    if (distance < VISUAL_DISTANCE && distance > 0 && y == player_y) return curr_sel;
+                    if (distance < HORIZONTAL_DISTANCE && distance > 0 && y == player_y) return curr_sel;
                     break;
                 case PLAYER_MOVING_UP:
                     *y_inc = -1;
                     distance = y - player_y;
-                    if (distance < VISUAL_DISTANCE && distance > 0 && x == player_x) return curr_sel;
+                    if (distance < VERTICAL_DISTANCE && distance > 0 && x == player_x) return curr_sel;
                     break;
                 case PLAYER_MOVING_DOWN:
                     *y_inc = 1;
                     distance = player_y - y;
-                    if (distance < VISUAL_DISTANCE && distance > 0 && x == player_x) return curr_sel;
+                    if (distance < VERTICAL_DISTANCE && distance > 0 && x == player_x) return curr_sel;
                     break;
                 default:
                     print_to_message_box("Found incorrect trainer character");

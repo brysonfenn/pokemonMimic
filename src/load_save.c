@@ -240,7 +240,7 @@ int load_game(int file_num) {
     // Close the file
     fclose(fp);
 
-	sprintf(print_str, "Game File %d Loaded Successfully!\n", file_num);
+	sprintf(print_str, " \nGame File %d Loaded Successfully!\n", file_num);
     print_to_list(print_str); sleep(2);
     current_save_file = file_num;
     return LOAD_SUCCESS;
