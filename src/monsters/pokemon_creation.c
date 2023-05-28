@@ -37,8 +37,6 @@ void pokemon_init(Pokemon * new_pok, int level, int level_min, int level_max) {
   new_pok->iv = rand();
   new_pok->numAttacks = 0;
   new_pok->visible_condition = NO_CONDITION;
-  new_pok->hidden_condition = NO_CONDITION;
-  
   new_pok->num_hidden_conditions = 0;
   new_pok->hidden_conditions = malloc(sizeof(Condition));
 
