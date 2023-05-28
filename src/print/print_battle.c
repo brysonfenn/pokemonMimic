@@ -23,12 +23,12 @@ void printBattle() {
   draw_battle_box();
 
   sprintf(poke_string, "%s  Lvl %d ", enemy_pok->name, enemy_pok->level);
-  add_condition(poke_string, enemy_pok);
+  add_condition_string(poke_string, enemy_pok);
   mvprintw(BATTLE_BOX_ENEMY_Y, BATTLE_BOX_ENEMY_X, poke_string);
   mvprintw(BATTLE_BOX_ENEMY_Y+1, BATTLE_BOX_ENEMY_X, "HP: %d/%d", enemy_pok->currentHP, enemy_pok->maxHP);
 
   sprintf(poke_string,  "%s  Lvl %d  ", player_pok->name, player_pok->level);
-  add_condition(poke_string, player_pok);
+  add_condition_string(poke_string, player_pok);
   mvprintw(BATTLE_BOX_PLAYER_Y, BATTLE_BOX_PLAYER_X, poke_string);
   mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "HP: %d/%d", player_pok->currentHP, player_pok->maxHP);
 
@@ -99,7 +99,7 @@ void blinkPokemon(bool enemy) {
 
   //Prepare string
   sprintf(poke_string, "%s  Lvl %d ", pok->name, pok->level);
-  add_condition(poke_string, pok);
+  add_condition_string(poke_string, pok);
 
   attrset(COLOR_PAIR(DAMAGED_COLOR));
   //Blink pokemon

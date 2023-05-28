@@ -42,7 +42,7 @@ attack fire_spin    = {"Fire Spin"    , 25, 15,  15,       70, FIRE,     false, 
 attack wing_attack  = {"Wing Attack"  , 26, 35,  60,      100, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack withdraw     = {"Withdraw"     , 27, 40,   0,  NO_MISS, WATER,    false, &increment_self_stat, DEFENSE_STAT, 100 };
 attack water_gun    = {"Water Gun"    , 28, 25,  40,      100, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
-attack bite         = {"Bite"         , 29, 25,  60,      100, DARK,     false, &attack_do_nothing, NO_CONDITION, 0 };
+attack bite         = {"Bite"         , 29, 25,  60,      100, DARK,     false, &inflict_condition, FLINCHED, 30 };
 attack rapid_spin   = {"Rapid Spin"   , 30, 40,  20,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 
 attack protect      = {"Protect"      , 31, 10,   0,  NO_MISS, NORMAL,   true,  &attack_do_nothing, NO_CONDITION, 0 };
@@ -74,6 +74,11 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
 //Return an attack given an attack id number
 attack * get_attack_by_id(id_num) {
 	return local_array[id_num];
+}
+
+//Filler side-effect function that does nothing
+int attack_do_nothing(Condition condition, int accuracy, struct Pokemon* pok) {
+	return 0;
 }
 
 //Change the stat of a pok (stat_type is the type of stat, stage_number is the number of stages to increment (+) or decrement (-))

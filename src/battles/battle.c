@@ -265,7 +265,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
         printBattle();
         clear_text_box();
         //Player Pokemon can only attack if still alive
-        if (currentPok->currentHP > 0) {
+        if (currentPok->currentHP > 0 && enemyPok->currentHP > 0) {
           return_execute = perform_attack(currentPok, attack_num, enemyPok, false);
         }
       }
@@ -351,6 +351,8 @@ int initiate_battle(struct Pokemon * enemyPok) {
     if (player.trainer_battle) exp *= 1.5;
     handle_exp(exp);
   }
+
+  remove_all_hidden_conditions(enemyPok);
   
   return BATTLE_WIN;
 }
@@ -364,6 +366,11 @@ void perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_n
 
   if (currentPok->currentHP <= 0) {
     currentPok->currentHP = 0;
+    clear();
+    printBattle();
+  }
+  if (enemyPok->currentHP <= 0) {
+    enemyPok->currentHP = 0;
     clear();
     printBattle();
   }

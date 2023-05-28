@@ -34,7 +34,7 @@ void printParty() {
 
     sprintf(party_str, "%sLVL %d\tHP: %d/%d ", party_str, current_pok.level, current, max);
     if (!(current)) sprintf(party_str, "%s (Fainted) ", party_str);
-    add_condition(party_str, &current_pok);
+    add_condition_string(party_str, &current_pok);
     sprintf(party_str, "%s\n", party_str);
   }
   print_to_list(party_str);

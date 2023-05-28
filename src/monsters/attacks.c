@@ -33,20 +33,28 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
   }
 
   //Handle Paralysis
-  if (perp->visible_condition == PARALYZED) {
+  else if (perp->visible_condition == PARALYZED) {
     if ((rand() % 100) < 25) {
+      if (enemy) printw(ENEMY_TEXT);
       printw("%s is paralyzed, it can't move!", perp->name);
       refresh(); sleep(2);
       return 0;
     }
   }
 
+  //Handle Flinch
+  else if (has_hidden_condition(perp, FLINCHED)) {
+    if (enemy) printw(ENEMY_TEXT);
+    printw("%s flinched!", perp->name);
+    refresh(); sleep(1); return 0;
+  }
+
   //Handle Confusion
-  if (perp->hidden_condition == CONFUSED) {
+  if (has_hidden_condition(perp, CONFUSED)) {
     text_box_cursors(TEXT_BOX_BEGINNING);
     if (perp->confusion_count <= 0) {
       printw("%s snapped out of confusion!", perp->name); refresh(); sleep(2);
-      perp->hidden_condition = NO_CONDITION;
+      remove_hidden_condition(perp, CONFUSED);
     }
     else {
       perp->confusion_count--;

@@ -77,6 +77,7 @@ void heal_party() {
     curr_pok = &(player.party[i]);
     curr_pok->currentHP = curr_pok->maxHP;
     curr_pok->visible_condition = NO_CONDITION;
+    remove_all_hidden_conditions(curr_pok);
 
     for (int j = 0; j < curr_pok->numAttacks; j++) {
       curr_pok->attacks[j].curr_pp = curr_pok->attacks[j].max_pp;

@@ -56,6 +56,9 @@ typedef struct Pokemon {
   Condition visible_condition;
   Condition hidden_condition;
 
+  int8_t num_hidden_conditions;
+  Condition * hidden_conditions;
+
   attack attacks[4];
 } Pokemon;
 
