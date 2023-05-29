@@ -1,5 +1,10 @@
 Pidgey 16
-Evolve: 16,0
+Evolve: 18,17
 level,move_id
-1,1
-5,7
+1,1 Tackle
+5,7 Sand Attack
+9,38 Gust
+13,8 Quick Attack
+25,26 Wing Attack
+31,48 Feather Dance
+39,43 Agility

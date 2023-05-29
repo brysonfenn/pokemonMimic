@@ -1,6 +1,10 @@
 Sandshrew 27
-Evolve: 16,0
+Evolve: 22,28
 level,move_id
-1,1
-6,9
-11,7
+1,1 Scratch
+6,9 Defense Curl
+11,7 Sand Attack
+17,6 Poison Sting
+23,23 Slash
+30,49 Swift
+37,50 Fury Swipes

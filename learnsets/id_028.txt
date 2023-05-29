@@ -1,0 +1,12 @@
+Sandslash 28
+Evolve: 101,0
+level,move_id
+1,1 Scratch
+1,9 Defense Curl
+1,7 Sand Attack
+6,9 Defense Curl
+11,7 Sand Attack
+17,6 Poison Sting
+24,23 Slash
+33,49 Swift
+42,50 Fury Swipes

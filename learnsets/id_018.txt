@@ -1,0 +1,13 @@
+Pidgeot 18
+Evolve: 101,0
+level,move_id
+1,1 Tackle
+1,7 Sand Attack
+1,38 Gust
+1,8 Quick Attack
+5,7 Sand Attack
+9,38 Gust
+13,8 Quick Attack
+27,26 Wing Attack
+34,48 Feather Dance
+48,43 Agility

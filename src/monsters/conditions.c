@@ -6,6 +6,7 @@
 #include "../player.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
+#include "../print/print_battle.h"
 
 
 //Inflict condition on pok given, handle accuracy
@@ -203,23 +204,31 @@ int handle_end_conditions() {
 	int sappedHP;
 	if (has_hidden_condition(player_pok, SEEDED)) {
 		text_box_cursors(TEXT_BOX_BEGINNING);
-		printw("%s's HP was sapped!", player_pok->name);
+		printw("%s's HP was sapped!", player_pok->name); refresh(); sleep(1);
 		sappedHP = ((player_pok->maxHP / 8) + 1);
+
+		blinkPokemon(true, DAMAGED_COLOR); 
+		printBattle();
+		blinkPokemon(false, HEAL_COLOR);
+
 		//Give HP equal to taken HP
 		if (sappedHP > player_pok->currentHP) { enemy_pok->currentHP += player_pok->currentHP; player_pok->currentHP = 0; }
 		else {enemy_pok->currentHP += sappedHP; player_pok->currentHP -= sappedHP;}
 		if (enemy_pok->currentHP > enemy_pok->maxHP) enemy_pok->currentHP = enemy_pok->maxHP;
-		refresh(); sleep(2);
 	}
 	if (has_hidden_condition(enemy_pok, SEEDED)) {
 		text_box_cursors(TEXT_BOX_BEGINNING);
-		printw("%s%s's HP was sapped!", ENEMY_TEXT, enemy_pok->name);
+		printw("%s%s's HP was sapped!", ENEMY_TEXT, enemy_pok->name); refresh(); sleep(1);
 		sappedHP = ((enemy_pok->maxHP / 8) + 1);
+
+		blinkPokemon(false, DAMAGED_COLOR); 
+		printBattle();
+		blinkPokemon(true, HEAL_COLOR);
+
 		//Give HP equal to taken HP
 		if (sappedHP > enemy_pok->currentHP) { player_pok->currentHP += enemy_pok->currentHP; enemy_pok->currentHP = 0; }
 		else {player_pok->currentHP += sappedHP; enemy_pok->currentHP -= sappedHP;}
 		if (player_pok->currentHP > player_pok->maxHP) player_pok->currentHP = player_pok->maxHP;
-		refresh(); sleep(2);
 	}
 	if (player_pok->currentHP == 0 || enemy_pok->currentHP == 0) return 2;
 

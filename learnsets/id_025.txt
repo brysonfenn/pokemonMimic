@@ -1,0 +1,13 @@
+Pikachu 25
+Evolve: 101,0
+level,move_id
+1,55 Thunder Shock
+1,3 Growl
+6,4 Tail Whip
+8,56 Thunder Wave
+11,8 Quick Attack
+15,57 Double Team
+20,58 Slam
+26,59 Thunderbolt
+33,43 Agility
+41,60 Thunder

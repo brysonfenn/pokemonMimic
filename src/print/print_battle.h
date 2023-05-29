@@ -9,7 +9,7 @@ struct Pokemon;
 void printBattle();
 
 //Blink enemy if enemy is true, if not, blink player
-void blinkPokemon(bool enemy);
+void blinkPokemon(bool blink_player, int color);
 
 int get_battle_selection(int first_line, int last_selection);
 int get_move_selection(int start_x, int start_y, struct Pokemon* pok);

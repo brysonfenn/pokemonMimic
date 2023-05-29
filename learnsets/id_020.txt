@@ -1,11 +1,11 @@
 Raticate 20
 Evolve: 101,0
 level,move_id
-1,1
-1,4
-1,8
-7,8
-13,46
-20,21
-30,42
-40,47
+1,1 Tackle
+1,4 Tail Whip
+1,8 Quick Attack
+7,8 Quick Attack
+13,46 Hyper Fang
+20,21 Scary Face
+30,42 Pursuit
+40,47 Super Fang

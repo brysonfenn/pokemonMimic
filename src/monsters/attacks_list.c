@@ -63,7 +63,20 @@ attack twineedle    = {"Twineedle"    , 44, 20,  25,      100, BUG,      false, 
 attack pin_missile  = {"Pin Missile"  , 45, 20,  14,       85, BUG,      false, &hit_multiple_times, 2, 5 };
 attack hyper_fang   = {"Hyper Fang"   , 46, 15,  80,       90, NORMAL,   false, &inflict_condition, FLINCHED, 10 };
 attack super_fang   = {"Super Fang"   , 47, 10,   0,       90, NORMAL,   false, &deal_percentage_damage, NO_CONDITION, 50 };
+attack feather_dance= {"Feather Dance", 48, 15,   0,      100, FLYING,   false, &decrement_opponent_stat2, ATTACK_STAT, 100 };
+attack swift        = {"Swift"        , 49, 20,  60,  NO_MISS, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack fury_swipes  = {"Fury Swipes"  , 50, 15,  18,       80, NORMAL,   false, &hit_multiple_times, 2, 5 };
 
+attack peck         = {"Peck"         , 51, 35,  35,      100, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack leer         = {"Leer"         , 52, 30,   0,      100, NORMAL,   false, &decrement_opponent_stat, DEFENSE_STAT, 100 };
+attack aerial_ace   = {"Aerial Ace"   , 53, 20,  60,  NO_MISS, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack drill_peck   = {"Drill Peck"   , 54, 20,  80,      100, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack thunder_shock= {"Thunder Shock", 55, 30,  40,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 10 };
+attack thunder_wave = {"Thunder Wave" , 56, 20,   0,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 100 };
+attack double_team  = {"Double Team"  , 57, 15,   0,  NO_MISS, ELECTRIC, false, &increment_self_stat, EVASIVENESS_STAT, 100 };
+attack slam         = {"Slam"         , 58, 20,  80,       75, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack thunderbolt  = {"Thunderbolt"  , 59, 15,  95,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 10 };
+attack thunder      = {"Thunder"      , 60, 10, 120,       70, ELECTRIC, false, &inflict_condition, PARALYZED, 30 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -71,7 +84,9 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder, &razor_leaf, &metal_claw, &smoke_screen, &sweet_scent, &growth,   // #11-20
     &scary_face, &flame_thrower, &slash, &dragon_rage, &fire_spin, &wing_attack, &withdraw, &water_gun, &bite, &rapid_spin,        // #21-30
     &protect, &skull_bash, &hydro_pump, &harden, &supersonic, &confusion, &stun_spore, &gust, &psybeam, &silver_wind,              // #31-40
-    &fury_attack, &pursuit, &agility, &twineedle, &pin_missile, &hyper_fang, &super_fang };
+    &fury_attack, &pursuit, &agility, &twineedle, &pin_missile, &hyper_fang, &super_fang, &feather_dance, &swift, &fury_swipes,    // #41-50
+    &peck, &leer, &aerial_ace, &drill_peck, &thunder_shock, &thunder_wave, &double_team, &slam, &thunderbolt, &thunder             // #51-60
+    };
 
 
 //Return an attack given an attack id number
@@ -209,7 +224,7 @@ int decrement_opponent_stat2(Condition stat_type, int chance, struct Pokemon* vi
 
 int deal_specific_damage(Condition nothing, int hp, struct Pokemon* victim, int damage) {
     bool enemy = (victim != player.enemy_pokemon);
-    blinkPokemon(enemy);
+    blinkPokemon(enemy, DAMAGED_COLOR);
     victim->currentHP -= hp;
     return 0;
 }
@@ -233,7 +248,7 @@ int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int
     // Do not hit again if victim has fainted
     while (victim->currentHP > 0 && i < rand_times) {
         sleep(1);
-        blinkPokemon(enemy);
+        blinkPokemon(enemy, DAMAGED_COLOR);
         victim->currentHP -= damage;
         if (victim->currentHP < 0) victim->currentHP = 0;
         i++;
@@ -250,7 +265,7 @@ int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int
 //Some attacks deal a percentage of damage left
 int deal_percentage_damage(Condition nothing, int percent, struct Pokemon* victim, int damage) {
     bool enemy = (victim != player.enemy_pokemon);
-    blinkPokemon(enemy);
+    blinkPokemon(enemy, DAMAGED_COLOR);
 
     float percent_f = ((float) percent) / 100.0;
 

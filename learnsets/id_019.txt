@@ -1,9 +1,9 @@
 Rattata 19
 Evolve: 20,20
 level,move_id
-1,1
-2,4
-7,8
-13,46
-27,42
-34,47
+1,1 Tackle
+2,4 Tail Whip
+7,8 Quick Attack
+13,46 Hyper Fang
+27,42 Pursuit
+34,47 Super Fang

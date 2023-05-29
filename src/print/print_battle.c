@@ -79,13 +79,13 @@ int get_battle_selection(int first_line, int last_selection) {
 
 
 //Blink enemy if enemy is true, if not, blink player
-void blinkPokemon(bool enemy) {
+void blinkPokemon(bool blink_player, int color) {
   Pokemon * pok;
   char poke_string[128];
   int text_x, text_y;
 
   //Set up location and pokemon depending on whether enemy attacked
-  if (!enemy) {
+  if (!blink_player) {
     pok = player.enemy_pokemon;
     text_x = BATTLE_BOX_ENEMY_X;
     text_y = BATTLE_BOX_ENEMY_Y;
@@ -101,7 +101,7 @@ void blinkPokemon(bool enemy) {
   sprintf(poke_string, "%s  Lvl %d ", pok->name, pok->level);
   add_condition_string(poke_string, pok);
 
-  attrset(COLOR_PAIR(DAMAGED_COLOR));
+  attrset(COLOR_PAIR(color));
   //Blink pokemon
   for (int i = 0; i < 3; i++) {
     mvprintw(text_y, text_x, "                       ");

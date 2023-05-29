@@ -7,7 +7,7 @@ Pokemon:
 Bulbasaur 1 23 23 3 11 11 12 12 11 7 47 GRASS POISON 0 0
 	Tackle. 1 35
 	Growl. 3 40
-	Leech seed. 11 10
+	Leech Seed. 11 10
 Rattata 19 19 19 2 11 9 7 8 13 6 1 NORMAL NONE 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30

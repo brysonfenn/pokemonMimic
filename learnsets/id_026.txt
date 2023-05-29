@@ -1,0 +1,7 @@
+Raichu 26
+Evolve: 101,0
+level,move_id
+1,55 Thunder Shock
+1,4 Tail Whip
+1,8 Quick Attack
+1,59 Thunderbolt

@@ -120,6 +120,11 @@ void get_evolve_level_and_id(int pok_id, int * level_target, int * evolve_id) {
 void learn_move(Pokemon * pok, attack * new_attack) {
   int input_num;
 
+  //If the pokemon already knows this attack, do not learn
+  for (int i = 0; i < pok->numAttacks; i++) {
+    if (pok->attacks[i].id_num == new_attack->id_num) return;
+  }
+
   new_attack->curr_pp = new_attack->max_pp;
 
   //If there are not 4 moves, auto-learn, if not, forget.
@@ -277,8 +282,8 @@ int evolve(Pokemon * pok, int next_pok_id) {
 }
 
 
+//Return iv field
 int pokemon_get_iv(Pokemon * pok, char type) {
-  int shift;
 
   //Each iv occupies 5 bits of the iv random number
   switch (type) {
