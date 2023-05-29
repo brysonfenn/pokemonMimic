@@ -65,6 +65,9 @@ int decrement_opponent_stat2(Condition stat_type, int chance, struct Pokemon* vi
 //Some attacks do a specific amount of damage
 int deal_specific_damage(Condition nothing, int hp, struct Pokemon* victim, int damage);
 
+//Some attacks deal a percentage of damage left
+int deal_percentage_damage(Condition nothing, int percent, struct Pokemon* victim, int damage);
+
 //Some attacks hit multiple times
 int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int damage);
 

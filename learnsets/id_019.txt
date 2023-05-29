@@ -1,6 +1,9 @@
 Rattata 19
-Evolve: 16,0
+Evolve: 20,20
 level,move_id
 1,1
 2,4
 7,8
+13,46
+27,42
+34,47

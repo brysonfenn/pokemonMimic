@@ -119,9 +119,10 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
   //Drop HP only if attack has damage power
   if (chosenAttack.power != 0) {
     damage = get_damage(perp, move_num, victim, true, &flags);
+    if (damage > 0) blinkPokemon(enemy);
     victim->currentHP -= damage;
     if (victim->currentHP < 0) victim->currentHP = 0;
-    blinkPokemon(enemy);
+    clear(); printBattle();
   }
 
   //Print critical & effectiveness messages

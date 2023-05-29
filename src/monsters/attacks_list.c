@@ -8,7 +8,7 @@
 #include "../print/print_utils.h"
 #include "pokemon.h"
 
-#define NUM_ATTACKS 50
+#define NUM_ATTACKS 100
 
 attack empty_attack=  {"-------------",  0,  0, 100, 100, NO_TYPE,  false, &attack_do_nothing };
 //				 	   "Name         "  id  pp  pwr  acc    type     priority    effect         params
@@ -61,6 +61,9 @@ attack pursuit      = {"Pursuit"      , 42, 10,  40,      100, DARK,     false, 
 attack agility      = {"Agility"      , 43, 20,   0,  NO_MISS, PSYCHIC,  false, &increment_self_stat2, SPEED_STAT, 100 };
 attack twineedle    = {"Twineedle"    , 44, 20,  25,      100, BUG,      false, &hit_multiple_times, 2, 2 };
 attack pin_missile  = {"Pin Missile"  , 45, 20,  14,       85, BUG,      false, &hit_multiple_times, 2, 5 };
+attack hyper_fang   = {"Hyper Fang"   , 46, 15,  80,       90, NORMAL,   false, &inflict_condition, FLINCHED, 10 };
+attack super_fang   = {"Super Fang"   , 47, 10,   0,       90, NORMAL,   false, &deal_percentage_damage, NO_CONDITION, 50 };
+
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -68,7 +71,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder, &razor_leaf, &metal_claw, &smoke_screen, &sweet_scent, &growth,   // #11-20
     &scary_face, &flame_thrower, &slash, &dragon_rage, &fire_spin, &wing_attack, &withdraw, &water_gun, &bite, &rapid_spin,        // #21-30
     &protect, &skull_bash, &hydro_pump, &harden, &supersonic, &confusion, &stun_spore, &gust, &psybeam, &silver_wind,              // #31-40
-    &fury_attack, &pursuit, &agility, &twineedle, &pin_missile };
+    &fury_attack, &pursuit, &agility, &twineedle, &pin_missile, &hyper_fang, &super_fang };
 
 
 //Return an attack given an attack id number
@@ -205,6 +208,8 @@ int decrement_opponent_stat2(Condition stat_type, int chance, struct Pokemon* vi
 }
 
 int deal_specific_damage(Condition nothing, int hp, struct Pokemon* victim, int damage) {
+    bool enemy = (victim != player.enemy_pokemon);
+    blinkPokemon(enemy);
     victim->currentHP -= hp;
     return 0;
 }
@@ -228,9 +233,9 @@ int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int
     // Do not hit again if victim has fainted
     while (victim->currentHP > 0 && i < rand_times) {
         sleep(1);
+        blinkPokemon(enemy);
         victim->currentHP -= damage;
         if (victim->currentHP < 0) victim->currentHP = 0;
-        blinkPokemon(enemy);
         i++;
     }
 
@@ -239,4 +244,17 @@ int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int
     printw("Hit %d time(s)", i+1); refresh(); sleep(2);
 
     return 0;
+}
+
+
+//Some attacks deal a percentage of damage left
+int deal_percentage_damage(Condition nothing, int percent, struct Pokemon* victim, int damage) {
+    bool enemy = (victim != player.enemy_pokemon);
+    blinkPokemon(enemy);
+
+    float percent_f = ((float) percent) / 100.0;
+
+    int hp = victim->currentHP * percent_f;
+    if (hp < 1) hp = 1;
+    victim->currentHP -= hp;
 }
