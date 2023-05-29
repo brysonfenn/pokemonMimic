@@ -72,7 +72,7 @@ Pokemon * get_random_wild_pokemon(int level_min, int level_max) {
 
   //Get pokemon according to map, if it is an unknown map, get level 99 ivysaur
   if (player.loc->map < 1 || player.loc->map > 3) {
-    new_pok_id = POKEMON_IVYSAUR;
+    new_pok_id = POKEMON_PIKACHU;
     set_level = 99;
   }
   else {

@@ -35,7 +35,7 @@ void draw_map4() {
 
 void grass_map4() {
     attrset(COLOR_PAIR(GRASS_COLOR));
-    
+    mvaddch(MAP_Y+5, MAP_X+5, 'W');
     
     attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
