@@ -87,6 +87,14 @@ attack horn_attack  = {"Horn Attack"  , 65, 25,  65,      100, NORMAL,   false, 
 attack horn_drill   = {"Horn Drill"   , 66,  5,   0,       30, NORMAL,   false, &deal_specific_damage, NO_CONDITION, 1000 };
 attack thrash       = {"Thrash"       , 67, 20,  90,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack megahorn     = {"Megahorn"     , 68, 10, 120,       85, BUG,      false, &attack_do_nothing, NO_CONDITION, 0 };
+attack pound        = {"Pound"        , 69, 35,  40,       95, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack sing         = {"Sing"         , 70, 15,   0,       55, NORMAL,   false, &inflict_condition, ASLEEP, 100 };
+
+attack double_slap  = {"Double Slap"  , 71, 10,  15,       85, NORMAL,   false, &hit_multiple_times, 2, 5 };
+attack minimize     = {"Minimize"     , 72, 20,   0,  NO_MISS, NORMAL,   false, &increment_self_stat, EVASIVENESS_STAT, 100 };
+attack cosmic_power = {"Cosmic Power" , 73, 20,   0,  NO_MISS, PSYCHIC,  false, &increment_self_stat, SP_DEFENSE_STAT, 100 };
+attack moonlight    = {"Moonlight"    , 74,  5,   0,  NO_MISS, NORMAL,   false, &self_heal, HEAL_PERCENTAGE, 50 };
+attack meteor_mash  = {"Meteor Mash"  , 75, 10, 100,       85, STEEL,    false, &increment_self_stat, ATTACK_STAT, 20 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -96,7 +104,8 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &protect, &skull_bash, &hydro_pump, &harden, &supersonic, &confusion, &stun_spore, &gust, &psybeam, &silver_wind,              // #31-40
     &fury_attack, &pursuit, &agility, &twineedle, &pin_missile, &hyper_fang, &super_fang, &feather_dance, &swift, &fury_swipes,    // #41-50
     &peck, &leer, &aerial_ace, &drill_peck, &thunder_shock, &thunder_wave, &double_team, &slam, &thunderbolt, &thunder,            // #51-60
-    &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn };
+    &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn, &pound, &sing,                 // #61-70
+    &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash };
 
 
 //Return an attack given an attack id number
@@ -282,4 +291,36 @@ int deal_percentage_damage(Condition nothing, int percent, struct Pokemon* victi
     int hp = victim->currentHP * percent_f;
     if (hp < 1) hp = 1;
     victim->currentHP -= hp;
+}
+
+
+//Heal a specified percentage (1) or amount (2) of HP
+int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
+    //Adjust victim depending on if the victim is the player's or the enemy's
+    Pokemon * self;
+    if (player.current_pokemon == victim) self = player.enemy_pokemon;
+    else self = player.current_pokemon;
+
+    float percentage;
+
+    switch (heal_type) {
+        case HEAL_PERCENTAGE:
+            percentage = (hp / 100.0);
+            self->currentHP += (int) (self->maxHP * percentage);
+            break;
+        case HEAL_NUM_HP:
+            self->currentHP += hp;
+            break;
+        default:
+            text_box_cursors(TEXT_BOX_BEGINNING);
+            printw("Unrecognized heal_type"); refresh(); sleep(2);
+            return 1;
+    }
+
+
+    if (self->currentHP > self->maxHP) {
+        self->currentHP = self->maxHP;
+    }
+
+    return 0;
 }
