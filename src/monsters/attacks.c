@@ -5,6 +5,7 @@
 #include "pokemon.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
+#include "../print/print_battle.h"
 
 #define CRITICAL_HIT_FLAG 0x01
 
@@ -119,7 +120,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
   //Drop HP only if attack has damage power
   if (chosenAttack.power != 0) {
     damage = get_damage(perp, move_num, victim, true, &flags);
-    if (damage > 0) blinkPokemon(enemy, DAMAGED_COLOR);
+    if (damage > 0) blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
     victim->currentHP -= damage;
     if (victim->currentHP < 0) victim->currentHP = 0;
     clear(); printBattle();

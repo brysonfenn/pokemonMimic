@@ -102,14 +102,12 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok) {
 
 //Add hidden condition to pokemon, return 1 if condition could not be added
 bool add_hidden_condition(struct Pokemon * pok, Condition condition) {
-
 	if (has_hidden_condition(pok, condition)) return false;
 
 	pok->num_hidden_conditions++;
 	pok->hidden_conditions = realloc(pok->hidden_conditions, pok->num_hidden_conditions * sizeof(Condition));
-
 	pok->hidden_conditions[pok->num_hidden_conditions - 1] = condition;
-	
+
 	return true;
 }
 
@@ -142,7 +140,11 @@ bool remove_hidden_condition(struct Pokemon * pok, Condition condition) {
 	}
 
 	pok->num_hidden_conditions--;
-	pok->hidden_conditions = realloc(pok->hidden_conditions, pok->num_hidden_conditions * sizeof(Condition));
+
+	//Resize the array to num conditions as long as array isn't zero. If it is zero, size should be 1 Condition
+	int new_size = pok->num_hidden_conditions * sizeof(Condition);
+	if (new_size == 0) new_size = sizeof(Condition);
+	pok->hidden_conditions = realloc(pok->hidden_conditions, new_size);
 	return found_condition;
 }
 
@@ -207,9 +209,9 @@ int handle_end_conditions() {
 		printw("%s's HP was sapped!", player_pok->name); refresh(); sleep(1);
 		sappedHP = ((player_pok->maxHP / 8) + 1);
 
-		blinkPokemon(true, DAMAGED_COLOR); 
+		blinkPokemon(true, DAMAGED_COLOR, LEECH_SEED_BLINK_TIMES); 
 		printBattle();
-		blinkPokemon(false, HEAL_COLOR);
+		blinkPokemon(false, HEAL_COLOR, LEECH_SEED_BLINK_TIMES);
 
 		//Give HP equal to taken HP
 		if (sappedHP > player_pok->currentHP) { enemy_pok->currentHP += player_pok->currentHP; player_pok->currentHP = 0; }
@@ -221,9 +223,9 @@ int handle_end_conditions() {
 		printw("%s%s's HP was sapped!", ENEMY_TEXT, enemy_pok->name); refresh(); sleep(1);
 		sappedHP = ((enemy_pok->maxHP / 8) + 1);
 
-		blinkPokemon(false, DAMAGED_COLOR); 
+		blinkPokemon(false, DAMAGED_COLOR, LEECH_SEED_BLINK_TIMES); 
 		printBattle();
-		blinkPokemon(true, HEAL_COLOR);
+		blinkPokemon(true, HEAL_COLOR, LEECH_SEED_BLINK_TIMES);
 
 		//Give HP equal to taken HP
 		if (sappedHP > enemy_pok->currentHP) { player_pok->currentHP += enemy_pok->currentHP; enemy_pok->currentHP = 0; }

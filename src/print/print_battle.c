@@ -79,7 +79,7 @@ int get_battle_selection(int first_line, int last_selection) {
 
 
 //Blink enemy if enemy is true, if not, blink player
-void blinkPokemon(bool blink_player, int color) {
+void blinkPokemon(bool blink_player, int color, int num_times) {
   Pokemon * pok;
   char poke_string[128];
   int text_x, text_y;
@@ -103,7 +103,7 @@ void blinkPokemon(bool blink_player, int color) {
 
   attrset(COLOR_PAIR(color));
   //Blink pokemon
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < num_times; i++) {
     mvprintw(text_y, text_x, "                       ");
     mvprintw(text_y+1, text_x, "                       ");
     refresh(); usleep(BLINK_TIME_MICROS);

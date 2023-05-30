@@ -6,6 +6,7 @@
 #include "conditions.h"
 #include "../print/print_defines.h"
 #include "../print/print_utils.h"
+#include "../print/print_battle.h"
 #include "pokemon.h"
 
 #define NUM_ATTACKS 100
@@ -233,7 +234,7 @@ int decrement_opponent_stat2(Condition stat_type, int chance, struct Pokemon* vi
 
 int deal_specific_damage(Condition nothing, int hp, struct Pokemon* victim, int damage) {
     bool enemy = (victim != player.enemy_pokemon);
-    blinkPokemon(enemy, DAMAGED_COLOR);
+    blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
     victim->currentHP -= hp;
     return 0;
 }
@@ -257,7 +258,7 @@ int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int
     // Do not hit again if victim has fainted
     while (victim->currentHP > 0 && i < rand_times) {
         sleep(1);
-        blinkPokemon(enemy, DAMAGED_COLOR);
+        blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
         victim->currentHP -= damage;
         if (victim->currentHP < 0) victim->currentHP = 0;
         i++;
@@ -274,7 +275,7 @@ int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int
 //Some attacks deal a percentage of damage left
 int deal_percentage_damage(Condition nothing, int percent, struct Pokemon* victim, int damage) {
     bool enemy = (victim != player.enemy_pokemon);
-    blinkPokemon(enemy, DAMAGED_COLOR);
+    blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
 
     float percent_f = ((float) percent) / 100.0;
 

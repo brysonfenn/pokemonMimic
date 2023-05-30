@@ -5,11 +5,14 @@
 
 struct Pokemon;
 
+#define DAMAGE_BLINK_TIMES 3
+#define LEECH_SEED_BLINK_TIMES 2
+
 //Print Battle Box and basic pokemon information
 void printBattle();
 
 //Blink enemy if enemy is true, if not, blink player
-void blinkPokemon(bool blink_player, int color);
+void blinkPokemon(bool blink_player, int color, int num_times);
 
 int get_battle_selection(int first_line, int last_selection);
 int get_move_selection(int start_x, int start_y, struct Pokemon* pok);
