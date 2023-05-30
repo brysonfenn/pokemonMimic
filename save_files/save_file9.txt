@@ -1,9 +1,12 @@
 Last Saved: 05/24/2023 22:09:32
 Player: 
-3 3 1000
+4 3 1000
 Location: {1,(13,11)}
 Heal Center: {1,(33,10)}
 Pokemon: 
+Caterpie 10 18 18 2 40 10 9 10 10 6 80 BUG NONE 0 0
+	Tackle. 1 35
+	String Shot. 5 40
 Charmander 4 20 20 4 11 9 12 11 13 5 0 FIRE NONE 0 0
 	Scratch. 2 35
 	Growl. 3 40

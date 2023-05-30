@@ -1,6 +1,7 @@
 #include "pokemon.h"
 
 #include <stdio.h>
+#include <ncurses.h>
 
 #include "../print/print_defines.h"
 #include "../print/print_utils.h"
@@ -253,7 +254,39 @@ int evolve(Pokemon * pok, int next_pok_id) {
   printBattle();
 
   text_box_cursors(TEXT_BOX_BEGINNING);
-  printw("%s is evolving!", og_pok_name); refresh(); sleep(3);
+  printw("What? %s is evolving!", og_pok_name);
+  text_box_cursors(TEXT_BOX_NEXT_LINE);
+  printw("Press 'b' to cancel "); refresh();
+
+  int count = 0;
+  bool pressed_b = false;
+  nodelay(stdscr, TRUE);
+
+  while (1) {
+    int ch = getch();
+    if (ch == 'b') {
+      pressed_b = true;
+
+      break;
+    }
+
+    if (count > 3000) break;
+    count++;
+
+    if (!(count % 500)) {
+      printw(". ");
+    }
+      
+    usleep(1000); //Sleep 1 ms
+
+  }
+  usleep(500000);
+  nodelay(stdscr, FALSE);
+  if (pressed_b) {
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("%s did not evolve!", og_pok_name); refresh(); sleep(2);
+    return 1;
+  }
 
   //Get pokemon evolution frame
   Pokemon evolution = *(get_pokemon_frame(next_pok_id));
@@ -273,7 +306,7 @@ int evolve(Pokemon * pok, int next_pok_id) {
   //Pokemon should have the same hp loss
   pok->currentHP = pok->maxHP - lost_hp;
 
-  text_box_cursors(TEXT_BOX_NEXT_LINE);
+  text_box_cursors(TEXT_BOX_BEGINNING);
   printw("Congratulations! %s evolved", og_pok_name);
   text_box_cursors(TEXT_BOX_NEXT_LINE);
   printw("into %s!", pok->name); refresh(); sleep(3);
