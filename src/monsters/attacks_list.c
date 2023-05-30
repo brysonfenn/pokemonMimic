@@ -78,6 +78,15 @@ attack slam         = {"Slam"         , 58, 20,  80,       75, NORMAL,   false, 
 attack thunderbolt  = {"Thunderbolt"  , 59, 15,  95,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 10 };
 attack thunder      = {"Thunder"      , 60, 10, 120,       70, ELECTRIC, false, &inflict_condition, PARALYZED, 30 };
 
+attack double_kick  = {"Double Kick"  , 61, 30,  30,      100, FIGHTING, false, &hit_multiple_times, 2, 2 };
+attack crunch       = {"Crunch"       , 62, 15,  80,      100, DARK,     false, &decrement_opponent_stat, SP_DEFENSE_STAT, 20 };
+attack body_slam    = {"Body Slam"    , 63, 15,  85,      100, NORMAL,   false, &inflict_condition, PARALYZED, 30 };
+attack super_power  = {"Super Power"  , 64,  5, 120,      100, FIGHTING, false, &decrement_opponent_stat, ATTACK_STAT, 100 };
+attack horn_attack  = {"Horn Attack"  , 65, 25,  65,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack horn_drill   = {"Horn Drill"   , 66,  5,   0,       30, NORMAL,   false, &deal_specific_damage, NO_CONDITION, 1000 };
+attack thrash       = {"Thrash"       , 67, 20,  90,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack megahorn     = {"Megahorn"     , 68, 10, 120,       85, BUG,      false, &attack_do_nothing, NO_CONDITION, 0 };
+
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
     &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl, &vine_whip,    // #01-10
@@ -85,8 +94,8 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &scary_face, &flame_thrower, &slash, &dragon_rage, &fire_spin, &wing_attack, &withdraw, &water_gun, &bite, &rapid_spin,        // #21-30
     &protect, &skull_bash, &hydro_pump, &harden, &supersonic, &confusion, &stun_spore, &gust, &psybeam, &silver_wind,              // #31-40
     &fury_attack, &pursuit, &agility, &twineedle, &pin_missile, &hyper_fang, &super_fang, &feather_dance, &swift, &fury_swipes,    // #41-50
-    &peck, &leer, &aerial_ace, &drill_peck, &thunder_shock, &thunder_wave, &double_team, &slam, &thunderbolt, &thunder             // #51-60
-    };
+    &peck, &leer, &aerial_ace, &drill_peck, &thunder_shock, &thunder_wave, &double_team, &slam, &thunderbolt, &thunder,            // #51-60
+    &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn };
 
 
 //Return an attack given an attack id number

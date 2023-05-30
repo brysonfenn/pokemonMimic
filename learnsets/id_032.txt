@@ -1,0 +1,10 @@
+Nidoran(m) 32
+Evolve: 16,33
+level,move_id
+1,52 Leer
+1,51 Peck
+12,61 Double Kick
+17,6 Poison Sting
+20,65 Horn Attack
+30,41 Fury Attack
+47,66 Horn Drill

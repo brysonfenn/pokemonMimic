@@ -1,0 +1,10 @@
+Nidorino 33
+Evolve: 101,0
+level,move_id
+1,52 Leer
+1,51 Peck
+12,61 Double Kick
+18,6 Poison Sting
+22,65 Horn Attack
+34,41 Fury Attack
+53,66 Horn Drill

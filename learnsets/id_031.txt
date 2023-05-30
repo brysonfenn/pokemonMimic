@@ -1,0 +1,9 @@
+Nidoqueen 31
+Evolve: 101,0
+level,move_id
+1,2 Scratch
+1,4 Tail Whip
+1,61 Double Kick
+1,6 Poison Sting
+22,63 Body Slam
+43,64 Super Power

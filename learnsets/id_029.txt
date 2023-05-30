@@ -1,0 +1,11 @@
+Nidoran(f) 29
+Evolve: 16,30
+level,move_id
+1,3 Growl
+1,2 Scratch
+8,4 Tail Whip
+12,61 Double Kick
+17,6 Poison Sting
+20,29 Bite
+30,50 Fury Swipes
+47,62 Crunch
