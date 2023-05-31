@@ -68,10 +68,10 @@ int save_game(int file_num) {
 	fprintf(fp, "Pokemon: \n");
 	for (int i = 0; i < player.numInParty; i++) {
 		curr_pok = player.party[i];
-		fprintf(fp, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %d %d\n", curr_pok.name, curr_pok.id_num, curr_pok.maxHP, curr_pok.currentHP,
+		fprintf(fp, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %x %d %d\n", curr_pok.name, curr_pok.id_num, curr_pok.maxHP, curr_pok.currentHP,
 			curr_pok.numAttacks, curr_pok.baseAttack, curr_pok.baseDefense, curr_pok.baseSpAttack, curr_pok.baseSpDefense,
 			curr_pok.baseSpeed, curr_pok.level, curr_pok.exp, get_typing_by_id(curr_pok.type1), get_typing_by_id(curr_pok.type2),
-			curr_pok.visible_condition, curr_pok.sleep_count);
+			curr_pok.iv, curr_pok.visible_condition, curr_pok.sleep_count);
 			
 		for (int j = 0; j < curr_pok.numAttacks; j++) {
 			curr_att = curr_pok.attacks[j];
@@ -160,20 +160,21 @@ int load_game(int file_num) {
 
 		char type1[20];
 		char type2[20];
-		int exp;
+		int exp, iv;
 
-		matched_elements = sscanf(line, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %d %d", &(curr_pok->name), &(curr_pok->id_num), 
+		matched_elements = sscanf(line, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %x %d %d", &(curr_pok->name), &(curr_pok->id_num), 
 			&(curr_pok->maxHP), &(curr_pok->currentHP), &(curr_pok->numAttacks), &(curr_pok->baseAttack), 
 			&(curr_pok->baseDefense), &(curr_pok->baseSpAttack), &(curr_pok->baseSpDefense), &(curr_pok->baseSpeed), 
-			&(curr_pok->level), &exp, &type1, &type2, &(curr_pok->visible_condition), &(curr_pok->sleep_count));
+			&(curr_pok->level), &exp, &type1, &type2, &iv, &(curr_pok->visible_condition), &(curr_pok->sleep_count));
 
 		curr_pok->exp = exp;
+		curr_pok->iv = iv;
 		curr_pok->type1 = get_type_id_by_string(type1);
 		curr_pok->type2 = get_type_id_by_string(type2);
 
 		//Check if the line matched correctly
-		if (matched_elements != 16) {
-			notify_error("POKEMON", line, 16, matched_elements);
+		if (matched_elements != 17) {
+			notify_error("POKEMON", line, 17, matched_elements);
 			return LOAD_FAILURE;
 		}
 

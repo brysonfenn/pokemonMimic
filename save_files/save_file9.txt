@@ -1,22 +1,22 @@
-Last Saved: 05/24/2023 22:09:32
+Last Saved: 05/31/2023 08:35:46
 Player: 
 4 3 1000
 Location: {1,(13,11)}
 Heal Center: {1,(33,10)}
 Pokemon: 
-Caterpie 10 18 18 2 40 10 9 10 10 6 80 BUG NONE 0 0
+Charmander 4 20 20 4 11 9 12 11 13 5 0 NONE NONE 12bcdf73 0 0
+	Double Slap. 71 35
+	Cosmic Power. 73 40
+	Moonlight. 74 15
+	Meteor Mash. 75 10
+Caterpie 10 18 18 2 40 10 9 10 10 6 80 NONE NONE 2df200a1 0 0
 	Tackle. 1 35
 	String Shot. 5 40
-Charmander 4 20 20 4 11 9 12 11 13 5 0 FIRE NONE 0 0
-	Scratch. 2 35
-	Growl. 3 40
-	Metal Claw. 17 15
-	Super Fang. 47 10
-Kakuna 14 21 21 3 13 11 13 11 12 9 100 BUG NONE 0 0
+Kakuna 14 21 21 3 13 11 13 11 12 9 100 NONE NONE 6b076197 0 0
 	Poison Sting. 6 35
 	String Shot. 5 40
 	Harden. 34 20
-Bulbasaur 1 20 20 2 11 10 13 13 11 5 0 GRASS POISON 0 0
+Bulbasaur 1 20 20 2 11 10 13 13 11 5 83 POISON NONE 31983766 0 0
 	Tackle. 1 35
 	Growl. 3 40
 Bag:
@@ -25,4 +25,4 @@ Super Potion. 2 2
 Pokeball. 3 5
 
 Trainers Battled: 0
-
+  

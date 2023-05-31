@@ -94,7 +94,7 @@ attack double_slap  = {"Double Slap"  , 71, 10,  15,       85, NORMAL,   false, 
 attack minimize     = {"Minimize"     , 72, 20,   0,  NO_MISS, NORMAL,   false, &increment_self_stat, EVASIVENESS_STAT, 100 };
 attack cosmic_power = {"Cosmic Power" , 73, 20,   0,  NO_MISS, PSYCHIC,  false, &increment_self_stat, SP_DEFENSE_STAT, 100 };
 attack moonlight    = {"Moonlight"    , 74,  5,   0,  NO_MISS, NORMAL,   false, &self_heal, HEAL_PERCENTAGE, 50 };
-attack meteor_mash  = {"Meteor Mash"  , 75, 10, 100,       85, STEEL,    false, &increment_self_stat, ATTACK_STAT, 20 };
+attack meteor_mash  = {"Meteor Mash"  , 75, 10, 100,       85, STEEL,    false, &increment_self_stat, ATTACK_STAT, 100 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -271,6 +271,7 @@ int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int
         victim->currentHP -= damage;
         if (victim->currentHP < 0) victim->currentHP = 0;
         i++;
+        printBattle();
     }
 
     sleep(1);
@@ -303,6 +304,8 @@ int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
 
     float percentage;
 
+    blinkPokemon(self == player.current_pokemon, HEAL_COLOR, 3);
+
     switch (heal_type) {
         case HEAL_PERCENTAGE:
             percentage = (hp / 100.0);
@@ -312,15 +315,19 @@ int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
             self->currentHP += hp;
             break;
         default:
-            text_box_cursors(TEXT_BOX_BEGINNING);
+        text_box_cursors(TEXT_BOX_BEGINNING);
             printw("Unrecognized heal_type"); refresh(); sleep(2);
             return 1;
     }
 
-
     if (self->currentHP > self->maxHP) {
         self->currentHP = self->maxHP;
     }
+    
+    printBattle();
+
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    printw("%s restored hp!", self->name); refresh(); sleep(1);
 
     return 0;
 }

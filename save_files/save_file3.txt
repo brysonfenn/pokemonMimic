@@ -1,22 +1,22 @@
-Last Saved: 05/24/2023 22:09:08
+Last Saved: 05/31/2023 08:34:26
 Player: 
 5 3 1100
 Location: {1,(48,17)}
 Heal Center: {1,(33,10)}
 Pokemon: 
-Bulbasaur 1 26 26 3 16 15 16 15 17 8 40 GRASS POISON 0 0
+Bulbasaur 1 26 26 3 16 15 16 15 17 8 83 POISON NONE 577a6a2f 0 0
 	Tackle. 1 35
 	Growl. 3 40
 	Leech seed. 11 10
-Charmander 4 22 22 2 13 14 13 14 15 6 3 FIRE NONE 0 0
+Charmander 4 22 22 2 13 14 13 14 15 6 0 NONE NONE 25d16087 0 0
 	Scratch. 2 35
 	Tail Whip. 4 30
-Caterpie 10 14 14 2 7 8 7 8 10 3 0 BUG NONE 0 0
+Caterpie 10 14 14 2 7 8 7 8 10 3 0 NONE NONE 55185276 0 0
 	Tackle. 1 35
 	String Shot. 5 40
-Pidgey 16 14 14 1 9 9 9 9 9 3 0 NORMAL FLYING 0 0
+Pidgey 16 14 14 1 9 9 9 9 9 3 19521 FLYING NONE 2fcdec9f 0 0
 	Tackle. 1 35
-Rattata 19 11 11 2 7 9 7 9 8 2 0 NORMAL NONE 0 0
+Rattata 19 11 11 2 7 9 7 9 8 2 19521 NONE NONE 7869d33d 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 Bag:
@@ -25,4 +25,4 @@ Pokeball. 3 2
 Great Ball. 4 1
 
 Trainers Battled: 0
-
+  

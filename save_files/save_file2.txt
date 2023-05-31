@@ -1,15 +1,18 @@
-Last Saved: 05/26/2023 07:21:29
+Last Saved: 05/31/2023 08:37:21
 Player: 
-1 3 1000
-Location: {2,(8,11)}
+2 3 1000
+Location: {2,(10,14)}
 Heal Center: {1,(32,10)}
 Pokemon: 
-Bulbasaur 1 20 20 2 11 10 12 12 10 5 15 GRASS POISON 0 0
-	Tackle. 1 35
+Bulbasaur 1 20 20 2 11 10 12 12 10 5 83 POISON NONE 6b7b2920 0 0
+	Tackle. 1 32
 	Growl. 3 40
+Sandshrew 27 18 4 1 11 12 7 8 8 4 15 GROUND NONE 133ac6c0 0 0
+	Tackle. 1 31
 Bag:
-Potion. 1 2
+Potion. 1 1
 Super Potion. 2 2
-Pokeball. 3 5
+Pokeball. 3 4
 
 Trainers Battled: 0
+  

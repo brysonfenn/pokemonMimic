@@ -1,19 +1,19 @@
-Last Saved: 05/27/2023 21:52:42
+Last Saved: 05/31/2023 08:34:54
 Player: 
 4 2 2335
 Location: {2,(18,2)}
 Heal Center: {1,(32,10)}
 Pokemon: 
-Charmander 4 31 16 3 17 15 11 10 20 12 13 FIRE NONE 0 0
+Charmander 4 31 16 3 17 15 11 10 20 12 0 NONE NONE 76bc4c2d 0 0
 	Scratch. 2 35
 	Growl. 3 40
 	Ember. 12 18
-Pidgey 16 17 17 1 8 8 6 6 9 4 18 NORMAL FLYING 0 0
+Pidgey 16 17 17 1 8 8 6 6 9 4 19521 FLYING NONE 442d5b41 0 0
 	Tackle. 1 35
-Sandshrew 27 22 22 2 14 15 8 8 9 6 24 GROUND NONE 0 0
+Sandshrew 27 22 22 2 14 15 8 8 9 6 17486 NONE NONE 7dc22b5e 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
-Bulbasaur 1 25 2 3 12 12 14 14 12 8 61 GRASS POISON 0 0
+Bulbasaur 1 25 2 3 12 12 14 14 12 8 83 POISON NONE 56ad68d2 0 0
 	Tackle. 1 29
 	Growl. 3 40
 	Leech seed. 11 9
