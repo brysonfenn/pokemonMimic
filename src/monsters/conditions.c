@@ -22,7 +22,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok) {
 	int random = rand() % 100;
 	if (random >= accuracy) return 0;	//Only inflict condition if random is in accuracy bound
 	
-	text_box_cursors(TEXT_BOX_NEXT_LINE);
+	text_box_cursors(TEXT_BOX_BEGINNING);
 	switch (condition) {
 		case POISONED:
 			if (pok->visible_condition != NO_CONDITION) {

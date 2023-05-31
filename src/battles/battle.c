@@ -26,7 +26,7 @@ static bool run_success;
 void perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_num);
 
 //Get a move number randomly (moves with higher damage have a higher chance)
-int get_move(Pokemon * pok);
+int get_enemy_move(Pokemon * pok);
 
 //Give all pokemon exp that need it, and level up
 void handle_exp(int exp);
@@ -103,7 +103,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
     while (current_decision == NONE) {
       clear();
 
-      enemy_attack_num = get_move(enemyPok);
+      enemy_attack_num = get_enemy_move(enemyPok);
 
       switch (current_display) {
         
@@ -136,7 +136,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
         if (out_of_pp) {
           current_display = MAIN;
           current_decision = ATTACK;
-          attack_num = -1;
+          attack_num = STRUGGLE_MOVE_NUM;
           break;
         }
 
@@ -377,26 +377,30 @@ void perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_n
 }
 
 
-//Get a move number randomly (moves with higher damage have a higher chance)
-int get_move(Pokemon * pok) {
+//Get a move number randomly (move with highest damage has a higher chance)
+int get_enemy_move(Pokemon * pok) {
   int num_available_attacks = 0;
   int available_attacks[4];
   int curr_attack;
 
+  //Create an array of moves that have remaining PP > 0
   for (int i = 0; i < pok->numAttacks; i++) {
     if (pok->attacks[i].curr_pp) {
       available_attacks[num_available_attacks] = i;
       num_available_attacks++;
     }
   }
-  if (num_available_attacks == 0) return -1;
 
+  //Enemy should struggle if no moves have PP
+  if (num_available_attacks == 0) return STRUGGLE_MOVE_NUM;
+
+  //Varables to assist in getting move with maximum damage
   int max_move_index = available_attacks[0];
   int max_damage = 0;
   int curr_damage = 0;
   int flags_var;  //Filler int for the get_damage function
 
-  //Get move with the maximum power.
+  //Get move with maximum damage
   for (int i = 0; i < num_available_attacks; i++) {
     curr_attack = available_attacks[i];
     curr_damage = get_damage(pok, curr_attack, player.current_pokemon, false, &flags_var);
@@ -406,6 +410,7 @@ int get_move(Pokemon * pok) {
     }
   }
 
+  // Higher chance of selecting move with highest damage
   int random = rand() % 100;
   if (random < 67) return max_move_index;
   else return available_attacks[rand() % num_available_attacks];

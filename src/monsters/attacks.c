@@ -74,7 +74,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
   }
 
   //Struggle if PP is zero
-  if (move_num == -1) {
+  if (move_num == STRUGGLE_MOVE_NUM) {
     perform_struggle(perp, victim, enemy);
     return 0;
   }
@@ -123,7 +123,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     if (damage > 0) blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
     victim->currentHP -= damage;
     if (victim->currentHP < 0) victim->currentHP = 0;
-    clear(); printBattle();
+    printBattle();
   }
 
   //Print critical & effectiveness messages
@@ -186,6 +186,11 @@ int get_damage(struct Pokemon *perp, int move_num, struct Pokemon *victim, bool 
   if ((rand() % 16) == 0 && print_statements) {
     *flags |= CRITICAL_HIT_FLAG;
     damage *= 2;
+  }
+
+  //STAB Bonus
+  if (chosenAttack.type == perp->type1 || chosenAttack.type == perp->type2) {
+    damage = (damage * 1.5);
   }
 
   //Calculate effectiveness

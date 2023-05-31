@@ -12,6 +12,7 @@
 #define HEAL_PERCENTAGE 1
 #define HEAL_NUM_HP 2
 
+#define STRUGGLE_MOVE_NUM -1
 
 struct Pokemon;
 

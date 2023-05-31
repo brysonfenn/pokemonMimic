@@ -4,7 +4,7 @@ Player:
 Location: {2,(10,14)}
 Heal Center: {1,(32,10)}
 Pokemon: 
-Bulbasaur 1 20 20 2 11 10 12 12 10 5 83 POISON NONE 6b7b2920 0 0
+Bulbasaur 1 20 20 2 11 10 12 12 10 5 83 GRASS POISON 6b7b2920 0 0
 	Tackle. 1 32
 	Growl. 3 40
 Sandshrew 27 18 4 1 11 12 7 8 8 4 15 GROUND NONE 133ac6c0 0 0

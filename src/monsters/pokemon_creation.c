@@ -21,9 +21,9 @@ static Pokemon_id pok_id_list[10] = { POKEMON_BULBASAUR, POKEMON_CHARMANDER, POK
 static Pokemon_id wild_pok_lists[10][10] = {
 //Map #, levels, ID'S...
   { 3,   5, 7,  POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE }, //No Map is #0
-  { 2,   5, 8,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #1
-  { 3,   4, 8,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_SANDSHREW }, //Map #2
-  { 2,   2, 5,  POKEMON_PIDGEY, POKEMON_RATTATA } //Map #3
+  { 2,   5, 8,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #1 Viridian City
+  { 3,   4, 8,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_SANDSHREW }, //Map #2 Route 1
+  { 2,   2, 5,  POKEMON_PIDGEY, POKEMON_RATTATA } //Map #3 Route 2
 };
 
 static Pokemon newest_pokemon;
@@ -83,7 +83,8 @@ Pokemon * get_random_wild_pokemon(int level_min, int level_max) {
     max_level = wild_pok_lists[player.loc->map][2];
   }
 
-  // new_pok_id = POKEMON_CATERPIE;
+  // new_pok_id = POKEMON_CHARMANDER;
+  // set_level = 7;
   Pokemon * new_pok = create_new_pokemon(new_pok_id, set_level, min_level, max_level);
 
   return new_pok;
