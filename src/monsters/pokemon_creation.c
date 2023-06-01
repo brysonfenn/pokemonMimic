@@ -19,11 +19,11 @@ static Pokemon_id pok_id_list[10] = { POKEMON_BULBASAUR, POKEMON_CHARMANDER, POK
   POKEMON_PIDGEY, POKEMON_RATTATA, POKEMON_SANDSHREW };
 
 static Pokemon_id wild_pok_lists[10][10] = {
-//Map #, levels, ID'S...
+//Pok #, levels, ID'S...
   { 3,   5, 7,  POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE }, //No Map is #0
-  { 2,   5, 8,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #1 Viridian City
-  { 3,   4, 8,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_SANDSHREW }, //Map #2 Route 1
-  { 2,   2, 5,  POKEMON_PIDGEY, POKEMON_RATTATA } //Map #3 Route 2
+  { 2,   3, 5,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #1 Viridian City
+  { 3,   3, 5,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU }, //Map #2 Route 2
+  { 2,   2, 4,  POKEMON_PIDGEY, POKEMON_RATTATA } //Map #3 Route 1
 };
 
 static Pokemon newest_pokemon;

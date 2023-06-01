@@ -8,7 +8,7 @@ Bulbasaur 1 23 19 3 11 11 12 12 11 7 83 GRASS POISON 576b8a59 0 0
 	Tackle. 1 34
 	Growl. 3 40
 	Leech seed. 11 10
-Rattata 19 19 19 2 11 9 7 8 13 6 19521 NORMAL NONE 554805e5 0 0
+Rattata 19 19 19 2 11 9 7 8 13 6 30 NORMAL NONE 554805e5 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 Bag:

@@ -14,8 +14,9 @@
   //level = particular level
   //if level = 0, get random level from range level_min:level_max
 void calculate_stats(Pokemon * pok, int level, int level_min, int level_max) {
+  //If level is zero, get a level within the given range
   if (!level) {
-    level = (rand() % (level_max - level_min)) + level_min;
+    level = (rand() % (level_max + 1 - level_min)) + level_min;
   }
   pok->level = level;
   int ev = 1;

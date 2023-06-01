@@ -12,7 +12,7 @@ Charmander 4 20 20 4 11 9 12 11 13 5 0 NONE NONE 12bcdf73 0 0
 Caterpie 10 18 18 2 40 10 9 10 10 6 80 NONE NONE 2df200a1 0 0
 	Tackle. 1 35
 	String Shot. 5 40
-Kakuna 14 21 21 3 13 11 13 11 12 9 100 NONE NONE 6b076197 0 0
+Kakuna 14 21 21 3 13 11 13 11 12 9 60 NONE NONE 6b076197 0 0
 	Poison Sting. 6 35
 	String Shot. 5 40
 	Harden. 34 20

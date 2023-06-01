@@ -40,7 +40,9 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok) {
 				return 1;
 			}
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
-			printw("%s was paralyzed. It may be unable to move!", pok->name); refresh(); sleep(2);
+			printw("%s is now paralyzed.", pok->name); 
+			text_box_cursors(TEXT_BOX_NEXT_LINE);
+			printw("It may be unable to move!"); refresh(); sleep(2);
 			pok->visible_condition = PARALYZED;
 			break;
 

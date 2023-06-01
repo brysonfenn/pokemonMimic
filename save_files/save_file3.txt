@@ -14,9 +14,9 @@ Charmander 4 22 22 2 13 14 13 14 15 6 0 FIRE NONE 25d16087 0 0
 Caterpie 10 14 14 2 7 8 7 8 10 3 0 BUG NONE 55185276 0 0
 	Tackle. 1 35
 	String Shot. 5 40
-Pidgey 16 14 14 1 9 9 9 9 9 3 19521 NORMAL FLYING 2fcdec9f 0 0
+Pidgey 16 14 14 1 9 9 9 9 9 3 0 NORMAL FLYING 2fcdec9f 0 0
 	Tackle. 1 35
-Rattata 19 11 11 2 7 9 7 9 8 2 19521 NORMAL NONE 7869d33d 0 0
+Rattata 19 11 11 2 7 9 7 9 8 2 0 NORMAL NONE 7869d33d 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 Bag:
