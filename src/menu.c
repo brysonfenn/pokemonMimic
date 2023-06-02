@@ -9,6 +9,8 @@
 #include "monsters/pokemon.h"
 #include "items.h"
 
+#include "motion/maps.h"
+
 static enum display { TOWN, POKEMON, BAG, PLAYER, SAVE, LOAD,
     POWER_OFF, MAIN } current_display = TOWN;
 
@@ -88,9 +90,14 @@ void main_menu() {
         
         //Display player data
         case PLAYER:
-        begin_list();
-        printPlayer();
-        sleep(2);
+        // begin_list();
+        // printPlayer();
+        // sleep(2);
+
+        clear();
+        draw_map_from_file();
+        sleep(5);
+
         current_display = MAIN;
         break;
 
