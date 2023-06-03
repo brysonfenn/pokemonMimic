@@ -23,7 +23,7 @@ void no_grass() {}
 //Map functions
 static void (*draw_funcs[10])() = { &draw_generic_map, &draw_map1, &draw_map2, &draw_map3, &draw_map4, &draw_b1, &draw_vir_forest };
 
-static void (*grass_funcs[10])() = { &grass_generic_map, &grass_map1, &grass_map2, &grass_map3, &grass_map4, &no_grass, &grass_vir_forest };
+static void (*grass_funcs[10])() = { &grass_generic_map, &grass_map1, &grass_map2, &grass_map3, &grass_map4, &no_grass, &draw_map_from_file };
 
 
 void draw_map_from_file() {
@@ -34,34 +34,48 @@ void draw_map_from_file() {
         return;
     }
 
-    int ch;
+    int ch, y, x;
     char ch8;
     int col_num = 0;
     int line_num = 0;
 
-    //First line has nothing of value
+    //First two line has nothing of value
+    while ((ch = fgetc(file)) != '\n') { }
     while ((ch = fgetc(file)) != '\n') { }
 
-    move(line_num+MAP_Y, MAP_X);
+    move(line_num+MAP_Y+1, MAP_X+1);
 
     while ((ch = fgetc(file)) != EOF) {
         ch8 = ch & A_CHARTEXT;
 
+        //If this is an endline char, move to the next line
         if (ch8 == '\n') {
             line_num++;
-            move(line_num+MAP_Y, MAP_X-1);
+            move(line_num+MAP_Y+1, MAP_X+1);
             col_num = 0;
+            continue;
         }
 
+        //Skip first three digits -- used for easier visuals in the text file
         if (col_num < 3) {
+            //Last line will start with an f, so break if we see one
+            if (ch == 'f') break;
             col_num++;
             continue;
         }
 
-        if (ch8 == 'Y' || ch8 == 'W') attrset(COLOR_PAIR(GRASS_COLOR));
+        if (ch == 'Y' || ch == 'W') attrset(COLOR_PAIR(GRASS_COLOR));
 
-        printw("%c", ch);
-
+         //If this is a vertical line or a space, move cursor forward rather than printing
+         // vertical line characters in a text file have the value 130
+        if (ch == ' ' || ch == 130) {
+            getyx(stdscr, y, x);  // Get the current cursor position
+            move(y, x+1);   //Move cursor forward one space rather than printing
+        }
+        else {
+            printw("%c", ch);
+        }
+        
         attrset(COLOR_PAIR(DEFAULT_COLOR));
     }
     refresh();
