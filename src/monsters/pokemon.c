@@ -51,6 +51,15 @@ void reset_stat_stages(Pokemon *pok) {
   remove_all_hidden_conditions(pok);
 }
 
+
+void print_pokemon_attacks(Pokemon *pok, int first_line) {
+  mvprintw(first_line, POKE_SUMMARY_ATKS_X, "%s", pok->attacks[0].name);
+  mvprintw(first_line, POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING, "%s", pok->attacks[1].name);
+  mvprintw(first_line+1, POKE_SUMMARY_ATKS_X, "%s", pok->attacks[2].name);
+  mvprintw(first_line+1, POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING, "%s", pok->attacks[3].name);
+  refresh();
+}
+
 //Print stats, attacks, etc of a given pokemon
 void print_pokemon_summary(Pokemon *pok) {
   char print_str[8192];
@@ -68,11 +77,7 @@ void print_pokemon_summary(Pokemon *pok) {
 
   print_to_list(print_str);
 
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN, POKE_SUMMARY_ATKS_X, "%s", pok->attacks[0].name);
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN, POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING, "%s", pok->attacks[1].name);
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN+1, POKE_SUMMARY_ATKS_X, "%s", pok->attacks[2].name);
-  mvprintw(POKE_SUMMARY_ATKS_BEGIN+1, POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING, "%s", pok->attacks[3].name);
-  refresh();
+  print_pokemon_attacks(pok, POKE_SUMMARY_ATKS_BEGIN);
 }
 
 //Control all actions for the pokemon menu
@@ -82,9 +87,9 @@ int handle_pokemon_menu(int input_num1) {
   Pokemon tempPok;
 
   begin_list();
+  print_to_list("  Switch\n  Release\n  Attacks\n  Cancel\n--------------------------------------------------------");
   print_pokemon_summary(&(player.party[input_num1]));
-  print_to_list(" \n \n \n  Switch\n  Release\n  Attacks\n  Cancel\n");
-  input_num2 = get_selection(POKE_SUMMARY_SEL_BEGIN, 3, 0);
+  input_num2 = get_selection(LIST_BOX_Y+1, 3, 0);
 
   //Break if inputNum2 is 2 (cancel)
   if (input_num2 == 3 || input_num2 == PRESSED_B) { return RETURN_TO_PARTY; }
@@ -130,11 +135,14 @@ int handle_pokemon_menu(int input_num1) {
   else if (input_num2 == 2) {
     input_num2 = 0;
     while (input_num2 != 5) {
+      tempPok = player.party[input_num1];
       begin_list();
-      print_pokemon_summary(&(player.party[input_num1]));
-      mvprintw(POKE_SUMMARY_ATKS_BEGIN+1,POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING*2, "  Cancel");
+      sprintf(print_str, "%s Attacks:", tempPok.name);
+      print_to_list(print_str);
+      print_pokemon_attacks(&(player.party[input_num1]), LIST_BOX_Y+3);
+      mvprintw(LIST_BOX_Y+4,POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING*2, "  Cancel");
       input_num2 = 
-        get_move_selection(POKE_SUMMARY_ATKS_X-2, POKE_SUMMARY_ATKS_BEGIN, &(player.party[input_num1]));
+        get_move_selection(POKE_SUMMARY_ATKS_X-2, LIST_BOX_Y+3, &(player.party[input_num1]));
     }
     return RETURN_TO_SUMMARY;
   }
