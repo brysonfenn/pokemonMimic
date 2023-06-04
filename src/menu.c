@@ -43,7 +43,7 @@ void main_menu() {
         print_to_list("  Back\n  Pokemon\n  Bag\n  Player\n");
         print_to_list("  Save Game\n  Load Game\n  Power Off\n\n");
 
-        inputNum = get_selection(LIST_BOX_Y+1, 6, last_selection);
+        inputNum = get_selection(0, 6, last_selection);
         if (inputNum == PRESSED_B) inputNum = TOWN;
 
         last_selection = inputNum;
@@ -67,7 +67,7 @@ void main_menu() {
                 begin_list();
                 printParty();
                 print_to_list("  Cancel");
-                inputNum = get_selection(LIST_BOX_Y+2, player.numInParty, selected_poke);
+                inputNum = get_selection(1, player.numInParty, selected_poke);
                 if (inputNum == player.numInParty || inputNum == PRESSED_B) { break; }   //Cancel
             }
             return_execute = handle_pokemon_menu(inputNum);
@@ -81,7 +81,7 @@ void main_menu() {
         case BAG:
         begin_list();
         printBag();
-        inputNum = get_selection(LIST_BOX_Y+2, player.numInBag, 0);
+        inputNum = get_selection(1, player.numInBag, 0);
         if (inputNum == player.numInBag || inputNum == PRESSED_B) { current_display = MAIN; break; }
         return_execute = use_item(inputNum, &emptyPok);
 
@@ -105,7 +105,7 @@ void main_menu() {
         print_save_files();
         inputNum = get_current_save_file();
         inputNum = (inputNum == 0) ? 0 : inputNum-1;  //Adjust to current save file position
-        inputNum = get_selection(LIST_BOX_Y+2, 9, inputNum);
+        inputNum = get_selection(1, 9, inputNum);
 
         if (inputNum == 9 || inputNum == PRESSED_B) { current_display = MAIN; break; }
         save_game(inputNum+1);
@@ -117,7 +117,7 @@ void main_menu() {
         begin_list();
         print_to_list("Select a save file to LOAD: \n");
         print_save_files();
-        inputNum = get_selection(LIST_BOX_Y+2, 9, 0);
+        inputNum = get_selection(1, 9, 0);
 
         if (inputNum == 9 || inputNum == PRESSED_B) { current_display = MAIN; break; }
         load_game(inputNum+1);

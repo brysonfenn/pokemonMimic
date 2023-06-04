@@ -105,7 +105,9 @@ void pause_ncurses() {
 int get_selection(int first_line, int num_options, int last_selection) {
 
   int cursor_x = LIST_BOX_X+1;
-  int cursor_y = first_line + last_selection;
+  // The actual first line should be adjusted to the list box position
+  int actual_first_line = LIST_BOX_Y + first_line + 1;
+  int cursor_y = actual_first_line + last_selection;
   mvaddch(cursor_y, cursor_x, SELECTION_CHAR);
   refresh();
 
@@ -119,11 +121,11 @@ int get_selection(int first_line, int num_options, int last_selection) {
 
     switch (ch) {
       case KEY_UP:
-        if (cursor_y == first_line) cursor_y = first_line + num_options;
+        if (cursor_y == actual_first_line) cursor_y = actual_first_line + num_options;
         else cursor_y--;
         break;
       case KEY_DOWN:
-        if (cursor_y == first_line + num_options) cursor_y = first_line;
+        if (cursor_y == actual_first_line + num_options) cursor_y = actual_first_line;
         else cursor_y++;
         break;
       case KEY_LEFT:
@@ -131,7 +133,7 @@ int get_selection(int first_line, int num_options, int last_selection) {
       case KEY_RIGHT:
         break;
       case 'a':
-        return (cursor_y - first_line);
+        return (cursor_y - actual_first_line);
       case 'b':
         return (PRESSED_B);
         break;

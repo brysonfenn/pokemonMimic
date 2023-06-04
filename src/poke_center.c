@@ -18,7 +18,7 @@ int handle_poke_center() {
   begin_list();
   print_to_list("Welcome to the Pokémon Center\n \n");
   print_to_list("  Heal Pokémon\n  PC\n  Exit");
-  inputNum = get_selection(LIST_BOX_Y+3, 2, 0);
+  inputNum = get_selection(2, 2, 0);
 
   clear();
   if (inputNum == 2 || inputNum == PRESSED_B) return POKE_CENTER_EXIT;
@@ -44,11 +44,11 @@ void handle_PC() {
   
   while (1) {
     begin_list();
-    print_to_list("Welcome to the PC!");
+    print_to_list("Welcome to the PC! Select a Pokemon from storage below");
     print_pokemon_list(player.pc_storage, player.numInPCStorage);
     print_to_list("  Cancel");
 
-    input_num = get_selection(LIST_BOX_Y+2, player.numInPCStorage, 0);
+    input_num = get_selection(1, player.numInPCStorage, 0);
     if (input_num == player.numInPCStorage || input_num == PRESSED_B) { break; }   //Cancel
     else {
       clear();

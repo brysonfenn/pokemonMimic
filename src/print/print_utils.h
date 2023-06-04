@@ -24,7 +24,7 @@ void resume_ncurses();
 void pause_ncurses();
 
 //Get player selection from list
-//  first_line is the first line of the list (0 is the top of the terminal)
+//  first_line is the first line of the list (0 is the first line of the list_box)
 //  num_options is the number of options in the list available to select
 //  last_selection is where the cursor will begin (usually 0 or the last option selected)
 int get_selection(int first_line, int num_options, int last_selection);

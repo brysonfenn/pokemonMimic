@@ -57,7 +57,7 @@ int handle_mart() {
   sprintf(print_str, " \nYou have $%d\n", player.money);
   print_to_list(print_str);
 
-  inputNum = get_selection(LIST_BOX_Y+2, CURRENT_MAX_NUM, last_selection);
+  inputNum = get_selection(1, CURRENT_MAX_NUM, last_selection);
   if (inputNum == PRESSED_B) inputNum = CURRENT_MAX_NUM;
   last_selection = inputNum;
 
@@ -180,7 +180,7 @@ int execute_potion(int hp_gain, char * name) {
   printParty();
   print_to_list("  Cancel\n");
 
-  int input = get_selection(LIST_BOX_Y+3, player.numInParty, 0);
+  int input = get_selection(2, player.numInParty, 0);
   if (input == player.numInParty || input == PRESSED_B) return ITEM_FAILURE;
 
   int currentHP = player.party[input].currentHP;

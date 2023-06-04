@@ -78,7 +78,7 @@ int battle_trainer(Trainer * trainer) {
     sprintf(print_str, "  %s is about to send out %s\n", trainer->name, trainer_pokemon[i+1].name);
     sprintf(print_str, "%s  Will B change Pokemon?\n  Yes\n  No\n", print_str);
     print_to_list(print_str);
-    inputNum = get_selection(LIST_BOX_Y+3, 1, 0);
+    inputNum = get_selection(2, 1, 0);
 
     //Do not switch if player selected no
     if (inputNum == 1 || inputNum == PRESSED_B) continue;
@@ -89,7 +89,7 @@ int battle_trainer(Trainer * trainer) {
       print_to_list("Select a pokemon to use.\n");
       printParty();
     
-      inputNum = get_selection(LIST_BOX_Y+3, player.numInParty-1, 0);
+      inputNum = get_selection(2, player.numInParty-1, 0);
 
       if (inputNum == PRESSED_B) {
         break;
