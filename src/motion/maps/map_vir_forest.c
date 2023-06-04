@@ -26,20 +26,7 @@ void draw_vir_forest() {
 
     add_trainer(MAP_X+11, MAP_Y+7, &trainer4, PLAYER_MOVING_DOWN);
 
-    attrset(COLOR_PAIR(GRASS_COLOR));
-    for (int i = MAP_X+8; i < MAP_X+MAP_WIDTH-1; i++) {
-        mvaddch(MAP_Y+3, i, 'Y');
-    }
-    for (int i = MAP_X+1; i < MAP_X+MAP_WIDTH-10; i++) {
-        mvaddch(MAP_Y+6, i, 'Y');
-    }
-    for (int i = MAP_X+12; i < MAP_X+MAP_WIDTH-1; i++) {
-        mvaddch(MAP_Y+10, i, 'Y');
-    }
-    for (int i = MAP_X+1; i < MAP_X+MAP_WIDTH-10; i++) {
-        mvaddch(MAP_Y+14, i, 'Y');
-    }
-    attrset(COLOR_PAIR(DEFAULT_COLOR));
+    draw_static_elements();
 }
 
 void grass_vir_forest() {

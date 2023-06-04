@@ -48,5 +48,6 @@
 #define DAMAGED_COLOR 4
 #define TRAINER_COLOR 5
 #define HEAL_COLOR 6
+#define TREE_COLOR 7
 
 #endif // PRINT_DEFINES_H

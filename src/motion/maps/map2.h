@@ -3,6 +3,4 @@
 
 void draw_map2();
 
-void grass_map2();
-
 #endif //MAP1_H

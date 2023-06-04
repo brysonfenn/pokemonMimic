@@ -23,11 +23,31 @@ void no_grass() {}
 //Map functions
 static void (*draw_funcs[10])() = { &draw_generic_map, &draw_map1, &draw_map2, &draw_map3, &draw_map4, &draw_b1, &draw_vir_forest };
 
-static void (*grass_funcs[10])() = { &grass_generic_map, &grass_map1, &grass_map2, &grass_map3, &grass_map4, &no_grass, &draw_map_from_file };
 
+void draw_static_elements() {
+    char map_name[32] = "empty_map";
 
-void draw_map_from_file() {
-    FILE *file = fopen("map_sample.txt", "r");  // Open the file for reading
+    switch (player.loc->map) {
+        case MAP_R1:
+            sprintf(map_name, "route1");
+            break;
+        case MAP_VIRIDIAN:
+            sprintf(map_name, "vir_city");
+            break;
+        case MAP_R2:
+            sprintf(map_name, "route2");
+            break;
+        case MAP_VIR_FOREST:
+            sprintf(map_name, "vir_forest");
+            break;
+        default:
+            sprintf(map_name, "empty_map");
+            break;
+    }
+
+    char file_name[64];
+    sprintf(file_name, "maps/%s.txt", map_name);
+    FILE *file = fopen(file_name, "r");  // Open the file for reading
 
     if (file == NULL) {
         printw("Failed to map file.");
@@ -43,7 +63,7 @@ void draw_map_from_file() {
     while ((ch = fgetc(file)) != '\n') { }
     while ((ch = fgetc(file)) != '\n') { }
 
-    move(line_num+MAP_Y+1, MAP_X+1);
+    move(line_num+MAP_Y+1, MAP_X);
 
     while ((ch = fgetc(file)) != EOF) {
         ch8 = ch & A_CHARTEXT;
@@ -51,7 +71,7 @@ void draw_map_from_file() {
         //If this is an endline char, move to the next line
         if (ch8 == '\n') {
             line_num++;
-            move(line_num+MAP_Y+1, MAP_X+1);
+            move(line_num+MAP_Y+1, MAP_X);
             col_num = 0;
             continue;
         }
@@ -64,7 +84,8 @@ void draw_map_from_file() {
             continue;
         }
 
-        if (ch == 'Y' || ch == 'W') attrset(COLOR_PAIR(GRASS_COLOR));
+        if (ch == 'W') attrset(COLOR_PAIR(GRASS_COLOR));
+        else if (ch == 'Y') attrset(COLOR_PAIR(TREE_COLOR));
 
          //If this is a vertical line or a space, move cursor forward rather than printing
          // vertical line characters in a text file have the value 130
@@ -85,16 +106,13 @@ void draw_map_from_file() {
 
 
 
-void change_map_funcs(int map_num, void (**draw_map)(), void (**grass_map)() ) {
+void change_map_funcs(int map_num, void (**draw_map)()) {
     //If map is outside the range, choose generic map functions
     if (map_num < 1 || map_num > 6) {
         *draw_map = &draw_generic_map;
-        *grass_map = &grass_generic_map;
         return;
     }
-
     *draw_map = draw_funcs[map_num];
-    *grass_map = grass_funcs[map_num];
 }
 
 

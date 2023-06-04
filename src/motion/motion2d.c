@@ -22,8 +22,6 @@
 typedef void (*init_map_func) ();
 
 static init_map_func draw_map;
-static init_map_func grass_map;
-
 
 static char player_char = PLAYER_MOVING_DOWN;
 
@@ -135,7 +133,7 @@ void handle_motion() {
                 }
                 break;
         }
-        grass_map();
+        draw_static_elements();
 
         bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR);
         int random = rand() % 100;
@@ -222,7 +220,7 @@ void change_map(int map, int x, int y) {
     player.loc->x = x;
     player.loc->y = y;
     player.loc->map = map;
-    change_map_funcs(map, &draw_map, &grass_map);
+    change_map_funcs(map, &draw_map);
 
     init_map();
 }
@@ -242,6 +240,7 @@ bool is_movable_space(int yInc, int xInc) {
 void init_map() {
     clear();
     draw_map();
+    draw_static_elements();
     draw_box(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5); //Draw message box
     leave_msg_count = 0;    //leave map label for 5 movements
 

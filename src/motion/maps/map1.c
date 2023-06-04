@@ -31,20 +31,5 @@ void draw_map1() {
     draw_town_exit(MAP_BOTTOM, 25); 
     add_exit_portal(MAP_BOTTOM, 25, MAP_R1);
 
-    grass_map1();
-
     refresh();
-}
-
-
-void grass_map1() { 
-    attrset(COLOR_PAIR(GRASS_COLOR));
-
-    for (int i = 1; i < 12; i++) {
-        mvaddch(MAP_Y+1, MAP_X+i, GRASS_CHAR); 
-        mvaddch(MAP_Y+2, MAP_X+i+1, GRASS_CHAR); 
-        mvaddch(MAP_Y+3, MAP_X+i+1, GRASS_CHAR); 
-    }
-
-    attrset(COLOR_PAIR(DEFAULT_COLOR));
 }

@@ -8,6 +8,4 @@
 
 void draw_map1();
 
-void grass_map1();
-
 #endif //MAP1_H

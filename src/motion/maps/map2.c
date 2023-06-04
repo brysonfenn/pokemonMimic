@@ -34,29 +34,8 @@ void draw_map2() {
 
     
     add_trainer(MAP_X+1, MAP_Y+8, &trainer1, PLAYER_MOVING_RIGHT);
-    add_trainer(MAP_X+15, MAP_Y+5, &trainer2, PLAYER_MOVING_LEFT);
-    add_trainer(MAP_X+1, MAP_Y+2, &trainer3, PLAYER_MOVING_RIGHT);
-
-    for (int i = 0; i < 10; i++) {
-        mvaddch(MAP_Y+1+i, MAP_X+16, '|');
-    }
-    for (int i = MAP_X+16; i < MAP_X+MAP_WIDTH-1; i++) {
-        mvaddch(MAP_Y+11, i, '-');
-    }
-
-    grass_map2();
+    add_trainer(MAP_X+15, MAP_Y+6, &trainer2, PLAYER_MOVING_LEFT);
+    add_trainer(MAP_X+1, MAP_Y+4, &trainer3, PLAYER_MOVING_RIGHT);
 
     refresh();
-}
-
-
-void grass_map2() {
-
-    attrset(COLOR_PAIR(GRASS_COLOR));
-    for (int i = 5; i < 30; i++) {
-        mvaddch(MAP_Y+13, MAP_X+i, GRASS_CHAR); 
-        mvaddch(MAP_Y+14, MAP_X+i, GRASS_CHAR); 
-        mvaddch(MAP_Y+15, MAP_X+i, GRASS_CHAR); 
-    }
-    attrset(COLOR_PAIR(DEFAULT_COLOR));
 }

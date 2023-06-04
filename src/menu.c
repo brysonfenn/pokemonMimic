@@ -90,14 +90,9 @@ void main_menu() {
         
         //Display player data
         case PLAYER:
-        // begin_list();
-        // printPlayer();
-        // sleep(2);
-
-        clear();
-        draw_map_from_file();
-        sleep(5);
-
+        begin_list();
+        printPlayer();
+        sleep(2);
         current_display = MAIN;
         break;
 

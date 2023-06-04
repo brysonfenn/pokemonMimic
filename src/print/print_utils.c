@@ -79,6 +79,7 @@ void resume_ncurses() {
   init_pair(DAMAGED_COLOR, COLOR_RED, COLOR_BLACK);
   init_pair(TRAINER_COLOR, COLOR_RED, COLOR_BLACK);
   init_pair(HEAL_COLOR, COLOR_BLUE, COLOR_BLACK);
+  init_pair(TREE_COLOR, COLOR_RED, COLOR_GREEN);
 }
 
 

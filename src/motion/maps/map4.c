@@ -27,15 +27,5 @@ void draw_map4() {
     draw_town_exit(MAP_TOP, 41);
     add_exit_portal(MAP_TOP, 41, 3);
 
-    grass_map4();
-
     refresh();
-}
-
-
-void grass_map4() {
-    attrset(COLOR_PAIR(GRASS_COLOR));
-    mvaddch(MAP_Y+5, MAP_X+5, 'W');
-    
-    attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
