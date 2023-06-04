@@ -100,9 +100,9 @@ void pause_ncurses() {
 
 //Get player selection from list
 //  first_line is the first line of the list (0 is the top of the terminal)
-//  num_options is the number of options in the list available to select
+//  highest_option_num is the number of options in the list available to select
 //  last_selection is where the cursor will begin (usually 0 or the last option selected)
-int get_selection(int first_line, int num_options, int last_selection) {
+int get_selection(int first_line, int highest_option_num, int last_selection) {
 
   int cursor_x = LIST_BOX_X+1;
   // The actual first line should be adjusted to the list box position
@@ -121,11 +121,11 @@ int get_selection(int first_line, int num_options, int last_selection) {
 
     switch (ch) {
       case KEY_UP:
-        if (cursor_y == actual_first_line) cursor_y = actual_first_line + num_options;
+        if (cursor_y == actual_first_line) cursor_y = actual_first_line + highest_option_num;
         else cursor_y--;
         break;
       case KEY_DOWN:
-        if (cursor_y == actual_first_line + num_options) cursor_y = actual_first_line;
+        if (cursor_y == actual_first_line + highest_option_num) cursor_y = actual_first_line;
         else cursor_y++;
         break;
       case KEY_LEFT:

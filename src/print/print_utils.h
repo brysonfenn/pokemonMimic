@@ -25,9 +25,9 @@ void pause_ncurses();
 
 //Get player selection from list
 //  first_line is the first line of the list (0 is the first line of the list_box)
-//  num_options is the number of options in the list available to select
+//  highest_option_num is the number of options in the list available to select
 //  last_selection is where the cursor will begin (usually 0 or the last option selected)
-int get_selection(int first_line, int num_options, int last_selection);
+int get_selection(int first_line, int highest_option_num, int last_selection);
 
 //Draw simple box with top-left corner (x,y) and with width and height (w,h)
 void draw_box(int x, int y, int w, int h);

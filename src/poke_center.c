@@ -14,24 +14,27 @@ void heal_party();
 
 //Handle all pokemon center functions
 int handle_poke_center() {
-  int inputNum;
-  begin_list();
-  print_to_list("Welcome to the Pokémon Center\n \n");
-  print_to_list("  Heal Pokémon\n  PC\n  Exit");
-  inputNum = get_selection(2, 2, 0);
+  int inputNum = 0;
 
-  clear();
-  if (inputNum == 2 || inputNum == PRESSED_B) return POKE_CENTER_EXIT;
-  else if (inputNum == 0) {
-    player.blackout_center->x = player.loc->x;
-    player.blackout_center->y = player.loc->y;
-    player.blackout_center->map = player.loc->map;
-    heal_party();
-    return POKE_CENTER_EXIT;
-  }
-  else if (inputNum == 1) {
-    handle_PC();
-    return POKE_CENTER_STAY;
+  while (1) {
+    begin_list();
+    print_to_list("Welcome to the Pokémon Center\n \n");
+    print_to_list("  Heal Pokémon\n  PC\n  Exit");
+    inputNum = get_selection(2, 2, inputNum);
+
+    clear();
+    if (inputNum == 2 || inputNum == PRESSED_B) break;
+    else if (inputNum == 0) {
+      player.blackout_center->x = player.loc->x;
+      player.blackout_center->y = player.loc->y;
+      player.blackout_center->map = player.loc->map;
+      heal_party();
+      break;
+    }
+    else if (inputNum == 1) {
+      handle_PC();
+      continue;
+    }
   }
 
   return POKE_CENTER_EXIT;
@@ -40,7 +43,8 @@ int handle_poke_center() {
 
 //Handle all Pokemon Storage movement
 void handle_PC() {
-  int input_num;
+  int input_num = 0;
+  int input_num2 = 0;
   
   while (1) {
     begin_list();
@@ -48,13 +52,14 @@ void handle_PC() {
     print_pokemon_list(player.pc_storage, player.numInPCStorage);
     print_to_list("  Cancel");
 
-    input_num = get_selection(1, player.numInPCStorage, 0);
+    input_num = get_selection(1, player.numInPCStorage, input_num);
     if (input_num == player.numInPCStorage || input_num == PRESSED_B) { break; }   //Cancel
     else {
-      clear();
       begin_list();
+      print_to_list("  Switch\n  Release\n  Attacks\n  Cancel\n--------------------------------------------------------");
       print_pokemon_summary(&(player.pc_storage[input_num]));
-      sleep(2);
+      input_num2 = get_selection(0, 3, 0);
+      if (input_num2 == 3 || input_num2 == PRESSED_B) { continue; }
     }
   }
   
