@@ -72,7 +72,7 @@ int save_game(int file_num) {
 		curr_pok = player.party[i];
 		fprintf(fp, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %x %d %d\n", curr_pok.name, curr_pok.id_num, curr_pok.maxHP, curr_pok.currentHP,
 			curr_pok.numAttacks, curr_pok.baseAttack, curr_pok.baseDefense, curr_pok.baseSpAttack, curr_pok.baseSpDefense,
-			curr_pok.baseSpeed, curr_pok.level, curr_pok.exp, get_typing_by_id(curr_pok.type1), get_typing_by_id(curr_pok.type2),
+			curr_pok.baseSpeed, curr_pok.level, curr_pok.exp, get_type_string_by_id(curr_pok.type1), get_type_string_by_id(curr_pok.type2),
 			curr_pok.iv, curr_pok.visible_condition, curr_pok.sleep_count);
 			
 		for (int j = 0; j < curr_pok.numAttacks; j++) {

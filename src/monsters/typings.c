@@ -174,7 +174,7 @@ float get_single_multiplier(Type moveType, Type victimType) {
 
 
 //Returns typing string by type id number
-char * get_typing_by_id(Type type) {
+char * get_type_string_by_id(Type type) {
     return string_typings[type];
 }
 

@@ -55,8 +55,8 @@ void reset_stat_stages(Pokemon *pok) {
 void print_pokemon_summary(Pokemon *pok) {
   char print_str[8192];
 
-  sprintf(print_str, "%s  LVL %d\n\t%s ", pok->name, pok->level, get_typing_by_id(pok->type1));
-  if (pok->type2 != NO_TYPE) sprintf(print_str, "%s%s", print_str, get_typing_by_id(pok->type2));
+  sprintf(print_str, "%s  LVL %d\n\t%s ", pok->name, pok->level, get_type_string_by_id(pok->type1));
+  if (pok->type2 != NO_TYPE) sprintf(print_str, "%s%s", print_str, get_type_string_by_id(pok->type2));
   sprintf(print_str, "%s\n", print_str);
   sprintf(print_str, "%sEXP to next Level: %d\n", print_str, (pok->level * 8) - pok->exp);
   sprintf(print_str, "%sHP: %d/%d", print_str, pok->currentHP, pok->maxHP);

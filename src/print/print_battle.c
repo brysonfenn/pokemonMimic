@@ -139,7 +139,7 @@ int get_move_selection(int start_x, int start_y, struct Pokemon* pok) {
     mvprintw(start_y+3, start_x+2, "\t\t\t\t\t");
     if (selection != 5) {
       currAttack = pok->attacks[selection-1];
-      mvprintw(start_y+3, start_x+2, "%s", get_typing_by_id(currAttack.type));
+      mvprintw(start_y+3, start_x+2, "%s", get_type_string_by_id(currAttack.type));
       mvprintw(start_y+3, start_x+14, "PP: %d/%d", currAttack.curr_pp, currAttack.max_pp);
     }
 
