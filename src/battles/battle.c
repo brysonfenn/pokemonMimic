@@ -169,7 +169,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
       case BAG:
         begin_list();
         printBag();
-        inputNum = get_selection(LIST_BOX_Y+2, 0, player.numInBag, 0);
+        inputNum = get_selection(LIST_BOX_Y+2, player.numInBag, 0);
         if (inputNum == player.numInBag || inputNum == PRESSED_B) {
           current_display = MAIN;
           break;
@@ -188,7 +188,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
           max_input++;
           print_to_list("  Cancel\n");
         }
-        inputNum = get_selection(LIST_BOX_Y+3, 0, max_input, 0);
+        inputNum = get_selection(LIST_BOX_Y+3, max_input, 0);
 
         //Handle interesting 'pressed B' condition
         if (inputNum == PRESSED_B) {

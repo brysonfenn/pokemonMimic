@@ -37,7 +37,7 @@ int save_game(int file_num) {
 		sprintf(print_str, "%sbe lost if you save here. Are you sure you want to\nsave to file %d?\n", print_str, file_num);
 		sprintf(print_str, "%s \n  Yes\n  No", print_str);
 		print_to_list(print_str);
-		inputNum = get_selection(LIST_BOX_Y+5,0,1,0);
+		inputNum = get_selection(LIST_BOX_Y+5, 1, 0);
 		if (inputNum == 1 || inputNum == PRESSED_B) return 0;
 	}
 

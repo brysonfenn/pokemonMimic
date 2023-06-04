@@ -11,12 +11,14 @@
 #include "doors.h"
 #include "selectables.h"
 
+#include "../battles/trainer.h"
 #include "../battles/wild_pokemon.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 #include "../player.h"
 #include "../items.h"
-#include "../battles/trainer.h"
+#include "../poke_center.h"
+
 
 //Function pointers
 typedef void (*init_map_func) ();

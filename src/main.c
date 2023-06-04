@@ -33,7 +33,7 @@ int main(void) {
     print_to_list(" \n \n  \u2642 \u2640 🔥 💧");
     print_to_list("  \U000026A1 🌿 \U0001FAA8 👊 ✊ 🟥 🔴");
 
-    input_num = get_selection(LIST_BOX_Y+1, 0, 1, 0);
+    input_num = get_selection(LIST_BOX_Y+1, 1, 0);
 
     //Handle main select returning -1
     if (input_num == PRESSED_B) {control_c_handler(); return 0;}
@@ -42,7 +42,7 @@ int main(void) {
       begin_list();
       print_to_list("Select a save file to load: \n");
       print_save_files();
-      input_num = get_selection(LIST_BOX_Y+2, 0, 9, 0);
+      input_num = get_selection(LIST_BOX_Y+2, 9, 0);
       
       //Get proper input
       if (input_num == 9 || input_num == PRESSED_B) {
@@ -55,7 +55,7 @@ int main(void) {
     else if (input_num == 0) {
       begin_list();
       print_to_list("Select a starter Pokémon: \n  Bulbasaur\n  Charmander\n  Squirtle\n  Cancel");
-      input_num = get_selection(LIST_BOX_Y+2, 0, 3, 0);
+      input_num = get_selection(LIST_BOX_Y+2, 3, 0);
       if (input_num == PRESSED_B || input_num == 3) {
         continue;
       }

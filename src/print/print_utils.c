@@ -19,6 +19,8 @@
 
 #include "print_defines.h"
 
+
+//Print the player's current pokemon party
 void printParty() {
   char party_str[1024] = "";
 
@@ -41,6 +43,7 @@ void printParty() {
   refresh();
 }
 
+//Print the player's current bag
 void printBag() {
   char bag_str[1024] = "";
   sprintf(bag_str, "%sBag:\n", bag_str);
@@ -56,6 +59,7 @@ void printBag() {
   refresh();
 }
 
+//Initialize ncurses library - including colors, extended character library, etc.
 void resume_ncurses() {
 
   //Allow unicode symbols (like arrow keys)
@@ -82,14 +86,18 @@ void resume_ncurses() {
   init_pair(TREE_COLOR, COLOR_RED, COLOR_GREEN);
 }
 
-
+//End ncurses library functionality
 void pause_ncurses() {
   endwin(); // Clean up ncurses
   setvbuf(stdout, NULL, _IOLBF, 0);
   flushinp();
 }
 
-int get_selection(int first_line, int start, int end, int last_selection) {
+//Get player selection from list
+//  first_line is the first line of the list (0 is the top of the terminal)
+//  num_options is the number of options in the list available to select
+//  last_selection is where the cursor will begin (usually 0 or the last option selected)
+int get_selection(int first_line, int num_options, int last_selection) {
 
   int cursor_x = LIST_BOX_X+1;
   int cursor_y = first_line + last_selection;
@@ -106,11 +114,11 @@ int get_selection(int first_line, int start, int end, int last_selection) {
 
     switch (ch) {
       case KEY_UP:
-        if (cursor_y == first_line + start) cursor_y = first_line + end;
+        if (cursor_y == first_line) cursor_y = first_line + num_options;
         else cursor_y--;
         break;
       case KEY_DOWN:
-        if (cursor_y == first_line + end) cursor_y = first_line + start;
+        if (cursor_y == first_line + num_options) cursor_y = first_line;
         else cursor_y++;
         break;
       case KEY_LEFT:
@@ -133,7 +141,7 @@ int get_selection(int first_line, int start, int end, int last_selection) {
 
 }
 
-//Draw simple box
+//Draw simple box with top-left corner (x,y) and with width and height (w,h)
 void draw_box(int x, int y, int w, int h) {
     mvaddch(y, x, ACS_ULCORNER);  // Top-left corner
     mvaddch(y, x + w - 1, ACS_URCORNER);  // Top-right corner
@@ -151,7 +159,8 @@ void draw_box(int x, int y, int w, int h) {
     }
 }
 
-
+//Print the instruction box at a given location (x,y)
+//  If on_map is true, the special instruction to go to menu will be shown
 void print_btn_instructions(int x, int y, bool on_map) {
   draw_box(x,y,15,7);
   mvprintw(y+1,x+3, "a: Select");
@@ -169,6 +178,7 @@ void print_btn_instructions(int x, int y, bool on_map) {
 //List functions
 int list_item_num = 0;
 
+//Erase current list and resetart at the beginning
 void begin_list() {
   list_item_num = 0;
   clear();
@@ -179,6 +189,9 @@ void begin_list() {
   refresh();
 }
 
+//Print to the next line of the list
+// list_str must be a string constant, and end_line characters are understood
+// to indicate a next list item
 void print_to_list(const char * list_str) {
   char * token;
   char* input = strdup(list_str); //input is mutable version of input str
@@ -202,9 +215,9 @@ void print_to_list(const char * list_str) {
 
 #define ROWS 30
 #define COLS 100
-
 static int contents[ROWS][COLS];
 
+//Save print state to print later
 void save_print_state() {
   move(0,0);
   for (int row = 0; row < ROWS; ++row) {
@@ -215,7 +228,7 @@ void save_print_state() {
   }
 }
 
-
+//Reprint the saved print state - cannot be called without first calling save_print_state
 void restore_print_state() {
   clear(); 
   for (int row = 0; row < ROWS; row++) {

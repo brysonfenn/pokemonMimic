@@ -14,11 +14,11 @@ struct Item;
 struct playerCharacter {
   struct Pokemon * party;
   struct Item * bag;
-  struct Pokemon * storage;
+  struct Pokemon * pc_storage;
 
   uint8_t numInParty;
   uint8_t numInBag;
-  uint8_t numInStorage;
+  uint8_t numInPCStorage;
 
   uint8_t trainers_battled_id[256];
   uint16_t num_trainers_battled;
@@ -38,8 +38,6 @@ extern struct playerCharacter player;
 void player_init(int save_file);
 
 bool runAttempt();
-
-void handle_poke_center();
 
 int player_get_num_alive();
 
