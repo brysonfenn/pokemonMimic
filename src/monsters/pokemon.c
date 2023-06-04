@@ -72,6 +72,7 @@ void print_pokemon_summary(Pokemon *pok) {
   mvprintw(POKE_SUMMARY_ATKS_BEGIN, POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING, "%s", pok->attacks[1].name);
   mvprintw(POKE_SUMMARY_ATKS_BEGIN+1, POKE_SUMMARY_ATKS_X, "%s", pok->attacks[2].name);
   mvprintw(POKE_SUMMARY_ATKS_BEGIN+1, POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING, "%s", pok->attacks[3].name);
+  refresh();
 }
 
 //Control all actions for the pokemon menu

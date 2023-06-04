@@ -262,7 +262,7 @@ void handle_actions(int action_id) {
             player.loc->y += 1; //Set player location to outside
             break;
         case POKE_CENTER_ACTION:
-            handle_poke_center();
+            while (handle_poke_center() == POKE_CENTER_STAY) { clear(); }
             player.loc->y += 1; //Set player location to outside
             break;
         default:

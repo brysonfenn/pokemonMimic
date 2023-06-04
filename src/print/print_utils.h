@@ -7,7 +7,9 @@
 
 struct Pokemon;
 
-//print_utils.c
+
+//Print a list of Pokemon (used for party and PC)
+void print_pokemon_list(struct Pokemon * pokList, int list_size);
 
 //Print the player's current pokemon party
 void printParty();

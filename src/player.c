@@ -53,7 +53,9 @@ void default_load() {
   player.bag[2].number += 5;
   player.money = 1000;
 
-  player.numInPCStorage = 0;
+  player.numInPCStorage = 2;
+  player.pc_storage[0] = *create_new_pokemon(POKEMON_PIKACHU, 2, 0, 0);
+  player.pc_storage[1] = *create_new_pokemon(POKEMON_RAICHU, 2, 0, 0);
 
   player.loc->x = MAP_X + 10;
   player.loc->y = MAP_Y + 10;

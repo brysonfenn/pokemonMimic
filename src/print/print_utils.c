@@ -20,27 +20,32 @@
 #include "print_defines.h"
 
 
-//Print the player's current pokemon party
-void printParty() {
-  char party_str[1024] = "";
+//Print a list of Pokemon (used for party and PC)
+void print_pokemon_list(struct Pokemon * pokList, int list_size) {
+  char list_str[8192] = "";
 
-  sprintf(party_str, "%sPokemon:\n", party_str);
-  for (int i = 0; i < player.numInParty; i++) {
-    Pokemon current_pok = player.party[i];
+  for (int i = 0; i < list_size; i++) {
+    Pokemon current_pok = pokList[i];
     int current = current_pok.currentHP;
     int max = current_pok.maxHP;
-    sprintf(party_str, "%s  %s" , party_str, current_pok.name);
+    sprintf(list_str, "%s  %s" , list_str, current_pok.name);
 
     //handle spacing
-    for (int j = strlen(current_pok.name); j < 15; j++) sprintf(party_str, "%s ", party_str);
+    for (int j = strlen(current_pok.name); j < 15; j++) sprintf(list_str, "%s ", list_str);
 
-    sprintf(party_str, "%sLVL %d\tHP: %d/%d ", party_str, current_pok.level, current, max);
-    if (!(current)) sprintf(party_str, "%s (Fainted) ", party_str);
-    add_condition_string(party_str, &current_pok);
-    sprintf(party_str, "%s\n", party_str);
+    sprintf(list_str, "%sLVL %d\tHP: %d/%d ", list_str, current_pok.level, current, max);
+    if (!(current)) sprintf(list_str, "%s (Fainted) ", list_str);
+    add_condition_string(list_str, &current_pok);
+    sprintf(list_str, "%s\n", list_str);
   }
-  print_to_list(party_str);
-  refresh();
+  print_to_list(list_str);
+}
+
+
+//Print the player's current pokemon party
+void printParty() {
+  print_to_list("Pokemon:\n");
+  print_pokemon_list(player.party, player.numInParty);
 }
 
 //Print the player's current bag
