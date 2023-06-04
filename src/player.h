@@ -35,20 +35,28 @@ struct playerCharacter {
 
 extern struct playerCharacter player;
 
+//Initialize player struct
+//  If save_file == 0, start new game
+//  If save_file != 0, load player from previous save file
 void player_init(int save_file);
 
-bool runAttempt();
-
+//Return the number of pokemon in the player's party that have not fainted
 int player_get_num_alive();
 
+//Set current pokemon according to position in the party
+//  if position == PLAYER_DEFAULT_POKEMON, set to first pokemon alive
 void set_current_pokemon(int position);
 
+//Set enemy pokemon using a pointer to it
 void set_enemy_pokemon(struct Pokemon * pok);
 
+//Print player information
 void printPlayer();
 
+//Add a trainer id to list of battled trainer
 void add_battled_trainer(int id);
 
-bool trainer_already_battled(int id);
+//Returns true only if the player has already battled the trainer
+bool already_battled_trainer(int id);
 
 #endif // PLAYER_H

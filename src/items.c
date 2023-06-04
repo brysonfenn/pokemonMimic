@@ -4,6 +4,7 @@
 
 #include "print/print_utils.h"
 #include "print/print_defines.h"
+#include "print/print_battle.h"
 #include "player.h"
 #include "monsters/pokemon.h"
 #include "motion/location.h"
@@ -24,10 +25,8 @@ static * item_array[NUM_ITEMS] = { &empty_item, &potion, &super_potion, &pokebal
 static Pokemon * enemy_pok;
 static int last_selection = 0;
 
-void items_init() {
 
-}
-
+//Print all items available at the mart to the list box
 void print_mart() {
   Item * currItem;
   char print_str[128];
@@ -44,6 +43,8 @@ void print_mart() {
   }
 }
 
+
+//Allow player to buy items
 int handle_mart() {
   Item example_item;
   int inputNum, ch, maximum;
@@ -138,10 +139,14 @@ int handle_mart() {
   return ITEM_FAILURE;
 }
 
+
+//Returns an item pointer by its ID number. Should be immediately dereferenced
 Item * get_item_by_id(int id_num) {
   return item_array[id_num];
 }
 
+
+//Use an item, calling its execute function
 int use_item(int item_num, struct Pokemon * enemy) {
   Item * this_item = &(player.bag[item_num]);
   enemy_pok = enemy;
@@ -165,7 +170,8 @@ int use_item(int item_num, struct Pokemon * enemy) {
   return return_execute;
 }
 
-int execute_potion(int input_num, char * name) {
+//Potion execute function
+int execute_potion(int hp_gain, char * name) {
   char print_str[4096];
 
   begin_list();
@@ -184,11 +190,9 @@ int execute_potion(int input_num, char * name) {
     print_to_list(print_str); sleep(2);
     return ITEM_FAILURE;
   }
-
-  int hpGain = input_num;
   int tempHP = player.party[input].currentHP;
 
-  player.party[input].currentHP += hpGain;
+  player.party[input].currentHP += hp_gain;
   if (player.party[input].currentHP > player.party[input].maxHP) {
     player.party[input].currentHP = player.party[input].maxHP;
   }
@@ -202,7 +206,7 @@ int execute_potion(int input_num, char * name) {
   return ITEM_SUCCESS;
 }
 
-
+//Pokeball execute function (catch_rate is % multiplier)
 int attempt_catch(int catch_rate, char * name) {
   if (enemy_pok->id_num == 0 || player.trainer_battle) {
     begin_list();
@@ -249,6 +253,8 @@ int attempt_catch(int catch_rate, char * name) {
   }
 }
 
+
+//Filler function for empty_item that does nothing
 int do_nothing(int input_num) {
   return ITEM_FAILURE;
 }

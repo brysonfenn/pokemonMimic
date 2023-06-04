@@ -10,12 +10,16 @@
 #include "motion/map_drawing.h"
 #include "print/print_utils.h"
 #include "print/print_defines.h"
+#include "print/print_battle.h"
 #include "items.h"
 
 struct playerCharacter player;
 
 void default_load();
 
+//Initialize player struct
+//  If save_file == 0, start new game
+//  If save_file != 0, load player from previous save file
 void player_init(int save_file) {
   player.bag = malloc(sizeof(Item) * 30);
   
@@ -36,6 +40,8 @@ void player_init(int save_file) {
   player.trainer_battle = false;
 }
 
+
+//Start player at new game
 void default_load() {
   
   player.numInBag = 3;
@@ -58,22 +64,8 @@ void default_load() {
   player.blackout_center->map = 4;
 }
 
-bool runAttempt() {
-  int random = (rand() % 256);
-  int chance = (player.current_pokemon->baseSpeed * 128 / player.enemy_pokemon->baseSpeed);
-  clear_text_box();
-  
-  text_box_cursors(TEXT_BOX_BEGINNING);
-  if (random < chance) {
-    printw("Got away safely."); refresh(); sleep(2);
-    return true;
-  }
-  else {
-    printw("Can't escape!"); refresh(); sleep(2);
-    return false;
-  }
-}
 
+//Return the number of pokemon in the player's party that have not fainted
 int player_get_num_alive() {
   int numAlive = 0;
   for (int i = 0; i < player.numInParty; i++) {
@@ -82,6 +74,9 @@ int player_get_num_alive() {
   return numAlive;
 }
 
+
+//Set current pokemon according to position in the party
+//  if position == PLAYER_DEFAULT_POKEMON, set to first pokemon alive
 void set_current_pokemon(int position) {
   if (position < 0 || position >= player.numInParty || player.party[position].currentHP == 0) {
     // Find first available alive pokemon
@@ -99,10 +94,14 @@ void set_current_pokemon(int position) {
   player.current_pokemon = &(emptyPok);
 }
 
+
+//Set enemy pokemon using a pointer to it
 void set_enemy_pokemon(struct Pokemon * pok) {
   player.enemy_pokemon = pok;
 }
 
+
+//Print player information
 void printPlayer() {
   char print_str[128] = "";
   sprintf(print_str, "%s  B:\n", print_str);
@@ -116,13 +115,14 @@ void printPlayer() {
 
 //Handle trainers already battled
 
+//Add a trainer id to list of battled trainer
 void add_battled_trainer(int id) {
   player.trainers_battled_id[player.num_trainers_battled] = id;
   player.num_trainers_battled++;
 }
 
-
-bool trainer_already_battled(int id) {
+//Returns true only if the player has already battled the trainer
+bool already_battled_trainer(int id) {
   for (int i = 0; i < player.num_trainers_battled; i++) {
     if (player.trainers_battled_id[i] == id) return true;
   }

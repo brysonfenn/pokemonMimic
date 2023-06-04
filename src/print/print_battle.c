@@ -20,7 +20,8 @@ void printBattle() {
   Pokemon * enemy_pok = player.enemy_pokemon;
   char poke_string[128];
 
-  draw_battle_box();
+  //Draw battle box
+  draw_box(BATTLE_BOX_X, BATTLE_BOX_Y, BATTLE_BOX_WIDTH, BATTLE_BOX_HEIGHT);
 
   sprintf(poke_string, "%s  Lvl %d ", enemy_pok->name, enemy_pok->level);
   add_condition_string(poke_string, enemy_pok);
@@ -33,48 +34,10 @@ void printBattle() {
   mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "HP: % 3d/%d", player_pok->currentHP, player_pok->maxHP);
 
   print_btn_instructions(BATTLE_BOX_X+BATTLE_BOX_WIDTH+1, TEXT_BOX_Y, false);
-  draw_text_box();
+
+  //Draw text box
+  draw_box(TEXT_BOX_X, TEXT_BOX_Y, TEXT_BOX_WIDTH, TEXT_BOX_HEIGHT);
   refresh();
-}
-
-int get_battle_selection(int first_line, int last_selection) {
-  int selection = last_selection;
-  cursor_x = BATTLE_SELECT_1_X;
-  cursor_y = first_line;
-
-  adjust_cursors(selection, BATTLE_SELECT_1_X, first_line);
-
-  int ch;
-
-  flushinp();
-  while (1) {
-    ch = getch();
-
-    mvaddch(cursor_y, cursor_x, ' ');
-
-    switch (ch) {
-      case KEY_UP:
-      case KEY_DOWN:
-        if (selection == 1) selection = 3;
-        else if (selection == 2) selection = 4;
-        else if (selection == 3) selection = 1;
-        else if (selection == 4) selection = 2;
-        break;
-      case KEY_LEFT:
-        if (selection == 1) selection = 4;
-         else selection--;
-        break;
-      case KEY_RIGHT:
-         if (selection == 4) selection = 1;
-         else selection++;
-        break;
-      case 'a':
-        return (selection);
-      default:
-        break;
-    }
-    adjust_cursors(selection, BATTLE_SELECT_1_X, first_line);
-  }
 }
 
 
@@ -118,6 +81,49 @@ void blinkPokemon(bool blink_player, int color, int num_times) {
 }
 
 
+//Get selection from the user for battle: FIGHT, BAG, POKEMON, or RUN
+int get_battle_selection(int first_line, int last_selection) {
+  int selection = last_selection;
+  cursor_x = BATTLE_SELECT_1_X;
+  cursor_y = first_line;
+
+  adjust_cursors(selection, BATTLE_SELECT_1_X, first_line);
+
+  int ch;
+
+  flushinp();
+  while (1) {
+    ch = getch();
+
+    mvaddch(cursor_y, cursor_x, ' ');
+
+    switch (ch) {
+      case KEY_UP:
+      case KEY_DOWN:
+        if (selection == 1) selection = 3;
+        else if (selection == 2) selection = 4;
+        else if (selection == 3) selection = 1;
+        else if (selection == 4) selection = 2;
+        break;
+      case KEY_LEFT:
+        if (selection == 1) selection = 4;
+         else selection--;
+        break;
+      case KEY_RIGHT:
+         if (selection == 4) selection = 1;
+         else selection++;
+        break;
+      case 'a':
+        return (selection);
+      default:
+        break;
+    }
+    adjust_cursors(selection, BATTLE_SELECT_1_X, first_line);
+  }
+}
+
+
+//Get selection from the user for a pokemon move to use
 int get_move_selection(int start_x, int start_y, struct Pokemon* pok) {
   int selection = 1;
   cursor_x = start_x;
@@ -199,13 +205,11 @@ void adjust_cursors(int selection, int start_x, int start_y) {
 }
 
 
-void draw_text_box() {
-  draw_box(TEXT_BOX_X, TEXT_BOX_Y, TEXT_BOX_WIDTH, TEXT_BOX_HEIGHT);
-}
-
-
 static int text_box_cursor_y = 0;
 
+//Move the cursor to print to the text box
+//  if next_line == TEXT_BOX_BEGINNING, clear and restart text box
+//  if next_line == TEXT_BOX_NEXT_LINE, move to the next line, or restart if on last line
 void text_box_cursors(int next_line) {
   if (text_box_cursor_y == 3) next_line = 0;  //Only print 4 lines in text box
   //Clear and reseet if next_line is 0
@@ -217,6 +221,7 @@ void text_box_cursors(int next_line) {
   move(TEXT_BOX_Y+5 + text_box_cursor_y, TEXT_BOX_X+3);
 }
 
+//Clear all text from the battle box
 void clear_battle_box() {
   for (int i = 0; i < (BATTLE_BOX_HEIGHT - 2); i++) {
     mvprintw(BATTLE_BOX_Y+1+i, BATTLE_BOX_X+1, "                                               ");                           
@@ -224,18 +229,16 @@ void clear_battle_box() {
   refresh();
 }
 
+//Clear all text from the text box where selections are made
 void clear_selection_text() {
   for (int i = 0; i < 4; i++) {
     mvprintw(TEXT_BOX_Y+1+i, TEXT_BOX_X+1, "                                               ");                           
   }
 }
 
+//Clear all text from the text box where messages are displayed
 void clear_text_box() {
   for (int i = 0; i < 4; i++) {
     mvprintw(TEXT_BOX_Y+5+i, TEXT_BOX_X+1, "                                               ");                           
   }
-}
-
-void draw_battle_box() {
-  draw_box(BATTLE_BOX_X, BATTLE_BOX_Y, BATTLE_BOX_WIDTH, BATTLE_BOX_HEIGHT);
 }

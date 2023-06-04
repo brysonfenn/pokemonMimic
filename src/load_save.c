@@ -18,6 +18,8 @@ static int current_save_file = 0;
 
 void notify_error(char * expected, char * line, int expected_elements, int matched_elements);
 
+
+//Save game into file named "save_file#.text" where # is file_num
 int save_game(int file_num) {
 	Pokemon curr_pok;
 	attack curr_att;
@@ -103,6 +105,8 @@ int save_game(int file_num) {
 	return 0;
 }
 
+
+//Load game from file named "save_file#.text" where # is file_num
 int load_game(int file_num) {
 
 	Pokemon * curr_pok;
@@ -247,6 +251,8 @@ int load_game(int file_num) {
     return LOAD_SUCCESS;
 }
 
+
+//Print all save files with time stamp of when they were last saved
 int print_save_files() {
 	FILE *fp;
     char filename[50];
@@ -284,10 +290,14 @@ int print_save_files() {
 	return num_save_files;
 }
 
+
+//Return the current save file if there is one. If not, return zero
 int get_current_save_file() {
 	return current_save_file;
 }
 
+
+//Notify if there was an error with the load file
 void notify_error(char * expected, char * line, int expected_elements, int matched_elements) {
 	char print_str[256];
 

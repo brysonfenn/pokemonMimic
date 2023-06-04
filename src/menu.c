@@ -16,6 +16,8 @@ static enum display { TOWN, POKEMON, BAG, PLAYER, SAVE, LOAD,
 
 static bool power_off = false;
 
+
+//Handle start menu
 void main_menu() {
 
     int inputNum, inputNum2, return_execute, num_files, selected_poke;

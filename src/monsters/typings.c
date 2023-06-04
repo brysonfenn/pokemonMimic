@@ -172,10 +172,14 @@ float get_single_multiplier(Type moveType, Type victimType) {
     return multiplier;
 }
 
+
+//Returns typing string by type id number
 char * get_typing_by_id(Type type) {
     return string_typings[type];
 }
 
+
+//Returns typing id by type name
 Type get_type_id_by_string(char * str) {
     for (int i = 0; i < NUM_TYPES; i++) {
         if (strcasecmp(str,string_typings[i]) == 0) {

@@ -23,7 +23,7 @@ void no_grass() {}
 //Map functions
 static void (*draw_funcs[10])() = { &draw_generic_map, &draw_map1, &draw_map2, &draw_map3, &draw_map4, &draw_b1, &draw_vir_forest };
 
-
+//Draw elements (like grass, trees, etc) according to map text file
 void draw_static_elements() {
     char map_name[32] = "empty_map";
 
@@ -105,7 +105,7 @@ void draw_static_elements() {
 }
 
 
-
+//Change map drawing function according to map_num
 void change_map_funcs(int map_num, void (**draw_map)()) {
     //If map is outside the range, choose generic map functions
     if (map_num < 1 || map_num > 6) {
@@ -115,7 +115,7 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
     *draw_map = draw_funcs[map_num];
 }
 
-
+//Notify player of moving back to pokecenter, then move them
 void back_to_poke_center() {
     begin_list();
     print_to_list("B scurried back to the Pokemon Center..."); sleep(2);

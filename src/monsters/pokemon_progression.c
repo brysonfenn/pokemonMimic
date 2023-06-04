@@ -5,6 +5,7 @@
 
 #include "../print/print_defines.h"
 #include "../print/print_utils.h"
+#include "../print/print_battle.h"
 
 void learn_move(Pokemon * pok, attack * new_attack);
 int evolve(Pokemon * pok, int next_pok_id);

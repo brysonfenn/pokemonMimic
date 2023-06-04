@@ -11,6 +11,7 @@
 
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
+#include "../print/print_battle.h"
 #include "../items.h"
 #include "../motion/motion2d.h"
 #include "../motion/maps.h"
@@ -20,14 +21,11 @@ static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;
 
 static bool pokemon_needing_exp[6] = {false, false, false, false, false, false};
 
-//Handle an enemyPok attacking the player's current pokemon
+//Forward Declarations
 void perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_num);
-
-//Get a move number randomly (moves with higher damage have a higher chance)
 int get_enemy_move(Pokemon * pok);
-
-//Give all pokemon exp that need it, and level up
 void handle_exp(int exp);
+bool run_attempt();
 
 //Begin a Battle with a given pokemon
 int initiate_battle(struct Pokemon * enemyPok) {
@@ -314,7 +312,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
         enemy_attacks = false;
       }
       else {
-        run_success = runAttempt();
+        run_success = run_attempt();
         enemy_attacks = true;
       }
       break;
@@ -456,4 +454,22 @@ void handle_exp(int exp) {
   }
   
   for (int i = 0; i < 6; i++) { pokemon_needing_exp[i] = false; }
+}
+
+
+//Try to run away
+bool run_attempt() {
+  int random = (rand() % 256);
+  int chance = (player.current_pokemon->baseSpeed * 128 / player.enemy_pokemon->baseSpeed);
+  clear_text_box();
+  
+  text_box_cursors(TEXT_BOX_BEGINNING);
+  if (random < chance) {
+    printw("Got away safely."); refresh(); sleep(2);
+    return true;
+  }
+  else {
+    printw("Can't escape!"); refresh(); sleep(2);
+    return false;
+  }
 }

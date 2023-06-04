@@ -3,9 +3,6 @@
 
 #include <stdbool.h>
 
-#define TEXT_BOX_BEGINNING 0
-#define TEXT_BOX_NEXT_LINE 1
-
 #define PRESSED_B -1
 
 struct Pokemon;

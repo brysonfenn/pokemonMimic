@@ -15,7 +15,7 @@
 
 void control_c_handler();
 
-//This is currently the main menu
+//Main function
 int main(void) {
 
   signal(SIGINT, control_c_handler);
