@@ -106,6 +106,9 @@ int pokemon_get_iv(Pokemon * pok, char type);
 //Create a new pokemon. **Immediately dereference the returned pokemon**
 Pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int level_max);
 
+//Free all memory used by a pokemon
+void destroy_pokemon(Pokemon * pok);
+
 //Return a random pokemon of any possible
 Pokemon * get_random_pokemon(int level_min, int level_max);
 

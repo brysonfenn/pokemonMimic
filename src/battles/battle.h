@@ -3,6 +3,7 @@
 
 #define BATTLE_WHITE_OUT 1
 #define BATTLE_WIN 2
+#define BATTLE_CAUGHT_POKE 3
 
 struct Pokemon;
 

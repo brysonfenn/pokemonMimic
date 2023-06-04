@@ -23,7 +23,10 @@ static Pokemon_id wild_pok_lists[10][10] = {
   { 3,   5, 7,  POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE }, //No Map is #0
   { 2,   3, 5,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #1 Viridian City
   { 3,   3, 5,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU }, //Map #2 Route 2
-  { 2,   2, 4,  POKEMON_PIDGEY, POKEMON_RATTATA } //Map #3 Route 1
+  { 2,   2, 4,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #3 Route 1
+  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #4 Starter Town
+  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #5 Lab
+  { 6,   3, 6,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU, POKEMON_METAPOD, POKEMON_KAKUNA, POKEMON_PIDGEOTTO }, //Map #6 Vir Forest
 };
 
 static Pokemon newest_pokemon;
@@ -45,7 +48,6 @@ void pokemon_init(Pokemon * new_pok, int level, int level_min, int level_max) {
   pokemon_give_moves(new_pok);
 }
 
-
 //Create a new pokemon. **Immediately dereference the returned pokemon**
 Pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int level_max) {
   newest_pokemon = *get_pokemon_frame(pok_id);
@@ -53,6 +55,12 @@ Pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int le
   return (&newest_pokemon);
 }
 
+//Free all memory used by a pokemon
+void destroy_pokemon(Pokemon * pok) {
+  if (pok->hidden_conditions != NULL) {
+    free(pok->hidden_conditions);
+  }
+}
 
 //Return a random pokemon of any possible
 Pokemon * get_random_pokemon(int level_min, int level_max) {
@@ -71,7 +79,7 @@ Pokemon * get_random_wild_pokemon(int level_min, int level_max) {
   int set_level = RANDOM_LEVEL;
 
   //Get pokemon according to map, if it is an unknown map, get level 99 ivysaur
-  if (player.loc->map < 1 || player.loc->map > 3) {
+  if (player.loc->map < 1 || player.loc->map > 6) {
     new_pok_id = POKEMON_PIKACHU;
     set_level = 99;
   }

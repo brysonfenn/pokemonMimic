@@ -20,8 +20,6 @@ static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;
 
 static bool pokemon_needing_exp[6] = {false, false, false, false, false, false};
 
-static bool run_success;
-
 //Handle an enemyPok attacking the player's current pokemon
 void perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_num);
 
@@ -34,7 +32,7 @@ void handle_exp(int exp);
 //Begin a Battle with a given pokemon
 int initiate_battle(struct Pokemon * enemyPok) {
   int inputNum, max_input;
-  bool enemy_attacks, fainted_switch, out_of_pp;
+  bool enemy_attacks, fainted_switch, out_of_pp, run_success, catch_success;
   int return_execute, attack_num, enemy_attack_num, item_num, pokemon_selected, speed_difference;
   char print_str[512];
 
@@ -42,6 +40,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
   enemy_attacks = false;
   fainted_switch = false;
   run_success = false;
+  catch_success = false;
 
   Pokemon *currentPok = player.current_pokemon;
   player.enemy_pokemon = enemyPok;
@@ -276,7 +275,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
       return_execute = use_item(inputNum, enemyPok);
       //Return to bag menu if item failed, else back to main menu
       if (return_execute == ITEM_FAILURE) { continue; }
-      else if (return_execute == ITEM_CATCH_SUCCESS) { run_success = true; }
+      else if (return_execute == ITEM_CATCH_SUCCESS) { catch_success = true; }
       else { enemy_attacks = true; }
 
       current_display = MAIN;
@@ -324,7 +323,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
     }
     /////// END EXECUTE DECISION ///////
 
-    if (run_success) break;  //Handle Run Away
+    if (run_success || catch_success) break;  //Handle Run Away
 
     // Allow loop to break if enemyHP is 0 or less
     if (enemyPok->currentHP <= 0) {
@@ -344,7 +343,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
     handle_end_conditions();
   }
 
-  if (!run_success) {
+  if (!run_success && !catch_success) {
     int exp = enemyPok->level * 3;
     float random = (float) (rand() % 25);
     exp *= (1.0 + (random / 100.0));
@@ -354,7 +353,10 @@ int initiate_battle(struct Pokemon * enemyPok) {
 
   remove_all_hidden_conditions(enemyPok);
   
-  return BATTLE_WIN;
+  if (catch_success)
+    return BATTLE_CAUGHT_POKE;
+  else
+    return BATTLE_WIN;
 }
 
 
@@ -437,7 +439,7 @@ void handle_exp(int exp) {
     currentPok = &(player.party[i]);
 
     //Give active pokemon experience points if it is alive and didn't run away.
-    if (player_get_num_alive() && !run_success && (currentPok->level < 100)) {
+    if (player_get_num_alive() && (currentPok->level < 100)) {
       text_box_cursors(TEXT_BOX_NEXT_LINE);
       printw("%s gained %d experience points!", currentPok->name, exp);
       currentPok->exp += (exp);

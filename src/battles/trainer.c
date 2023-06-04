@@ -12,13 +12,14 @@
 
 static char name[NAME_MAX_LENGTH];
 
-
 void print_trainer_pokemon(Trainer * trainer, Pokemon * trainer_pokemon);
+
 
 //Battle a trainer with a random name and random # of pokemon
 int battle_trainer(Trainer * trainer) {
   char print_str[1024];
 
+  //Do not allow a player with no pokemon to battle a trainer
   if (!player_get_num_alive()) {
     begin_list();
     print_to_list("  All Pokemon have fainted, please heal them.\n");
@@ -26,80 +27,88 @@ int battle_trainer(Trainer * trainer) {
     return BATTLE_WHITE_OUT;
   }
 
+  //Declarations
   int inputNum, battle_result, return_execute;
   Pokemon trainer_pokemon[trainer->num_in_party];
   battle_result = BATTLE_WIN;
   player.trainer_battle = true;
+  bool switch_chosen = true;
 
+  //Introductory message
   begin_list();
-
   sprintf(print_str, "  %s wants to fight!\n", trainer->name);
   print_to_list(print_str); sleep(2);
 
+  //Create all trainer pokemon
   for (int i = 0; i < trainer->num_in_party; i++) {
     trainer_pokemon[i] = *create_new_pokemon(trainer->party_id_list[i], trainer->levels[i], 0, 0);
   }
 
-  print_trainer_pokemon(trainer, trainer_pokemon); sleep(2);
-
+  //Set up first player pokemon
   set_current_pokemon(PLAYER_DEFAULT_POKEMON);
-  sprintf(print_str, "  B sent out %s\n", player.current_pokemon->name);
-  print_to_list(print_str); sleep(2);
 
   int last_pokemon_pos = trainer->num_in_party - 1;
 
-  for (int i = 0; i < last_pokemon_pos; i++) {
+
+
+  //Go through all trainer's pokemon
+  for (int i = 0; i < trainer->num_in_party; i++) {
+    //Print trainer info and sent out
+    print_trainer_pokemon(trainer, trainer_pokemon); sleep(2);
     sprintf(print_str, "  %s sent out %s\n", trainer->name, trainer_pokemon[i].name);
     print_to_list(print_str); sleep(2);
-    battle_result = initiate_battle(&(trainer_pokemon[i]));
 
-    if (battle_result == BATTLE_WHITE_OUT) { break; }
-
-    //If the player has more than one pokemon, they should be able to switch now
-    if (player_get_num_alive() > 1) {
-      begin_list();
-      sprintf(print_str, "  %s is about to send out %s\n", trainer->name, trainer_pokemon[i+1].name);
-      sprintf(print_str, "%s  Will B change Pokemon?\n  Yes\n  No\n", print_str);
-      print_to_list(print_str);
-      inputNum = get_selection(LIST_BOX_Y+3,0,1,0);
-
-      //Get player input for pokemon
-      if (inputNum == 0) {
-        while (1) {
-          begin_list();
-          print_to_list("Select a pokemon to use.\n");
-          printParty();
-        
-          inputNum = get_selection(LIST_BOX_Y+3,0,player.numInParty-1,0);
-
-          if (inputNum == PRESSED_B) {
-            break;
-          }
-          else if (player.party[inputNum].currentHP == 0) {
-            move(player.numInParty+3,0);
-            print_to_list(" \nYou must select a different pokemon.\n"); sleep(2);
-          }
-          else {
-            set_current_pokemon(inputNum);
-            move(player.numInParty+3,0);
-            sprintf(print_str, "B sent out %s\n", player.current_pokemon->name);
-            print_to_list(print_str); sleep(2);
-            break;
-          }
-        }
-      }
+    //Only display sent out message if player switched a pokemon
+    if (switch_chosen) {
+      switch_chosen = false;
+      sprintf(print_str, " \n  B sent out %s\n", player.current_pokemon->name);
+      print_to_list(print_str); sleep(2);
     }
 
-    print_trainer_pokemon(trainer, trainer_pokemon); sleep(2);
+    //Execute battle, and break out of loop if white out or finished last trainer pokemon
+    battle_result = initiate_battle(&(trainer_pokemon[i]));
+    if (battle_result == BATTLE_WHITE_OUT || i >= trainer->num_in_party - 1) { break; }
+
+    //If player only has one pokemon left alive, they can't switch
+    if (player_get_num_alive() == 1) continue;
+
+    //Handle switch
+    begin_list();
+    sprintf(print_str, "  %s is about to send out %s\n", trainer->name, trainer_pokemon[i+1].name);
+    sprintf(print_str, "%s  Will B change Pokemon?\n  Yes\n  No\n", print_str);
+    print_to_list(print_str);
+    inputNum = get_selection(LIST_BOX_Y+3,0,1,0);
+
+    //Do not switch if player selected no
+    if (inputNum == 1 || inputNum == PRESSED_B) continue;
+
+    //Handle switch
+    while (1) {
+      begin_list();
+      print_to_list("Select a pokemon to use.\n");
+      printParty();
+    
+      inputNum = get_selection(LIST_BOX_Y+3,0,player.numInParty-1,0);
+
+      if (inputNum == PRESSED_B) {
+        break;
+      }
+      else if (player.party[inputNum].currentHP == 0) {
+        move(player.numInParty+3,0);
+        print_to_list(" \nYou must select a different pokemon.\n"); sleep(2);
+      }
+      else {
+        set_current_pokemon(inputNum);
+        switch_chosen = true;
+        break;
+      }
+    }
   }
 
-  //Handle last pokemon
+
+
+  //Handle a victory
   if (battle_result == BATTLE_WIN) {
-    sprintf(print_str, "  %s sent out %s\n", trainer->name, trainer_pokemon[last_pokemon_pos].name);
-    print_to_list(print_str); sleep(2);
-    battle_result = initiate_battle(&(trainer_pokemon[last_pokemon_pos]));
-    
-    if (battle_result == BATTLE_WHITE_OUT) return BATTLE_WHITE_OUT;
 
     //Notify victory
     text_box_cursors(TEXT_BOX_NEXT_LINE);
@@ -120,10 +129,17 @@ int battle_trainer(Trainer * trainer) {
     refresh(); sleep(2);
   }
 
+  //Reset all stat stages of player pokemon
   for (int i = 0; i < player.numInParty; i++) {
     reset_stat_stages(&(player.party[i]));
   }
+
+  //Free all memmory allocated for memory pokemon
+  for (int i = 0; i < trainer->num_in_party; i++) {
+    destroy_pokemon(&(trainer_pokemon[i]));
+  }
   
+  //Handle return values
   if (battle_result == BATTLE_WHITE_OUT) {
     return BATTLE_WHITE_OUT;
   }
