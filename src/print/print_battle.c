@@ -100,17 +100,17 @@ int get_battle_selection(int first_line, int last_selection) {
     switch (ch) {
       case KEY_UP:
       case KEY_DOWN:
-        if (selection == 1) selection = 3;
-        else if (selection == 2) selection = 4;
+        if (selection == 0) selection = 2;
+        else if (selection == 1) selection = 3;
+        else if (selection == 2) selection = 0;
         else if (selection == 3) selection = 1;
-        else if (selection == 4) selection = 2;
         break;
       case KEY_LEFT:
-        if (selection == 1) selection = 4;
+        if (selection == 0) selection = 3;
          else selection--;
         break;
       case KEY_RIGHT:
-         if (selection == 4) selection = 1;
+         if (selection == 3) selection = 0;
          else selection++;
         break;
       case 'a':
@@ -125,74 +125,81 @@ int get_battle_selection(int first_line, int last_selection) {
 
 //Get selection from the user for a pokemon move to use
 int get_move_selection(int start_x, int start_y, struct Pokemon* pok) {
-  int selection = 1;
+  int selection = 0;
   cursor_x = start_x;
   cursor_y = start_y;
   attack currAttack;
-
-  adjust_cursors(selection, start_x, start_y);
 
   int ch;
 
   flushinp();
   while (1) {
     mvprintw(start_y+3, start_x+2, "\t\t\t\t\t");
-    if (selection != 5) {
-      currAttack = pok->attacks[selection-1];
+    if (selection != 4) {
+      currAttack = pok->attacks[selection];
       mvprintw(start_y+3, start_x+2, "%s", get_type_string_by_id(currAttack.type));
       mvprintw(start_y+3, start_x+14, "PP: %d/%d", currAttack.curr_pp, currAttack.max_pp);
     }
 
-    (ch = getch());
+    adjust_cursors(selection, start_x, start_y);
+
+    ch = getch();
     mvaddch(cursor_y, cursor_x, ' ');
 
     switch (ch) {
       case KEY_UP:
       case KEY_DOWN:
-        if (selection == 1 && player.current_pokemon->numAttacks > 2) 
+        if (selection == 0 && player.current_pokemon->numAttacks > 2) 
+          selection = 2;
+        else if (selection == 1 && player.current_pokemon->numAttacks > 3) 
           selection = 3;
-        else if (selection == 2 && player.current_pokemon->numAttacks > 3) 
-          selection = 4;
+        else if (selection == 2) selection = 0;
         else if (selection == 3) selection = 1;
-        else if (selection == 4) selection = 2;
         break;
       case KEY_LEFT:
-        if (selection == 1) selection = 5;
-        else if (selection == 5) selection = pok->numAttacks;
+        if (selection == 0) selection = 4;
+        else if (selection == 4) selection = pok->numAttacks - 1;
         else selection--;
         break;
       case KEY_RIGHT:
-         if (selection == pok->numAttacks || selection == 4) selection = 5;
-         else if (selection == 5) selection = 1;
+         if (selection == pok->numAttacks - 1 || selection == 3) selection = 4;
+         else if (selection == 4) selection = 0;
          else selection++;
         break;
       case 'a':
+        //Do not allow if PP is gone
+        if (pok->attacks[selection].curr_pp == 0) {
+          text_box_cursors(TEXT_BOX_BEGINNING);
+          printw("There is no PP left for %s", pok->attacks[selection].name); refresh(); sleep(2);
+          clear_text_box();
+          continue;
+        }
+
         clear_selection_text();
         return (selection);
       case 'b':
-        return (5);
+        return (PRESSED_B);
       default:
         break;
     }
-    adjust_cursors(selection, start_x, start_y);
   }
 }
 
 void adjust_cursors(int selection, int start_x, int start_y) {
   switch (selection) {
-    case 1:
+    case 0:
       cursor_x = start_x; cursor_y = start_y;
       break;
-    case 2:
+    case 1:
       cursor_x = start_x+MOVE_SELECT_SPACING; cursor_y = start_y;
       break;
-    case 3:
+    case 2:
       cursor_x = start_x; cursor_y = start_y+1;
       break;
-    case 4:
+    case 3:
       cursor_x = start_x+MOVE_SELECT_SPACING; cursor_y = start_y+1;
       break;
-    case 5:
+    case 4:
       cursor_x = start_x+MOVE_SELECT_SPACING*2; cursor_y = start_y+1;
       break;
     default:

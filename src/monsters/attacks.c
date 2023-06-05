@@ -226,7 +226,13 @@ int perform_struggle(struct Pokemon *perp, struct Pokemon *victim, bool enemy) {
   text_box_cursors(TEXT_BOX_BEGINNING);
   if (enemy) printw(ENEMY_TEXT);
   printw("%s used Struggle!", perp->name);
-  refresh(); sleep(2);
-  perp->currentHP -= (perp->maxHP / 16 + 1);
+  refresh(); sleep(1);
+
+  blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
   victim->currentHP -= (perp->maxHP / 16 + 1);
+  printBattle();
+
+  blinkPokemon(!enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
+  perp->currentHP -= (perp->maxHP / 16 + 1);
+  printBattle();
 }

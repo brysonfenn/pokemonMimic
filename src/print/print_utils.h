@@ -3,8 +3,6 @@
 
 #include <stdbool.h>
 
-#define PRESSED_B -1
-
 struct Pokemon;
 
 

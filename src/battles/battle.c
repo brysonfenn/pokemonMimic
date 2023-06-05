@@ -94,7 +94,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
 
     current_decision = NONE;
 
-    int last_selection = 1;
+    static int last_selection = 0;
 
     ///////// GET DECISION /////////
     while (current_decision == NONE) {
@@ -114,11 +114,11 @@ int initiate_battle(struct Pokemon * enemyPok) {
         inputNum = get_battle_selection(SELECT_Y, last_selection);
         last_selection = inputNum;
         run_success = false;
-        if (inputNum == 4) {
+        if (inputNum == 3) {
           current_decision = RUN;
           break;
         }
-        current_display = inputNum; //In this case, this is already the correct enum position
+        current_display = inputNum+1; //In this case, inputNum + 1 will be the enum position
         enemy_attacks = false;
         break;
         
@@ -148,14 +148,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
         inputNum = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, currentPok);
 
         //Handle Cancel
-        if (inputNum == 5) {
-          current_display = MAIN;
-          break;
-        }
-        inputNum--;
-        if (player.current_pokemon->attacks[inputNum].curr_pp == 0) {
-          text_box_cursors(TEXT_BOX_BEGINNING);
-          printw("There is no PP left for %s", currentPok->attacks[attack_num]); refresh(); sleep(2);
+        if (inputNum == 4 || inputNum == PRESSED_B) {
           current_display = MAIN;
           break;
         }

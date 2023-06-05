@@ -36,6 +36,8 @@
 #define ENEMY_TEXT "Foe "
 #define LINE_SIZE 100
 
+#define PRESSED_B -1
+
 #define PLAYER_MOVING_DOWN 'v'
 #define PLAYER_MOVING_UP '^'
 #define PLAYER_MOVING_LEFT '<'

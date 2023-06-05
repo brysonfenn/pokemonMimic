@@ -1,14 +1,14 @@
-Last Saved: 05/31/2023 08:35:46
+Last Saved: 06/05/2023 15:09:51
 Player: 
 4 3 1000
-Location: {1,(13,11)}
+Location: {1,(13,5)}
 Heal Center: {1,(33,10)}
 Pokemon: 
 Charmander 4 20 20 4 11 9 12 11 13 5 0 NONE NONE 12bcdf73 0 0
-	Double Slap. 71 35
-	Cosmic Power. 73 40
-	Moonlight. 74 15
-	Meteor Mash. 75 10
+	Double Slap. 71 0
+	Cosmic Power. 73 0
+	Moonlight. 74 0
+	Meteor Mash. 75 0
 Caterpie 10 18 18 2 40 10 9 10 10 6 80 NONE NONE 2df200a1 0 0
 	Tackle. 1 35
 	String Shot. 5 40
