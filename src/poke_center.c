@@ -43,8 +43,9 @@ int handle_poke_center() {
 
 //Handle all Pokemon Storage movement
 void handle_PC() {
-  int input_num = 0;
+  int input_num1 = 0;
   int input_num2 = 0;
+  char print_str[256];
   
   while (1) {
     begin_list();
@@ -52,14 +53,36 @@ void handle_PC() {
     print_pokemon_list(player.pc_storage, player.numInPCStorage);
     print_to_list("  Cancel");
 
-    input_num = get_selection(1, player.numInPCStorage, input_num);
-    if (input_num == player.numInPCStorage || input_num == PRESSED_B) { break; }   //Cancel
+    input_num1 = get_selection(1, player.numInPCStorage, input_num1);
+    if (input_num1 == player.numInPCStorage || input_num1 == PRESSED_B) { break; }   //Cancel
     else {
       begin_list();
       print_to_list("  Switch\n  Release\n  Attacks\n  Cancel\n--------------------------------------------------------");
-      print_pokemon_summary(&(player.pc_storage[input_num]));
+      print_pokemon_summary(&(player.pc_storage[input_num1]));
       input_num2 = get_selection(0, 3, 0);
+
+      //Cancel
       if (input_num2 == 3 || input_num2 == PRESSED_B) { continue; }
+
+      //Release
+      else if (input_num2 == 1) {
+        begin_list();
+        sprintf(print_str, "Are you sure you want to release %s?\n  Yes\n  No\n", player.pc_storage[input_num1].name);
+        print_to_list(print_str);
+        input_num2 = get_selection(1, 1, 0);
+
+        if (input_num2 == 1 || input_num2 == PRESSED_B) { continue; }
+        else {
+          sprintf(print_str, " \nBye Bye, %s!\n", player.pc_storage[input_num1].name);
+          print_to_list(print_str); sleep(2);
+          player.numInPCStorage--;
+          for (int i = input_num1; i < player.numInPCStorage; i++) {
+            player.pc_storage[i] = player.pc_storage[i+1];
+          }
+          player.pc_storage[player.numInPCStorage] = emptyPok;
+        }
+      }
+
     }
   }
   

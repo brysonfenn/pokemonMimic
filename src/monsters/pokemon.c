@@ -60,6 +60,7 @@ void print_pokemon_attacks(Pokemon *pok, int first_line) {
   refresh();
 }
 
+
 //Print stats, attacks, etc of a given pokemon
 void print_pokemon_summary(Pokemon *pok) {
   char print_str[8192];
@@ -79,6 +80,7 @@ void print_pokemon_summary(Pokemon *pok) {
 
   print_pokemon_attacks(pok, POKE_SUMMARY_ATKS_BEGIN);
 }
+
 
 //Control all actions for the pokemon menu
 int handle_pokemon_menu(int input_num1) {
@@ -122,7 +124,7 @@ int handle_pokemon_menu(int input_num1) {
       input_num2 = get_selection(1, 1, 0);
       if (input_num2 == 1 || input_num2 == PRESSED_B) { return RETURN_TO_SUMMARY; }
       else {
-      sprintf(print_str, "Bye Bye, %s!\n", player.party[input_num1].name);
+      sprintf(print_str, " \nBye Bye, %s!\n", player.party[input_num1].name);
       print_to_list(print_str); sleep(2);
       player.numInParty--;
       for (int i = input_num1; i < player.numInParty; i++) {
