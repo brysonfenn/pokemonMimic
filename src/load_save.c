@@ -171,16 +171,18 @@ int load_game(int file_num) {
 			&(curr_pok->baseDefense), &(curr_pok->baseSpAttack), &(curr_pok->baseSpDefense), &(curr_pok->baseSpeed), 
 			&(curr_pok->level), &exp, &type1, &type2, &iv, &(curr_pok->visible_condition), &(curr_pok->sleep_count));
 
-		curr_pok->exp = exp;
-		curr_pok->iv = iv;
-		curr_pok->type1 = get_type_id_by_string(type1);
-		curr_pok->type2 = get_type_id_by_string(type2);
-
 		//Check if the line matched correctly
 		if (matched_elements != 17) {
 			notify_error("POKEMON", line, 17, matched_elements);
 			return LOAD_FAILURE;
 		}
+
+		curr_pok->exp = exp;
+		curr_pok->iv = iv;
+		curr_pok->type1 = get_type_id_by_string(type1);
+		curr_pok->type2 = get_type_id_by_string(type2);
+
+		curr_pok->hidden_conditions = malloc(sizeof(Condition));
 
 		reset_stat_stages(curr_pok);
 
