@@ -168,7 +168,7 @@ int get_move_selection(int start_x, int start_y, struct Pokemon* pok) {
         break;
       case 'a':
         //Do not allow if PP is gone
-        if (pok->attacks[selection].curr_pp == 0) {
+        if (pok->attacks[selection].curr_pp == 0 && selection != 4) {
           text_box_cursors(TEXT_BOX_BEGINNING);
           printw("There is no PP left for %s", pok->attacks[selection].name); refresh(); sleep(2);
           clear_text_box();

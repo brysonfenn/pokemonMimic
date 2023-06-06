@@ -8,6 +8,7 @@
 
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
+#include "../print/print_battle.h"
 #include "../player.h"
 
 //Give random stats to pokemon based on level
@@ -95,6 +96,7 @@ int handle_pokemon_menu(int input_num1) {
 
   //Break if inputNum2 is 2 (cancel)
   if (input_num2 == 3 || input_num2 == PRESSED_B) { return RETURN_TO_PARTY; }
+
   //Switch
   else if (input_num2 == 0) {
       begin_list();
@@ -115,6 +117,7 @@ int handle_pokemon_menu(int input_num1) {
       sprintf(print_str, " \n \nB switched %s with %s!", player.party[input_num2].name, player.party[input_num1].name);
       print_to_list(print_str); sleep(2);
   }
+
   //Release
   else if (input_num2 == 1) {
       begin_list();
@@ -133,10 +136,11 @@ int handle_pokemon_menu(int input_num1) {
       player.party[player.numInParty] = emptyPok;
       }
   }
+
   //View attack stats
   else if (input_num2 == 2) {
     input_num2 = 0;
-    while (input_num2 != 5) {
+    while (input_num2 != 4 && input_num2 != PRESSED_B) {
       tempPok = player.party[input_num1];
       begin_list();
       sprintf(print_str, "%s Attacks:", tempPok.name);

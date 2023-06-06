@@ -46,6 +46,8 @@ void handle_PC() {
   int input_num1 = 0;
   int input_num2 = 0;
   char print_str[256];
+  int max_input = 0;
+  Pokemon tempPok;
   
   while (1) {
     begin_list();
@@ -57,12 +59,46 @@ void handle_PC() {
     if (input_num1 == player.numInPCStorage || input_num1 == PRESSED_B) { break; }   //Cancel
     else {
       begin_list();
-      print_to_list("  Switch\n  Release\n  Attacks\n  Cancel\n--------------------------------------------------------");
+      print_to_list("  Withdraw\n  Release\n  Attacks\n  Cancel\n--------------------------------------------------------");
       print_pokemon_summary(&(player.pc_storage[input_num1]));
       input_num2 = get_selection(0, 3, 0);
 
       //Cancel
       if (input_num2 == 3 || input_num2 == PRESSED_B) { continue; }
+
+      //Withdraw
+      else if (input_num2 == 0) {
+        begin_list();
+
+        if (player.numInParty < 6) {
+          player.party[player.numInParty] = player.pc_storage[input_num1];
+          player.numInParty++;
+          player.numInPCStorage--;
+          for (int i = input_num1; i < player.numInPCStorage; i++) {
+              player.pc_storage[i] = player.pc_storage[i+1];
+          }
+          player.pc_storage[player.numInPCStorage] = emptyPok;
+
+          sprintf(print_str, "B withdrew %s from the PC!", player.party[player.numInParty-1].name);
+          print_to_list(print_str); sleep(1);
+          continue;
+        }
+
+        print_to_list("Select a Pokemon to Store in the PC:");
+        printParty();
+        print_to_list("  Cancel");
+
+        input_num2 = get_selection(2, player.numInParty, 0);
+        if (input_num2 == player.numInParty || input_num2 == PRESSED_B) { continue; }
+
+        sprintf(print_str, " \n \nB withdrew %s and stored %s!", player.pc_storage[input_num1].name, player.party[input_num2].name);
+
+        tempPok = player.party[input_num2];
+        player.party[input_num2] = player.pc_storage[input_num1];
+        player.pc_storage[input_num1] = tempPok;
+        
+        print_to_list(print_str); sleep(2);
+      }
 
       //Release
       else if (input_num2 == 1) {
