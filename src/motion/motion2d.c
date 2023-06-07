@@ -13,6 +13,7 @@
 
 #include "../battles/trainer.h"
 #include "../battles/wild_pokemon.h"
+#include "../battles/battle.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 #include "../player.h"
@@ -47,6 +48,7 @@ void handle_motion() {
     Selectable * selectable_ptr;
     Trainer * trainer_ptr;
     char * message_ptr;
+    int return_value;
 
     change_map(player.loc->map, *player_x, *player_y);
 
@@ -124,8 +126,13 @@ void handle_motion() {
                     save_print_state();
                     print_to_message_box("\"Let's battle!\""); sleep(1);
                     blink_screen(5, restore_print_state);
-                    battle_trainer(trainer_ptr);
-                    restore_print_state();
+                    return_value = battle_trainer(trainer_ptr);
+                    if (return_value == BATTLE_WHITE_OUT) {
+                        init_map();
+                    }
+                    else {
+                        restore_print_state();
+                    }
                     continue;
                 }
                 else {
@@ -202,11 +209,17 @@ void handle_motion() {
 
             print_to_message_box("\"Let's battle!\""); sleep(1);
             blink_screen(5, restore_print_state);
-            battle_trainer(trainer_ptr);
+            return_value = battle_trainer(trainer_ptr);
 
-            restore_print_state();
-            print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true); continue;
-
+            if (return_value == BATTLE_WHITE_OUT) {
+                init_map();
+                continue;
+            }
+            else {
+                restore_print_state();
+                print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true); 
+                continue;
+            }
         }
     }
 }

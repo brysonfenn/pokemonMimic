@@ -71,11 +71,12 @@ int initiate_battle(struct Pokemon * enemyPok) {
       
       // Handle White out
       if (player_get_num_alive() == 0) {
-        sleep(2);
+        text_box_cursors(TEXT_BOX_BEGINNING);
+        printw("....."); refresh(); sleep(2);
+        text_box_cursors(TEXT_BOX_BEGINNING);
+        printw("B is out of usable pokemon... "); refresh(); sleep(2);
         text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("B is out of usable pokemon... "); refresh(); sleep(3);
-        text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("B whited out."); refresh(); sleep(4);
+        printw("B whited out."); refresh(); sleep(2);
 
         //Go to pokecenter and then heal
         back_to_poke_center();

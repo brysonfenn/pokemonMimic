@@ -112,7 +112,7 @@ int battle_trainer(Trainer * trainer) {
   if (battle_result == BATTLE_WIN) {
 
     //Notify victory
-    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    text_box_cursors(TEXT_BOX_BEGINNING);
     printw("B defeated %s", trainer->name);
     refresh(); sleep(2);
 
