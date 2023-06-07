@@ -335,7 +335,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
   }
 
   if (!run_success && !catch_success) {
-    int exp = enemyPok->level * 3;
+    int exp = pokemon_get_exp_yield(enemyPok);
     float random = (float) (rand() % 25);
     exp *= (1.0 + (random / 100.0));
     if (player.trainer_battle) exp *= 1.5;
@@ -430,6 +430,7 @@ void handle_exp(int exp) {
     currentPok = &(player.party[i]);
 
     //Give active pokemon experience points if it is alive and didn't run away.
+    //Pokemon at level 100 should not gain experience.
     if (player_get_num_alive() && (currentPok->level < 100)) {
       text_box_cursors(TEXT_BOX_NEXT_LINE);
       printw("%s gained %d experience points!", currentPok->name, exp);
@@ -437,12 +438,12 @@ void handle_exp(int exp) {
       refresh(); sleep(2);
     }
 
-    next_level_exp = currentPok->level * 8;
+    next_level_exp = pokemon_get_next_level_exp(currentPok);
 
     //Update levels
     while (currentPok->exp >= next_level_exp) {
       pokemon_level_up(currentPok, next_level_exp);
-      next_level_exp = currentPok->level * 8;
+      next_level_exp = pokemon_get_next_level_exp(currentPok);
     }
   }
   

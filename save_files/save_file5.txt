@@ -1,25 +1,25 @@
-Last Saved: 05/31/2023 08:34:46
+Last Saved: 06/06/2023 22:38:37
 Player: 
 5 4 3700
 Location: {2,(20,17)}
 Heal Center: {1,(33,10)}
 Pokemon: 
-Charmander 4 22 16 3 14 15 14 15 16 7 0 FIRE NONE 67383309 0 0
+Charmander 4 22 16 3 14 15 14 15 16 7 343 FIRE NONE 67383309 0 0
 	Scratch. 2 34
 	Tail Whip. 4 28
 	Ember. 12 25
-Weedle 13 21 21 1 13 11 13 11 12 6 10 POISON BUG 1a9ec8d0 0 0
+Weedle 13 21 21 1 13 11 13 11 12 6 216 POISON BUG 1a9ec8d0 0 0
 	Poison Sting. 6 35
-Squirtle 7 22 22 3 15 14 15 14 16 7 82 WATER NONE 2e91dd57 0 0
+Squirtle 7 22 22 3 15 14 15 14 16 7 343 WATER NONE 2e91dd57 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 	Bubble. 13 30
-Bulbasaur 1 26 26 4 17 17 17 17 18 9 83 GRASS POISON 6a5a92a3 0 0
+Bulbasaur 1 26 26 4 17 17 17 17 18 9 729 GRASS POISON 6a5a92a3 0 0
 	Tackle. 1 35
 	Growl. 3 40
 	Leech seed. 11 10
 	Sleep Powder. 15 35
-Sandshrew 27 22 22 2 14 15 14 15 11 7 0 GROUND NONE 605141e1 0 0
+Sandshrew 27 22 22 2 14 15 14 15 11 7 343 GROUND NONE 605141e1 0 0
 	Scratch. 2 35
 	Defense Curl. 9 40
 Bag:

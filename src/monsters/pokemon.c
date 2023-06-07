@@ -69,7 +69,7 @@ void print_pokemon_summary(Pokemon *pok) {
   sprintf(print_str, "%s  LVL %d\n\t%s ", pok->name, pok->level, get_type_string_by_id(pok->type1));
   if (pok->type2 != NO_TYPE) sprintf(print_str, "%s%s", print_str, get_type_string_by_id(pok->type2));
   sprintf(print_str, "%s\n", print_str);
-  sprintf(print_str, "%sEXP to next Level: %d\n", print_str, (pok->level * 8) - pok->exp);
+  sprintf(print_str, "%sEXP to next Level: %d\n", print_str, pokemon_get_next_level_exp(pok) - pok->exp);
   sprintf(print_str, "%sHP: %d/%d", print_str, pok->currentHP, pok->maxHP);
   if (!(pok->currentHP)) sprintf(print_str, "%s  (Fainted)", print_str);
   sprintf(print_str, "%s\n \nATTACK: %d\nDEFENSE: %d\n", print_str, pok->baseAttack, pok->baseDefense);

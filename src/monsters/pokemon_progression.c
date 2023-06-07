@@ -15,10 +15,10 @@ void get_evolve_level_and_id(int pok_id, int * level_target, int * evolve_id);
 //Handle leveling up - also handles learning moves from new level
 void pokemon_level_up(Pokemon *pok, int next_level_exp) {
 
+  //Pokemon over level 100 should not be given exp
   if (pok->level >= 100) return;
 
   pok->level++;
-  pok->exp = (pok->exp - next_level_exp);
   int lost_hp = pok->maxHP - pok->currentHP;
 
   //Redo stat calculation
@@ -48,6 +48,25 @@ void pokemon_level_up(Pokemon *pok, int next_level_exp) {
     evolve(pok, evolve_id);
     handle_learnset(pok);
   }
+}
+
+
+//Return exp required for Pokemon pok to reach the next level
+uint32_t pokemon_get_next_level_exp(Pokemon *pok) {
+  uint32_t next_level = pok->level + 1;
+  return (next_level * next_level * next_level);  //Next level exp = n^3
+}
+
+
+//Return exp yield of a defeated pokemon
+uint32_t pokemon_get_exp_yield(Pokemon *pok) {
+  uint32_t avg_stat = pok->baseAttack + pok->baseDefense + pok->baseSpeed;
+  avg_stat += pok->baseSpAttack + pok->baseSpDefense;
+  avg_stat /= 5;
+
+  //Equation chosen for yield is (avg_stat^2 / 3)
+  uint32_t exp_yield = (avg_stat * avg_stat) / 3;
+  return exp_yield;
 }
 
 

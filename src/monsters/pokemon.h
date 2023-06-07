@@ -94,6 +94,12 @@ int pokemon_get_accuracy(Pokemon * perp, int move_num, Pokemon * victim);
 //Handle leveling up - also handles learning moves from new level
 void pokemon_level_up(Pokemon *pok, int next_level_exp);
 
+//Return exp required for the next level
+uint32_t pokemon_get_next_level_exp(Pokemon *pok);
+
+//Return exp yield of a defeated pokemon
+uint32_t pokemon_get_exp_yield(Pokemon *pok);
+
 //Give highest possible level moves to a pokemon
 //This is called upon initializing a new pokemon
 void pokemon_give_moves(Pokemon *pok);

@@ -36,7 +36,6 @@ static Pokemon newest_pokemon;
   //level = particular level
   //if level = 0, get random level from range level_min:level_max
 void pokemon_init(Pokemon * new_pok, int level, int level_min, int level_max) {
-  new_pok->exp = 0;
   new_pok->iv = rand();
   new_pok->numAttacks = 0;
   new_pok->visible_condition = NO_CONDITION;
@@ -45,6 +44,7 @@ void pokemon_init(Pokemon * new_pok, int level, int level_min, int level_max) {
 
   calculate_stats(new_pok, level, level_min, level_max);
   new_pok->currentHP = new_pok->maxHP;
+  new_pok->exp = (new_pok->level * new_pok->level * new_pok->level);
   pokemon_give_moves(new_pok);
 }
 
