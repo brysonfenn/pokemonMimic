@@ -58,12 +58,7 @@ void handle_motion() {
     while (1) {
         flushinp();
         if ((ch = getch()) == 'm') break;
-
-        //Leave printed message for 5 movements
-        if (leave_msg_count < 5) leave_msg_count++;
-        else begin_message_box();
         
-
         mvaddch(*player_y, *player_x, ' '); 
         switch (ch) {
         	case KEY_UP:
@@ -141,7 +136,17 @@ void handle_motion() {
                     print_to_message_box(message_ptr);
                 }
                 break;
+            default:
+                attrset(COLOR_PAIR(PLAYER_COLOR));
+                mvaddch(*player_y, *player_x, player_char);
+                attrset(COLOR_PAIR(DEFAULT_COLOR));
+                continue;
         }
+
+        //Leave printed message for 5 movements
+        if (leave_msg_count < 5) leave_msg_count++;
+        else begin_message_box();
+
         draw_static_elements();
 
         bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR);

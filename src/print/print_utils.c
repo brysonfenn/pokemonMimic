@@ -196,6 +196,33 @@ void begin_list() {
   refresh();
 }
 
+
+void fix_list_box_overflow(char * input) {
+  //Get the first token and check length
+  int input_length = strlen(input);
+  int count = 0;
+  
+  for (int i = 0; i < input_length; i++) {
+    //Add endlines if there are too many characters between two '\n'
+    if (input[i] == '\n') {
+      count = 0; continue;
+    }
+    else if (count >= LIST_BOX_WIDTH-2) {
+      int j;
+      for (j = i; j > i-LIST_BOX_WIDTH+2; j--) {
+        if (input[j] == ' ') break;
+      }
+      input[j] = '\n';
+      count = i - j;  //Reset count to where it should beb
+    }
+    else {
+      count++;
+    }
+  }
+  
+}
+
+
 //Print to the next line of the list
 // list_str must be a string constant, and end_line characters are understood
 // to indicate a next list item
@@ -209,8 +236,11 @@ void print_to_list(const char * list_str) {
     return;
   }
 
+  fix_list_box_overflow(input);
+
   // Tokenize the string by endlines
   token = strtok(input, "\n");
+
   while (token != NULL) {
     mvprintw(LIST_BOX_Y+1+list_item_num, LIST_BOX_X+ 1, "%s", token);
     token = strtok(NULL, "\n");
