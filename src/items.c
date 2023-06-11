@@ -238,7 +238,7 @@ int attempt_catch(int catch_rate, char * name) {
   printBattle();
 
   text_box_cursors(TEXT_BOX_BEGINNING);
-  printw("B threw a %s!", name); refresh(); sleep(2);
+  printw("%s threw a %s!", player.name, name); refresh(); sleep(2);
 
   text_box_cursors(TEXT_BOX_NEXT_LINE); //Set next line for successful or unsuccessful catch
 

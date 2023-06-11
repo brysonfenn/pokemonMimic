@@ -62,7 +62,7 @@ int battle_trainer(Trainer * trainer) {
     //Only display sent out message if player switched a pokemon
     if (switch_chosen) {
       switch_chosen = false;
-      sprintf(print_str, " \n  B sent out %s\n", player.current_pokemon->name);
+      sprintf(print_str, " \n  %s sent out %s\n", player.name, player.current_pokemon->name);
       print_to_list(print_str); sleep(2);
     }
 
@@ -76,7 +76,7 @@ int battle_trainer(Trainer * trainer) {
     //Handle switch
     begin_list();
     sprintf(print_str, "  %s is about to send out %s\n", trainer->name, trainer_pokemon[i+1].name);
-    sprintf(print_str, "%s  Will B change Pokemon?\n  Yes\n  No\n", print_str);
+    sprintf(print_str, "%s  Will %s change Pokemon?\n  Yes\n  No\n", print_str, player.name);
     print_to_list(print_str);
     inputNum = get_selection(2, 1, 0);
 
@@ -113,7 +113,7 @@ int battle_trainer(Trainer * trainer) {
 
     //Notify victory
     text_box_cursors(TEXT_BOX_BEGINNING);
-    printw("B defeated %s", trainer->name);
+    printw("%s defeated %s", player.name, trainer->name);
     refresh(); sleep(2);
 
     //Calculate money earned
@@ -125,7 +125,7 @@ int battle_trainer(Trainer * trainer) {
 
     //Notify money earned
     text_box_cursors(TEXT_BOX_NEXT_LINE);
-    printw("B gained $%d for defeating %s", money_earned, trainer->name);
+    printw("%s gained $%d for defeating %s", player.name, money_earned, trainer->name);
     player.money += money_earned;
     refresh(); sleep(2);
   }

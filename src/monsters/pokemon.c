@@ -117,7 +117,7 @@ int handle_pokemon_menu(int input_num1) {
       begin_list();
       print_to_list(" \n");
       printParty(); sleep(1);
-      sprintf(print_str, " \n \nB switched %s with %s!", player.party[input_num2].name, player.party[input_num1].name);
+      sprintf(print_str, " \n \n%s switched %s with %s!", player.name, player.party[input_num2].name, player.party[input_num1].name);
       print_to_list(print_str); sleep(2);
   }
 

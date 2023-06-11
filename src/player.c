@@ -43,6 +43,8 @@ void player_init(int save_file) {
 
 //Start player at new game
 void default_load() {
+
+  sprintf(player.name, "Player");
   
   player.numInBag = 3;
   player.bag[0] = potion;

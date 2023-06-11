@@ -74,9 +74,9 @@ int initiate_battle(struct Pokemon * enemyPok) {
         text_box_cursors(TEXT_BOX_BEGINNING);
         printw("....."); refresh(); sleep(2);
         text_box_cursors(TEXT_BOX_BEGINNING);
-        printw("B is out of usable pokemon... "); refresh(); sleep(2);
+        printw("%s is out of usable pokemon... ", player.name); refresh(); sleep(2);
         text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("B whited out."); refresh(); sleep(2);
+        printw("%s whited out.", player.name); refresh(); sleep(2);
 
         //Go to pokecenter and then heal
         back_to_poke_center();
@@ -110,7 +110,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
         mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  Fight"); mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  Bag");
         mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  Pokémon"); mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  Run");
         text_box_cursors(TEXT_BOX_BEGINNING);
-        printw("What will B do?");
+        printw("What will %s do?", player.name);
 
         inputNum = get_battle_selection(SELECT_Y, last_selection);
         last_selection = inputNum;
@@ -293,7 +293,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
         clear();
         printBattle();
         text_box_cursors(TEXT_BOX_BEGINNING);
-        printw("B sent out %s!", player.current_pokemon->name); refresh(); sleep(2);
+        printw("%s sent out %s!", player.name, player.current_pokemon->name); refresh(); sleep(2);
 
         // New pokemon needs exp
         pokemon_needing_exp[pokemon_selected] = true;

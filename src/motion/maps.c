@@ -117,8 +117,11 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
 
 //Notify player of moving back to pokecenter, then move them
 void back_to_poke_center() {
+    char print_str[256];
+
     begin_list();
-    print_to_list("B scurried back to the Pokemon Center..."); sleep(2);
+    sprintf(print_str, "%s scurried back to the Pokemon Center...", player.name);
+    print_to_list(print_str); sleep(2);
     heal_party();
     // change_map(player.blackout_center->map, POKE_CENTER_X+4, POKE_CENTER_Y+3);
     change_map(player.blackout_center->map, player.blackout_center->x, player.blackout_center->y);

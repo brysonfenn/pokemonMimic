@@ -12,6 +12,8 @@ struct Item;
 
 
 struct playerCharacter {
+  char name[32];
+
   struct Pokemon * party;
   struct Item * bag;
   struct Pokemon * pc_storage;

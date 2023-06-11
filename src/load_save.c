@@ -64,7 +64,7 @@ int save_game(int file_num) {
     fprintf(fp, "Last Saved: %s\n", time_string);
 
 	// Write the message to the file
-	fprintf(fp, "Player: \n%d %d %d\n", player.numInParty, player.numInBag, player.money);
+	fprintf(fp, "Player: %s\n%d %d %d\n", player.name, player.numInParty, player.numInBag, player.money);
 	fprintf(fp, "Location: {%d,(%d,%d)}\n", player.loc->map, player.loc->x, player.loc->y);
 	fprintf(fp, "Heal Center: {%d,(%d,%d)}\n", player.blackout_center->map, player.blackout_center->x, player.blackout_center->y);
 	fprintf(fp, "Pokemon: \n");
@@ -135,8 +135,12 @@ int load_game(int file_num) {
 
     // Read lines from the file and put them into game values
     fgets(line, LINE_SIZE, fp);	// Time Stamp
-    fgets(line, LINE_SIZE, fp);	// Player: 
-    fgets(line, LINE_SIZE, fp);
+
+
+    fgets(line, LINE_SIZE, fp);	// Player: {name}
+	sscanf(line, "Player: %s", player.name);
+
+    fgets(line, LINE_SIZE, fp);	// Basic numbers
     sscanf(line, "%d %d %d", &(player.numInParty), &(player.numInBag), &(player.money));
 
 	int map, new_x, new_y;
@@ -259,6 +263,7 @@ int print_save_files() {
 	FILE *fp;
     char filename[50];
     char line[LINE_SIZE];
+	char player_name[LINE_SIZE];
 	char print_str[4096] = "";
 
 	int num_save_files = 0;
@@ -274,7 +279,9 @@ int print_save_files() {
 			continue; 
 		}
 	    fgets(line, LINE_SIZE, fp);
-	    sprintf(print_str, "%s  %d: %s", print_str, i, line);
+		fgets(player_name, LINE_SIZE, fp);
+		sscanf(player_name, "Player: %s", player_name);
+	    sprintf(print_str, "%s  %d: %s -- %s", print_str, i, player_name, line);
 
 		num_save_files++;
     }

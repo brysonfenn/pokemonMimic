@@ -79,7 +79,7 @@ void handle_PC() {
           }
           player.pc_storage[player.numInPCStorage] = emptyPok;
 
-          sprintf(print_str, "B withdrew %s from the PC!", player.party[player.numInParty-1].name);
+          sprintf(print_str, "%s withdrew %s from the PC!", player.name, player.party[player.numInParty-1].name);
           print_to_list(print_str); sleep(1);
           continue;
         }
@@ -91,7 +91,7 @@ void handle_PC() {
         input_num2 = get_selection(2, player.numInParty, 0);
         if (input_num2 == player.numInParty || input_num2 == PRESSED_B) { continue; }
 
-        sprintf(print_str, " \n \nB withdrew %s and stored %s!", player.pc_storage[input_num1].name, player.party[input_num2].name);
+        sprintf(print_str, " \n \n%s withdrew %s and stored %s!", player.name, player.pc_storage[input_num1].name, player.party[input_num2].name);
 
         tempPok = player.party[input_num2];
         player.party[input_num2] = player.pc_storage[input_num1];
