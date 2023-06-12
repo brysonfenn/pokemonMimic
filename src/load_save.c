@@ -17,7 +17,7 @@
 static int current_save_file = 0;
 
 void notify_error(char * expected, char * line, int expected_elements, int matched_elements);
-
+void get_pokemon_from_file(FILE *fp, int num_in_list, Pokemon * pokList);
 
 //Save game into file named "save_file#.text" where # is file_num
 int save_game(int file_num) {
@@ -64,12 +64,26 @@ int save_game(int file_num) {
     fprintf(fp, "Last Saved: %s\n", time_string);
 
 	// Write the message to the file
-	fprintf(fp, "Player: %s\n%d %d %d\n", player.name, player.numInParty, player.numInBag, player.money);
+	fprintf(fp, "Player: %s\n%d %d %d %d\n", player.name, player.numInParty, player.numInPCStorage, player.numInBag, player.money);
 	fprintf(fp, "Location: {%d,(%d,%d)}\n", player.loc->map, player.loc->x, player.loc->y);
 	fprintf(fp, "Heal Center: {%d,(%d,%d)}\n", player.blackout_center->map, player.blackout_center->x, player.blackout_center->y);
 	fprintf(fp, "Pokemon: \n");
 	for (int i = 0; i < player.numInParty; i++) {
 		curr_pok = player.party[i];
+		fprintf(fp, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %x %d %d\n", curr_pok.name, curr_pok.id_num, curr_pok.maxHP, curr_pok.currentHP,
+			curr_pok.numAttacks, curr_pok.baseAttack, curr_pok.baseDefense, curr_pok.baseSpAttack, curr_pok.baseSpDefense,
+			curr_pok.baseSpeed, curr_pok.level, curr_pok.exp, get_type_string_by_id(curr_pok.type1), get_type_string_by_id(curr_pok.type2),
+			curr_pok.iv, curr_pok.visible_condition, curr_pok.sleep_count);
+			
+		for (int j = 0; j < curr_pok.numAttacks; j++) {
+			curr_att = curr_pok.attacks[j];
+			fprintf(fp, "\t%s. %d %d\n", curr_att.name, curr_att.id_num, curr_att.curr_pp);
+		}
+	}
+
+	fprintf(fp, "PC: \n");
+	for (int i = 0; i < player.numInPCStorage; i++) {
+		curr_pok = player.pc_storage[i];
 		fprintf(fp, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %x %d %d\n", curr_pok.name, curr_pok.id_num, curr_pok.maxHP, curr_pok.currentHP,
 			curr_pok.numAttacks, curr_pok.baseAttack, curr_pok.baseDefense, curr_pok.baseSpAttack, curr_pok.baseSpDefense,
 			curr_pok.baseSpeed, curr_pok.level, curr_pok.exp, get_type_string_by_id(curr_pok.type1), get_type_string_by_id(curr_pok.type2),
@@ -141,7 +155,9 @@ int load_game(int file_num) {
 	sscanf(line, "Player: %s", player.name);
 
     fgets(line, LINE_SIZE, fp);	// Basic numbers
-    sscanf(line, "%d %d %d", &(player.numInParty), &(player.numInBag), &(player.money));
+	int num;
+    sscanf(line, "%d %d %d %d", &(player.numInParty), &num, &(player.numInBag), &(player.money));
+	player.numInPCStorage = num;
 
 	int map, new_x, new_y;
 	fgets(line, LINE_SIZE, fp);
@@ -161,52 +177,10 @@ int load_game(int file_num) {
 	int matched_elements;
 
     fgets(line, LINE_SIZE, fp);	// Pokemon: 
-    for (i = 0; i < player.numInParty; i++) {
-		player.party[i] = emptyPok;
-		curr_pok = &(player.party[i]);
-		fgets(line, LINE_SIZE, fp);
+    get_pokemon_from_file(fp, player.numInParty, player.party);
 
-		char type1[20];
-		char type2[20];
-		int exp, iv;
-
-		matched_elements = sscanf(line, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %x %d %d", &(curr_pok->name), &(curr_pok->id_num), 
-			&(curr_pok->maxHP), &(curr_pok->currentHP), &(curr_pok->numAttacks), &(curr_pok->baseAttack), 
-			&(curr_pok->baseDefense), &(curr_pok->baseSpAttack), &(curr_pok->baseSpDefense), &(curr_pok->baseSpeed), 
-			&(curr_pok->level), &exp, &type1, &type2, &iv, &(curr_pok->visible_condition), &(curr_pok->sleep_count));
-
-		//Check if the line matched correctly
-		if (matched_elements != 17) {
-			notify_error("POKEMON", line, 17, matched_elements);
-			return LOAD_FAILURE;
-		}
-
-		curr_pok->exp = exp;
-		curr_pok->iv = iv;
-		curr_pok->type1 = get_type_id_by_string(type1);
-		curr_pok->type2 = get_type_id_by_string(type2);
-
-		curr_pok->hidden_conditions = malloc(sizeof(Condition));
-
-		reset_stat_stages(curr_pok);
-
-		//Attacks
-		for (j = 0; j < curr_pok->numAttacks; j++) {
-			fgets(line, LINE_SIZE, fp);
-			matched_elements = sscanf(line, "\t%[^.]. %d %d", &temp_name, &temp_id_num, &temp_pp);
-
-			//Check if the line matched correctly
-			if (matched_elements != 3) {
-				notify_error("MOVE", line, 3, matched_elements);
-				return LOAD_FAILURE;
-			}
-			curr_pok->attacks[j] = *(get_attack_by_id(temp_id_num));
-			curr_pok->attacks[j].curr_pp = temp_pp;
-		}
-		for (; j < 4; j++) {
-			curr_pok->attacks[j] = empty_attack;
-		}
-	}
+	fgets(line, LINE_SIZE, fp);	// PC: 
+    get_pokemon_from_file(fp, player.numInPCStorage, player.pc_storage);
 
 	fgets(line, LINE_SIZE, fp);	// Bag:
 	for (i = 0; i < player.numInBag; i++) {
@@ -318,4 +292,61 @@ void notify_error(char * expected, char * line, int expected_elements, int match
 	print_to_list(print_str); sleep(3);
 	print_to_list("Reloading...\n"); sleep(1);
 	player_init(current_save_file);
+}
+
+
+void get_pokemon_from_file(FILE *fp, int num_in_list, Pokemon * pokList) {
+	Pokemon * curr_pok;
+	char line[LINE_SIZE];
+	int matched_elements;
+	char temp_name[LINE_SIZE];
+	int temp_id_num, temp_pp, i, j;
+
+	for (i = 0; i < num_in_list; i++) {
+		pokList[i] = emptyPok;
+		curr_pok = &(pokList[i]);
+		fgets(line, LINE_SIZE, fp);
+		
+
+		char type1[20];
+		char type2[20];
+		int exp, iv;
+
+		matched_elements = sscanf(line, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %x %d %d", &(curr_pok->name), &(curr_pok->id_num), 
+			&(curr_pok->maxHP), &(curr_pok->currentHP), &(curr_pok->numAttacks), &(curr_pok->baseAttack), 
+			&(curr_pok->baseDefense), &(curr_pok->baseSpAttack), &(curr_pok->baseSpDefense), &(curr_pok->baseSpeed), 
+			&(curr_pok->level), &exp, &type1, &type2, &iv, &(curr_pok->visible_condition), &(curr_pok->sleep_count));
+
+		//Check if the line matched correctly
+		if (matched_elements != 17) {
+			notify_error("POKEMON", line, 17, matched_elements);
+			return LOAD_FAILURE;
+		}
+
+		curr_pok->exp = exp;
+		curr_pok->iv = iv;
+		curr_pok->type1 = get_type_id_by_string(type1);
+		curr_pok->type2 = get_type_id_by_string(type2);
+
+		curr_pok->hidden_conditions = malloc(sizeof(Condition));
+
+		reset_stat_stages(curr_pok);
+
+		//Attacks
+		for (j = 0; j < curr_pok->numAttacks; j++) {
+			fgets(line, LINE_SIZE, fp);
+			matched_elements = sscanf(line, "\t%[^.]. %d %d", &temp_name, &temp_id_num, &temp_pp);
+
+			//Check if the line matched correctly
+			if (matched_elements != 3) {
+				notify_error("MOVE", line, 3, matched_elements);
+				return LOAD_FAILURE;
+			}
+			curr_pok->attacks[j] = *(get_attack_by_id(temp_id_num));
+			curr_pok->attacks[j].curr_pp = temp_pp;
+		}
+		for (; j < 4; j++) {
+			curr_pok->attacks[j] = empty_attack;
+		}
+	}
 }

@@ -1,6 +1,6 @@
-Last Saved: 06/06/2023 22:38:53
+Last Saved: 06/11/2023 17:52:17
 Player: Test_Player
-5 3 1000
+5 0 3 1000
 Location: {1,(13,5)}
 Heal Center: {1,(33,10)}
 Pokemon: 
@@ -22,6 +22,7 @@ Bulbasaur 1 20 20 2 11 10 13 13 11 5 125 POISON NONE 31983766 0 0
 Bulbasaur 1 20 20 2 11 10 13 13 11 5 125 POISON NONE 31983766 0 0
 	Tackle. 1 35
 	Growl. 3 40
+PC: 
 Bag:
 Potion. 1 2
 Super Potion. 2 2

@@ -1,6 +1,6 @@
-Last Saved: 06/06/2023 22:38:37
+Last Saved: 06/11/2023 17:51:35
 Player: Bryson
-5 4 3700
+5 0 4 3700
 Location: {2,(20,17)}
 Heal Center: {1,(33,10)}
 Pokemon: 
@@ -22,6 +22,7 @@ Bulbasaur 1 26 26 4 17 17 17 17 18 9 729 GRASS POISON 6a5a92a3 0 0
 Sandshrew 27 22 22 2 14 15 14 15 11 7 343 GROUND NONE 605141e1 0 0
 	Scratch. 2 35
 	Defense Curl. 9 40
+PC: 
 Bag:
 Potion. 1 2
 Super Potion. 2 3

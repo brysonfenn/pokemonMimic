@@ -1,6 +1,6 @@
-Last Saved: 06/06/2023 22:38:21
+Last Saved: 06/11/2023 17:51:19
 Player: Elliot
-5 3 1100
+5 0 3 1100
 Location: {1,(48,17)}
 Heal Center: {1,(33,10)}
 Pokemon: 
@@ -19,6 +19,7 @@ Pidgey 16 14 14 1 9 9 9 9 9 3 27 NORMAL FLYING 2fcdec9f 0 0
 Rattata 19 11 11 2 7 9 7 9 8 2 8 NORMAL NONE 7869d33d 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
+PC: 
 Bag:
 Potion. 1 2
 Pokeball. 3 2

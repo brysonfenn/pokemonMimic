@@ -1,6 +1,6 @@
-Last Saved: 06/06/2023 22:38:15
+Last Saved: 06/11/2023 17:51:11
 Player: Bry
-2 3 1000
+2 0 3 1000
 Location: {2,(10,14)}
 Heal Center: {1,(32,10)}
 Pokemon: 
@@ -9,6 +9,7 @@ Bulbasaur 1 20 20 2 11 10 12 12 10 5 125 GRASS POISON 6b7b2920 0 0
 	Growl. 3 40
 Sandshrew 27 18 4 1 11 12 7 8 8 4 64 GROUND NONE 133ac6c0 0 0
 	Tackle. 1 31
+PC: 
 Bag:
 Potion. 1 1
 Super Potion. 2 2

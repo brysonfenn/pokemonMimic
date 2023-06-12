@@ -1,6 +1,6 @@
-Last Saved: 06/06/2023 22:38:29
+Last Saved: 06/11/2023 17:51:27
 Player: Oliver
-2 3 1000
+2 0 3 1000
 Location: {1,(20,11)}
 Heal Center: {1,(33,10)}
 Pokemon: 
@@ -10,6 +10,7 @@ Charmander 4 20 20 2 12 13 12 13 13 5 125 FIRE NONE 6bab878d 0 0
 Bulbasaur 1 20 20 2 13 12 13 12 13 5 125 GRASS POISON 4a507134 0 0
 	Tackle. 1 35
 	Growl. 3 40
+PC: 
 Bag:
 Potion. 1 2
 Super Potion. 2 2
