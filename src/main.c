@@ -30,8 +30,9 @@ int main(void) {
   while (1) {
     begin_list();
     print_to_list("  New Game\n  Load Game\n");
-    print_to_list(" \n \n  \u2642 \u2640 🔥 💧");
-    print_to_list("  \U000026A1 🌿 \U0001FAA8 👊 ✊ 🟥 🔴");
+
+    // print_to_list(" \n \n  \u2642 \u2640 🔥 💧");
+    // print_to_list("  \U000026A1 🌿 \U0001FAA8 👊 ✊ 🟥 🔴");
 
     input_num = get_selection(0, 1, 0);
 

@@ -46,7 +46,9 @@ void draw_pew_city() {
     add_building_portal(MAP_X+5, MAP_Y+2, MAP_GYM1);
 
     drawBuilding_default(MAP_X+25,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
+    drawBuilding_default(MAP_X+8,MAP_Y+11, "Mart", MART_ACTION);
 }
+
 
 void draw_gym1() {
     draw_interior(MAP_X+24, MAP_Y+MAP_HEIGHT-3, MAP_STARTER_TOWN);
