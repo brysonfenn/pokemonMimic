@@ -26,7 +26,7 @@ int handle_poke_center() {
     if (inputNum == 2 || inputNum == PRESSED_B) break;
     else if (inputNum == 0) {
       player.blackout_center->x = player.loc->x;
-      player.blackout_center->y = player.loc->y;
+      player.blackout_center->y = player.loc->y + 1;
       player.blackout_center->map = player.loc->map;
       heal_party();
       break;
