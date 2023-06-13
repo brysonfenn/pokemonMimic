@@ -3,12 +3,9 @@
 #include <ncurses.h>
 
 #include "maps/generic_map.h"
-#include "maps/map1.h"
-#include "maps/map2.h"
-#include "maps/map3.h"
-#include "maps/map4.h"
-#include "maps/building1.h"
-#include "maps/map_vir_forest.h"
+#include "maps/map_set1.h"
+#include "maps/map_set2.h"
+#include "maps/map_set3.h"
 
 #include "map_drawing.h"
 #include "motion2d.h"
@@ -21,7 +18,8 @@
 void no_grass() {}
 
 //Map functions
-static void (*draw_funcs[10])() = { &draw_generic_map, &draw_map1, &draw_map2, &draw_map3, &draw_map4, &draw_b1, &draw_vir_forest };
+static void (*draw_funcs[10])() = { &draw_generic_map, &draw_vir_city, &draw_route2, &draw_route1, &draw_starter_town, &draw_lab, &draw_vir_forest,
+                                    &draw_pew_city, &draw_gym1 };
 
 //Draw elements (like grass, trees, etc) according to map text file
 void draw_static_elements() {
@@ -39,6 +37,9 @@ void draw_static_elements() {
             break;
         case MAP_VIR_FOREST:
             sprintf(map_name, "vir_forest");
+            break;
+        case MAP_PEW_CITY:
+            sprintf(map_name, "pew_city");
             break;
         default:
             sprintf(map_name, "empty_map");
@@ -108,7 +109,7 @@ void draw_static_elements() {
 //Change map drawing function according to map_num
 void change_map_funcs(int map_num, void (**draw_map)()) {
     //If map is outside the range, choose generic map functions
-    if (map_num < 1 || map_num > 6) {
+    if (map_num < 1 || map_num > MAX_MAP_NUM) {
         *draw_map = &draw_generic_map;
         return;
     }

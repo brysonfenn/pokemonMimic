@@ -7,6 +7,7 @@
 #include "../print/print_defines.h"
 #include "../player.h"
 #include "../motion/location.h"
+#include "../motion/maps.h"
 
 // pok  varName   = {"name here",  id  hp chp   ba   bd   bsa   bsd    bs   type1     type2  }
 Pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0,    0,    0, NO_TYPE,  NO_TYPE };
@@ -19,7 +20,7 @@ static Pokemon_id pok_id_list[10] = { POKEMON_BULBASAUR, POKEMON_CHARMANDER, POK
   POKEMON_PIDGEY, POKEMON_RATTATA, POKEMON_SANDSHREW };
 
 static Pokemon_id wild_pok_lists[10][10] = {
-//Pok #, levels, ID'S...
+//#Pok, levels, ID'S...
   { 3,   5, 7,  POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE }, //No Map is #0
   { 2,   3, 5,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #1 Viridian City
   { 3,   3, 5,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU }, //Map #2 Route 2
@@ -27,6 +28,7 @@ static Pokemon_id wild_pok_lists[10][10] = {
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #4 Starter Town
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #5 Lab
   { 6,   3, 6,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU, POKEMON_METAPOD, POKEMON_KAKUNA, POKEMON_PIDGEOTTO }, //Map #6 Vir Forest
+  { 3,   4, 6,  POKEMON_NIDORINA, POKEMON_SANDSHREW, POKEMON_SPEAROW }
 };
 
 static Pokemon newest_pokemon;
@@ -79,7 +81,7 @@ Pokemon * get_random_wild_pokemon(int level_min, int level_max) {
   int set_level = RANDOM_LEVEL;
 
   //Get pokemon according to map, if it is an unknown map, get level 99 ivysaur
-  if (player.loc->map < 1 || player.loc->map > 6) {
+  if (player.loc->map < 1 || player.loc->map > MAX_MAP_NUM) {
     new_pok_id = POKEMON_PIKACHU;
     set_level = 99;
   }

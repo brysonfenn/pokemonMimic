@@ -9,7 +9,7 @@
 #define MAP_X 3
 #define MAP_Y 1
 
-#define INTERIROR_X 13
+#define INTERIOR_X 13
 #define INTERIOR_Y 2
 #define INTERIOR_WIDTH 28
 #define INTERIOR_HEIGHT 8

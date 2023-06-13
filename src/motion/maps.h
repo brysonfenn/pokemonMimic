@@ -1,8 +1,10 @@
 #ifndef MAPS_H
 #define MAPS_H
 
+#define MAX_MAP_NUM 8
+
 //enumerate the map function indexes
-typedef enum { MAP_GENERIC, MAP_VIRIDIAN, MAP_R2, MAP_R1, MAP_STARTER_TOWN, MAP_LAB, MAP_VIR_FOREST
+typedef enum { MAP_GENERIC, MAP_VIRIDIAN, MAP_R2, MAP_R1, MAP_STARTER_TOWN, MAP_LAB, MAP_VIR_FOREST, MAP_PEW_CITY, MAP_GYM1
 } Map_id;
 
 //Draw elements (like grass, trees, etc) according to map text file

@@ -43,7 +43,7 @@ void add_portal(char x, char y, char next_x, char next_y, char next_map, bool ve
 
 //Auto add portal to a building
 void add_building_portal(char building_x, char building_y, char next_map) {
-    add_portal(building_x+9/2, building_y+2, INTERIROR_X+10, INTERIOR_Y+INTERIOR_HEIGHT-2, next_map, true);
+    add_portal(building_x+9/2, building_y+2, INTERIOR_X+10, INTERIOR_Y+INTERIOR_HEIGHT-2, next_map, true);
 }
 
 //Auto add exit
