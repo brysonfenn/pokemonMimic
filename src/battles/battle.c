@@ -43,10 +43,13 @@ int initiate_battle(struct Pokemon * enemyPok) {
   Pokemon *currentPok = player.current_pokemon;
   player.enemy_pokemon = enemyPok;
 
-  //First used pokemon needs exp
+  //First used pokemon needs exp, no one else does for now
   for (int i = 0; i < player.numInParty; i++) {
     if (currentPok == &(player.party[i])) {
       pokemon_needing_exp[i] = true;
+    }
+    else {
+      pokemon_needing_exp[i] = false;
     }
   }
 

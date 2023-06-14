@@ -125,7 +125,9 @@ int battle_trainer(Trainer * trainer) {
 
     //Notify money earned
     text_box_cursors(TEXT_BOX_NEXT_LINE);
-    printw("%s gained $%d for defeating %s", player.name, money_earned, trainer->name);
+    printw("%s gained $%d for ", player.name, money_earned);
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("defeating %s",  trainer->name);
     player.money += money_earned;
     refresh(); sleep(2);
   }

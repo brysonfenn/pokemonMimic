@@ -1,33 +1,26 @@
-Last Saved: 06/11/2023 17:51:35
-Player: Bryson
-5 0 4 3700
-Location: {2,(20,17)}
-Heal Center: {1,(33,10)}
+Last Saved: 06/13/2023 21:09:23
+Player: Player
+4 0 1 1800
+Location: {7,(33,9)}
+Heal Center: {7,(33,9)}
 Pokemon: 
-Charmander 4 22 16 3 14 15 14 15 16 7 343 FIRE NONE 67383309 0 0
-	Scratch. 2 34
-	Tail Whip. 4 28
-	Ember. 12 25
-Weedle 13 21 21 1 13 11 13 11 12 6 216 POISON BUG 1a9ec8d0 0 0
-	Poison Sting. 6 35
-Squirtle 7 22 22 3 15 14 15 14 16 7 343 WATER NONE 2e91dd57 0 0
-	Tackle. 1 35
-	Tail Whip. 4 30
-	Bubble. 13 30
-Bulbasaur 1 26 26 4 17 17 17 17 18 9 729 GRASS POISON 6a5a92a3 0 0
+Bulbasaur 1 25 25 3 12 12 12 12 12 8 532 GRASS POISON 4ea76e4a 0 0
 	Tackle. 1 35
 	Growl. 3 40
 	Leech seed. 11 10
-	Sleep Powder. 15 35
-Sandshrew 27 22 22 2 14 15 14 15 11 7 343 GROUND NONE 605141e1 0 0
-	Scratch. 2 35
-	Defense Curl. 9 40
+Rattata 19 19 19 2 11 9 7 8 13 6 244 NORMAL NONE 6fd4f221 0 0
+	Tackle. 1 35
+	Tail Whip. 4 30
+Weedle 13 19 19 2 8 8 7 8 10 5 181 BUG POISON 67e5ac80 0 0
+	Poison Sting. 6 35
+	String Shot. 5 40
+Pidgeotto 17 17 17 3 9 8 8 8 9 3 52 NORMAL FLYING 50c7a9f6 0 0
+	Tackle. 1 35
+	Sand Attack. 7 15
+	Gust. 38 35
 PC: 
 Bag:
-Potion. 1 2
-Super Potion. 2 3
-Pokeball. 3 1
-Great Ball. 4 1
+Super Potion. 2 1
 
-Trainers Battled: 0
-  
+Trainers Battled: 4
+  1 2 3 4 
