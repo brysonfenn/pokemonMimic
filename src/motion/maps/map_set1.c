@@ -52,7 +52,7 @@ void draw_route1() {
 }
 
 
-static Trainer trainer4 = {4, "Rival G", 1, {POKEMON_BULBASAUR}, {5} };
+static Trainer trainer4 = {4, "Rival G", "I'm your rival!", 1, {POKEMON_BULBASAUR}, {5} };
 
 void draw_lab() {
     draw_interior(MAP_X+24, MAP_Y+MAP_HEIGHT-3, MAP_STARTER_TOWN);

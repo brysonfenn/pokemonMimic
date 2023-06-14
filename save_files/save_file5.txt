@@ -23,4 +23,4 @@ Bag:
 Super Potion. 2 1
 
 Trainers Battled: 4
-  1 2 3 4 
+  1 2 3 5 

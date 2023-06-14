@@ -13,8 +13,8 @@
 #include "../../print/print_utils.h"
 #include "../../print/print_defines.h"
 
-static Trainer trainer4 = {4, "Trainer Marty", 2, {POKEMON_CATERPIE, POKEMON_WEEDLE}, {4,5} };
-static Trainer leader201 = {201, "Leader Brock", 2, {POKEMON_CLEFAIRY, POKEMON_NIDORINO}, {10,12} };
+static Trainer trainer5 = {5, "Trainer Marty", "I'll defeat you with my Bug Pokemon!", 2, {POKEMON_CATERPIE, POKEMON_WEEDLE}, {4,5} };
+static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_CLEFAIRY, POKEMON_NIDORINO}, {10,12} };
 
 void draw_vir_forest() {
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
@@ -28,7 +28,7 @@ void draw_vir_forest() {
     draw_town_exit(MAP_TOP, MAP_WIDTH-8);
     add_exit_portal(MAP_TOP, MAP_WIDTH-8, MAP_PEW_CITY);
 
-    add_trainer(MAP_X+11, MAP_Y+7, &trainer4, PLAYER_MOVING_DOWN);
+    add_trainer(MAP_X+11, MAP_Y+7, &trainer5, PLAYER_MOVING_DOWN);
 
     draw_static_elements();
 }

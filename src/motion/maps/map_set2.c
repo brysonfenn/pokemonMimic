@@ -40,9 +40,9 @@ void draw_vir_city() {
 }
 
 
-static Trainer trainer1 = {1, "Trainer John", 2, {POKEMON_RATTATA, POKEMON_PIDGEY}, {4,4} };
-static Trainer trainer2 = {2, "Bugcatcher David", 2, {POKEMON_KAKUNA, POKEMON_WEEDLE}, {4,5} };
-static Trainer trainer3 = {3, "Trainer Steven", 2, {POKEMON_SANDSHREW, POKEMON_NIDORINO}, {4,5} };
+static Trainer trainer1 = {1, "Trainer John", "Hi! I train Pokemon too!", 2, {POKEMON_RATTATA, POKEMON_PIDGEY}, {4,4} };
+static Trainer trainer2 = {2, "Bugcatcher David", "Are you afraid of Bugs?", 2, {POKEMON_KAKUNA, POKEMON_WEEDLE}, {4,5} };
+static Trainer trainer3 = {3, "Trainer Steven", "I'm a tough trainer, let's battle!", 2, {POKEMON_SANDSHREW, POKEMON_NIDORINO}, {4,5} };
 
 void draw_route2() {
 

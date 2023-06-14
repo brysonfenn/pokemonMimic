@@ -40,7 +40,7 @@ static int leave_msg_count = 0;
 
 // Draw the current map to the screen and handle player motion until user returns to the menu
 void handle_motion() {
-    char print_str[256];
+    char print_str[512];
 
     player_y = &(player.loc->y);
     player_x = &(player.loc->x);
@@ -118,12 +118,20 @@ void handle_motion() {
                         print_to_message_box("\"We already battled\"");
                         continue;
                     }
+                    
+                    //Print trainer's battle message
+                    sprintf(print_str, "\"%s\"", trainer_ptr->message);
+                    print_to_message_box(print_str); sleep(2);
+
+                    //Blink screen and reset screen without battle message
                     save_print_state();
-                    print_to_message_box("\"Let's battle!\""); sleep(1);
                     blink_screen(5, restore_print_state);
+                    begin_message_box(); save_print_state();
+                    
+                    //Handle trainer battle and return values from that function
                     return_value = battle_trainer(trainer_ptr);
                     if (return_value == BATTLE_WHITE_OUT) {
-                        init_map();
+                        init_map(); //Reset map to pokemon center map if battle white out
                     }
                     else {
                         restore_print_state();
@@ -164,7 +172,8 @@ void handle_motion() {
         refresh();
 
         if (hitGrass && (random < 10)) {
-            blink_screen(5, init_map);
+            save_print_state();
+            blink_screen(5, restore_print_state);
             battle_wild_pokemon();
             init_map();
             continue;
@@ -212,8 +221,17 @@ void handle_motion() {
             }
             save_print_state();
 
-            print_to_message_box("\"Let's battle!\""); sleep(1);
+            //Print trainer's battle message
+            sprintf(print_str, "\"%s\"", trainer_ptr->message);
+            print_to_message_box(print_str); sleep(2);
+
+
+            //Blink screen and reset screen without battle message
+            save_print_state();
             blink_screen(5, restore_print_state);
+            begin_message_box(); save_print_state();
+
+            //Handle trainer battle and return values        
             return_value = battle_trainer(trainer_ptr);
 
             if (return_value == BATTLE_WHITE_OUT) {

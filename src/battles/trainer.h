@@ -9,6 +9,7 @@
 typedef struct Trainer {
     uint8_t id_num;
     char name[30];
+    char message[256];
     int8_t num_in_party;
     Pokemon_id party_id_list[6];
     int8_t levels[6];
