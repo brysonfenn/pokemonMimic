@@ -35,8 +35,6 @@ int handle_end_conditions(struct Pokemon * pok) {
 	//Remove flinched hidden condition
 	remove_hidden_condition(pok, FLINCHED);
 
-    text_box_cursors(TEXT_BOX_BEGINNING);
-
 	//Poison and burn
 	if (pok->visible_condition == POISONED) {
 		handle_hurt_1_16(enemy, pok, "poison");
@@ -49,6 +47,7 @@ int handle_end_conditions(struct Pokemon * pok) {
     if (has_hidden_condition(pok, BIND)) {
         success = decrement_hidden_condition_val(pok, BIND);
         if (!success) {
+            text_box_cursors(TEXT_BOX_BEGINNING);
             printw("%s was released from bind", pok->name); refresh(); sleep(2);
             remove_hidden_condition(pok, BIND);
             return 3;
@@ -60,6 +59,7 @@ int handle_end_conditions(struct Pokemon * pok) {
     if (has_hidden_condition(pok, SAND_TOMBED)) {
         success = decrement_hidden_condition_val(pok, BIND);
         if (!success) {
+            text_box_cursors(TEXT_BOX_BEGINNING);
             printw("%s was released from sand tomb", pok->name); refresh(); sleep(2);
             remove_hidden_condition(pok, SAND_TOMBED);
             return 3;

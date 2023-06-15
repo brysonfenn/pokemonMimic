@@ -1,7 +1,7 @@
-Last Saved: 06/12/2023 17:45:22
+Last Saved: 06/15/2023 14:29:53
 Player: Test_Player
-2 5 3 1000
-Location: {6,(53,2)}
+4 3 3 1000
+Location: {8,(24,3)}
 Heal Center: {1,(33,10)}
 Pokemon: 
 Charmander 4 20 20 4 11 9 12 11 13 5 142 NONE NONE 12bcdf73 0 0
@@ -12,17 +12,17 @@ Charmander 4 20 20 4 11 9 12 11 13 5 142 NONE NONE 12bcdf73 0 0
 Bulbasaur 1 20 7 2 11 10 13 13 11 5 125 POISON NONE 31983766 0 0
 	Tackle. 1 33
 	Growl. 3 40
-PC: 
-Pidgey 16 19 19 2 10 9 9 9 11 5 125 NORMAL FLYING 73883553 0 0
-	Tackle. 1 35
-	Sand Attack. 7 15
-Caterpie 10 18 18 2 40 10 9 10 10 6 216 NONE NONE 2df200a1 0 0
-	Tackle. 1 35
-	String Shot. 5 40
 Kakuna 14 21 21 3 13 11 13 11 12 9 729 NONE NONE 6b076197 0 0
 	Poison Sting. 6 35
 	String Shot. 5 40
 	Harden. 34 20
+Caterpie 10 18 18 2 40 10 9 10 10 6 216 NONE NONE 2df200a1 0 0
+	Tackle. 1 35
+	String Shot. 5 40
+PC: 
+Pidgey 16 19 19 2 10 9 9 9 11 5 125 NORMAL FLYING 73883553 0 0
+	Tackle. 1 35
+	Sand Attack. 7 15
 Bulbasaur 1 20 20 2 11 10 13 13 11 5 125 POISON NONE 31983766 0 0
 	Tackle. 1 35
 	Growl. 3 40
