@@ -1,0 +1,13 @@
+Onix: 95
+Evolve: 101,0
+level,move_id
+1,1 Tackle
+1,84 Screech
+8,85 Bind
+12,76 Rock Throw
+19,34 Harden
+30,88 Dragonbreath
+41,58 Slam
+45,86 Iron Tail
+52,87 Sand Tomb
+56,83 Double-Edge
