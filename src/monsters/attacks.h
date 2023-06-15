@@ -9,8 +9,8 @@
 
 #define NO_MISS 1000
 
-#define HEAL_PERCENTAGE 1
-#define HEAL_NUM_HP 2
+#define HP_PERCENTAGE 1
+#define HP_NUM_HP 2
 
 #define STRUGGLE_MOVE_NUM -1
 
@@ -78,5 +78,8 @@ int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int
 
 //Heal a specified amount of HP
 int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage);
+
+//Inflict damage to self
+int self_inflict_damage(int damage_type, int hp, struct Pokemon* victim, int damage);
 
 #endif // ATTACKS_H

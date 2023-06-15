@@ -93,8 +93,10 @@ attack sing         = {"Sing"         , 70, 15,   0,       55, NORMAL,   false, 
 attack double_slap  = {"Double Slap"  , 71, 10,  15,       85, NORMAL,   false, &hit_multiple_times, 2, 5 };
 attack minimize     = {"Minimize"     , 72, 20,   0,  NO_MISS, NORMAL,   false, &increment_self_stat, EVASIVENESS_STAT, 100 };
 attack cosmic_power = {"Cosmic Power" , 73, 20,   0,  NO_MISS, PSYCHIC,  false, &increment_self_stat, SP_DEFENSE_STAT, 100 };
-attack moonlight    = {"Moonlight"    , 74,  5,   0,  NO_MISS, NORMAL,   false, &self_heal, HEAL_PERCENTAGE, 50 };
+attack moonlight    = {"Moonlight"    , 74,  5,   0,  NO_MISS, NORMAL,   false, &self_heal, HP_PERCENTAGE, 50 };
 attack meteor_mash  = {"Meteor Mash"  , 75, 10, 100,       85, STEEL,    false, &increment_self_stat, ATTACK_STAT, 100 };
+attack rock_throw   = {"Rock Throw"   , 76, 15,  50,       90, ROCK,     false, &attack_do_nothing, NO_CONDITION, 0 };
+
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -105,7 +107,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &fury_attack, &pursuit, &agility, &twineedle, &pin_missile, &hyper_fang, &super_fang, &feather_dance, &swift, &fury_swipes,    // #41-50
     &peck, &leer, &aerial_ace, &drill_peck, &thunder_shock, &thunder_wave, &double_team, &slam, &thunderbolt, &thunder,            // #51-60
     &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn, &pound, &sing,                 // #61-70
-    &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash };
+    &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash, &rock_throw };
 
 
 //Return an attack given an attack id number
@@ -307,11 +309,11 @@ int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
     blinkPokemon(self == player.current_pokemon, HEAL_COLOR, 3);
 
     switch (heal_type) {
-        case HEAL_PERCENTAGE:
+        case HP_PERCENTAGE:
             percentage = (hp / 100.0);
             self->currentHP += (int) (self->maxHP * percentage);
             break;
-        case HEAL_NUM_HP:
+        case HP_NUM_HP:
             self->currentHP += hp;
             break;
         default:
@@ -328,6 +330,44 @@ int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
 
     text_box_cursors(TEXT_BOX_BEGINNING);
     printw("%s restored hp!", self->name); refresh(); sleep(1);
+
+    return 0;
+}
+
+
+//Inflict damage to self
+int self_inflict_damage(int damage_type, int hp, struct Pokemon* victim, int damage) {
+    //Adjust victim depending on if the victim is the player's or the enemy's
+    Pokemon * self;
+    if (player.current_pokemon == victim) self = player.enemy_pokemon;
+    else self = player.current_pokemon;
+
+    float percentage;
+
+    blinkPokemon(self == player.current_pokemon, DAMAGED_COLOR, 3);
+
+    switch (damage_type) {
+        case HP_PERCENTAGE:
+            percentage = (hp / 100.0);
+            self->currentHP -= (int) (self->maxHP * percentage);
+            break;
+        case HP_NUM_HP:
+            self->currentHP -= hp;
+            break;
+        default:
+        text_box_cursors(TEXT_BOX_BEGINNING);
+            printw("Unrecognized damage_type"); refresh(); sleep(2);
+            return 1;
+    }
+
+    if (self->currentHP < 0) {
+        self->currentHP = 0;
+    }
+    
+    printBattle();
+
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    printw("%s took damage too!", self->name); refresh(); sleep(1);
 
     return 0;
 }
