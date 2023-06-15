@@ -329,6 +329,7 @@ void get_pokemon_from_file(FILE *fp, int num_in_list, Pokemon * pokList) {
 		curr_pok->type2 = get_type_id_by_string(type2);
 
 		curr_pok->hidden_conditions = malloc(sizeof(Condition));
+		curr_pok->hidden_condition_values = malloc(sizeof(int8_t));
 
 		reset_stat_stages(curr_pok);
 

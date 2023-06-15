@@ -74,7 +74,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok) {
 			}
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 			printw("%s was seeded!", pok->name); refresh(); sleep(2);
-			add_hidden_condition(pok, SEEDED);
+			add_hidden_condition(pok, SEEDED, 0);
 			break;
 
 		case CONFUSED:
@@ -84,12 +84,20 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok) {
 			}
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 			printw("%s is now confused!", pok->name); refresh(); sleep(2);
-			add_hidden_condition(pok, CONFUSED);
+			add_hidden_condition(pok, CONFUSED, 0);
 			pok->confusion_count = (rand() % 4) + 1;
 			break;
 
 		case FLINCHED:
-			add_hidden_condition(pok, FLINCHED);
+			add_hidden_condition(pok, FLINCHED, 0);
+			break;
+		
+		case BIND:
+			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
+			printw("%s was bound tightly!", pok->name); refresh(); sleep(2);
+
+			//Bind lasts 2-5 turns
+			add_hidden_condition(pok, BIND, (rand() % 4) + 2);
 			break;
 
 		default:
@@ -103,12 +111,15 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok) {
 
 
 //Add hidden condition to pokemon, return 1 if condition could not be added
-bool add_hidden_condition(struct Pokemon * pok, Condition condition) {
+bool add_hidden_condition(struct Pokemon * pok, Condition condition, int8_t value) {
 	if (has_hidden_condition(pok, condition)) return false;
 
 	pok->num_hidden_conditions++;
 	pok->hidden_conditions = realloc(pok->hidden_conditions, pok->num_hidden_conditions * sizeof(Condition));
 	pok->hidden_conditions[pok->num_hidden_conditions - 1] = condition;
+
+	pok->hidden_condition_values = realloc(pok->hidden_condition_values, pok->num_hidden_conditions * sizeof(int8_t));
+	pok->hidden_condition_values[pok->num_hidden_conditions - 1] = value;
 
 	return true;
 }
@@ -117,6 +128,17 @@ bool add_hidden_condition(struct Pokemon * pok, Condition condition) {
 bool has_hidden_condition(struct Pokemon * pok, Condition condition) {
 	for (int i = 0; i < pok->num_hidden_conditions; i++) {
 		if (pok->hidden_conditions[i] == condition) return true;
+	}
+	return false;
+}
+
+//Decrement the value associated with a given condition, return false if that value is 0 or if condition not found
+bool decrement_hidden_condition_val(struct Pokemon * pok, Condition condition) {
+	for (int i = 0; i < pok->num_hidden_conditions; i++) {
+		if (pok->hidden_conditions[i] == condition && pok->hidden_condition_values[i] > 0) {
+			pok->hidden_condition_values[i]--;
+			return true;
+		}
 	}
 	return false;
 }
@@ -130,15 +152,19 @@ bool remove_hidden_condition(struct Pokemon * pok, Condition condition) {
 	for (i = 0; i < pok->num_hidden_conditions; i++) {
 		if (pok->hidden_conditions[i] == condition) {
 			pok->hidden_conditions[i] = NO_CONDITION;
+			pok->hidden_condition_values[i] = 0;
 			found_condition = true;
 			break;
 		}
 	}
+
+	//If the condition was not found, stop here
 	if (!found_condition) return false;
 
 	//Adjust indexes of the hidden conditions if it was found
 	for (; i < pok->num_hidden_conditions-1; i++) {
 		pok->hidden_conditions[i] = pok->hidden_conditions[i+1];
+		pok->hidden_condition_values[i] = pok->hidden_condition_values[i+1];
 	}
 
 	pok->num_hidden_conditions--;
@@ -147,6 +173,11 @@ bool remove_hidden_condition(struct Pokemon * pok, Condition condition) {
 	int new_size = pok->num_hidden_conditions * sizeof(Condition);
 	if (new_size == 0) new_size = sizeof(Condition);
 	pok->hidden_conditions = realloc(pok->hidden_conditions, new_size);
+
+	// Get what size of hidden conditions value array should be and resize
+	new_size = ((new_size / sizeof(Condition)) * sizeof(int8_t));
+	pok->hidden_condition_values = realloc(pok->hidden_condition_values, new_size);
+
 	return found_condition;
 }
 
@@ -154,89 +185,8 @@ bool remove_hidden_condition(struct Pokemon * pok, Condition condition) {
 void remove_all_hidden_conditions(struct Pokemon * pok) {
 	if (pok->num_hidden_conditions == 0) return;
 	pok->hidden_conditions = realloc(pok->hidden_conditions, sizeof(Condition));
+	pok->hidden_condition_values = realloc(pok->hidden_condition_values, sizeof(int8_t));
 	pok->num_hidden_conditions = 0;
-}
-
-
-//Handle poisoning, leech seed, etc.
-int handle_end_conditions() {
-	Pokemon * player_pok = player.current_pokemon;
-	Pokemon * enemy_pok = player.enemy_pokemon;
-	char player_condition_text[16] = "NOT FOUND";
-	char enemy_condition_text[16] = "NOT FOUND";
-
-	//If either pokemon fainted, do not handle conditions
-	if (player_pok->currentHP <= 0 || enemy_pok->currentHP <= 0) {
-		return 0;
-	}
-
-	//Remove flinched hidden condition
-	remove_hidden_condition(player_pok, FLINCHED);
-	remove_hidden_condition(enemy_pok, FLINCHED);
-
-	//Assign text for poison and burn
-	if (player_pok->visible_condition == POISONED) 
-		sprintf(player_condition_text, "%s", "poison");
-	else if (player_pok->visible_condition == BURNED) 
-		sprintf(player_condition_text, "%s", "burn");
-	if (enemy_pok->visible_condition == POISONED) 
-		sprintf(enemy_condition_text, "%s", "poison");
-	else if (enemy_pok->visible_condition == BURNED) 
-		sprintf(enemy_condition_text, "%s", "burn");
-
-	//Poison and burn
-	clear(); printBattle();
-	if (player_pok->visible_condition == POISONED || player_pok->visible_condition == BURNED) {
-		text_box_cursors(TEXT_BOX_BEGINNING);
-		printw("%s was hurt by %s!", player_pok->name, player_condition_text);
-		player_pok->currentHP -= ((player_pok->maxHP / 16) + 1);
-		if (player_pok->currentHP < 0) player_pok->currentHP = 0;
-		refresh(); sleep(2);
-	}
-
-	if (enemy_pok->visible_condition == POISONED || enemy_pok->visible_condition == BURNED) {
-		text_box_cursors(TEXT_BOX_BEGINNING);
-		printw("%s%s was hurt by %s!", ENEMY_TEXT, enemy_pok->name, enemy_condition_text);
-		enemy_pok->currentHP -= ((enemy_pok->maxHP / 16) + 1);
-		if (enemy_pok->currentHP < 0) enemy_pok->currentHP = 0;
-		refresh(); sleep(2);
-	}
-	if (player_pok->currentHP == 0 || enemy_pok->currentHP == 0) return 2;
-
-	//Leech Seed
-	clear(); printBattle();
-	int sappedHP;
-	if (has_hidden_condition(player_pok, SEEDED)) {
-		text_box_cursors(TEXT_BOX_BEGINNING);
-		printw("%s's HP was sapped!", player_pok->name); refresh(); sleep(1);
-		sappedHP = ((player_pok->maxHP / 8) + 1);
-
-		blinkPokemon(true, DAMAGED_COLOR, LEECH_SEED_BLINK_TIMES); 
-		printBattle();
-		blinkPokemon(false, HEAL_COLOR, LEECH_SEED_BLINK_TIMES);
-
-		//Give HP equal to taken HP
-		if (sappedHP > player_pok->currentHP) { enemy_pok->currentHP += player_pok->currentHP; player_pok->currentHP = 0; }
-		else {enemy_pok->currentHP += sappedHP; player_pok->currentHP -= sappedHP;}
-		if (enemy_pok->currentHP > enemy_pok->maxHP) enemy_pok->currentHP = enemy_pok->maxHP;
-	}
-	if (has_hidden_condition(enemy_pok, SEEDED)) {
-		text_box_cursors(TEXT_BOX_BEGINNING);
-		printw("%s%s's HP was sapped!", ENEMY_TEXT, enemy_pok->name); refresh(); sleep(1);
-		sappedHP = ((enemy_pok->maxHP / 8) + 1);
-
-		blinkPokemon(false, DAMAGED_COLOR, LEECH_SEED_BLINK_TIMES); 
-		printBattle();
-		blinkPokemon(true, HEAL_COLOR, LEECH_SEED_BLINK_TIMES);
-
-		//Give HP equal to taken HP
-		if (sappedHP > enemy_pok->currentHP) { player_pok->currentHP += enemy_pok->currentHP; enemy_pok->currentHP = 0; }
-		else {player_pok->currentHP += sappedHP; enemy_pok->currentHP -= sappedHP;}
-		if (player_pok->currentHP > player_pok->maxHP) player_pok->currentHP = player_pok->maxHP;
-	}
-	if (player_pok->currentHP == 0 || enemy_pok->currentHP == 0) return 2;
-
-	return 0;
 }
 
 

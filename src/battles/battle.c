@@ -335,7 +335,8 @@ int initiate_battle(struct Pokemon * enemyPok) {
     }
     fainted_switch = false;
 
-    handle_end_conditions();
+    handle_end_conditions(enemyPok);
+    handle_end_conditions(currentPok);
   }
 
   if (!run_success && !catch_success) {

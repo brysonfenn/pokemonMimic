@@ -18,7 +18,7 @@ attack scratch      = {"Scratch"      ,  2, 35,  40,      100, NORMAL,   false, 
 attack growl        = {"Growl"        ,  3, 40,   0,      100, NORMAL,   false, &decrement_opponent_stat, ATTACK_STAT, 100 };
 attack tail_whip    = {"Tail Whip"    ,  4, 30,   0,      100, NORMAL,   false, &decrement_opponent_stat, DEFENSE_STAT, 100 };
 attack string_shot  = {"String Shot"  ,  5, 40,   0,       95, NORMAL,   false, &decrement_opponent_stat, SPEED_STAT, 100 };
-attack poison_sting = {"Poison Sting" ,  6, 35,  25,      100, POISON,   false, &inflict_condition, POISONED, 30 };
+attack poison_sting = {"Poison Sting" ,  6, 35,  25,      100, POISON,   false, &inflict_condition, POISONED, 100 };
 attack sand_attack  = {"Sand Attack"  ,  7, 15,   0,      100, NORMAL,   false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
 attack quick_attack = {"Quick Attack" ,  8, 30,  40,      100, NORMAL,   true,  &attack_do_nothing, NO_CONDITION, 0 };
 attack defense_curl = {"Defense Curl" ,  9, 40,   0,      100, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
@@ -104,6 +104,8 @@ attack rock_blast   = {"Rock Blast"   , 80, 10,  25,       80, ROCK,     false, 
 attack earthquake   = {"Earthquake"   , 81, 10, 100,      100, GROUND,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack explosion    = {"Explosion"    , 82,  5, 500,      100, NORMAL,   false, &self_inflict_damage, HP_PERCENTAGE, 150 };
 attack double_edge  = {"Double-Edge"  , 83, 15, 120,      100, NORMAL,   false, &self_inflict_damage, PERCENT_DAMAGE_DEALT, 33 };
+attack screech      = {"Screech"      , 84, 40,   0,       85, NORMAL,   false, &decrement_opponent_stat2, DEFENSE_STAT, 100 };
+attack bind         = {"Bind"         , 85, 20,  15,       75, NORMAL,   false, &inflict_condition, BIND, 100 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -115,7 +117,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &peck, &leer, &aerial_ace, &drill_peck, &thunder_shock, &thunder_wave, &double_team, &slam, &thunderbolt, &thunder,                     // #51-60
     &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn, &pound, &sing,                          // #61-70
     &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash, &rock_throw, &synthesis, &solar_beam, &selfdestruct, &rock_blast,    // #71-80
-    &earthquake, &explosion, &double_edge
+    &earthquake, &explosion, &double_edge, &screech, &bind
 };
 
 
