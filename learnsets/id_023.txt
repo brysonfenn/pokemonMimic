@@ -1,0 +1,10 @@
+Ekans: 23
+Evolve: 22,24
+level,move_id
+1,89 Wrap
+1,52 Leer
+8,6 Poison Sting
+13,29 Bite
+20,90 Glare
+25,84 Screech
+32,91 Acid

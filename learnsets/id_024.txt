@@ -1,0 +1,12 @@
+Arbok: 24
+Evolve: 101,0
+level,move_id
+1,89 Wrap
+1,52 Leer
+1,6 Poison Sting
+1,29 Bite
+8,6 Poison Sting
+13,29 Bite
+20,90 Glare
+28,84 Screech
+38,91 Acid

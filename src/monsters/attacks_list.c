@@ -109,6 +109,10 @@ attack bind         = {"Bind"         , 85, 20,  15,       75, NORMAL,   false, 
 attack iron_tail    = {"Iron Tail"    , 86, 35,  50,       95, STEEL,    false, &decrement_opponent_stat, DEFENSE_STAT, 30 };
 attack sand_tomb    = {"Sand Tomb"    , 87, 20,  15,       75, GROUND,   false, &inflict_condition, SAND_TOMBED, 100 };
 attack dragon_breath= {"Dragon Breath", 88, 20,  60,      100, DRAGON,   false, &inflict_condition, PARALYZED, 30 };
+attack wrap         = {"Wrap"         , 89, 20,  15,       85, NORMAL,   false, &inflict_condition, WRAPPED, 100 };
+attack glare        = {"Glare"        , 90, 30,   0,       75, NORMAL,   false, &inflict_condition, PARALYZED, 100 };
+
+attack acid         = {"Acid"         , 91, 30,  40,      100, POISON,   false, &decrement_opponent_stat, DEFENSE_STAT, 10 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -120,7 +124,8 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &peck, &leer, &aerial_ace, &drill_peck, &thunder_shock, &thunder_wave, &double_team, &slam, &thunderbolt, &thunder,                     // #51-60
     &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn, &pound, &sing,                          // #61-70
     &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash, &rock_throw, &synthesis, &solar_beam, &selfdestruct, &rock_blast,    // #71-80
-    &earthquake, &explosion, &double_edge, &screech, &bind, &iron_tail, &sand_tomb, &dragon_breath
+    &earthquake, &explosion, &double_edge, &screech, &bind, &iron_tail, &sand_tomb, &dragon_breath, &wrap, &glare,
+    &acid
 };
 
 

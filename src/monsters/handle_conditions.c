@@ -44,6 +44,8 @@ int handle_end_conditions(struct Pokemon * pok) {
         handle_hurt_1_16(enemy, pok, "burn");
         if (pok->currentHP == 0) return 2;
     }
+
+    //Bind, Wrap, Sand Tomb are all similar
     if (has_hidden_condition(pok, BIND)) {
         success = decrement_hidden_condition_val(pok, BIND);
         if (!success) {
@@ -56,8 +58,20 @@ int handle_end_conditions(struct Pokemon * pok) {
         handle_hurt_1_16(enemy, pok, "bind");
         if (pok->currentHP == 0) return 2;
     }
+    if (has_hidden_condition(pok, WRAPPED)) {
+        success = decrement_hidden_condition_val(pok, WRAPPED);
+        if (!success) {
+            text_box_cursors(TEXT_BOX_BEGINNING);
+            printw("%s was released from wrap", pok->name); refresh(); sleep(2);
+            remove_hidden_condition(pok, WRAPPED);
+            return 3;
+        }
+
+        handle_hurt_1_16(enemy, pok, "bind");
+        if (pok->currentHP == 0) return 2;
+    }
     if (has_hidden_condition(pok, SAND_TOMBED)) {
-        success = decrement_hidden_condition_val(pok, BIND);
+        success = decrement_hidden_condition_val(pok, SAND_TOMBED);
         if (!success) {
             text_box_cursors(TEXT_BOX_BEGINNING);
             printw("%s was released from sand tomb", pok->name); refresh(); sleep(2);
