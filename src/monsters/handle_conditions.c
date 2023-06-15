@@ -50,10 +50,22 @@ int handle_end_conditions(struct Pokemon * pok) {
         success = decrement_hidden_condition_val(pok, BIND);
         if (!success) {
             printw("%s was released from bind", pok->name); refresh(); sleep(2);
+            remove_hidden_condition(pok, BIND);
             return 3;
         }
 
         handle_hurt_1_16(enemy, pok, "bind");
+        if (pok->currentHP == 0) return 2;
+    }
+    if (has_hidden_condition(pok, SAND_TOMBED)) {
+        success = decrement_hidden_condition_val(pok, BIND);
+        if (!success) {
+            printw("%s was released from sand tomb", pok->name); refresh(); sleep(2);
+            remove_hidden_condition(pok, SAND_TOMBED);
+            return 3;
+        }
+
+        handle_hurt_1_16(enemy, pok, "sand tomb");
         if (pok->currentHP == 0) return 2;
     }
 	

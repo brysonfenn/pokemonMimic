@@ -106,6 +106,9 @@ attack explosion    = {"Explosion"    , 82,  5, 500,      100, NORMAL,   false, 
 attack double_edge  = {"Double-Edge"  , 83, 15, 120,      100, NORMAL,   false, &self_inflict_damage, PERCENT_DAMAGE_DEALT, 33 };
 attack screech      = {"Screech"      , 84, 40,   0,       85, NORMAL,   false, &decrement_opponent_stat2, DEFENSE_STAT, 100 };
 attack bind         = {"Bind"         , 85, 20,  15,       75, NORMAL,   false, &inflict_condition, BIND, 100 };
+attack iron_tail    = {"Iron Tail"    , 86, 35,  50,       95, STEEL,    false, &decrement_opponent_stat, DEFENSE_STAT, 30 };
+attack sand_tomb    = {"Sand Tomb"    , 87, 20,  15,       75, GROUND,   false, &inflict_condition, SAND_TOMBED, 100 };
+attack dragon_breath= {"Dragon Breath", 88, 20,  60,      100, DRAGON,   false, &inflict_condition, PARALYZED, 30 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -117,7 +120,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &peck, &leer, &aerial_ace, &drill_peck, &thunder_shock, &thunder_wave, &double_team, &slam, &thunderbolt, &thunder,                     // #51-60
     &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn, &pound, &sing,                          // #61-70
     &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash, &rock_throw, &synthesis, &solar_beam, &selfdestruct, &rock_blast,    // #71-80
-    &earthquake, &explosion, &double_edge, &screech, &bind
+    &earthquake, &explosion, &double_edge, &screech, &bind, &iron_tail, &sand_tomb, &dragon_breath
 };
 
 
