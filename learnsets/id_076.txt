@@ -1,0 +1,12 @@
+Golem: 76
+Evolve: 101,0
+level,move_id
+1,1 Tackle
+1,9 Defense Curl
+1,76 Rock Throw
+11,76 Rock Throw
+21,79 Selfdestruct
+37,80 Rock Blast
+45,81 Earthquake
+53,82 Explosion
+62,83 Double-Edge

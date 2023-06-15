@@ -9,8 +9,12 @@
 
 #define NO_MISS 1000
 
+//Percentage of user's own HP
 #define HP_PERCENTAGE 1
-#define HP_NUM_HP 2
+//Specific amount of HP
+#define HP_AMOUNT 2
+//Percentage of damage dealt by user
+#define PERCENT_DAMAGE_DEALT 3
 
 #define STRUGGLE_MOVE_NUM -1
 

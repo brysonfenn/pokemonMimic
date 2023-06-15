@@ -1,12 +1,14 @@
 Ivysaur 2
 Evolve: 32,3
 level,move_id
-1,1
-4,3
-7,11
-10,10
-15,14
-15,15
-22,16
-29,19
-38,20
+1,1 Tackle
+4,3 Growl
+7,11 Leech Seed
+10,10 Vine Whip
+15,15 Poison Powder
+15,15 Sleep Powder
+22,16 Razor Leaf
+29,19 Sweet Scent
+38,20 Growth
+47,77 Synthesis
+56,78 Solar Beam

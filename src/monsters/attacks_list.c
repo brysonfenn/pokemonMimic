@@ -96,18 +96,27 @@ attack cosmic_power = {"Cosmic Power" , 73, 20,   0,  NO_MISS, PSYCHIC,  false, 
 attack moonlight    = {"Moonlight"    , 74,  5,   0,  NO_MISS, NORMAL,   false, &self_heal, HP_PERCENTAGE, 50 };
 attack meteor_mash  = {"Meteor Mash"  , 75, 10, 100,       85, STEEL,    false, &increment_self_stat, ATTACK_STAT, 100 };
 attack rock_throw   = {"Rock Throw"   , 76, 15,  50,       90, ROCK,     false, &attack_do_nothing, NO_CONDITION, 0 };
+attack synthesis    = {"Synthesis"    , 77,  5,   0,  NO_MISS, GRASS,    false, &self_heal, HP_PERCENTAGE, 50 };
+attack solar_beam   = {"Solar Beam"   , 78, 10,  90,      100, GRASS,    false, &attack_do_nothing, NO_CONDITION, 0 };
+attack selfdestruct = {"Selfdestruct" , 79,  5, 400,      100, NORMAL,   false, &self_inflict_damage, HP_PERCENTAGE, 150 };
+attack rock_blast   = {"Rock Blast"   , 80, 10,  25,       80, ROCK,     false, &hit_multiple_times, 2, 5 };
 
+attack earthquake   = {"Earthquake"   , 81, 10, 100,      100, GROUND,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack explosion    = {"Explosion"    , 82,  5, 500,      100, NORMAL,   false, &self_inflict_damage, HP_PERCENTAGE, 150 };
+attack double_edge  = {"Double-Edge"  , 83, 15, 120,      100, NORMAL,   false, &self_inflict_damage, PERCENT_DAMAGE_DEALT, 33 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
-    &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl, &vine_whip,    // #01-10
-    &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder, &razor_leaf, &metal_claw, &smoke_screen, &sweet_scent, &growth,   // #11-20
-    &scary_face, &flame_thrower, &slash, &dragon_rage, &fire_spin, &wing_attack, &withdraw, &water_gun, &bite, &rapid_spin,        // #21-30
-    &protect, &skull_bash, &hydro_pump, &harden, &supersonic, &confusion, &stun_spore, &gust, &psybeam, &silver_wind,              // #31-40
-    &fury_attack, &pursuit, &agility, &twineedle, &pin_missile, &hyper_fang, &super_fang, &feather_dance, &swift, &fury_swipes,    // #41-50
-    &peck, &leer, &aerial_ace, &drill_peck, &thunder_shock, &thunder_wave, &double_team, &slam, &thunderbolt, &thunder,            // #51-60
-    &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn, &pound, &sing,                 // #61-70
-    &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash, &rock_throw };
+    &tackle, &scratch, &growl, &tail_whip, &string_shot, &poison_sting, &sand_attack, &quick_attack, &defense_curl, &vine_whip,             // #01-10
+    &leech_seed, &ember, &bubble, &poison_powder, &sleep_powder, &razor_leaf, &metal_claw, &smoke_screen, &sweet_scent, &growth,            // #11-20
+    &scary_face, &flame_thrower, &slash, &dragon_rage, &fire_spin, &wing_attack, &withdraw, &water_gun, &bite, &rapid_spin,                 // #21-30
+    &protect, &skull_bash, &hydro_pump, &harden, &supersonic, &confusion, &stun_spore, &gust, &psybeam, &silver_wind,                       // #31-40
+    &fury_attack, &pursuit, &agility, &twineedle, &pin_missile, &hyper_fang, &super_fang, &feather_dance, &swift, &fury_swipes,             // #41-50
+    &peck, &leer, &aerial_ace, &drill_peck, &thunder_shock, &thunder_wave, &double_team, &slam, &thunderbolt, &thunder,                     // #51-60
+    &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn, &pound, &sing,                          // #61-70
+    &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash, &rock_throw, &synthesis, &solar_beam, &selfdestruct, &rock_blast,    // #71-80
+    &earthquake, &explosion, &double_edge
+};
 
 
 //Return an attack given an attack id number
@@ -305,6 +314,7 @@ int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
     else self = player.current_pokemon;
 
     float percentage;
+    int gain;
 
     blinkPokemon(self == player.current_pokemon, HEAL_COLOR, 3);
 
@@ -313,8 +323,13 @@ int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
             percentage = (hp / 100.0);
             self->currentHP += (int) (self->maxHP * percentage);
             break;
-        case HP_NUM_HP:
+        case HP_AMOUNT:
             self->currentHP += hp;
+            break;
+        case PERCENT_DAMAGE_DEALT:
+            gain = damage * (hp / 100.0);
+            if (gain <= 0) gain = 1;
+            self->currentHP += gain;
             break;
         default:
         text_box_cursors(TEXT_BOX_BEGINNING);
@@ -343,6 +358,7 @@ int self_inflict_damage(int damage_type, int hp, struct Pokemon* victim, int dam
     else self = player.current_pokemon;
 
     float percentage;
+    int recoil;
 
     blinkPokemon(self == player.current_pokemon, DAMAGED_COLOR, 3);
 
@@ -351,8 +367,13 @@ int self_inflict_damage(int damage_type, int hp, struct Pokemon* victim, int dam
             percentage = (hp / 100.0);
             self->currentHP -= (int) (self->maxHP * percentage);
             break;
-        case HP_NUM_HP:
+        case HP_AMOUNT:
             self->currentHP -= hp;
+            break;
+        case PERCENT_DAMAGE_DEALT:
+            recoil = damage * (hp / 100.0);
+            if (recoil <= 0) recoil = 1;
+            self->currentHP -= recoil;
             break;
         default:
         text_box_cursors(TEXT_BOX_BEGINNING);
