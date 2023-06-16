@@ -119,6 +119,15 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok) {
 			add_hidden_condition(pok, SAND_TOMBED, (rand() % 4) + 2);
 			break;
 
+		case FIRE_SPINNED:
+			if (has_hidden_condition(pok, FIRE_SPINNED)) return 2;
+			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
+			printw("%s was trapped in a fire spin!", pok->name); refresh(); sleep(2);
+
+			//Bind lasts 2-5 turns
+			add_hidden_condition(pok, FIRE_SPINNED, (rand() % 4) + 2);
+			break;
+
 		default:
 			printw("Tried to inflict unrecognized condition"); text_box_cursors(TEXT_BOX_NEXT_LINE);
 			printw("with code: %d", condition); refresh(); sleep(2);

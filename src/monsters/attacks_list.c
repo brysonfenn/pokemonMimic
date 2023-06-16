@@ -18,7 +18,7 @@ attack scratch      = {"Scratch"      ,  2, 35,  40,      100, NORMAL,   false, 
 attack growl        = {"Growl"        ,  3, 40,   0,      100, NORMAL,   false, &decrement_opponent_stat, ATTACK_STAT, 100 };
 attack tail_whip    = {"Tail Whip"    ,  4, 30,   0,      100, NORMAL,   false, &decrement_opponent_stat, DEFENSE_STAT, 100 };
 attack string_shot  = {"String Shot"  ,  5, 40,   0,       95, NORMAL,   false, &decrement_opponent_stat, SPEED_STAT, 100 };
-attack poison_sting = {"Poison Sting" ,  6, 35,  25,      100, POISON,   false, &inflict_condition, POISONED, 100 };
+attack poison_sting = {"Poison Sting" ,  6, 35,  25,      100, POISON,   false, &inflict_condition, POISONED, 30 };
 attack sand_attack  = {"Sand Attack"  ,  7, 15,   0,      100, NORMAL,   false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
 attack quick_attack = {"Quick Attack" ,  8, 30,  40,      100, NORMAL,   true,  &attack_do_nothing, NO_CONDITION, 0 };
 attack defense_curl = {"Defense Curl" ,  9, 40,   0,      100, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
@@ -39,7 +39,7 @@ attack scary_face   = {"Scary Face"   , 21, 15,   0,       90, NORMAL,   false, 
 attack flame_thrower= {"Flame Thrower", 22, 15,  95,      100, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack slash        = {"Slash"        , 23, 20,  70,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack dragon_rage  = {"Dragon Rage"  , 24, 10,   0,      100, DRAGON,   false, &deal_specific_damage, NO_CONDITION, 40};
-attack fire_spin    = {"Fire Spin"    , 25, 15,  15,       70, FIRE,     false, &attack_do_nothing, NO_CONDITION, 0 };
+attack fire_spin    = {"Fire Spin"    , 25, 15,  15,       70, FIRE,     false, &inflict_condition, FIRE_SPINNED, 0 };
 attack wing_attack  = {"Wing Attack"  , 26, 35,  60,      100, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack withdraw     = {"Withdraw"     , 27, 40,   0,  NO_MISS, WATER,    false, &increment_self_stat, DEFENSE_STAT, 100 };
 attack water_gun    = {"Water Gun"    , 28, 25,  40,      100, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
@@ -50,7 +50,7 @@ attack protect      = {"Protect"      , 31, 10,   0,  NO_MISS, NORMAL,   true,  
 attack skull_bash   = {"Skull Bash"   , 32, 15, 100,      100, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
 attack hydro_pump   = {"Hydro Pump"   , 33,  5, 120,       80, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
 attack harden       = {"Harden"       , 34, 30,   0,  NO_MISS, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
-attack supersonic   = {"Supersonic"   , 35, 35,   0,      100, NORMAL,   false, &inflict_condition, CONFUSED, 100 };
+attack supersonic   = {"Supersonic"   , 35, 20,   0,       55, NORMAL,   false, &inflict_condition, CONFUSED, 100 };
 attack confusion    = {"Confusion"    , 36, 25,  50,      100, PSYCHIC,  false, &inflict_condition, CONFUSED, 10 };
 attack stun_spore   = {"Stun Spore"   , 37, 30,   0,       75, GRASS,    false, &inflict_condition, PARALYZED, 100 };
 attack gust         = {"Gust"         , 38, 35,  40,      100, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
@@ -113,6 +113,8 @@ attack wrap         = {"Wrap"         , 89, 20,  15,       85, NORMAL,   false, 
 attack glare        = {"Glare"        , 90, 30,   0,       75, NORMAL,   false, &inflict_condition, PARALYZED, 100 };
 
 attack acid         = {"Acid"         , 91, 30,  40,      100, POISON,   false, &decrement_opponent_stat, DEFENSE_STAT, 10 };
+attack will_o_wisp  = {"Will-O-Wisp"  , 92, 15,   0,       75, FIRE,     false, &inflict_condition, BURNED, 10 };
+attack confuse_ray  = {"Confuse Ray"  , 93, 10,   0,      100, GHOST,    false, &inflict_condition, CONFUSED, 100 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -125,7 +127,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn, &pound, &sing,                          // #61-70
     &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash, &rock_throw, &synthesis, &solar_beam, &selfdestruct, &rock_blast,     // #71-80
     &earthquake, &explosion, &double_edge, &screech, &bind, &iron_tail, &sand_tomb, &dragon_breath, &wrap, &glare,                          // #81-90
-    &acid
+    &acid, &will_o_wisp, &confuse_ray
 };
 
 

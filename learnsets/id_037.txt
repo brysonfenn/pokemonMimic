@@ -1,0 +1,10 @@
+Vulpix 37
+Evolve: 101,0
+level,move_id
+1,12 Ember
+5,4 Tail Whip
+13,8 Quick Attack
+17,92 Will-O-Wisp
+21,93 Confuse Ray
+29,22 Flamethrower
+41,25 Fire Spin

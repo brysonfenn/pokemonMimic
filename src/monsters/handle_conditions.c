@@ -17,6 +17,8 @@ int handle_end_conditions(struct Pokemon * pok) {
     Pokemon * perp;
     bool success = false;
 
+    char condition_text[256];
+
     //Set enemy boolean and perp
     if (pok == player.enemy_pokemon) {
         enemy = true;
@@ -45,7 +47,7 @@ int handle_end_conditions(struct Pokemon * pok) {
         if (pok->currentHP == 0) return 2;
     }
 
-    //Bind, Wrap, Sand Tomb are all similar
+    //Bind, Wrap, Sand Tomb, Fire Spin are all similar
     if (has_hidden_condition(pok, BIND)) {
         success = decrement_hidden_condition_val(pok, BIND);
         if (!success) {
@@ -80,6 +82,18 @@ int handle_end_conditions(struct Pokemon * pok) {
         }
 
         handle_hurt_1_16(enemy, pok, "sand tomb");
+        if (pok->currentHP == 0) return 2;
+    }
+    if (has_hidden_condition(pok, FIRE_SPINNED)) {
+        success = decrement_hidden_condition_val(pok, FIRE_SPINNED);
+        if (!success) {
+            text_box_cursors(TEXT_BOX_BEGINNING);
+            printw("%s was released from fire spin", pok->name); refresh(); sleep(2);
+            remove_hidden_condition(pok, FIRE_SPINNED);
+            return 3;
+        }
+
+        handle_hurt_1_16(enemy, pok, "fire spin");
         if (pok->currentHP == 0) return 2;
     }
 	

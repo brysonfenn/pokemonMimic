@@ -1,0 +1,8 @@
+Ninetails: 38
+Evolve: 101,0
+level,move_id
+1,12 Ember
+1,8 Quick Attack
+1,93 Confuse Ray
+35,22 Flamethrower
+45,25 Fire Spin
