@@ -7,6 +7,8 @@
 #include "../print/print_defines.h"
 #include "../print/print_utils.h"
 #include "../print/print_battle.h"
+
+#include "attacks_special.h"
 #include "pokemon.h"
 
 #define NUM_ATTACKS 100
@@ -115,6 +117,8 @@ attack glare        = {"Glare"        , 90, 30,   0,       75, NORMAL,   false, 
 attack acid         = {"Acid"         , 91, 30,  40,      100, POISON,   false, &decrement_opponent_stat, DEFENSE_STAT, 10 };
 attack will_o_wisp  = {"Will-O-Wisp"  , 92, 15,   0,       75, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack confuse_ray  = {"Confuse Ray"  , 93, 10,   0,      100, GHOST,    false, &inflict_condition, CONFUSED, 100 };
+attack rest         = {"Rest"         , 94, 10,   0,  NO_MISS, PSYCHIC,  false, &rest_move_func, NO_CONDITION, 0 };
+attack hyper_voice  = {"Hyper Voice"  , 95, 10,  90,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -127,7 +131,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn, &pound, &sing,                          // #61-70
     &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash, &rock_throw, &synthesis, &solar_beam, &selfdestruct, &rock_blast,     // #71-80
     &earthquake, &explosion, &double_edge, &screech, &bind, &iron_tail, &sand_tomb, &dragon_breath, &wrap, &glare,                          // #81-90
-    &acid, &will_o_wisp, &confuse_ray
+    &acid, &will_o_wisp, &confuse_ray, &rest, &hyper_voice
 };
 
 
@@ -137,7 +141,7 @@ attack * get_attack_by_id(id_num) {
 }
 
 //Filler side-effect function that does nothing
-int attack_do_nothing(Condition condition, int accuracy, struct Pokemon* pok) {
+int attack_do_nothing(Condition condition, int accuracy, struct Pokemon* pok, int damage) {
 	return 0;
 }
 

@@ -58,7 +58,7 @@ int get_damage(struct Pokemon *perp, int move_num, struct Pokemon *victim, bool 
 attack * get_attack_by_id(int id_num);
 
 //Filler side-effect function that does nothing
-int attack_do_nothing(Condition condition, int accuracy, struct Pokemon * pok);
+int attack_do_nothing(Condition condition, int accuracy, struct Pokemon * pok, int damage);
 
 //Certain attacks can increment a pokemon's own stat
 int increment_self_stat(Condition stat_type, int chance, struct Pokemon* victim, int damage);

@@ -1,0 +1,11 @@
+Jigglypuff: 39
+Evolve: 101,0
+level,move_id
+1,70 Sing
+4,9 Defense Curl
+9,69 Pound
+24,71 Doubleslap
+29,94 Rest
+34,63 Body Slam
+44,95 Hyper Voice
+49,83 Double Edge

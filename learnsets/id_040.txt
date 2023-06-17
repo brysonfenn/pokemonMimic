@@ -1,0 +1,7 @@
+Wigglytuff: 40
+Evolve: 101,0
+level,move_id
+1,70 Sing
+1,9 Defense Curl
+1,71 Doubleslap
+1,63 Body Slam
