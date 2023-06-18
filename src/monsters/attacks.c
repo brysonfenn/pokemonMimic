@@ -134,6 +134,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("A critical hit!"); refresh(); sleep(2);
   }
+
   if (flags & SUPER_EFFECTIVE_FLAG) {
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("It's super effective!"); refresh(); sleep(2);
@@ -202,6 +203,8 @@ int get_damage(struct Pokemon *perp, int move_num, struct Pokemon *victim, bool 
   return damage;
 }
 
+
+//Basic Damage function
 int get_basic_damage(int perp_level, int attack_power, int perp_atk, int victim_def, int perp_atk_stage, int victim_def_stage) {
   //Basic Equation
   float damage_f = ( ((2.0 * perp_level / 5) + 2) * attack_power * perp_atk / victim_def) / 50.0;

@@ -50,6 +50,8 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
 //Get damage that should be dealt with a given move from one pokemon to another
 int get_damage(struct Pokemon *perp, int move_num, struct Pokemon *victim, bool print_statements, int *flags);
 
+//Basic Damage function
+int get_basic_damage(int perp_level, int attack_power, int perp_atk, int victim_def, int perp_atk_stage, int victim_def_stage);
 
 
 //// attacks_list.c ////

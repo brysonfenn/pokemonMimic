@@ -7,6 +7,8 @@
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 
+#include "math.h"
+
 #define NUM_TYPES 18
 
 //16 types including none
@@ -28,15 +30,16 @@ int get_damage_after_effectiveness(Type moveType, struct Pokemon * pok, int dama
 
     damage *= multiplier;
 
-    if (multiplier < 1.0) {
+    if (multiplier < 1.0 && multiplier > 0.01) {
         *flags |= NOT_VERY_EFFECTIVE_FLAG;
         damage = (damage < 1) ? 1 : damage;
     }
     else if (multiplier > 1.0) {
         *flags |= SUPER_EFFECTIVE_FLAG;
     }
-    else if (multiplier == 0) {
+    else if (abs(multiplier) < 0.01) {
         *flags |= DOES_NOT_AFFECT_FLAG;
+        return 0;
     }
 
     return damage;

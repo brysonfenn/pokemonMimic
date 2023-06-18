@@ -95,7 +95,7 @@ Pokemon * get_random_wild_pokemon(int level_min, int level_max) {
     max_level = wild_pok_lists[player.loc->map][2];
   }
 
-  // new_pok_id = POKEMON_CHARMANDER;
+  // new_pok_id = POKEMON_PIDGEY;
   // set_level = 7;
   Pokemon * new_pok = create_new_pokemon(new_pok_id, set_level, min_level, max_level);
 

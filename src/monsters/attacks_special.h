@@ -5,8 +5,11 @@
 
 struct Pokemon;
 
-//Speical function for rest move
+//Special function for rest move
 int rest_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+
+//Special function for magnitude move
+int magnitude_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
 
 #endif // ATTACKS_SPECIAL_H
