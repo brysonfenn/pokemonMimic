@@ -1,0 +1,14 @@
+Golbat: 42
+Evolve: 101,0
+level,move_id
+1,84 Screech
+1,96 Leech Life
+1,97 Astonish
+1,35 Supersonic
+6,97 Astonish
+11,35 Supersonic
+16,29 Bite
+21,26 Wing Attack
+28,93 Confuse Ray
+35,98 Air Cutter
+49,99 Poison Fang

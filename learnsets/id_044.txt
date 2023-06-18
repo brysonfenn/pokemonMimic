@@ -1,0 +1,13 @@
+Gloom: 44
+Evolve: 101,0
+level,move_id
+1,100 Absorb
+1,19 Sweet Scent
+1,14 Poison Powder
+7,19 Sweet Scent
+14,14 Poison Powder
+16,37 Stun Spore
+18,15 Sleep Powder
+24,91 Acid
+35,74 Moonlight
+44,101 Petal Dance

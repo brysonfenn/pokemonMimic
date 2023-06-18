@@ -1,0 +1,11 @@
+Oddish
+Evolve: 21,44
+level,move_id
+1,100 Absorb
+7,19 Sweet Scent
+14,14 Poison Powder
+16,37 Stun Spore
+18,15 Sleep Powder
+23,91 Acid
+32,74 Moonlight
+39,101 Petal Dance

@@ -1,0 +1,11 @@
+Zubat: 41
+Evolve: 22,42
+level,move_id
+1,96 Leech Life
+6,97 Astonish
+11,35 Supersonic
+16,29 Bite
+21,26 Wing Attack
+26,93 Confuse Ray
+31,98 Air Cutter
+41,99 Poison Fang

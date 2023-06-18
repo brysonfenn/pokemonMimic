@@ -11,7 +11,7 @@
 #include "attacks_special.h"
 #include "pokemon.h"
 
-#define NUM_ATTACKS 100
+#define NUM_ATTACKS 120
 
 attack empty_attack=  {"-------------",  0,  0, 100, 100, NO_TYPE,  false, &attack_do_nothing };
 //				 	   "Name         "  id  pp  pwr  acc    type     priority    effect         params
@@ -119,6 +119,14 @@ attack will_o_wisp  = {"Will-O-Wisp"  , 92, 15,   0,       75, FIRE,     false, 
 attack confuse_ray  = {"Confuse Ray"  , 93, 10,   0,      100, GHOST,    false, &inflict_condition, CONFUSED, 100 };
 attack rest         = {"Rest"         , 94, 10,   0,  NO_MISS, PSYCHIC,  false, &rest_move_func, NO_CONDITION, 0 };
 attack hyper_voice  = {"Hyper Voice"  , 95, 10,  90,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack leech_life   = {"Leech Life"   , 96, 15,  20,      100, BUG,      false, &self_heal, PERCENT_DAMAGE_DEALT, 50 };
+attack astonish     = {"Astonish"     , 97, 15,  30,      100, GHOST,    false, &inflict_condition, FLINCHED, 30 };
+attack air_cutter   = {"Air Cutter"   , 98, 25,  55,       95, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack poison_fang  = {"Poison Fang"  , 99, 15,  50,      100, POISON,   false, &inflict_condition, POISONED, 30 };
+attack absorb       = {"Absorb"       ,100, 20,  20,      100, GRASS,    false, &self_heal, PERCENT_DAMAGE_DEALT, 50 };
+
+attack petal_dance  = {"Petal Dance"  ,101, 20,  90,      100, GRASS,    false, &attack_do_nothing, NO_CONDITION, 0 };
+attack mega_drain   = {"Mega Drain"   ,102, 20,  20,      100, GRASS,    false, &self_heal, PERCENT_DAMAGE_DEALT, 50 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -131,7 +139,8 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &double_kick, &crunch, &body_slam, &super_power, &horn_attack, &horn_drill, &thrash, &megahorn, &pound, &sing,                          // #61-70
     &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash, &rock_throw, &synthesis, &solar_beam, &selfdestruct, &rock_blast,     // #71-80
     &earthquake, &explosion, &double_edge, &screech, &bind, &iron_tail, &sand_tomb, &dragon_breath, &wrap, &glare,                          // #81-90
-    &acid, &will_o_wisp, &confuse_ray, &rest, &hyper_voice
+    &acid, &will_o_wisp, &confuse_ray, &rest, &hyper_voice, &leech_life, &astonish, &air_cutter, &poison_fang, &absorb,                     // #91-100
+    &petal_dance, &mega_drain
 };
 
 
@@ -343,7 +352,7 @@ int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
             self->currentHP += hp;
             break;
         case PERCENT_DAMAGE_DEALT:
-            gain = damage * (hp / 100.0);
+            gain = (int) (damage * (hp / 100.0));
             if (gain <= 0) gain = 1;
             self->currentHP += gain;
             break;

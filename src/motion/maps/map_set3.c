@@ -13,8 +13,7 @@
 #include "../../print/print_utils.h"
 #include "../../print/print_defines.h"
 
-static Trainer trainer5 = {5, "Trainer Marty", "I'll defeat you with my Bug Pokemon!", 2, {POKEMON_CATERPIE, POKEMON_WEEDLE}, {4,5} };
-static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {10,12} };
+static Trainer trainer5 = {5, "Bugcatcher Marty", "I'll defeat you with my Bug Pokemon!", 2, {POKEMON_CATERPIE, POKEMON_WEEDLE}, {4,5} };
 
 void draw_vir_forest() {
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
@@ -50,10 +49,18 @@ void draw_pew_city() {
 }
 
 
+static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
+static Trainer trainer6 = {6, "Camper Liam", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_SANDSHREW}, {10,11} };
+
 void draw_gym1() {
     draw_interior(MAP_X+24, MAP_Y+MAP_HEIGHT-3, MAP_STARTER_TOWN);
     begin_message_box();
     print_to_message_box("Pewter City Gym");
 
+    for (int i = 1; i <= 16; i++) {
+        mvaddch(INTERIOR_Y+4, INTERIOR_X+i, '-');
+    }
+
+    add_trainer(INTERIOR_X+16, INTERIOR_Y+1, &trainer6, PLAYER_MOVING_DOWN);
     add_trainer(INTERIOR_X+1, INTERIOR_Y+1, &leader201, PLAYER_MOVING_RIGHT);
 }
