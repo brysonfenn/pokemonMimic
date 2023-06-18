@@ -1,0 +1,12 @@
+Venonat: 48
+Evolve: 31,49
+level,move_id
+1,1 Tackle
+9,35 Supersonic
+17,36 Confusion
+20,14 Poison Powder
+25,96 Leech Life
+28,37 Stun Spore
+33,39 Psybeam
+36,15 Sleep Powder
+41,105 Psychic

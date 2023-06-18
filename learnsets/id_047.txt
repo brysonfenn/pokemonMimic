@@ -1,0 +1,13 @@
+Parasect: 47
+Evolve: 101,0
+level,move_id
+1,2 Scratch
+1,37 Stun Spore
+1,14 Poison Powder
+7,37 Stun Spore
+13,14 Poison Powder
+19,96 Leech Life
+27,103 Spore
+35,23 Slash
+43,20 Growth
+51,104 Giga Drain

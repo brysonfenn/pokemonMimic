@@ -1,0 +1,11 @@
+Paras: 46
+Evolve: 24,47
+level,move_id
+1,2 Scratch
+7,37 Stun Spore
+13,14 Poison Powder
+19,96 Leech Life
+25,103 Spore
+31,23 Slash
+37,20 Growth
+43,104 Giga Drain

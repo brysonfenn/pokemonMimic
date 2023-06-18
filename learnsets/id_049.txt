@@ -1,0 +1,15 @@
+Venomoth: 49
+Evolve: 101,0
+level,move_id
+1,40 Silver Wind
+1,1 Tackle
+1,35 Supersonic
+9,35 Supersonic
+17,36 Confusion
+20,14 Poison Powder
+25,96 Leech Life
+28,37 Stun Spore
+31,38 Gust
+36,39 Psybeam
+42,15 Sleep Powder
+52,105 Psychic
