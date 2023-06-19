@@ -4,6 +4,7 @@ level,move_id
 1,1 Tackle
 1,9 Defense Curl
 11,76 Rock Throw
+16,106 Magnitude
 21,79 Selfdestruct
 31,80 Rock Blast
 36,81 Earthquake
