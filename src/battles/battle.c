@@ -42,6 +42,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
 
   Pokemon *currentPok = player.current_pokemon;
   player.enemy_pokemon = enemyPok;
+  player.is_battle = true;
 
   //First used pokemon needs exp, no one else does for now
   for (int i = 0; i < player.numInParty; i++) {
@@ -267,7 +268,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
       current_display = MAIN;
       break;
     case ITEM:
-      return_execute = use_item(inputNum, enemyPok);
+      return_execute = use_item(inputNum);
       //Return to bag menu if item failed, else back to main menu
       if (return_execute == ITEM_FAILURE) { continue; }
       else if (return_execute == ITEM_CATCH_SUCCESS) { catch_success = true; }

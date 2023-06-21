@@ -49,7 +49,7 @@ void default_load() {
   player.numInBag = 3;
   player.bag[0] = potion;
   player.bag[0].number += 2;
-  player.bag[1] = super_potion;
+  player.bag[1] = *get_item_by_id(5);
   player.bag[1].number += 2;
   player.bag[2] = pokeball;
   player.bag[2].number += 5;

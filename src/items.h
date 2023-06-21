@@ -1,6 +1,8 @@
 #ifndef ITEMS_H
 #define ITEMS_H
 
+#include <stdbool.h>
+
 #define ITEM_SUCCESS 1
 #define ITEM_FAILURE 0
 #define ITEM_CATCH_SUCCESS 2
@@ -40,15 +42,6 @@ Item * get_item_by_id(int id_num);
 
 //Use an item, calling its execute function
 //  decrement amount if return value is not ITEM_FAILURE
-int use_item(int item_num, struct Pokemon * enemy);
-
-//Potion execute function
-int execute_potion(int hp_gain, char * name);
-
-//Pokeball execute function (catch_rate is % multiplier)
-int attempt_catch(int catch_rate, char * name);
-
-//Filler function for empty_item that does nothing
-int do_nothing(int input_num);
+int use_item(int item_num);
 
 #endif // ITEMS_H

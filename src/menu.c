@@ -28,6 +28,8 @@ void main_menu() {
 
     //This is the main menu while loop.
     while(1) {
+        player.is_battle = false;
+
         for (int i = 0; i < player.numInParty; i++) {
             reset_stat_stages(&(player.party[i]));
         }
@@ -83,7 +85,7 @@ void main_menu() {
         printBag();
         inputNum = get_selection(1, player.numInBag, 0);
         if (inputNum == player.numInBag || inputNum == PRESSED_B) { current_display = MAIN; break; }
-        return_execute = use_item(inputNum, &emptyPok);
+        return_execute = use_item(inputNum);
 
         //Return to bag menu if item failed, else back to main menu
         if (return_execute == ITEM_FAILURE || return_execute == ITEM_CATCH_FAILURE) { continue; }

@@ -27,6 +27,7 @@ struct playerCharacter {
   int32_t money;
 
   bool trainer_battle;
+  bool is_battle;
   
   struct Pokemon * current_pokemon;
   struct Pokemon * enemy_pokemon;
