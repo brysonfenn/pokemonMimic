@@ -66,7 +66,7 @@ uint32_t pokemon_get_exp_yield(Pokemon *pok) {
 
   //Equation chosen for yield is ((avg_stat + level / 5)^2) / 3
   uint32_t exp_yield = (avg_stat + (pok->level / 5));
-  exp_yield = (exp_yield * exp_yield) / 3;
+  exp_yield = (exp_yield * exp_yield) / 2;
   return exp_yield;
 }
 
