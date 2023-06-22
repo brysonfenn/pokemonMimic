@@ -2,15 +2,15 @@
 
 #include <ncurses.h>
 
-#include "player.h"
-
-#include "print/print_utils.h"
-#include "print/print_defines.h"
-#include "print/print_battle.h"
-#include "motion/location.h"
-#include "monsters/pokemon.h"
-#include "monsters/conditions.h"
 #include "item_funcs.h"
+
+#include "../player.h"
+#include "../print/print_utils.h"
+#include "../print/print_defines.h"
+#include "../print/print_battle.h"
+#include "../motion/location.h"
+#include "../monsters/pokemon.h"
+#include "../monsters/conditions.h"
 
 #define CURRENT_MAX_NUM 8
 #define NUM_ITEMS CURRENT_MAX_NUM + 1

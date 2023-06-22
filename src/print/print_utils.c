@@ -14,7 +14,7 @@
 #include "../player.h"
 #include "../monsters/pokemon.h"
 #include "../battles/battle.h"
-#include "../items.h"
+#include "../items/items.h"
 #include "../motion/map_drawing.h"
 
 #include "print_defines.h"

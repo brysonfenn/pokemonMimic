@@ -6,7 +6,7 @@
 #include "player.h"
 #include "monsters/pokemon.h"
 #include "monsters/attacks.h"
-#include "items.h"
+#include "items/items.h"
 #include "motion/location.h"
 #include "monsters/typings.h"
 #include "print/print_defines.h"

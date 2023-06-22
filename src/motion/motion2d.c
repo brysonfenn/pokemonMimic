@@ -17,7 +17,7 @@
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 #include "../player.h"
-#include "../items.h"
+#include "../items/items.h"
 #include "../poke_center.h"
 
 
