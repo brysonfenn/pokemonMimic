@@ -85,7 +85,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
   //Decrement pp and assign attack
   perp->attacks[move_num].curr_pp--;
   attack chosenAttack = perp->attacks[move_num];
-
+  perp->last_move = move_num;
 
   //Calculate current accuracy
   int curr_accuracy;

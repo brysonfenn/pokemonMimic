@@ -97,8 +97,15 @@ int initiate_battle(struct Pokemon * enemyPok) {
 
     inputNum = 999;
 
-    current_decision = NONE;
-
+    //Handle Repeating Move
+    if (has_hidden_condition(currentPok, REPEAT_MOVE) && currentPok->last_move != NO_LAST_MOVE) {
+      current_decision = ATTACK;
+      attack_num = currentPok->last_move;
+    }
+    else {
+      current_decision = NONE;
+    }
+    
     static int last_selection = 0;
 
     ///////// GET DECISION /////////
@@ -214,6 +221,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
     }
     ///////// END GET DECISION /////////
 
+    printBattle();
 
     ///////// EXECUTE DECISION /////////
     bool enemy_priority, player_priority;

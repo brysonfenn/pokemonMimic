@@ -10,7 +10,7 @@
 
 
 //Inflict condition on pok given, handle accuracy
-int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok) {
+int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, int damage) {
 	//Do not inflict a condition if fainted
 	if (pok->currentHP <= 0) {
 		return 0;
@@ -129,12 +129,26 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok) {
 			break;
 
 		default:
-			printw("Tried to inflict unrecognized condition"); text_box_cursors(TEXT_BOX_NEXT_LINE);
-			printw("with code: %d", condition); refresh(); sleep(2);
+			add_hidden_condition(pok, condition, 0);
 			break;
 	}
 
 	return 0;
+}
+
+
+//Inflict a condition on self
+int self_inflict_condition(Condition condition, int accuracy, struct Pokemon * pok, int damage) {
+	Pokemon * self;
+
+	if (pok == player.current_pokemon) {
+		self = player.enemy_pokemon;
+	}
+	else {
+		self = player.current_pokemon;
+	}
+
+	return inflict_condition(condition, accuracy, self, damage);
 }
 
 
@@ -160,15 +174,15 @@ bool has_hidden_condition(struct Pokemon * pok, Condition condition) {
 	return false;
 }
 
-//Decrement the value associated with a given condition, return false if that value is 0 or if condition not found
-bool decrement_hidden_condition_val(struct Pokemon * pok, Condition condition) {
+//Decrement the value associated with a given condition, return value, or return 0 if condition not found
+int decrement_hidden_condition_val(struct Pokemon * pok, Condition condition) {
 	for (int i = 0; i < pok->num_hidden_conditions; i++) {
 		if (pok->hidden_conditions[i] == condition && pok->hidden_condition_values[i] > 0) {
 			pok->hidden_condition_values[i]--;
-			return true;
+			return pok->hidden_condition_values[i];
 		}
 	}
-	return false;
+	return 0;
 }
 
 //Remove a hidden condition if it exists, return false if it is not there

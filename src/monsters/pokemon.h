@@ -10,6 +10,8 @@
 
 #define RANDOM_LEVEL 0
 
+#define NO_LAST_MOVE -1
+
 #define IV_HP 0
 #define IV_ATTACK 1
 #define IV_DEFENSE 2
@@ -56,7 +58,9 @@ typedef struct Pokemon {
   Condition visible_condition;
   Condition * hidden_conditions;
   int8_t * hidden_condition_values;
-  int8_t num_hidden_conditions;
+  int16_t num_hidden_conditions;
+  
+  int8_t last_move;
 
   attack attacks[4];
 } Pokemon;

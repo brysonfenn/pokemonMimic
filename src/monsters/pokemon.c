@@ -48,7 +48,9 @@ void reset_stat_stages(Pokemon *pok) {
   pok->spd_stage = 0;
   pok->acc_stage  = 0;
   pok->evade_stage = 0;
+
   pok->confusion_count = 0;
+  pok->last_move = NO_LAST_MOVE;
   remove_all_hidden_conditions(pok);
 }
 

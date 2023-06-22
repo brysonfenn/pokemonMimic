@@ -99,3 +99,27 @@ int magnitude_move_func(int nothing1, int nothing2, struct Pokemon * victim, int
 }
 
 
+//Repeat own move in a given range
+int self_repeat_move(int low, int high, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    bool enemy;
+    if (victim == player.current_pokemon) { self = player.enemy_pokemon; enemy = true; }
+    else { self = player.current_pokemon; enemy = false; }
+
+    //Decrement until repeat is done
+    if (has_hidden_condition(self, REPEAT_MOVE)) {
+        if (!decrement_hidden_condition_val(self, REPEAT_MOVE)) {
+            remove_hidden_condition(self, REPEAT_MOVE);
+            return 2;
+        }
+        return 1;
+    }
+
+    int repeat_times;
+    if (low == high) repeat_times = low;
+    else repeat_times = (rand() % (low+1)) + (high - low);
+
+    add_hidden_condition(self, REPEAT_MOVE, repeat_times);
+    return 0;
+}
+
