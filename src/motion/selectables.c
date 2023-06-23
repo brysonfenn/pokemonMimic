@@ -97,21 +97,25 @@ Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, in
             switch (ch) {
                 case PLAYER_MOVING_LEFT:
                     *x_inc = -1;
+                    *y_inc = 0;
                     distance = x - player_x;
                     if (distance < HORIZONTAL_DISTANCE && distance > 0 && y == player_y) return curr_sel;
                     break;
                 case PLAYER_MOVING_RIGHT:
                     *x_inc = 1;
+                    *y_inc = 0;
                     distance = player_x - x;
                     if (distance < HORIZONTAL_DISTANCE && distance > 0 && y == player_y) return curr_sel;
                     break;
                 case PLAYER_MOVING_UP:
                     *y_inc = -1;
+                    *x_inc = 0;
                     distance = y - player_y;
                     if (distance < VERTICAL_DISTANCE && distance > 0 && x == player_x) return curr_sel;
                     break;
                 case PLAYER_MOVING_DOWN:
                     *y_inc = 1;
+                    *x_inc = 0;
                     distance = player_y - y;
                     if (distance < VERTICAL_DISTANCE && distance > 0 && x == player_x) return curr_sel;
                     break;

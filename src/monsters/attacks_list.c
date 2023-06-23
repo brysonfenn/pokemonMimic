@@ -131,6 +131,7 @@ attack spore        = {"Spore"        ,103, 15,   0,      100, GRASS,    false, 
 attack giga_drain   = {"Giga Drain"   ,104,  5,  60,      100, GRASS,    false, &self_heal, PERCENT_DAMAGE_DEALT, 50 };
 attack psychic      = {"Psychic"      ,105, 10,  90,      100, PSYCHIC,  false, &decrement_opponent_stat, SP_DEFENSE_STAT, 10 };
 attack magnitude    = {"Magnitude"    ,106, 30,   0,      100, GROUND,   false, &magnitude_move_func, NO_CONDITION, 0 };
+attack rollout      = {"Rollout"      ,107, 20,   0,      100, GROUND,   false, &rollout_move_func, NO_CONDITION, 0 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -144,7 +145,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash, &rock_throw, &synthesis, &solar_beam, &selfdestruct, &rock_blast,     // #71-80
     &earthquake, &explosion, &double_edge, &screech, &bind, &iron_tail, &sand_tomb, &dragon_breath, &wrap, &glare,                          // #81-90
     &acid, &will_o_wisp, &confuse_ray, &rest, &hyper_voice, &leech_life, &astonish, &air_cutter, &poison_fang, &absorb,                     // #91-100
-    &petal_dance, &mega_drain, &spore, &giga_drain, &psychic, &magnitude
+    &petal_dance, &mega_drain, &spore, &giga_drain, &psychic, &magnitude, &rollout
 };
 
 

@@ -5,8 +5,8 @@ Location: {8,(24,3)}
 Heal Center: {1,(33,10)}
 Pokemon: 
 Charmander 4 20 20 4 11 9 12 11 13 5 142 NONE NONE 12bcdf73 0 0
-	Magnitude. 106 7
-	Rest. 94 10
+	Magnitude. 106 10
+	Rollout. 107 20
 	Moonlight. 74 5
 	Bind. 85 20
 Bulbasaur 1 20 7 2 11 10 13 13 11 5 125 POISON NONE 31983766 0 0

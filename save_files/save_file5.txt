@@ -1,15 +1,15 @@
-Last Saved: 06/21/2023 19:50:20
+Last Saved: 06/23/2023 14:51:47
 Player: Player
-4 0 0 2320
-Location: {7,(33,9)}
+4 0 0 3625
+Location: {7,(13,6)}
 Heal Center: {7,(33,9)}
 Pokemon: 
-Bulbasaur 1 29 29 4 14 14 12 12 14 10 1074 GRASS POISON 4ea76e4a 0 0
+Bulbasaur 1 36 21 4 18 18 12 12 17 14 3235 GRASS POISON 4ea76e4a 0 0
 	Tackle. 1 35
 	Growl. 3 40
 	Leech seed. 11 10
-	Vine whip. 10 25
-Rattata 19 21 21 3 12 9 7 8 15 7 449 NORMAL NONE 6fd4f221 0 0
+	Vine whip. 10 22
+Rattata 19 22 22 3 13 10 7 8 16 8 516 NORMAL NONE 6fd4f221 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 	Quick Attack. 8 30
@@ -23,5 +23,5 @@ Pidgeotto 17 17 17 3 9 8 8 8 9 3 52 NORMAL FLYING 50c7a9f6 0 0
 PC: 
 Bag:
 
-Trainers Battled: 5
-  1 2 3 5 6 
+Trainers Battled: 8
+  1 2 3 5 6 9 12 201 

@@ -12,6 +12,49 @@
 #include "typings.h"
 #include "attacks.h"
 
+void deal_damage(int power, Pokemon * perp, Pokemon * victim, int move_type) {
+    int flags;
+    bool enemy;
+
+    if (victim == player.current_pokemon) { enemy = true; }
+    else { enemy = false; }
+
+    // Baseline damage
+    int damage = get_basic_damage(perp->level, power, perp->baseAttack, victim->baseDefense, 
+                                    perp->atk_stage, victim->def_stage);
+
+    damage = (damage <= 0) ? 1 : damage;  // Pokemon should always be able to do 1 damage
+
+    //STAB Bonus
+    if (perp->type1 == move_type || perp->type2 == move_type) {
+        damage = (damage * 1.5);
+    }
+
+    //Calculate effectiveness
+    damage = get_damage_after_effectiveness(move_type, victim, damage, true, &flags);
+
+    //Drop HP only if attack has damage power
+    if (damage > 0) {
+        blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
+        victim->currentHP -= damage;
+        if (victim->currentHP < 0) victim->currentHP = 0;
+        printBattle();
+    }
+
+    if (flags & SUPER_EFFECTIVE_FLAG) {
+        text_box_cursors(TEXT_BOX_NEXT_LINE);
+        printw("It's super effective!"); refresh(); sleep(2);
+    }
+    else if (flags & NOT_VERY_EFFECTIVE_FLAG) {
+        text_box_cursors(TEXT_BOX_NEXT_LINE);
+        printw("It's not very effective..."); refresh(); sleep(2);
+    }
+    else if (flags & DOES_NOT_AFFECT_FLAG) {
+        text_box_cursors(TEXT_BOX_NEXT_LINE);
+        printw("It had no effect."); refresh(); sleep(2);
+    }
+}
+
 
 //Speical function for rest move
 int rest_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
@@ -42,10 +85,8 @@ int rest_move_func(int nothing1, int nothing2, struct Pokemon * victim, int dama
 //Special function for magnitude move
 int magnitude_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
     Pokemon * self;
-    int flags;
-    bool enemy;
-    if (victim == player.current_pokemon) { self = player.enemy_pokemon; enemy = true; }
-    else { self = player.current_pokemon; enemy = false; }
+    if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
+    else { self = player.current_pokemon; }
 
     int magnitude_val = 0;
     int power = 0;
@@ -63,63 +104,48 @@ int magnitude_move_func(int nothing1, int nothing2, struct Pokemon * victim, int
     printw("Magnitude %d", magnitude_val); refresh(); sleep(1);
 
     // Baseline damage
-    damage = get_basic_damage(self->level, power, self->baseAttack, victim->baseDefense, 
-                                    self->atk_stage, victim->def_stage);
+    deal_damage(power, self, victim, GROUND);
+}
 
-    damage = (damage <= 0) ? 1 : damage;  // Pokemon should always be able to do 1 damage
 
-    //STAB Bonus
-    if (self->type1 == GROUND || self->type2 == GROUND) {
-        damage = (damage * 1.5);
+//Add repeat condition if not already set -> return 0
+//Get repeat value if repeat is already set
+int handle_repeats(int repeat_times, struct Pokemon * pok) {
+
+    //Add repeat condition if it is not already there
+    if (!has_hidden_condition(pok, REPEAT_MOVE)) {
+        add_hidden_condition(pok, REPEAT_MOVE, repeat_times);
+        return ADDED_REPEATS;
     }
-
-    //Calculate effectiveness
-    damage = get_damage_after_effectiveness(GROUND, victim, damage, true, &flags);
-
-    //Drop HP only if attack has damage power
-    if (damage > 0) {
-        blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
-        victim->currentHP -= damage;
-        if (victim->currentHP < 0) victim->currentHP = 0;
-        printBattle();
-    }
-
-    if (flags & SUPER_EFFECTIVE_FLAG) {
-        text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("It's super effective!"); refresh(); sleep(2);
-    }
-    else if (flags & NOT_VERY_EFFECTIVE_FLAG) {
-        text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("It's not very effective..."); refresh(); sleep(2);
-    }
-    else if (flags & DOES_NOT_AFFECT_FLAG) {
-        text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("It had no effect."); refresh(); sleep(2);
+    //Decreement repeat condition value
+    else {
+        int repeat_value = decrement_hidden_condition_val(pok, REPEAT_MOVE);
+        if (repeat_value == 0) {
+            remove_hidden_condition(pok, REPEAT_MOVE);
+            return REMOVED_REPEATS;
+        }
+        return repeat_value;
     }
 }
 
 
-//Repeat own move in a given range
-int self_repeat_move(int low, int high, struct Pokemon * victim, int damage) {
+int rollout_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
     Pokemon * self;
     bool enemy;
-    if (victim == player.current_pokemon) { self = player.enemy_pokemon; enemy = true; }
-    else { self = player.current_pokemon; enemy = false; }
+    if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
+    else { self = player.current_pokemon; }
 
-    //Decrement until repeat is done
-    if (has_hidden_condition(self, REPEAT_MOVE)) {
-        if (!decrement_hidden_condition_val(self, REPEAT_MOVE)) {
-            remove_hidden_condition(self, REPEAT_MOVE);
-            return 2;
-        }
-        return 1;
-    }
+    int repeat_val = handle_repeats(5, self);
+    int power;
 
-    int repeat_times;
-    if (low == high) repeat_times = low;
-    else repeat_times = (rand() % (low+1)) + (high - low);
+    if (repeat_val == REMOVED_REPEATS) return 1;
+    else if (repeat_val == ADDED_REPEATS) power = 30;
+    else power = 30 * (6 - repeat_val);
 
-    add_hidden_condition(self, REPEAT_MOVE, repeat_times);
+    
+
+    deal_damage(power, self, victim, ROCK);
+
     return 0;
 }
 

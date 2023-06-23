@@ -71,6 +71,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
       printBattle();
       sleep(2);
       text_box_cursors(TEXT_BOX_BEGINNING);
+      remove_hidden_condition(currentPok, REPEAT_MOVE);
       printw("%s fainted. ", currentPok->name); refresh(); sleep(2);
       
       // Handle White out
