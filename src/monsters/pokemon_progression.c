@@ -277,7 +277,7 @@ int evolve(Pokemon * pok, int next_pok_id) {
   text_box_cursors(TEXT_BOX_BEGINNING);
   printw("What? %s is evolving!", og_pok_name);
   text_box_cursors(TEXT_BOX_NEXT_LINE);
-  printw("Press 'b' to cancel "); refresh();
+  printw("Press '%c' to cancel ", CANCEL_CHAR); refresh();
 
   int count = 0;
   bool pressed_b = false;
@@ -285,7 +285,7 @@ int evolve(Pokemon * pok, int next_pok_id) {
 
   while (1) {
     int ch = getch();
-    if (ch == 'b') {
+    if (ch == CANCEL_CHAR) {
       pressed_b = true;
 
       break;

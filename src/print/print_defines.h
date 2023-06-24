@@ -52,4 +52,8 @@
 #define HEAL_COLOR 6
 #define TREE_COLOR 7
 
+#define SELECT_CHAR 'z'
+#define CANCEL_CHAR 'x'
+#define MENU_CHAR 'm'
+
 #endif // PRINT_DEFINES_H

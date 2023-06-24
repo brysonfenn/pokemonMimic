@@ -107,7 +107,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
       current_decision = NONE;
     }
     
-    static int last_selection = 0;
+    int last_selection = 0;
 
     ///////// GET DECISION /////////
     while (current_decision == NONE) {
@@ -470,8 +470,9 @@ void handle_exp(int exp) {
 bool run_attempt() {
   int random = (rand() % 256);
   int chance = (player.current_pokemon->baseSpeed * 128 / player.enemy_pokemon->baseSpeed);
+  if (chance < 5) chance = 5;
+
   clear_text_box();
-  
   text_box_cursors(TEXT_BOX_BEGINNING);
   if (random < chance) {
     printw("Got away safely."); refresh(); sleep(2);

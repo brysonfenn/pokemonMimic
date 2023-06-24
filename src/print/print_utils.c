@@ -132,9 +132,9 @@ int get_selection(int first_line, int highest_option_num, int last_selection) {
         break;
       case KEY_RIGHT:
         break;
-      case 'a':
+      case SELECT_CHAR:
         return (cursor_y - actual_first_line);
-      case 'b':
+      case CANCEL_CHAR:
         return (PRESSED_B);
         break;
       default:
@@ -170,9 +170,9 @@ void draw_box(int x, int y, int w, int h) {
 //  If on_map is true, the special instruction to go to menu will be shown
 void print_btn_instructions(int x, int y, bool on_map) {
   draw_box(x,y,15,7);
-  mvprintw(y+1,x+3, "a: Select");
-  mvprintw(y+2,x+3, "b: Cancel");
-  if (on_map) mvprintw(y+3,x+3, "m: menu");
+  mvprintw(y+1,x+3, "%c: Select", SELECT_CHAR);
+  mvprintw(y+2,x+3, "%c: Cancel", CANCEL_CHAR);
+  if (on_map) mvprintw(y+3,x+3, "%c: menu", MENU_CHAR);
 
   // Print the arrow symbols
   mvprintw(y+4,x+2, "  \u2191");

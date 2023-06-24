@@ -103,10 +103,10 @@ int handle_mart() {
         if (inputNum == 0) inputNum = maximum;
         else inputNum--;
         break;
-      case 'a':
+      case SELECT_CHAR:
         done_selecting = 1;
         break;
-      case 'b':
+      case CANCEL_CHAR:
         return ITEM_FAILURE;
         break;
       default:

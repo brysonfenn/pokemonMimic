@@ -57,7 +57,7 @@ void handle_motion() {
 
     while (1) {
         flushinp();
-        if ((ch = getch()) == 'm') break;
+        if ((ch = getch()) == MENU_CHAR) break;
         
         mvaddch(*player_y, *player_x, ' '); 
         switch (ch) {
@@ -105,7 +105,7 @@ void handle_motion() {
                 else if (*player_x < 100 && is_movable_space(0,1)) (*player_x)++;
                 break;
 
-            case 'a':
+            case SELECT_CHAR:
                 //Redraw player
                 attrset(COLOR_PAIR(PLAYER_COLOR)); mvaddch(*player_y, *player_x, player_char); 
                 attrset(COLOR_PAIR(DEFAULT_COLOR));
@@ -157,7 +157,7 @@ void handle_motion() {
 
         draw_static_elements();
 
-        bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR);
+        bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR) && !(leave_msg_count < 5);
         int random = rand() % 100;
 
         // Set player color, move, and unset
@@ -174,6 +174,7 @@ void handle_motion() {
         if (hitGrass && (random < 10)) {
             save_print_state();
             blink_screen(5, restore_print_state);
+            begin_message_box(); save_print_state();
             battle_wild_pokemon();
             init_map();
             continue;
