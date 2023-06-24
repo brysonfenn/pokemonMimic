@@ -1,0 +1,14 @@
+Persian: 53
+Evolve: 101,0
+level,move_id
+1,2 Scratch
+1,3 Growl
+1,29 Bite
+10,29 Bite
+18,112 Pay Day
+25,113 Faint Attack
+34,84 Screech
+42,50 Fury Swipes
+49,23 Slash
+55,114 Fake Out
+61,109 Swagger

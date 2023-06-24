@@ -20,5 +20,11 @@ int handle_repeats(int repeat_times, struct Pokemon * victim);
 //Special function for rollout move
 int rollout_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
+//Special function for swagger move
+int swagger_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+
+//Special function for Seismic Toss move
+int seismic_toss_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+
 
 #endif // ATTACKS_SPECIAL_H

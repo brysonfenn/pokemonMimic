@@ -174,6 +174,12 @@ int get_move_selection(int start_x, int start_y, struct Pokemon* pok) {
           clear_text_box();
           continue;
         }
+        else if (get_hidden_condition_val(pok, DISABLED) == selection) {
+          text_box_cursors(TEXT_BOX_BEGINNING);
+          printw("%s is disabled", pok->attacks[selection].name); refresh(); sleep(2);
+          clear_text_box();
+          continue;
+        }
 
         clear_selection_text();
         return (selection);

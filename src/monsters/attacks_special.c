@@ -149,3 +149,20 @@ int rollout_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
     return 0;
 }
 
+
+int swagger_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    if (player.current_pokemon == victim) self = player.enemy_pokemon;
+    else self = player.current_pokemon;
+
+    increment_self_stat2(ATTACK_STAT, 100, self, damage);
+    remove_hidden_condition(victim, REPEAT_MOVE);  //Repeat move should be ended
+    inflict_condition(CONFUSED, 100, victim, damage);
+    return 0;
+}
+
+
+//Special function for Seismic Toss move
+int seismic_toss_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    deal_specific_damage(nothing1, victim->level, victim, damage);
+}

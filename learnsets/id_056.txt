@@ -1,0 +1,13 @@
+Mankey: 56
+Evolve: 28,57
+level,move_id
+1,2 Scratch
+1,52 Leer
+6,116 Low Kick
+11,117 Karate Chop
+16,50 Fury Swipes
+26,118 Seismic Toss
+31,119 Cross Chop
+36,109 Swagger
+41,84 Screech
+46,67 Thrash

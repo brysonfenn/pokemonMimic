@@ -1,0 +1,14 @@
+Primeape: 57
+Evolve: 101,0
+level,move_id
+1,2 Scratch
+1,52 Leer
+1,116 Low Kick
+6,116 Low Kick
+11,117 Karate Chop
+16,50 Fury Swipes
+26,118 Seismic Toss
+35,119 Cross Chop
+44,109 Swagger
+53,84 Screech
+62,67 Thrash

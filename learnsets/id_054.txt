@@ -1,0 +1,10 @@
+Psyduck: 54
+Evolve: 33,55
+level,move_id
+1,2 Scratch
+5,4 Tail Whip
+10,115 Disable
+16,36 Confusion
+23,84 Screech
+40,50 Fury Swipes
+50,33 Hydro Pump

@@ -1,0 +1,12 @@
+Golduck: 55
+Evolve: 101,0
+level,move_id
+1,2 Scratch
+1,4 Tail Whip
+1,115 Disable
+5,4 Tail Whip
+10,115 Disable
+16,36 Confusion
+23,84 Screech
+44,50 Fury Swipes
+58,33 Hydro Pump

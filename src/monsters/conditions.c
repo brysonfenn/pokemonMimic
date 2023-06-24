@@ -128,6 +128,15 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 			add_hidden_condition(pok, FIRE_SPINNED, (rand() % 4) + 2);
 			break;
 
+		case DISABLED:
+			if (has_hidden_condition(pok, DISABLED) || pok->last_move == NO_LAST_MOVE) {
+				printw("%s could not be disabled", pok->name); refresh(); sleep(2);
+				return 2;
+			}
+			printw("%s's %s was disabled!", pok->name, pok->attacks[pok->last_move].name); refresh(); sleep(2);
+			add_hidden_condition(pok, DISABLED, pok->last_move);
+			break;
+
 		default:
 			add_hidden_condition(pok, condition, 0);
 			break;

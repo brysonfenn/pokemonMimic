@@ -74,7 +74,7 @@ int decrement_opponent_stat(Condition stat_type, int chance, struct Pokemon* vic
 int decrement_opponent_stat2(Condition stat_type, int chance, struct Pokemon* victim, int damage);
 
 //Some attacks do a specific amount of damage
-int deal_specific_damage(Condition nothing, int hp, struct Pokemon* victim, int damage);
+int deal_specific_damage(Condition nothing1, int hp, struct Pokemon* victim, int nothing2);
 
 //Some attacks deal a percentage of damage left
 int deal_percentage_damage(Condition nothing, int percent, struct Pokemon* victim, int damage);

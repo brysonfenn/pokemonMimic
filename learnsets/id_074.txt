@@ -6,6 +6,7 @@ level,move_id
 11,76 Rock Throw
 16,106 Magnitude
 21,79 Selfdestruct
+26,107 Rollout
 31,80 Rock Blast
 36,81 Earthquake
 41,82 Explosion

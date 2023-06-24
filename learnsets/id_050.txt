@@ -1,0 +1,12 @@
+Diglett: 50
+Evolve: 26,51
+level,move_id
+1,2 Scratch
+1,7 Sand Attack
+5,3 Growl
+9,106 Magnitude
+21,50 Fury Swipes
+25,108 Mud Slap
+33,23 Slash
+41,81 Earthquake
+49,110 Fissure
