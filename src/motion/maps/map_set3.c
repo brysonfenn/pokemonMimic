@@ -14,7 +14,7 @@
 #include "../../print/print_defines.h"
 
 static Trainer trainer5 = {5, "Bugcatcher Marty", "I'll defeat you with my Bug Pokemon!", 2, {POKEMON_CATERPIE, POKEMON_WEEDLE}, {4,5} };
-static Trainer trainer7 = {7, "Bugcatcher Josh", "I like Bug Pokemon, what about you?", 2, {POKEMON_METAPOD, POKEMON_CATERPIE}, {5,6} };
+static Trainer trainer7 = {7, "Bugcatcher Josh", "I like Bug Pokemon, what about you?", 2, {POKEMON_METAPOD, POKEMON_VENONAT}, {5,6} };
 
 void draw_vir_forest() {
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
@@ -34,9 +34,9 @@ void draw_vir_forest() {
     draw_static_elements();
 }
 
-static Trainer trainer9 = {9, "Trainer Allison", "I'm not supposed to be here.", 2, {POKEMON_PIDGEY, POKEMON_SPEAROW}, {6,7} };
-static Trainer trainer10 = {10, "Trainer Michelle", "I was forced into this.", 2, {POKEMON_RATTATA, POKEMON_SANDSHREW}, {6,7} };
-static Trainer trainer11 = {11, "Trainer Olivia", "I'm not super into this.", 2, {POKEMON_RATTATA, POKEMON_VULPIX}, {7,7} };
+static Trainer trainer9 = {9, "Trainer Allison", "I'm not supposed to be here.", 2, {POKEMON_PIDGEY, POKEMON_MANKEY}, {6,7} };
+static Trainer trainer10 = {10, "Trainer Michelle", "I was forced into this.", 2, {POKEMON_MEOWTH, POKEMON_PSYDUCK}, {6,7} };
+static Trainer trainer11 = {11, "Trainer Olivia", "I'm not super into this.", 2, {POKEMON_NIDORAN_F, POKEMON_VULPIX}, {7,7} };
 
 
 void draw_pew_city() {
@@ -62,7 +62,7 @@ void draw_pew_city() {
 
 static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
 static Trainer trainer6 = {6, "Camper Liam", "I like Rock Type Pokemon. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_SANDSHREW}, {10,11} };
-static Trainer trainer12 = {12, "Trainer Jordan", "Stoinks.", 2, {POKEMON_SANDSHREW, POKEMON_SANDSLASH}, {7,9} };
+static Trainer trainer12 = {12, "Trainer Jordan", "Stoinks.", 2, {POKEMON_SANDSHREW, POKEMON_DIGLETT}, {7,9} };
 
 void draw_gym1() {
     draw_interior(MAP_X+9, MAP_Y+5, MAP_PEW_CITY);

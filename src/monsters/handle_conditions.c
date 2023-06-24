@@ -133,8 +133,10 @@ int handle_hurt_1_16(bool enemy, struct Pokemon * pok, char * pok_condition_text
 
     text_box_cursors(TEXT_BOX_BEGINNING);
     if (enemy) printw("%s", ENEMY_TEXT);
-    printw("%s was hurt by %s!", pok->name, pok_condition_text);
+    printw("%s was hurt by %s!", pok->name, pok_condition_text); refresh(); sleep(1);
+    blinkPokemon(!enemy, DAMAGED_COLOR, 3);
+
     pok->currentHP -= ((pok->maxHP / 16) + 1);
     if (pok->currentHP < 0) pok->currentHP = 0;
-    refresh(); sleep(2);
+    
 }
