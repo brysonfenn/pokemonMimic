@@ -1,20 +1,22 @@
-Last Saved: 06/23/2023 18:09:03
+Last Saved: 06/23/2023 21:06:41
 Player: Player
-2 0 3 1000
-Location: {1,(32,10)}
-Heal Center: {1,(32,10)}
+2 0 3 2025
+Location: {7,(32,9)}
+Heal Center: {7,(32,9)}
 Pokemon: 
-Bulbasaur 1 21 21 2 10 10 11 11 10 6 265 GRASS POISON 448493fb 0 0
+Bulbasaur 1 27 27 3 13 13 11 11 13 9 921 GRASS POISON 448493fb 0 0
 	Tackle. 1 35
 	Growl. 3 40
-Pikachu 25 16 16 2 9 8 8 8 12 4 81 ELECTRIC NONE 1b9b26a1 0 0
+	Leech seed. 11 10
+Pikachu 25 21 21 3 12 10 8 8 17 7 354 ELECTRIC NONE 1b9b26a1 0 0
 	Thunder Shock. 55 30
 	Growl. 3 40
+	Tail Whip. 4 30
 PC: 
 Bag:
 Potion. 1 2
-Antidote. 5 2
+Antidote. 5 1
 Pokeball. 3 4
 
-Trainers Battled: 0
-  
+Trainers Battled: 5
+  1 2 3 5 7 

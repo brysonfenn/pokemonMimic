@@ -28,6 +28,9 @@ bool has_hidden_condition(struct Pokemon * pok, Condition condition);
 //Decrement the value associated with a given condition, return value, or return 0 if condition not found
 int decrement_hidden_condition_val(struct Pokemon * pok, Condition condition);
 
+//Returns the value associated with a given condition, return value, or return -1 if condition not found
+int get_hidden_condition_val(struct Pokemon * pok, Condition condition);
+
 //Remove a hidden condition if it exists, return 1 if it is not there
 bool remove_hidden_condition(struct Pokemon * pok, Condition condition);
 

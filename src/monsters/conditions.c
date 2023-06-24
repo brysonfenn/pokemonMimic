@@ -185,6 +185,16 @@ int decrement_hidden_condition_val(struct Pokemon * pok, Condition condition) {
 	return 0;
 }
 
+//Returns the value associated with a given condition, return value, or return -1 if condition not found
+int get_hidden_condition_val(struct Pokemon * pok, Condition condition) {
+	for (int i = 0; i < pok->num_hidden_conditions; i++) {
+		if (pok->hidden_conditions[i] == condition) {
+			return pok->hidden_condition_values[i];
+		}
+	}
+	return -1;
+}
+
 //Remove a hidden condition if it exists, return false if it is not there
 bool remove_hidden_condition(struct Pokemon * pok, Condition condition) {
 	bool found_condition = false;
