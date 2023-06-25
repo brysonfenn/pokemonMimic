@@ -47,7 +47,7 @@ void drawBuilding(int x, int y, int w, int h, const char* name, int action) {
 
     // Print the string (max size 6) inside the box
     if (strlen(name) <= 6) {
-        mvprintw(y+1, x+1, "%s", name);
+        mvprintw(y+1, x+(w/2)-1, "%s", name);
     }
 
     // Draw a door at the bottom of the box

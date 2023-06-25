@@ -35,8 +35,8 @@ int save_game(int file_num) {
 	//Double check save file
 	if (file_num !=  current_save_file && fp != NULL) {
 		begin_list();
-		sprintf(print_str, "You selected file %d, which contains data that would\n", file_num);
-		sprintf(print_str, "%sbe lost if you save here. Are you sure you want to\nsave to file %d?\n", print_str, file_num);
+		sprintf(print_str, "You selected file %d, which contains data that would ", file_num);
+		sprintf(print_str, "%sbe lost if you save here. Are you sure you want to save to file %d?\n", print_str, file_num);
 		sprintf(print_str, "%s \n  Yes\n  No", print_str);
 		print_to_list(print_str);
 		inputNum = get_selection(4, 1, 0);
