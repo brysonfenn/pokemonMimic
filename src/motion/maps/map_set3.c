@@ -23,6 +23,8 @@ void draw_vir_forest() {
 
     draw_town_exit(MAP_BOTTOM, 7);
     add_exit_portal(MAP_BOTTOM, 7, MAP_R2);
+    draw_town_exit(MAP_BOTTOM, 40);
+    add_exit_portal(MAP_BOTTOM, 40, MAP_R2);
 
     draw_town_exit(MAP_TOP, MAP_WIDTH-8);
     add_exit_portal(MAP_TOP, MAP_WIDTH-8, MAP_PEW_CITY);

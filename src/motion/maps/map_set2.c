@@ -56,6 +56,8 @@ void draw_route2() {
 
     draw_town_exit(MAP_TOP, 7);
     add_exit_portal(MAP_TOP, 7, MAP_VIR_FOREST);
+    draw_town_exit(MAP_TOP, 40);
+    add_exit_portal(MAP_TOP, 40, MAP_VIR_FOREST);
 
     add_trainer(MAP_X+MAP_WIDTH-2, MAP_Y+MAP_HEIGHT-3, &trainer8, PLAYER_MOVING_LEFT);
     add_trainer(MAP_X+1, MAP_Y+8, &trainer1, PLAYER_MOVING_RIGHT);
