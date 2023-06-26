@@ -38,7 +38,7 @@ bool is_movable_space(int yInc, int xInc);
 
 static int leave_msg_count = 0;
 
-// Draw the current map to the screen and handle player motion until user returns to the menu
+// Draw the current map to the screen and handle player motion, battles, etc until user returns to the menu
 void handle_motion() {
     char print_str[512];
 
@@ -184,7 +184,7 @@ void handle_motion() {
         Location door = *(get_door(*player_x, *player_y));
         int action = door.action;
 
-        //Handle portal
+        //Handle portal to another map
         if (action == -1) {
             usleep(300000);
             change_map(door.next_map, door.next_x, door.next_y);
@@ -198,7 +198,7 @@ void handle_motion() {
             continue;
         }
 
-        //Handle trainers in range
+        // Handle trainers that are in range to see the player //
         int x_inc, y_inc;
         int * trainer_x;
         int * trainer_y;
