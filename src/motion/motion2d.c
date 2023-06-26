@@ -279,6 +279,7 @@ bool is_movable_space(int yInc, int xInc) {
 void init_map() {
     clear();
     draw_map();
+    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
     draw_static_elements();
     draw_box(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5); //Draw message box
     leave_msg_count = 0;    //leave map label for 5 movements

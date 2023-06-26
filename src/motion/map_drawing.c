@@ -66,8 +66,7 @@ void draw_interior(int exit_map_x, int exit_map_y, int exit_map) {
     int min_x = INTERIOR_X+10;
     int max_y = INTERIOR_Y+INTERIOR_HEIGHT-1;
 
-    draw_box(INTERIOR_X,INTERIOR_Y,INTERIOR_WIDTH,INTERIOR_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
+    draw_box(INTERIOR_X,INTERIOR_Y,INTERIOR_WIDTH,INTERIOR_HEIGHT);  //Draw Building border
     mvaddch(max_y, min_x-1, ACS_URCORNER);  // Top-right corner
     mvaddch(max_y, min_x, ' ');
     mvaddch(max_y, min_x+1, ' ');

@@ -18,7 +18,6 @@ static Trainer trainer7 = {7, "Bugcatcher Josh", "I like Bug Pokemon, what about
 
 void draw_vir_forest() {
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
     begin_message_box();
     print_to_message_box("Viridian Forest");
 
@@ -41,12 +40,14 @@ static Trainer trainer11 = {11, "Trainer Olivia", "I'm not super into this.", 2,
 
 void draw_pew_city() {
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
     begin_message_box();
     print_to_message_box("Pewter City");
 
     draw_town_exit(MAP_BOTTOM, MAP_WIDTH-8);
     add_exit_portal(MAP_BOTTOM, MAP_WIDTH-8, MAP_VIR_FOREST);
+
+    draw_town_exit(MAP_RIGHT, 8);
+    add_exit_portal(MAP_RIGHT, 8, MAP_R3);
 
     drawBuilding_default(MAP_X+5,MAP_Y+2, "GYM", -1);
     add_building_portal(MAP_X+5, MAP_Y+2, MAP_GYM1);
@@ -57,6 +58,10 @@ void draw_pew_city() {
     add_trainer(MAP_X+45,MAP_Y+1, &trainer9, PLAYER_MOVING_DOWN);
     add_trainer(MAP_X+48,MAP_Y+1, &trainer10, PLAYER_MOVING_DOWN);
     add_trainer(MAP_X+51,MAP_Y+1, &trainer11, PLAYER_MOVING_DOWN);
+
+    if (!already_battled_trainer(201)) {
+        for (int i = 0; i < 3; i++) { mvprintw(MAP_Y+7+i,MAP_X+MAP_WIDTH-2, "|"); }
+    }
 }
 
 
@@ -76,4 +81,23 @@ void draw_gym1() {
     add_trainer(INTERIOR_X+INTERIOR_WIDTH-2, INTERIOR_Y+6, &trainer12, PLAYER_MOVING_LEFT);
     add_trainer(INTERIOR_X+15, INTERIOR_Y+1, &trainer6, PLAYER_MOVING_DOWN);
     add_trainer(INTERIOR_X+1, INTERIOR_Y+1, &leader201, PLAYER_MOVING_RIGHT);
+}
+
+
+static Trainer trainer13 = {13, "Trainer Heather", "There's no Rowlett in this Generation.", 2, {POKEMON_ODDISH, POKEMON_PIDGEOTTO}, {8,7} };
+static Trainer trainer14 = {14, "Trainer Joey", "I like Starter Pokemon!", 3, {POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE}, {7,7,7} };
+
+void draw_route3() {
+    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
+    begin_message_box();
+    print_to_message_box("Route 3");
+
+    //Draw Doors
+    draw_town_exit(MAP_LEFT, 8);
+    add_exit_portal(MAP_LEFT, 8, MAP_PEW_CITY);
+
+    drawBuilding_default(MAP_X+42,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
+
+    add_trainer(MAP_X+12,MAP_Y+12, &trainer13, PLAYER_MOVING_DOWN);
+    add_trainer(MAP_X+13,MAP_Y+7, &trainer14, PLAYER_MOVING_RIGHT);
 }

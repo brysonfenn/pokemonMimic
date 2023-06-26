@@ -14,12 +14,10 @@
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 
-//Don't draw any grass for building maps
-void no_grass() {}
-
 //Map functions
-static void (*draw_funcs[10])() = { &draw_generic_map, &draw_vir_city, &draw_route2, &draw_route1, &draw_starter_town, &draw_lab, &draw_vir_forest,
-                                    &draw_pew_city, &draw_gym1 };
+static void (*draw_funcs[15])() = { &draw_generic_map, 
+                                    &draw_vir_city, &draw_route2, &draw_route1, &draw_starter_town, &draw_lab, 
+                                    &draw_vir_forest, &draw_pew_city, &draw_gym1, &draw_route3 };
 
 //Draw elements (like grass, trees, etc) according to map text file
 void draw_static_elements() {
@@ -40,6 +38,9 @@ void draw_static_elements() {
             break;
         case MAP_PEW_CITY:
             sprintf(map_name, "pew_city");
+            break;
+        case MAP_R3:
+            sprintf(map_name, "route3");
             break;
         default:
             sprintf(map_name, "empty_map");

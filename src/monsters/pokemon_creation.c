@@ -28,7 +28,9 @@ static Pokemon_id wild_pok_lists[10][10] = {
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #4 Starter Town
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #5 Lab
   { 6,   3, 6,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU, POKEMON_METAPOD, POKEMON_KAKUNA, POKEMON_PIDGEOTTO }, //Map #6 Vir Forest
-  { 3,   4, 6,  POKEMON_NIDORAN_F, POKEMON_SANDSHREW, POKEMON_SPEAROW }
+  { 3,   4, 6,  POKEMON_NIDORAN_F, POKEMON_SANDSHREW, POKEMON_SPEAROW }, //Map #7 Pewter City
+  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #8 Gym
+  { 3,   5, 8,  POKEMON_JIGGLYPUFF, POKEMON_MANKEY, POKEMON_VULPIX } //Map #9 Route 3
 };
 
 static Pokemon newest_pokemon;

@@ -22,7 +22,6 @@
 void draw_vir_city() {
 
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
     begin_message_box();
     print_to_message_box("Viridian City");
 
@@ -48,7 +47,6 @@ static Trainer trainer8 = {8, "Trainer Liam", "I'm a trainer, just like you!", 2
 void draw_route2() {
 
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
     begin_message_box();
     print_to_message_box("Route 2");
 

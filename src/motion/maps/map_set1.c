@@ -16,8 +16,6 @@
 void draw_starter_town() {
 
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
-    
     begin_message_box();
     print_to_message_box("Starter Town");
 
@@ -36,8 +34,6 @@ void draw_starter_town() {
 
 void draw_route1() {
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
-
     begin_message_box();
     print_to_message_box("Route 1");
     

@@ -13,7 +13,6 @@
 void draw_generic_map() {
 
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
     begin_message_box();
     print_to_message_box("Unknown Location: look in maps.c to add maps");
 

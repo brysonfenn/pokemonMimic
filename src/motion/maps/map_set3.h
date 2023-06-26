@@ -7,4 +7,6 @@ void draw_pew_city();
 
 void draw_gym1();
 
+void draw_route3();
+
 #endif //MAP_SET3_H
