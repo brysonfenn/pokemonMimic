@@ -96,7 +96,8 @@ void main_menu() {
         case PLAYER:
         begin_list();
         printPlayer();
-        sleep(2);
+        print_to_list("\n \n  Cancel\n");
+        inputNum = get_selection(8,0,0);
         current_display = MAIN;
         break;
 

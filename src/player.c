@@ -105,10 +105,20 @@ void set_enemy_pokemon(struct Pokemon * pok) {
 
 //Print player information
 void printPlayer() {
-  char print_str[128] = "";
+  char print_str[1024] = "";
   sprintf(print_str, "%s  B:\n", print_str);
   sprintf(print_str, "%s  Number of Pokemon: %d\n", print_str, player.numInParty);
-  sprintf(print_str, "%s  Money: $%d\n", print_str, player.money);
+  sprintf(print_str, "%s  Money: $%d\n \n  Badges:\n    ", print_str, player.money);
+
+  for (int leader_id = 201; leader_id <= 208; leader_id++) {
+    if (already_battled_trainer(leader_id))
+      sprintf(print_str, "%s%d  ", print_str, leader_id - 200);
+    else
+      sprintf(print_str, "%s-  ", print_str);
+
+    if (leader_id == 204)
+      sprintf(print_str, "%s\n    ", print_str);
+  }
 
   print_to_list(print_str);
   refresh();

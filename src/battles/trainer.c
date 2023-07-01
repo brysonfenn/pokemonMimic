@@ -123,6 +123,8 @@ int battle_trainer(Trainer * trainer) {
     }
     money_earned *= 5;
 
+    if (trainer->id_num > 200) money_earned *= 3;
+
     //Notify money earned
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("%s gained $%d for ", player.name, money_earned);
