@@ -244,7 +244,7 @@ bool remove_hidden_condition(struct Pokemon * pok, Condition condition) {
 
 //Remove all hidden conditions form a given pokemon
 void remove_all_hidden_conditions(struct Pokemon * pok) {
-	if (pok->num_hidden_conditions == 0) return;
+	// if (pok->num_hidden_conditions == 0) return;
 	pok->hidden_conditions = realloc(pok->hidden_conditions, sizeof(Condition));
 	pok->hidden_condition_values = realloc(pok->hidden_condition_values, sizeof(int8_t));
 	pok->num_hidden_conditions = 0;

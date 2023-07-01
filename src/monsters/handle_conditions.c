@@ -107,17 +107,17 @@ int handle_end_conditions(struct Pokemon * pok) {
 }
 
 
-int handle_leech_seed(bool enemy, struct Pokemon * pok, struct Pokemon * perp) {
+int handle_leech_seed(bool is_enemy, struct Pokemon * pok, struct Pokemon * perp) {
     clear(); printBattle();
 
     text_box_cursors(TEXT_BOX_BEGINNING);
-    if (enemy) printw("%s", ENEMY_TEXT);
+    if (is_enemy) printw("%s", ENEMY_TEXT);
     printw("%s's HP was sapped!", pok->name); refresh(); sleep(1);
     int sappedHP = ((pok->maxHP / 8) + 1);
 
-    blinkPokemon(false, DAMAGED_COLOR, LEECH_SEED_BLINK_TIMES); 
+    blinkPokemon(!is_enemy, DAMAGED_COLOR, LEECH_SEED_BLINK_TIMES); 
     printBattle();
-    blinkPokemon(true, HEAL_COLOR, LEECH_SEED_BLINK_TIMES);
+    blinkPokemon(is_enemy, HEAL_COLOR, LEECH_SEED_BLINK_TIMES);
 
     //Give HP equal to taken HP and fix any issues
     if (sappedHP > pok->currentHP) { perp->currentHP += pok->currentHP; pok->currentHP = 0; }

@@ -60,6 +60,6 @@ void printPlayer();
 void add_battled_trainer(int id);
 
 //Returns true only if the player has already battled the trainer
-bool already_battled_trainer(int id);
+bool has_battled_trainer(int id);
 
 #endif // PLAYER_H

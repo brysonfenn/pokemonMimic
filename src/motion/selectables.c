@@ -90,7 +90,7 @@ Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, in
         curr_sel = &(selectables[i]);
         if (curr_sel->is_trainer) {
             Trainer * trainer_ptr = (Trainer *) curr_sel->data;
-            if (already_battled_trainer(trainer_ptr->id_num) || trainer_ptr->id_num > 200) continue;
+            if (has_battled_trainer(trainer_ptr->id_num) || trainer_ptr->id_num > 200) continue;
             x = curr_sel->x;
             y = curr_sel->y;
             char ch = mvinch(y,x);

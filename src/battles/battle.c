@@ -298,6 +298,8 @@ int initiate_battle(struct Pokemon * enemyPok) {
 
         //Make switch
         reset_stat_stages(currentPok);
+        text_box_cursors(TEXT_BOX_BEGINNING);
+
         set_current_pokemon(pokemon_selected);
         currentPok = player.current_pokemon;
         enemy_attacks = true;
@@ -390,6 +392,8 @@ int get_enemy_move(Pokemon * pok) {
   int num_available_attacks = 0;
   int available_attacks[4];
   int curr_attack;
+
+  return (pok->numAttacks - 1);
 
   //Create an array of moves that have remaining PP > 0
   for (int i = 0; i < pok->numAttacks; i++) {

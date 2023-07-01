@@ -91,7 +91,7 @@ int battle_trainer(Trainer * trainer) {
     
       inputNum = get_selection(2, player.numInParty-1, 0);
 
-      if (inputNum == PRESSED_B) {
+      if (inputNum == PRESSED_B || &(player.party[inputNum]) == player.current_pokemon) {
         break;
       }
       else if (player.party[inputNum].currentHP == 0) {
@@ -99,6 +99,7 @@ int battle_trainer(Trainer * trainer) {
         print_to_list(" \nYou must select a different pokemon.\n"); sleep(2);
       }
       else {
+        reset_stat_stages(player.current_pokemon);
         set_current_pokemon(inputNum);
         switch_chosen = true;
         break;

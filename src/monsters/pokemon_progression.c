@@ -173,7 +173,6 @@ void learn_move(Pokemon * pok, attack * new_attack) {
     printw("Select a move to forget.");
         
     input_num = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, pok);
-    input_num--;  //Adjust to array position
 
     clear(); printBattle();
     text_box_cursors(TEXT_BOX_BEGINNING);
@@ -287,7 +286,6 @@ int evolve(Pokemon * pok, int next_pok_id) {
     int ch = getch();
     if (ch == CANCEL_CHAR) {
       pressed_b = true;
-
       break;
     }
 

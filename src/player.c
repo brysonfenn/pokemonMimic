@@ -85,12 +85,14 @@ void set_current_pokemon(int position) {
     for (int i = 0; i < player.numInParty; i++) {
       if (player.party[i].currentHP > 0) {
         player.current_pokemon = &(player.party[i]);
+        reset_stat_stages(player.current_pokemon);
         return;
       }
     }
   }
   else {
     player.current_pokemon = &(player.party[position]);
+    reset_stat_stages(player.current_pokemon);
     return;
   }
   player.current_pokemon = &(emptyPok);
@@ -111,7 +113,7 @@ void printPlayer() {
   sprintf(print_str, "%s  Money: $%d\n \n  Badges:\n    ", print_str, player.money);
 
   for (int leader_id = 201; leader_id <= 208; leader_id++) {
-    if (already_battled_trainer(leader_id))
+    if (has_battled_trainer(leader_id))
       sprintf(print_str, "%s%d  ", print_str, leader_id - 200);
     else
       sprintf(print_str, "%s-  ", print_str);
@@ -134,7 +136,7 @@ void add_battled_trainer(int id) {
 }
 
 //Returns true only if the player has already battled the trainer
-bool already_battled_trainer(int id) {
+bool has_battled_trainer(int id) {
   for (int i = 0; i < player.num_trainers_battled; i++) {
     if (player.trainers_battled_id[i] == id) return true;
   }

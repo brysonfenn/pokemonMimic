@@ -114,7 +114,7 @@ void handle_motion() {
                 if (selectable_ptr->x == 0) continue;
                 if (selectable_ptr->is_trainer) {
                     trainer_ptr = (Trainer *) selectable_ptr->data;
-                    if (already_battled_trainer(trainer_ptr->id_num)) {
+                    if (has_battled_trainer(trainer_ptr->id_num)) {
                         print_to_message_box("\"We already battled\"");
                         continue;
                     }

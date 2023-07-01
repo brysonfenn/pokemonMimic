@@ -61,7 +61,7 @@ void draw_pew_city() {
     add_trainer(MAP_X+48,MAP_Y+1, &trainer10, PLAYER_MOVING_DOWN);
     add_trainer(MAP_X+51,MAP_Y+1, &trainer11, PLAYER_MOVING_DOWN);
 
-    if (!already_battled_trainer(201)) {
+    if (!has_battled_trainer(201)) {
         for (int i = 0; i < 3; i++) { mvprintw(MAP_Y+7+i,MAP_X+MAP_WIDTH-2, "|"); }
     }
 }
