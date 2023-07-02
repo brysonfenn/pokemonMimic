@@ -101,6 +101,9 @@ void draw_route3() {
     draw_town_exit(MAP_LEFT, 8);
     add_exit_portal(MAP_LEFT, 8, MAP_PEW_CITY);
 
+    draw_town_exit(MAP_TOP, MAP_WIDTH - 4);
+    add_exit_portal(MAP_TOP, MAP_WIDTH - 4, MAP_MT_MOON);
+
     drawBuilding_default(MAP_X+42,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
 
     add_trainer(MAP_X+12,MAP_Y+12, &trainer13, PLAYER_MOVING_DOWN);

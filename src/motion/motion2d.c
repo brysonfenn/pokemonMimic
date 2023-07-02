@@ -158,6 +158,8 @@ void handle_motion() {
         draw_static_elements();
 
         bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR) && !(leave_msg_count < 5);
+        hitGrass = hitGrass || (player.loc->map == MAP_MT_MOON);
+
         int random = rand() % 100;
 
         // Set player color, move, and unset
