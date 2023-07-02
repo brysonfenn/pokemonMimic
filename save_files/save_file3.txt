@@ -1,29 +1,22 @@
-Last Saved: 06/11/2023 17:51:19
-Player: Elliot
-5 0 3 1100
-Location: {1,(48,17)}
+Last Saved: 07/01/2023 18:57:25
+Player: Elliot H
+3 0 3 1000
+Location: {1,(33,16)}
 Heal Center: {1,(33,10)}
 Pokemon: 
-Bulbasaur 1 26 26 3 16 15 16 15 17 8 512 GRASS POISON 577a6a2f 0 0
-	Tackle. 1 35
-	Growl. 3 40
-	Leech seed. 11 10
-Charmander 4 22 22 2 13 14 13 14 15 6 216 FIRE NONE 25d16087 0 0
+Charmander 4 18 18 2 11 9 12 10 12 5 206 FIRE NONE 772e8be0 0 0
 	Scratch. 2 35
-	Tail Whip. 4 30
-Caterpie 10 14 14 2 7 8 7 8 10 3 27 BUG NONE 55185276 0 0
-	Tackle. 1 35
-	String Shot. 5 40
-Pidgey 16 14 14 1 9 9 9 9 9 3 27 NORMAL FLYING 2fcdec9f 0 0
-	Tackle. 1 35
-Rattata 19 11 11 2 7 9 7 9 8 2 8 NORMAL NONE 7869d33d 0 0
+	Growl. 3 40
+Rattata 19 15 15 2 9 7 6 7 9 3 27 NORMAL NONE 612ec9 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
+Pidgey 16 15 15 1 7 8 7 7 8 3 27 NORMAL FLYING 669bd0ab 0 0
+	Tackle. 1 35
 PC: 
 Bag:
-Potion. 1 2
-Pokeball. 3 2
-Great Ball. 4 1
+Potion. 1 1
+Antidote. 5 2
+Pokeball. 3 3
 
 Trainers Battled: 0
   

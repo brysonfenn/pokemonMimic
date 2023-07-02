@@ -152,7 +152,7 @@ int load_game(int file_num) {
 
 
     fgets(line, LINE_SIZE, fp);	// Player: {name}
-	sscanf(line, "Player: %s", player.name);
+	sscanf(line, "Player: %[^\n]", player.name);
 
     fgets(line, LINE_SIZE, fp);	// Basic numbers
 	int num;
@@ -254,7 +254,7 @@ int print_save_files() {
 		}
 	    fgets(line, LINE_SIZE, fp);
 		fgets(player_name, LINE_SIZE, fp);
-		sscanf(player_name, "Player: %s", player_name);
+		sscanf(player_name, "Player: %[^\n]", player_name);
 	    sprintf(print_str, "%s  %d: %s -- %s", print_str, i, player_name, line);
 
 		num_save_files++;
