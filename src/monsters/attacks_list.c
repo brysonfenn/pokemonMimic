@@ -11,7 +11,7 @@
 #include "attacks_special.h"
 #include "pokemon.h"
 
-#define NUM_ATTACKS 120
+#define NUM_ATTACKS 130
 
 attack empty_attack=  {"-------------",  0,  0, 100, 100, NO_TYPE,  false, &attack_do_nothing };
 //				 	   "Name         "  id  pp  pwr  acc    type     priority    effect         params
@@ -133,7 +133,7 @@ attack psychic      = {"Psychic"      ,105, 10,  90,      100, PSYCHIC,  false, 
 attack magnitude    = {"Magnitude"    ,106, 30,   0,      100, GROUND,   false, &magnitude_move_func, NO_CONDITION, 0 };
 attack rollout      = {"Rollout"      ,107, 20,   0,      100, ROCK,     false, &rollout_move_func, NO_CONDITION, 0 };
 attack mud_slap     = {"Mud-Slap"     ,108, 10,  20,      100, GROUND,   false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
-attack swagger      = {"Swagger"      ,109, 15,   0,       90, NORMAL,    true, &swagger_move_func, NO_CONDITION, 0 };
+attack swagger      = {"Swagger"      ,109, 15,   0,       90, NORMAL,   false, &swagger_move_func, NO_CONDITION, 0 };
 attack fissure      = {"Fissure"      ,110,  5,   0,       30, GROUND,   false, &deal_specific_damage, NO_CONDITION, 5000 };
 
 attack tri_attack   = {"Tri Attack"   ,111, 10,  80,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
@@ -145,6 +145,10 @@ attack low_kick     = {"Low Kick"     ,116, 20,  50,       90, FIGHTING, false, 
 attack karate_chop  = {"Karate Chop"  ,117, 20,  70,      100, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
 attack seismic_toss = {"Seismic Toss" ,118, 20,   0,      100, FIGHTING, false, &seismic_toss_move_func, NO_CONDITION, 0 };
 attack cross_chop   = {"Cross Chop"   ,119,  5, 125,       80, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
+attack take_down    = {"Take Down"    ,120, 20,  90,       85, NORMAL,   false, &self_inflict_damage, PERCENT_DAMAGE_DEALT, 25 };
+
+attack flame_wheel  = {"Flame Wheel"  ,121, 25,  60,      100, FIRE,     false, &inflict_condition, BURNED, 10 };
+attack extreme_speed= {"Extreme Speed",122,  5,  80,      100, NORMAL,    true, &attack_do_nothing, NO_CONDITION, 0 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -158,8 +162,10 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &double_slap, &minimize, &cosmic_power, &moonlight, &meteor_mash, &rock_throw, &synthesis, &solar_beam, &selfdestruct, &rock_blast,     // #71-80
     &earthquake, &explosion, &double_edge, &screech, &bind, &iron_tail, &sand_tomb, &dragon_breath, &wrap, &glare,                          // #81-90
     &acid, &will_o_wisp, &confuse_ray, &rest, &hyper_voice, &leech_life, &astonish, &air_cutter, &poison_fang, &absorb,                     // #91-100
-    &petal_dance, &mega_drain, &spore, &giga_drain, &psychic, &magnitude, &rollout, &mud_slap, &swagger, &fissure,                       // #101-110
-    &tri_attack, &pay_day, &faint_attack, &fake_out, &disable, &low_kick, &karate_chop, &seismic_toss, &cross_chop
+    &petal_dance, &mega_drain, &spore, &giga_drain, &psychic, &magnitude, &rollout, &mud_slap, &swagger, &fissure,                          // #101-110
+    &tri_attack, &pay_day, &faint_attack, &fake_out, &disable, &low_kick, &karate_chop, &seismic_toss, &cross_chop, &take_down,             // #111-120
+    &flame_wheel, &extreme_speed
+
 };
 
 

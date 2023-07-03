@@ -1,0 +1,10 @@
+Growlithe: 58
+Evolve: 101,0
+level,move_id
+1,29 Bite
+7,12 Ember
+13,52 Leer
+25,120 Take Down
+31,121 Flame Wheel
+43,43 Agility
+49,22 Flamethrower
