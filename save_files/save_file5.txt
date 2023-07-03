@@ -1,7 +1,7 @@
-Last Saved: 06/30/2023 22:09:34
+Last Saved: 07/03/2023 10:44:56
 Player: Player1
 2 0 3 5720
-Location: {9,(49,5)}
+Location: {11,(11,6)}
 Heal Center: {9,(49,5)}
 Pokemon: 
 Bulbasaur 1 38 38 4 19 19 11 11 18 15 3882 GRASS POISON 448493fb 0 0

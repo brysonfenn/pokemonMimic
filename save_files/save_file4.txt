@@ -1,19 +1,25 @@
-Last Saved: 07/03/2023 08:37:15
+Last Saved: 07/03/2023 08:59:01
 Player: Oliver H
-2 0 3 1000
-Location: {1,(32,10)}
-Heal Center: {1,(32,10)}
+4 0 2 1195
+Location: {2,(8,10)}
+Heal Center: {1,(33,10)}
 Pokemon: 
-Squirtle 7 19 19 2 10 12 10 12 10 5 208 WATER NONE 7fd958e0 0 0
-	Tackle. 1 35
+Squirtle 7 23 7 3 11 14 10 12 11 7 416 WATER NONE 7fd958e0 0 0
+	Tackle. 1 29
 	Tail Whip. 4 30
+	Bubble. 13 29
 Pidgey 16 17 17 1 9 8 7 8 10 4 64 NORMAL FLYING 5ae1cf13 0 0
 	Tackle. 1 35
+Weedle 13 15 15 2 7 7 6 6 8 3 27 BUG POISON 54c27cc8 0 0
+	Poison Sting. 6 35
+	String Shot. 5 40
+Caterpie 10 15 15 2 7 8 7 6 8 3 27 BUG NONE 398f7d65 0 0
+	Tackle. 1 35
+	String Shot. 5 40
 PC: 
 Bag:
-Potion. 1 2
+Potion. 1 1
 Antidote. 5 2
-Pokeball. 3 3
 
-Trainers Battled: 0
-  
+Trainers Battled: 1
+  1 

@@ -11,7 +11,7 @@
 09 │oooooooooooooooooo      oooooooooooooo       ooooooo    │
 10 │                        o            o                  │
 11 │                        o            o                  │
-12 │    o    oooooooooooooooo      o     ooooooooooooooooooo│
+12 │    o    oooooooooooooooo      o     oooooooooooooooooo │
 13 │    o                          o                        │
 14 │    o                          o                        │
 15 │    o                   o      o                        │

@@ -61,7 +61,7 @@ void blinkPokemon(bool blink_player, int color, int num_times) {
   }
 
   //Prepare string
-  sprintf(poke_string, "%s  Lvl %d ", pok->name, pok->level);
+  sprintf(poke_string, "%s  Lvl %d  ", pok->name, pok->level);
   add_condition_string(poke_string, pok);
 
   attrset(COLOR_PAIR(color));

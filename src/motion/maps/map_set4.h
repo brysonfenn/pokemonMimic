@@ -3,4 +3,6 @@
 
 void draw_mt_moon();
 
+void draw_cer_city();
+
 #endif //MAP_SET4_H
