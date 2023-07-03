@@ -393,8 +393,6 @@ int get_enemy_move(Pokemon * pok) {
   int available_attacks[4];
   int curr_attack;
 
-  return (pok->numAttacks - 1);
-
   //Create an array of moves that have remaining PP > 0
   for (int i = 0; i < pok->numAttacks; i++) {
     if (pok->attacks[i].curr_pp && (get_hidden_condition_val(pok, DISABLED) != i)) {

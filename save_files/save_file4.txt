@@ -1,20 +1,19 @@
-Last Saved: 06/11/2023 17:51:27
-Player: Oliver
+Last Saved: 07/03/2023 08:37:15
+Player: Oliver H
 2 0 3 1000
-Location: {1,(20,11)}
-Heal Center: {1,(33,10)}
+Location: {1,(32,10)}
+Heal Center: {1,(32,10)}
 Pokemon: 
-Charmander 4 20 20 2 12 13 12 13 13 5 125 FIRE NONE 6bab878d 0 0
-	Scratch. 2 35
-	Growl. 3 40
-Bulbasaur 1 20 20 2 13 12 13 12 13 5 125 GRASS POISON 4a507134 0 0
+Squirtle 7 19 19 2 10 12 10 12 10 5 208 WATER NONE 7fd958e0 0 0
 	Tackle. 1 35
-	Growl. 3 40
+	Tail Whip. 4 30
+Pidgey 16 17 17 1 9 8 7 8 10 4 64 NORMAL FLYING 5ae1cf13 0 0
+	Tackle. 1 35
 PC: 
 Bag:
 Potion. 1 2
-Super Potion. 2 2
-Pokeball. 3 5
+Antidote. 5 2
+Pokeball. 3 3
 
 Trainers Battled: 0
   

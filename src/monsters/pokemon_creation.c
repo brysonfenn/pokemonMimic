@@ -23,7 +23,7 @@ static Pokemon_id wild_pok_lists[12][10] = {
 //#Pok, levels, ID'S...
   { 3,   5, 7,  POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE }, //No Map is #0
   { 2,   3, 5,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #1 Viridian City
-  { 3,   3, 5,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU }, //Map #2 Route 2
+  { 3,   3, 5,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_WEEDLE }, //Map #2 Route 2
   { 2,   2, 4,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #3 Route 1
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #4 Starter Town
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #5 Lab
