@@ -19,7 +19,7 @@
 static void (*draw_funcs[15])() = { &draw_generic_map, 
                                     &draw_vir_city, &draw_route2, &draw_route1, &draw_starter_town, &draw_lab, 
                                     &draw_vir_forest, &draw_pew_city, &draw_gym1, &draw_route3, &draw_mt_moon,
-                                    &draw_cer_city };
+                                    &draw_cer_city, &draw_gym2 };
 
 //Draw elements (like grass, trees, etc) according to map text file
 void draw_static_elements() {

@@ -63,6 +63,9 @@ void drawBuilding(int x, int y, int w, int h, const char* name, int action) {
 
 //Draw building interior
 void draw_interior(int exit_map_x, int exit_map_y, int exit_map) {
+    exit_map_x += 4;
+    exit_map_y += 3;
+
     int min_x = INTERIOR_X+10;
     int max_y = INTERIOR_Y+INTERIOR_HEIGHT-1;
 

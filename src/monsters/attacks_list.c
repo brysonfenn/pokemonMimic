@@ -149,6 +149,7 @@ attack take_down    = {"Take Down"    ,120, 20,  90,       85, NORMAL,   false, 
 
 attack flame_wheel  = {"Flame Wheel"  ,121, 25,  60,      100, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack extreme_speed= {"Extreme Speed",122,  5,  80,      100, NORMAL,    true, &attack_do_nothing, NO_CONDITION, 0 };
+attack recover      = {"Recover"      ,123,  5,   0,   NORMAL, GRASS,    false, &self_heal, HP_PERCENTAGE, 50 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -164,7 +165,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &acid, &will_o_wisp, &confuse_ray, &rest, &hyper_voice, &leech_life, &astonish, &air_cutter, &poison_fang, &absorb,                     // #91-100
     &petal_dance, &mega_drain, &spore, &giga_drain, &psychic, &magnitude, &rollout, &mud_slap, &swagger, &fissure,                          // #101-110
     &tri_attack, &pay_day, &faint_attack, &fake_out, &disable, &low_kick, &karate_chop, &seismic_toss, &cross_chop, &take_down,             // #111-120
-    &flame_wheel, &extreme_speed
+    &flame_wheel, &extreme_speed, &recover
 
 };
 

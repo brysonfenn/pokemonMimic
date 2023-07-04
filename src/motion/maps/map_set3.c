@@ -69,10 +69,10 @@ void draw_pew_city() {
 
 static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
 static Trainer trainer6 = {6, "Camper Liam", "I like Rock Type Pokemon. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_SANDSHREW}, {10,11} };
-static Trainer trainer12 = {12, "Trainer Jordan", "Stoinks.", 2, {POKEMON_SANDSHREW, POKEMON_DIGLETT}, {7,9} };
+static Trainer trainer12 = {12, "Trainer Jordan", "Stonks.", 2, {POKEMON_SANDSHREW, POKEMON_DIGLETT}, {7,9} };
 
 void draw_gym1() {
-    draw_interior(MAP_X+9, MAP_Y+5, MAP_PEW_CITY);
+    draw_interior(MAP_X+5, MAP_Y+2, MAP_PEW_CITY);
     begin_message_box();
     print_to_message_box("Pewter City Gym");
 

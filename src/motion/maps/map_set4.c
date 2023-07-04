@@ -34,4 +34,18 @@ void draw_cer_city() {
 
     drawBuilding_default(MAP_X+30,MAP_Y+8, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+10,MAP_Y+12, "Mart", MART_ACTION);
+
+    drawBuilding_default(MAP_X+30+DEFAULT_BUILDING_WIDTH,MAP_Y+8, "GYM", -1);
+    add_building_portal(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+8, MAP_GYM2);
+}
+
+
+static Trainer leader202 = {202, "Leader Misty", "I am Misty, the Second Gym Leader. Let's Battle!", 2, {POKEMON_SQUIRTLE, POKEMON_WARTORTLE}, {21,22} };
+
+void draw_gym2() {
+    draw_interior(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+8, MAP_CER_CITY);
+    begin_message_box();
+    print_to_message_box("Cerulean City Gym");
+
+    add_trainer(INTERIOR_X+12, INTERIOR_Y+1, &leader202, PLAYER_MOVING_DOWN);
 }
