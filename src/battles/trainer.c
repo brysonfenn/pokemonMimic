@@ -182,7 +182,7 @@ char * get_random_name() {
 
   // Check if the file was opened successfully
   if (og_file == NULL) {
-      printw("File does not exist.\n"); refresh(); sleep(2);
+      printw("Name file not found.\n"); refresh(); sleep(2);
       return 1;
   }
 
