@@ -19,7 +19,7 @@ Pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0,    0,    0, NO_TY
 static Pokemon_id pok_id_list[10] = { POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE, POKEMON_CATERPIE, POKEMON_WEEDLE,
   POKEMON_PIDGEY, POKEMON_RATTATA, POKEMON_SANDSHREW };
 
-static Pokemon_id wild_pok_lists[12][10] = {
+static Pokemon_id wild_pok_lists[20][10] = {
 //#Pok, levels, ID'S...
   { 3,   5, 7,  POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE }, //No Map is #0
   { 2,   3, 5,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #1 Viridian City
@@ -32,7 +32,8 @@ static Pokemon_id wild_pok_lists[12][10] = {
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #8 Gym
   { 3,   5, 8,  POKEMON_JIGGLYPUFF, POKEMON_MANKEY, POKEMON_NIDORAN_M }, //Map #9 Route 3
   { 4,   8, 10, POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //Map #10 Mt Moon
-  { 3,   9, 12, POKEMON_VULPIX, POKEMON_EKANS, POKEMON_MANKEY } //Map #11 Cerulean City
+  { 3,   9, 12, POKEMON_VULPIX, POKEMON_EKANS, POKEMON_MANKEY }, //Map #11 Cerulean City
+  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #12 Gym 2
 };
 
 static Pokemon newest_pokemon;

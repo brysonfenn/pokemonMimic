@@ -1,0 +1,11 @@
+Poliwhirl: 61
+Evolve: 101,0
+level,move_id
+1,13 Bubble
+1,125 Hypnosis
+1,28 Water Gun
+7,125 Hypnosis
+13,28 Water Gun
+19,71 Double Slap
+35,63 Body Slam
+51,33 Hydro Pump

@@ -1,0 +1,8 @@
+Starmie: 121
+Evolve: 101,0
+level,move_id
+1,28 Water Gun
+1,30 Rapid Spin
+1,123 Recover
+1,49 Swift
+33,93 Confuse Ray

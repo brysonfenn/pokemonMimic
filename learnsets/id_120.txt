@@ -7,3 +7,7 @@ level,move_id
 10,30 Rapid Spin
 15,123 Recover
 24,49 Swift
+28,124 Bubble Beam
+33,72 Minimize
+42,73 Cosmic Power
+46,33 Hydro Pump

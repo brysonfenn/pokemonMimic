@@ -1,0 +1,9 @@
+Poliwag: 60
+Evolve: 25,61
+level,move_id
+1,13 Bubble
+7,125 Hypnosis
+13,28 Water Gun
+19,71 Double Slap
+31,63 Body Slam
+43,33 Hydro Pump

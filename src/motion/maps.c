@@ -50,6 +50,9 @@ void draw_static_elements() {
         case MAP_CER_CITY:
             sprintf(map_name, "cer_city");
             break;
+        case MAP_GYM2:
+            sprintf(map_name, "gym2");
+            break;
         default:
             sprintf(map_name, "empty_map");
             break;
@@ -96,6 +99,7 @@ void draw_static_elements() {
 
         if (ch == 'W') attrset(COLOR_PAIR(GRASS_COLOR));
         else if (ch == 'Y') attrset(COLOR_PAIR(TREE_COLOR));
+        else if (ch == '~') attrset(COLOR_PAIR(WATER_COLOR));
 
          //If this is a vertical line or a space, move cursor forward rather than printing
          // vertical line characters in a text file have the value 130
