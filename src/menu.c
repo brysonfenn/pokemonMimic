@@ -8,10 +8,11 @@
 #include "print/print_utils.h"
 #include "monsters/pokemon.h"
 #include "items/items.h"
+#include "items/key_items.h"
 
 #include "motion/maps.h"
 
-static enum display { TOWN, POKEMON, BAG, PLAYER, SAVE, LOAD,
+static enum display { TOWN, POKEMON, BAG, KEY_ITEMS, PLAYER, SAVE, LOAD,
     POWER_OFF, MAIN } current_display = TOWN;
 
 static bool power_off = false;
@@ -21,7 +22,7 @@ static bool power_off = false;
 void main_menu() {
 
     int inputNum, inputNum2, return_execute, num_files, selected_poke;
-    char example_string[4096];
+    char print_str[1024] = "";
     int last_selection = 0;
     selected_poke = 0;
     Pokemon tempPok;
@@ -42,7 +43,7 @@ void main_menu() {
         //This is the actual main menu
         case MAIN:
             begin_list();
-            print_to_list("  Back\n  Pokemon\n  Bag\n  Player\n");
+            print_to_list("  Back\n  Pokemon\n  Bag\n  Key Items\n  Player\n");
             print_to_list("  Save Game\n  Load Game\n  Power Off\n\n");
 
             inputNum = get_selection(0, 6, last_selection);
@@ -89,6 +90,18 @@ void main_menu() {
 
             //Return to bag menu if item failed, else back to main menu
             if (return_execute == ITEM_FAILURE || return_execute == ITEM_CATCH_FAILURE) { continue; }
+            current_display = MAIN;
+            break;
+
+        case KEY_ITEMS:
+            begin_list();
+            print_to_list("Key Items:");
+            for (int i = 0; i < player.numKeyItems; i++) {
+                sprintf(print_str, "  %s\n", get_key_item_name(player.key_items[i]));
+                print_to_list(print_str);
+            }
+            print_to_list(" \n  Cancel");
+            get_selection(player.numKeyItems+2,0,0);
             current_display = MAIN;
             break;
         

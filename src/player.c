@@ -12,6 +12,7 @@
 #include "print/print_defines.h"
 #include "print/print_battle.h"
 #include "items/items.h"
+#include "items/key_items.h"
 
 struct playerCharacter player;
 
@@ -22,6 +23,7 @@ void default_load();
 //  If save_file != 0, load player from previous save file
 void player_init(int save_file) {
   player.bag = malloc(sizeof(Item) * 30);
+  player.key_items = malloc(sizeof(int) * 30);
   
   player.loc = malloc(sizeof(Location));
   player.blackout_center = malloc(sizeof(Location));
@@ -54,6 +56,10 @@ void default_load() {
   player.bag[2] = pokeball;
   player.bag[2].number += 5;
   player.money = 1000;
+
+  player.numKeyItems = 2;
+  player.key_items[0] = K_ITEM_FOSSIL_DOME;
+  player.key_items[1] = K_ITEM_EMPTY;
 
   player.numInPCStorage = 0;
 
