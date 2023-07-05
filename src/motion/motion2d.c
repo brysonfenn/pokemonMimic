@@ -20,6 +20,8 @@
 #include "../items/items.h"
 #include "../poke_center.h"
 
+#include "../items/key_items.h"
+
 
 //Function pointers
 typedef void (*init_map_func) ();
@@ -157,30 +159,10 @@ void handle_motion() {
 
         draw_static_elements();
 
-        bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR) && !(leave_msg_count < 5);
-        // hitGrass = hitGrass || (player.loc->map == MAP_MT_MOON);
-
-        int random = rand() % 100;
-
         // Set player color, move, and unset
         attrset(COLOR_PAIR(PLAYER_COLOR));
         mvaddch(*player_y, *player_x, player_char);
         attrset(COLOR_PAIR(DEFAULT_COLOR));
-
-        //Display player location
-        // sprintf(print_str, "Player location (%d,%d)", *player_x, *player_y);
-        // mvprintw(21,4, print_str); 
-
-        refresh();
-
-        if (hitGrass && (random < 10)) {
-            save_print_state();
-            blink_screen(5, restore_print_state);
-            begin_message_box(); save_print_state();
-            battle_wild_pokemon();
-            init_map();
-            continue;
-        }
 
         // Check if action or portal needs to be handled
         Location door = *(get_door(*player_x, *player_y));
@@ -196,6 +178,26 @@ void handle_motion() {
             usleep(300000);
             handle_actions(action);
             player_char = PLAYER_MOVING_DOWN;
+            init_map();
+            continue;
+        }
+
+        bool hitGrass = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR) && !(leave_msg_count < 5);
+        hitGrass = hitGrass || (player.loc->map == MAP_MT_MOON);
+
+        int random = rand() % 100;
+
+        //Display player location
+        // sprintf(print_str, "Player location (%d,%d)", *player_x, *player_y);
+        // mvprintw(21,4, print_str); 
+
+        refresh();
+
+        if (hitGrass && (random < 10)) {
+            save_print_state();
+            blink_screen(5, restore_print_state);
+            begin_message_box(); save_print_state();
+            battle_wild_pokemon();
             init_map();
             continue;
         }
@@ -296,6 +298,8 @@ void init_map() {
 
 //Handle all map actions
 void handle_actions(int action_id) {
+    int input;
+
     switch (action_id) {
         case MART_ACTION:
             while (handle_mart() == ITEM_FAILURE) { clear(); }
@@ -303,6 +307,30 @@ void handle_actions(int action_id) {
             break;
         case POKE_CENTER_ACTION:
             handle_poke_center();
+            player.loc->y += 1; //Set player location to outside
+            break;
+        case FOSSIL_ACTION:
+            clear();
+            begin_list();
+
+            if (has_key_item(K_ITEM_FOSSIL_HELIX) || has_key_item(K_ITEM_FOSSIL_DOME)) {
+                print_to_list("You already have a fossil!"); sleep(2);
+                player.loc->y += 1;
+                break;
+            }
+
+            print_to_list("Select one:\n  Helix Fossil\n  Dome Fossil\n  Cancel");
+            input = get_selection(1, 2, 0);
+            if (input == 0) {
+                player.key_items[player.numKeyItems] = K_ITEM_FOSSIL_HELIX;
+                player.numKeyItems++;
+                print_to_list("Received the Helix Fossil"); sleep(2);
+            }
+            else if (input == 1) {
+                player.key_items[player.numKeyItems] = K_ITEM_FOSSIL_DOME;
+                player.numKeyItems++;
+                print_to_list("Received the Dome Fossil"); sleep(2);
+            }
             player.loc->y += 1; //Set player location to outside
             break;
         default:

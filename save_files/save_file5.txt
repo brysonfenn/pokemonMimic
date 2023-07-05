@@ -20,7 +20,7 @@ Antidote. 5 1
 Pokeball. 3 4
 
 Key Items: 2
-  2 1 
+  
 
 Trainers Battled: 10
   1 2 3 5 7 13 6 12 201 14 

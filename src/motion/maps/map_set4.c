@@ -25,14 +25,16 @@ void draw_mt_moon() {
     draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 4);
     add_exit_portal(MAP_BOTTOM, MAP_WIDTH - 4, MAP_R3);
 
-    draw_town_exit(MAP_RIGHT, 5);
-    add_exit_portal(MAP_RIGHT, 5, MAP_CER_CITY);
+    draw_town_exit(MAP_RIGHT, 7);
+    add_exit_portal(MAP_RIGHT, 7, MAP_CER_CITY);
 
     add_trainer(MAP_X+26, MAP_Y+11, &trainer15, PLAYER_MOVING_RIGHT);
     add_trainer(MAP_X+19, MAP_Y+9, &trainer16, PLAYER_MOVING_RIGHT);
     add_trainer(MAP_X+24, MAP_Y+3, &trainer17, PLAYER_MOVING_LEFT);
-    add_trainer(MAP_X+47, MAP_Y+3, &trainer18, PLAYER_MOVING_RIGHT);
+    // add_trainer(MAP_X+51, MAP_Y+5, &trainer18, PLAYER_MOVING_RIGHT);
     add_trainer(MAP_X+41, MAP_Y+1, &trainer19, PLAYER_MOVING_DOWN);
+
+    drawBuilding_default(MAP_X+MAP_WIDTH-2-DEFAULT_BUILDING_WIDTH, MAP_Y+1, "FOSL", FOSSIL_ACTION);
 }
 
 void draw_cer_city() {
@@ -40,8 +42,8 @@ void draw_cer_city() {
     begin_message_box();
     print_to_message_box("Cerulean City");
 
-    draw_town_exit(MAP_LEFT, 5);
-    add_exit_portal(MAP_LEFT, 5, MAP_MT_MOON);
+    draw_town_exit(MAP_LEFT, 7);
+    add_exit_portal(MAP_LEFT, 7, MAP_MT_MOON);
 
     drawBuilding_default(MAP_X+30,MAP_Y+8, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+10,MAP_Y+12, "Mart", MART_ACTION);

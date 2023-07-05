@@ -3,15 +3,15 @@
 01 │                                o        o              │
 02 │           oooooooooooooo       o        o              │
 03 │                        o       o        ooooo          │
-04 │                        o       o            o     o    │
-05 │      ooooooooooooooooooo       oooooo       o     o    │
-06 │                        o                    o     o    │
-07 │                        o                    o     o    │
-08 │                        o                    o     o    │
-09 │oooooooooooooooooo      oooooooooooooo       ooooooo    │
+04 │                        o       o            o          │
+05 │      ooooooooooooooooooo       oooooo       o   o      │
+06 │                        o                    o   o      │
+07 │                        o                    o   o      │
+08 │                        o                    o   o      │
+09 │oooooooooooooooooo      oooooooooooooo       ooooo      │
 10 │                        o            o                  │
 11 │                        o            o                  │
-12 │    o    oooooooooooooooo      o     oooooooooooooooooo │
+12 │    o    oooooooooooooooo      o     ooooooooooooooooooo│
 13 │    o                          o                        │
 14 │    o                          o                        │
 15 │    o                   o      o                        │
