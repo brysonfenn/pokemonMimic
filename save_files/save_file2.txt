@@ -1,4 +1,4 @@
-Last Saved: 06/11/2023 17:51:11
+Last Saved: 07/05/2023 07:00:42
 Player: Bry
 2 0 3 1000
 Location: {2,(10,14)}
@@ -14,6 +14,9 @@ Bag:
 Potion. 1 1
 Super Potion. 2 2
 Pokeball. 3 4
+
+Key Items: 0
+  
 
 Trainers Battled: 0
   

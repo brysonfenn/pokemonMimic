@@ -102,6 +102,13 @@ int save_game(int file_num) {
 		fprintf(fp, "%s. %d %d\n", curr_item.name, curr_item.id_num, curr_item.number);
 	}
 
+	fprintf(fp, "\nKey Items: %d\n", player.numKeyItems);
+	fprintf(fp, "  ");
+	for (int i = 0; i < player.numKeyItems; i++) {
+		fprintf(fp, "%d ", player.key_items[i]);
+	}
+	fprintf(fp, "\n");
+
 	fprintf(fp, "\nTrainers Battled: %d\n", player.num_trainers_battled);
 	fprintf(fp, "  ");
 	for (int i = 0; i < player.num_trainers_battled; i++) {
@@ -198,6 +205,29 @@ int load_game(int file_num) {
 	}
 
 	int id;
+
+	//Key Items
+	fgets(line, LINE_SIZE, fp); //Empty line
+	fgets(line, LINE_SIZE, fp); //Key Items
+
+	fgets(line, LINE_SIZE, fp);
+	char * key_items_str = line;
+	key_items_str += 2;
+	player.numKeyItems = 0;
+
+	// Scan the string for integers
+    while (sscanf(key_items_str, "%d", &id) == 1) {
+        player.key_items[player.numKeyItems] = id;
+		player.numKeyItems++;
+
+        // Move to the next number in the string
+        key_items_str = strchr(key_items_str, ' ');
+        if (key_items_str == NULL) {
+            break;
+        }
+        key_items_str++;	//Move up a space
+    }
+
 
 	fgets(line, LINE_SIZE, fp); //Empty line
 	fgets(line, LINE_SIZE, fp); //Trainers Battled

@@ -46,7 +46,7 @@ void main_menu() {
             print_to_list("  Back\n  Pokemon\n  Bag\n  Key Items\n  Player\n");
             print_to_list("  Save Game\n  Load Game\n  Power Off\n\n");
 
-            inputNum = get_selection(0, 6, last_selection);
+            inputNum = get_selection(0, 7, last_selection);
             if (inputNum == PRESSED_B) inputNum = TOWN;
 
             last_selection = inputNum;

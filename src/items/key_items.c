@@ -1,6 +1,6 @@
 #include "key_items.h"
 
-#include "player.h"
+#include "../player.h"
 
 static char key_item_names[10][32] = {"Empty Key Item", "Helix Fossil", "Dome Fossil"};
 

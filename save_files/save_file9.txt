@@ -1,4 +1,4 @@
-Last Saved: 06/24/2023 13:55:04
+Last Saved: 07/05/2023 07:02:51
 Player: Test_Player
 1 6 3 1000
 Location: {7,(33,9)}
@@ -33,6 +33,9 @@ Bag:
 Potion. 1 2
 Super Potion. 2 2
 Pokeball. 3 3
+
+Key Items: 0
+  
 
 Trainers Battled: 0
   

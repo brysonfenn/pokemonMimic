@@ -1,4 +1,4 @@
-Last Saved: 07/03/2023 08:59:01
+Last Saved: 07/05/2023 07:02:15
 Player: Oliver H
 4 0 2 1195
 Location: {2,(8,10)}
@@ -21,5 +21,8 @@ Bag:
 Potion. 1 1
 Antidote. 5 2
 
-Trainers Battled: 1
-  1 
+Key Items: 0
+  
+
+Trainers Battled: 0
+  
