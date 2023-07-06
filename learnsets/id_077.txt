@@ -1,7 +1,7 @@
 Ponyta: 77
 Evolve: 40,78
 level,move_id
-1, Quick Attack
+1,8 Quick Attack
 5,3 Growl
 9,4 Tail Whip
 14,12 Ember
