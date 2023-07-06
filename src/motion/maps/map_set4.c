@@ -31,7 +31,7 @@ void draw_mt_moon() {
     add_trainer(MAP_X+26, MAP_Y+11, &trainer15, PLAYER_MOVING_RIGHT);
     add_trainer(MAP_X+19, MAP_Y+9, &trainer16, PLAYER_MOVING_RIGHT);
     add_trainer(MAP_X+24, MAP_Y+3, &trainer17, PLAYER_MOVING_LEFT);
-    // add_trainer(MAP_X+51, MAP_Y+5, &trainer18, PLAYER_MOVING_RIGHT);
+    add_trainer(MAP_X+51, MAP_Y+5, &trainer18, PLAYER_MOVING_RIGHT);
     add_trainer(MAP_X+41, MAP_Y+1, &trainer19, PLAYER_MOVING_DOWN);
 
     drawBuilding_default(MAP_X+MAP_WIDTH-2-DEFAULT_BUILDING_WIDTH, MAP_Y+1, "FOSL", FOSSIL_ACTION);
