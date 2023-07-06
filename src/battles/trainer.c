@@ -67,7 +67,7 @@ int battle_trainer(Trainer * trainer) {
     }
 
     //Execute battle, and break out of loop if white out or finished last trainer pokemon
-    battle_result = initiate_battle(&(trainer_pokemon[i]));
+    battle_result = handle_battle(&(trainer_pokemon[i]));
     if (battle_result == BATTLE_WHITE_OUT || i >= trainer->num_in_party - 1) { break; }
 
     //If player only has one pokemon left alive, they can't switch

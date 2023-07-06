@@ -18,6 +18,11 @@
 
 #define STRUGGLE_MOVE_NUM -1
 
+#define ATTACK_SUCCESS 0
+#define ATTACK_FAIL 1
+#define ATTACK_END_BATTLE 2
+
+
 struct Pokemon;
 
 typedef int (*attack_func_ptr) (Condition, int, struct Pokemon*, int);

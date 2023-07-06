@@ -182,7 +182,7 @@ attack * get_attack_by_id(id_num) {
 
 //Filler side-effect function that does nothing
 int attack_do_nothing(Condition condition, int accuracy, struct Pokemon* pok, int damage) {
-	return 0;
+	return ATTACK_SUCCESS;
 }
 
 //Change the stat of a pok (stat_type is the type of stat, stage_number is the number of stages to increment (+) or decrement (-))
@@ -268,9 +268,9 @@ int increment_self_stat(Condition stat_type, int chance, struct Pokemon* victim,
     int random = rand() % 100;
     if (random < chance) {
         change_stat(stat_type, 1, self);
-        return 0;
+        return ATTACK_SUCCESS;
     }
-    else return 1;
+    else return ATTACK_FAIL;
 }
 
 
@@ -284,9 +284,9 @@ int increment_self_stat2(Condition stat_type, int chance, struct Pokemon* victim
     int random = rand() % 100;
     if (random < chance) {
         change_stat(stat_type, 2, self);
-        return 0;
+        return ATTACK_SUCCESS;
     }
-    else return 1;
+    else return ATTACK_FAIL;
 }
 
 //Certain attacks can decrement an enemy pokemon's stat
@@ -294,25 +294,25 @@ int decrement_opponent_stat(Condition stat_type, int chance, struct Pokemon* vic
     int random = rand() % 100;
     if (random < chance) {
         change_stat(stat_type, -1, victim);
-        return 0;
+        return ATTACK_SUCCESS;
     }
-    else return 1;
+    else return ATTACK_FAIL;
 }
 
 int decrement_opponent_stat2(Condition stat_type, int chance, struct Pokemon* victim, int damage) {
     int random = rand() % 100;
     if (random < chance) {
         change_stat(stat_type, -2, victim);
-        return 0;
+        return ATTACK_SUCCESS;
     }
-    else return 1;
+    else return ATTACK_FAIL;
 }
 
 int deal_specific_damage(Condition nothing1, int hp, struct Pokemon* victim, int nothing2) {
     bool enemy = (victim != player.enemy_pokemon);
     blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
     victim->currentHP -= hp;
-    return 0;
+    return ATTACK_SUCCESS;
 }
 
 //Some attacks hit multiple times
@@ -345,7 +345,7 @@ int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int
     text_box_cursors(TEXT_BOX_BEGINNING);
     printw("Hit %d time(s)", i+1); refresh(); sleep(2);
 
-    return 0;
+    return ATTACK_SUCCESS;
 }
 
 
@@ -390,7 +390,7 @@ int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
         default:
         text_box_cursors(TEXT_BOX_BEGINNING);
             printw("Unrecognized heal_type"); refresh(); sleep(2);
-            return 1;
+            return ATTACK_FAIL;
     }
 
     if (self->currentHP > self->maxHP) {
@@ -402,7 +402,7 @@ int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
     text_box_cursors(TEXT_BOX_BEGINNING);
     printw("%s restored hp!", self->name); refresh(); sleep(1);
 
-    return 0;
+    return ATTACK_SUCCESS;
 }
 
 
@@ -434,7 +434,7 @@ int self_inflict_damage(int damage_type, int hp, struct Pokemon* victim, int dam
         default:
         text_box_cursors(TEXT_BOX_BEGINNING);
             printw("Unrecognized damage_type"); refresh(); sleep(2);
-            return 1;
+            return ATTACK_FAIL;
     }
 
     if (self->currentHP < 0) {
@@ -446,5 +446,5 @@ int self_inflict_damage(int damage_type, int hp, struct Pokemon* victim, int dam
     text_box_cursors(TEXT_BOX_BEGINNING);
     printw("%s took damage too!", self->name); refresh(); sleep(1);
 
-    return 0;
+    return ATTACK_SUCCESS;
 }

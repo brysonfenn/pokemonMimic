@@ -78,7 +78,7 @@ int rest_move_func(int nothing1, int nothing2, struct Pokemon * victim, int dama
     printw("%s went to sleep!", self->name); refresh(); sleep(2);
     clear_battle_box(); printBattle();
 
-    return 0;
+    return ATTACK_SUCCESS;
 }
 
 
@@ -105,6 +105,8 @@ int magnitude_move_func(int nothing1, int nothing2, struct Pokemon * victim, int
 
     // Baseline damage
     deal_damage(power, self, victim, GROUND);
+
+    return ATTACK_SUCCESS;
 }
 
 
@@ -126,6 +128,7 @@ int handle_repeats(int repeat_times, struct Pokemon * pok) {
         }
         return repeat_value;
     }
+
 }
 
 
@@ -138,7 +141,7 @@ int rollout_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
     int repeat_val = handle_repeats(5, self);
     int power;
 
-    if (repeat_val == REMOVED_REPEATS) return 1;
+    if (repeat_val == REMOVED_REPEATS) return ATTACK_FAIL;
     else if (repeat_val == ADDED_REPEATS) power = 30;
     else power = 30 * (6 - repeat_val);
 
@@ -146,7 +149,7 @@ int rollout_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
 
     deal_damage(power, self, victim, ROCK);
 
-    return 0;
+    return ATTACK_SUCCESS;
 }
 
 
@@ -158,11 +161,12 @@ int swagger_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
     increment_self_stat2(ATTACK_STAT, 100, self, damage);
     remove_hidden_condition(victim, REPEAT_MOVE);  //Repeat move should be ended
     inflict_condition(CONFUSED, 100, victim, damage);
-    return 0;
+    return ATTACK_SUCCESS;
 }
 
 
 //Special function for Seismic Toss move
 int seismic_toss_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
     deal_specific_damage(nothing1, victim->level, victim, damage);
+    return ATTACK_SUCCESS;
 }

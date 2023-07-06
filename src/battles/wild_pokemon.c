@@ -23,7 +23,7 @@ int battle_wild_pokemon() {
         sprintf(print_str, "  A wild %s appeared!\n", example_pokemon.name);
         print_to_list(print_str);
         sleep(2);
-        battle_result = initiate_battle(&example_pokemon);
+        battle_result = handle_battle(&example_pokemon);
     }
     else {
         print_to_list("  All Pokemon have fainted, please heal them.\n");

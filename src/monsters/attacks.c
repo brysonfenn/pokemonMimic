@@ -23,7 +23,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
       printw("%s is fast asleep...", perp->name);
       refresh(); sleep(2);
       perp->sleep_count--;
-      return 0;
+      return ATTACK_SUCCESS;
     }
     else {
       printw("%s woke up!", perp->name);
@@ -39,7 +39,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
       if (enemy) printw(ENEMY_TEXT);
       printw("%s is paralyzed, it can't move!", perp->name);
       refresh(); sleep(2);
-      return 0;
+      return ATTACK_SUCCESS;
     }
   }
 
@@ -47,7 +47,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
   else if (has_hidden_condition(perp, FLINCHED)) {
     if (enemy) printw(ENEMY_TEXT);
     printw("%s flinched!", perp->name);
-    refresh(); sleep(1); return 0;
+    refresh(); sleep(1); return ATTACK_SUCCESS;
   }
 
   //Handle Confusion
@@ -71,7 +71,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
         //Player attacks itself with base power 40
         int damage = get_basic_damage(perp->level, 40, perp->baseAttack, perp->baseDefense, perp->atk_stage, perp->def_stage);
         perp->currentHP -= damage;
-        return 0;
+        return ATTACK_SUCCESS;
       }
     }
   }
@@ -79,7 +79,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
   //Struggle if PP is zero
   if (move_num == STRUGGLE_MOVE_NUM) {
     perform_struggle(perp, victim, enemy);
-    return 0;
+    return ATTACK_SUCCESS;
   }
 
   //Decrement pp and assign attack
@@ -114,7 +114,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     else {
       printw("But it failed!");
     }
-    refresh(); sleep(2); return 0;
+    refresh(); sleep(2); return ATTACK_SUCCESS;
   }
 
   int damage = 0;
@@ -150,7 +150,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
 
   chosenAttack.side_effect(chosenAttack.condition, chosenAttack.chance, victim, damage);
 
-  return 0;
+  return ATTACK_SUCCESS;
 }
 
 

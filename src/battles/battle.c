@@ -28,10 +28,10 @@ void handle_exp(int exp);
 bool run_attempt();
 
 //Begin a Battle with a given pokemon
-int initiate_battle(struct Pokemon * enemyPok) {
+int handle_battle(struct Pokemon * enemyPok) {
   int inputNum, max_input;
   bool enemy_attacks, fainted_switch, out_of_pp, run_success, catch_success;
-  int return_execute, attack_num, enemy_attack_num, item_num, pokemon_selected, speed_difference;
+  int return_execute, attack_result, attack_num, enemy_attack_num, item_num, pokemon_selected, speed_difference;
   char print_str[512];
 
   attack_num = item_num = pokemon_selected = speed_difference = 0;
@@ -260,8 +260,8 @@ int initiate_battle(struct Pokemon * enemyPok) {
 
       //Pokemon with the higher speed goes first
       if (speed_difference > 0) {
-        return_execute = perform_attack(currentPok, attack_num, enemyPok, false);
-        if (return_execute == 0) enemy_attacks = true;
+        attack_result = perform_attack(currentPok, attack_num, enemyPok, false);
+        if (attack_result == 0) enemy_attacks = true;
       }
       else if (speed_difference < 0) {
         perform_enemy_attack(currentPok, enemyPok, enemy_attack_num);
@@ -270,7 +270,7 @@ int initiate_battle(struct Pokemon * enemyPok) {
         clear_text_box();
         //Player Pokemon can only attack if still alive
         if (currentPok->currentHP > 0 && enemyPok->currentHP > 0) {
-          return_execute = perform_attack(currentPok, attack_num, enemyPok, false);
+          attack_result = perform_attack(currentPok, attack_num, enemyPok, false);
         }
       }
 

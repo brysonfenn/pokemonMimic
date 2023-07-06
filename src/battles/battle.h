@@ -8,6 +8,6 @@
 struct Pokemon;
 
 //Begin a Battle with a given pokemon
-int initiate_battle(struct Pokemon * enemyPoke);
+int handle_battle(struct Pokemon * enemyPoke);
 
 #endif
