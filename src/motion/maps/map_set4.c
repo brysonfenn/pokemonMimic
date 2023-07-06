@@ -14,7 +14,7 @@
 static Trainer trainer15 = {15, "Miner Jason", "I have been mining for hours, I need a break.", 2, {POKEMON_GEODUDE, POKEMON_EKANS}, {9,11} };
 static Trainer trainer16 = {16, "Trainer Andrew", "This cave is really dark!", 2, {POKEMON_ZUBAT, POKEMON_PARAS}, {10,11} };
 static Trainer trainer17 = {17, "Trainer Peter", "I'm looking for cool rocks!", 2, {POKEMON_GEODUDE, POKEMON_MANKEY}, {12,13} };
-static Trainer trainer18 = {18, "Trainer Paul", "I caught some evolved Pokemon!", 2, {POKEMON_PARASECT, POKEMON_GRAVELER}, {10,10} };
+static Trainer trainer18 = {18, "Rival G", "It's been a while! Let's Battle!", 3, {POKEMON_RATTATA, POKEMON_GRAVELER, POKEMON_SQUIRTLE}, {10,11,13} };
 static Trainer trainer19 = {19, "Trainer Matthew", "I like poison types!", 2, {POKEMON_ZUBAT, POKEMON_EKANS}, {10,10} };
 
 void draw_mt_moon() {
