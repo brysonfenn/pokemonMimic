@@ -1,0 +1,12 @@
+Ponyta: 77
+Evolve: 40,78
+level,move_id
+1, Quick Attack
+5,3 Growl
+9,4 Tail Whip
+14,12 Ember
+19,127 Stomp
+25,25 Fire Spin
+31,120 Take Down
+38,43 Agility
+53,128 Fire Blast

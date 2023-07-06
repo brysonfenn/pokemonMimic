@@ -45,6 +45,9 @@ void draw_cer_city() {
     draw_town_exit(MAP_LEFT, 7);
     add_exit_portal(MAP_LEFT, 7, MAP_MT_MOON);
 
+    draw_town_exit(MAP_TOP, MAP_WIDTH - 5);
+    add_exit_portal(MAP_TOP, MAP_WIDTH - 5, MAP_R4);
+
     drawBuilding_default(MAP_X+30,MAP_Y+8, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+10,MAP_Y+12, "Mart", MART_ACTION);
 
@@ -65,4 +68,27 @@ void draw_gym2() {
     add_trainer(INTERIOR_X+INTERIOR_WIDTH-2, INTERIOR_Y+4, &trainer21, PLAYER_MOVING_LEFT);
     add_trainer(INTERIOR_X+14, INTERIOR_Y+1, &leader202, PLAYER_MOVING_DOWN);
     
+}
+
+static Trainer trainer22 = {22, "Trainer Jackie", "oo ah oo da ba?", 2, {POKEMON_VULPIX, POKEMON_JIGGLYPUFF}, {9,10} };
+static Trainer trainer23 = {23, "Youngster Russell", "I'm looking for apple pants!", 2, {POKEMON_EKANS, POKEMON_PIDGEOTTO}, {10,10} };
+static Trainer trainer24 = {24, "Trainer Erin", "I'm here looking after Russell.", 2, {POKEMON_SANDSHREW, POKEMON_GROWLITHE}, {10,11} };
+static Trainer trainer25 = {25, "Cooltrainer Lydia", "I like Pokemon!!", 2, {POKEMON_CLEFAIRY, POKEMON_BUTTERFREE}, {11,11} };
+static Trainer trainer26 = {26, "Cooltrainer Hailey", "I like watching Pokemon!!", 3, {POKEMON_MANKEY, POKEMON_GOLBAT, POKEMON_GLOOM}, {11,11,12} };
+
+void draw_route4() {
+    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
+    begin_message_box();
+    print_to_message_box("Route 4");
+
+    //Draw Doors
+    draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 5);
+    add_exit_portal(MAP_BOTTOM, MAP_WIDTH - 5, MAP_CER_CITY);
+
+    add_trainer(MAP_X+48, MAP_Y+13, &trainer22, PLAYER_MOVING_RIGHT);
+    add_trainer(MAP_X+MAP_WIDTH-2, MAP_Y+11, &trainer23, PLAYER_MOVING_LEFT);
+    add_trainer(MAP_X+48, MAP_Y+9, &trainer24, PLAYER_MOVING_RIGHT);
+    add_trainer(MAP_X+MAP_WIDTH-2, MAP_Y+7, &trainer25, PLAYER_MOVING_LEFT);
+    add_trainer(MAP_X+48, MAP_Y+5, &trainer26, PLAYER_MOVING_RIGHT);
+
 }

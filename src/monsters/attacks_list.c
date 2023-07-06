@@ -153,6 +153,8 @@ attack recover      = {"Recover"      ,123,  5,   0,  NO_MISS, GRASS,    false, 
 attack bubble_beam  = {"Bubble Beam"  ,124, 20,  65,      100, WATER,    false, &decrement_opponent_stat, SPEED_STAT, 10 };
 attack hypnosis     = {"Hypnosis"     ,125, 20,   0,       60, PSYCHIC,  false, &inflict_condition, ASLEEP, 100 };
 attack submission   = {"Submission"   ,126, 25,  80,       80, FIGHTING, false, &self_inflict_damage, PERCENT_DAMAGE_DEALT, 25 };
+attack stomp        = {"Stomp"        ,127, 20,  65,      100, NORMAL,   false, &inflict_condition, FLINCHED, 30 };
+attack fire_blast   = {"Fire Blast"   ,128,  5, 120,       85, FIRE,     false, &inflict_condition, BURNED, 30 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -168,7 +170,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &acid, &will_o_wisp, &confuse_ray, &rest, &hyper_voice, &leech_life, &astonish, &air_cutter, &poison_fang, &absorb,                     // #91-100
     &petal_dance, &mega_drain, &spore, &giga_drain, &psychic, &magnitude, &rollout, &mud_slap, &swagger, &fissure,                          // #101-110
     &tri_attack, &pay_day, &faint_attack, &fake_out, &disable, &low_kick, &karate_chop, &seismic_toss, &cross_chop, &take_down,             // #111-120
-    &flame_wheel, &extreme_speed, &recover, &bubble_beam, &hypnosis, &submission
+    &flame_wheel, &extreme_speed, &recover, &bubble_beam, &hypnosis, &submission, &stomp, &fire_blast
 
 };
 
