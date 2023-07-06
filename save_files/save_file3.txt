@@ -1,14 +1,14 @@
-Last Saved: 07/05/2023 19:29:08
+Last Saved: 07/06/2023 08:19:24
 Player: Elliot H
-6 4 3 3825
-Location: {10,(57,16)}
+6 4 3 4320
+Location: {10,(24,9)}
 Heal Center: {9,(49,5)}
 Pokemon: 
-Charmander 4 33 33 4 18 16 12 10 21 13 2572 FIRE NONE 772e8be0 0 0
+Charmander 4 34 26 4 19 17 12 10 23 14 3106 FIRE NONE 772e8be0 0 0
 	Scratch. 2 35
 	Growl. 3 40
-	Ember. 12 25
-	Metal Claw. 17 35
+	Ember. 12 22
+	Metal Claw. 17 34
 Nidoran♂ 32 24 24 2 15 10 12 11 12 7 343 POISON NONE 42cd13d1 0 0
 	Leer. 52 30
 	Peck. 51 35
@@ -48,5 +48,5 @@ Pokeball. 3 2
 Key Items: 0
   
 
-Trainers Battled: 14
-  1 3 2 5 7 9 10 12 11 6 201 13 14 15 
+Trainers Battled: 15
+  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 

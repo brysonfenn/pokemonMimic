@@ -34,7 +34,7 @@
 
 #define SELECTION_CHAR '*'
 #define ENEMY_TEXT "Foe "
-#define LINE_SIZE 100
+#define LINE_SIZE 1024
 
 #define PRESSED_B -1
 

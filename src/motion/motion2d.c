@@ -157,8 +157,6 @@ void handle_motion() {
         if (leave_msg_count < 5) leave_msg_count++;
         else begin_message_box();
 
-        draw_static_elements();
-
         // Set player color, move, and unset
         attrset(COLOR_PAIR(PLAYER_COLOR));
         mvaddch(*player_y, *player_x, player_char);
@@ -184,8 +182,15 @@ void handle_motion() {
 
         int random = rand() % 100;
 
+        draw_static_elements();
+
         bool encounter = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR) && !(leave_msg_count < 5) && random < 10;
         encounter = encounter || ((player.loc->map == MAP_MT_MOON) && random < 5);
+
+        // Set player color, move, and unset
+        attrset(COLOR_PAIR(PLAYER_COLOR));
+        mvaddch(*player_y, *player_x, player_char);
+        attrset(COLOR_PAIR(DEFAULT_COLOR));
 
         //Display player location
         // sprintf(print_str, "Player location (%d,%d)", *player_x, *player_y);
@@ -256,8 +261,6 @@ void handle_motion() {
 //Change and redraw the map and player
 void change_map(int map, int x, int y) {
     clear();
-    clear_doors();
-    clear_selectables();
     usleep(10000);
 
     player.loc->x = x;
@@ -282,6 +285,8 @@ bool is_movable_space(int yInc, int xInc) {
 //Draw map and player onto the screen
 void init_map() {
     clear();
+    clear_doors();
+    clear_selectables();
     draw_map();
     print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
     draw_static_elements();

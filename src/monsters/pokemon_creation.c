@@ -34,7 +34,7 @@ static Pokemon_id wild_pok_lists[20][10] = {
   { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //Map #10 Mt Moon
   { 3,   8, 10, POKEMON_VULPIX, POKEMON_EKANS, POKEMON_MANKEY }, //Map #11 Cerulean City
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #12 Gym 2
-  { 4,   8, 10, POKEMON_VULPIX, POKEMON_POLIWAG, POKEMON_PONYTA, POKEMON_MEOWTH} //Map #13 Route 4
+  { 1,   8, 10, POKEMON_PONYTA, POKEMON_POLIWAG, POKEMON_VULPIX, POKEMON_MEOWTH } //Map #13 Route 4
 };
 
 static Pokemon newest_pokemon;
@@ -55,6 +55,7 @@ void pokemon_init(Pokemon * new_pok, int level, int level_min, int level_max) {
   calculate_stats(new_pok, level, level_min, level_max);
   new_pok->currentHP = new_pok->maxHP;
   new_pok->exp = (new_pok->level * new_pok->level * new_pok->level);
+
   pokemon_give_moves(new_pok);
 }
 
@@ -83,6 +84,7 @@ Pokemon * get_random_pokemon(int level_min, int level_max) {
 //Return a random pokemon, excluding starters
 //Always immediately dereference the return value of this function.
 Pokemon * get_random_wild_pokemon(int level_min, int level_max) {
+
   int pok_position, new_pok_id;
   int min_level = 2;
   int max_level = 6;
