@@ -33,6 +33,16 @@ void print_pokemon_list(struct Pokemon * pokList, int list_size) {
     //handle spacing
     for (int j = strlen(current_pok.name); j < 15; j++) sprintf(list_str, "%s ", list_str);
 
+    //Fix male/female symbol spacing
+    char * nidoran_name = "Nidoran";
+    char * name = current_pok.name;
+    bool is_nidoran = true;
+
+    for (int j = 0; j < strlen(nidoran_name); j++) {
+      if (nidoran_name[j] != name[j]) is_nidoran = false; break;
+    }
+    if (is_nidoran) sprintf(list_str, "%s  ", list_str);
+
     sprintf(list_str, "%sLVL %d\tHP: %d/%d ", list_str, current_pok.level, current, max);
     if (!(current)) sprintf(list_str, "%s (Fainted) ", list_str);
     add_condition_string(list_str, &current_pok);

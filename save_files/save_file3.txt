@@ -1,27 +1,28 @@
-Last Saved: 07/06/2023 08:19:24
+Last Saved: 07/06/2023 17:12:02
 Player: Elliot H
-6 4 3 4320
-Location: {10,(24,9)}
-Heal Center: {9,(49,5)}
+6 6 5 3770
+Location: {11,(41,12)}
+Heal Center: {11,(37,12)}
 Pokemon: 
-Charmander 4 34 26 4 19 17 12 10 23 14 3106 FIRE NONE 772e8be0 0 0
-	Scratch. 2 35
-	Growl. 3 40
-	Ember. 12 22
-	Metal Claw. 17 34
+Poliwag 60 29 29 2 16 13 14 12 24 11 1372 WATER NONE 7e0bfcc1 0 0
+	Bubble. 13 30
+	Hypnosis. 125 20
 Nidoran♂ 32 24 24 2 15 10 12 11 12 7 343 POISON NONE 42cd13d1 0 0
 	Leer. 52 30
 	Peck. 51 35
-Pidgey 16 19 19 2 9 9 7 7 10 5 129 NORMAL FLYING 669bd0ab 0 0
-	Tackle. 1 35
-	Sand Attack. 7 15
-Sandshrew 27 28 28 2 18 20 8 8 12 9 988 GROUND NONE 24456825 0 0
+Charmeleon 5 44 44 4 30 23 35 28 34 16 4836 FIRE NONE 772e8be0 0 4
+	Scratch. 2 35
+	Growl. 3 40
+	Ember. 12 25
+	Metal Claw. 17 35
+Sandshrew 27 30 30 2 20 22 8 8 13 10 1051 GROUND NONE 24456825 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
-Oddish 43 34 34 2 18 19 9 9 12 13 2463 GRASS POISON 12b62529 0 3
+Oddish 43 36 36 3 19 20 9 9 13 14 3239 GRASS POISON 12b62529 0 2
 	Absorb. 100 20
 	Sweet Scent. 19 20
-Pikachu 25 28 28 4 17 13 11 11 24 11 1356 ELECTRIC NONE 78e5409f 0 0
+	Poison Powder. 14 35
+Pikachu 25 33 33 4 20 16 11 11 30 14 2865 ELECTRIC NONE 78e5409f 0 0
 	Thunder Shock. 55 30
 	Growl. 3 40
 	Quick Attack. 8 30
@@ -40,13 +41,21 @@ Clefairy 35 35 35 3 16 16 19 20 14 10 1000 NONE NONE 31dccf2e 0 0
 Paras 46 28 28 2 19 16 14 18 12 10 1000 BUG GRASS 71700850 0 0
 	Scratch. 2 35
 	Stun Spore. 37 30
+Vulpix 37 24 24 2 12 13 14 16 17 8 512 FIRE NONE 7c9bdd8a 0 0
+	Ember. 12 25
+	Tail Whip. 4 30
+Pidgey 16 19 19 2 9 9 7 7 10 5 192 NORMAL FLYING 669bd0ab 0 1
+	Tackle. 1 35
+	Sand Attack. 7 15
 Bag:
 Antidote. 5 5
-Awakening. 7 2
-Pokeball. 3 2
+Awakening. 7 1
+Pokeball. 3 5
+Potion. 1 5
+Great Ball. 4 1
 
-Key Items: 0
-  
+Key Items: 1
+  1 
 
-Trainers Battled: 15
-  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 
+Trainers Battled: 20
+  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 18 22 23 24 25 
