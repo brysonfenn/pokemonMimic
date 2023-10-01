@@ -12,8 +12,8 @@
 
 #include "motion/maps.h"
 
-static enum display { TOWN, POKEMON, BAG, KEY_ITEMS, PLAYER, SAVE, LOAD,
-    POWER_OFF, MAIN } current_display = TOWN;
+static enum display { MOVING, POKEMON, BAG, KEY_ITEMS, PLAYER, SAVE, LOAD,
+    POWER_OFF, MENU } current_display = MOVING;
 
 static bool power_off = false;
 
@@ -41,13 +41,13 @@ void main_menu() {
         switch (current_display) {
 
         //This is the actual main menu
-        case MAIN:
+        case MENU:
             begin_list();
             print_to_list("  Back\n  Pokemon\n  Bag\n  Key Items\n  Player\n");
             print_to_list("  Save Game\n  Load Game\n  Power Off\n\n");
 
             inputNum = get_selection(0, 7, last_selection);
-            if (inputNum == PRESSED_B) inputNum = TOWN;
+            if (inputNum == PRESSED_B) inputNum = MOVING;
 
             last_selection = inputNum;
             current_display = inputNum;
@@ -55,9 +55,9 @@ void main_menu() {
             break;
 
         //Allow player to walk around. PokeCenter and Mart are here
-        case TOWN:
+        case MOVING:
             handle_motion();
-            current_display = MAIN;
+            current_display = MENU;
             break;
 
         //Handle party changes, releases, and viewing stats
@@ -77,7 +77,7 @@ void main_menu() {
                 if (return_execute == RETURN_TO_MENU) break;    //Break if requested
             }
 
-            current_display = MAIN;
+            current_display = MENU;
             break;
 
         //Handle items used by player
@@ -85,12 +85,12 @@ void main_menu() {
             begin_list();
             printBag();
             inputNum = get_selection(1, player.numInBag, 0);
-            if (inputNum == player.numInBag || inputNum == PRESSED_B) { current_display = MAIN; break; }
+            if (inputNum == player.numInBag || inputNum == PRESSED_B) { current_display = MENU; break; }
             return_execute = use_item(inputNum);
 
-            //Return to bag menu if item failed, else back to main menu
+            //Return to bag menu if item failed, else back to MENU menu
             if (return_execute == ITEM_FAILURE || return_execute == ITEM_CATCH_FAILURE) { continue; }
-            current_display = MAIN;
+            current_display = MENU;
             break;
 
         case KEY_ITEMS:
@@ -102,7 +102,7 @@ void main_menu() {
             }
             print_to_list(" \n  Cancel");
             get_selection(player.numKeyItems+2,0,0);
-            current_display = MAIN;
+            current_display = MENU;
             break;
         
         //Display player data
@@ -111,7 +111,7 @@ void main_menu() {
             printPlayer();
             print_to_list("\n \n  Cancel\n");
             inputNum = get_selection(8,0,0);
-            current_display = MAIN;
+            current_display = MENU;
             break;
 
         //Save game data to a file
@@ -123,9 +123,9 @@ void main_menu() {
             inputNum = (inputNum == 0) ? 0 : inputNum-1;  //Adjust to current save file position
             inputNum = get_selection(1, 9, inputNum);
 
-            if (inputNum == 9 || inputNum == PRESSED_B) { current_display = MAIN; break; }
+            if (inputNum == 9 || inputNum == PRESSED_B) { current_display = MENU; break; }
             save_game(inputNum+1);
-            current_display = MAIN;
+            current_display = MENU;
             break;
 
         //Load game data from a file
@@ -135,15 +135,15 @@ void main_menu() {
             print_save_files();
             inputNum = get_selection(1, 9, 0);
 
-            if (inputNum == 9 || inputNum == PRESSED_B) { current_display = MAIN; break; }
+            if (inputNum == 9 || inputNum == PRESSED_B) { current_display = MENU; break; }
             load_game(inputNum+1);
-            current_display = MAIN;
+            current_display = MENU;
             break;
 
         //Allow loop to break and end game
         case POWER_OFF:
             power_off = true;
-            current_display = MAIN;
+            current_display = MENU;
             break;
 
         //This should never happen.

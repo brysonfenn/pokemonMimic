@@ -12,8 +12,11 @@
 int perform_struggle(struct Pokemon *perp, struct Pokemon *victim, bool enemy);
 int get_basic_damage(int perp_level, int attack_power, int perp_atk, int victim_def, int perp_atk_stage, int victim_def_stage);
 
+
+// BEGIN PERFROM ATTACK //
 //Handle all operations for an attack, indicate whether this is an enemy attack (true)
 int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, bool enemy) {
+  int attack_result = 0;
 
   //Handle sleep
   text_box_cursors(TEXT_BOX_BEGINNING);
@@ -118,7 +121,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
   }
 
   int damage = 0;
-  int flags = 0; //These flags are used to detect critical hits + effectiveness
+  int flags = 0; //These flags are used to detect Critical Hits and Effectiveness
 
   //Drop HP only if attack has damage power
   if (chosenAttack.power != 0) {
@@ -148,10 +151,20 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     printw("It had no effect."); refresh(); sleep(2);
   }
 
-  chosenAttack.side_effect(chosenAttack.condition, chosenAttack.chance, victim, damage);
+  attack_result = chosenAttack.side_effect(chosenAttack.condition, chosenAttack.chance, victim, damage);
 
-  return ATTACK_SUCCESS;
+  if (attack_result == ATTACK_SUCCESS || attack_result == ATTACK_FAIL) {
+    return ATTACK_SUCCESS;
+  }
+  else {
+    if (attack_result > 2 || attack_result < 0) {
+      text_box_cursors(TEXT_BOX_NEXT_LINE);
+      printw("Found new attack_result: %d", attack_result); refresh(); sleep(5);  //Debug statement
+    }
+    return attack_result;
+  }
 }
+// END PERFROM ATTACK //
 
 
 //Get damage that should be dealt with a given move from one pokemon to another
@@ -222,6 +235,7 @@ int get_basic_damage(int perp_level, int attack_power, int perp_atk, int victim_
   return damage;
 }
 
+//Perform a "struggle" attack (happens when a pokemon attacks without PP)
 int perform_struggle(struct Pokemon *perp, struct Pokemon *victim, bool enemy) {
   clear();
   printBattle();
@@ -238,4 +252,5 @@ int perform_struggle(struct Pokemon *perp, struct Pokemon *victim, bool enemy) {
   blinkPokemon(!enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
   perp->currentHP -= (perp->maxHP / 16 + 1);
   printBattle();
+
 }

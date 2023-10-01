@@ -22,7 +22,7 @@ static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;
 static bool pokemon_needing_exp[6] = {false, false, false, false, false, false};
 
 //Forward Declarations
-void perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_num);
+int perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_num);
 int get_enemy_move(Pokemon * pok);
 void handle_exp(int exp);
 bool run_attempt();
@@ -236,7 +236,7 @@ int handle_battle(struct Pokemon * enemyPok) {
       player_speed = (int) (currentPok->baseSpeed * get_stat_modifier(currentPok->spd_stage));
       enemy_speed = (int) (enemyPok->baseSpeed * get_stat_modifier(enemyPok->spd_stage));
 
-      //Handle paralysis
+      //Handle Paralysis-Speed Effect
       if (currentPok->visible_condition == PARALYZED) {
         player_speed *= 0.25;
         player_speed = (player_speed <= 0) ? 1 : player_speed;
@@ -246,7 +246,7 @@ int handle_battle(struct Pokemon * enemyPok) {
         enemy_speed = (enemy_speed <= 0) ? 1 : enemy_speed;
       }
       
-      //Handle Priority
+      //Handle Priority and Speed
       enemy_priority = enemyPok->attacks[enemy_attack_num].priority;
       player_priority = currentPok->attacks[attack_num].priority;
       if (enemy_priority && !player_priority)       { speed_difference = -1; }
@@ -261,16 +261,20 @@ int handle_battle(struct Pokemon * enemyPok) {
       //Pokemon with the higher speed goes first
       if (speed_difference > 0) {
         attack_result = perform_attack(currentPok, attack_num, enemyPok, false);
-        if (attack_result == 0) enemy_attacks = true;
+        if (attack_result == ATTACK_SUCCESS) enemy_attacks = true;
+        else if (attack_result == ATTACK_END_BATTLE) run_success = true;
       }
       else if (speed_difference < 0) {
-        perform_enemy_attack(currentPok, enemyPok, enemy_attack_num);
+        attack_result = perform_enemy_attack(currentPok, enemyPok, enemy_attack_num);
+        if (attack_result == ATTACK_END_BATTLE) { run_success = true; break; }
+        
         clear();
         printBattle();
         clear_text_box();
-        //Player Pokemon can only attack if still alive
+        //Player Pokemon can only attack if both Pokemon are still alive
         if (currentPok->currentHP > 0 && enemyPok->currentHP > 0) {
           attack_result = perform_attack(currentPok, attack_num, enemyPok, false);
+          if (attack_result == ATTACK_END_BATTLE) run_success = true;
         }
       }
 
@@ -298,8 +302,6 @@ int handle_battle(struct Pokemon * enemyPok) {
 
         //Make switch
         reset_stat_stages(currentPok);
-        text_box_cursors(TEXT_BOX_BEGINNING);
-
         set_current_pokemon(pokemon_selected);
         currentPok = player.current_pokemon;
         enemy_attacks = true;
@@ -343,7 +345,8 @@ int handle_battle(struct Pokemon * enemyPok) {
 
     // Enemy performs attack if we just did something
     if (enemy_attacks && !fainted_switch) {
-      perform_enemy_attack(currentPok, enemyPok, enemy_attack_num);
+      attack_result = perform_enemy_attack(currentPok, enemyPok, enemy_attack_num);
+      if (attack_result == ATTACK_END_BATTLE) {run_success = true; break; } //End battle if enemy used leave battle attack
     }
     fainted_switch = false;
 
@@ -360,6 +363,9 @@ int handle_battle(struct Pokemon * enemyPok) {
   }
 
   remove_all_hidden_conditions(enemyPok);
+
+  text_box_cursors(TEXT_BOX_BEGINNING);
+  printw("Run success: %d, attack_result: %d", run_success, attack_result); refresh(); sleep(4);
   
   if (catch_success)
     return BATTLE_CAUGHT_POKE;
@@ -369,10 +375,10 @@ int handle_battle(struct Pokemon * enemyPok) {
 
 
 //Handle an enemyPok attacking the player's current pokemon
-void perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_num) {
+int perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_num) {
   clear();
   printBattle();
-  perform_attack(enemyPok, attack_num, currentPok, true);
+  int attack_result = perform_attack(enemyPok, attack_num, currentPok, true);
 
   if (currentPok->currentHP <= 0) {
     currentPok->currentHP = 0;
@@ -384,6 +390,8 @@ void perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_n
     clear();
     printBattle();
   }
+
+  return attack_result;
 }
 
 

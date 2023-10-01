@@ -26,5 +26,8 @@ int swagger_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
 //Special function for Seismic Toss move
 int seismic_toss_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
+//Special Function for Teleport
+int teleport_move_func(int nothing1, int chance, struct Pokemon * victim, int damage);
+
 
 #endif // ATTACKS_SPECIAL_H

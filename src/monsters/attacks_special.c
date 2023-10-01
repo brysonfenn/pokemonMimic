@@ -12,7 +12,7 @@
 #include "typings.h"
 #include "attacks.h"
 
-void deal_damage(int power, Pokemon * perp, Pokemon * victim, int move_type) {
+int deal_damage(int power, Pokemon * perp, Pokemon * victim, int move_type) {
     int flags;
     bool enemy;
 
@@ -53,6 +53,8 @@ void deal_damage(int power, Pokemon * perp, Pokemon * victim, int move_type) {
         text_box_cursors(TEXT_BOX_NEXT_LINE);
         printw("It had no effect."); refresh(); sleep(2);
     }
+
+    return ATTACK_SUCCESS;
 }
 
 
@@ -169,4 +171,17 @@ int swagger_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
 int seismic_toss_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
     deal_specific_damage(nothing1, victim->level, victim, damage);
     return ATTACK_SUCCESS;
+}
+
+
+//Special Function for Teleport
+int teleport_move_func(int nothing1, int chance, struct Pokemon * victim, int damage) {
+    if ((rand() % 100) < chance && !player.trainer_battle) {
+        return ATTACK_END_BATTLE;
+    }
+    else {
+        text_box_cursors(TEXT_BOX_NEXT_LINE);
+        printw("But it failed!"); refresh(); sleep(2);
+        return ATTACK_FAIL;
+    }
 }

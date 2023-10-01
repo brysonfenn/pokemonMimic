@@ -11,7 +11,7 @@
 #include "attacks_special.h"
 #include "pokemon.h"
 
-#define NUM_ATTACKS 130
+#define NUM_ATTACKS 150
 
 attack empty_attack=  {"-------------",  0,  0, 100, 100, NO_TYPE,  false, &attack_do_nothing };
 //				 	   "Name         "  id  pp  pwr  acc    type     priority    effect         params
@@ -155,6 +155,11 @@ attack hypnosis     = {"Hypnosis"     ,125, 20,   0,       60, PSYCHIC,  false, 
 attack submission   = {"Submission"   ,126, 25,  80,       80, FIGHTING, false, &self_inflict_damage, PERCENT_DAMAGE_DEALT, 25 };
 attack stomp        = {"Stomp"        ,127, 20,  65,      100, NORMAL,   false, &inflict_condition, FLINCHED, 30 };
 attack fire_blast   = {"Fire Blast"   ,128,  5, 120,       85, FIRE,     false, &inflict_condition, BURNED, 30 };
+attack teleport     = {"Teleport"     ,129, 20,   0,  NO_MISS, PSYCHIC,  false, &teleport_move_func, NO_CONDITION, 100 };
+attack kinesis      = {"Kinesis"      ,130, 15,   0,       80, PSYCHIC,  false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
+
+attack vital_throw  = {"Vital Throw"  ,131, 10,  70,  NO_MISS, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
+attack dynamic_punch= {"Dynamic Punch",132,  5, 100,       50, FIGHTING, false, &inflict_condition, CONFUSED, 100 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -170,8 +175,8 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &acid, &will_o_wisp, &confuse_ray, &rest, &hyper_voice, &leech_life, &astonish, &air_cutter, &poison_fang, &absorb,                     // #91-100
     &petal_dance, &mega_drain, &spore, &giga_drain, &psychic, &magnitude, &rollout, &mud_slap, &swagger, &fissure,                          // #101-110
     &tri_attack, &pay_day, &faint_attack, &fake_out, &disable, &low_kick, &karate_chop, &seismic_toss, &cross_chop, &take_down,             // #111-120
-    &flame_wheel, &extreme_speed, &recover, &bubble_beam, &hypnosis, &submission, &stomp, &fire_blast
-
+    &flame_wheel, &extreme_speed, &recover, &bubble_beam, &hypnosis, &submission, &stomp, &fire_blast, &teleport, &kinesis,                 // #121-130
+    &vital_throw, &dynamic_punch
 };
 
 
@@ -359,6 +364,8 @@ int deal_percentage_damage(Condition nothing, int percent, struct Pokemon* victi
     int hp = victim->currentHP * percent_f;
     if (hp < 1) hp = 1;
     victim->currentHP -= hp;
+    
+    return ATTACK_SUCCESS;
 }
 
 

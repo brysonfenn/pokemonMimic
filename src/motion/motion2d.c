@@ -40,6 +40,7 @@ bool is_movable_space(int yInc, int xInc);
 
 static int leave_msg_count = 0;
 
+// BEGIN HANDLE MOTION //
 // Draw the current map to the screen and handle player motion, battles, etc until user returns to the menu
 void handle_motion() {
     char print_str[512];
@@ -256,6 +257,7 @@ void handle_motion() {
         }
     }
 }
+// END HANDLE MOTION //
 
 
 //Change and redraw the map and player

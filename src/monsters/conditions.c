@@ -93,7 +93,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 			break;
 		
 		case BIND:
-			if (has_hidden_condition(pok, BIND)) return 2;
+			if (has_hidden_condition(pok, BIND)) return ATTACK_FAIL;
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 			printw("%s was bound tightly!", pok->name); refresh(); sleep(2);
 
@@ -102,7 +102,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 			break;
 		
 		case WRAPPED:
-			if (has_hidden_condition(pok, WRAPPED)) return 2;
+			if (has_hidden_condition(pok, WRAPPED)) return ATTACK_FAIL;
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 			printw("%s was wrapped tightly!", pok->name); refresh(); sleep(2);
 
@@ -111,7 +111,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 			break;
 
 		case SAND_TOMBED:
-			if (has_hidden_condition(pok, SAND_TOMBED)) return 2;
+			if (has_hidden_condition(pok, SAND_TOMBED)) return ATTACK_FAIL;
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 			printw("%s was trapped in a sand tomb!", pok->name); refresh(); sleep(2);
 
@@ -120,7 +120,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 			break;
 
 		case FIRE_SPINNED:
-			if (has_hidden_condition(pok, FIRE_SPINNED)) return 2;
+			if (has_hidden_condition(pok, FIRE_SPINNED)) return ATTACK_FAIL;
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 			printw("%s was trapped in a fire spin!", pok->name); refresh(); sleep(2);
 
@@ -131,7 +131,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 		case DISABLED:
 			if (has_hidden_condition(pok, DISABLED) || pok->last_move == NO_LAST_MOVE) {
 				printw("%s could not be disabled", pok->name); refresh(); sleep(2);
-				return 2;
+				return ATTACK_FAIL;
 			}
 			printw("%s's %s was disabled!", pok->name, pok->attacks[pok->last_move].name); refresh(); sleep(2);
 			add_hidden_condition(pok, DISABLED, pok->last_move);
