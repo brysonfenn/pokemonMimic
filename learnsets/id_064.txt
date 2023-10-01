@@ -1,0 +1,11 @@
+Kadabra: 64
+Evolve: 32,65
+level,move_id
+1,129 Teleport
+1,130 Kinesis
+1,36 Confusion
+16,36 Confusion
+18,115 Disable
+21,39 Psybeam
+25,123 Recover
+36,105 Psychic

@@ -1,0 +1,14 @@
+Tentacruel: 73
+Evolve: 101,0
+level,move_id
+1,6 Poison Sting
+1,35 Supersonic
+1,133 Constrict
+6,35 Supersonic
+12,133 Constrict
+19,91 Acid
+25,124 Bubble Beam
+30,89 Wrap
+38,134 Barrier
+47,84 Screech
+55,33 Hydro Pump

@@ -1,0 +1,4 @@
+Abra: 63
+Evolve: 16,64
+level,move_id
+1,129 Teleport

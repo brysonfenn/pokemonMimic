@@ -1,0 +1,12 @@
+Machop: 66
+Evolve: 28,67
+level,move_id
+1,116 Low Kick
+1,52 Leer
+13,117 Karate Chop
+19,118 Seismic Toss
+31,131 Vital Throw
+37,126 Submission
+40,119 Cross Chop
+43,21 Scary Face
+49,132 Dynamic Punch

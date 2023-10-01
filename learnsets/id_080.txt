@@ -1,0 +1,14 @@
+Slowbro: 80
+Evolve: 37,80
+level,move_id
+1,1 Tackle
+1,136 Yawn
+1,3 Growl
+6,3 Growl
+13,28 Water Gun
+17,36 Confusion
+24,115 Disable
+29,137 Headbutt
+37,27 Withdraw
+36,135 Amnesia
+44,105 Psychic

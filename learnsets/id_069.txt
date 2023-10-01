@@ -1,0 +1,13 @@
+Bellsprout: 69
+Evolve: 21,70
+level,move_id
+1,10 Vine Whip
+6,20 Growth
+11,89 Wrap
+15,15 Sleep Powder
+17,14 Poison Powder
+19,37 Stun Spore
+23,91 Acid
+30,19 Sweet Scent
+37,16 Razor Leaf
+45,58 Slam

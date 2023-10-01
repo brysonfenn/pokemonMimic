@@ -1,0 +1,12 @@
+Machoke: 67
+Evolve: 48,68
+level,move_id
+1,116 Low Kick
+1,52 Leer
+13,117 Karate Chop
+19,118 Seismic Toss
+33,131 Vital Throw
+41,126 Submission
+46,119 Cross Chop
+51,21 Scary Face
+59,132 Dynamic Punch

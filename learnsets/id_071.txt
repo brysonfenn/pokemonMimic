@@ -1,0 +1,7 @@
+Victreebel: 71
+Evolve: 101,0
+level,move_id
+1,10 Vine Whip
+1,19 Sweet Scent
+1,16 Razor Leaf
+1,15 Sleep Powder

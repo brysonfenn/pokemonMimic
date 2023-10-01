@@ -1,0 +1,15 @@
+Weepinbell: 70
+Evolve: 101,0 Leaf Stone
+level,move_id
+1,10 Vine Whip
+1,20 Growth
+1,89 Wrap
+6,20 Growth
+11,89 Wrap
+15,15 Sleep Powder
+17,14 Poison Powder
+19,37 Stun Spore
+24,91 Acid
+33,19 Sweet Scent
+42,16 Razor Leaf
+54,58 Slam
