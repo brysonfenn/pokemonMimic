@@ -168,12 +168,12 @@ void handle_motion() {
 
         //Handle portal to another map
         if (action == -1) {
-            usleep(300000);
+            usleep(100000);
             change_map(door.next_map, door.next_x, door.next_y);
             continue;
         }
         else if (action != 0) {
-            usleep(300000);
+            usleep(100000);
             handle_actions(action);
             player_char = PLAYER_MOVING_DOWN;
             init_map();
@@ -261,7 +261,6 @@ void handle_motion() {
 //Change and redraw the map and player
 void change_map(int map, int x, int y) {
     clear();
-    usleep(10000);
 
     player.loc->x = x;
     player.loc->y = y;
@@ -269,6 +268,8 @@ void change_map(int map, int x, int y) {
     change_map_funcs(map, &draw_map);
 
     init_map();
+
+    usleep(200000);
 }
 
 
