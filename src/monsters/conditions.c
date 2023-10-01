@@ -137,12 +137,22 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 			add_hidden_condition(pok, DISABLED, pok->last_move);
 			break;
 
+		case YAWNED:
+			//Start to put to sleep, if it isn't "yawned" and if it has no condition
+			if (has_hidden_condition(pok, YAWNED) || pok->visible_condition != NO_CONDITION) {
+				printw("It had no effect!"); refresh(); sleep(2);
+				return ATTACK_FAIL;
+			}
+			printw("%s grew drowsy!", pok->name); refresh(); sleep(2);
+			add_hidden_condition(pok, YAWNED, 2);	//Yawn should put pokemon to sleep the turn after.
+			break;
+
 		default:
 			add_hidden_condition(pok, condition, 0);
 			break;
 	}
 
-	return 0;
+	return ATTACK_SUCCESS;
 }
 
 

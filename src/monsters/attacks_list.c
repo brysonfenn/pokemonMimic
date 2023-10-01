@@ -160,6 +160,11 @@ attack kinesis      = {"Kinesis"      ,130, 15,   0,       80, PSYCHIC,  false, 
 
 attack vital_throw  = {"Vital Throw"  ,131, 10,  70,  NO_MISS, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
 attack dynamic_punch= {"Dynamic Punch",132,  5, 100,       50, FIGHTING, false, &inflict_condition, CONFUSED, 100 };
+attack constrict    = {"Constrict"    ,133, 35,  10,      100, NORMAL,   false, &decrement_opponent_stat, SPEED_STAT, 10 };
+attack barrier      = {"Barrier"      ,134, 30,   0,  NO_MISS, PSYCHIC,  false, &increment_self_stat2, DEFENSE_STAT, 100 };
+attack amnesia      = {"Amnesia"      ,135, 20,   0,  NO_MISS, PSYCHIC,  false, &increment_self_stat2, SP_DEFENSE_STAT, 100 };
+attack yawn         = {"Yawn"         ,136, 10,   0,  NO_MISS, PSYCHIC,  false, &inflict_condition, YAWNED, 100 };
+attack headbutt     = {"Headbutt"     ,137, 15,  70,      100, NORMAL,   false, &inflict_condition, FLINCHED, 30 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -176,7 +181,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &petal_dance, &mega_drain, &spore, &giga_drain, &psychic, &magnitude, &rollout, &mud_slap, &swagger, &fissure,                          // #101-110
     &tri_attack, &pay_day, &faint_attack, &fake_out, &disable, &low_kick, &karate_chop, &seismic_toss, &cross_chop, &take_down,             // #111-120
     &flame_wheel, &extreme_speed, &recover, &bubble_beam, &hypnosis, &submission, &stomp, &fire_blast, &teleport, &kinesis,                 // #121-130
-    &vital_throw, &dynamic_punch
+    &vital_throw, &dynamic_punch, &constrict, &barrier, &amnesia, &yawn, &headbutt
 };
 
 

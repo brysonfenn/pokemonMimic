@@ -363,9 +363,6 @@ int handle_battle(struct Pokemon * enemyPok) {
   }
 
   remove_all_hidden_conditions(enemyPok);
-
-  text_box_cursors(TEXT_BOX_BEGINNING);
-  printw("Run success: %d, attack_result: %d", run_success, attack_result); refresh(); sleep(4);
   
   if (catch_success)
     return BATTLE_CAUGHT_POKE;

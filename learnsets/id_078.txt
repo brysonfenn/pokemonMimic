@@ -1,4 +1,4 @@
-Rapidash: 77
+Rapidash: 78
 Evolve: 101,0
 level,move_id
 1,8 Quick Attack

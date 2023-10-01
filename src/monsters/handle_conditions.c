@@ -47,14 +47,14 @@ int handle_end_conditions(struct Pokemon * pok) {
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
     }
 
-    //Bind, Wrap, Sand Tomb, Fire Spin are all similar
+    // BEGIN TEMPORARY AFFLICTIONS // BIND, WRAP, ETC.
     if (has_hidden_condition(pok, BIND)) {
         success = decrement_hidden_condition_val(pok, BIND);
         if (!success) {
             text_box_cursors(TEXT_BOX_BEGINNING);
             printw("%s was released from bind", pok->name); refresh(); sleep(2);
             remove_hidden_condition(pok, BIND);
-            return 3;
+            return ATTACK_SUCCESS;
         }
 
         handle_hurt_1_16(enemy, pok, "bind");
@@ -78,7 +78,7 @@ int handle_end_conditions(struct Pokemon * pok) {
             text_box_cursors(TEXT_BOX_BEGINNING);
             printw("%s was released from sand tomb", pok->name); refresh(); sleep(2);
             remove_hidden_condition(pok, SAND_TOMBED);
-            return 3;
+            return ATTACK_SUCCESS;
         }
 
         handle_hurt_1_16(enemy, pok, "sand tomb");
@@ -90,11 +90,21 @@ int handle_end_conditions(struct Pokemon * pok) {
             text_box_cursors(TEXT_BOX_BEGINNING);
             printw("%s was released from fire spin", pok->name); refresh(); sleep(2);
             remove_hidden_condition(pok, FIRE_SPINNED);
-            return 3;
+            return ATTACK_SUCCESS;
         }
 
         handle_hurt_1_16(enemy, pok, "fire spin");
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
+    }
+    // END TEMPORARY AFFLICTIONS //
+
+    if (has_hidden_condition(pok, YAWNED)) {
+        success = decrement_hidden_condition_val(pok, YAWNED);
+        if (!success) {
+            inflict_condition(ASLEEP, 100, pok, 0);
+            remove_hidden_condition(pok, YAWNED);
+            return ATTACK_SUCCESS;
+        }
     }
 	
 	//Leech Seed
