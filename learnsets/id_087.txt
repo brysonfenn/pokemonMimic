@@ -1,0 +1,14 @@
+Dewgong: 87
+Evolve: 101,0
+level,move_id
+1,150 Signal Beam
+1,137 Headbutt
+1,147 Icy Wind
+1,148 Aurora Beam
+9,3 Growl
+17,147 Icy Wind
+21,148 Aurora Beam
+29,94 Rest
+34,151 Sheer Cold
+42,120 Take Down
+51,149 Ice Beam

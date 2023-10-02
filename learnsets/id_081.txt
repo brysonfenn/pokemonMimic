@@ -1,0 +1,13 @@
+Magnemite
+Evolve: 30,82
+level,move_id
+1,138 Metal Sound
+1,1 Tackle
+6,55 Thunder Shock
+11,35 Supersonic
+16,139 Sonic Boom
+21,56 Thunder Wave
+26,140 Spark
+38,49 Swift
+44,84 Screech
+50,141 Zap Cannon

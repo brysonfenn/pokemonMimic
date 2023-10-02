@@ -11,7 +11,7 @@
 #include "attacks_special.h"
 #include "pokemon.h"
 
-#define NUM_ATTACKS 150
+#define NUM_ATTACKS 160
 
 attack empty_attack=  {"-------------",  0,  0, 100, 100, NO_TYPE,  false, &attack_do_nothing };
 //				 	   "Name         "  id  pp  pwr  acc    type     priority    effect         params
@@ -165,6 +165,22 @@ attack barrier      = {"Barrier"      ,134, 30,   0,  NO_MISS, PSYCHIC,  false, 
 attack amnesia      = {"Amnesia"      ,135, 20,   0,  NO_MISS, PSYCHIC,  false, &increment_self_stat2, SP_DEFENSE_STAT, 100 };
 attack yawn         = {"Yawn"         ,136, 10,   0,  NO_MISS, PSYCHIC,  false, &inflict_condition, YAWNED, 100 };
 attack headbutt     = {"Headbutt"     ,137, 15,  70,      100, NORMAL,   false, &inflict_condition, FLINCHED, 30 };
+attack metal_sound  = {"Metal Sound"  ,138, 40,   0,       85, STEEL,    false, &decrement_opponent_stat, SP_DEFENSE_STAT, 100 };
+attack sonic_boom   = {"Sonic Boom"   ,139, 15,  70,      100, NORMAL,   false, &deal_specific_damage, NO_CONDITION, 20 };
+attack spark        = {"Spark"        ,140, 20,  65,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 30 };
+
+attack zap_cannon   = {"Zap Cannon"   ,141,  5, 100,       50, ELECTRIC, false, &inflict_condition, PARALYZED, 100 };
+attack knock_off    = {"Knock Off"    ,142, 20,  20,      100, DARK,     false, &attack_do_nothing, NO_CONDITION, 0 };
+attack fury_cutter  = {"Fury Cutter"  ,143, 20,  50,       95, BUG,      false, &attack_do_nothing, NO_CONDITION, 0 };
+attack swords_dance = {"Swords Dance" ,144, 20,   0,  NO_MISS, NORMAL,   false, &increment_self_stat2, ATTACK_STAT, 100 };
+attack false_swipe  = {"False Swipe"  ,145, 40,  40,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack uproar       = {"Uproar"       ,146, 10,   0,      100, NORMAL,   false, &uproar_move_func, NO_CONDITION, 0 };
+attack icy_wind     = {"Icy Wind"     ,147, 15,  55,       95, ICE,      false, &decrement_opponent_stat, SPEED_STAT, 100 };
+attack aurora_beam  = {"Aurora Beam"  ,148, 20,  65,      100, ICE,      false, &decrement_opponent_stat, ATTACK_STAT, 100 };
+attack ice_beam     = {"Ice Beam"     ,149, 10,  95,      100, ICE,      false, &inflict_condition, FROZEN, 10 };
+attack signal_beam  = {"Signal Beam"  ,150, 15,  75,      100, BUG,      false, &inflict_condition, CONFUSED, 10 };
+
+attack sheer_cold   = {"Sheer Cold"   ,151,  5,   0,  NO_MISS, ICE,      false, &sheer_cold_move_func, NO_CONDITION, 0 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -181,7 +197,9 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &petal_dance, &mega_drain, &spore, &giga_drain, &psychic, &magnitude, &rollout, &mud_slap, &swagger, &fissure,                          // #101-110
     &tri_attack, &pay_day, &faint_attack, &fake_out, &disable, &low_kick, &karate_chop, &seismic_toss, &cross_chop, &take_down,             // #111-120
     &flame_wheel, &extreme_speed, &recover, &bubble_beam, &hypnosis, &submission, &stomp, &fire_blast, &teleport, &kinesis,                 // #121-130
-    &vital_throw, &dynamic_punch, &constrict, &barrier, &amnesia, &yawn, &headbutt
+    &vital_throw, &dynamic_punch, &constrict, &barrier, &amnesia, &yawn, &headbutt, &metal_sound, &sonic_boom, &spark,                      // #131-140
+    &zap_cannon, &knock_off, &fury_cutter, &swords_dance, &false_swipe, &uproar, &icy_wind, &aurora_beam, &ice_beam, &signal_beam,          // #141-150
+    &sheer_cold
 };
 
 

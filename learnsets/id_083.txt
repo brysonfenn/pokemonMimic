@@ -1,0 +1,13 @@
+Farfetch'd
+Evolve: 30,82
+level,move_id
+1,51 Peck
+6,7 Sand Attack
+11,52 Leer
+16,41 Fury Attack
+21,142 Knock Off
+26,41 Fury Attack
+31,144 Swords Dance
+36,43 Agility
+41,23 Slash
+46,145 False Swipe

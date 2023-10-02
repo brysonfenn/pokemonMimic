@@ -1,0 +1,11 @@
+Doduo
+Evolve: 31,85
+level,move_id
+1,51 Peck
+1,3 Growl
+9,42 Pursuit
+13,41 Fury Attack
+21,111 Tri-Attack
+33,146 Uproar
+37,54 Drill Peck
+45,43 Agility

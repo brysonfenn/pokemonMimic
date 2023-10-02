@@ -1,0 +1,15 @@
+Magneton
+Evolve: 30,82
+level,move_id
+1,138 Metal Sound
+1,1 Tackle
+1,55 Thunder Shock
+1,35 Supersonic
+6,55 Thunder Shock
+11,35 Supersonic
+16,139 Sonic Boom
+21,56 Thunder Wave
+26,140 Spark
+44,111 Tri-Attack
+53,84 Screech
+62,141 Zap Cannon

@@ -1,0 +1,10 @@
+Seel: 86
+Evolve: 34,87
+level,move_id
+1,137 Headbutt
+9,3 Growl
+17,147 Icy Wind
+21,148 Aurora Beam
+29,94 Rest
+37,120 Take Down
+41,149 Ice Beam

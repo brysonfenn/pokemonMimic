@@ -1,5 +1,5 @@
 Slowbro: 80
-Evolve: 37,80
+Evolve: 101,0
 level,move_id
 1,1 Tackle
 1,136 Yawn

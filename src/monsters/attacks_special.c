@@ -154,6 +154,21 @@ int rollout_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
     return ATTACK_SUCCESS;
 }
 
+//Special function for uproar move
+int uproar_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    bool enemy;
+    if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
+    else { self = player.current_pokemon; }
+
+    int repeat_val = handle_repeats(5, self);
+    if (repeat_val == REMOVED_REPEATS) return ATTACK_FAIL;
+
+    deal_damage(50, self, victim, NORMAL);
+
+    return ATTACK_SUCCESS;
+}
+
 
 int swagger_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
     Pokemon * self;
@@ -183,5 +198,24 @@ int teleport_move_func(int nothing1, int chance, struct Pokemon * victim, int da
         text_box_cursors(TEXT_BOX_NEXT_LINE);
         printw("But it failed!"); refresh(); sleep(2);
         return ATTACK_FAIL;
+    }
+}
+
+//Special Function for Sheer Cold
+int sheer_cold_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    if (player.current_pokemon == victim) self = player.enemy_pokemon;
+    else self = player.current_pokemon;
+
+    int accuracy;
+    if (self->level < victim->level) accuracy = 0;
+    else accuracy = (self->level - victim->level) + 30;
+
+    if ((rand() % 100) < accuracy) {
+        deal_specific_damage(0, victim->currentHP, victim, 0);  //Deal all damage to victim
+    }
+    else {
+        text_box_cursors(TEXT_BOX_NEXT_LINE);
+        printw("%s withstood the cold!", victim->name); refresh(); sleep(2);
     }
 }
