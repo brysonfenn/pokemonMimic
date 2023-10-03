@@ -181,6 +181,10 @@ attack ice_beam     = {"Ice Beam"     ,149, 10,  95,      100, ICE,      false, 
 attack signal_beam  = {"Signal Beam"  ,150, 15,  75,      100, BUG,      false, &inflict_condition, CONFUSED, 10 };
 
 attack sheer_cold   = {"Sheer Cold"   ,151,  5,   0,  NO_MISS, ICE,      false, &sheer_cold_move_func, NO_CONDITION, 0 };
+attack poison_gas   = {"Poison Gas"   ,152, 40,   0,       55, POISON,   false, &inflict_condition, POISONED, 100 };
+attack sludge       = {"Sludge"       ,153, 20,  65,      100, POISON,   false, &inflict_condition, POISONED, 40 };
+attack acid_armor   = {"Acid Armor"   ,154, 40,   0,  NO_MISS, NORMAL,   false, &increment_self_stat2, DEFENSE_STAT, 100 };
+attack sludge_bomb  = {"Sludge Bomb"  ,155, 10,  90,      100, POISON,   false, &inflict_condition, POISONED, 30 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -199,7 +203,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &flame_wheel, &extreme_speed, &recover, &bubble_beam, &hypnosis, &submission, &stomp, &fire_blast, &teleport, &kinesis,                 // #121-130
     &vital_throw, &dynamic_punch, &constrict, &barrier, &amnesia, &yawn, &headbutt, &metal_sound, &sonic_boom, &spark,                      // #131-140
     &zap_cannon, &knock_off, &fury_cutter, &swords_dance, &false_swipe, &uproar, &icy_wind, &aurora_beam, &ice_beam, &signal_beam,          // #141-150
-    &sheer_cold
+    &sheer_cold, &poison_gas, &sludge, &acid_armor, &sludge_bomb
 };
 
 
