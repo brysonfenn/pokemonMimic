@@ -1,0 +1,12 @@
+Shellder: 90
+Evolve: 51,91
+level,move_id
+1,1 Tackle
+1,27 Withdraw
+8,156 Icicle Spear
+15,35 Supersonic
+22,148 Aurora Beam
+29,31 Protect
+36,52 Leer
+43,157 Clamp
+50,149 Ice Beam

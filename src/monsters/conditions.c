@@ -92,22 +92,13 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 			add_hidden_condition(pok, FLINCHED, 0);
 			break;
 		
-		case BIND:
-			if (has_hidden_condition(pok, BIND)) return ATTACK_FAIL;
+		case TIGHT_HOLD:
+			if (has_hidden_condition(pok, TIGHT_HOLD)) return ATTACK_FAIL;
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
-			printw("%s was bound tightly!", pok->name); refresh(); sleep(2);
+			printw("%s was held very tightly", pok->name); refresh(); sleep(2);
 
 			//Bind lasts 2-5 turns
-			add_hidden_condition(pok, BIND, (rand() % 4) + 2);
-			break;
-		
-		case WRAPPED:
-			if (has_hidden_condition(pok, WRAPPED)) return ATTACK_FAIL;
-			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
-			printw("%s was wrapped tightly!", pok->name); refresh(); sleep(2);
-
-			//Bind lasts 2-5 turns
-			add_hidden_condition(pok, WRAPPED, (rand() % 4) + 2);
+			add_hidden_condition(pok, TIGHT_HOLD, (rand() % 4) + 2);
 			break;
 
 		case SAND_TOMBED:

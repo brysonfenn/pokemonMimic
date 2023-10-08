@@ -6,8 +6,8 @@ Heal Center: {7,(33,9)}
 Pokemon: 
 Charmander 4 20 20 4 11 9 12 11 13 5 142 NONE NONE 12bcdf73 0 0
 	Magnitude. 106 28
-	Sheer Cold. 151 20
-	Yawn. 136 5
+	Clamp. 157 20
+	Icicle Spear. 156 5
 	Uproar. 146 20
 Abra 63 16 16 1 7 6 14 9 13 4 64 PSYCHIC NONE 3a4b33f6 0 0
 	Teleport. 129 20

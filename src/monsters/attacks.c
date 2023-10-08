@@ -120,6 +120,15 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     refresh(); sleep(2); return ATTACK_SUCCESS;
   }
 
+  //Handle protect
+  if (has_hidden_condition(victim, PROTECTED)) {
+    text_box_cursors(TEXT_BOX_BEGINNING); sleep(1);
+    if (enemy) printw(ENEMY_TEXT);
+    printw("%s protected itself!", victim->name);
+    refresh(); sleep(2);
+    return ATTACK_SUCCESS;
+  }
+
   int damage = 0;
   int flags = 0; //These flags are used to detect Critical Hits and Effectiveness
 

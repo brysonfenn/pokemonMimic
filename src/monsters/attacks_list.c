@@ -11,7 +11,7 @@
 #include "attacks_special.h"
 #include "pokemon.h"
 
-#define NUM_ATTACKS 160
+#define NUM_ATTACKS 170
 
 attack empty_attack=  {"-------------",  0,  0, 100, 100, NO_TYPE,  false, &attack_do_nothing };
 //				 	   "Name         "  id  pp  pwr  acc    type     priority    effect         params
@@ -48,7 +48,7 @@ attack water_gun    = {"Water Gun"    , 28, 25,  40,      100, WATER,    false, 
 attack bite         = {"Bite"         , 29, 25,  60,      100, DARK,     false, &inflict_condition, FLINCHED, 30 };
 attack rapid_spin   = {"Rapid Spin"   , 30, 40,  20,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 
-attack protect      = {"Protect"      , 31, 10,   0,  NO_MISS, NORMAL,   true,  &attack_do_nothing, NO_CONDITION, 0 };
+attack protect      = {"Protect"      , 31, 10,   0,       75, NORMAL,   true,  &self_inflict_condition, PROTECTED, 100 };
 attack skull_bash   = {"Skull Bash"   , 32, 15, 100,      100, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
 attack hydro_pump   = {"Hydro Pump"   , 33,  5, 120,       80, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
 attack harden       = {"Harden"       , 34, 30,   0,  NO_MISS, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
@@ -107,11 +107,11 @@ attack earthquake   = {"Earthquake"   , 81, 10, 100,      100, GROUND,   false, 
 attack explosion    = {"Explosion"    , 82,  5, 500,      100, NORMAL,   false, &self_inflict_damage, HP_PERCENTAGE, 150 };
 attack double_edge  = {"Double-Edge"  , 83, 15, 120,      100, NORMAL,   false, &self_inflict_damage, PERCENT_DAMAGE_DEALT, 33 };
 attack screech      = {"Screech"      , 84, 40,   0,       85, NORMAL,   false, &decrement_opponent_stat2, DEFENSE_STAT, 100 };
-attack bind         = {"Bind"         , 85, 20,  15,       75, NORMAL,   false, &inflict_condition, BIND, 100 };
+attack bind         = {"Bind"         , 85, 20,  15,       75, NORMAL,   false, &inflict_condition, TIGHT_HOLD, 100 };
 attack iron_tail    = {"Iron Tail"    , 86, 35,  50,       95, STEEL,    false, &decrement_opponent_stat, DEFENSE_STAT, 30 };
 attack sand_tomb    = {"Sand Tomb"    , 87, 20,  15,       75, GROUND,   false, &inflict_condition, SAND_TOMBED, 100 };
 attack dragon_breath= {"Dragon Breath", 88, 20,  60,      100, DRAGON,   false, &inflict_condition, PARALYZED, 30 };
-attack wrap         = {"Wrap"         , 89, 20,  15,       85, NORMAL,   false, &inflict_condition, WRAPPED, 100 };
+attack wrap         = {"Wrap"         , 89, 20,  15,       85, NORMAL,   false, &inflict_condition, TIGHT_HOLD, 100 };
 attack glare        = {"Glare"        , 90, 30,   0,       75, NORMAL,   false, &inflict_condition, PARALYZED, 100 };
 
 attack acid         = {"Acid"         , 91, 30,  40,      100, POISON,   false, &decrement_opponent_stat, DEFENSE_STAT, 10 };
@@ -183,8 +183,12 @@ attack signal_beam  = {"Signal Beam"  ,150, 15,  75,      100, BUG,      false, 
 attack sheer_cold   = {"Sheer Cold"   ,151,  5,   0,  NO_MISS, ICE,      false, &sheer_cold_move_func, NO_CONDITION, 0 };
 attack poison_gas   = {"Poison Gas"   ,152, 40,   0,       55, POISON,   false, &inflict_condition, POISONED, 100 };
 attack sludge       = {"Sludge"       ,153, 20,  65,      100, POISON,   false, &inflict_condition, POISONED, 40 };
-attack acid_armor   = {"Acid Armor"   ,154, 40,   0,  NO_MISS, NORMAL,   false, &increment_self_stat2, DEFENSE_STAT, 100 };
+attack acid_armor   = {"Acid Armor"   ,154, 40,   0,  NO_MISS, POISON,   false, &increment_self_stat2, DEFENSE_STAT, 100 };
 attack sludge_bomb  = {"Sludge Bomb"  ,155, 10,  90,      100, POISON,   false, &inflict_condition, POISONED, 30 };
+attack icicle_spear = {"Icicle Spear" ,156, 30,  10,      100, ICE,      false, &hit_multiple_times, 2, 5 };
+attack clamp        = {"Clamp"        ,157, 10,  35,       75, WATER,    false, &inflict_condition, TIGHT_HOLD, 100 };
+attack spike_cannon = {"Spike Cannon" ,158, 15,  20,      100, NORMAL,   false, &hit_multiple_times, 2, 5 };
+attack lick         = {"Lick"         ,159, 30,  20,      100, GHOST,    false, &inflict_condition, PARALYZED, 30 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -203,7 +207,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &flame_wheel, &extreme_speed, &recover, &bubble_beam, &hypnosis, &submission, &stomp, &fire_blast, &teleport, &kinesis,                 // #121-130
     &vital_throw, &dynamic_punch, &constrict, &barrier, &amnesia, &yawn, &headbutt, &metal_sound, &sonic_boom, &spark,                      // #131-140
     &zap_cannon, &knock_off, &fury_cutter, &swords_dance, &false_swipe, &uproar, &icy_wind, &aurora_beam, &ice_beam, &signal_beam,          // #141-150
-    &sheer_cold, &poison_gas, &sludge, &acid_armor, &sludge_bomb
+    &sheer_cold, &poison_gas, &sludge, &acid_armor, &sludge_bomb, &icicle_spear, &clamp, &spike_cannon, &lick
 };
 
 

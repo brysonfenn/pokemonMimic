@@ -1,0 +1,8 @@
+Cloyster: 91
+Evolve: 101,0
+level,move_id
+1,27 Withdraw
+1,35 Supersonic
+1,148 Aurora Beam
+1,31 Protect
+43,158 Spike Cannon

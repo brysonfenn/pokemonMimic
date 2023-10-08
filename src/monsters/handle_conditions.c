@@ -34,8 +34,9 @@ int handle_end_conditions(struct Pokemon * pok) {
 		return 0;
 	}
 
-	//Remove flinched hidden condition
+	//Remove temporary hidden conditions
 	remove_hidden_condition(pok, FLINCHED);
+    remove_hidden_condition(pok, PROTECTED);
 
 	//Poison and burn
 	if (pok->visible_condition == POISONED) {
@@ -48,28 +49,16 @@ int handle_end_conditions(struct Pokemon * pok) {
     }
 
     // BEGIN TEMPORARY AFFLICTIONS // BIND, WRAP, ETC.
-    if (has_hidden_condition(pok, BIND)) {
-        success = decrement_hidden_condition_val(pok, BIND);
+    if (has_hidden_condition(pok, TIGHT_HOLD)) {
+        success = decrement_hidden_condition_val(pok, TIGHT_HOLD);
         if (!success) {
             text_box_cursors(TEXT_BOX_BEGINNING);
-            printw("%s was released from bind", pok->name); refresh(); sleep(2);
-            remove_hidden_condition(pok, BIND);
+            printw("%s was released from tight hold", pok->name); refresh(); sleep(2);
+            remove_hidden_condition(pok, TIGHT_HOLD);
             return ATTACK_SUCCESS;
         }
 
-        handle_hurt_1_16(enemy, pok, "bind");
-        if (pok->currentHP == 0) return ATTACK_SUCCESS;
-    }
-    if (has_hidden_condition(pok, WRAPPED)) {
-        success = decrement_hidden_condition_val(pok, WRAPPED);
-        if (!success) {
-            text_box_cursors(TEXT_BOX_BEGINNING);
-            printw("%s was released from wrap", pok->name); refresh(); sleep(2);
-            remove_hidden_condition(pok, WRAPPED);
-            return ATTACK_SUCCESS;
-        }
-
-        handle_hurt_1_16(enemy, pok, "bind");
+        handle_hurt_1_16(enemy, pok, "tight hold");
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
     }
     if (has_hidden_condition(pok, SAND_TOMBED)) {

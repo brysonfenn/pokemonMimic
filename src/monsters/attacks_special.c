@@ -12,8 +12,8 @@
 #include "typings.h"
 #include "attacks.h"
 
-int deal_damage(int power, Pokemon * perp, Pokemon * victim, int move_type) {
-    int flags;
+int deal_damage(int power, Pokemon * perp, Pokemon * victim, Type move_type) {
+    int flags = 0;
     bool enemy;
 
     if (victim == player.current_pokemon) { enemy = true; }
