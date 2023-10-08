@@ -256,6 +256,8 @@ int change_stat(Condition stat_type, int stage_number, struct Pokemon* pok) {
             stat_stage = &(pok->evade_stage);
             break;
         default:
+            sprintf(stat_type_str, "%s", "{unknown stat - default attack stat}");
+            stat_stage = &(pok->atk_stage);
             break;
     }
 

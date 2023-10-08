@@ -41,7 +41,7 @@ void printBattle() {
 }
 
 
-//Blink enemy if enemy is true, if not, blink player
+//Blink player's pokemon if blink_player is true. If false, blink enemy pokemon
 void blinkPokemon(bool blink_player, int color, int num_times) {
   Pokemon * pok;
   char poke_string[128];
