@@ -1,0 +1,10 @@
+Gengar: 94
+Evolve: 101,0
+level,move_id
+1,125 Hypnosis
+1,159 Lick
+13,160 Curse
+16,161 Night Shade
+21,93 Confuse Ray
+25,163 Shadow Punch
+45,162 Shadow Ball

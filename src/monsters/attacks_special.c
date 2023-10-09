@@ -202,7 +202,7 @@ int teleport_move_func(int nothing1, int chance, struct Pokemon * victim, int da
 }
 
 //Special Function for Sheer Cold
-int sheer_cold_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+int k_o_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
     Pokemon * self;
     if (player.current_pokemon == victim) self = player.enemy_pokemon;
     else self = player.current_pokemon;
@@ -213,9 +213,32 @@ int sheer_cold_move_func(int nothing1, int nothing2, struct Pokemon * victim, in
 
     if ((rand() % 100) < accuracy) {
         deal_specific_damage(0, victim->currentHP, victim, 0);  //Deal all damage to victim
+        return ATTACK_SUCCESS;
     }
     else {
         text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("%s withstood the cold!", victim->name); refresh(); sleep(2);
+        printw("%s withstood the attack!", victim->name); refresh(); sleep(2);
+        return ATTACK_FAIL;
     }
+}
+
+//Special Function for Curse
+int curse_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    if (player.current_pokemon == victim) self = player.enemy_pokemon;
+    else self = player.current_pokemon;
+
+    inflict_condition(CURSED, 100, victim, damage);
+    self_inflict_damage(HP_PERCENTAGE, 50, victim, damage);
+    return ATTACK_SUCCESS;
+}
+
+//Special Function for Night Shade
+int night_shade_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    if (player.current_pokemon == victim) self = player.enemy_pokemon;
+    else self = player.current_pokemon;
+
+    deal_specific_damage(0, self->level, victim, 0);
+    return ATTACK_SUCCESS;
 }

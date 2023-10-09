@@ -1,0 +1,12 @@
+Krabby: 98
+Evolve: 28,99
+level,move_id
+1,13 Bubble
+5,52 Leer
+12,165 Vice Grip
+16,34 Harden
+23,166 Mud Shot
+27,127 Stomp
+34,167 Guillotine
+38,31 Protect
+45,168 Crabhammer

@@ -1,0 +1,9 @@
+Gastly: 92
+Evolve: 25,93
+level,move_id
+1,125 Hypnosis
+1,159 Lick
+13,160 Curse
+16,161 Night Shade
+21,93 Confuse Ray
+36,162 Shadow Ball

@@ -1,14 +1,14 @@
-Last Saved: 10/01/2023 11:32:01
+Last Saved: 10/08/2023 20:50:44
 Player: Test_Player
-2 6 3 1000
-Location: {7,(46,14)}
+2 6 3 400
+Location: {7,(42,15)}
 Heal Center: {7,(33,9)}
 Pokemon: 
-Charmander 4 20 20 4 11 9 12 11 13 5 142 NONE NONE 12bcdf73 0 0
-	Magnitude. 106 28
-	Clamp. 157 20
-	Icicle Spear. 156 5
-	Uproar. 146 20
+Charmander 4 20 20 4 11 10 12 11 12 6 229 NONE NONE 12bcdf73 0 0
+	Magnitude. 106 30
+	Clamp. 157 10
+	Icicle Spear. 156 30
+	Curse. 160 10
 Abra 63 16 16 1 7 6 14 9 13 4 64 PSYCHIC NONE 3a4b33f6 0 0
 	Teleport. 129 20
 PC: 
@@ -32,9 +32,9 @@ Caterpie 10 18 18 2 40 10 9 10 10 6 216 NONE NONE 2df200a1 0 0
 	Tackle. 1 35
 	String Shot. 5 40
 Bag:
-Potion. 1 2
 Super Potion. 2 2
 Pokeball. 3 1
+Potion. 1 2
 
 Key Items: 0
   

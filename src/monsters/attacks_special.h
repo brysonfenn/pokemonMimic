@@ -33,7 +33,13 @@ int seismic_toss_move_func(int nothing1, int nothing2, struct Pokemon * victim, 
 int teleport_move_func(int nothing1, int chance, struct Pokemon * victim, int damage);
 
 //Special Function for Sheer Cold
-int sheer_cold_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+int k_o_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+
+//Special Function for Curse
+int curse_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+
+//Special Function for Night Shade
+int night_shade_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
 
 #endif // ATTACKS_SPECIAL_H

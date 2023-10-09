@@ -11,7 +11,7 @@ typedef enum { NO_CONDITION, SPEED_STAT, ATTACK_STAT, DEFENSE_STAT, SP_ATTACK_ST
                 SP_DEFENSE_STAT, ACCURACY_STAT, EVASIVENESS_STAT,
                 POISONED, PARALYZED, ASLEEP, BURNED, FROZEN, 
                 CONFUSED, SEEDED, FIRE_SPINNED, FLINCHED, TIGHT_HOLD, SAND_TOMBED,
-                REPEAT_MOVE, DISABLED, YAWNED, PROTECTED } Condition;
+                REPEAT_MOVE, DISABLED, YAWNED, PROTECTED, CURSED } Condition;
 
 //Inflict condition on pok given, handle accuracy
 int inflict_condition(Condition condition, int accuracy, struct Pokemon * pok, int damage);

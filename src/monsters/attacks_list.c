@@ -76,7 +76,7 @@ attack aerial_ace   = {"Aerial Ace"   , 53, 20,  60,  NO_MISS, FLYING,   false, 
 attack drill_peck   = {"Drill Peck"   , 54, 20,  80,      100, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack thunder_shock= {"Thunder Shock", 55, 30,  40,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 10 };
 attack thunder_wave = {"Thunder Wave" , 56, 20,   0,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 100 };
-attack double_team  = {"Double Team"  , 57, 15,   0,  NO_MISS, ELECTRIC, false, &increment_self_stat, EVASIVENESS_STAT, 100 };
+attack double_team  = {"Double Team"  , 57, 15,   0,  NO_MISS, NORMAL,   false, &increment_self_stat, EVASIVENESS_STAT, 100 };
 attack slam         = {"Slam"         , 58, 20,  80,       75, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack thunderbolt  = {"Thunderbolt"  , 59, 15,  95,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 10 };
 attack thunder      = {"Thunder"      , 60, 10, 120,       70, ELECTRIC, false, &inflict_condition, PARALYZED, 30 };
@@ -180,7 +180,7 @@ attack aurora_beam  = {"Aurora Beam"  ,148, 20,  65,      100, ICE,      false, 
 attack ice_beam     = {"Ice Beam"     ,149, 10,  95,      100, ICE,      false, &inflict_condition, FROZEN, 10 };
 attack signal_beam  = {"Signal Beam"  ,150, 15,  75,      100, BUG,      false, &inflict_condition, CONFUSED, 10 };
 
-attack sheer_cold   = {"Sheer Cold"   ,151,  5,   0,  NO_MISS, ICE,      false, &sheer_cold_move_func, NO_CONDITION, 0 };
+attack sheer_cold   = {"Sheer Cold"   ,151,  5,   0,  NO_MISS, ICE,      false, &k_o_move_func, NO_CONDITION, 0 };
 attack poison_gas   = {"Poison Gas"   ,152, 40,   0,       55, POISON,   false, &inflict_condition, POISONED, 100 };
 attack sludge       = {"Sludge"       ,153, 20,  65,      100, POISON,   false, &inflict_condition, POISONED, 40 };
 attack acid_armor   = {"Acid Armor"   ,154, 40,   0,  NO_MISS, POISON,   false, &increment_self_stat2, DEFENSE_STAT, 100 };
@@ -189,6 +189,16 @@ attack icicle_spear = {"Icicle Spear" ,156, 30,  10,      100, ICE,      false, 
 attack clamp        = {"Clamp"        ,157, 10,  35,       75, WATER,    false, &inflict_condition, TIGHT_HOLD, 100 };
 attack spike_cannon = {"Spike Cannon" ,158, 15,  20,      100, NORMAL,   false, &hit_multiple_times, 2, 5 };
 attack lick         = {"Lick"         ,159, 30,  20,      100, GHOST,    false, &inflict_condition, PARALYZED, 30 };
+attack curse        = {"Curse"        ,160, 10,   0,  NO_MISS, GHOST,    false, &curse_move_func, NO_CONDITION, 0 };
+
+attack night_shade  = {"Night Shade"  ,161, 15,   0,      100, GHOST,    false, &night_shade_move_func, NO_CONDITION, 0 };
+attack shadow_ball  = {"Shadow Ball"  ,162, 15,  80,      100, GHOST,    false, &decrement_opponent_stat, SP_DEFENSE_STAT, 20 };
+attack shadow_punch = {"Shadow Punch" ,163, 20,  60,  NO_MISS, GHOST,    false, &attack_do_nothing, NO_CONDITION, 0 };
+attack meditate     = {"Meditate"     ,164, 40,   0,  NO_MISS, PSYCHIC,  false, &increment_self_stat, ATTACK_STAT, 100 };
+attack vice_grip    = {"Vice Grip"    ,165, 30,  55,      100, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
+attack mud_shot     = {"Mud Shot"     ,166, 15,  55,       95, GROUND,   false, &decrement_opponent_stat, SPEED_STAT, 100 };
+attack guillotine   = {"Guillotine"   ,167,  5,   0,  NO_MISS, NORMAL,   false, &k_o_move_func, NO_CONDITION, 0 };
+attack crab_hammer  = {"Crab Hammer"  ,168, 10,  90,       85, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -207,7 +217,8 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &flame_wheel, &extreme_speed, &recover, &bubble_beam, &hypnosis, &submission, &stomp, &fire_blast, &teleport, &kinesis,                 // #121-130
     &vital_throw, &dynamic_punch, &constrict, &barrier, &amnesia, &yawn, &headbutt, &metal_sound, &sonic_boom, &spark,                      // #131-140
     &zap_cannon, &knock_off, &fury_cutter, &swords_dance, &false_swipe, &uproar, &icy_wind, &aurora_beam, &ice_beam, &signal_beam,          // #141-150
-    &sheer_cold, &poison_gas, &sludge, &acid_armor, &sludge_bomb, &icicle_spear, &clamp, &spike_cannon, &lick
+    &sheer_cold, &poison_gas, &sludge, &acid_armor, &sludge_bomb, &icicle_spear, &clamp, &spike_cannon, &lick, &curse,                      // #151-160
+    &night_shade, &shadow_ball, &shadow_punch, &meditate, &vice_grip, &mud_shot, &guillotine, &crab_hammer
 };
 
 
@@ -446,7 +457,7 @@ int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
 }
 
 
-//Inflict damage to self
+//Inflict damage to self: damage_type = {HP_PERCENTAGE, HP_AMOUNT, PERCENT_DAMAGE_DEALT}
 int self_inflict_damage(int damage_type, int hp, struct Pokemon* victim, int damage) {
     //Adjust victim depending on if the victim is the player's or the enemy's
     Pokemon * self;

@@ -138,8 +138,19 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 			add_hidden_condition(pok, YAWNED, 2);	//Yawn should put pokemon to sleep the turn after.
 			break;
 
+		case CURSED:
+			if (has_hidden_condition(pok, CURSED)) {
+				printw("%s could not be cursed!", pok->name); refresh(); sleep(2);
+				return ATTACK_FAIL;
+			}
+			printw("%s was cursed!", pok->name); refresh(); sleep(2);
+			add_hidden_condition(pok, CURSED, 0);
+			break;
+
 		default:
-			add_hidden_condition(pok, condition, 0);
+			if (!has_hidden_condition(pok, condition)) {
+				add_hidden_condition(pok, condition, 0);
+			}
 			break;
 	}
 

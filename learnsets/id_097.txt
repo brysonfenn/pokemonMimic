@@ -1,0 +1,14 @@
+Hypno: 97
+Evolve: 101,0
+level,move_id
+1,69 Pound
+1,125 Hypnosis
+1,115 Disable
+1,36 Confusion
+7,115 Disable
+11,36 Confusion
+17,137 Headbutt
+21,152 Poison Gas
+29,164 Meditate
+35,105 Psychic
+49,109 Swagger

@@ -1,0 +1,12 @@
+Drowzee: 96
+Evolve: 26,97
+level,move_id
+1,69 Pound
+1,125 Hypnosis
+7,115 Disable
+11,36 Confusion
+17,137 Headbutt
+21,152 Poison Gas
+27,164 Meditate
+31,105 Psychic
+41,109 Swagger

@@ -1,0 +1,14 @@
+Kingler: 99
+Evolve: 101,0
+level,move_id
+1,17 Metal Claw
+1,13 Bubble
+1,165 Vice Grip
+5,52 Leer
+12,165 Vice Grip
+16,34 Harden
+23,166 Mud Shot
+27,127 Stomp
+38,167 Guillotine
+42,31 Protect
+57,168 Crabhammer

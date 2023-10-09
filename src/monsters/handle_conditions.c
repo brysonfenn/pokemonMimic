@@ -9,7 +9,7 @@
 #include "../print/print_battle.h"
 
 int handle_leech_seed(bool enemy, struct Pokemon * pok, struct Pokemon * perp);
-int handle_hurt_1_16(bool enemy, struct Pokemon * pok, char * pok_condition_text);
+int handle_hurt_fraction(bool enemy, struct Pokemon * pok, char * pok_condition_text, int fraction);
 
 //Handle poisoning, leech seed, etc.
 int handle_end_conditions(struct Pokemon * pok) {
@@ -40,11 +40,11 @@ int handle_end_conditions(struct Pokemon * pok) {
 
 	//Poison and burn
 	if (pok->visible_condition == POISONED) {
-		handle_hurt_1_16(enemy, pok, "poison");
+		handle_hurt_fraction(enemy, pok, "poison", 16);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
 	}
     if (pok->visible_condition == BURNED) {
-        handle_hurt_1_16(enemy, pok, "burn");
+        handle_hurt_fraction(enemy, pok, "burn", 16);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
     }
 
@@ -58,7 +58,7 @@ int handle_end_conditions(struct Pokemon * pok) {
             return ATTACK_SUCCESS;
         }
 
-        handle_hurt_1_16(enemy, pok, "tight hold");
+        handle_hurt_fraction(enemy, pok, "tight hold", 16);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
     }
     if (has_hidden_condition(pok, SAND_TOMBED)) {
@@ -70,7 +70,7 @@ int handle_end_conditions(struct Pokemon * pok) {
             return ATTACK_SUCCESS;
         }
 
-        handle_hurt_1_16(enemy, pok, "sand tomb");
+        handle_hurt_fraction(enemy, pok, "sand tomb", 16);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
     }
     if (has_hidden_condition(pok, FIRE_SPINNED)) {
@@ -82,7 +82,11 @@ int handle_end_conditions(struct Pokemon * pok) {
             return ATTACK_SUCCESS;
         }
 
-        handle_hurt_1_16(enemy, pok, "fire spin");
+        handle_hurt_fraction(enemy, pok, "fire spin", 16);
+        if (pok->currentHP == 0) return ATTACK_SUCCESS;
+    }
+    if (has_hidden_condition(pok, CURSED)) {
+        handle_hurt_fraction(enemy, pok, "curse", 4);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
     }
     // END TEMPORARY AFFLICTIONS //
@@ -126,8 +130,8 @@ int handle_leech_seed(bool is_enemy, struct Pokemon * pok, struct Pokemon * perp
     return 0;
 }
 
-
-int handle_hurt_1_16(bool enemy, struct Pokemon * pok, char * pok_condition_text) {
+//Deal damage to a given Pokemon equal to ((1 / fraction) * max_hp). "Hurt by {pok_condition_text}"
+int handle_hurt_fraction(bool enemy, struct Pokemon * pok, char * pok_condition_text, int fraction) {
     clear(); printBattle();
 
     text_box_cursors(TEXT_BOX_BEGINNING);
@@ -135,7 +139,7 @@ int handle_hurt_1_16(bool enemy, struct Pokemon * pok, char * pok_condition_text
     printw("%s was hurt by %s!", pok->name, pok_condition_text); refresh(); sleep(1);
     blinkPokemon(!enemy, DAMAGED_COLOR, 3);
 
-    pok->currentHP -= ((pok->maxHP / 16) + 1);
+    pok->currentHP -= ((pok->maxHP / fraction) + 1);
     if (pok->currentHP < 0) pok->currentHP = 0;
     
 }
