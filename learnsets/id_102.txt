@@ -1,0 +1,12 @@
+Exeggcute: 102
+Evolve: 44,103
+level,move_id
+1,146 Uproar
+1,169 Barrage
+1,125 Hypnosis
+13,11 Leech Seed
+19,36 Confusion
+25,37 Stun Spore
+31,14 Poison Powder
+37,15 Sleep Powder
+43,78 Solar Beam

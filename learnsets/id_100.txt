@@ -1,0 +1,11 @@
+Voltorb: 100
+Evolve: 30,101
+level,move_id
+1,1 Tackle
+8,84 Screech
+15,139 Sonic Boom
+21,140 Spark
+27,79 Selfdrestruct
+32,107 Rollout
+42,49 Swift
+46,82 Explosion

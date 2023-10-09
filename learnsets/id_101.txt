@@ -1,0 +1,13 @@
+Electrode: 101
+Evolve: 101,0
+level,move_id
+1,1 Tackle
+1,84 Screech
+1,139 Sonic Boom
+8,84 Screech
+15,139 Sonic Boom
+21,140 Spark
+27,79 Selfdrestruct
+34,107 Rollout
+48,49 Swift
+54,82 Explosion

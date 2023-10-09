@@ -1,0 +1,8 @@
+Exeggutor: 103
+Evolve: 101,0
+level,move_id
+1,36 Confusion
+1,169 Barrage
+1,125 Hypnosis
+19,127 Stomp
+31,170 Egg Bomb

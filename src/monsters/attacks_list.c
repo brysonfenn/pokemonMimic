@@ -11,7 +11,7 @@
 #include "attacks_special.h"
 #include "pokemon.h"
 
-#define NUM_ATTACKS 170
+#define NUM_ATTACKS 180
 
 attack empty_attack=  {"-------------",  0,  0, 100, 100, NO_TYPE,  false, &attack_do_nothing };
 //				 	   "Name         "  id  pp  pwr  acc    type     priority    effect         params
@@ -199,6 +199,12 @@ attack vice_grip    = {"Vice Grip"    ,165, 30,  55,      100, WATER,    false, 
 attack mud_shot     = {"Mud Shot"     ,166, 15,  55,       95, GROUND,   false, &decrement_opponent_stat, SPEED_STAT, 100 };
 attack guillotine   = {"Guillotine"   ,167,  5,   0,  NO_MISS, NORMAL,   false, &k_o_move_func, NO_CONDITION, 0 };
 attack crab_hammer  = {"Crab Hammer"  ,168, 10,  90,       85, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
+attack barrage      = {"Barrage"      ,169, 20,  15,       85, NORMAL,   false, &hit_multiple_times, 2, 5 };
+attack egg_bomb     = {"Egg Bomb"     ,170, 10, 100,       75, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+
+attack bone_club    = {"Bone Club"    ,171, 20,  65,       85, GROUND,   false, &inflict_condition, FLINCHED, 10 };
+attack bonemerang   = {"Bonemerang"   ,172, 10,  50,       90, GROUND,   false, &hit_multiple_times, 2, 2 };
+attack bone_rush    = {"Bone Rush"    ,173, 10,  25,       80, GROUND,   false, &hit_multiple_times, 2, 5 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -218,7 +224,8 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &vital_throw, &dynamic_punch, &constrict, &barrier, &amnesia, &yawn, &headbutt, &metal_sound, &sonic_boom, &spark,                      // #131-140
     &zap_cannon, &knock_off, &fury_cutter, &swords_dance, &false_swipe, &uproar, &icy_wind, &aurora_beam, &ice_beam, &signal_beam,          // #141-150
     &sheer_cold, &poison_gas, &sludge, &acid_armor, &sludge_bomb, &icicle_spear, &clamp, &spike_cannon, &lick, &curse,                      // #151-160
-    &night_shade, &shadow_ball, &shadow_punch, &meditate, &vice_grip, &mud_shot, &guillotine, &crab_hammer
+    &night_shade, &shadow_ball, &shadow_punch, &meditate, &vice_grip, &mud_shot, &guillotine, &crab_hammer, &barrage, &egg_bomb,            // #161-170
+    &bone_club, &bonemerang, &bone_rush
 };
 
 
