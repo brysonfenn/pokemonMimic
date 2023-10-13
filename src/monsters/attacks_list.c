@@ -205,6 +205,20 @@ attack egg_bomb     = {"Egg Bomb"     ,170, 10, 100,       75, NORMAL,   false, 
 attack bone_club    = {"Bone Club"    ,171, 20,  65,       85, GROUND,   false, &inflict_condition, FLINCHED, 10 };
 attack bonemerang   = {"Bonemerang"   ,172, 10,  50,       90, GROUND,   false, &hit_multiple_times, 2, 2 };
 attack bone_rush    = {"Bone Rush"    ,173, 10,  25,       80, GROUND,   false, &hit_multiple_times, 2, 5 };
+attack rolling_kick = {"Rolling Kick" ,174, 15,  60,       85, FIGHTING, false, &inflict_condition, FLINCHED, 30 };
+attack jump_kick    = {"Jump Kick"    ,175, 25,  70,       95, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
+attack brick_break  = {"Brick Break"  ,176, 15,  75,      100, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
+attack hi_jump_kick = {"Hi Jump Kick" ,177, 20,  85,       90, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
+attack mega_kick    = {"Mega Kick"    ,178,  5, 120,       75, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack comet_punch  = {"Comet Punch"  ,179, 15,  18,       85, NORMAL,   false, &hit_multiple_times, 2, 5 };
+attack mach_punch   = {"Mach Punch"   ,180, 30,  40,      100, NORMAL,   true,  &attack_do_nothing, NO_CONDITION, 0 };
+
+attack thunder_punch= {"Thunder Punch",181, 15,  75,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 10 };
+attack ice_punch    = {"Ice Punch"    ,182, 15,  75,      100, ICE,      false, &inflict_condition, FROZEN, 10 };
+attack fire_punch   = {"Fire Punch"   ,183, 15,  75,      100, FIRE,     false, &inflict_condition, BURNED, 10 };
+attack sky_uppercut = {"Sky Uppercut" ,184, 15,  85,       90, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
+attack mega_punch   = {"Mega Punch"   ,185, 20,  80,       85, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack detect       = {"Detect"       ,186,  5,   0,       75, FIGHTING,  true, &self_inflict_condition, PROTECTED, 100 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -225,7 +239,8 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &zap_cannon, &knock_off, &fury_cutter, &swords_dance, &false_swipe, &uproar, &icy_wind, &aurora_beam, &ice_beam, &signal_beam,          // #141-150
     &sheer_cold, &poison_gas, &sludge, &acid_armor, &sludge_bomb, &icicle_spear, &clamp, &spike_cannon, &lick, &curse,                      // #151-160
     &night_shade, &shadow_ball, &shadow_punch, &meditate, &vice_grip, &mud_shot, &guillotine, &crab_hammer, &barrage, &egg_bomb,            // #161-170
-    &bone_club, &bonemerang, &bone_rush
+    &bone_club, &bonemerang, &bone_rush, &rolling_kick, &jump_kick, &brick_break, &hi_jump_kick, &mega_kick, &comet_punch, &mach_punch,     // #171-180
+    &thunder_punch, &ice_punch, &fire_punch, &sky_uppercut, &mega_punch, &detect
 };
 
 

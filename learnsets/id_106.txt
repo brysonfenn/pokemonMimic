@@ -1,0 +1,10 @@
+Hitmonlee: 106
+Evolve: 101,0
+level,move_id
+1,61 Double Kick
+6,164 Meditate
+11,174 Rolling Kick
+16,175 Jump Kick
+20,176 Brick Break
+26,177 Hi Jump Kick
+46,178 Mega Kick

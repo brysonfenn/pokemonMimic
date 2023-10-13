@@ -1,0 +1,13 @@
+Hitmonchan: 107
+Evolve: 101,0
+level,move_id
+1,179 Comet PUnch
+7,43 Agility
+13,42 Pursuit
+20,180 Mach Punch
+26,181 Thunder Punch
+26,182 Ice Punch
+26,183 Fire Punch
+32,184 Sky Uppercut
+38,185 Mega Punch
+44,186 Detect
