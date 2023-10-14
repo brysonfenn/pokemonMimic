@@ -1,0 +1,14 @@
+Chansey: 113
+Evolve: 101,0
+level,move_id
+1,69 Pound
+1,3 Growl
+5,4 Tail Whip
+9,187 Refresh
+13,189 Softboiled
+17,71 Double Slap
+23,72 Minimize
+29,70 Sing
+35,170 Egg Bomb
+41,9 Defense Curl
+57,83 Double-Edge

@@ -1,0 +1,13 @@
+Rhyhorn: 111
+Evolve: 42,112
+level,move_id
+1,65 Horn Attack
+1,4 Tail Whip
+10,127 Stomp
+15,41 Fury Attack
+24,21 Scary Face
+29,80 Rock Blast
+38,66 Horn Drill
+43,120 Take Down
+52,81 Earthquake
+57,68 Megahorn
