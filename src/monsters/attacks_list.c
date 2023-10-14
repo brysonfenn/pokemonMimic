@@ -11,7 +11,7 @@
 #include "attacks_special.h"
 #include "pokemon.h"
 
-#define NUM_ATTACKS 180
+#define NUM_ATTACKS 200
 
 attack empty_attack=  {"-------------",  0,  0, 100, 100, NO_TYPE,  false, &attack_do_nothing };
 //				 	   "Name         "  id  pp  pwr  acc    type     priority    effect         params
@@ -219,6 +219,8 @@ attack fire_punch   = {"Fire Punch"   ,183, 15,  75,      100, FIRE,     false, 
 attack sky_uppercut = {"Sky Uppercut" ,184, 15,  85,       90, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
 attack mega_punch   = {"Mega Punch"   ,185, 20,  80,       85, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack detect       = {"Detect"       ,186,  5,   0,       75, FIGHTING,  true, &self_inflict_condition, PROTECTED, 100 };
+attack refresh_move = {"Refresh"      ,187, 20,   0,  NO_MISS, NORMAL,   false, &refresh_move_func, NO_CONDITION, 0 };
+attack smog         = {"Smog"         ,188, 20,  20,       70, POISON,   false, &inflict_condition, POISONED, 40 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -240,7 +242,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &sheer_cold, &poison_gas, &sludge, &acid_armor, &sludge_bomb, &icicle_spear, &clamp, &spike_cannon, &lick, &curse,                      // #151-160
     &night_shade, &shadow_ball, &shadow_punch, &meditate, &vice_grip, &mud_shot, &guillotine, &crab_hammer, &barrage, &egg_bomb,            // #161-170
     &bone_club, &bonemerang, &bone_rush, &rolling_kick, &jump_kick, &brick_break, &hi_jump_kick, &mega_kick, &comet_punch, &mach_punch,     // #171-180
-    &thunder_punch, &ice_punch, &fire_punch, &sky_uppercut, &mega_punch, &detect
+    &thunder_punch, &ice_punch, &fire_punch, &sky_uppercut, &mega_punch, &detect, &refresh_move, &smog
 };
 
 

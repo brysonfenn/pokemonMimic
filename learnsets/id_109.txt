@@ -1,0 +1,10 @@
+Koffing: 109
+Evolve: 35,110
+level,move_id
+1,152 Poison Gas
+1,1 Tackle
+9,188 Smog
+17,79 Selfdestruct
+21,153 Sludge
+25,18 Smoke Screen
+41,82 Explosion

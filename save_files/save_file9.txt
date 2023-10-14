@@ -1,13 +1,13 @@
-Last Saved: 10/08/2023 20:50:44
+Last Saved: 10/13/2023 17:08:22
 Player: Test_Player
 2 6 3 400
-Location: {7,(42,15)}
+Location: {7,(39,14)}
 Heal Center: {7,(33,9)}
 Pokemon: 
-Charmander 4 20 20 4 11 10 12 11 12 6 229 NONE NONE 12bcdf73 0 0
-	Magnitude. 106 30
+Charmander 4 20 16 4 11 10 12 11 12 6 262 NONE NONE 12bcdf73 0 0
+	Magnitude. 106 29
 	Clamp. 157 10
-	Icicle Spear. 156 30
+	Refresh. 187 19
 	Curse. 160 10
 Abra 63 16 16 1 7 6 14 9 13 4 64 PSYCHIC NONE 3a4b33f6 0 0
 	Teleport. 129 20

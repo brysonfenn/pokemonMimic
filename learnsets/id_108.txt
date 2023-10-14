@@ -1,0 +1,13 @@
+Lickitung: 108
+Evolve: 101,0
+level,move_id
+1,159 Lick
+7,35 Supersonic
+12,9 Defense Curl
+18,142 Knock Off
+23,127 Stomp
+29,89 Wrap
+34,115 Disable
+40,58 Slam
+45,84 Screech
+51,187 Refresh

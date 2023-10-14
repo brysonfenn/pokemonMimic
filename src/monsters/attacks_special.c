@@ -242,3 +242,21 @@ int night_shade_move_func(int nothing1, int nothing2, struct Pokemon * victim, i
     deal_specific_damage(0, self->level, victim, 0);
     return ATTACK_SUCCESS;
 }
+
+//Special Function for Refresh
+int refresh_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    if (player.current_pokemon == victim) self = player.enemy_pokemon;
+    else self = player.current_pokemon;
+
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    if (self->visible_condition == PARALYZED || self->visible_condition == BURNED || self->visible_condition == POISONED) {
+        printw("%s was healed of its condition!", self->name); refresh(); sleep(2);
+        self->visible_condition = NO_CONDITION;
+        return ATTACK_SUCCESS;
+    }
+    else {
+        printw("It had no effect!"); refresh(); sleep(2);
+        return ATTACK_FAIL;
+    }
+}

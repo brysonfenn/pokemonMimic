@@ -41,5 +41,8 @@ int curse_move_func(int nothing1, int nothing2, struct Pokemon * victim, int dam
 //Special Function for Night Shade
 int night_shade_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
+//Special Function for Refresh
+int refresh_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+
 
 #endif // ATTACKS_SPECIAL_H
