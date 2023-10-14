@@ -59,16 +59,16 @@ attack gust         = {"Gust"         , 38, 35,  40,      100, FLYING,   false, 
 attack psybeam      = {"Psybeam"      , 39, 20,  65,      100, PSYCHIC,  false, &inflict_condition, CONFUSED, 10 };
 attack silver_wind  = {"Silver Wind"  , 40,  5,  60,      100, BUG,      false, &increment_self_stat, SP_ATTACK_STAT, 10 };
 
-attack fury_attack  = {"Fury Attack"  , 41, 20,  15,       85, NORMAL,   false, &hit_multiple_times, 2, 5 };
+attack fury_attack  = {"Fury Attack"  , 41, 20,  15,       85, NORMAL,   false, &hit_2_5_times, NO_CONDITION, 0 };
 attack pursuit      = {"Pursuit"      , 42, 10,  40,      100, DARK,     false, &attack_do_nothing, NO_CONDITION, 0 };
 attack agility      = {"Agility"      , 43, 20,   0,  NO_MISS, PSYCHIC,  false, &increment_self_stat2, SPEED_STAT, 100 };
-attack twineedle    = {"Twineedle"    , 44, 20,  25,      100, BUG,      false, &hit_multiple_times, 2, 2 };
-attack pin_missile  = {"Pin Missile"  , 45, 20,  14,       85, BUG,      false, &hit_multiple_times, 2, 5 };
+attack twineedle    = {"Twineedle"    , 44, 20,  25,      100, BUG,      false, &hit_twice, NO_CONDITION, 0 };
+attack pin_missile  = {"Pin Missile"  , 45, 20,  14,       85, BUG,      false, &hit_2_5_times, NO_CONDITION, 0 };
 attack hyper_fang   = {"Hyper Fang"   , 46, 15,  80,       90, NORMAL,   false, &inflict_condition, FLINCHED, 10 };
 attack super_fang   = {"Super Fang"   , 47, 10,   0,       90, NORMAL,   false, &deal_percentage_damage, NO_CONDITION, 50 };
 attack feather_dance= {"Feather Dance", 48, 15,   0,      100, FLYING,   false, &decrement_opponent_stat2, ATTACK_STAT, 100 };
 attack swift        = {"Swift"        , 49, 20,  60,  NO_MISS, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
-attack fury_swipes  = {"Fury Swipes"  , 50, 15,  18,       80, NORMAL,   false, &hit_multiple_times, 2, 5 };
+attack fury_swipes  = {"Fury Swipes"  , 50, 15,  18,       80, NORMAL,   false, &hit_2_5_times, NO_CONDITION, 0 };
 
 attack peck         = {"Peck"         , 51, 35,  35,      100, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack leer         = {"Leer"         , 52, 30,   0,      100, NORMAL,   false, &decrement_opponent_stat, DEFENSE_STAT, 100 };
@@ -81,7 +81,7 @@ attack slam         = {"Slam"         , 58, 20,  80,       75, NORMAL,   false, 
 attack thunderbolt  = {"Thunderbolt"  , 59, 15,  95,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 10 };
 attack thunder      = {"Thunder"      , 60, 10, 120,       70, ELECTRIC, false, &inflict_condition, PARALYZED, 30 };
 
-attack double_kick  = {"Double Kick"  , 61, 30,  30,      100, FIGHTING, false, &hit_multiple_times, 2, 2 };
+attack double_kick  = {"Double Kick"  , 61, 30,  30,      100, FIGHTING, false, &hit_twice, NO_CONDITION, 0 };
 attack crunch       = {"Crunch"       , 62, 15,  80,      100, DARK,     false, &decrement_opponent_stat, SP_DEFENSE_STAT, 20 };
 attack body_slam    = {"Body Slam"    , 63, 15,  85,      100, NORMAL,   false, &inflict_condition, PARALYZED, 30 };
 attack super_power  = {"Super Power"  , 64,  5, 120,      100, FIGHTING, false, &decrement_opponent_stat, ATTACK_STAT, 100 };
@@ -92,7 +92,7 @@ attack megahorn     = {"Megahorn"     , 68, 10, 120,       85, BUG,      false, 
 attack pound        = {"Pound"        , 69, 35,  40,       95, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack sing         = {"Sing"         , 70, 15,   0,       55, NORMAL,   false, &inflict_condition, ASLEEP, 100 };
 
-attack double_slap  = {"Double Slap"  , 71, 10,  15,       85, NORMAL,   false, &hit_multiple_times, 2, 5 };
+attack double_slap  = {"Double Slap"  , 71, 10,  15,       85, NORMAL,   false, &hit_2_5_times, NO_CONDITION, 0 };
 attack minimize     = {"Minimize"     , 72, 20,   0,  NO_MISS, NORMAL,   false, &increment_self_stat, EVASIVENESS_STAT, 100 };
 attack cosmic_power = {"Cosmic Power" , 73, 20,   0,  NO_MISS, PSYCHIC,  false, &increment_self_stat, SP_DEFENSE_STAT, 100 };
 attack moonlight    = {"Moonlight"    , 74,  5,   0,  NO_MISS, NORMAL,   false, &self_heal, HP_PERCENTAGE, 50 };
@@ -101,7 +101,7 @@ attack rock_throw   = {"Rock Throw"   , 76, 15,  50,       90, ROCK,     false, 
 attack synthesis    = {"Synthesis"    , 77,  5,   0,  NO_MISS, GRASS,    false, &self_heal, HP_PERCENTAGE, 50 };
 attack solar_beam   = {"Solar Beam"   , 78, 10,  90,      100, GRASS,    false, &attack_do_nothing, NO_CONDITION, 0 };
 attack selfdestruct = {"Selfdestruct" , 79,  5, 400,      100, NORMAL,   false, &self_inflict_damage, HP_PERCENTAGE, 150 };
-attack rock_blast   = {"Rock Blast"   , 80, 10,  25,       80, ROCK,     false, &hit_multiple_times, 2, 5 };
+attack rock_blast   = {"Rock Blast"   , 80, 10,  25,       80, ROCK,     false, &hit_2_5_times, NO_CONDITION, 0 };
 
 attack earthquake   = {"Earthquake"   , 81, 10, 100,      100, GROUND,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack explosion    = {"Explosion"    , 82,  5, 500,      100, NORMAL,   false, &self_inflict_damage, HP_PERCENTAGE, 150 };
@@ -185,9 +185,9 @@ attack poison_gas   = {"Poison Gas"   ,152, 40,   0,       55, POISON,   false, 
 attack sludge       = {"Sludge"       ,153, 20,  65,      100, POISON,   false, &inflict_condition, POISONED, 40 };
 attack acid_armor   = {"Acid Armor"   ,154, 40,   0,  NO_MISS, POISON,   false, &increment_self_stat2, DEFENSE_STAT, 100 };
 attack sludge_bomb  = {"Sludge Bomb"  ,155, 10,  90,      100, POISON,   false, &inflict_condition, POISONED, 30 };
-attack icicle_spear = {"Icicle Spear" ,156, 30,  10,      100, ICE,      false, &hit_multiple_times, 2, 5 };
+attack icicle_spear = {"Icicle Spear" ,156, 30,  10,      100, ICE,      false, &hit_2_5_times, NO_CONDITION, 0 };
 attack clamp        = {"Clamp"        ,157, 10,  35,       75, WATER,    false, &inflict_condition, TIGHT_HOLD, 100 };
-attack spike_cannon = {"Spike Cannon" ,158, 15,  20,      100, NORMAL,   false, &hit_multiple_times, 2, 5 };
+attack spike_cannon = {"Spike Cannon" ,158, 15,  20,      100, NORMAL,   false, &hit_2_5_times, NO_CONDITION, 0 };
 attack lick         = {"Lick"         ,159, 30,  20,      100, GHOST,    false, &inflict_condition, PARALYZED, 30 };
 attack curse        = {"Curse"        ,160, 10,   0,  NO_MISS, GHOST,    false, &curse_move_func, NO_CONDITION, 0 };
 
@@ -199,18 +199,18 @@ attack vice_grip    = {"Vice Grip"    ,165, 30,  55,      100, WATER,    false, 
 attack mud_shot     = {"Mud Shot"     ,166, 15,  55,       95, GROUND,   false, &decrement_opponent_stat, SPEED_STAT, 100 };
 attack guillotine   = {"Guillotine"   ,167,  5,   0,  NO_MISS, NORMAL,   false, &k_o_move_func, NO_CONDITION, 0 };
 attack crab_hammer  = {"Crab Hammer"  ,168, 10,  90,       85, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
-attack barrage      = {"Barrage"      ,169, 20,  15,       85, NORMAL,   false, &hit_multiple_times, 2, 5 };
+attack barrage      = {"Barrage"      ,169, 20,  15,       85, NORMAL,   false, &hit_2_5_times, NO_CONDITION, 0 };
 attack egg_bomb     = {"Egg Bomb"     ,170, 10, 100,       75, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 
 attack bone_club    = {"Bone Club"    ,171, 20,  65,       85, GROUND,   false, &inflict_condition, FLINCHED, 10 };
-attack bonemerang   = {"Bonemerang"   ,172, 10,  50,       90, GROUND,   false, &hit_multiple_times, 2, 2 };
-attack bone_rush    = {"Bone Rush"    ,173, 10,  25,       80, GROUND,   false, &hit_multiple_times, 2, 5 };
+attack bonemerang   = {"Bonemerang"   ,172, 10,  50,       90, GROUND,   false, &hit_twice, NO_CONDITION, 0 };
+attack bone_rush    = {"Bone Rush"    ,173, 10,  25,       80, GROUND,   false, &hit_2_5_times, NO_CONDITION, 0 };
 attack rolling_kick = {"Rolling Kick" ,174, 15,  60,       85, FIGHTING, false, &inflict_condition, FLINCHED, 30 };
 attack jump_kick    = {"Jump Kick"    ,175, 25,  70,       95, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
 attack brick_break  = {"Brick Break"  ,176, 15,  75,      100, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
 attack hi_jump_kick = {"Hi Jump Kick" ,177, 20,  85,       90, FIGHTING, false, &attack_do_nothing, NO_CONDITION, 0 };
 attack mega_kick    = {"Mega Kick"    ,178,  5, 120,       75, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
-attack comet_punch  = {"Comet Punch"  ,179, 15,  18,       85, NORMAL,   false, &hit_multiple_times, 2, 5 };
+attack comet_punch  = {"Comet Punch"  ,179, 15,  18,       85, NORMAL,   false, &hit_2_5_times, NO_CONDITION, 0 };
 attack mach_punch   = {"Mach Punch"   ,180, 30,  40,      100, NORMAL,   true,  &attack_do_nothing, NO_CONDITION, 0 };
 
 attack thunder_punch= {"Thunder Punch",181, 15,  75,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 10 };
@@ -389,24 +389,23 @@ int deal_specific_damage(Condition nothing1, int hp, struct Pokemon* victim, int
     return ATTACK_SUCCESS;
 }
 
-//Some attacks hit multiple times
-int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int damage) {
+
+//Some attacks hit multiple (2-5) times
+int hit_2_5_times(int nothing1, int nothing2, struct Pokemon* victim, int damage) {
 
     bool enemy = (victim != player.enemy_pokemon);
     int rand_times;
     int i = 0;
+    int rand_num = rand() % 100;
 
-    //If max times is the same as min times, this is a specific number of times > 1
-    if (max_times != min_times) {
-        rand_times = (rand() % (max_times - min_times)) + min_times;
-        rand_times--;
-    }
-    else {
-        rand_times = min_times;
-    }
+    //Random distribution
+    if (rand_num < 35) rand_times = 2;
+    else if (rand_num < 70) rand_times = 3;
+    else if (rand_num < 85) rand_times = 4;
+    else rand_times = 5;
 
-    // Do not hit again if victim has fainted
-    while (victim->currentHP > 0 && i < rand_times) {
+    // Do not hit again if victim has fainted, hit up to random times - 1 (because we already hit once)
+    while (victim->currentHP > 0 && i < rand_times-1) {
         sleep(1);
         blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
         victim->currentHP -= damage;
@@ -419,6 +418,28 @@ int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int
     text_box_cursors(TEXT_BOX_BEGINNING);
     printw("Hit %d time(s)", i+1); refresh(); sleep(2);
 
+    return ATTACK_SUCCESS;
+}
+
+
+//Some attacks hit twice
+int hit_twice(int nothing1, int nothing2, struct Pokemon* victim, int damage) {
+    bool enemy = (victim != player.enemy_pokemon);
+    int times = 1;
+
+    // Do not hit again if victim has fainted
+    if (victim->currentHP > 0) {
+        sleep(1);
+        blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
+        victim->currentHP -= damage;
+        times++;
+        if (victim->currentHP < 0) victim->currentHP = 0;
+        printBattle();
+    }
+
+    sleep(1);
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    printw("Hit %d time(s)", times); refresh(); sleep(2);
     return ATTACK_SUCCESS;
 }
 

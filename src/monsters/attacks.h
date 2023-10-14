@@ -37,8 +37,8 @@ typedef struct attack {
   
   bool priority;
   attack_func_ptr side_effect;
-  int condition;
-  int chance;
+  int var1;
+  int var2;
 
   int curr_pp;
 } attack;
@@ -85,7 +85,10 @@ int deal_specific_damage(Condition nothing1, int hp, struct Pokemon* victim, int
 int deal_percentage_damage(Condition nothing, int percent, struct Pokemon* victim, int damage);
 
 //Some attacks hit multiple times
-int hit_multiple_times(int min_times, int max_times, struct Pokemon* victim, int damage);
+int hit_2_5_times(int nothing1, int nothing2, struct Pokemon* victim, int damage);
+
+//Some attacks hit twice
+int hit_twice(int nothing1, int nothing2, struct Pokemon* victim, int damage);
 
 //Heal a specified amount of HP
 int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage);

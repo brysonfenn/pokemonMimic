@@ -113,8 +113,6 @@ int handle_battle(struct Pokemon * enemyPok) {
     while (current_decision == NONE) {
       clear();
 
-      enemy_attack_num = get_enemy_move(enemyPok);
-
       switch (current_display) {
         
       case MAIN:
@@ -223,6 +221,7 @@ int handle_battle(struct Pokemon * enemyPok) {
     ///////// END GET DECISION /////////
 
     printBattle();
+    enemy_attack_num = get_enemy_move(enemyPok);
 
     ///////// EXECUTE DECISION /////////
     bool enemy_priority, player_priority;
@@ -418,7 +417,24 @@ int get_enemy_move(Pokemon * pok) {
   //Get move with maximum damage
   for (int i = 0; i < num_available_attacks; i++) {
     curr_attack = available_attacks[i];
-    curr_damage = get_damage(pok, curr_attack, player.current_pokemon, false, &flags_var);
+    
+    //Check for possible special damage
+    if (pok->attacks[curr_attack].side_effect == &deal_specific_damage) {
+      curr_damage = pok->attacks[curr_attack].var2;
+    }
+    else if (pok->attacks[curr_attack].side_effect == &deal_percentage_damage) {
+      curr_damage = player.current_pokemon->currentHP * pok->attacks[curr_attack].var2 / 100;
+    }
+    else if (pok->attacks[curr_attack].side_effect == &hit_twice) {
+      curr_damage = 2 * get_damage(pok, curr_attack, player.current_pokemon, false, &flags_var);
+    }
+    else if (pok->attacks[curr_attack].side_effect == &hit_2_5_times) {
+      curr_damage = 3 * get_damage(pok, curr_attack, player.current_pokemon, false, &flags_var);
+    }
+    else {
+      curr_damage = get_damage(pok, curr_attack, player.current_pokemon, false, &flags_var);
+    }
+
     if (curr_damage > max_damage) {
       max_move_index = available_attacks[i];
       max_damage = curr_damage;
@@ -427,8 +443,11 @@ int get_enemy_move(Pokemon * pok) {
 
   // Higher chance of selecting move with highest damage
   int random = rand() % 100;
-  if (random < 67) return max_move_index;
-  else return available_attacks[rand() % num_available_attacks];
+  int selected_move = 0;
+  if (random < 67) selected_move = max_move_index;
+  else selected_move = available_attacks[rand() % num_available_attacks];
+
+  return selected_move;
 }
 
 

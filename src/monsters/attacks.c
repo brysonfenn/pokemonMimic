@@ -160,7 +160,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     printw("It had no effect."); refresh(); sleep(2);
   }
 
-  attack_result = chosenAttack.side_effect(chosenAttack.condition, chosenAttack.chance, victim, damage);
+  attack_result = chosenAttack.side_effect(chosenAttack.var1, chosenAttack.var2, victim, damage);
 
   if (attack_result == ATTACK_SUCCESS || attack_result == ATTACK_FAIL) {
     return ATTACK_SUCCESS;

@@ -177,7 +177,7 @@ void learn_move(Pokemon * pok, attack * new_attack) {
     clear(); printBattle();
     text_box_cursors(TEXT_BOX_BEGINNING);
 
-    if (input_num == 4) {
+    if (input_num == 4 || input_num == PRESSED_B) {
       printw("%s did not learn %s!", pok->name, new_attack->name); refresh(); sleep(2); return;
     }
 
