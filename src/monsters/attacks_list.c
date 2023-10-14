@@ -11,7 +11,7 @@
 #include "attacks_special.h"
 #include "pokemon.h"
 
-#define NUM_ATTACKS 200
+#define NUM_ATTACKS 210
 
 attack empty_attack=  {"-------------",  0,  0, 100, 100, NO_TYPE,  false, &attack_do_nothing };
 //				 	   "Name         "  id  pp  pwr  acc    type     priority    effect         params
@@ -149,7 +149,7 @@ attack take_down    = {"Take Down"    ,120, 20,  90,       85, NORMAL,   false, 
 
 attack flame_wheel  = {"Flame Wheel"  ,121, 25,  60,      100, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack extreme_speed= {"Extreme Speed",122,  5,  80,      100, NORMAL,    true, &attack_do_nothing, NO_CONDITION, 0 };
-attack recover      = {"Recover"      ,123,  5,   0,  NO_MISS, GRASS,    false, &self_heal, HP_PERCENTAGE, 50 };
+attack recover      = {"Recover"      ,123,  5,   0,  NO_MISS, NORMAL,    false, &self_heal, HP_PERCENTAGE, 50 };
 attack bubble_beam  = {"Bubble Beam"  ,124, 20,  65,      100, WATER,    false, &decrement_opponent_stat, SPEED_STAT, 10 };
 attack hypnosis     = {"Hypnosis"     ,125, 20,   0,       60, PSYCHIC,  false, &inflict_condition, ASLEEP, 100 };
 attack submission   = {"Submission"   ,126, 25,  80,       80, FIGHTING, false, &self_inflict_damage, PERCENT_DAMAGE_DEALT, 25 };
@@ -222,6 +222,19 @@ attack detect       = {"Detect"       ,186,  5,   0,       75, FIGHTING,  true, 
 attack refresh_move = {"Refresh"      ,187, 20,   0,  NO_MISS, NORMAL,   false, &refresh_move_func, NO_CONDITION, 0 };
 attack smog         = {"Smog"         ,188, 20,  20,       70, POISON,   false, &inflict_condition, POISONED, 40 };
 attack softboiled   = {"Softboiled"   ,189, 10,   0,  NO_MISS, NORMAL,   false, &self_heal, HP_PERCENTAGE, 50 };
+attack ingrain      = {"Ingrain"      ,190, 20,   0,  NO_MISS, GRASS,    false, &self_inflict_condition, INGRAINED, 100 };
+
+attack dizzy_punch  = {"Dizzy Punch"  ,191, 10,  70,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack twister      = {"Twister"      ,192, 20,  40,      100, DRAGON,   false, &inflict_condition, FLINCHED, 20 };
+attack dragon_dance = {"Dragon Dance" ,193, 20,   0,  NO_MISS, DRAGON,   false, &increment_self_stat, ATTACK_STAT, 20 };
+attack flail        = {"Flail"        ,194, 15,   0,      100, NORMAL,   false, &flail_move_func, NO_CONDITION, 0 };
+attack waterfall    = {"Waterfall"    ,195, 15,  80,      100, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
+attack magical_leaf = {"Magical Leaf" ,196, 20,  60,  NO_MISS, GRASS,    true,  &attack_do_nothing, NO_CONDITION, 0 };
+attack lovely_kiss  = {"Lovely Kiss"  ,197, 10,   0,       75, NORMAL,   false, &inflict_condition, ASLEEP, 100 };
+attack powder_snow  = {"Powder Snow"  ,198, 25,  40,      100, ICE,      false, &inflict_condition, FROZEN, 10 };
+attack fake_tears   = {"Fake Tears"   ,199, 20,   0,      100, DARK,     false, &decrement_opponent_stat2, SP_DEFENSE_STAT, 100 };
+attack blizzard     = {"Blizzard"     ,200,  5, 120,       70, ICE,      false, &inflict_condition, FROZEN, 30 };
+
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -243,7 +256,8 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &sheer_cold, &poison_gas, &sludge, &acid_armor, &sludge_bomb, &icicle_spear, &clamp, &spike_cannon, &lick, &curse,                      // #151-160
     &night_shade, &shadow_ball, &shadow_punch, &meditate, &vice_grip, &mud_shot, &guillotine, &crab_hammer, &barrage, &egg_bomb,            // #161-170
     &bone_club, &bonemerang, &bone_rush, &rolling_kick, &jump_kick, &brick_break, &hi_jump_kick, &mega_kick, &comet_punch, &mach_punch,     // #171-180
-    &thunder_punch, &ice_punch, &fire_punch, &sky_uppercut, &mega_punch, &detect, &refresh_move, &smog, &softboiled
+    &thunder_punch, &ice_punch, &fire_punch, &sky_uppercut, &mega_punch, &detect, &refresh_move, &smog, &softboiled, &ingrain,              // #181-190
+    &dizzy_punch, &twister, &dragon_dance, &flail, &waterfall, &magical_leaf, &lovely_kiss, &powder_snow, &fake_tears, &blizzard
 };
 
 

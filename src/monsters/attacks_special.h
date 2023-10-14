@@ -44,5 +44,7 @@ int night_shade_move_func(int nothing1, int nothing2, struct Pokemon * victim, i
 //Special Function for Refresh
 int refresh_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
+//Special function for Flail move
+int flail_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
 #endif // ATTACKS_SPECIAL_H

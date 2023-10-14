@@ -260,3 +260,26 @@ int refresh_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
         return ATTACK_FAIL;
     }
 }
+
+
+//Special function for Flail move
+int flail_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
+    else { self = player.current_pokemon; }
+
+    //Power is dependent on percentage of remaining hp
+    int power = 0;
+    float hp_percent = ((float) self->currentHP) / 100.0;
+    if (hp_percent < 0.05) { power = 200; }
+    else if (hp_percent < 0.11) { power = 150; }
+    else if (hp_percent < 0.21) { power = 100; }
+    else if (hp_percent < 0.36) { power = 80; }
+    else if (hp_percent < 0.70) { power = 40; }
+    else { power = 20; }
+
+    // Baseline damage
+    deal_damage(power, self, victim, NORMAL);
+
+    return ATTACK_SUCCESS;
+}

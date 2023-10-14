@@ -417,6 +417,7 @@ int get_enemy_move(Pokemon * pok) {
   //Get move with maximum damage
   for (int i = 0; i < num_available_attacks; i++) {
     curr_attack = available_attacks[i];
+    int attack_id = pok->attacks[curr_attack].id_num;
     
     //Check for possible special damage
     if (pok->attacks[curr_attack].side_effect == &deal_specific_damage) {
@@ -430,6 +431,11 @@ int get_enemy_move(Pokemon * pok) {
     }
     else if (pok->attacks[curr_attack].side_effect == &hit_2_5_times) {
       curr_damage = 3 * get_damage(pok, curr_attack, player.current_pokemon, false, &flags_var);
+    }
+    //Various attacks have special move functions whose damage is more complex --> Simplified here
+    else if (attack_id == 106 || attack_id == 107 || attack_id == 118 || attack_id == 146 || attack_id == 160 
+              || attack_id == 161 || attack_id == 194) {
+      curr_damage = pok->level;
     }
     else {
       curr_damage = get_damage(pok, curr_attack, player.current_pokemon, false, &flags_var);

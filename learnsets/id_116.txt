@@ -1,0 +1,11 @@
+Horsea: 116
+Evolve: 32,117
+level,move_id
+1,13 Bubble
+8,18 Smoke Screen
+15,52 Leer
+22,28 Water Gun
+29,192 Twister
+36,43 Agility
+43,33 Hydro Pump
+50,193 Dragon Dance

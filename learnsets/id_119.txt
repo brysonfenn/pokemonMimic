@@ -1,0 +1,14 @@
+Seaking: 119
+Evolve: 101,0
+level,move_id
+1,51 Peck
+1,4 Tail Whip
+1,35 Supersonic
+10,35 Supersonic
+15,65 Horn Attack
+24,194 Flail
+29,41 Fury Attack
+41,38 Waterfall
+49,66 Horn Drill
+61,43 Agility
+69,68 Megahorn

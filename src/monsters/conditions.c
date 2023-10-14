@@ -147,6 +147,15 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 			add_hidden_condition(pok, CURSED, 0);
 			break;
 
+		case INGRAINED:
+			if (has_hidden_condition(pok, INGRAINED)) {
+				printw("%s has already ingrained its roots!", pok->name); refresh(); sleep(2);
+				return ATTACK_FAIL;
+			}
+			printw("%s ingrained its roots!", pok->name); refresh(); sleep(2);
+			add_hidden_condition(pok, INGRAINED, 0);
+			break;
+
 		default:
 			if (!has_hidden_condition(pok, condition)) {
 				add_hidden_condition(pok, condition, 0);

@@ -1,0 +1,14 @@
+Tangela: 114
+Evolve: 101,0
+level,move_id
+1,190 Ingrain
+1,133 Constrict
+4,15 Sleep Powder
+10,100 Absorb
+13,20 Growth
+19,14 Poison Powder
+22,10 Vine Whip
+28,85 Bind
+31,102 Mega Drain
+37,37 Stun Spore
+40,58 Slam

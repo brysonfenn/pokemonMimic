@@ -1,0 +1,14 @@
+Seadra: 117
+Evolve: 101,0
+level,move_id
+1,13 Bubble
+1,18 Smoke Screen
+1,52 Leer
+1,28 Water Gun
+8,18 Smoke Screen
+15,52 Leer
+22,28 Water Gun
+29,192 Twister
+40,43 Agility
+51,33 Hydro Pump
+62,193 Dragon Dance

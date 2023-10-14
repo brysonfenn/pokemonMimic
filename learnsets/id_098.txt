@@ -10,3 +10,4 @@ level,move_id
 34,167 Guillotine
 38,31 Protect
 45,168 Crabhammer
+49,194 Flail

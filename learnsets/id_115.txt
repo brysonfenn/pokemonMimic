@@ -1,0 +1,10 @@
+Kangaskhan: 115
+Evolve: 101,0
+level,move_id
+1,179 Comet Punch
+1,52 Leer
+7,29 Bite
+13,4 Tail Whip
+19,114 Fake Out
+25,185 Mega Punch
+43,191 Dizzy Punch

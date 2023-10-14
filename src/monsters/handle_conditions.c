@@ -9,6 +9,7 @@
 #include "../print/print_battle.h"
 
 int handle_leech_seed(bool enemy, struct Pokemon * pok, struct Pokemon * perp);
+int handle_ingrain(bool is_enemy, struct Pokemon * pok);
 int handle_hurt_fraction(bool enemy, struct Pokemon * pok, char * pok_condition_text, int fraction);
 
 //Handle poisoning, leech seed, etc.
@@ -100,13 +101,16 @@ int handle_end_conditions(struct Pokemon * pok) {
         }
     }
 	
-	//Leech Seed
+	//Leech Seed & Ingrain
 	if (has_hidden_condition(pok, SEEDED)) {
         handle_leech_seed(enemy, pok, perp);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
 	}
+    if (has_hidden_condition(pok, INGRAINED)) {
+        handle_ingrain(enemy, pok);
+    }
 
-	return 0;
+	return ATTACK_SUCCESS;
 }
 
 
@@ -127,6 +131,22 @@ int handle_leech_seed(bool is_enemy, struct Pokemon * pok, struct Pokemon * perp
     else { perp->currentHP += sappedHP; pok->currentHP -= sappedHP; }
     if (perp->currentHP > perp->maxHP) perp->currentHP = perp->maxHP;
 
+    return 0;
+}
+
+int handle_ingrain(bool is_enemy, struct Pokemon * pok) {
+    clear(); printBattle();
+
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    if (is_enemy) printw("%s", ENEMY_TEXT);
+    printw("%s absorbed HP from its roots!", pok->name); refresh(); sleep(1);
+    int heal_hp = ((pok->maxHP / 16) + 1);
+
+    blinkPokemon(!is_enemy, HEAL_COLOR, LEECH_SEED_BLINK_TIMES);
+
+    //Give HP to pokemon
+    pok->currentHP += heal_hp;
+    if (pok->currentHP > pok->maxHP) pok->currentHP = pok->maxHP;
     return 0;
 }
 

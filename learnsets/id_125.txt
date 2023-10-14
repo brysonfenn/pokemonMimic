@@ -1,0 +1,11 @@
+Electabuzz: 125
+Evolve: 101,0
+level,move_id
+1,8 Quick Attack
+1,52 Leer
+1,181 Thunder Punch
+9,181 Thunder Punch
+25,49 Swift
+36,84 Screech
+47,59 Thunderbolt
+58,60 Thunder
