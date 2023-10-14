@@ -1,0 +1,6 @@
+Magikarp: 129
+Evolve: 20,130
+level,move_id
+1,201 Splash
+15,1 Tackle
+30,194 Flail

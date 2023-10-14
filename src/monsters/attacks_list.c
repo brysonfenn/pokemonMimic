@@ -86,8 +86,8 @@ attack crunch       = {"Crunch"       , 62, 15,  80,      100, DARK,     false, 
 attack body_slam    = {"Body Slam"    , 63, 15,  85,      100, NORMAL,   false, &inflict_condition, PARALYZED, 30 };
 attack super_power  = {"Super Power"  , 64,  5, 120,      100, FIGHTING, false, &decrement_opponent_stat, ATTACK_STAT, 100 };
 attack horn_attack  = {"Horn Attack"  , 65, 25,  65,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
-attack horn_drill   = {"Horn Drill"   , 66,  5,   0,       30, NORMAL,   false, &deal_specific_damage, NO_CONDITION, 1000 };
-attack thrash       = {"Thrash"       , 67, 20,  90,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack horn_drill   = {"Horn Drill"   , 66,  5,   0,       30, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack thrash       = {"Thrash"       , 67, 20,   0,      100, NORMAL,   false, &thrash_move_func, NO_CONDITION, 0 };
 attack megahorn     = {"Megahorn"     , 68, 10, 120,       85, BUG,      false, &attack_do_nothing, NO_CONDITION, 0 };
 attack pound        = {"Pound"        , 69, 35,  40,       95, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack sing         = {"Sing"         , 70, 15,   0,       55, NORMAL,   false, &inflict_condition, ASLEEP, 100 };
@@ -235,6 +235,8 @@ attack powder_snow  = {"Powder Snow"  ,198, 25,  40,      100, ICE,      false, 
 attack fake_tears   = {"Fake Tears"   ,199, 20,   0,      100, DARK,     false, &decrement_opponent_stat2, SP_DEFENSE_STAT, 100 };
 attack blizzard     = {"Blizzard"     ,200,  5, 120,       70, ICE,      false, &inflict_condition, FROZEN, 30 };
 
+attack splash       = {"Splash"       ,201, 40,   0,  NO_MISS, NORMAL,   false, &splash_move_func, NO_CONDITION, 0 };
+
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -257,7 +259,8 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &night_shade, &shadow_ball, &shadow_punch, &meditate, &vice_grip, &mud_shot, &guillotine, &crab_hammer, &barrage, &egg_bomb,            // #161-170
     &bone_club, &bonemerang, &bone_rush, &rolling_kick, &jump_kick, &brick_break, &hi_jump_kick, &mega_kick, &comet_punch, &mach_punch,     // #171-180
     &thunder_punch, &ice_punch, &fire_punch, &sky_uppercut, &mega_punch, &detect, &refresh_move, &smog, &softboiled, &ingrain,              // #181-190
-    &dizzy_punch, &twister, &dragon_dance, &flail, &waterfall, &magical_leaf, &lovely_kiss, &powder_snow, &fake_tears, &blizzard
+    &dizzy_punch, &twister, &dragon_dance, &flail, &waterfall, &magical_leaf, &lovely_kiss, &powder_snow, &fake_tears, &blizzard,           // #191-200
+    &splash
 };
 
 

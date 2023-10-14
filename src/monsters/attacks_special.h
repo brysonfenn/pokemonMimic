@@ -23,6 +23,9 @@ int rollout_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
 //Special function for uproar move
 int uproar_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
+//Special function for thrash move
+int thrash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+
 //Special function for swagger move
 int swagger_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
@@ -46,5 +49,8 @@ int refresh_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
 
 //Special function for Flail move
 int flail_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+
+//Special function for Splash move
+int splash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
 #endif // ATTACKS_SPECIAL_H

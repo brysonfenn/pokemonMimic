@@ -1,0 +1,11 @@
+Pinsir: 127
+Evolve: 101,0
+level,move_id
+1,165 Vice Grip
+7,85 Bind
+13,118 Seismic Toss
+19,34 Harden
+31,176 Brick Break
+37,167 Guillotine
+43,126 Submission
+49,144 Swords Dance

@@ -1,0 +1,12 @@
+Tauros: 128
+Evolve: 101,0
+level,move_id
+1,1 Tackle
+1,4 Tail Whip
+8,65 Horn Attack
+13,21 Scary Face
+19,42 Pursuit
+26,109 Swagger
+34,94 Rest
+43,67 Thrash
+53,120 Take Down

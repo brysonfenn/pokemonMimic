@@ -1,0 +1,10 @@
+Gyarados: 130
+Evolve: 101,0
+level,move_id
+1,67 Thrash
+20,29 Bite
+25,24 Dragon Rage
+30,52 Leer
+35,192 Twister
+40,33 Hydro Pump
+50,193 Dragon Dance

@@ -121,7 +121,7 @@ int handle_repeats(int repeat_times, struct Pokemon * pok) {
         add_hidden_condition(pok, REPEAT_MOVE, repeat_times);
         return ADDED_REPEATS;
     }
-    //Decreement repeat condition value
+    //Decrement repeat condition value
     else {
         int repeat_value = decrement_hidden_condition_val(pok, REPEAT_MOVE);
         if (repeat_value == 0) {
@@ -140,14 +140,13 @@ int rollout_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
     if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
     else { self = player.current_pokemon; }
 
-    int repeat_val = handle_repeats(5, self);
+    int repeat_val = handle_repeats(5, self);   //6 times?
     int power;
 
-    if (repeat_val == REMOVED_REPEATS) return ATTACK_FAIL;
-    else if (repeat_val == ADDED_REPEATS) power = 30;
-    else power = 30 * (6 - repeat_val);
+    if (repeat_val == REMOVED_REPEATS) power = 0;
 
-    
+    if (repeat_val == ADDED_REPEATS) power = 30;
+    else power = 30 * (6 - repeat_val);
 
     deal_damage(power, self, victim, ROCK);
 
@@ -161,10 +160,28 @@ int uproar_move_func(int nothing1, int nothing2, struct Pokemon * victim, int da
     if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
     else { self = player.current_pokemon; }
 
-    int repeat_val = handle_repeats(5, self);
-    if (repeat_val == REMOVED_REPEATS) return ATTACK_FAIL;
+    int repeat_val = handle_repeats(4, self);   //Repeat 5 times
 
     deal_damage(50, self, victim, NORMAL);
+    if (repeat_val == REMOVED_REPEATS) return ATTACK_FAIL;
+
+    return ATTACK_SUCCESS;
+}
+
+//Special function for thrash move
+int thrash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    bool enemy;
+    if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
+    else { self = player.current_pokemon; }
+
+    int repeat_val = handle_repeats(2, self);   //Repeat 3 times
+
+    deal_damage(90, self, victim, NORMAL);
+    if (repeat_val == REMOVED_REPEATS) {
+        inflict_condition(CONFUSED, 100, self, 0);
+        return ATTACK_FAIL;
+    }
 
     return ATTACK_SUCCESS;
 }
@@ -282,4 +299,10 @@ int flail_move_func(int nothing1, int nothing2, struct Pokemon * victim, int dam
     deal_damage(power, self, victim, NORMAL);
 
     return ATTACK_SUCCESS;
+}
+
+//Special function for Splash move
+int splash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("Nothing Happened!"); refresh(); sleep(2);
 }
