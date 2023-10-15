@@ -1,0 +1,13 @@
+Dragonair: 148
+Evolve: 55,149
+level,move_id
+1,89 Wrap
+1,52 Leer
+1,56 Thunder Wave
+1,192 Twister
+8,56 Thunder Wave
+15,192 Twister
+22,24 Dragon Rage
+29,58 Slam
+38,43 Agility
+56,205 Outrage

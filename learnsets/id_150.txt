@@ -1,0 +1,10 @@
+Mewtwo: 150
+Evolve: 101,0
+level,move_id
+1,36 Confusion
+1,115 Disable
+11,134 Barrier
+33,49 Swift
+44,123 Recover
+66,105 Psychic
+99,135 Amnesia

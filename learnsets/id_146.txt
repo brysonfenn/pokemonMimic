@@ -1,0 +1,9 @@
+Moltres: 146
+Evolve: 101,0
+level,move_id
+1,26 Wing Attack
+1,12 Ember
+13,25 Fire Spin
+25,43 Agility
+49,22 Flamethrower
+73,204 Heat Wave

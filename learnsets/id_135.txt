@@ -1,0 +1,13 @@
+Jolteon: 135
+Evolve: 101,0
+level,move_id
+1,1 Tackle
+1,4 Tail Whip
+8,7 Sand Attack
+16,55 ThunderShock
+23,8 Quick Attack
+30,61 Double Kick
+36,45 Pin Missile
+42,56 Thunder Wave
+47,43 Agility
+52,60 Thunder

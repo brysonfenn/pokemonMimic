@@ -1,0 +1,7 @@
+Mew: 151
+Evolve: 101,0
+level,move_id
+1,69 Pound
+20,185 Mega Punch
+40,105 Psychic
+50,203 Ancient Power

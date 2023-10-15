@@ -1,0 +1,11 @@
+Snorlax: 143
+Evolve: 101,0
+level,move_id
+1,1 Tackle
+5,135 Amnesia
+9,9 Defense Curl
+17,137 Headbutt
+21,136 Yawn
+25,94 Rest
+33,63 Body Slam
+49,107 Rollout

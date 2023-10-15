@@ -1,0 +1,10 @@
+Zapdos: 145
+Evolve: 101,0
+level,move_id
+1,51 Peck
+1,55 Thunder Shock
+13,56 Thunder Wave
+25,43 Agility
+37,186 Detect
+49,54 Drill Peck
+85,60 Thunder

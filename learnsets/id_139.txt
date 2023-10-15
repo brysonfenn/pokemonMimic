@@ -1,0 +1,15 @@
+Omastar: 139
+Evolve: 101,0
+level,move_id
+1,133 Constrict
+1,27 Withdraw
+1,29 Bite
+1,28 Water Gun
+13,29 Bite
+19,28 Water Gun
+25,166 Mud Shot
+31,52 Leer
+37,31 Protect
+40,158 Spike Cannon
+55,203 Ancient Power
+65,33 Hydro Pump

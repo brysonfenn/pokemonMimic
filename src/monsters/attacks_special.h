@@ -24,7 +24,7 @@ int rollout_move_func(int nothing1, int nothing2, struct Pokemon * victim, int d
 int uproar_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
 //Special function for thrash move
-int thrash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+int thrash_move_func(int move_type, int nothing2, struct Pokemon * victim, int damage);
 
 //Special function for swagger move
 int swagger_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);

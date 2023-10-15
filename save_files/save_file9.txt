@@ -5,7 +5,7 @@ Location: {7,(43,14)}
 Heal Center: {7,(32,9)}
 Pokemon: 
 Charmander 4 22 22 4 12 11 12 11 14 7 509 NONE NONE 12bcdf73 0 0
-	Uproar. 146 30
+	Outrage. 205 30
 	Thrash. 67 30
 	Icicle Spear. 156 30
 	Ingrain. 190 20

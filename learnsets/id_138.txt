@@ -1,0 +1,12 @@
+Omanyte: 138
+Evolve: 40,139
+level,move_id
+1,133 Constrict
+1,27 Withdraw
+13,29 Bite
+19,28 Water Gun
+25,166 Mud Shot
+31,52 Leer
+37,31 Protect
+49,203 Ancient Power
+55,33 Hydro Pump

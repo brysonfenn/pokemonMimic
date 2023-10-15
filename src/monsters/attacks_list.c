@@ -87,7 +87,7 @@ attack body_slam    = {"Body Slam"    , 63, 15,  85,      100, NORMAL,   false, 
 attack super_power  = {"Super Power"  , 64,  5, 120,      100, FIGHTING, false, &decrement_opponent_stat, ATTACK_STAT, 100 };
 attack horn_attack  = {"Horn Attack"  , 65, 25,  65,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack horn_drill   = {"Horn Drill"   , 66,  5,   0,       30, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
-attack thrash       = {"Thrash"       , 67, 20,   0,      100, NORMAL,   false, &thrash_move_func, NO_CONDITION, 0 };
+attack thrash       = {"Thrash"       , 67, 20,   0,      100, NORMAL,   false, &thrash_move_func, NORMAL, 0 };
 attack megahorn     = {"Megahorn"     , 68, 10, 120,       85, BUG,      false, &attack_do_nothing, NO_CONDITION, 0 };
 attack pound        = {"Pound"        , 69, 35,  40,       95, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack sing         = {"Sing"         , 70, 15,   0,       55, NORMAL,   false, &inflict_condition, ASLEEP, 100 };
@@ -236,7 +236,10 @@ attack fake_tears   = {"Fake Tears"   ,199, 20,   0,      100, DARK,     false, 
 attack blizzard     = {"Blizzard"     ,200,  5, 120,       70, ICE,      false, &inflict_condition, FROZEN, 30 };
 
 attack splash       = {"Splash"       ,201, 40,   0,  NO_MISS, NORMAL,   false, &splash_move_func, NO_CONDITION, 0 };
-
+attack sharpen      = {"Sharpen"      ,202, 30,   0,  NO_MISS, DRAGON,   false, &increment_self_stat, ATTACK_STAT, 20 };
+attack ancient_power= {"Ancient Power",203,  5,  60,      100, ROCK,     false, &attack_do_nothing, NO_CONDITION, 0 };
+attack heat_wave    = {"Heat Wave"    ,204, 10, 100,       90, FIRE,     false, &inflict_condition, BURNED, 10 };
+attack outrage      = {"Outrage"      ,205, 15,   0,      100, NORMAL,   false, &thrash_move_func, DRAGON, 0 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -260,7 +263,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &bone_club, &bonemerang, &bone_rush, &rolling_kick, &jump_kick, &brick_break, &hi_jump_kick, &mega_kick, &comet_punch, &mach_punch,     // #171-180
     &thunder_punch, &ice_punch, &fire_punch, &sky_uppercut, &mega_punch, &detect, &refresh_move, &smog, &softboiled, &ingrain,              // #181-190
     &dizzy_punch, &twister, &dragon_dance, &flail, &waterfall, &magical_leaf, &lovely_kiss, &powder_snow, &fake_tears, &blizzard,           // #191-200
-    &splash
+    &splash, &sharpen, &ancient_power, &heat_wave, &outrage
 };
 
 

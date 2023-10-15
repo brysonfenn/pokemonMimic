@@ -434,7 +434,7 @@ int get_enemy_move(Pokemon * pok) {
     }
     //Various attacks have special move functions whose damage is more complex --> Simplified here
     else if (attack_id == 106 || attack_id == 107 || attack_id == 118 || attack_id == 146 || attack_id == 160 
-              || attack_id == 161 || attack_id == 194) {
+              || attack_id == 161 || attack_id == 194 || attack_id == 67 || attack_id == 205) {
       curr_damage = pok->level;
     }
     else {

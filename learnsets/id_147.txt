@@ -1,0 +1,11 @@
+Dratini: 147
+Evolve: 30,148
+level,move_id
+1,89 Wrap
+1,52 Leer
+8,56 Thunder Wave
+15,192 Twister
+22,24 Dragon Rage
+29,58 Slam
+36,43 Agility
+50,205 Outrage

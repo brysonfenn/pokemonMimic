@@ -1,15 +1,206 @@
-1	Tackle
-2	Scratch
-3	Growl
-4	Tail Whip
-5	String Shot
-6	Poison Sting
-7	Sand Attack
-8	Quick Attack
-9	Defense Curl
-10	Vine Whip
-11	Leech Seed
-12	Ember
-13	Bubble
-14	Poison Powder
-15	Sleep Powder
+0: Empty Attack
+1: Tackle
+2: Scratch
+3: Growl
+4: Tail Whip
+5: String Shot
+6: Poison Sting
+7: Sand Attack
+8: Quick Attack
+9: Defense Curl
+10: Vine Whip
+11: Leech Seed
+12: Ember
+13: Bubble
+14: Poison Powder
+15: Sleep Powder
+16: Razor Leaf
+17: Metal Claw
+18: Smoke Screen
+19: Sweet Scent
+20: Growth
+21: Scary Face
+22: Flame Thrower
+23: Slash
+24: Dragon Rage
+25: Fire Spin
+26: Wing Attack
+27: Withdraw
+28: Water Gun
+29: Bite
+30: Rapid Spin
+31: Protect
+32: Skull Bash
+33: Hydro Pump
+34: Harden
+35: Supersonic
+36: Confusion
+37: Stun Spore
+38: Gust
+39: Psybeam
+40: Silver Wind
+41: Fury Attack
+42: Pursuit
+43: Agility
+44: Twineedle
+45: Pin Missile
+46: Hyper Fang
+47: Super Fang
+48: Feather Dance
+49: Swift
+50: Fury Swipes
+51: Peck
+52: Leer
+53: Aerial Ace
+54: Drill Peck
+55: Thunder Shock
+56: Thunder Wave
+57: Double Team
+58: Slam
+59: Thunderbolt
+60: Thunder
+61: Double Kick
+62: Crunch
+63: Body Slam
+64: Super Power
+65: Horn Attack
+66: Horn Drill
+67: Thrash
+68: Megahorn
+69: Pound
+70: Sing
+71: Double Slap
+72: Minimize
+73: Cosmic Power
+74: Moonlight
+75: Meteor Mash
+76: Rock Throw
+77: Synthesis
+78: Solar Beam
+79: Selfdestruct
+80: Rock Blast
+81: Earthquake
+82: Explosion
+83: Double-Edge
+84: Screech
+85: Bind
+86: Iron Tail
+87: Sand Tomb
+88: Dragon Breath
+89: Wrap
+90: Glare
+91: Acid
+92: Will-O-Wisp
+93: Confuse Ray
+94: Rest
+95: Hyper Voice
+96: Leech Life
+97: Astonish
+98: Air Cutter
+99: Poison Fang
+100: Absorb
+101: Petal Dance
+102: Mega Drain
+103: Spore
+104: Giga Drain
+105: Psychic
+106: Magnitude
+107: Rollout
+108: Mud-Slap
+109: Swagger
+110: Fissure
+111: Tri Attack
+112: Pay Day
+113: Faint Attack
+114: Fake Out
+115: Disable
+116: Low Kick
+117: Karate Chop
+118: Seismic Toss
+119: Cross Chop
+120: Take Down
+121: Flame Wheel
+122: Extreme Speed
+123: Recover
+124: Bubble Beam
+125: Hypnosis
+126: Submission
+127: Stomp
+128: Fire Blast
+129: Teleport
+130: Kinesis
+131: Vital Throw
+132: Dynamic Punch
+133: Constrict
+134: Barrier
+135: Amnesia
+136: Yawn
+137: Headbutt
+138: Metal Sound
+139: Sonic Boom
+140: Spark
+141: Zap Cannon
+142: Knock Off
+143: Fury Cutter
+144: Swords Dance
+145: False Swipe
+146: Uproar
+147: Icy Wind
+148: Aurora Beam
+149: Ice Beam
+150: Signal Beam
+151: Sheer Cold
+152: Poison Gas
+153: Sludge
+154: Acid Armor
+155: Sludge Bomb
+156: Icicle Spear
+157: Clamp
+158: Spike Cannon
+159: Lick
+160: Curse
+161: Night Shade
+162: Shadow Ball
+163: Shadow Punch
+164: Meditate
+165: Vice Grip
+166: Mud Shot
+167: Guillotine
+168: Crab Hammer
+169: Barrage
+170: Egg Bomb
+171: Bone Club
+172: Bonemerang
+173: Bone Rush
+174: Rolling Kick
+175: Jump Kick
+176: Brick Break
+177: Hi Jump Kick
+178: Mega Kick
+179: Comet Punch
+180: Mach Punch
+181: Thunder Punch
+182: Ice Punch
+183: Fire Punch
+184: Sky Uppercut
+185: Mega Punch
+186: Detect
+187: Refresh
+188: Smog
+189: Softboiled
+190: Ingrain
+191: Dizzy Punch
+192: Twister
+193: Dragon Dance
+194: Flail
+195: Waterfall
+196: Magical Leaf
+197: Lovely Kiss
+198: Powder Snow
+199: Fake Tears
+200: Blizzard
+201: Splash
+202: Sharpen
+203: Ancient Power
+204: Heat Wave
+205: Outrage

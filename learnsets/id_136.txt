@@ -1,0 +1,13 @@
+Flareon: 136
+Evolve: 101,0
+level,move_id
+1,1 Tackle
+1,4 Tail Whip
+8,7 Sand Attack
+16,12 Ember
+23,8 Quick Attack
+30,29 Bite
+36,25 Fire Spin
+42,188 Smog
+47,52 Leer
+52,22 Flamethrower

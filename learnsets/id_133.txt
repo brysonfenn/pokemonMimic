@@ -1,0 +1,10 @@
+Eevee: 133
+Evolve: 101,0
+level,move_id
+1,1 Tackle
+1,4 Tail Whip
+8,7 Sand Attack
+16,3 Growl
+23,8 Quick Attack
+30,29 Bite
+42,120 Take Down

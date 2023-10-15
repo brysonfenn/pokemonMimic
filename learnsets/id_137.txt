@@ -1,0 +1,10 @@
+Porygon: 137
+Evolve: 101,0
+level,move_id
+1,1 Tackle
+9,43 Agility
+12,39 Psybeam
+20,123 Recover
+24,202 Sharpen
+36,111 Tri Attack
+48,141 Zap Cannon

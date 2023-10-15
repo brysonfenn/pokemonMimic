@@ -1,0 +1,12 @@
+Kabuto: 140
+Evolve: 40,141
+level,move_id
+1,2 Scratch
+1,34 Harden
+13,100 Absorb
+19,52 Leer
+25,166 Mud Shot
+31,7 Sand Attack
+43,138 Metal Sound
+49,102 Mega Drain
+55,203 Ancient Power

@@ -1,0 +1,10 @@
+Aerodactyl: 142
+Evolve: 101,0
+level,move_id
+1,26 Wing Attack
+8,43 Agility
+15,29 Bite
+22,35 Supersonic
+29,203 Ancient Power
+36,21 Scary Face
+43,120 Take Down

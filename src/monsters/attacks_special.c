@@ -168,8 +168,8 @@ int uproar_move_func(int nothing1, int nothing2, struct Pokemon * victim, int da
     return ATTACK_SUCCESS;
 }
 
-//Special function for thrash move
-int thrash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+//Special function for thrash/outrage moves
+int thrash_move_func(int move_type, int nothing2, struct Pokemon * victim, int damage) {
     Pokemon * self;
     bool enemy;
     if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
@@ -177,7 +177,7 @@ int thrash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int da
 
     int repeat_val = handle_repeats(2, self);   //Repeat 3 times
 
-    deal_damage(90, self, victim, NORMAL);
+    deal_damage(90, self, victim, move_type);
     if (repeat_val == REMOVED_REPEATS) {
         inflict_condition(CONFUSED, 100, self, 0);
         return ATTACK_FAIL;

@@ -1,0 +1,12 @@
+Vaporeon: 134
+Evolve: 101,0
+level,move_id
+1,1 Tackle
+1,4 Tail Whip
+8,7 Sand Attack
+16,28 Water Gun
+23,8 Quick Attack
+30,29 Bite
+36,148 Aurora Beam
+47,154 Acid Armor
+52,33 Hydro Pump
