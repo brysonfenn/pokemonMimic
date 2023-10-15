@@ -48,6 +48,9 @@ void draw_cer_city() {
     draw_town_exit(MAP_TOP, MAP_WIDTH - 5);
     add_exit_portal(MAP_TOP, MAP_WIDTH - 5, MAP_R4);
 
+    draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 4);
+    add_exit_portal(MAP_BOTTOM, MAP_WIDTH - 4, MAP_UG_NS);
+
     drawBuilding_default(MAP_X+30,MAP_Y+8, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+10,MAP_Y+12, "Mart", MART_ACTION);
 
@@ -55,8 +58,8 @@ void draw_cer_city() {
     add_building_portal(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+8, MAP_GYM2);
 }
 
-static Trainer trainer20 = {20, "Trainer Ariel", "You'll never defeat misty!", 2, {POKEMON_POLIWAG, POKEMON_POLIWHIRL}, {15,17} };
-static Trainer trainer21 = {21, "Trainer Katie", "I like water pokemon!", 2, {POKEMON_POLIWAG, POKEMON_PSYDUCK}, {16,17} };
+static Trainer trainer20 = {20, "Gym Trainer Ariel", "You'll never defeat misty!", 2, {POKEMON_GOLDEEN, POKEMON_SEEL}, {15,17} };
+static Trainer trainer21 = {21, "Gym Trainer Katie", "I like water pokemon!", 2, {POKEMON_HORSEA, POKEMON_KRABBY}, {16,17} };
 static Trainer leader202 = {202, "Leader Misty", "I am Misty, the Second Gym Leader. Let's Battle!", 2, {POKEMON_STARYU, POKEMON_STARMIE}, {18,21} };
 
 void draw_gym2() {

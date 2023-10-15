@@ -29,7 +29,7 @@ static Pokemon_id wild_pok_lists[20][10] = {
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #5 Lab
   { 6,   3, 6,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU, POKEMON_METAPOD, POKEMON_KAKUNA, POKEMON_PIDGEOTTO }, //Map #6 Vir Forest
   // { 3,   4, 6,  POKEMON_NIDORAN_F, POKEMON_SANDSHREW, POKEMON_SPEAROW }, //Map #7 Pewter City
-  { 1,   4, 6,  POKEMON_METAPOD }, //Map #7 Pewter City Test Pokemon
+  { 2,   4, 6,  POKEMON_MEWTWO, POKEMON_MEW }, //Map #7 Pewter City Test Pokemon
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #8 Gym
   { 3,   5, 8,  POKEMON_JIGGLYPUFF, POKEMON_MANKEY, POKEMON_NIDORAN_M }, //Map #9 Route 3
   { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //Map #10 Mt Moon

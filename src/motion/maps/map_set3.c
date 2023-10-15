@@ -13,9 +13,6 @@
 #include "../../print/print_utils.h"
 #include "../../print/print_defines.h"
 
-static Trainer trainer5 = {5, "Bugcatcher Marty", "I'll defeat you with my Bug Pokemon!", 2, {POKEMON_CATERPIE, POKEMON_WEEDLE}, {4,5} };
-static Trainer trainer7 = {7, "Bugcatcher Josh", "I like Bug Pokemon, what about you?", 2, {POKEMON_METAPOD, POKEMON_VENONAT}, {5,6} };
-
 void draw_vir_forest() {
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
     begin_message_box();
@@ -29,8 +26,8 @@ void draw_vir_forest() {
     draw_town_exit(MAP_TOP, MAP_WIDTH-8);
     add_exit_portal(MAP_TOP, MAP_WIDTH-8, MAP_PEW_CITY);
 
-    add_trainer(MAP_X+11, MAP_Y+7, &trainer5, PLAYER_MOVING_DOWN);
-    add_trainer(MAP_X+MAP_WIDTH-2, MAP_Y+6, &trainer7, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+11, MAP_Y+7, 5, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+6, 7, PLAYER_MOVING_LEFT);
 
     draw_static_elements();
 }
@@ -68,7 +65,6 @@ void draw_pew_city() {
 
 
 static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
-static Trainer trainer6 = {6, "Camper Liam", "I like Rock Type Pokemon. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_SANDSHREW}, {10,11} };
 static Trainer trainer12 = {12, "Trainer Jordan", "Stonks.", 2, {POKEMON_SANDSHREW, POKEMON_DIGLETT}, {7,9} };
 
 void draw_gym1() {
@@ -81,7 +77,7 @@ void draw_gym1() {
     }
 
     add_trainer(INTERIOR_X+INTERIOR_WIDTH-2, INTERIOR_Y+6, &trainer12, PLAYER_MOVING_LEFT);
-    add_trainer(INTERIOR_X+15, INTERIOR_Y+1, &trainer6, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(INTERIOR_X+15, INTERIOR_Y+1, 6, PLAYER_MOVING_DOWN);
 
     mvaddch(INTERIOR_Y+1, INTERIOR_X+1, ACS_LRCORNER);
     add_trainer(INTERIOR_X+1, INTERIOR_Y+2, &leader201, PLAYER_MOVING_RIGHT);

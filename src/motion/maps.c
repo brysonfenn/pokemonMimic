@@ -7,6 +7,7 @@
 #include "maps/map_set2.h"
 #include "maps/map_set3.h"
 #include "maps/map_set4.h"
+#include "maps/map_set5.h"
 
 #include "map_drawing.h"
 #include "motion2d.h"
@@ -16,10 +17,10 @@
 #include "../print/print_defines.h"
 
 //Map functions
-static void (*draw_funcs[15])() = { &draw_generic_map, 
+static void (*draw_funcs[16])() = { &draw_generic_map, 
                                     &draw_vir_city, &draw_route2, &draw_route1, &draw_starter_town, &draw_lab, 
                                     &draw_vir_forest, &draw_pew_city, &draw_gym1, &draw_route3, &draw_mt_moon,
-                                    &draw_cer_city, &draw_gym2, &draw_route4 };
+                                    &draw_cer_city, &draw_gym2, &draw_route4, &draw_underground_NS, };
 
 //Draw elements (like grass, trees, etc) according to map text file
 void draw_static_elements() {
@@ -55,6 +56,9 @@ void draw_static_elements() {
             break;
         case MAP_R4:
             sprintf(map_name, "route4");
+            break;
+        case MAP_UG_NS:
+            sprintf(map_name, "underground_ns");
             break;
         default:
             sprintf(map_name, "empty_map");

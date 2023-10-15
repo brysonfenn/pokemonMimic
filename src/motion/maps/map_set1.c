@@ -76,6 +76,5 @@ void draw_lab() {
 
     add_trainer(player.loc->x, INTERIOR_Y+3, &trainer4, PLAYER_MOVING_DOWN);
 
-
     refresh();
 }

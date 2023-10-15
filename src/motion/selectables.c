@@ -5,6 +5,7 @@
 #include <ncurses.h>
 
 #include "../battles/trainer.h"
+#include "../battles/trainer_list.h"
 #include "map_drawing.h"
 #include "../print/print_defines.h"
 #include "../player.h"
@@ -23,8 +24,26 @@ void add_trainer(char x, char y, struct Trainer * trainer, char face_direction) 
     //initialize empty selectable
     empty_selectable.data = empty_string;
 
-    // Trainer * new_trainer = malloc(sizeof(Trainer));
-    // (*new_trainer) = (*trainer);
+    Selectable new_selectable;
+    new_selectable.data = trainer;
+    new_selectable.x = x;
+    new_selectable.y = y;
+    new_selectable.is_trainer = true;
+
+    selectables[num_selectables] = new_selectable;
+    num_selectables++;
+
+    attrset(COLOR_PAIR(TRAINER_COLOR));
+    mvaddch(y,x,face_direction);
+    attrset(COLOR_PAIR(DEFAULT_COLOR));
+}
+
+//Add a trainer at a given location
+void add_trainer_by_id(char x, char y, int trainer_id, char face_direction) {
+    //initialize empty selectable
+    empty_selectable.data = empty_string;
+
+    struct Trainer * trainer = get_trainer(trainer_id);
 
     Selectable new_selectable;
     new_selectable.data = trainer;

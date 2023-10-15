@@ -16,6 +16,9 @@ struct Trainer;
 //Add a trainer at a given location
 void add_trainer(char x, char y, struct Trainer * trainer, char face_direction);
 
+//Add a trainer at a given location
+void add_trainer_by_id(char x, char y, int trainer_id, char face_direction);
+
 //Add message (sign, notification, etc)
 void add_selectable_message(char x, char y, char * message);
 

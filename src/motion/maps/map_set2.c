@@ -39,11 +39,6 @@ void draw_vir_city() {
 }
 
 
-static Trainer trainer1 = {1, "Trainer John", "Hi! I train Pokemon too!", 2, {POKEMON_RATTATA, POKEMON_PIDGEY}, {4,4} };
-static Trainer trainer2 = {2, "Bugcatcher David", "Are you afraid of Bugs?", 2, {POKEMON_KAKUNA, POKEMON_WEEDLE}, {4,5} };
-static Trainer trainer3 = {3, "Trainer Steven", "I'm a tough trainer, let's battle!", 2, {POKEMON_SANDSHREW, POKEMON_DIGLETT}, {4,5} };
-static Trainer trainer8 = {8, "Trainer Liam", "I'm a trainer, just like you!", 2, {POKEMON_ODDISH, POKEMON_NIDORAN_M}, {5,5} };
-
 void draw_route2() {
 
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
@@ -59,10 +54,10 @@ void draw_route2() {
     draw_town_exit(MAP_TOP, 40);
     add_exit_portal(MAP_TOP, 40, MAP_VIR_FOREST);
 
-    add_trainer(MAP_X+MAP_WIDTH-2, MAP_Y+MAP_HEIGHT-3, &trainer8, PLAYER_MOVING_LEFT);
-    add_trainer(MAP_X+1, MAP_Y+8, &trainer1, PLAYER_MOVING_RIGHT);
-    add_trainer(MAP_X+15, MAP_Y+6, &trainer2, PLAYER_MOVING_LEFT);
-    add_trainer(MAP_X+1, MAP_Y+4, &trainer3, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+MAP_HEIGHT-3, 8, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+1, MAP_Y+8, 1, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+15, MAP_Y+6, 2, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+1, MAP_Y+4, 3, PLAYER_MOVING_RIGHT);
 
     refresh();
 }
