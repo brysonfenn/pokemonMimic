@@ -374,6 +374,9 @@ int handle_battle(struct Pokemon * enemyPok) {
 int perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_num) {
   clear();
   printBattle();
+
+  //Handle Special disabled case
+  if (get_hidden_condition_val(enemyPok, DISABLED) == attack_num) attack_num = get_enemy_move(enemyPok);
   int attack_result = perform_attack(enemyPok, attack_num, currentPok, true);
 
   if (currentPok->currentHP <= 0) {

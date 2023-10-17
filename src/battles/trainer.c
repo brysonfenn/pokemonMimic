@@ -48,11 +48,9 @@ int battle_trainer(Trainer * trainer) {
   //Set up first player pokemon
   set_current_pokemon(PLAYER_DEFAULT_POKEMON);
 
-  int last_pokemon_pos = trainer->num_in_party - 1;
 
 
-
-  //Go through all trainer's pokemon
+  // BEGIN FIGHT TRAINER POKEMON //
   for (int i = 0; i < trainer->num_in_party; i++) {
     //Print trainer info and sent out
     print_trainer_pokemon(trainer, trainer_pokemon); sleep(2);
@@ -73,7 +71,7 @@ int battle_trainer(Trainer * trainer) {
     //If player only has one pokemon left alive, they can't switch
     if (player_get_num_alive() == 1) continue;
 
-    //Handle switch
+    //Handle switch request
     begin_list();
     sprintf(print_str, "  %s is about to send out %s\n", trainer->name, trainer_pokemon[i+1].name);
     sprintf(print_str, "%s  Will %s change Pokemon?\n  Yes\n  No\n", print_str, player.name);
@@ -106,6 +104,7 @@ int battle_trainer(Trainer * trainer) {
       }
     }
   }
+  // END FIGHT TRAINER POKEMON //
 
 
 
@@ -124,7 +123,7 @@ int battle_trainer(Trainer * trainer) {
     }
     money_earned *= 5;
 
-    if (trainer->id_num > 200) money_earned *= 3;
+    if (trainer->id_num > 200) money_earned *= 3; //Gym leadeers give 3 times as much
 
     //Notify money earned
     text_box_cursors(TEXT_BOX_NEXT_LINE);

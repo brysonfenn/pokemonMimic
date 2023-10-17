@@ -1,14 +1,14 @@
-Last Saved: 10/15/2023 16:17:24
+Last Saved: 10/16/2023 20:32:13
 Player: Player1
-2 0 3 6505
-Location: {11,(42,12)}
+2 0 3 7330
+Location: {11,(4,8)}
 Heal Center: {11,(37,12)}
 Pokemon: 
-Ivysaur 2 47 47 4 26 26 32 31 25 17 5277 GRASS POISON 448493fb 0 0
+Ivysaur 2 49 46 4 27 27 32 31 26 18 6324 GRASS POISON 448493fb 0 0
 	Tackle. 1 35
-	Sleep Powder. 15 15
+	Sleep Powder. 15 14
 	Leech seed. 11 10
-	Vine whip. 10 25
+	Vine whip. 10 21
 Pikachu 25 21 21 3 12 10 8 8 17 7 354 ELECTRIC NONE 1b9b26a1 0 0
 	Thunder Shock. 55 30
 	Growl. 3 40
@@ -22,5 +22,5 @@ Pokeball. 3 4
 Key Items: 0
   
 
-Trainers Battled: 11
-  1 2 3 5 7 13 6 12 201 14 20 
+Trainers Battled: 12
+  1 2 3 5 7 13 6 12 201 14 20 18 
