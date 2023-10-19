@@ -80,5 +80,4 @@ void draw_route4() {
     add_trainer_by_id(MAP_X+48, MAP_Y+9, 24, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+7, 25, PLAYER_MOVING_LEFT);
     add_trainer_by_id(MAP_X+48, MAP_Y+5, 26, PLAYER_MOVING_RIGHT);
-
 }

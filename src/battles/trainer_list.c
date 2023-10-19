@@ -1,6 +1,8 @@
 #include "trainer_list.h"
 
 #include "trainer.h"
+#include "../player.h"
+#include "../monsters/pokemon.h"
 
 #define NUM_TRAINERS 30
 
@@ -46,12 +48,72 @@ static Trainer * leaders[10] = { &t000,
     &leader201, &leader202
 };
 
+static Trainer rival001 = {251, "Rival G", "I'm your rival, Let's Battle!", 1, {POKEMON_BULBASAUR}, {5} };
+
+static Trainer * rivals[10] = { &t000,
+    &rival001
+};
+
+void update_rival(int id);
+
 struct Trainer * get_trainer(int trainer_id) {
+    //Rival IDs are more than 250
+    if (trainer_id > 250) {
+        update_rival(trainer_id - 250);
+        return rivals[trainer_id - 250];
+    }
     //Leader IDs are more than 200
-    if (trainer_id > 200) {
+    else if (trainer_id > 200) {
         return leaders[trainer_id - 200];
     }
     else {
         return trainers[trainer_id];
     }
+}
+
+void update_rival(int id) {
+    Trainer * curr_rival = rivals[id];
+    int rival_starter = POKEMON_BULBASAUR;
+    int rival_starter_index;
+    int player_starter = POKEMON_MISSING_NO;
+
+    //Find where BULBASAUR is
+    for (int i = 0; i < curr_rival->num_in_party; i++) {
+        if (curr_rival->party_id_list[i] <= POKEMON_VENUSAUR) {
+            rival_starter_index = i;
+            rival_starter = curr_rival->party_id_list[i];
+        }
+    }
+
+    //Find which starter the player has
+    for (int i = 0; i < player.numInParty; i++) {
+        //If starter found
+        if (player.party[i].id_num <= POKEMON_BLASTOISE) {
+            player_starter = player.party[i].id_num;
+        }
+    }
+    for (int i = 0; i < player.numInPCStorage; i++) {
+        //If starter found
+        if (player.pc_storage[i].id_num <= POKEMON_BLASTOISE) {
+            player_starter = player.pc_storage[i].id_num;
+        }
+    }
+
+    //Change Rival based on player's starter
+    if (player_starter == POKEMON_MISSING_NO) {
+        curr_rival->party_id_list[rival_starter_index] = POKEMON_EEVEE;
+    }
+    else if (player_starter <= POKEMON_VENUSAUR) {
+        curr_rival->party_id_list[rival_starter_index] = POKEMON_CHARMANDER + rival_starter - 1;
+    }
+    else if (player_starter <= POKEMON_CHARIZARD) {
+        curr_rival->party_id_list[rival_starter_index] = POKEMON_SQUIRTLE + rival_starter - 1;
+    }
+    else if (player_starter <= POKEMON_BLASTOISE) {
+        curr_rival->party_id_list[rival_starter_index] = POKEMON_BULBASAUR + rival_starter - 1;
+    }
+    else {
+        curr_rival->party_id_list[rival_starter_index] = POKEMON_PIKACHU;
+    }
+
 }
