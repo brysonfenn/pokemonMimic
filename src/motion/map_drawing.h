@@ -17,6 +17,7 @@
 #define MART_ACTION 1
 #define POKE_CENTER_ACTION 2
 #define FOSSIL_ACTION 3
+#define FOSSIL_PROCESS_ACTION 4
 
 #define GRASS_CHAR 'W'
 

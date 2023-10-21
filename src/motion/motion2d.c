@@ -16,11 +16,11 @@
 #include "../battles/battle.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
-#include "../player.h"
 #include "../items/items.h"
-#include "../poke_center.h"
-
 #include "../items/key_items.h"
+
+#include "../player.h"
+#include "../poke_center.h"
 
 
 //Function pointers
@@ -318,28 +318,10 @@ void handle_actions(int action_id) {
             player.loc->y += 1; //Set player location to outside
             break;
         case FOSSIL_ACTION:
-            clear();
-            begin_list();
-
-            if (has_key_item(K_ITEM_FOSSIL_HELIX) || has_key_item(K_ITEM_FOSSIL_DOME)) {
-                print_to_list("You already have a fossil!"); sleep(2);
-                player.loc->y += 1;
-                break;
-            }
-
-            print_to_list("Select one:\n  Helix Fossil\n  Dome Fossil\n  Cancel");
-            input = get_selection(1, 2, 0);
-            if (input == 0) {
-                player.key_items[player.numKeyItems] = K_ITEM_FOSSIL_HELIX;
-                player.numKeyItems++;
-                print_to_list("Received the Helix Fossil"); sleep(2);
-            }
-            else if (input == 1) {
-                player.key_items[player.numKeyItems] = K_ITEM_FOSSIL_DOME;
-                player.numKeyItems++;
-                print_to_list("Received the Dome Fossil"); sleep(2);
-            }
-            player.loc->y += 1; //Set player location to outside
+            handle_get_fossil();
+            break;
+        case FOSSIL_PROCESS_ACTION:
+            handle_process_fossil();
             break;
         default:
             break;

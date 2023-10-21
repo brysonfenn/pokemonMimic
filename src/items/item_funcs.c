@@ -89,25 +89,25 @@ int attempt_catch(int catch_rate, char * name) {
 
         //If player already has 6 pokemon, transfer the new pokemon to the PC
         if (player.numInParty >= 6) {
-        player.pc_storage[player.numInPCStorage] = (*enemy_pok);
-        player.numInPCStorage++;
+            player.pc_storage[player.numInPCStorage] = (*enemy_pok);
+            player.numInPCStorage++;
 
-        //Reset all stats of that pokemon in the PC
-        Pokemon * new_pok = &(player.pc_storage[player.numInPCStorage-1]);
-        new_pok->currentHP = new_pok->maxHP;
-        new_pok->visible_condition = NO_CONDITION;
-        reset_stat_stages(new_pok);
-        for (int i = 0; i < new_pok->numAttacks; i++) {
-            new_pok->attacks[i].curr_pp = new_pok->attacks[i].max_pp;
-        }
+            //Reset all stats of that pokemon in the PC
+            Pokemon * new_pok = &(player.pc_storage[player.numInPCStorage-1]);
+            new_pok->currentHP = new_pok->maxHP;
+            new_pok->visible_condition = NO_CONDITION;
+            reset_stat_stages(new_pok);
+            for (int i = 0; i < new_pok->numAttacks; i++) {
+                new_pok->attacks[i].curr_pp = new_pok->attacks[i].max_pp;
+            }
 
-        text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("%s was transferred to PC storage.", enemy_pok->name); refresh(); sleep(2);
+            text_box_cursors(TEXT_BOX_NEXT_LINE);
+            printw("%s was transferred to PC storage.", enemy_pok->name); refresh(); sleep(2);
         }
         //Add Pokemon to party
         else {
-        player.party[player.numInParty] = (*enemy_pok);
-        player.numInParty++;
+            player.party[player.numInParty] = (*enemy_pok);
+            player.numInParty++;
         }
         return ITEM_CATCH_SUCCESS;
     }

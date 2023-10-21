@@ -38,4 +38,5 @@ void draw_vermillion_city() {
 
     drawBuilding_default(MAP_X+3,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+DEFAULT_BUILDING_WIDTH + 3, MAP_Y+5, "Mart", MART_ACTION);
+    drawBuilding_default(MAP_X+30, MAP_Y+12, "Lab", FOSSIL_PROCESS_ACTION);
 }
