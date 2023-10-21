@@ -12,41 +12,33 @@
 #include "../monsters/pokemon.h"
 #include "../monsters/conditions.h"
 
-                //  id  name           qt  cost    function        arg
-Item empty_item   = {0, "No Item"     , 1, 1000,  &do_nothing,      0};
-Item potion       = {1, "Potion"      , 0, 300,   &execute_potion,  20};
-Item super_potion = {2, "Super Potion", 0, 700,   &execute_potion,  50};
-Item pokeball     = {3, "Pokeball"    , 0, 200,   &attempt_catch,   100};
-Item greatball    = {4, "Great Ball"  , 0, 600,   &attempt_catch,   150};
-Item antidote     = {5, "Antidote"    , 0, 100,   &heal_condition,  POISONED};
-Item paralyz_heal = {6, "Paralyz Heal", 0, 300,   &heal_condition,  PARALYZED};
-Item awakening    = {7, "Awakening"   , 0, 250,   &heal_condition,  ASLEEP};
-Item revive       = {8, "Revive"      , 0, 1500,  &revive_pokemon,  50};
+                //     id            name            qt  cost    function        arg
+Item empty_item   = {NO_ITEM,       "No Item"      , 1, 1000,  &do_nothing,      0};                // 00
+
+Item potion       = {POTION,        "Potion"       , 0, 300,   &execute_potion,  20};
+Item super_potion = {SUPER_POTION,  "Super Potion" , 0, 700,   &execute_potion,  50};
+Item pokeball     = {POKE_BALL,     "Poke Ball"    , 0, 200,   &attempt_catch,   100};
+Item greatball    = {GREAT_BALL,    "Great Ball"   , 0, 600,   &attempt_catch,   150};
+Item ultraball    = {ULTRA_BALL,    "Ultra Ball"   , 0, 1200,  &attempt_catch,   200};
+Item antidote     = {ANTIDOTE,      "Antidote"     , 0, 100,   &heal_condition,  POISONED};
+Item paralyze_heal= {PARALYZE_HEAL, "Paralyze Heal", 0, 200,   &heal_condition,  PARALYZED};
+Item awakening    = {AWAKENING,     "Awakening"    , 0, 250,   &heal_condition,  ASLEEP};
+Item burn_heal    = {BURN_HEAL,     "Burn Heal"    , 0, 200,   &heal_condition,  BURNED};
+Item freeze_heal  = {FREEZE_HEAL,   "Freeze Heal"  , 0, 200,   &heal_condition,  FROZEN};           // 10
+
+Item revive       = {REVIVE,        "Revive"       , 0, 1500,  &revive_pokemon,  50};
 
 
 //NOTE: Make sure to add item to this list after creating it
 static * item_array[NUM_ITEMS] = { &empty_item, 
-                    &potion, &super_potion, &pokeball, &greatball, &antidote, &paralyz_heal, &awakening, &revive };
-
-static int viridian_mart[10] = {3, 1, 3, 5 };
-static int pewter_mart[10] = {4, 1, 2, 3, 6 };
-static int cerulean_mart[10] = {5, 2, 3, 4, 7, 8 };
-
-static int * mart_arrays[10] = {
-  viridian_mart, pewter_mart, cerulean_mart
+    &potion, &super_potion, &pokeball, &greatball, &ultraball, &antidote, &paralyze_heal, &awakening, &burn_heal, &freeze_heal, //    1-10
+    &revive
 };
 
 //Returns an item pointer by its ID number. Should be immediately dereferenced
 Item * get_item_by_id(int id_num) {
   return item_array[id_num];
 }
-
-
-//Returns a mart array based on an ID number identifying the city where the mart is located
-int * get_mart_array(int id_num) {
-  return mart_arrays[id_num];
-}
-
 
 //Use an item, calling its execute function
 int use_item(int item_num) {

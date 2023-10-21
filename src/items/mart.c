@@ -4,19 +4,26 @@
 
 #include "items.h"
 #include "../player.h"
+
+#include "../motion/location.h"
+#include "../motion/maps.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 
 static int last_selection = 0;
 
-int * mart_array;
+static int * mart_array;
+                               //NUM// ITEMS...
+static int viridian_mart[10] =  { 4, POKE_BALL, POTION, ANTIDOTE, PARALYZE_HEAL };
+static int pewter_mart[10] =    { 5, POKE_BALL, POTION, ANTIDOTE, AWAKENING, PARALYZE_HEAL };
+static int cerulean_mart[10] =  { 6, POKE_BALL, POTION, SUPER_POTION, ANTIDOTE, PARALYZE_HEAL, BURN_HEAL };
+
+void set_mart();
 
 //Print all items available at the mart to the list box
 void print_mart() {
   Item * currItem;
   char print_str[128] = "";
-
-  mart_array = get_mart_array(2);
 
   for (int i = 1; i <= mart_array[0]; i++) {
     currItem = get_item_by_id(mart_array[i]);
@@ -36,6 +43,8 @@ int handle_mart() {
   Item example_item;
   int inputNum, ch, maximum;
   char print_str[1024];
+
+  set_mart();
   
   begin_list();
   print_to_list("Mart\n");
@@ -129,4 +138,13 @@ int handle_mart() {
 
   clear();
   return ITEM_FAILURE;
+}
+
+void set_mart() {
+  switch (player.loc->map) {
+    case MAP_VIRIDIAN: mart_array = viridian_mart; break;
+    case MAP_PEW_CITY: mart_array = pewter_mart; break;
+    case MAP_CER_CITY: mart_array = cerulean_mart; break;
+    default: mart_array = viridian_mart; break;
+  }
 }
