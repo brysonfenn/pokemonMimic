@@ -3,4 +3,6 @@
 
 void draw_underground_NS();
 
+void draw_vermillion_city();
+
 #endif //MAP_SET4_H

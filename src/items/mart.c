@@ -14,9 +14,11 @@ static int last_selection = 0;
 
 static int * mart_array;
                                //NUM// ITEMS...
+static int default_mart[10] =   { 1, FREEZE_HEAL };
 static int viridian_mart[10] =  { 4, POKE_BALL, POTION, ANTIDOTE, PARALYZE_HEAL };
 static int pewter_mart[10] =    { 5, POKE_BALL, POTION, ANTIDOTE, AWAKENING, PARALYZE_HEAL };
 static int cerulean_mart[10] =  { 6, POKE_BALL, POTION, SUPER_POTION, ANTIDOTE, PARALYZE_HEAL, BURN_HEAL };
+static int vermillion_mart[10] ={ 6, POKE_BALL, GREAT_BALL, POTION, SUPER_POTION, PARALYZE_HEAL, AWAKENING };
 
 void set_mart();
 
@@ -142,9 +144,10 @@ int handle_mart() {
 
 void set_mart() {
   switch (player.loc->map) {
-    case MAP_VIRIDIAN: mart_array = viridian_mart; break;
-    case MAP_PEW_CITY: mart_array = pewter_mart; break;
-    case MAP_CER_CITY: mart_array = cerulean_mart; break;
-    default: mart_array = viridian_mart; break;
+    case MAP_VIRIDIAN:  mart_array = viridian_mart; break;
+    case MAP_PEW_CITY:  mart_array = pewter_mart; break;
+    case MAP_CER_CITY:  mart_array = cerulean_mart; break;
+    case MAP_VERM_CITY: mart_array = vermillion_mart; break;
+    default: mart_array = default_mart; break;
   }
 }

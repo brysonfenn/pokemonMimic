@@ -36,7 +36,8 @@ static Pokemon_id wild_pok_lists[20][10] = {
   { 3,   8, 10, POKEMON_VULPIX, POKEMON_EKANS, POKEMON_MANKEY }, //Map #11 Cerulean City
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #12 Gym 2
   { 4,   8, 10, POKEMON_PONYTA, POKEMON_POLIWAG, POKEMON_VULPIX, POKEMON_MEOWTH }, //Map #13 Route 4
-  { 1,  95,95,  POKEMON_CHARMELEON } //Map #14 Underground NS
+  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #14 Underground NS
+  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #15 Vermillion City
 };
 
 static Pokemon newest_pokemon;
