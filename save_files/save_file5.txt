@@ -1,6 +1,6 @@
 Last Saved: 10/16/2023 20:32:13
 Player: Player1
-2 0 3 7330
+2 0 3 17330
 Location: {11,(4,8)}
 Heal Center: {11,(37,12)}
 Pokemon: 

@@ -12,9 +12,6 @@
 #include "../monsters/pokemon.h"
 #include "../monsters/conditions.h"
 
-#define CURRENT_MAX_NUM 8
-#define NUM_ITEMS CURRENT_MAX_NUM + 1
-
                 //  id  name           qt  cost    function        arg
 Item empty_item   = {0, "No Item"     , 1, 1000,  &do_nothing,      0};
 Item potion       = {1, "Potion"      , 0, 300,   &execute_potion,  20};
@@ -31,127 +28,23 @@ Item revive       = {8, "Revive"      , 0, 1500,  &revive_pokemon,  50};
 static * item_array[NUM_ITEMS] = { &empty_item, 
                     &potion, &super_potion, &pokeball, &greatball, &antidote, &paralyz_heal, &awakening, &revive };
 
-static int last_selection = 0;
+static int viridian_mart[10] = {3, 1, 3, 5 };
+static int pewter_mart[10] = {4, 1, 2, 3, 6 };
+static int cerulean_mart[10] = {5, 2, 3, 4, 7, 8 };
 
-//Print all items available at the mart to the list box
-void print_mart() {
-  Item * currItem;
-  char print_str[128];
-
-  for (int i = 1; i <= CURRENT_MAX_NUM; i++) {
-    currItem = item_array[i];
-    sprintf(print_str, "  %s", currItem->name);
-    
-    //handle spacing
-    for (int j = strlen(currItem->name); j < 17; j++) sprintf(print_str, "%s ", print_str);
-
-    sprintf(print_str, "%s$%d\n", print_str, currItem->cost);
-    print_to_list(print_str);
-  }
-}
-
-
-//Allow player to buy items
-int handle_mart() {
-  Item example_item;
-  int inputNum, ch, maximum;
-  char print_str[1024];
-  
-  begin_list();
-  print_to_list("Mart\n");
-  print_mart();
-  print_to_list("  Exit\n");
-  sprintf(print_str, " \nYou have $%d\n", player.money);
-  print_to_list(print_str);
-
-  inputNum = get_selection(1, CURRENT_MAX_NUM, last_selection);
-  if (inputNum == PRESSED_B) inputNum = CURRENT_MAX_NUM;
-  last_selection = inputNum;
-
-  inputNum++; //Align with ID number
-  if (inputNum == CURRENT_MAX_NUM+1) { clear(); return ITEM_SUCCESS; }
-
-  example_item = *(get_item_by_id(inputNum));
-  maximum = player.money / example_item.cost;
-
-  begin_list();
-
-  //Don't even let the player try if they can't buy something
-  if (maximum == 0) {
-    print_to_list("You do not have enough money to buy that!\n"); sleep(2);
-    clear(); return ITEM_FAILURE;
-  }
-  else if (maximum > 99) {
-    maximum = 99;
-  }
-
-  inputNum = 0;
-  sprintf(print_str, "Select a quantity of %s(s) to buy: %02d\n \n", example_item.name, inputNum);
-  sprintf(print_str, "%sCost: $%d\nYou have $%d\n", print_str, 0, player.money);
-  print_to_list(print_str);
-
-  int done_selecting = 0;
-  
-  while (1) {
-    ch = getch();
-    switch (ch) {
-      case KEY_UP:
-        if (inputNum == maximum) inputNum = 0;
-        else inputNum++;
-        break;
-      case KEY_DOWN:
-        if (inputNum == 0) inputNum = maximum;
-        else inputNum--;
-        break;
-      case SELECT_CHAR:
-        done_selecting = 1;
-        break;
-      case CANCEL_CHAR:
-        return ITEM_FAILURE;
-        break;
-      default:
-        break;
-    }
-    if (done_selecting) break;
-    else { 
-      begin_list();
-      sprintf(print_str, "Select a quantity of %s(s) to buy: %02d\n \n", example_item.name, inputNum);
-      sprintf(print_str, "%sCost: $%d\nYou have $%d\n", print_str, example_item.cost*inputNum, player.money);
-      print_to_list(print_str);
-    }
-  }
-
-  if (inputNum == 0) return ITEM_FAILURE;
-
-  //Buy the item
-  player.money -= inputNum * example_item.cost;
-
-  bool foundItem = false;
-  //Find if there were any of those in the bag
-  for (int i = 0; i < player.numInBag; i++) {
-    if (player.bag[i].id_num == example_item.id_num) {
-      foundItem = true;
-      player.bag[i].number += inputNum;
-    }
-  }
-
-  if (!foundItem) {
-    player.bag[player.numInBag] = example_item;
-    player.bag[player.numInBag].number = inputNum;
-    player.numInBag++;
-  }
-
-  sprintf(print_str, " \n \nYou bought %d %s(s)\n", inputNum, example_item.name);
-  print_to_list(print_str); sleep(2); 
-
-  clear();
-  return ITEM_FAILURE;
-}
-
+static int * mart_arrays[10] = {
+  viridian_mart, pewter_mart, cerulean_mart
+};
 
 //Returns an item pointer by its ID number. Should be immediately dereferenced
 Item * get_item_by_id(int id_num) {
   return item_array[id_num];
+}
+
+
+//Returns a mart array based on an ID number identifying the city where the mart is located
+int * get_mart_array(int id_num) {
+  return mart_arrays[id_num];
 }
 
 

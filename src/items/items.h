@@ -12,6 +12,9 @@
 #define NUM_ITEMS 50
 #define MAX_NUM_ITEM 4
 
+#define CURRENT_MAX_NUM 8
+#define NUM_ITEMS CURRENT_MAX_NUM + 1
+
 struct Pokemon;
 
 typedef int (*item_func_ptr) (int, char *);
@@ -31,14 +34,11 @@ extern Item super_potion;
 extern Item pokeball;
 extern Item greatball;
 
-//Print all items available at the mart to the list box
-void print_mart();
-
-//Allow player to buy items
-int handle_mart();
-
 //Returns an item pointer by its ID number. Should be immediately dereferenced
 Item * get_item_by_id(int id_num);
+
+//Returns a mart array based on an ID number identifying the city where the mart is located
+int * get_mart_array(int id_num);
 
 //Use an item, calling its execute function
 //  decrement amount if return value is not ITEM_FAILURE
