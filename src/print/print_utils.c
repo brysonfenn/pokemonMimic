@@ -56,7 +56,6 @@ void printParty() {
 //Print the player's party, with able/unable based on size [6] bool array
 void print_party_able_unable(const bool able_array[6]) {
   char list_str[8192] = "";
-  print_to_list("Pokemon:\n");
 
   for (int i = 0; i < player.numInParty; i++) {
     Pokemon current_pok = player.party[i];

@@ -6,9 +6,11 @@
 #include "../print/print_defines.h"
 #include "../print/print_utils.h"
 #include "../print/print_battle.h"
+#include "../player.h"
 
 void learn_move(Pokemon * pok, attack * new_attack);
 int evolve(Pokemon * pok, int next_pok_id);
+int handle_evolve_in_battle(Pokemon * pok, int next_pok_id);
 void handle_learnset(Pokemon * pok);
 
 //Handle leveling up - also handles learning moves from new level
@@ -261,21 +263,14 @@ void pokemon_give_moves(Pokemon *pok) {
 }
 
 
-//Return 0 is evolve success, return 1 if failed
-int evolve(Pokemon * pok, int next_pok_id) {
+int handle_evolve_in_battle(Pokemon * pok, int next_pok_id) {
   char og_pok_name[LINE_SIZE];
-
-  //Preserve some information like name and lost hp
-  sprintf(og_pok_name, "%s", pok->name);
-  int lost_hp = pok->maxHP - pok->currentHP;
+  sprintf(og_pok_name, "%s", pok->name);  //Preserve some information like name
 
   clear();
   printBattle();
-
-  text_box_cursors(TEXT_BOX_BEGINNING);
-  printw("What? %s is evolving!", og_pok_name);
-  text_box_cursors(TEXT_BOX_NEXT_LINE);
-  printw("Press '%c' to cancel ", CANCEL_CHAR); refresh();
+  text_box_cursors(TEXT_BOX_BEGINNING); printw("What? %s is evolving!", og_pok_name);
+  text_box_cursors(TEXT_BOX_NEXT_LINE); printw("Press '%c' to cancel ", CANCEL_CHAR); refresh();
 
   int count = 0;
   bool pressed_b = false;
@@ -301,10 +296,39 @@ int evolve(Pokemon * pok, int next_pok_id) {
   usleep(500000);
   nodelay(stdscr, FALSE);
   if (pressed_b) {
-    text_box_cursors(TEXT_BOX_NEXT_LINE);
-    printw("%s did not evolve!", og_pok_name); refresh(); sleep(2);
+    text_box_cursors(TEXT_BOX_NEXT_LINE); printw("%s did not evolve!", og_pok_name); refresh(); sleep(2);
     return 1;
   }
+
+  evolve(pok, next_pok_id);
+
+  text_box_cursors(TEXT_BOX_BEGINNING); printw("Congratulations! %s evolved", og_pok_name);
+  text_box_cursors(TEXT_BOX_NEXT_LINE); printw("into %s!", pok->name); refresh(); sleep(3);
+
+  return 0;
+}
+
+
+void handle_evolve_outside_battle(Pokemon * pok, int next_pok_id) {
+  char print_str[256];
+  char og_pok_name[LINE_SIZE];
+  sprintf(og_pok_name, "%s", pok->name);  //Preserve some information like name
+  
+  begin_list();
+  sprintf(print_str, "What? %s is evolving!", og_pok_name);
+  print_to_list(print_str); sleep(4);
+  
+  evolve(pok, next_pok_id);
+
+  sprintf(print_str, " \nCongratulations! %s evolved into %s!", og_pok_name, pok->name);
+  print_to_list(print_str); sleep(3);
+}
+
+
+//Return 0 is evolve success, return 1 if failed
+int evolve(Pokemon * pok, int next_pok_id) {
+  //Preserve some information like lost hp
+  int lost_hp = pok->maxHP - pok->currentHP;
 
   //Get pokemon evolution frame
   Pokemon evolution = *(get_pokemon_frame(next_pok_id));
@@ -323,11 +347,6 @@ int evolve(Pokemon * pok, int next_pok_id) {
 
   //Pokemon should have the same hp loss
   pok->currentHP = pok->maxHP - lost_hp;
-
-  text_box_cursors(TEXT_BOX_BEGINNING);
-  printw("Congratulations! %s evolved", og_pok_name);
-  text_box_cursors(TEXT_BOX_NEXT_LINE);
-  printw("into %s!", pok->name); refresh(); sleep(3);
 
   return 0;
 }

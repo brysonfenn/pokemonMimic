@@ -190,7 +190,8 @@ int revive_pokemon(int percent, char * name) {
 
 //Get player selection to evolve, and evolve
 int use_evolve_stone(int stone_id, char * name) {
-    int current_stone_id, evolve_id;
+    int current_stone_id, evolve_id, input_num;
+    char print_str[128];
 
     //Get stone's ability to evolve
     bool able_array[6] = {false, false, false, false, false, false};
@@ -199,21 +200,35 @@ int use_evolve_stone(int stone_id, char * name) {
         if (current_stone_id == stone_id) able_array[i] = true;
     }
 
-
     int return_execute = RETURN_TO_PARTY;
     int selected_pok = 0;   //Start party selection at position zero
     //Get Selection
     while (1) {
         if (return_execute == RETURN_TO_PARTY) {
             begin_list();
+            sprintf(print_str, "Select a Pokemon to apply the %s on:", name);
+            print_to_list(print_str);
             print_party_able_unable(able_array);
             print_to_list("  Cancel");
+
             selected_pok = get_selection(1, player.numInParty, selected_pok);
             if (selected_pok == player.numInParty || selected_pok == PRESSED_B) { return ITEM_FAILURE; }   //Cancel
         }
-        if (able_array[selected_pok]) return ITEM_SUCCESS;
-        else {print_to_list(" \nIt will have no effect!"); sleep(2); }
+        if (able_array[selected_pok]) {
+            begin_list();
+            sprintf(print_str, "Are you sure you want to evolve %s?\n  Yes\n  No", player.party[selected_pok].name);
+            print_to_list(print_str);
+            input_num = get_selection(1, 1, 0);
+            if (input_num == 1 || input_num == PRESSED_B) continue;
+            else break;
+        }
+        else {
+            print_to_list(" \nIt will have no effect!"); sleep(2); continue; 
+        }
     }
+
+    handle_evolve_outside_battle(&(player.party[selected_pok]), evolve_id);
+
     return ITEM_SUCCESS;
 }
 

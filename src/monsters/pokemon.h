@@ -115,6 +115,8 @@ int pokemon_get_iv(Pokemon * pok, char type);
 //Put evolution level for pokemon with ID # pok_id in level_target and ID # of evolution in evolve_id
 void get_evolve_level_and_id(int pok_id, int * level_target, int * evolve_id);
 
+void handle_evolve_outside_battle(Pokemon * pok, int next_pok_id);
+
 
 //pokemon_list.c
 

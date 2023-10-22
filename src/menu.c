@@ -21,10 +21,10 @@ static bool power_off = false;
 //Handle start menu
 void main_menu() {
 
-    int inputNum, inputNum2, return_execute, num_files, selected_poke;
+    int inputNum, inputNum2, return_execute, num_files, selected_item;
     char print_str[1024] = "";
     int last_selection = 0;
-    selected_poke = 0;
+    selected_item = 0;
     Pokemon tempPok;
 
     //This is the main menu while loop.
@@ -63,14 +63,14 @@ void main_menu() {
         //Handle party changes, releases, and viewing stats
         case POKEMON:
             return_execute = RETURN_TO_PARTY;
-            selected_poke = 0;   //Start party selection at position zero
+            selected_item = 0;   //Start party selection at position zero
 
             while (1) {
                 if (return_execute == RETURN_TO_PARTY) {
                     begin_list();
                     printParty();
                     print_to_list("  Cancel");
-                    inputNum = get_selection(1, player.numInParty, selected_poke);
+                    inputNum = get_selection(1, player.numInParty, selected_item);
                     if (inputNum == player.numInParty || inputNum == PRESSED_B) { break; }   //Cancel
                 }
                 return_execute = handle_pokemon_menu(inputNum);
@@ -82,14 +82,18 @@ void main_menu() {
 
         //Handle items used by player
         case BAG:
-            begin_list();
-            printBag();
-            inputNum = get_selection(1, player.numInBag, 0);
-            if (inputNum == player.numInBag || inputNum == PRESSED_B) { current_display = MENU; break; }
-            return_execute = use_item(inputNum);
+            return_execute = ITEM_FAILURE;
+            selected_item = 0;
 
             //Return to bag menu if item failed, else back to MENU menu
-            if (return_execute == ITEM_FAILURE || return_execute == ITEM_CATCH_FAILURE) { continue; }
+            while (return_execute == ITEM_FAILURE || return_execute == ITEM_CATCH_FAILURE) {
+                begin_list();
+                printBag();
+                selected_item = get_selection(1, player.numInBag, selected_item);
+                if (selected_item == player.numInBag || selected_item == PRESSED_B) { break; }
+                return_execute = use_item(selected_item);
+            }
+
             current_display = MENU;
             break;
 
