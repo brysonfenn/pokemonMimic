@@ -132,8 +132,8 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
   int damage = 0;
   int flags = 0; //These flags are used to detect Critical Hits and Effectiveness
 
-  //Drop HP only if attack has damage power
-  if (chosenAttack.power != 0) {
+  //Drop HP only if attack has damage power & it is not a special move (magnitude, etc.)
+  if (chosenAttack.power != 0 && chosenAttack.var1 != ATTACK_SPECIAL_MOVE) {
     damage = get_damage(perp, move_num, victim, true, &flags);
     if (damage > 0) blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
     victim->currentHP -= damage;

@@ -169,7 +169,7 @@ int uproar_move_func(int nothing1, int nothing2, struct Pokemon * victim, int da
 }
 
 //Special function for thrash/outrage moves
-int thrash_move_func(int move_type, int nothing2, struct Pokemon * victim, int damage) {
+int thrash_move_func(int nothing1, int move_type, struct Pokemon * victim, int damage) {
     Pokemon * self;
     bool enemy;
     if (victim == player.current_pokemon) { self = player.enemy_pokemon; }

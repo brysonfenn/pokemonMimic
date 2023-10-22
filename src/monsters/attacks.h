@@ -21,6 +21,7 @@
 #define ATTACK_SUCCESS 0
 #define ATTACK_FAIL 1
 #define ATTACK_END_BATTLE 2
+#define ATTACK_SPECIAL_MOVE -102
 
 
 struct Pokemon;
