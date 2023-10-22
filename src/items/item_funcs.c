@@ -190,6 +190,30 @@ int revive_pokemon(int percent, char * name) {
 
 //Get player selection to evolve, and evolve
 int use_evolve_stone(int stone_id, char * name) {
+    int current_stone_id, evolve_id;
+
+    //Get stone's ability to evolve
+    bool able_array[6] = {false, false, false, false, false, false};
+    for (int i = 0; i < player.numInParty; i++) {
+        get_evolve_level_and_id(player.party[i].id_num, &current_stone_id, &evolve_id);
+        if (current_stone_id == stone_id) able_array[i] = true;
+    }
+
+
+    int return_execute = RETURN_TO_PARTY;
+    int selected_pok = 0;   //Start party selection at position zero
+    //Get Selection
+    while (1) {
+        if (return_execute == RETURN_TO_PARTY) {
+            begin_list();
+            print_party_able_unable(able_array);
+            print_to_list("  Cancel");
+            selected_pok = get_selection(1, player.numInParty, selected_pok);
+            if (selected_pok == player.numInParty || selected_pok == PRESSED_B) { return ITEM_FAILURE; }   //Cancel
+        }
+        if (able_array[selected_pok]) return ITEM_SUCCESS;
+        else {print_to_list(" \nIt will have no effect!"); sleep(2); }
+    }
     return ITEM_SUCCESS;
 }
 

@@ -27,11 +27,11 @@ Item burn_heal     = {BURN_HEAL,     "Burn Heal"    , 0, 200,   &heal_condition,
 Item freeze_heal   = {FREEZE_HEAL,   "Freeze Heal"  , 0, 200,   &heal_condition,  FROZEN};           // 10
 
 Item revive        = {REVIVE,        "Revive"       , 0, 1500,  &revive_pokemon,  50};
-Item fire_stone    = {FIRE_STONE,    "Fire Stone"   , 0, 5000,  &do_nothing,  202};
-Item water_stone   = {WATER_STONE,   "Water Stone"  , 0, 5000,  &do_nothing,  203};
-Item thunder_stone = {THUNDER_STONE, "Thunder Stone", 0, 5000,  &do_nothing,  204};
-Item leaf_stone    = {LEAF_STONE,    "Leaf Stone"   , 0, 5000,  &do_nothing,  205};
-Item moon_stone    = {MOON_STONE,    "Moon Stone"   , 0, 5000,  &do_nothing,  206};
+Item fire_stone    = {FIRE_STONE,    "Fire Stone"   , 0, 5000,  &use_evolve_stone,  202};
+Item water_stone   = {WATER_STONE,   "Water Stone"  , 0, 5000,  &use_evolve_stone,  203};
+Item thunder_stone = {THUNDER_STONE, "Thunder Stone", 0, 5000,  &use_evolve_stone,  204};
+Item leaf_stone    = {LEAF_STONE,    "Leaf Stone"   , 0, 5000,  &use_evolve_stone,  205};
+Item moon_stone    = {MOON_STONE,    "Moon Stone"   , 0, 5000,  &use_evolve_stone,  206};
 
 
 //NOTE: Make sure to add item to this list after creating it

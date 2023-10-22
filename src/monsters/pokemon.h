@@ -109,7 +109,11 @@ uint32_t pokemon_get_exp_yield(Pokemon *pok);
 //This is called upon initializing a new pokemon
 void pokemon_give_moves(Pokemon *pok);
 
+//Return iv field
 int pokemon_get_iv(Pokemon * pok, char type);
+
+//Put evolution level for pokemon with ID # pok_id in level_target and ID # of evolution in evolve_id
+void get_evolve_level_and_id(int pok_id, int * level_target, int * evolve_id);
 
 
 //pokemon_list.c

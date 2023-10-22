@@ -32,14 +32,8 @@ void print_pokemon_list(struct Pokemon * pokList, int list_size) {
 
     //Handle spacing
     for (int j = strlen(current_pok.name); j < 15; j++) sprintf(list_str, "%s ", list_str);
-
     //Fix Nidoran male/female symbol spacing
-    char * nidoran_name = "Nidoran";
-    char * name = current_pok.name;
-    bool is_nidoran = true;
-    for (int j = 0; j < strlen(nidoran_name); j++) {
-      if (nidoran_name[j] != name[j]) is_nidoran = false; break;
-    }
+    bool is_nidoran = ((current_pok.id_num == POKEMON_NIDORAN_F) || (current_pok.id_num == POKEMON_NIDORAN_M));
     if (is_nidoran) sprintf(list_str, "%s  ", list_str);
 
     //Add other pokemon info
@@ -57,6 +51,32 @@ void printParty() {
   print_to_list("Pokemon:\n");
   print_pokemon_list(player.party, player.numInParty);
 }
+
+
+//Print the player's party, with able/unable based on size [6] bool array
+void print_party_able_unable(const bool able_array[6]) {
+  char list_str[8192] = "";
+  print_to_list("Pokemon:\n");
+
+  for (int i = 0; i < player.numInParty; i++) {
+    Pokemon current_pok = player.party[i];
+    sprintf(list_str, "%s  %s" , list_str, current_pok.name);
+
+    //Handle spacing
+    for (int j = strlen(current_pok.name); j < 15; j++) sprintf(list_str, "%s ", list_str);
+    //Fix Nidoran male/female symbol spacing
+    bool is_nidoran = ((current_pok.id_num == POKEMON_NIDORAN_F) || (current_pok.id_num == POKEMON_NIDORAN_M));
+    if (is_nidoran) sprintf(list_str, "%s  ", list_str);
+
+    //Add able/unable info
+    char able_unable[32];
+    if (able_array[i]) sprintf(able_unable, "%s", "Able");
+    else sprintf(able_unable, "%s", "Unable");
+    sprintf(list_str, "%s%s\n", list_str, able_unable);
+  }
+  print_to_list(list_str);
+}
+
 
 //Print the player's current bag
 void printBag() {

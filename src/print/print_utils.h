@@ -12,6 +12,9 @@ void print_pokemon_list(struct Pokemon * pokList, int list_size);
 //Print the player's current pokemon party
 void printParty();
 
+//Print the player's party, with able/unable based on size [6] bool array
+void print_party_able_unable(const bool able_array[6]);
+
 //Print the player's current bag
 void printBag();
 

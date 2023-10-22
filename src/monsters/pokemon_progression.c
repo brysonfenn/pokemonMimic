@@ -10,7 +10,6 @@
 void learn_move(Pokemon * pok, attack * new_attack);
 int evolve(Pokemon * pok, int next_pok_id);
 void handle_learnset(Pokemon * pok);
-void get_evolve_level_and_id(int pok_id, int * level_target, int * evolve_id);
 
 //Handle leveling up - also handles learning moves from new level
 void pokemon_level_up(Pokemon *pok, int next_level_exp) {
