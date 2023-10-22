@@ -1,5 +1,5 @@
 Jigglypuff: 39
-Evolve: 101,0
+Evolve: 206,40
 level,move_id
 1,70 Sing
 4,9 Defense Curl

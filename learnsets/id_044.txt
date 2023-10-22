@@ -1,5 +1,5 @@
 Gloom: 44
-Evolve: 101,0
+Evolve: 205,45
 level,move_id
 1,100 Absorb
 1,19 Sweet Scent

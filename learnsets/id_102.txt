@@ -1,5 +1,5 @@
 Exeggcute: 102
-Evolve: 44,103
+Evolve: 205,103
 level,move_id
 1,146 Uproar
 1,169 Barrage

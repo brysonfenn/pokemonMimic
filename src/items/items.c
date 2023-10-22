@@ -13,26 +13,31 @@
 #include "../monsters/conditions.h"
 
                 //     id            name            qt  cost    function        arg
-Item empty_item   = {NO_ITEM,       "No Item"      , 1, 1000,  &do_nothing,      0};                // 00
+Item empty_item    = {NO_ITEM,       "No Item"      , 1, 1000,  &do_nothing,      0};                // 00
 
-Item potion       = {POTION,        "Potion"       , 0, 300,   &execute_potion,  20};
-Item super_potion = {SUPER_POTION,  "Super Potion" , 0, 700,   &execute_potion,  50};
-Item pokeball     = {POKE_BALL,     "Poke Ball"    , 0, 200,   &attempt_catch,   100};
-Item greatball    = {GREAT_BALL,    "Great Ball"   , 0, 600,   &attempt_catch,   150};
-Item ultraball    = {ULTRA_BALL,    "Ultra Ball"   , 0, 1200,  &attempt_catch,   200};
-Item antidote     = {ANTIDOTE,      "Antidote"     , 0, 100,   &heal_condition,  POISONED};
-Item paralyze_heal= {PARALYZE_HEAL, "Paralyze Heal", 0, 200,   &heal_condition,  PARALYZED};
-Item awakening    = {AWAKENING,     "Awakening"    , 0, 250,   &heal_condition,  ASLEEP};
-Item burn_heal    = {BURN_HEAL,     "Burn Heal"    , 0, 200,   &heal_condition,  BURNED};
-Item freeze_heal  = {FREEZE_HEAL,   "Freeze Heal"  , 0, 200,   &heal_condition,  FROZEN};           // 10
+Item potion        = {POTION,        "Potion"       , 0, 300,   &execute_potion,  20};
+Item super_potion  = {SUPER_POTION,  "Super Potion" , 0, 700,   &execute_potion,  50};
+Item pokeball      = {POKE_BALL,     "Poke Ball"    , 0, 200,   &attempt_catch,   100};
+Item greatball     = {GREAT_BALL,    "Great Ball"   , 0, 600,   &attempt_catch,   150};
+Item ultraball     = {ULTRA_BALL,    "Ultra Ball"   , 0, 1200,  &attempt_catch,   200};
+Item antidote      = {ANTIDOTE,      "Antidote"     , 0, 100,   &heal_condition,  POISONED};
+Item paralyze_heal = {PARALYZE_HEAL, "Paralyze Heal", 0, 200,   &heal_condition,  PARALYZED};
+Item awakening     = {AWAKENING,     "Awakening"    , 0, 250,   &heal_condition,  ASLEEP};
+Item burn_heal     = {BURN_HEAL,     "Burn Heal"    , 0, 200,   &heal_condition,  BURNED};
+Item freeze_heal   = {FREEZE_HEAL,   "Freeze Heal"  , 0, 200,   &heal_condition,  FROZEN};           // 10
 
-Item revive       = {REVIVE,        "Revive"       , 0, 1500,  &revive_pokemon,  50};
+Item revive        = {REVIVE,        "Revive"       , 0, 1500,  &revive_pokemon,  50};
+Item fire_stone    = {FIRE_STONE,    "Fire Stone"   , 0, 5000,  &do_nothing,  202};
+Item water_stone   = {WATER_STONE,   "Water Stone"  , 0, 5000,  &do_nothing,  203};
+Item thunder_stone = {THUNDER_STONE, "Thunder Stone", 0, 5000,  &do_nothing,  204};
+Item leaf_stone    = {LEAF_STONE,    "Leaf Stone"   , 0, 5000,  &do_nothing,  205};
+Item moon_stone    = {MOON_STONE,    "Moon Stone"   , 0, 5000,  &do_nothing,  206};
 
 
 //NOTE: Make sure to add item to this list after creating it
 static * item_array[NUM_ITEMS] = { &empty_item, 
     &potion, &super_potion, &pokeball, &greatball, &ultraball, &antidote, &paralyze_heal, &awakening, &burn_heal, &freeze_heal, //    1-10
-    &revive
+    &revive, &fire_stone, &water_stone, &thunder_stone, &leaf_stone, &moon_stone
 };
 
 //Returns an item pointer by its ID number. Should be immediately dereferenced

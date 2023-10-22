@@ -1,5 +1,5 @@
 Nidorino 33
-Evolve: 101,0
+Evolve: 206,34
 level,move_id
 1,52 Leer
 1,51 Peck

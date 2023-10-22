@@ -1,5 +1,5 @@
 Weepinbell: 70
-Evolve: 101,0 Leaf Stone
+Evolve: 205,71
 level,move_id
 1,10 Vine Whip
 1,20 Growth

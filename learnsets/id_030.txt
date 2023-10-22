@@ -1,5 +1,5 @@
 Nidorina 30
-Evolve: 101,0
+Evolve: 206,31
 level,move_id
 1,3 Growl
 1,2 Scratch

@@ -18,7 +18,7 @@ static int default_mart[10] =   { 1, FREEZE_HEAL };
 static int viridian_mart[10] =  { 4, POKE_BALL, POTION, ANTIDOTE, PARALYZE_HEAL };
 static int pewter_mart[10] =    { 5, POKE_BALL, POTION, ANTIDOTE, AWAKENING, PARALYZE_HEAL };
 static int cerulean_mart[10] =  { 6, POKE_BALL, POTION, SUPER_POTION, ANTIDOTE, PARALYZE_HEAL, BURN_HEAL };
-static int vermillion_mart[10] ={ 6, POKE_BALL, GREAT_BALL, POTION, SUPER_POTION, PARALYZE_HEAL, AWAKENING };
+static int vermillion_mart[10] ={ 6, POKE_BALL, GREAT_BALL, POTION, SUPER_POTION, THUNDER_STONE, AWAKENING };
 
 void set_mart();
 

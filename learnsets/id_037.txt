@@ -1,5 +1,5 @@
 Vulpix 37
-Evolve: 101,0
+Evolve: 202,38
 level,move_id
 1,12 Ember
 5,4 Tail Whip

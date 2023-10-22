@@ -1,5 +1,5 @@
 Growlithe: 58
-Evolve: 101,0
+Evolve: 202,59
 level,move_id
 1,29 Bite
 7,12 Ember

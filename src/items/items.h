@@ -12,16 +12,16 @@
 #define NUM_ITEMS 50
 #define MAX_NUM_ITEM 4
 
-#define NUM_ITEMS 12
-
 struct Pokemon;
 
 typedef int (*item_func_ptr) (int, char *);
 
 typedef enum { NO_ITEM, 
       POTION, SUPER_POTION, POKE_BALL, GREAT_BALL, ULTRA_BALL, ANTIDOTE, PARALYZE_HEAL, AWAKENING, BURN_HEAL, FREEZE_HEAL, 
-      REVIVE 
-} item_id_t;
+      REVIVE, FIRE_STONE, WATER_STONE, THUNDER_STONE, LEAF_STONE, MOON_STONE, 
+LAST_ITEM } item_id_t;
+
+#define NUM_ITEMS LAST_ITEM + 1
 
 typedef struct Item {
   int id_num;
