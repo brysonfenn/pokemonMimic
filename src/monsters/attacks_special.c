@@ -77,7 +77,7 @@ int rest_move_func(int nothing1, int nothing2, struct Pokemon * victim, int dama
     self->sleep_count = (rand() % 4) + 1;
 
     text_box_cursors(TEXT_BOX_NEXT_LINE);
-    printw("%s went to sleep!", self->name); refresh(); sleep(2);
+    printw("%s went to sleep to restore health!", self->name); refresh(); sleep(2);
     clear_battle_box(); printBattle();
 
     return ATTACK_SUCCESS;

@@ -46,7 +46,7 @@ void pokemon_level_up(Pokemon *pok, int next_level_exp) {
   if (evolve_id == 0) { return; } 
   //Evolve the pokemon and learn any new moves if pokemon has reached evolution level or higher
   else if (pok->level >= level_target) {
-    evolve(pok, evolve_id);
+    handle_evolve_in_battle(pok, evolve_id);
     handle_learnset(pok);
   }
 }

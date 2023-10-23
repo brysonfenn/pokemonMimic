@@ -1,16 +1,19 @@
-Last Saved: 10/18/2023 18:04:14
+Last Saved: 10/22/2023 19:03:30
 Player: Test_Player
-2 6 2 790
-Location: {7,(12,6)}
-Heal Center: {7,(33,9)}
+3 5 2 790
+Location: {7,(41,13)}
+Heal Center: {7,(32,9)}
 Pokemon: 
-Charmander 4 27 27 4 15 13 12 11 18 10 1028 NONE NONE 12bcdf73 0 0
+Charizard 6 240 240 4 156 145 216 162 185 90 734250 FIRE FLYING 12bcdf73 0 0
 	Disable. 115 20
-	Thrash. 67 20
+	Seismic Toss. 118 20
 	Icicle Spear. 156 30
 	Ingrain. 190 20
 Abra 63 16 16 1 7 6 14 9 13 4 64 PSYCHIC NONE 3a4b33f6 0 0
 	Teleport. 129 20
+Caterpie 10 18 18 2 40 10 9 10 10 6 342 NONE NONE 2df200a1 0 0
+	Tackle. 1 35
+	String Shot. 5 40
 PC: 
 Pidgey 16 19 19 2 10 9 9 9 11 5 125 NORMAL FLYING 73883553 0 0
 	Tackle. 1 35
@@ -28,12 +31,9 @@ Kakuna 14 21 21 3 13 11 13 11 12 9 729 NONE NONE 6b076197 0 0
 	Poison Sting. 6 35
 	String Shot. 5 40
 	Harden. 34 20
-Caterpie 10 18 18 2 40 10 9 10 10 6 216 NONE NONE 2df200a1 0 0
-	Tackle. 1 35
-	String Shot. 5 40
 Bag:
 Super Potion. 2 2
-Pokeball. 3 1
+Poke Ball. 3 1
 
 Key Items: 0
   

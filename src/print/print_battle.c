@@ -26,12 +26,12 @@ void printBattle() {
   sprintf(poke_string, "%s  Lvl %d ", enemy_pok->name, enemy_pok->level);
   add_condition_string(poke_string, enemy_pok);
   mvprintw(BATTLE_BOX_ENEMY_Y, BATTLE_BOX_ENEMY_X, poke_string);
-  mvprintw(BATTLE_BOX_ENEMY_Y+1, BATTLE_BOX_ENEMY_X, "HP: % 3d/%d", enemy_pok->currentHP, enemy_pok->maxHP);
+  mvprintw(BATTLE_BOX_ENEMY_Y+1, BATTLE_BOX_ENEMY_X, "HP: % 3d/%d ", enemy_pok->currentHP, enemy_pok->maxHP);
 
   sprintf(poke_string,  "%s  Lvl %d  ", player_pok->name, player_pok->level);
   add_condition_string(poke_string, player_pok);
   mvprintw(BATTLE_BOX_PLAYER_Y, BATTLE_BOX_PLAYER_X, poke_string);
-  mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "HP: % 3d/%d", player_pok->currentHP, player_pok->maxHP);
+  mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "HP: % 3d/%d ", player_pok->currentHP, player_pok->maxHP);
 
   print_btn_instructions(BATTLE_BOX_X+BATTLE_BOX_WIDTH+1, TEXT_BOX_Y, false);
 
@@ -71,12 +71,12 @@ void blinkPokemon(bool blink_player, int color, int num_times) {
     mvprintw(text_y+1, text_x, "                       ");
     refresh(); usleep(BLINK_TIME_MICROS);
     mvprintw(text_y, text_x, poke_string);
-    mvprintw(text_y+1, text_x, "HP: % 3d/%d", pok->currentHP, pok->maxHP);
+    mvprintw(text_y+1, text_x, "HP: % 3d/%d ", pok->currentHP, pok->maxHP);
     refresh(); usleep(BLINK_TIME_MICROS);
   }
   attrset(COLOR_PAIR(DEFAULT_COLOR));
   mvprintw(text_y, text_x, poke_string);
-  mvprintw(text_y+1, text_x, "HP: % 3d/%d", pok->currentHP, pok->maxHP);
+  mvprintw(text_y+1, text_x, "HP: % 3d/%d ", pok->currentHP, pok->maxHP);
   refresh();
 }
 

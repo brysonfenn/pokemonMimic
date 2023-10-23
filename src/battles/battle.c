@@ -400,6 +400,11 @@ int get_enemy_move(Pokemon * pok) {
   int available_attacks[4];
   int curr_attack;
 
+  if (has_hidden_condition(pok, REPEAT_MOVE)) {
+    curr_attack = pok->last_move;
+    if (get_hidden_condition_val(pok, DISABLED) != curr_attack) return curr_attack;
+  }
+
   //Create an array of moves that have remaining PP > 0
   for (int i = 0; i < pok->numAttacks; i++) {
     if (pok->attacks[i].curr_pp && (get_hidden_condition_val(pok, DISABLED) != i)) {
@@ -416,6 +421,8 @@ int get_enemy_move(Pokemon * pok) {
   int max_damage = 0;
   int curr_damage = 0;
   int flags_var;  //Filler int for the get_damage function
+
+  text_box_cursors(TEXT_BOX_BEGINNING);
 
   //Get move with maximum damage
   for (int i = 0; i < num_available_attacks; i++) {
@@ -443,6 +450,11 @@ int get_enemy_move(Pokemon * pok) {
     else if (attack_id == 118) {
       curr_damage = player.current_pokemon->level;
     }
+    //Prioritize Healing if less than 25% of hp (94th attack is rest)
+    else if ((pok->attacks[curr_attack].side_effect == &self_heal || pok->attacks[curr_attack].id_num == 94)
+          && (pok->currentHP < 0.35 * pok->maxHP)) {
+      curr_damage = 10000;
+    }
     else {
       curr_damage = get_damage(pok, curr_attack, player.current_pokemon, false, &flags_var);
     }
@@ -451,6 +463,9 @@ int get_enemy_move(Pokemon * pok) {
       max_move_index = available_attacks[i];
       max_damage = curr_damage;
     }
+
+    if (i == 2) text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("%s: %d\t", pok->attacks[curr_attack].name, curr_damage);
   }
 
   // Higher chance of selecting move with highest damage
@@ -458,6 +473,11 @@ int get_enemy_move(Pokemon * pok) {
   int selected_move = 0;
   if (random < 67) selected_move = max_move_index;
   else selected_move = available_attacks[rand() % num_available_attacks];
+
+  text_box_cursors(TEXT_BOX_NEXT_LINE);
+  printw("Random: %d, Selected: %s", random, pok->attacks[selected_move].name); refresh();
+
+  get_selection(0,1,0);
 
   return selected_move;
 }

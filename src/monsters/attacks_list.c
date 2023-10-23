@@ -117,7 +117,7 @@ attack glare        = {"Glare"        , 90, 30,   0,       75, NORMAL,   false, 
 attack acid         = {"Acid"         , 91, 30,  40,      100, POISON,   false, &decrement_opponent_stat, DEFENSE_STAT, 10 };
 attack will_o_wisp  = {"Will-O-Wisp"  , 92, 15,   0,       75, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack confuse_ray  = {"Confuse Ray"  , 93, 10,   0,      100, GHOST,    false, &inflict_condition, CONFUSED, 100 };
-attack rest         = {"Rest"         , 94, 10,   0,  NO_MISS, PSYCHIC,  false, &rest_move_func, NO_CONDITION, 0 };
+attack rest         = {"Rest"         , 94, 10,   0,  NO_MISS, NORMAL,   false, &rest_move_func, NO_CONDITION, 0 };
 attack hyper_voice  = {"Hyper Voice"  , 95, 10,  90,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack leech_life   = {"Leech Life"   , 96, 15,  20,      100, BUG,      false, &self_heal, PERCENT_DAMAGE_DEALT, 50 };
 attack astonish     = {"Astonish"     , 97, 15,  30,      100, GHOST,    false, &inflict_condition, FLINCHED, 30 };
@@ -149,7 +149,7 @@ attack take_down    = {"Take Down"    ,120, 20,  90,       85, NORMAL,   false, 
 
 attack flame_wheel  = {"Flame Wheel"  ,121, 25,  60,      100, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack extreme_speed= {"Extreme Speed",122,  5,  80,      100, NORMAL,    true, &attack_do_nothing, NO_CONDITION, 0 };
-attack recover      = {"Recover"      ,123,  5,   0,  NO_MISS, NORMAL,    false, &self_heal, HP_PERCENTAGE, 50 };
+attack recover      = {"Recover"      ,123,  5,   0,  NO_MISS, NORMAL,   false, &self_heal, HP_PERCENTAGE, 50 };
 attack bubble_beam  = {"Bubble Beam"  ,124, 20,  65,      100, WATER,    false, &decrement_opponent_stat, SPEED_STAT, 10 };
 attack hypnosis     = {"Hypnosis"     ,125, 20,   0,       60, PSYCHIC,  false, &inflict_condition, ASLEEP, 100 };
 attack submission   = {"Submission"   ,126, 25,  80,       80, FIGHTING, false, &self_inflict_damage, PERCENT_DAMAGE_DEALT, 25 };

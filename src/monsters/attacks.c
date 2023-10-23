@@ -180,6 +180,8 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
 int get_damage(struct Pokemon *perp, int move_num, struct Pokemon *victim, bool print_statements, int *flags) {
   attack chosenAttack = perp->attacks[move_num];
 
+  if (chosenAttack.power == 0) return 0;
+
   int perpAttack, victimDefense, perpAtkStage, victimDefStage;
   Type moveType = perp->attacks[move_num].type;
 
