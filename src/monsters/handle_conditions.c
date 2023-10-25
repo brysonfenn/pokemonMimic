@@ -14,7 +14,7 @@ int handle_hurt_fraction(bool enemy, struct Pokemon * pok, char * pok_condition_
 
 //Handle poisoning, leech seed, etc.
 int handle_end_conditions(struct Pokemon * pok) {
-    bool enemy;
+    bool is_enemy;
     Pokemon * perp;
     bool success = false;
 
@@ -22,11 +22,11 @@ int handle_end_conditions(struct Pokemon * pok) {
 
     //Set enemy boolean and perp
     if (pok == player.enemy_pokemon) {
-        enemy = true;
+        is_enemy = true;
         perp = player.current_pokemon;
     }
     else {
-        enemy = false;
+        is_enemy = false;
         perp = player.enemy_pokemon;
     }
 
@@ -41,11 +41,11 @@ int handle_end_conditions(struct Pokemon * pok) {
 
 	//Poison and burn
 	if (pok->visible_condition == POISONED) {
-		handle_hurt_fraction(enemy, pok, "poison", 16);
+		handle_hurt_fraction(is_enemy, pok, "poison", 16);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
 	}
     if (pok->visible_condition == BURNED) {
-        handle_hurt_fraction(enemy, pok, "burn", 16);
+        handle_hurt_fraction(is_enemy, pok, "burn", 16);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
     }
 
@@ -59,7 +59,7 @@ int handle_end_conditions(struct Pokemon * pok) {
             return ATTACK_SUCCESS;
         }
 
-        handle_hurt_fraction(enemy, pok, "tight hold", 16);
+        handle_hurt_fraction(is_enemy, pok, "tight hold", 16);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
     }
     if (has_hidden_condition(pok, SAND_TOMBED)) {
@@ -71,7 +71,7 @@ int handle_end_conditions(struct Pokemon * pok) {
             return ATTACK_SUCCESS;
         }
 
-        handle_hurt_fraction(enemy, pok, "sand tomb", 16);
+        handle_hurt_fraction(is_enemy, pok, "sand tomb", 16);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
     }
     if (has_hidden_condition(pok, FIRE_SPINNED)) {
@@ -83,11 +83,11 @@ int handle_end_conditions(struct Pokemon * pok) {
             return ATTACK_SUCCESS;
         }
 
-        handle_hurt_fraction(enemy, pok, "fire spin", 16);
+        handle_hurt_fraction(is_enemy, pok, "fire spin", 16);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
     }
     if (has_hidden_condition(pok, CURSED)) {
-        handle_hurt_fraction(enemy, pok, "curse", 4);
+        handle_hurt_fraction(is_enemy, pok, "curse", 4);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
     }
     // END TEMPORARY AFFLICTIONS //
@@ -103,11 +103,11 @@ int handle_end_conditions(struct Pokemon * pok) {
 	
 	//Leech Seed & Ingrain
 	if (has_hidden_condition(pok, SEEDED)) {
-        handle_leech_seed(enemy, pok, perp);
+        handle_leech_seed(is_enemy, pok, perp);
         if (pok->currentHP == 0) return ATTACK_SUCCESS;
 	}
     if (has_hidden_condition(pok, INGRAINED)) {
-        handle_ingrain(enemy, pok);
+        handle_ingrain(is_enemy, pok);
     }
 
 	return ATTACK_SUCCESS;

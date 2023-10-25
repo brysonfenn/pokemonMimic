@@ -27,6 +27,8 @@ int get_enemy_move(Pokemon * pok);
 void handle_exp(int exp);
 bool run_attempt();
 
+
+// BATTLE FUNCTION //
 //Begin a Battle with a given pokemon
 int handle_battle(struct Pokemon * enemyPok) {
   int inputNum, max_input;
@@ -46,14 +48,11 @@ int handle_battle(struct Pokemon * enemyPok) {
 
   //First used pokemon needs exp, no one else does for now
   for (int i = 0; i < player.numInParty; i++) {
-    if (currentPok == &(player.party[i])) {
-      pokemon_needing_exp[i] = true;
-    }
-    else {
-      pokemon_needing_exp[i] = false;
-    }
+    if (currentPok == &(player.party[i])) pokemon_needing_exp[i] = true;
+    else pokemon_needing_exp[i] = false;
   }
 
+  // BATTLE LOOP //
   while (1) {
     clear();
 
@@ -155,7 +154,6 @@ int handle_battle(struct Pokemon * enemyPok) {
         mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[2].name); 
         mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X+MOVE_SELECT_SPACING,"  %s", currentPok->attacks[3].name); 
         mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X+MOVE_SELECT_SPACING*2,"  Cancel");
-        
         inputNum = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, currentPok);
 
         //Handle Cancel
@@ -177,7 +175,6 @@ int handle_battle(struct Pokemon * enemyPok) {
           break;
         }
         item_num = inputNum;
-
         current_decision = ITEM;
         break;
         
@@ -347,11 +344,14 @@ int handle_battle(struct Pokemon * enemyPok) {
       attack_result = perform_enemy_attack(currentPok, enemyPok, enemy_attack_num);
       if (attack_result == ATTACK_END_BATTLE) {run_success = true; break; } //End battle if enemy used leave battle attack
     }
-    fainted_switch = false;
 
-    handle_end_conditions(enemyPok);
-    handle_end_conditions(currentPok);
+    if (!fainted_switch) {
+      handle_end_conditions(enemyPok);
+      handle_end_conditions(currentPok);
+    }
+    fainted_switch = false;
   }
+  // END BATTLE LOOP //
 
   if (!run_success && !catch_success) {
     int exp = pokemon_get_exp_yield(enemyPok);
@@ -363,11 +363,10 @@ int handle_battle(struct Pokemon * enemyPok) {
 
   remove_all_hidden_conditions(enemyPok);
   
-  if (catch_success)
-    return BATTLE_CAUGHT_POKE;
-  else
-    return BATTLE_WIN;
+  if (catch_success) return BATTLE_CAUGHT_POKE;
+  else return BATTLE_WIN;
 }
+// END BATTLE FUNCTION //
 
 
 //Handle an enemyPok attacking the player's current pokemon
@@ -464,8 +463,9 @@ int get_enemy_move(Pokemon * pok) {
       max_damage = curr_damage;
     }
 
-    if (i == 2) text_box_cursors(TEXT_BOX_NEXT_LINE);
-    printw("%s: %d\t", pok->attacks[curr_attack].name, curr_damage);
+    // Uncomment to print selection process //
+    // if (i == 2) text_box_cursors(TEXT_BOX_NEXT_LINE);
+    // printw("%s: %d\t", pok->attacks[curr_attack].name, curr_damage);
   }
 
   // Higher chance of selecting move with highest damage
@@ -474,10 +474,10 @@ int get_enemy_move(Pokemon * pok) {
   if (random < 67) selected_move = max_move_index;
   else selected_move = available_attacks[rand() % num_available_attacks];
 
-  text_box_cursors(TEXT_BOX_NEXT_LINE);
-  printw("Random: %d, Selected: %s", random, pok->attacks[selected_move].name); refresh();
-
-  get_selection(0,1,0);
+  // Uncomment to print selection process //
+  // text_box_cursors(TEXT_BOX_NEXT_LINE);
+  // printw("Random: %d, Selected: %s", random, pok->attacks[selected_move].name); refresh();
+  // get_selection(0,1,0);
 
   return selected_move;
 }

@@ -189,7 +189,7 @@ int revive_pokemon(int percent, char * name) {
 
 
 //Get player selection to evolve, and evolve
-int use_evolve_stone(int stone_id, char * name) {
+int use_evolve_stone(int input_stone_id, char * name) {
     int current_stone_id, evolve_id, input_num;
     char print_str[128];
 
@@ -197,7 +197,9 @@ int use_evolve_stone(int stone_id, char * name) {
     bool able_array[6] = {false, false, false, false, false, false};
     for (int i = 0; i < player.numInParty; i++) {
         get_evolve_level_and_id(player.party[i].id_num, &current_stone_id, &evolve_id);
-        if (current_stone_id == stone_id) able_array[i] = true;
+        if (current_stone_id == input_stone_id) able_array[i] = true;
+        //Eevee can evolve with thunder, water, and fire
+        if (player.party[i].id_num == POKEMON_EEVEE && (input_stone_id >= 202 && input_stone_id <= 204)) able_array[i] = true;
     }
 
     int return_execute = RETURN_TO_PARTY;
@@ -227,6 +229,15 @@ int use_evolve_stone(int stone_id, char * name) {
         }
     }
 
+    if (player.party[selected_pok].id_num == POKEMON_EEVEE) {
+        if (input_stone_id == 202) evolve_id = POKEMON_FLAREON;
+        if (input_stone_id == 203) evolve_id = POKEMON_VAPOREON;
+        if (input_stone_id == 204) evolve_id = POKEMON_JOLTEON;
+    }
+    else {
+        get_evolve_level_and_id(player.party[selected_pok].id_num, &current_stone_id, &evolve_id);
+    }
+    
     handle_evolve_outside_battle(&(player.party[selected_pok]), evolve_id);
 
     return ITEM_SUCCESS;
