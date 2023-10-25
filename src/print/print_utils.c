@@ -158,10 +158,6 @@ int get_selection(int first_line, int highest_option_num, int last_selection) {
         if (cursor_y == actual_first_line + highest_option_num) cursor_y = actual_first_line;
         else cursor_y++;
         break;
-      case KEY_LEFT:
-        break;
-      case KEY_RIGHT:
-        break;
       case SELECT_CHAR:
         return (cursor_y - actual_first_line);
       case CANCEL_CHAR:
@@ -175,7 +171,18 @@ int get_selection(int first_line, int highest_option_num, int last_selection) {
   }
 
   return -1;
+}
 
+//Wait for user to press 'a' button ('z')
+int await_user() {
+  usleep(500000);
+  int ch = '~';
+  flushinp();
+  draw_box(BATTLE_BOX_X+BATTLE_BOX_WIDTH+1, TEXT_BOX_Y+7, 15, 3);
+  mvprintw(TEXT_BOX_Y+8, BATTLE_BOX_X+BATTLE_BOX_WIDTH+2, "Press 'a'"); refresh();
+  while (ch != SELECT_CHAR) ch = getch();
+
+  mvprintw(TEXT_BOX_Y+8, BATTLE_BOX_X+BATTLE_BOX_WIDTH+9, "         "); refresh();
 }
 
 //Draw simple box with top-left corner (x,y) and with width and height (w,h)

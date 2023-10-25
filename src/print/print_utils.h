@@ -30,6 +30,9 @@ void pause_ncurses();
 //  last_selection is where the cursor will begin (usually 0 or the last option selected)
 int get_selection(int first_line, int highest_option_num, int last_selection);
 
+//Wait for user to press 'a' button ('z')
+int await_user();
+
 //Draw simple box with top-left corner (x,y) and with width and height (w,h)
 void draw_box(int x, int y, int w, int h);
 
