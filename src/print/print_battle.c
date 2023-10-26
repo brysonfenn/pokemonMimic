@@ -23,7 +23,7 @@ void printBattle() {
   //Draw battle box
   draw_box(BATTLE_BOX_X, BATTLE_BOX_Y, BATTLE_BOX_WIDTH, BATTLE_BOX_HEIGHT);
 
-  sprintf(poke_string, "%s  Lvl %d ", enemy_pok->name, enemy_pok->level);
+  sprintf(poke_string, "%s  Lvl %d  ", enemy_pok->name, enemy_pok->level);
   add_condition_string(poke_string, enemy_pok);
   mvprintw(BATTLE_BOX_ENEMY_Y, BATTLE_BOX_ENEMY_X, poke_string);
   mvprintw(BATTLE_BOX_ENEMY_Y+1, BATTLE_BOX_ENEMY_X, "HP: % 3d/%d ", enemy_pok->currentHP, enemy_pok->maxHP);
@@ -126,8 +126,8 @@ int get_battle_selection(int first_line, int last_selection) {
 //Get selection from the user for a pokemon move to use
 int get_move_selection(int start_x, int start_y, struct Pokemon* pok, int last_selection) {
   int selection;
-  if (last_selection == NO_LAST_MOVE) selection = 0;
-  else selection = last_selection;
+  if (last_selection >= 0 && last_selection < pok->numAttacks) selection = last_selection;
+  else selection = 0;
 
   cursor_x = start_x;
   cursor_y = start_y;
