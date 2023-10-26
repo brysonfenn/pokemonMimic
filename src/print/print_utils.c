@@ -173,18 +173,6 @@ int get_selection(int first_line, int highest_option_num, int last_selection) {
   return -1;
 }
 
-//Wait for user to press 'a' button ('z')
-int await_user() {
-  usleep(500000);
-  int ch = '~';
-  flushinp();
-  draw_box(BATTLE_BOX_X+BATTLE_BOX_WIDTH+1, TEXT_BOX_Y+7, 15, 3);
-  mvprintw(TEXT_BOX_Y+8, BATTLE_BOX_X+BATTLE_BOX_WIDTH+2, "Press 'a'"); refresh();
-  while (ch != SELECT_CHAR) ch = getch();
-
-  mvprintw(TEXT_BOX_Y+8, BATTLE_BOX_X+BATTLE_BOX_WIDTH+9, "         "); refresh();
-}
-
 //Draw simple box with top-left corner (x,y) and with width and height (w,h)
 void draw_box(int x, int y, int w, int h) {
     mvaddch(y, x, ACS_ULCORNER);  // Top-left corner
@@ -231,6 +219,18 @@ void begin_list() {
   //print button instructons where they will be in battle
   print_btn_instructions(BTN_INSTRUCTIONS_X, BTN_INSTRUCTIONS_Y, false);
   refresh();
+}
+
+//Wait for user to press 'a' button ('z')
+int await_user() {
+  usleep(500000);
+  int ch = '~';
+  flushinp();
+  draw_box(AWAIT_USER_X, AWAIT_USER_Y, 15, 3);
+  mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "Press '%c'", SELECT_CHAR); refresh();
+  while (ch != SELECT_CHAR) ch = getch();
+
+  mvprintw(TEXT_BOX_Y+8, BATTLE_BOX_X+BATTLE_BOX_WIDTH+9, "         "); refresh();
 }
 
 

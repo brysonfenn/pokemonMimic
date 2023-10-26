@@ -153,7 +153,7 @@ int handle_pokemon_menu(int input_num1) {
       print_pokemon_attacks(&(player.party[input_num1]), LIST_BOX_Y+3);
       mvprintw(LIST_BOX_Y+4,POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING*2, "  Cancel");
       input_num2 = 
-        get_move_selection(POKE_SUMMARY_ATKS_X-2, LIST_BOX_Y+3, &(player.party[input_num1]));
+        get_move_selection(POKE_SUMMARY_ATKS_X-2, LIST_BOX_Y+3, &(player.party[input_num1]), 0);
     }
     return RETURN_TO_SUMMARY;
   }

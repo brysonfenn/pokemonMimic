@@ -154,7 +154,7 @@ int handle_battle(struct Pokemon * enemyPok) {
         mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[2].name); 
         mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X+MOVE_SELECT_SPACING,"  %s", currentPok->attacks[3].name); 
         mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X+MOVE_SELECT_SPACING*2,"  Cancel");
-        inputNum = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, currentPok);
+        inputNum = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, currentPok, currentPok->last_move);
 
         //Handle Cancel
         if (inputNum == 4 || inputNum == PRESSED_B) {

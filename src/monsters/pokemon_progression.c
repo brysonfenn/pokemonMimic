@@ -173,7 +173,7 @@ void learn_move(Pokemon * pok, attack * new_attack) {
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("Select a move to forget.");
         
-    input_num = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, pok);
+    input_num = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, pok, 0);
 
     clear(); printBattle();
     text_box_cursors(TEXT_BOX_BEGINNING);

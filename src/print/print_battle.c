@@ -124,8 +124,11 @@ int get_battle_selection(int first_line, int last_selection) {
 
 
 //Get selection from the user for a pokemon move to use
-int get_move_selection(int start_x, int start_y, struct Pokemon* pok) {
-  int selection = 0;
+int get_move_selection(int start_x, int start_y, struct Pokemon* pok, int last_selection) {
+  int selection;
+  if (last_selection == NO_LAST_MOVE) selection = 0;
+  else selection = last_selection;
+
   cursor_x = start_x;
   cursor_y = start_y;
   attack currAttack;

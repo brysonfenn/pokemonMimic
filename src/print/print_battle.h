@@ -21,7 +21,7 @@ void blinkPokemon(bool blink_player, int color, int num_times);
 int get_battle_selection(int first_line, int last_selection);
 
 //Get selection from the user for a pokemon move to use
-int get_move_selection(int start_x, int start_y, struct Pokemon* pok);
+int get_move_selection(int start_x, int start_y, struct Pokemon* pok, int last_selection);
 
 //Move the cursor to print to the text box
 //  if next_line == TEXT_BOX_BEGINNING, clear and restart text box

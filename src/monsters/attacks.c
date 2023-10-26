@@ -117,7 +117,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     else {
       printw("But it failed!");
     }
-    refresh(); sleep(2); return ATTACK_SUCCESS;
+    refresh(); await_user(); return ATTACK_SUCCESS;
   }
 
   //Handle protect
@@ -163,7 +163,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
   attack_result = chosenAttack.side_effect(chosenAttack.var1, chosenAttack.var2, victim, damage);
 
   if (attack_result == ATTACK_SUCCESS || attack_result == ATTACK_FAIL) {
-    await_user();
+    await_user(); 
     return ATTACK_SUCCESS;
   }
   else {

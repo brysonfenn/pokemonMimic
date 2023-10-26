@@ -30,15 +30,15 @@ void pause_ncurses();
 //  last_selection is where the cursor will begin (usually 0 or the last option selected)
 int get_selection(int first_line, int highest_option_num, int last_selection);
 
-//Wait for user to press 'a' button ('z')
-int await_user();
-
 //Draw simple box with top-left corner (x,y) and with width and height (w,h)
 void draw_box(int x, int y, int w, int h);
 
 //Print the instruction box at a given location (x,y)
 //  If on_map is true, the special instruction to go to menu will be shown
 void print_btn_instructions(int x, int y, bool on_map);
+
+//Wait for user to press the selection button ('z')
+int await_user();
 
 //Erase current list and resetart at the beginning
 void begin_list();
