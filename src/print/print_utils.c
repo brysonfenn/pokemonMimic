@@ -229,7 +229,7 @@ void begin_list() {
   draw_box(LIST_BOX_X, LIST_BOX_Y, LIST_BOX_WIDTH, LIST_BOX_HEIGHT);
   
   //print button instructons where they will be in battle
-  print_btn_instructions(LIST_BOX_X+LIST_BOX_WIDTH+2, TEXT_BOX_Y, false);
+  print_btn_instructions(BTN_INSTRUCTIONS_X, BTN_INSTRUCTIONS_Y, false);
   refresh();
 }
 

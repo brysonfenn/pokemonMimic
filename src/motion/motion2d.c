@@ -251,7 +251,7 @@ void handle_motion() {
             }
             else {
                 restore_print_state();
-                print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true); 
+                print_btn_instructions(BTN_INSTRUCTIONS_X, BTN_INSTRUCTIONS_Y, true); 
                 continue;
             }
         }
@@ -291,7 +291,7 @@ void init_map() {
     clear_doors();
     clear_selectables();
     draw_map();
-    print_btn_instructions(MAP_X+MAP_WIDTH+2, TEXT_BOX_Y, true);
+    print_btn_instructions(BTN_INSTRUCTIONS_X, BTN_INSTRUCTIONS_Y, true);
     draw_static_elements();
     draw_box(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5); //Draw message box
     leave_msg_count = 0;    //leave map label for 5 movements

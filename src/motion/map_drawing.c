@@ -7,9 +7,6 @@
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 
-#define MESSAGE_BOX_X MAP_X
-#define MESSAGE_BOX_Y (MAP_Y+MAP_HEIGHT)
-
 static int message_line = 0;
 
 //Clear message box and start at the beginning
