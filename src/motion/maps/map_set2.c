@@ -27,6 +27,8 @@ void draw_vir_city() {
 
     drawBuilding_default(VIR_MART_X,VIR_MART_Y, "Mart", MART_ACTION);
     drawBuilding_default(VIR_POKE_CENTER_X, VIR_POKE_CENTER_Y, "Poke", POKE_CENTER_ACTION);
+
+    add_npc_by_id(MAP_X+5, MAP_Y+10, 1, PLAYER_MOVING_RIGHT);
     
     //Draw Doors
     draw_town_exit(MAP_TOP, 10); 

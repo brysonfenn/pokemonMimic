@@ -9,6 +9,7 @@
 #include "map_drawing.h"
 #include "../print/print_defines.h"
 #include "../player.h"
+#include "npc.h"
 
 #define HORIZONTAL_DISTANCE 10
 #define VERTICAL_DISTANCE 4
@@ -17,28 +18,10 @@ static Selectable selectables[30];
 static int num_selectables = 0;
 
 const char * empty_string = "NONE";
-static Selectable empty_selectable = {0, 0, 0};
+static Selectable empty_selectable = {0, 0, SELECTABLE_NONE};
 
-//Add a trainer at a given location
-void add_trainer(char x, char y, struct Trainer * trainer, char face_direction) {
-    //initialize empty selectable
-    empty_selectable.data = empty_string;
 
-    Selectable new_selectable;
-    new_selectable.data = trainer;
-    new_selectable.x = x;
-    new_selectable.y = y;
-    new_selectable.is_trainer = true;
-
-    selectables[num_selectables] = new_selectable;
-    num_selectables++;
-
-    attrset(COLOR_PAIR(TRAINER_COLOR));
-    mvaddch(y,x,face_direction);
-    attrset(COLOR_PAIR(DEFAULT_COLOR));
-}
-
-//Add a trainer at a given location
+//Add a trainer by ID Number at a given location (See trainer_list.c)
 void add_trainer_by_id(char x, char y, int trainer_id, char face_direction) {
     //initialize empty selectable
     empty_selectable.data = empty_string;
@@ -49,7 +32,7 @@ void add_trainer_by_id(char x, char y, int trainer_id, char face_direction) {
     new_selectable.data = trainer;
     new_selectable.x = x;
     new_selectable.y = y;
-    new_selectable.is_trainer = true;
+    new_selectable.selectable_id = SELECTABLE_TRAINER;
 
     selectables[num_selectables] = new_selectable;
     num_selectables++;
@@ -59,14 +42,30 @@ void add_trainer_by_id(char x, char y, int trainer_id, char face_direction) {
     attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
 
-//Add message (sign, notification, etc)
-void add_selectable_message(char x, char y, char * message) {
+//Add npc at a given location
+void add_npc_by_id(char x, char y, int npc_id, char face_direction) {
+    //initialize empty selectable
+    empty_selectable.data = empty_string;
 
+    struct NPC * npc = get_npc(npc_id);
+
+    Selectable new_selectable;
+    new_selectable.data = npc;
+    new_selectable.x = x;
+    new_selectable.y = y;
+    new_selectable.selectable_id = SELECTABLE_NPC;
+
+    selectables[num_selectables] = new_selectable;
+    num_selectables++;
+
+    attrset(COLOR_PAIR(NPC_COLOR));
+    mvaddch(y,x,face_direction);
+    attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
 
 // Return a door (if there is one) at player location, else return zero-door
 Selectable * get_selectable(int player_x, int player_y, char player_char) {
-    char trainer_char;
+    char trainer_char, trainer_color;
 
     if (player_char == PLAYER_MOVING_LEFT) { player_x--; trainer_char = PLAYER_MOVING_RIGHT; }
     else if (player_char == PLAYER_MOVING_RIGHT) { player_x++; trainer_char = PLAYER_MOVING_LEFT; }
@@ -76,7 +75,10 @@ Selectable * get_selectable(int player_x, int player_y, char player_char) {
     for (int i = 0; i < num_selectables; i++) {
 
         if (player_x == selectables[i].x && player_y == selectables[i].y) {
-            attrset(COLOR_PAIR(TRAINER_COLOR));
+            if (selectables[i].selectable_id == SELECTABLE_TRAINER) trainer_color = TRAINER_COLOR;
+            else if (selectables[i].selectable_id == SELECTABLE_NPC) trainer_color = NPC_COLOR;
+
+            attrset(COLOR_PAIR(trainer_color));
             mvaddch(player_y, player_x, trainer_char); refresh();
             attrset(COLOR_PAIR(DEFAULT_COLOR));
 
@@ -107,7 +109,7 @@ Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, in
 
     for (int i = 0; i < num_selectables; i++) {
         curr_sel = &(selectables[i]);
-        if (curr_sel->is_trainer) {
+        if (curr_sel->selectable_id == SELECTABLE_TRAINER) {
             Trainer * trainer_ptr = (Trainer *) curr_sel->data;
             if (has_battled_trainer(trainer_ptr->id_num) || (trainer_ptr->id_num > 200)) continue;
             x = curr_sel->x;

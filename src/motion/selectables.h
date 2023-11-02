@@ -3,10 +3,14 @@
 
 #include <stdbool.h>
 
+enum { SELECTABLE_NONE, SELECTABLE_TRAINER, SELECTABLE_NPC
+
+};
+
 typedef struct Selectable {
     int x;
     int y;
-    bool is_trainer;
+    int selectable_id;
     void * data;
 } Selectable;
 
@@ -14,13 +18,10 @@ typedef struct Selectable {
 struct Trainer;
 
 //Add a trainer at a given location
-void add_trainer(char x, char y, struct Trainer * trainer, char face_direction);
-
-//Add a trainer at a given location
 void add_trainer_by_id(char x, char y, int trainer_id, char face_direction);
 
-//Add message (sign, notification, etc)
-void add_selectable_message(char x, char y, char * message);
+//Add npc at a given location
+void add_npc_by_id(char x, char y, int npc_id, char face_direction);
 
 // Return a selectable
 Selectable * get_selectable(int player_x, int player_y, char player_char);

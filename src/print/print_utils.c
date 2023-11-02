@@ -119,6 +119,7 @@ void resume_ncurses() {
   init_pair(HEAL_COLOR, COLOR_BLUE, COLOR_BLACK);
   init_pair(TREE_COLOR, COLOR_RED, COLOR_GREEN);
   init_pair(WATER_COLOR, COLOR_BLUE, COLOR_BLACK);
+  init_pair(NPC_COLOR, COLOR_BLUE, COLOR_BLACK);
 }
 
 //End ncurses library functionality

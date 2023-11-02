@@ -20,6 +20,17 @@ void print_trainer_pokemon(Trainer * trainer, Pokemon * trainer_pokemon);
 int battle_trainer(Trainer * trainer) {
   char print_str[1024];
 
+  //Print trainer's battle message
+  sprintf(print_str, "\"%s\"", trainer->message);
+  print_to_message_box(print_str); sleep(2);
+
+  //Blink screen and reset screen without battle message
+  save_print_state();
+  blink_screen(5, restore_print_state);
+  begin_message_box(); save_print_state();
+
+
+
   //Do not allow a player with no pokemon to battle a trainer
   if (!player_get_num_alive()) {
     begin_list();
@@ -146,6 +157,7 @@ int battle_trainer(Trainer * trainer) {
   
   //Handle return values
   if (battle_result == BATTLE_WHITE_OUT) {
+    init_map();
     return BATTLE_WHITE_OUT;
   }
   else {

@@ -58,6 +58,7 @@
 #define HEAL_COLOR 6
 #define TREE_COLOR 7
 #define WATER_COLOR 8
+#define NPC_COLOR 9
 
 #define SELECT_CHAR 'z'
 #define CANCEL_CHAR 'x'

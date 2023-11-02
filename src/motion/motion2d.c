@@ -10,6 +10,7 @@
 #include "map_drawing.h"
 #include "doors.h"
 #include "selectables.h"
+#include "npc.h"
 
 #include "../battles/trainer.h"
 #include "../battles/wild_pokemon.h"
@@ -50,6 +51,7 @@ void handle_motion() {
 
     Selectable * selectable_ptr;
     Trainer * trainer_ptr;
+    NPC * npc_ptr;
     char * message_ptr;
     int return_value;
 
@@ -114,37 +116,22 @@ void handle_motion() {
                 attrset(COLOR_PAIR(DEFAULT_COLOR));
 
                 selectable_ptr = get_selectable(*player_x, *player_y, player_char);
-                if (selectable_ptr->x == 0) continue;
-                if (selectable_ptr->is_trainer) {
+                if (selectable_ptr->selectable_id == SELECTABLE_NONE) continue;
+                if (selectable_ptr->selectable_id == SELECTABLE_TRAINER) {
                     trainer_ptr = (Trainer *) selectable_ptr->data;
                     if (has_battled_trainer(trainer_ptr->id_num)) {
                         print_to_message_box("\"We already battled\"");
                         continue;
                     }
-                    
-                    //Print trainer's battle message
-                    sprintf(print_str, "\"%s\"", trainer_ptr->message);
-                    print_to_message_box(print_str); sleep(2);
-
-                    //Blink screen and reset screen without battle message
-                    save_print_state();
-                    blink_screen(5, restore_print_state);
-                    begin_message_box(); save_print_state();
-                    
                     //Handle trainer battle and return values from that function
-                    return_value = battle_trainer(trainer_ptr);
-                    if (return_value == BATTLE_WHITE_OUT) {
-                        init_map(); //Reset map to pokemon center map if battle white out
-                    }
-                    else {
-                        restore_print_state();
-                    }
+                    if (battle_trainer(trainer_ptr) != BATTLE_WHITE_OUT) { restore_print_state(); }
                     continue;
                 }
-                else {
-                    message_ptr = (char *) selectable_ptr->data;
-                    if (strcmp(message_ptr,"NONE") == 0) continue;
-                    print_to_message_box(message_ptr);
+                else if (selectable_ptr->selectable_id == SELECTABLE_NPC) {
+                    npc_ptr = (NPC *) selectable_ptr->data;
+                    sprintf(print_str, "%s: %s", npc_ptr->name, npc_ptr->message);
+                    print_to_message_box(print_str);
+                    continue;
                 }
                 break;
             default:
@@ -181,10 +168,9 @@ void handle_motion() {
             continue;
         }
 
-        int random = rand() % 100;
-
         draw_static_elements();
 
+        int random = rand() % 100;
         bool encounter = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR) && !(leave_msg_count < 5) && random < 10;
         encounter = encounter || ((player.loc->map == MAP_MT_MOON) && random < 5);
 
@@ -196,7 +182,6 @@ void handle_motion() {
         //Display player location
         // sprintf(print_str, "Player location (%d,%d)", *player_x, *player_y);
         // mvprintw(21,4, print_str); 
-
         refresh();
 
         if (encounter) {
@@ -215,7 +200,7 @@ void handle_motion() {
         char trainer_ch;
 
         Selectable * curr_sel = get_triggered_selectable(*player_x, *player_y, &x_inc, &y_inc);
-        if (curr_sel->x != 0) {
+        if (curr_sel->selectable_id == SELECTABLE_TRAINER) {
             trainer_ptr = (Trainer *) curr_sel->data;
             trainer_x = &(curr_sel->x);
             trainer_y = &(curr_sel->y);
@@ -230,30 +215,12 @@ void handle_motion() {
                 refresh();
                 usleep(100000);
             }
-            save_print_state();
 
-            //Print trainer's battle message
-            sprintf(print_str, "\"%s\"", trainer_ptr->message);
-            print_to_message_box(print_str); sleep(2);
-
-
-            //Blink screen and reset screen without battle message
-            save_print_state();
-            blink_screen(5, restore_print_state);
-            begin_message_box(); save_print_state();
-
-            //Handle trainer battle and return values        
-            return_value = battle_trainer(trainer_ptr);
-
-            if (return_value == BATTLE_WHITE_OUT) {
-                init_map();
-                continue;
-            }
-            else {
+            if (battle_trainer(trainer_ptr) != BATTLE_WHITE_OUT) {
                 restore_print_state();
                 print_btn_instructions(BTN_INSTRUCTIONS_X, BTN_INSTRUCTIONS_Y, true); 
-                continue;
             }
+            continue;
         }
     }
 }
@@ -262,15 +229,13 @@ void handle_motion() {
 
 //Change and redraw the map and player
 void change_map(int map, int x, int y) {
-    clear();
-
     player.loc->x = x;
     player.loc->y = y;
     player.loc->map = map;
+
+    clear();
     change_map_funcs(map, &draw_map);
-
     init_map();
-
     usleep(200000);
 }
 
