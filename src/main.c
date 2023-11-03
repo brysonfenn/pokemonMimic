@@ -12,6 +12,7 @@
 #include "player.h"
 #include "monsters/pokemon.h"
 #include "menu.h"
+#include "test.h"
 
 void control_c_handler();
 
@@ -31,10 +32,11 @@ int main(void) {
     begin_list();
     print_to_list("  New Game\n  Load Game\n");
 
-    // print_to_list(" \n \n  \u2642 \u2640 🔥 💧");
-    // print_to_list("  \U000026A1 🌿 \U0001FAA8 👊 ✊ 🟥 🔴");
+    //Uncomment to call test function
+    print_to_list("  Test");
+    input_num = get_selection(0, 2, 0);
 
-    input_num = get_selection(0, 1, 0);
+    // input_num = get_selection(0, 1, 0);
 
     //Handle main select returning -1
     if (input_num == PRESSED_B) {control_c_handler(); return 0;}
@@ -65,6 +67,13 @@ int main(void) {
       player.party[0] = *(get_starter(input_num));  //Give the player a starter based on selection
 
       break;
+    }
+    else if (input_num == 2) {
+      while (1) {
+        test_function();
+        begin_list();
+        print_to_list("  \n  End Test"); sleep(2);
+      }
     }
   }
 

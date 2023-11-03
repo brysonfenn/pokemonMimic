@@ -41,13 +41,18 @@ bool is_movable_space(int yInc, int xInc);
 
 static int leave_msg_count = 0;
 
+//Initialize handling motion
+void init_motion() {
+    player_y = &(player.loc->y);
+    player_x = &(player.loc->x);
+}
+
 // BEGIN HANDLE MOTION //
 // Draw the current map to the screen and handle player motion, battles, etc until user returns to the menu
 void handle_motion() {
-    char print_str[512];
+    char print_str[2048];
 
-    player_y = &(player.loc->y);
-    player_x = &(player.loc->x);
+    init_motion();
 
     Selectable * selectable_ptr;
     Trainer * trainer_ptr;
@@ -129,7 +134,7 @@ void handle_motion() {
                 }
                 else if (selectable_ptr->selectable_id == SELECTABLE_NPC) {
                     npc_ptr = (NPC *) selectable_ptr->data;
-                    sprintf(print_str, "%s: %s", npc_ptr->name, npc_ptr->message);
+                    sprintf(print_str, "%s: %s", npc_ptr->name, get_npc_message(npc_ptr->id_num));
                     print_to_message_box(print_str);
                     continue;
                 }
@@ -264,7 +269,6 @@ void init_map() {
     attrset(COLOR_PAIR(PLAYER_COLOR));
     mvaddch(*player_y, *player_x, player_char);
     attrset(COLOR_PAIR(DEFAULT_COLOR));
-
     refresh();
 }
 

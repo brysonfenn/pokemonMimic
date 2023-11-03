@@ -43,6 +43,9 @@ int await_user();
 //Erase current list and resetart at the beginning
 void begin_list();
 
+//Insert end lines to avoid text box overflow
+void fix_list_box_overflow(char * input);
+
 //Print to the next line of the list
 // list_str must be a string constant, and end_line characters are understood
 // to indicate a next list item

@@ -231,10 +231,10 @@ int await_user() {
   mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "Press '%c'", SELECT_CHAR); refresh();
   while (ch != SELECT_CHAR) ch = getch();
 
-  mvprintw(TEXT_BOX_Y+8, BATTLE_BOX_X+BATTLE_BOX_WIDTH+9, "         "); refresh();
+  mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "           "); refresh();
 }
 
-
+//Insert end lines to avoid text box overflow
 void fix_list_box_overflow(char * input) {
   //Get the first token and check length
   int input_length = strlen(input);
@@ -245,7 +245,7 @@ void fix_list_box_overflow(char * input) {
     if (input[i] == '\n') {
       count = 0; continue;
     }
-    else if (count >= LIST_BOX_WIDTH-2) {
+    else if (count >= LIST_BOX_WIDTH-3) {
       int j;
       for (j = i; j > i-LIST_BOX_WIDTH+2; j--) {
         if (input[j] == ' ') break;

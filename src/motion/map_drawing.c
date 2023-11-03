@@ -8,6 +8,8 @@
 #include "../print/print_defines.h"
 
 static int message_line = 0;
+char line1[100]; char line2[100]; char line3[100];
+char * lines[3] = {line1, line2, line3};
 
 //Clear message box and start at the beginning
 void begin_message_box() {
@@ -24,11 +26,44 @@ void begin_message_box() {
 
 //Print a message to the bottom box
 void print_to_message_box(const char * message_str) {
+    char* token;
+    char* input = strdup(message_str); //input is mutable version of input str
+
     if (message_line > 2) begin_message_box();
 
-    mvprintw(MESSAGE_BOX_Y+1 + message_line, MESSAGE_BOX_X+2, message_str);
+    fix_list_box_overflow(input);
+
+    // token = strtok(input, "\n");
+    // sprintf(lines[message_line], "%s", strtok(input, "\n"));
+    int count = 0;
+
+    while (count <= 2) {
+        if (count == 0) token = strtok(input, "\n");
+        else token = strtok(NULL, "\n");
+        if (token == NULL) break;
+        sprintf(lines[count], "%s", token);
+        count++;
+    }
+    
+    for (int i = 0; i < count; i++) {
+        mvprintw(MESSAGE_BOX_Y+1 + i, MESSAGE_BOX_X+2, lines[i]);
+    }
+
+    while (1) {
+        token = strtok(NULL, "\n");
+        if (token == NULL) break;
+
+        await_user();
+        sprintf(lines[0], "%s", lines[1]);
+        sprintf(lines[1], "%s", lines[2]);
+        sprintf(lines[2], "%s", token);
+
+        begin_message_box();
+        mvprintw(MESSAGE_BOX_Y+1 + 0, MESSAGE_BOX_X+2, lines[0]);
+        mvprintw(MESSAGE_BOX_Y+1 + 1, MESSAGE_BOX_X+2, lines[1]);
+        mvprintw(MESSAGE_BOX_Y+1 + 2, MESSAGE_BOX_X+2, lines[2]);
+    }
     refresh();
-    message_line++;
 }
 
 
