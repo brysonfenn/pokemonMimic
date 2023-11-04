@@ -28,15 +28,12 @@ void begin_message_box() {
 void print_to_message_box(const char * message_str) {
     char* token;
     char* input = strdup(message_str); //input is mutable version of input str
-
-    if (message_line > 2) begin_message_box();
+    begin_message_box();
 
     fix_list_box_overflow(input);
-
-    // token = strtok(input, "\n");
-    // sprintf(lines[message_line], "%s", strtok(input, "\n"));
     int count = 0;
 
+    //Get up to 3 lines of text, then print those lines
     while (count <= 2) {
         if (count == 0) token = strtok(input, "\n");
         else token = strtok(NULL, "\n");
@@ -44,15 +41,12 @@ void print_to_message_box(const char * message_str) {
         sprintf(lines[count], "%s", token);
         count++;
     }
-    
     for (int i = 0; i < count; i++) {
         mvprintw(MESSAGE_BOX_Y+1 + i, MESSAGE_BOX_X+2, lines[i]);
     }
-
-    while (1) {
-        token = strtok(NULL, "\n");
-        if (token == NULL) break;
-
+    
+    //Print the rest of the lines, if there are more
+    while ((token = strtok(NULL, "\n")) != NULL) {
         await_user();
         sprintf(lines[0], "%s", lines[1]);
         sprintf(lines[1], "%s", lines[2]);

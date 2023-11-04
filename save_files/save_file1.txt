@@ -1,7 +1,7 @@
-Last Saved: 07/05/2023 07:00:08
+Last Saved: 11/04/2023 16:03:33
 Player: B
-2 1 3 1100
-Location: {1,(32,10)}
+2 1 4 1100 2
+Location: {1,(22,10)}
 Heal Center: {1,(32,9)}
 Pokemon: 
 Bulbasaur 1 25 25 3 12 12 12 12 12 8 728 GRASS POISON 576b8a59 0 0
@@ -17,7 +17,8 @@ Rattata2 19 19 19 1 11 9 7 8 13 6 216 NORMAL NONE 554805e5 0 0
 Bag:
 Potion. 1 1
 Super Potion. 2 2
-Pokeball. 3 4
+Poke Ball. 3 4
+Fire Stone. 12 1
 
 Key Items: 0
   

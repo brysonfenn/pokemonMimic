@@ -69,3 +69,21 @@ int use_item(int item_num) {
   return return_execute;
 }
 
+
+//Give player a number of items by id number
+void give_player_item(Item * item_to_get, int num_items) {
+  bool foundItem = false;
+  //Find if there were any of the selected item in the bag
+  for (int i = 0; i < player.numInBag; i++) {
+    if (player.bag[i].id_num == (*item_to_get).id_num) {
+      foundItem = true;
+      player.bag[i].number += num_items;
+    }
+  }
+
+  if (!foundItem) {
+    player.bag[player.numInBag] = *(item_to_get);
+    player.bag[player.numInBag].number = num_items;
+    player.numInBag++;
+  }
+}

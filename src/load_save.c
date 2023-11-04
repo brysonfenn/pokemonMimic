@@ -64,7 +64,7 @@ int save_game(int file_num) {
     fprintf(fp, "Last Saved: %s\n", time_string);
 
 	// Write the message to the file
-	fprintf(fp, "Player: %s\n%d %d %d %d\n", player.name, player.numInParty, player.numInPCStorage, player.numInBag, player.money);
+	fprintf(fp, "Player: %s\n%d %d %d %d %x\n", player.name, player.numInParty, player.numInPCStorage, player.numInBag, player.money, player.NPCs_done);
 	fprintf(fp, "Location: {%d,(%d,%d)}\n", player.loc->map, player.loc->x, player.loc->y);
 	fprintf(fp, "Heal Center: {%d,(%d,%d)}\n", player.blackout_center->map, player.blackout_center->x, player.blackout_center->y);
 	fprintf(fp, "Pokemon: \n");
@@ -163,7 +163,7 @@ int load_game(int file_num) {
 
     fgets(line, LINE_SIZE, fp);	// Basic numbers
 	int num;
-    sscanf(line, "%d %d %d %d", &(player.numInParty), &num, &(player.numInBag), &(player.money));
+    sscanf(line, "%d %d %d %d %x", &(player.numInParty), &num, &(player.numInBag), &(player.money), &(player.NPCs_done));
 	player.numInPCStorage = num;
 
 	int map, new_x, new_y;

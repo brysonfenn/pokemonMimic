@@ -120,20 +120,7 @@ int handle_mart() {
   //Buy the item
   player.money -= inputNum * example_item.cost;
 
-  bool foundItem = false;
-  //Find if there were any of those in the bag
-  for (int i = 0; i < player.numInBag; i++) {
-    if (player.bag[i].id_num == example_item.id_num) {
-      foundItem = true;
-      player.bag[i].number += inputNum;
-    }
-  }
-
-  if (!foundItem) {
-    player.bag[player.numInBag] = example_item;
-    player.bag[player.numInBag].number = inputNum;
-    player.numInBag++;
-  }
+  give_player_item(&example_item, inputNum);
 
   sprintf(print_str, " \n \nYou bought %d %s(s)\n", inputNum, example_item.name);
   print_to_list(print_str); sleep(2); 

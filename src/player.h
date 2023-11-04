@@ -24,6 +24,8 @@ struct playerCharacter {
   uint8_t numKeyItems;
   uint8_t numInPCStorage;
 
+  long long NPCs_done;
+
   uint8_t trainers_battled_id[256];
   uint16_t num_trainers_battled;
   int32_t money;

@@ -32,11 +32,11 @@ int main(void) {
     begin_list();
     print_to_list("  New Game\n  Load Game\n");
 
-    //Uncomment to call test function
-    print_to_list("  Test");
-    input_num = get_selection(0, 2, 0);
+    //                                          // To Test:
+    // print_to_list("  Test");                 // Uncomment
+    // input_num = get_selection(0, 2, 0);      // Uncomment
 
-    // input_num = get_selection(0, 1, 0);
+    input_num = get_selection(0, 1, 0);         // Comment
 
     //Handle main select returning -1
     if (input_num == PRESSED_B) {control_c_handler(); return 0;}

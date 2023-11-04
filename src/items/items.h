@@ -45,4 +45,6 @@ Item * get_item_by_id(int id_num);
 //  decrement amount if return value is not ITEM_FAILURE
 int use_item(int item_num);
 
+void give_player_item(Item * example_item, int num_items);
+
 #endif // ITEMS_H

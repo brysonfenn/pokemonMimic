@@ -6,7 +6,6 @@
 typedef struct NPC {
     int id_num;
     char name[30];
-    char message[1024];
     int givable_item;
 } NPC;
 

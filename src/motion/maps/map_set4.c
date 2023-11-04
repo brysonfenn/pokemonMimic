@@ -29,6 +29,8 @@ void draw_mt_moon() {
     add_trainer_by_id(MAP_X+51, MAP_Y+5, 18, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+41, MAP_Y+1, 19, PLAYER_MOVING_DOWN);
 
+    add_npc_by_id(MAP_X+45, MAP_Y+9, 2, PLAYER_MOVING_LEFT);
+
     drawBuilding_default(MAP_X+MAP_WIDTH-2-DEFAULT_BUILDING_WIDTH, MAP_Y+1, "FOSL", FOSSIL_ACTION);
 }
 

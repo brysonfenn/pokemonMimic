@@ -194,15 +194,19 @@ void draw_box(int x, int y, int w, int h) {
 
 //Print the instruction box at a given location (x,y)
 //  If on_map is true, the special instruction to go to menu will be shown
-void print_btn_instructions(int x, int y, bool on_map) {
-  draw_box(x,y,15,7);
-  mvprintw(y+1,x+3, "%c: Select", SELECT_CHAR);
-  mvprintw(y+2,x+3, "%c: Cancel", CANCEL_CHAR);
-  if (on_map) mvprintw(y+3,x+3, "%c: menu", MENU_CHAR);
+void print_btn_instructions(bool on_map) {
+
+  draw_box(BTN_INSTRUCTIONS_X,BTN_INSTRUCTIONS_Y,15,7);
+  mvprintw(BTN_INSTRUCTIONS_Y+1,BTN_INSTRUCTIONS_X+3, "%c: Select", SELECT_CHAR);
+  mvprintw(BTN_INSTRUCTIONS_Y+2,BTN_INSTRUCTIONS_X+3, "%c: Cancel", CANCEL_CHAR);
+  if (on_map) mvprintw(BTN_INSTRUCTIONS_Y+3,BTN_INSTRUCTIONS_X+3, "%c: menu", MENU_CHAR);
 
   // Print the arrow symbols
-  mvprintw(y+4,x+2, "  \u2191");
-  mvprintw(y+5,x+2, "\u2190 \u2193 \u2192 Move");
+  mvprintw(BTN_INSTRUCTIONS_Y+4,BTN_INSTRUCTIONS_X+2, "  \u2191");
+  mvprintw(BTN_INSTRUCTIONS_Y+5,BTN_INSTRUCTIONS_X+2, "\u2190 \u2193 \u2192 Move");
+
+  //Await User box
+  draw_box(AWAIT_USER_X, AWAIT_USER_Y, 15, 3);
 
   refresh();
 }
@@ -218,7 +222,7 @@ void begin_list() {
   draw_box(LIST_BOX_X, LIST_BOX_Y, LIST_BOX_WIDTH, LIST_BOX_HEIGHT);
   
   //print button instructons where they will be in battle
-  print_btn_instructions(BTN_INSTRUCTIONS_X, BTN_INSTRUCTIONS_Y, false);
+  print_btn_instructions(false);
   refresh();
 }
 
@@ -227,7 +231,6 @@ int await_user() {
   usleep(500000);
   int ch = '~';
   flushinp();
-  draw_box(AWAIT_USER_X, AWAIT_USER_Y, 15, 3);
   mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "Press '%c'", SELECT_CHAR); refresh();
   while (ch != SELECT_CHAR) ch = getch();
 

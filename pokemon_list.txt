@@ -33,12 +33,12 @@ Number,Name,Type 1,Type 2,HP,Attack,Defense,Sp.Attack,Sp.Defense,Speed
 032,Nidoran♂,Poison,,46,57,40,40,40,50
 033,Nidorino,Poison,,61,72,57,55,55,65
 034,Nidoking,Poison,Ground,81,102,77,85,75,85
-035,Clefairy,Fairy,,70,45,48,60,65,35
-036,Clefable,Fairy,,95,70,73,95,90,60
+035,Clefairy,Normal,,70,45,48,60,65,35
+036,Clefable,Normal,,95,70,73,95,90,60
 037,Vulpix,Fire,,38,41,40,50,65,65
 038,Ninetales,Fire,,73,76,75,81,100,100
-039,Jigglypuff,Normal,Fairy,115,45,20,45,25,20
-040,Wigglytuff,Normal,Fairy,140,70,45,85,50,45
+039,Jigglypuff,Normal,,115,45,20,45,25,20
+040,Wigglytuff,Normal,,140,70,45,85,50,45
 041,Zubat,Poison,Flying,40,45,35,30,40,55
 042,Golbat,Poison,Flying,75,80,70,65,75,90
 043,Oddish,Grass,Poison,45,50,55,75,65,30
@@ -120,7 +120,7 @@ Number,Name,Type 1,Type 2,HP,Attack,Defense,Sp.Attack,Sp.Defense,Speed
 119,Seaking,Water,,80,92,65,65,80,68
 120,Staryu,Water,,30,45,55,70,55,85
 121,Starmie,Water,Psychic,60,75,85,100,85,115
-122,Mr. Mime,Psychic,Fairy,40,45,65,100,120,90
+122,Mr. Mime,Psychic,,40,45,65,100,120,90
 123,Scyther,Bug,Flying,70,110,80,55,80,105
 124,Jynx,Ice,Psychic,65,50,35,115,95,95
 125,Electabuzz,Electric,,65,83,57,95,85,105

@@ -35,7 +35,7 @@ void draw_box(int x, int y, int w, int h);
 
 //Print the instruction box at a given location (x,y)
 //  If on_map is true, the special instruction to go to menu will be shown
-void print_btn_instructions(int x, int y, bool on_map);
+void print_btn_instructions(bool on_map);
 
 //Wait for user to press the selection button ('z')
 int await_user();

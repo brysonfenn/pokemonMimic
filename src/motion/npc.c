@@ -7,11 +7,12 @@
 #define NUM_NPCS 30
 char message[LINE_SIZE];
 
-static NPC n0 = { 000, "No Name", "I have no name", NO_ITEM };
-static NPC n1 = { 001, "Johnny", "This is a test message", NO_ITEM };
+static NPC n0 = { 000, "No Name", NO_ITEM };
+static NPC n1 = { 001, "Finn", FIRE_STONE };
+static NPC n2 = { 002, "Monty", MOON_STONE };
 
 
-static NPC * npcs[NUM_NPCS] = { &n0, &n1 };
+static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2 };
 
 struct NPC * get_npc(int npc_id) {
     return npcs[npc_id];

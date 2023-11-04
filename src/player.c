@@ -56,10 +56,9 @@ void default_load() {
   player.bag[2] = pokeball;
   player.bag[2].number += 5;
   player.money = 1000;
+  player.NPCs_done = 0;
 
-  player.numKeyItems = 2;
-  player.key_items[0] = K_ITEM_FOSSIL_DOME;
-  player.key_items[1] = K_ITEM_EMPTY;
+  player.numKeyItems = 0;
 
   player.numInPCStorage = 0;
 
