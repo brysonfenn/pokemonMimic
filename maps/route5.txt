@@ -1,0 +1,19 @@
+   012345678911234567892123456789312345678941234567895123456
+00 ┌────────────────────────────────────────────────────────┐
+01 │                      | WWWWWW    |                     │
+02 │ W WWWWWWWW           |            |                    │
+03 │ WWW WWWW W  WWWWWWWWW|   WWWWWWWWW|----------|         │
+04 │            WWWWWWWWW              W|WWW      |         │
+05 │WWW      W | WWWWWWWW              WW|  WWWWWW|         │
+06 │   WWW W   |              W   WWW    W|W      |         │
+07 │   WWWWW   |           WWWWWWWW    W  | WWWWWW|         │
+08 │        WW |WWWW WWWW |   WWWWWWWWWWWW|W      |         │
+09 │   WWW     |          |            WWW|W      |WWWWWWWWW│
+10 │           |------------------                | WWWWWWWW│
+11 │     WW    |      WWWW|                WWWWWWW|WWWWWWWW │
+12 │-----------|     W  WW|  WWWWWWWWWWWW         |WWWWWWWWW│
+13 │WWWWWWWWW        WWWW |  WWWWWWWWWWWWW        |         │
+14 │WWWWWWWW          WWWW            ----|                 │
+15 │                                      |   WWWWWWWWWWW   │
+16 │          WWWW                    WWWW|WWWWW            │
+f  └────────────────────────────────────────────────────────┘
