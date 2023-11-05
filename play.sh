@@ -1,2 +1,2 @@
-cd ~/PokemonMimic
-./PokemonMimic
+cd ~/PokemonBeige
+./PokemonBeige
