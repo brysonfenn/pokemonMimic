@@ -7,7 +7,7 @@
 #include "../monsters/conditions.h"
 
 static char key_item_names[10][32] = {"Empty Key Item", "Helix Fossil", "Dome Fossil", "Helix Fossil Voucher",
-    "Dome Fossil Voucher" };
+    "Dome Fossil Voucher", "SS Ticket" };
 
 
 void take_fossil(int fossil_index, int fossil_type);

@@ -38,6 +38,7 @@ static Pokemon_id wild_pok_lists[20][10] = {
   { 4,   8, 10, POKEMON_PONYTA, POKEMON_POLIWAG, POKEMON_VULPIX, POKEMON_MEOWTH }, //Map #13 Route 4
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #14 Underground NS
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #15 Vermillion City
+  { 4,   9, 12, POKEMON_BELLSPROUT, POKEMON_PONYTA, POKEMON_DODUO, POKEMON_DROWZEE } //Map #16 Route 5
 };
 
 static Pokemon newest_pokemon;

@@ -1,4 +1,5 @@
 0: I don't have a name
 1: Do you know about evolution stones? They help certain Pokemon to evolve. There are Moon Stones, Water Stones, Fire Stones, Thunder Stones, and Leaf Stones. I got one last week!
 2: This cave has lots of Pokemon! Did you know that Moon Stones cause Nidorina, Nidorino, Jigglypuff, and Clefairy to evolve? It's super cool! They are really rare, but I found one here.
+3: Hi, I'm Bill, and I'm a Pokemon Researcher. I like to study Pokemon! I also designed the PC Pokemon Storage Box. You may have used this system at the Pokemon Centers in this region. I was headed to Vermillion City with a ticket to board the SS Anne, but I have a lot of work to do. Have you heard of the SS Anne?
 777: Reached End of npc_messages.txt file

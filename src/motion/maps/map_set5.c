@@ -12,7 +12,7 @@
 #include "../../print/print_defines.h"
 
 
-void draw_underground_NS() {
+void draw_underground() {
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
     begin_message_box();
     print_to_message_box("Underground North-South");

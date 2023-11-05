@@ -78,9 +78,24 @@ void draw_route4() {
     draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 5);
     add_exit_portal(MAP_BOTTOM, MAP_WIDTH - 5, MAP_CER_CITY);
 
+    draw_town_exit(MAP_RIGHT, 3);
+    add_exit_portal(MAP_RIGHT, 3, MAP_R5);
+
     add_trainer_by_id(MAP_X+48, MAP_Y+13, 22, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+11, 23, PLAYER_MOVING_LEFT);
     add_trainer_by_id(MAP_X+48, MAP_Y+9, 24, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+7, 25, PLAYER_MOVING_LEFT);
     add_trainer_by_id(MAP_X+48, MAP_Y+5, 26, PLAYER_MOVING_RIGHT);
+}
+
+
+void draw_route5() {
+    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
+    begin_message_box();
+    print_to_message_box("Route 5");
+
+    draw_town_exit(MAP_LEFT, 3);
+    add_exit_portal(MAP_LEFT, 3, MAP_R4);
+
+    add_npc_by_id(MAP_X+52, MAP_Y+1, 3, PLAYER_MOVING_DOWN);
 }

@@ -9,4 +9,6 @@ void draw_gym2();
 
 void draw_route4();
 
+void draw_route5();
+
 #endif //MAP_SET4_H
