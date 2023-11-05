@@ -13,4 +13,4 @@ main-debug: $(SRCS) $(HEADERS)
 	$(CC) $(CFLAGS) -O0 $(SRCS) -o "$@"
 
 clean:
-	rm -f pokemonMimic main-debug
+	rm -f pokemonBeige main-debug

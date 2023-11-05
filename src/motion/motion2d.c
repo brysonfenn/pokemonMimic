@@ -134,29 +134,7 @@ void handle_motion() {
                 }
                 else if (selectable_ptr->selectable_id == SELECTABLE_NPC) {
                     npc_ptr = (NPC *) selectable_ptr->data;
-                    sprintf(print_str, "%s: %s", npc_ptr->name, get_npc_message(npc_ptr->id_num));
-                    print_to_message_box(print_str);
-                    
-                    // Check if this NPC has already given an item, if not, give item
-                    if (npc_ptr->givable_item != NO_ITEM) {
-                        await_user();
-                        if ((player.NPCs_done >> (npc_ptr->id_num)) & 0x01) {
-                            sprintf(print_str, "%s: I already gave you my %s", npc_ptr->name, get_item_by_id(npc_ptr->givable_item)->name);
-                            print_to_message_box(print_str);
-                        }
-                        else {
-                            sprintf(print_str, "%s: Here, take my %s!", npc_ptr->name, get_item_by_id(npc_ptr->givable_item)->name);
-                            give_player_item(get_item_by_id(npc_ptr->givable_item), 1);
-                            print_to_message_box(print_str); sleep(2);
-                            sprintf(print_str, "%s received %s!", player.name, get_item_by_id(npc_ptr->givable_item)->name);
-                            print_to_message_box(print_str);
-                        }
-                        player.NPCs_done |= ((long long) 1 << npc_ptr->id_num);
-                    }
-                    await_user();
-                    begin_message_box();
-                    usleep(500000);
-                    
+                    handle_npc_selection(npc_ptr);
                     continue;
                 }
                 break;

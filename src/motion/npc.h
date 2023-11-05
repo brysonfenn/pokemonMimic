@@ -14,6 +14,9 @@ struct NPC * get_npc(int npc_id);
 
 char * get_npc_message(int npc_id);
 
+//Handle the case where the player select an NPC
+void handle_npc_selection(struct NPC * npc_ptr);
+
 
 
 #endif //NPC_H

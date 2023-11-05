@@ -4,7 +4,7 @@
 #include "stdbool.h"
 
 //All key item ID's
-typedef enum { K_ITEM_EMPTY, K_ITEM_FOSSIL_HELIX, K_ITEM_FOSSIL_DOME, K_HELIX_VOUCHER, K_DOME_VOUCHER } Key_Item;
+typedef enum { K_ITEM_EMPTY=200, K_ITEM_FOSSIL_HELIX, K_ITEM_FOSSIL_DOME, K_HELIX_VOUCHER, K_DOME_VOUCHER } Key_Item;
 
 char * get_key_item_name(int id);
 

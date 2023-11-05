@@ -32,7 +32,7 @@ Fire Stone. 12 1
 Moon Stone. 16 1
 
 Key Items: 1
-  2 
+  202 
 
 Trainers Battled: 12
   1 2 3 5 7 13 6 12 201 14 20 18 

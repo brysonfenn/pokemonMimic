@@ -14,6 +14,7 @@ void take_fossil(int fossil_index, int fossil_type);
 void give_fossil_pokemon(int fossil_index, int fossil_type);
 
 char * get_key_item_name(int id) {
+    id -= K_ITEM_EMPTY;
     return key_item_names[id];
 }
 
@@ -114,17 +115,19 @@ void handle_process_fossil() {
 
 void take_fossil(int fossil_index, int fossil_type) {
     char print_str[100];
+    int id = fossil_type - K_ITEM_EMPTY;
 
-    sprintf(print_str, "Would you like to process your %s?\n  Yes\n  No", key_item_names[fossil_type]);
+    sprintf(print_str, "Would you like to process your %s?\n  Yes\n  No", key_item_names[id]);
     print_to_list(print_str);
     int input = get_selection(1, 1, 0);
 
     if (fossil_type == K_ITEM_FOSSIL_DOME) fossil_type = K_DOME_VOUCHER;
     else fossil_type = K_HELIX_VOUCHER;
+    id = fossil_type - 200;
 
     if (input == 0) {           //Yes
         player.key_items[fossil_index] = fossil_type;
-        sprintf(print_str, "Received a %s", key_item_names[fossil_type]);
+        sprintf(print_str, "Received a %s", key_item_names[id]);
         print_to_list(print_str); sleep(2);
     }
     else if (input == 1) {      //No
@@ -140,6 +143,8 @@ void give_fossil_pokemon(int fossil_index, int fossil_type) {
     else { id = POKEMON_KABUTO; }
 
     remove_key_item(fossil_type);
+
+    print_to_list("Your fossil was successfully processed!\n \n"); sleep(3);
 
     Pokemon fossil_pok = *create_new_pokemon(id, 15, 0, 0);
 
