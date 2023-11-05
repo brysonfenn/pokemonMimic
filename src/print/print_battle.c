@@ -67,8 +67,8 @@ void blinkPokemon(bool blink_player, int color, int num_times) {
   attrset(COLOR_PAIR(color));
   //Blink pokemon
   for (int i = 0; i < num_times; i++) {
-    mvprintw(text_y, text_x, "                       ");
-    mvprintw(text_y+1, text_x, "                       ");
+    mvprintw(text_y, text_x, "                          ");
+    mvprintw(text_y+1, text_x, "                          ");
     refresh(); usleep(BLINK_TIME_MICROS);
     mvprintw(text_y, text_x, poke_string);
     mvprintw(text_y+1, text_x, "HP: % 3d/%d ", pok->currentHP, pok->maxHP);

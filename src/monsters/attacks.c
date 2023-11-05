@@ -117,7 +117,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     else {
       printw("But it failed!");
     }
-    refresh(); await_user(); return ATTACK_SUCCESS;
+    refresh(); sleep(2); return ATTACK_SUCCESS;
   }
 
   //Handle protect

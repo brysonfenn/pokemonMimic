@@ -98,4 +98,6 @@ void draw_route5() {
     add_exit_portal(MAP_LEFT, 3, MAP_R4);
 
     add_npc_by_id(MAP_X+52, MAP_Y+1, 3, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+24, MAP_Y+11, 27, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+48, MAP_Y+7, 28, PLAYER_MOVING_RIGHT);
 }

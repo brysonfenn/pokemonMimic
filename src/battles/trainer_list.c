@@ -35,10 +35,12 @@ static Trainer t023 = {23, "Youngster Russell", "I'm looking for apple pants!", 
 static Trainer t024 = {24, "Trainer Erin", "I'm here looking after Russell.", 2, {POKEMON_SANDSHREW, POKEMON_GROWLITHE}, {10,11} };
 static Trainer t025 = {25, "Cooltrainer Lydia", "I like Pokemon!!", 2, {POKEMON_CLEFAIRY, POKEMON_BUTTERFREE}, {11,11} };
 static Trainer t026 = {26, "Cooltrainer Hailey", "I like watching Pokemon!!", 3, {POKEMON_MANKEY, POKEMON_GOLBAT, POKEMON_GLOOM}, {11,11,12} };
+static Trainer t027 = {27, "Trainer Eric", "I found some cool Pokemon here.", 3, {POKEMON_DODUO, POKEMON_PONYTA, POKEMON_BELLSPROUT}, {11,12,12} };
+static Trainer t028 = {28, "Trainer Jill", "Have you met Bill?", 2, {POKEMON_WEEPINBELL, POKEMON_DODRIO}, {12,14} };
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
     &t001, &t002, &t003, &t004, &t005, &t006, &t007, &t008, &t009, &t010, &t011, &t012, &t013, &t014, &t015, &t016, &t017, &t018, &t019, &t020,
-    &t021, &t022, &t023, &t024, &t025, &t026
+    &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
