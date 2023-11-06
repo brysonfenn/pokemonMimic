@@ -4,7 +4,7 @@
 #include "../player.h"
 #include "../monsters/pokemon.h"
 
-#define NUM_TRAINERS 30
+#define NUM_TRAINERS 50
 
 static Trainer t000  = {0, "Trainer Empty", "Hi! I train Pokemon too!", 2, {POKEMON_RATTATA, POKEMON_PIDGEY}, {4,4} };
 static Trainer t001 = {1, "Trainer John", "Hi! I train Pokemon too!", 2, {POKEMON_RATTATA, POKEMON_PIDGEY}, {4,4} };
@@ -37,10 +37,15 @@ static Trainer t025 = {25, "Cooltrainer Lydia", "I like Pokemon!!", 2, {POKEMON_
 static Trainer t026 = {26, "Cooltrainer Hailey", "I like watching Pokemon!!", 3, {POKEMON_MANKEY, POKEMON_GOLBAT, POKEMON_GLOOM}, {11,11,12} };
 static Trainer t027 = {27, "Trainer Eric", "I found some cool Pokemon here.", 3, {POKEMON_DODUO, POKEMON_PONYTA, POKEMON_BELLSPROUT}, {11,12,12} };
 static Trainer t028 = {28, "Trainer Jill", "Have you met Bill?", 2, {POKEMON_WEEPINBELL, POKEMON_DODRIO}, {12,14} };
+static Trainer t029 = {29, "Sailor Geoffrey", "Welcome to the SS Anne!", 2, {POKEMON_POLIWAG, POKEMON_MACHOP}, {14,15} };
+static Trainer t030 = {30, "Sailor Kenneth", "I'm feeling a little Seasick!", 2, {POKEMON_PSYDUCK, POKEMON_SLOWBRO}, {16,16} };
+static Trainer t031 = {31, "Sailor Sebastian", "I like Tough Pokemon!", 2, {POKEMON_HITMONCHAN, POKEMON_PINSIR}, {17,17} };
+static Trainer t032 = {32, "Traveler Jackson", "This boat is huge!", 3, {POKEMON_PIDGEOTTO, POKEMON_KADABRA, POKEMON_RAPIDASH}, {16,17,17} };
+static Trainer t033 = {33, "Madame Halpin", "I'm getting too old for battles!", 2, {POKEMON_TANGELA, POKEMON_JYNX}, {18,18} };
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
     &t001, &t002, &t003, &t004, &t005, &t006, &t007, &t008, &t009, &t010, &t011, &t012, &t013, &t014, &t015, &t016, &t017, &t018, &t019, &t020,
-    &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028
+    &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028, &t029, &t030, &t031, &t032, &t033
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
@@ -51,9 +56,10 @@ static Trainer * leaders[10] = { &t000,
 };
 
 static Trainer rival001 = {251, "Rival G", "I'm your rival, Let's Battle!", 1, {POKEMON_BULBASAUR}, {5} };
+static Trainer rival002 = {252, "Rival G", "It's been a while, are you any better?", 1, {POKEMON_GEODUDE, POKEMON_RATTATA, POKEMON_BULBASAUR}, {10,11,13} };
 
 static Trainer * rivals[10] = { &t000,
-    &rival001
+    &rival001, &rival002
 };
 
 void update_rival(int id);

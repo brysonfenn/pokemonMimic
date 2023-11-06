@@ -22,14 +22,12 @@ int battle_trainer(Trainer * trainer) {
 
   //Print trainer's battle message
   sprintf(print_str, "\"%s\"", trainer->message);
-  print_to_message_box(print_str); sleep(2);
+  print_to_message_box(print_str); await_user();
 
   //Blink screen and reset screen without battle message
   save_print_state();
   blink_screen(5, restore_print_state);
   begin_message_box(); save_print_state();
-
-
 
   //Do not allow a player with no pokemon to battle a trainer
   if (!player_get_num_alive()) {

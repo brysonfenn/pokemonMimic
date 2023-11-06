@@ -12,10 +12,12 @@ char message[LINE_SIZE];
 static NPC n0 = { 000, "No Name", NO_ITEM };
 static NPC n1 = { 001, "Finn", FIRE_STONE };
 static NPC n2 = { 002, "Monty", MOON_STONE };
-static NPC n3 = { 003, "Bill", SS_TICKET};
+static NPC n3 = { 003, "Bill", SS_TICKET };
+static NPC n4 = { 004, "Guard", NO_ITEM };
+static NPC n5 = { 005, "Guard", NO_ITEM };
 
 
-static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2, &n3 };
+static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2, &n3, &n4, &n5 };
 
 struct NPC * get_npc(int npc_id) {
     return npcs[npc_id];
