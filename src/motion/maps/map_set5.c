@@ -16,10 +16,10 @@
 void draw_underground() {
     draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
     begin_message_box();
-    print_to_message_box("Underground North-South");
+    print_to_message_box("Underground");
 
-    drawBuilding_default(25, 6, " CC ", -1);
-    add_portal(25+9/2, 6+2, MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-2, MAP_CER_CITY, true);
+    drawBuilding_default(49, 6, " CC ", -1);
+    add_portal(49+9/2, 6+2, MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-2, MAP_CER_CITY, true);
 
     draw_town_exit(MAP_BOTTOM, 3);
     add_exit_portal(MAP_BOTTOM, 3, MAP_VERM_CITY);
