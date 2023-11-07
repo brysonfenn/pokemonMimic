@@ -8,7 +8,6 @@
 #include "../print/print_battle.h"
 #include "../player.h"
 
-void learn_move(Pokemon * pok, attack * new_attack);
 int evolve(Pokemon * pok, int next_pok_id);
 int handle_evolve_in_battle(Pokemon * pok, int next_pok_id);
 void handle_learnset(Pokemon * pok);
@@ -175,7 +174,10 @@ void learn_move(Pokemon * pok, attack * new_attack) {
         
     input_num = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, pok, 0);
 
-    clear(); printBattle();
+    if (player.is_battle) {
+      clear(); printBattle();
+    }
+
     text_box_cursors(TEXT_BOX_BEGINNING);
 
     if (input_num == 4 || input_num == PRESSED_B) {
@@ -190,9 +192,7 @@ void learn_move(Pokemon * pok, attack * new_attack) {
   }
 
   text_box_cursors(TEXT_BOX_NEXT_LINE);
-
   printw("%s learned %s!", pok->name, new_attack->name); refresh(); sleep(2);
-
   
 }
 

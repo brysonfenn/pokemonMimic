@@ -1,4 +1,4 @@
-Last Saved: 07/05/2023 07:02:38
+Last Saved: 11/06/2023 21:06:24
 Player: Olivia
 4 0 2 2335 0
 Location: {2,(10,2)}
@@ -19,10 +19,13 @@ Bulbasaur 1 25 25 3 12 12 14 14 12 8 512 GRASS POISON 56ad68d2 0 0
 	Leech seed. 11 10
 PC: 
 Bag:
-Pokeball. 3 6
+Poke Ball. 3 6
 Potion. 1 3
 
 Key Items: 0
+  
+
+HM/TMs: 0
   
 
 Trainers Battled: 0

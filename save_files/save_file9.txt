@@ -1,4 +1,4 @@
-Last Saved: 10/22/2023 19:03:30
+Last Saved: 11/06/2023 21:06:34
 Player: Test_Player
 3 5 2 790 0
 Location: {7,(41,13)}
@@ -36,6 +36,9 @@ Super Potion. 2 2
 Poke Ball. 3 1
 
 Key Items: 0
+  
+
+HM/TMs: 0
   
 
 Trainers Battled: 1

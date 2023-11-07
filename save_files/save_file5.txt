@@ -1,4 +1,4 @@
-Last Saved: 11/06/2023 20:07:03
+Last Saved: 11/06/2023 21:06:11
 Player: Player1
 5 0 5 15475 c
 Location: {15,(28,12)}
@@ -35,6 +35,9 @@ Moon Stone. 16 1
 
 Key Items: 2
   202 205 
+
+HM/TMs: 1
+  1
 
 Trainers Battled: 16
   1 2 3 5 7 13 6 12 201 14 20 252 27 29 30 31 

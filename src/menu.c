@@ -9,10 +9,11 @@
 #include "monsters/pokemon.h"
 #include "items/items.h"
 #include "items/key_items.h"
+#include "items/hm_tms.h"
 
 #include "motion/maps.h"
 
-static enum display { MOVING, POKEMON, BAG, KEY_ITEMS, PLAYER, SAVE, LOAD,
+static enum display { MOVING, POKEMON, BAG, KEY_ITEMS, HM_or_TMs, PLAYER, SAVE, LOAD,
     POWER_OFF, MENU } current_display = MOVING;
 
 static bool power_off = false;
@@ -43,7 +44,7 @@ void main_menu() {
         //This is the actual main menu
         case MENU:
             begin_list();
-            print_to_list("  Back\n  Pokemon\n  Bag\n  Key Items\n  Player\n");
+            print_to_list("  Back\n  Pokemon\n  Bag\n  Key Items\n  HMs/TMs\n  Player\n");
             print_to_list("  Save Game\n  Load Game\n  Power Off\n\n");
 
             inputNum = get_selection(0, 7, last_selection);
@@ -106,6 +107,26 @@ void main_menu() {
             }
             print_to_list(" \n  Cancel");
             get_selection(player.numKeyItems+2,0,0);
+            current_display = MENU;
+            break;
+
+        case HM_or_TMs:
+            begin_list();
+            print_to_list("HM/TMs:");
+            for (int i = 0; i < player.numHMTMs; i++) {
+                sprintf(print_str, "  %s\n", get_hm_tm_name(player.hm_tms[i]));
+                print_to_list(print_str);
+            }
+            print_to_list("  Cancel");
+            return_execute = get_selection(1, player.numHMTMs, 0);
+            
+            if (return_execute == player.numHMTMs || return_execute == PRESSED_B) {
+                
+            }
+            else {
+                teach_hm_tm(player.hm_tms[return_execute]);
+            }
+            
             current_display = MENU;
             break;
         

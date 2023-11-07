@@ -228,7 +228,11 @@ int handle_cut(struct Selectable * selectable_ptr) {
     if (has_cut) {
         sprintf(print_str, "%s used Cut!", cut_pok->name);
         print_to_message_box(print_str); await_user();
+
+        //Delete and remove pointer
         mvaddch(selectable_ptr->y, selectable_ptr->x, ' ');
+        selectable_ptr->y = 0;
+        selectable_ptr->x = 0;
     }
 
     return 0;

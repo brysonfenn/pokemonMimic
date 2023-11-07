@@ -1,4 +1,4 @@
-Last Saved: 07/06/2023 17:27:39
+Last Saved: 11/06/2023 21:06:03
 Player: Oliver H
 4 0 1 1585 0
 Location: {1,(32,10)}
@@ -18,9 +18,12 @@ Caterpie 10 15 15 2 7 8 7 6 8 3 27 BUG NONE 398f7d65 0 0
 	String Shot. 5 40
 PC: 
 Bag:
-Antidote. 5 2
+Ultra Ball. 5 2
 
 Key Items: 0
+  
+
+HM/TMs: 0
   
 
 Trainers Battled: 2

@@ -17,11 +17,13 @@ struct playerCharacter {
   struct Pokemon * party;
   struct Item * bag;
   int * key_items;
+  int * hm_tms;
   struct Pokemon * pc_storage;
 
   uint8_t numInParty;
   uint8_t numInBag;
   uint8_t numKeyItems;
+  uint8_t numHMTMs;
   uint8_t numInPCStorage;
 
   long long NPCs_done;

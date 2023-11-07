@@ -109,6 +109,13 @@ int save_game(int file_num) {
 	}
 	fprintf(fp, "\n");
 
+	fprintf(fp, "\nHM/TMs: %d\n", player.numHMTMs);
+	fprintf(fp, "  ");
+	for (int i = 0; i < player.numHMTMs; i++) {
+		fprintf(fp, "%d ", player.hm_tms[i]);
+	}
+	fprintf(fp, "\n");
+
 	fprintf(fp, "\nTrainers Battled: %d\n", player.num_trainers_battled);
 	fprintf(fp, "  ");
 	for (int i = 0; i < player.num_trainers_battled; i++) {
@@ -226,6 +233,28 @@ int load_game(int file_num) {
             break;
         }
         key_items_str++;	//Move up a space
+    }
+
+	// TMs/HMs
+	fgets(line, LINE_SIZE, fp); //Empty line
+	fgets(line, LINE_SIZE, fp); //TMs/HMs
+
+	fgets(line, LINE_SIZE, fp);
+	char * hm_tm_str = line;
+	hm_tm_str += 2;
+	player.numHMTMs = 0;
+
+	// Scan the string for integers
+    while (sscanf(hm_tm_str, "%d", &id) == 1) {
+        player.hm_tms[player.numHMTMs] = id;
+		player.numHMTMs++;
+
+        // Move to the next number in the string
+        hm_tm_str = strchr(hm_tm_str, ' ');
+        if (hm_tm_str == NULL) {
+            break;
+        }
+        hm_tm_str++;	//Move up a space
     }
 
 
