@@ -53,6 +53,7 @@ void draw_vermillion_city() {
         add_npc_by_id(MAP_X+27, MAP_Y+MAP_HEIGHT-2, 5, PLAYER_MOVING_LEFT);
     }
     
+    add_cuttable_tree(MAP_X+40, MAP_Y+10);
 }
 
 

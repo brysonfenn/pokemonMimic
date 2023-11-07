@@ -53,10 +53,7 @@ void handle_motion() {
     char print_str[2048];
 
     init_motion();
-
-    Selectable * selectable_ptr;
     Trainer * trainer_ptr;
-    NPC * npc_ptr;
     char * message_ptr;
     int return_value;
 
@@ -120,23 +117,10 @@ void handle_motion() {
                 attrset(COLOR_PAIR(PLAYER_COLOR)); mvaddch(*player_y, *player_x, player_char); 
                 attrset(COLOR_PAIR(DEFAULT_COLOR));
 
-                selectable_ptr = get_selectable(*player_x, *player_y, player_char);
-                if (selectable_ptr->selectable_id == SELECTABLE_NONE) continue;
-                if (selectable_ptr->selectable_id == SELECTABLE_TRAINER) {
-                    trainer_ptr = (Trainer *) selectable_ptr->data;
-                    if (has_battled_trainer(trainer_ptr->id_num)) {
-                        print_to_message_box("\"We already battled\"");
-                        continue;
-                    }
-                    //Handle trainer battle and return values from that function
-                    if (battle_trainer(trainer_ptr) != BATTLE_WHITE_OUT) { restore_print_state(); }
-                    continue;
-                }
-                else if (selectable_ptr->selectable_id == SELECTABLE_NPC) {
-                    npc_ptr = (NPC *) selectable_ptr->data;
-                    handle_npc_selection(npc_ptr);
-                    continue;
-                }
+                return_value = handle_selected_selectable(*player_x, *player_y, player_char);
+                if (return_value == SELECTABLE_CONTINUE_WHILE) continue;
+                else if (return_value == SELECTABLE_BREAK_WHILE) break;
+
                 break;
             default:
                 attrset(COLOR_PAIR(PLAYER_COLOR));
