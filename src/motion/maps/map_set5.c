@@ -40,9 +40,9 @@ void draw_vermillion_city() {
     draw_town_exit(MAP_BOTTOM, 25);
     add_exit_portal(MAP_BOTTOM, 25, MAP_SS_ANNE1);
 
-    drawBuilding_default(MAP_X+3,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+DEFAULT_BUILDING_WIDTH + 3, MAP_Y+5, "Mart", MART_ACTION);
-    drawBuilding_default(MAP_X+30, MAP_Y+12, "Lab", FOSSIL_PROCESS_ACTION);
+    drawBuilding_default(MAP_X+15,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
+    drawBuilding_default(MAP_X+30, MAP_Y+9, "Lab", FOSSIL_PROCESS_ACTION);
+    drawBuilding_default(MAP_X+42, MAP_Y+9, "Mart", MART_ACTION);
 
     if (has_key_item(SS_TICKET) == -1) {
         add_npc_by_id(MAP_X+25, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);
@@ -52,8 +52,20 @@ void draw_vermillion_city() {
         add_npc_by_id(MAP_X+24, MAP_Y+MAP_HEIGHT-2, 5, PLAYER_MOVING_RIGHT);
         add_npc_by_id(MAP_X+27, MAP_Y+MAP_HEIGHT-2, 5, PLAYER_MOVING_LEFT);
     }
+
+    drawBuilding_default(MAP_X+4, MAP_Y+11, "GYM", -1);
+    add_building_portal(MAP_X+4, MAP_Y+11, MAP_GYM3);
     
-    add_cuttable_tree(MAP_X+40, MAP_Y+10);
+    add_cuttable_tree(MAP_X+18, MAP_Y+14);
+}
+
+
+void draw_gym3() {
+    draw_interior(MAP_X+4, MAP_Y+11, MAP_VERM_CITY);
+    begin_message_box();
+    print_to_message_box("Vermillion City Gym");
+
+    add_trainer_by_id(INTERIOR_X+14, INTERIOR_Y+1, 203, PLAYER_MOVING_DOWN);
 }
 
 
@@ -79,6 +91,7 @@ void draw_ss_anne1() {
     add_trainer_by_id(MAP_X+7, MAP_Y+1, 29, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+8, MAP_Y+10, 32, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+25, MAP_Y+11, 33, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+48, MAP_Y+10, 34, PLAYER_MOVING_LEFT);
 
     add_npc_by_id(MAP_X+53, MAP_Y+1, 6, PLAYER_MOVING_DOWN);
     add_cuttable_tree(MAP_X+49, MAP_Y+1);
@@ -103,4 +116,6 @@ void draw_ss_anne2() {
 
     add_trainer_by_id(MAP_X+7, MAP_Y+10, 30, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+36, MAP_Y+11, 31, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+38, MAP_Y+8, 35, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+50, MAP_Y+3, 253, PLAYER_MOVING_RIGHT);
 }

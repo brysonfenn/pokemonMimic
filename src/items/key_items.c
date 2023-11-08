@@ -28,7 +28,7 @@ bool add_key_item(Key_Item id) {
 
 //Returns false if player does not have the key item
 bool remove_key_item(Key_Item id) {
-    int item_index = has_key_item(id) >= 0;
+    int item_index = has_key_item(id);
     if (item_index < 0) return false;
 
     player.numKeyItems--;

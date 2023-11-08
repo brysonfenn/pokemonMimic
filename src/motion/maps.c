@@ -21,7 +21,7 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_vir_city, &draw_route2, &draw_route1, &draw_starter_town, &draw_lab, 
                                     &draw_vir_forest, &draw_pew_city, &draw_gym1, &draw_route3, &draw_mt_moon,
                                     &draw_cer_city, &draw_gym2, &draw_route4, &draw_underground, &draw_vermillion_city,
-                                    &draw_route5, &draw_ss_anne1, &draw_ss_anne2 };
+                                    &draw_route5, &draw_ss_anne1, &draw_ss_anne2, &draw_gym3 };
 
 //Draw elements (like grass, trees, etc) according to map text file
 void draw_static_elements() {
@@ -69,6 +69,9 @@ void draw_static_elements() {
             break;
         case MAP_SS_ANNE2:
             sprintf(map_name, "ss_anne2");
+            break;
+        case MAP_VERM_CITY:
+            sprintf(map_name, "verm_city");
             break;
         default:
             sprintf(map_name, "empty_map");

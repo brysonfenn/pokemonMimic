@@ -54,7 +54,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 			printw("%s fell asleep!", pok->name); refresh(); sleep(2);
 			pok->visible_condition = ASLEEP;
-			pok->sleep_count = (rand() % 4) + 1;
+			pok->sleep_count = (rand() % 4) + 2;
 			break;
 
 		case BURNED:

@@ -281,7 +281,7 @@ int attack_do_nothing(Condition condition, int accuracy, struct Pokemon* pok, in
 //Change the stat of a pok (stat_type is the type of stat, stage_number is the number of stages to increment (+) or decrement (-))
 int change_stat(Condition stat_type, int stage_number, struct Pokemon* pok) {
     char stat_type_str[50];
-    int16_t * stat_stage;
+    int8_t * stat_stage;
 
     switch (stat_type) {
         case ATTACK_STAT:
@@ -339,7 +339,7 @@ int change_stat(Condition stat_type, int stage_number, struct Pokemon* pok) {
     else if (stage_number > 0) {
         if (pok == player.enemy_pokemon) printw(ENEMY_TEXT);
         if ((*stat_stage) >= 6) {
-            printw("%s's %s won't go any higher!", pok->name, stat_type_str);
+            printw("%s's %s won't go any higher! Stat Stage: %d", pok->name, stat_type_str, *stat_stage);
         }
         else {
             printw("%s's %s ", pok->name, stat_type_str);
