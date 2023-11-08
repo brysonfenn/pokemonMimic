@@ -226,6 +226,13 @@ int handle_cut(struct Selectable * selectable_ptr) {
     }
 
     if (has_cut) {
+        sprintf(print_str, "Would you like %s to use Cut?\n  Yes\n  No", cut_pok->name);
+        print_to_message_box(print_str);
+        if (get_selection(MAP_HEIGHT+1, 1, 0) == 1) {
+            begin_message_box();
+            return 0;
+        }
+
         sprintf(print_str, "%s used Cut!", cut_pok->name);
         print_to_message_box(print_str); await_user();
 

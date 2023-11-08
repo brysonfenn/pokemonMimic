@@ -4,7 +4,7 @@
 #include "stdbool.h"
 
 //All key item ID's
-typedef enum { HM_EMPTY=240, HM_CUT } HM_TM;
+typedef enum { HM_EMPTY=100, HM_CUT } HM_TM;
 
 char * get_hm_tm_name(int id);
 

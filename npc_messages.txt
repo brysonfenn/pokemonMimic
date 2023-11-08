@@ -4,4 +4,5 @@
 3: Hi, I'm Bill, and I'm a Pokemon Researcher. I like to study Pokemon! I also designed the PC Pokemon Storage Box. You may have used this system at the Pokemon Centers in this region. I was headed to Vermillion City with a ticket to board the SS Anne, but I have a lot of work to do. Have you heard of the SS Anne?
 4: We see you don't have an SS Ticket... I think Bill, creator of the PC Pokemon Storage System, has one he might not be using. You can find Bill North-East of Cerulean City.
 5: Is that an SS Ticket? You may pass through this gate to the South.
+6: I've been feeling a little seasick... Being out on the water for 3 months will do that to you. Who are you? ... Oh I see... So you are a Pokemon Trainer. Well, it's nice to talk to someone. Have you heard of Hidden Machines (HMs)? HMs can be used to teach moves to some Pokemon. They can also be used outside of battle. For example, HM01 Cut allows you to cut down some trees like the one here.
 777: Reached End of npc_messages.txt file

@@ -79,6 +79,9 @@ void draw_ss_anne1() {
     add_trainer_by_id(MAP_X+7, MAP_Y+1, 29, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+8, MAP_Y+10, 32, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+25, MAP_Y+11, 33, PLAYER_MOVING_DOWN);
+
+    add_npc_by_id(MAP_X+53, MAP_Y+1, 6, PLAYER_MOVING_DOWN);
+    add_cuttable_tree(MAP_X+49, MAP_Y+1);
 }
 
 
