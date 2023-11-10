@@ -71,7 +71,7 @@ int use_item(int item_num) {
 
 
 //Give player a number of items by id number
-void give_player_item(Item * item_to_get, int num_items) {
+void give_item_to_player(Item * item_to_get, int num_items) {
   bool foundItem = false;
   //Find if there were any of the selected item in the bag
   for (int i = 0; i < player.numInBag; i++) {

@@ -5,6 +5,7 @@
 
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
+#include "../print/print_battle.h"
 #include "../player.h"
 #include "../motion/location.h"
 #include "../motion/maps.h"
@@ -64,7 +65,6 @@ void destroy_pokemon(Pokemon * pok) {
 //Return a random pokemon, excluding starters
 //Always immediately dereference the return value of this function.
 Pokemon * get_random_wild_pokemon(int level_min, int level_max) {
-
   int pok_position, new_pok_id;
   int min_level = 2;
   int max_level = 6;
@@ -157,4 +157,48 @@ Pokemon * get_pokemon_frame(Pokemon_id pok_id) {
   fclose(fp);
 
   return pok;
+}
+
+
+//Add Pokemon to player party or PC (returns false if not possible)
+bool give_pokemon_to_player(Pokemon * pok) {
+  char print_str[64];
+
+  //If player already has 6 pokemon, transfer the new pokemon to the PC
+  if (player.numInParty >= 6 && player.numInPCStorage >= 15) {
+    return false;
+  }
+  else if (player.numInParty >= 6) {
+    player.pc_storage[player.numInPCStorage] = (*pok);
+    player.numInPCStorage++;
+
+    //Reset all stats of that pokemon in the PC
+    Pokemon * new_pok = &(player.pc_storage[player.numInPCStorage-1]);
+    new_pok->currentHP = new_pok->maxHP;
+    new_pok->visible_condition = NO_CONDITION;
+    reset_stat_stages(new_pok);
+    for (int i = 0; i < new_pok->numAttacks; i++) {
+        new_pok->attacks[i].curr_pp = new_pok->attacks[i].max_pp;
+    }
+
+    if (player.is_battle) {
+      text_box_cursors(TEXT_BOX_NEXT_LINE);
+      printw("%s was transferred to PC storage.", new_pok->name); refresh(); sleep(2);
+    }
+    else {
+      sprintf(print_str, "%s was transferred to PC storage.", new_pok->name); 
+      print_to_list(print_str); sleep(2);
+    }
+  }
+  //Add Pokemon to party
+  else {
+    player.party[player.numInParty] = (*pok);
+    player.numInParty++;
+    if (!player.is_battle) {
+      sprintf(print_str, "%s was added to your party.", pok->name);
+      print_to_list(print_str); sleep(2);
+    }
+  }
+
+  return true;
 }

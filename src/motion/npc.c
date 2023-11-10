@@ -89,7 +89,7 @@ void handle_npc_selection(struct NPC * npc_ptr) {
             //Give item
             if (npc_ptr->givable_item >= K_ITEM_EMPTY) add_key_item(npc_ptr->givable_item);
             else if (npc_ptr->givable_item >= HM_EMPTY) add_hm_tm(npc_ptr->givable_item);
-            else give_player_item(get_item_by_id(npc_ptr->givable_item), 1);
+            else give_item_to_player(get_item_by_id(npc_ptr->givable_item), 1);
         }
         player.NPCs_done |= ((long long) 1 << npc_ptr->id_num);
     }

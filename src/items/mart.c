@@ -120,7 +120,7 @@ int handle_mart() {
   //Buy the item
   player.money -= inputNum * example_item.cost;
 
-  give_player_item(&example_item, inputNum);
+  give_item_to_player(&example_item, inputNum);
 
   sprintf(print_str, " \n \nYou bought %d %s(s)\n", inputNum, example_item.name);
   print_to_list(print_str); sleep(2); 

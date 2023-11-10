@@ -120,6 +120,7 @@ void learn_move(Pokemon * pok, attack * new_attack);
 void handle_evolve_outside_battle(Pokemon * pok, int next_pok_id);
 
 
+
 //pokemon_list.c
 
 //Create a new pokemon. **Immediately dereference the returned pokemon**
@@ -137,5 +138,8 @@ Pokemon * get_starter(int starter);
 
 //Get a pokemon with all its base stats
 Pokemon * get_pokemon_frame(Pokemon_id pok_id);
+
+//Add Pokemon to player party or PC (returns false if not possible)
+bool give_pokemon_to_player(Pokemon * pok);
 
 #endif // POKEMON_H

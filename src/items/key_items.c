@@ -153,28 +153,5 @@ void give_fossil_pokemon(int fossil_index, int fossil_type) {
 
     Pokemon fossil_pok = *create_new_pokemon(id, level, 0, 0);
 
-    //If player already has 6 pokemon, transfer the new pokemon to the PC
-    if (player.numInParty >= 6) {
-        player.pc_storage[player.numInPCStorage] = (fossil_pok);
-        player.numInPCStorage++;
-
-        //Reset all stats of that pokemon in the PC
-        Pokemon * new_pok = &(player.pc_storage[player.numInPCStorage-1]);
-        new_pok->currentHP = new_pok->maxHP;
-        new_pok->visible_condition = NO_CONDITION;
-        reset_stat_stages(new_pok);
-        for (int i = 0; i < new_pok->numAttacks; i++) {
-            new_pok->attacks[i].curr_pp = new_pok->attacks[i].max_pp;
-        }
-
-        sprintf(print_str, "%s was transferred to PC storage.", fossil_pok.name); 
-        print_to_list(print_str); sleep(2);
-    }
-    //Add Pokemon to party
-    else {
-        player.party[player.numInParty] = (fossil_pok);
-        player.numInParty++;
-        sprintf(print_str, "%s was added to your party.", fossil_pok.name);
-        print_to_list(print_str); sleep(2);
-    }
+    give_pokemon_to_player(&fossil_pok);
 }
