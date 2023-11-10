@@ -122,7 +122,7 @@ void draw_static_elements() {
         else if (ch == '~') attrset(COLOR_PAIR(WATER_COLOR));
 
          //If this is a vertical line or a space, move cursor forward rather than printing
-         // vertical line characters in a text file have the value 130
+         // Vertical line characters in a text file have the value 130
         if (ch == ' ' || ch == 130) {
             getyx(stdscr, y, x);  // Get the current cursor position
             move(y, x+1);   //Move cursor forward one space rather than printing
@@ -150,7 +150,7 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
 }
 
 //Notify player of moving back to pokecenter, then move them
-void back_to_poke_center() {
+void move_player_to_poke_center() {
     char print_str[256];
 
     begin_list();

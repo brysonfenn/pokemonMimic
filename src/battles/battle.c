@@ -83,7 +83,7 @@ int handle_battle(struct Pokemon * enemyPok) {
         printw("%s whited out.", player.name); refresh(); sleep(2);
 
         //Go to pokecenter and then heal
-        back_to_poke_center();
+        move_player_to_poke_center();
 
         return BATTLE_WHITE_OUT;
       }

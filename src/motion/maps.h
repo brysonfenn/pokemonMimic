@@ -19,6 +19,6 @@ void draw_static_elements();
 void change_map_funcs(int map_num, void (**draw_map)());
 
 //Notify player of moving back to pokecenter, then move them
-void back_to_poke_center();
+void move_player_to_poke_center();
 
 #endif //MAP1_H
