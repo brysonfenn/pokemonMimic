@@ -19,7 +19,7 @@ void draw_route3() {
 
     //Draw Doors
     add_connection_to_big_map(MAP_LEFT, 8, MAP_PEW_CITY);
-    add_connection_to_big_map(MAP_TOP, MAP_WIDTH - 4, MAP_MT_MOON);
+    add_connection_to_big_map(MAP_TOP, MAP_WIDTH - 4, MAP_MT_MOON_S);
 
     drawBuilding_default(MAP_X+42,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
 
@@ -28,10 +28,10 @@ void draw_route3() {
 }
 
 
-void draw_mt_moon() {
-    draw_big_map("Mt. Moon");
+void draw_mt_moon_n() {
+    draw_big_map("Mt. Moon North");
 
-    add_connection_to_big_map(MAP_BOTTOM, MAP_WIDTH - 4, MAP_R3);
+    add_connection_to_big_map(MAP_BOTTOM, MAP_WIDTH - 4, MAP_MT_MOON_S);
     add_connection_to_big_map(MAP_RIGHT, 7, MAP_CER_CITY);
 
     add_trainer_by_id(MAP_X+26, MAP_Y+11, 15, PLAYER_MOVING_RIGHT);
@@ -45,10 +45,17 @@ void draw_mt_moon() {
     drawBuilding_default(MAP_X+MAP_WIDTH-2-DEFAULT_BUILDING_WIDTH, MAP_Y+1, "FOSL", FOSSIL_ACTION);
 }
 
+void draw_mt_moon_s() {
+    draw_big_map("Mt. Moon South");
+
+    add_connection_to_big_map(MAP_BOTTOM, MAP_WIDTH - 4, MAP_R3);
+    add_connection_to_big_map(MAP_TOP, MAP_WIDTH-4, MAP_MT_MOON_N);
+}
+
 void draw_cer_city() {
     draw_big_map("Cerulean City");
 
-    add_connection_to_big_map(MAP_LEFT, 7, MAP_MT_MOON);
+    add_connection_to_big_map(MAP_LEFT, 7, MAP_MT_MOON_N);
     add_connection_to_big_map(MAP_TOP, MAP_WIDTH - 5, MAP_R4);
 
     //Bottom-right portal goes to Underground

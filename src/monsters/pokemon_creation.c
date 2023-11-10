@@ -19,7 +19,7 @@ Pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0,    0,    0, NO_TY
 static Pokemon_id pok_id_list[10] = { POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE, POKEMON_CATERPIE, POKEMON_WEEDLE,
   POKEMON_PIDGEY, POKEMON_RATTATA, POKEMON_SANDSHREW };
 
-static Pokemon_id wild_pok_lists[20][10] = {
+static Pokemon_id wild_pok_lists[30][10] = {
 //#Pok, levels, ID'S...
   { 3,   5, 7,  POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE }, //No Map is #0
   { 2,   3, 5,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #1 Viridian City
@@ -32,13 +32,17 @@ static Pokemon_id wild_pok_lists[20][10] = {
   // { 1,  17,17,  POKEMON_KADABRA }, //Map #7 Pewter City Test Pokemon
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #8 Gym
   { 3,   5, 8,  POKEMON_JIGGLYPUFF, POKEMON_MANKEY, POKEMON_NIDORAN_M }, //Map #9 Route 3
-  { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //Map #10 Mt Moon
+  { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //Map #10 Mt Moon N
   { 3,   8, 10, POKEMON_VULPIX, POKEMON_EKANS, POKEMON_MANKEY }, //Map #11 Cerulean City
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #12 Gym 2
   { 4,   8, 10, POKEMON_PONYTA, POKEMON_POLIWAG, POKEMON_VULPIX, POKEMON_MEOWTH }, //Map #13 Route 4
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #14 Underground NS
   { 1,  95,95,  POKEMON_CHARMELEON }, //Map #15 Vermillion City
-  { 4,   9, 12, POKEMON_BELLSPROUT, POKEMON_PONYTA, POKEMON_DODUO, POKEMON_DROWZEE } //Map #16 Route 5
+  { 4,   9, 12, POKEMON_BELLSPROUT, POKEMON_PONYTA, POKEMON_DODUO, POKEMON_DROWZEE }, //Map #16 Route 5
+  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #17 Vermillion City
+  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #18 Vermillion City
+  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #19 Vermillion City
+  { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //Map #20 Mt Moon S
 };
 
 static Pokemon newest_pokemon;

@@ -159,8 +159,12 @@ void handle_motion() {
         draw_static_elements();
 
         int random = rand() % 100;
-        bool encounter = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR) && !(leave_msg_count < 5) && random < 10;
-        encounter = encounter || ((player.loc->map == MAP_MT_MOON) && random < 5);
+        bool encounter = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR);
+        encounter = encounter || ((player.loc->map == MAP_MT_MOON_N || player.loc->map == MAP_MT_MOON_S) && random < 5);   //Extra percentage for mount moon
+        encounter = encounter && !(leave_msg_count < 5) && (random < 10);     //Chance of encounter
+
+        //Uncomment to disable encounters
+        // encounter = false;
 
         // Set player color, move, and unset
         attrset(COLOR_PAIR(PLAYER_COLOR));
