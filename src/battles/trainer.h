@@ -7,12 +7,12 @@
 #include "../monsters/pokemon_id_list.h"
 
 typedef struct Trainer {
-    uint8_t id_num;
+    int id_num;
     char name[30];
     char message[256];
-    int8_t num_in_party;
+    int num_in_party;
     Pokemon_id party_id_list[6];
-    int8_t levels[6];
+    int levels[6];
 } Trainer;
 
 //Battle a trainer with a random name and random # of pokemon

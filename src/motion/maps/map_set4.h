@@ -1,14 +1,14 @@
 #ifndef MAP_SET4_H
 #define MAP_SET4_H
 
-void draw_mt_moon();
+void draw_underground();
 
-void draw_cer_city();
+void draw_vermillion_city();
 
-void draw_gym2();
+void draw_gym3();
 
-void draw_route4();
+void draw_ss_anne1();
 
-void draw_route5();
+void draw_ss_anne2();
 
 #endif //MAP_SET4_H

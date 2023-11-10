@@ -61,7 +61,7 @@ static Trainer * leaders[10] = { &t000,
 
 static Trainer rival001 = {251, "Rival G", "I'm your rival, Let's Battle!", 1, {POKEMON_BULBASAUR}, {5} };
 static Trainer rival002 = {252, "Rival G", "It's been a while, are you any better?", 3, {POKEMON_GEODUDE, POKEMON_RATTATA, POKEMON_BULBASAUR}, {10,11,13} };
-static Trainer rival003 = {253, "Rival G", "You'll have to beat me to see the Captain", 3, {POKEMON_RATICATE, POKEMON_GRAVELER, POKEMON_KADABRA, POKEMON_IVYSAUR}, {19,20,20,22} };
+static Trainer rival003 = {253, "Rival G", "You'll have to beat me to see the Captain", 4, {POKEMON_RATICATE, POKEMON_GRAVELER, POKEMON_KADABRA, POKEMON_IVYSAUR}, {19,20,20,22} };
 
 static Trainer * rivals[10] = { &t000,
     &rival001, &rival002, &rival003
@@ -87,7 +87,7 @@ struct Trainer * get_trainer(int trainer_id) {
 void update_rival(int id) {
     Trainer * curr_rival = rivals[id];
     int rival_starter = POKEMON_BULBASAUR;
-    int rival_starter_index;
+    int rival_starter_index = 0;
     int player_starter = POKEMON_MISSING_NO;
 
     //Find where BULBASAUR is

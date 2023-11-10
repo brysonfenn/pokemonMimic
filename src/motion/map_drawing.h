@@ -42,11 +42,17 @@ void drawBuilding_default(int x, int y, const char* str, int action);
 //Draw a custom-sized building with a door and an action attached
 void drawBuilding(int x, int y, int w, int h, const char* str, int action);
 
+//Draw big map outline and print message to message box
+void draw_big_map(const char * map_title);
+
 //Draw building interior
 void draw_interior(int exit_map_x, int exit_map_y, int exit_map);
 
 //Draw an exit on a given side of the map at a given position
 void draw_town_exit(int side, int position);
+
+//Add a connection to another city on a given side of the current city
+void add_connection_to_big_map(int map_side, int position_on_side, int map_id);
 
 //Blink screen a given number of times, pass in a map function to blink
 void blink_screen(int num_times, void (*draw_map_func) ());

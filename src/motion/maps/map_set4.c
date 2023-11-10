@@ -10,97 +10,87 @@
 #include "../../battles/trainer.h"
 #include "../../print/print_utils.h"
 #include "../../print/print_defines.h"
+#include "../../items/key_items.h"
 
+void draw_underground() {
+    draw_big_map("Underground");
 
-void draw_mt_moon() {
-    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    begin_message_box();
-    print_to_message_box("Mt. Moon");
+    drawBuilding_default(49, 6, " CC ", -1);
+    add_portal(49+9/2, 6+2, MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-2, MAP_CER_CITY, true);
 
-    draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 4);
-    add_exit_portal(MAP_BOTTOM, MAP_WIDTH - 4, MAP_R3);
+    add_connection_to_big_map(MAP_BOTTOM, 3, MAP_VERM_CITY);
 
-    draw_town_exit(MAP_RIGHT, 7);
-    add_exit_portal(MAP_RIGHT, 7, MAP_CER_CITY);
-
-    add_trainer_by_id(MAP_X+26, MAP_Y+11, 15, PLAYER_MOVING_RIGHT);
-    add_trainer_by_id(MAP_X+19, MAP_Y+9, 16, PLAYER_MOVING_RIGHT);
-    add_trainer_by_id(MAP_X+24, MAP_Y+3, 17, PLAYER_MOVING_LEFT);
-    add_trainer_by_id(MAP_X+51, MAP_Y+5,252, PLAYER_MOVING_RIGHT);
-    add_trainer_by_id(MAP_X+41, MAP_Y+1, 19, PLAYER_MOVING_DOWN);
-
-    add_npc_by_id(MAP_X+45, MAP_Y+9, 2, PLAYER_MOVING_LEFT);
-
-    drawBuilding_default(MAP_X+MAP_WIDTH-2-DEFAULT_BUILDING_WIDTH, MAP_Y+1, "FOSL", FOSSIL_ACTION);
+    draw_town_exit(MAP_RIGHT, 3);   //Add connection toward Lavendar town
+    draw_town_exit(MAP_LEFT, 3);    //Add connection toward Celadon City
 }
 
-void draw_cer_city() {
-    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    begin_message_box();
-    print_to_message_box("Cerulean City");
 
-    draw_town_exit(MAP_LEFT, 7);
-    add_exit_portal(MAP_LEFT, 7, MAP_MT_MOON);
+void draw_vermillion_city() {
+    draw_big_map("Vermillion City");
 
-    draw_town_exit(MAP_TOP, MAP_WIDTH - 5);
-    add_exit_portal(MAP_TOP, MAP_WIDTH - 5, MAP_R4);
+    add_connection_to_big_map(MAP_TOP, 3, MAP_UG_NS);
+    add_connection_to_big_map(MAP_BOTTOM, 25, MAP_SS_ANNE1);
 
-    //Bottom-right portal goes to Underground
-    draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 4);
-    add_portal(MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-1, 49+9/2, 6+2+1, MAP_UG_NS, true);
+    drawBuilding_default(MAP_X+15,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
+    drawBuilding_default(MAP_X+30, MAP_Y+9, "Lab", FOSSIL_PROCESS_ACTION);
+    drawBuilding_default(MAP_X+42, MAP_Y+9, "Mart", MART_ACTION);
 
-    drawBuilding_default(MAP_X+30,MAP_Y+8, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+10,MAP_Y+12, "Mart", MART_ACTION);
-
-    drawBuilding_default(MAP_X+30+DEFAULT_BUILDING_WIDTH,MAP_Y+8, "GYM", -1);
-    add_building_portal(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+8, MAP_GYM2);
-
-    if (!has_battled_trainer(202)) {
-        for (int i = 0; i < 4; i++) { mvprintw(MAP_Y+MAP_HEIGHT-2,MAP_X+MAP_WIDTH-5+i, "_"); }
+    if (has_key_item(SS_TICKET) == -1) {
+        add_npc_by_id(MAP_X+25, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);
+        add_npc_by_id(MAP_X+26, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);
     }
+    else {
+        add_npc_by_id(MAP_X+24, MAP_Y+MAP_HEIGHT-2, 5, PLAYER_MOVING_RIGHT);
+        add_npc_by_id(MAP_X+27, MAP_Y+MAP_HEIGHT-2, 5, PLAYER_MOVING_LEFT);
+    }
+
+    drawBuilding_default(MAP_X+4, MAP_Y+11, "GYM", -1);
+    add_building_portal(MAP_X+4, MAP_Y+11, MAP_GYM3);
+    
+    add_cuttable_tree(MAP_X+18, MAP_Y+14);
 }
 
 
-void draw_gym2() {
-    draw_interior(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+8, MAP_CER_CITY);
+void draw_gym3() {
+    draw_interior(MAP_X+4, MAP_Y+11, MAP_VERM_CITY);
     begin_message_box();
-    print_to_message_box("Cerulean City Gym");
+    print_to_message_box("Vermillion City Gym");
 
-    add_trainer_by_id(INTERIOR_X+7, INTERIOR_Y+5, 20, PLAYER_MOVING_LEFT);
-    add_trainer_by_id(INTERIOR_X+INTERIOR_WIDTH-2, INTERIOR_Y+4, 21, PLAYER_MOVING_LEFT);
-    add_trainer_by_id(INTERIOR_X+14, INTERIOR_Y+1, 202, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(INTERIOR_X+14, INTERIOR_Y+1, 203, PLAYER_MOVING_DOWN);
 }
 
 
-void draw_route4() {
-    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    begin_message_box();
-    print_to_message_box("Route 4");
+void draw_ss_anne1() {
+    draw_big_map("SS Anne (Upper)");
 
-    //Draw Doors
-    draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 5);
-    add_exit_portal(MAP_BOTTOM, MAP_WIDTH - 5, MAP_CER_CITY);
+    add_connection_to_big_map(MAP_TOP, 25, MAP_VERM_CITY);
+    add_connection_to_big_map(MAP_BOTTOM, 3, MAP_SS_ANNE2);
+    add_connection_to_big_map(MAP_BOTTOM, 13, MAP_SS_ANNE2);
+    add_connection_to_big_map(MAP_BOTTOM, 28, MAP_SS_ANNE2);
+    add_connection_to_big_map(MAP_BOTTOM, 42, MAP_SS_ANNE2);
+    add_connection_to_big_map(MAP_BOTTOM, 52, MAP_SS_ANNE2);
 
-    draw_town_exit(MAP_RIGHT, 3);
-    add_exit_portal(MAP_RIGHT, 3, MAP_R5);
+    add_trainer_by_id(MAP_X+7, MAP_Y+1, 29, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+8, MAP_Y+10, 32, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+25, MAP_Y+11, 33, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+48, MAP_Y+10, 34, PLAYER_MOVING_LEFT);
 
-    add_trainer_by_id(MAP_X+48, MAP_Y+13, 22, PLAYER_MOVING_RIGHT);
-    add_trainer_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+11, 23, PLAYER_MOVING_LEFT);
-    add_trainer_by_id(MAP_X+48, MAP_Y+9, 24, PLAYER_MOVING_RIGHT);
-    add_trainer_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+7, 25, PLAYER_MOVING_LEFT);
-    add_trainer_by_id(MAP_X+48, MAP_Y+5, 26, PLAYER_MOVING_RIGHT);
+    add_npc_by_id(MAP_X+53, MAP_Y+1, 6, PLAYER_MOVING_DOWN);
+    add_cuttable_tree(MAP_X+49, MAP_Y+1);
 }
 
 
-void draw_route5() {
-    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    begin_message_box();
-    print_to_message_box("Route 5");
+void draw_ss_anne2() {
+    draw_big_map("SS Anne (Lower)");
 
-    draw_town_exit(MAP_LEFT, 3);
-    add_exit_portal(MAP_LEFT, 3, MAP_R4);
+    add_connection_to_big_map(MAP_TOP, 3, MAP_SS_ANNE1);
+    add_connection_to_big_map(MAP_TOP, 13, MAP_SS_ANNE1);
+    add_connection_to_big_map(MAP_TOP, 28, MAP_SS_ANNE1);
+    add_connection_to_big_map(MAP_TOP, 42, MAP_SS_ANNE1);
+    add_connection_to_big_map(MAP_TOP, 52, MAP_SS_ANNE1);
 
-    add_npc_by_id(MAP_X+52, MAP_Y+1, 3, PLAYER_MOVING_DOWN);
-    add_trainer_by_id(MAP_X+24, MAP_Y+11, 27, PLAYER_MOVING_RIGHT);
-    add_trainer_by_id(MAP_X+48, MAP_Y+7, 28, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+7, MAP_Y+10, 30, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+36, MAP_Y+11, 31, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+38, MAP_Y+8, 35, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+50, MAP_Y+9, 253, PLAYER_MOVING_RIGHT);
 }

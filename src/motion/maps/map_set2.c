@@ -20,44 +20,77 @@
 #define TRAINER_BATTLE_ACTION 3
 
 void draw_vir_city() {
-
-    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    begin_message_box();
-    print_to_message_box("Viridian City");
+    draw_big_map("Viridian City");
 
     drawBuilding_default(VIR_MART_X,VIR_MART_Y, "Mart", MART_ACTION);
     drawBuilding_default(VIR_POKE_CENTER_X, VIR_POKE_CENTER_Y, "Poke", POKE_CENTER_ACTION);
     
-    //Draw Doors
-    draw_town_exit(MAP_TOP, 10); 
-    add_exit_portal(MAP_TOP, 10, MAP_R2);
-    
-    draw_town_exit(MAP_BOTTOM, 25); 
-    add_exit_portal(MAP_BOTTOM, 25, MAP_R1);
-
-    refresh();
+    add_connection_to_big_map(MAP_TOP, 10, MAP_R2);
+    add_connection_to_big_map(MAP_BOTTOM, 25, MAP_R1);
 }
 
 
 void draw_route2() {
+    draw_big_map("Route 2");
 
-    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
-    begin_message_box();
-    print_to_message_box("Route 2");
-
-    //Draw Doors
-    draw_town_exit(MAP_BOTTOM, 10);
-    add_exit_portal(MAP_BOTTOM, 10, MAP_VIRIDIAN);
-
-    draw_town_exit(MAP_TOP, 7);
-    add_exit_portal(MAP_TOP, 7, MAP_VIR_FOREST);
-    draw_town_exit(MAP_TOP, 40);
-    add_exit_portal(MAP_TOP, 40, MAP_VIR_FOREST);
+    add_connection_to_big_map(MAP_BOTTOM, 10, MAP_VIRIDIAN);
+    add_connection_to_big_map(MAP_TOP, 7, MAP_VIR_FOREST);
+    add_connection_to_big_map(MAP_TOP, 40, MAP_VIR_FOREST);
 
     add_trainer_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+MAP_HEIGHT-3, 8, PLAYER_MOVING_LEFT);
     add_trainer_by_id(MAP_X+1, MAP_Y+8, 1, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+15, MAP_Y+6, 2, PLAYER_MOVING_LEFT);
     add_trainer_by_id(MAP_X+1, MAP_Y+4, 3, PLAYER_MOVING_RIGHT);
+}
 
-    refresh();
+
+void draw_vir_forest() {
+    draw_big_map("Viridian Forest");
+
+    add_connection_to_big_map(MAP_BOTTOM, 7, MAP_R2);
+    add_connection_to_big_map(MAP_BOTTOM, 40, MAP_R2);
+    add_connection_to_big_map(MAP_TOP, MAP_WIDTH-8, MAP_PEW_CITY);
+
+    add_trainer_by_id(MAP_X+11, MAP_Y+7, 5, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+6, 7, PLAYER_MOVING_LEFT);
+}
+
+
+void draw_pew_city() {
+    draw_big_map("Pewter City");
+
+    add_connection_to_big_map(MAP_BOTTOM, MAP_WIDTH-8, MAP_VIR_FOREST);
+    add_connection_to_big_map(MAP_RIGHT, 8, MAP_R3);
+
+    drawBuilding_default(MAP_X+5,MAP_Y+2, "GYM", -1);
+    add_building_portal(MAP_X+5, MAP_Y+2, MAP_GYM1);
+
+    drawBuilding_default(MAP_X+25,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
+    drawBuilding_default(MAP_X+8,MAP_Y+11, "Mart", MART_ACTION);
+
+    add_trainer_by_id(MAP_X+45,MAP_Y+1, 9, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+48,MAP_Y+1, 10, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+51,MAP_Y+1, 11, PLAYER_MOVING_DOWN);
+
+    if (!has_battled_trainer(201)) {
+        for (int i = 0; i < 3; i++) { mvprintw(MAP_Y+7+i,MAP_X+MAP_WIDTH-2, "|"); }
+    }
+}
+
+
+void draw_gym1() {
+    draw_interior(MAP_X+5, MAP_Y+2, MAP_PEW_CITY);
+    begin_message_box();
+    draw_big_map("Pewter City Gym");
+
+    for (int i = 1; i <= 16; i++) {
+        mvaddch(INTERIOR_Y+4, INTERIOR_X+i, '-');
+    }
+
+    add_trainer_by_id(INTERIOR_X+INTERIOR_WIDTH-2, INTERIOR_Y+6, 12, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(INTERIOR_X+15, INTERIOR_Y+1, 6, PLAYER_MOVING_DOWN);
+
+    mvaddch(INTERIOR_Y+1, INTERIOR_X+1, ACS_LRCORNER);
+    add_trainer_by_id(INTERIOR_X+1, INTERIOR_Y+2, 201, PLAYER_MOVING_RIGHT);
+    mvaddch(INTERIOR_Y+3, INTERIOR_X+1, ACS_URCORNER);
 }

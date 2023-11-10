@@ -1,12 +1,18 @@
 #ifndef MAP_SET3_H
 #define MAP_SET3_H
 
-void draw_vir_forest();
-
-void draw_pew_city();
-
-void draw_gym1();
-
 void draw_route3();
+
+void draw_mt_moon();
+
+void draw_mt_moon2();
+
+void draw_cer_city();
+
+void draw_gym2();
+
+void draw_route4();
+
+void draw_route5();
 
 #endif //MAP_SET3_H

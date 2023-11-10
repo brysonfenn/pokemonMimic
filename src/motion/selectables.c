@@ -42,7 +42,7 @@ void add_trainer_by_id(char x, char y, int trainer_id, char face_direction) {
     num_selectables++;
 
     attrset(COLOR_PAIR(TRAINER_COLOR));
-    mvaddch(y,x,face_direction);
+    mvaddch(y,x,face_direction); refresh();
     attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
 
@@ -64,7 +64,7 @@ void add_npc_by_id(char x, char y, int npc_id, char face_direction) {
     num_selectables++;
 
     attrset(COLOR_PAIR(NPC_COLOR));
-    mvaddch(y,x,face_direction);
+    mvaddch(y,x,face_direction); refresh();
     attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
 
@@ -81,7 +81,7 @@ void add_cuttable_tree(char x, char y) {
     num_selectables++;
 
     attrset(COLOR_PAIR(TREE_COLOR));
-    mvaddch(y,x,'T');
+    mvaddch(y,x,'T'); refresh();
     attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
 

@@ -87,6 +87,14 @@ void drawBuilding(int x, int y, int w, int h, const char* name, int action) {
 }
 
 
+//Draw big map outline and print message to message box
+void draw_big_map(const char * map_title) {
+    draw_box(MAP_X,MAP_Y,MAP_WIDTH,MAP_HEIGHT);  //Draw Town border
+    begin_message_box();
+    print_to_message_box(map_title);
+}
+
+
 //Draw building interior --> Coordinates should be the same as the building's coordinates
 void draw_interior(int exit_map_x, int exit_map_y, int exit_map) {
     exit_map_x += 4;
@@ -140,6 +148,14 @@ void draw_town_exit(int side, int position) {
     }
 }
 
+
+//Add a connection to another city on a given side of the current city
+void add_connection_to_big_map(int map_side, int position_on_side, int map_id) {
+    draw_town_exit(map_side, position_on_side);
+    add_exit_portal(map_side, position_on_side, map_id);
+}
+
+//Blink screen a given number of times, pass in a map function to blink
 void blink_screen(int num_times, void (*draw_map_func) ()) {
     usleep(200000);
     for (int i = 0; i < num_times; i++) {

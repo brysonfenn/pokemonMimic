@@ -59,7 +59,7 @@ void draw_static_elements() {
             sprintf(map_name, "route4");
             break;
         case MAP_UG_NS:
-            sprintf(map_name, "underground_ns");
+            sprintf(map_name, "underground");
             break;
         case MAP_R5:
             sprintf(map_name, "route5");
