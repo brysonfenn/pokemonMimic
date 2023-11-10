@@ -5,4 +5,5 @@
 4: We see you don't have an SS Ticket... I think Bill, creator of the PC Pokemon Storage System, has one he might not be using. You can find Bill North-East of Cerulean City.
 5: Is that an SS Ticket? You may pass through this gate to the South.
 6: I've been feeling a little seasick... Being out on the water for 3 months will do that to you. Who are you? ... Oh I see... So you are a Pokemon Trainer. Well, it's nice to talk to someone. Have you heard of Hidden Machines (HMs)? HMs can be used to teach moves to some Pokemon. They can also be used outside of battle. For example, HM01 Cut allows you to cut down some trees like the one here.
+7: You're not from around here are you? Wait... you already have multiple gym badges? That's great! It looks like you're making progress as a trainer. I'm sure you already know about evolution stones. I found this one a right here on the ground.
 777: Reached End of npc_messages.txt file

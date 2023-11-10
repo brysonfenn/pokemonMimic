@@ -50,6 +50,7 @@ void draw_vir_forest() {
     add_connection_to_big_map(MAP_BOTTOM, 7, MAP_R2);
     add_connection_to_big_map(MAP_BOTTOM, 40, MAP_R2);
     add_connection_to_big_map(MAP_TOP, MAP_WIDTH-8, MAP_PEW_CITY);
+    add_connection_to_big_map(MAP_RIGHT, 2, MAP_R7);
 
     add_trainer_by_id(MAP_X+11, MAP_Y+7, 5, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+6, 7, PLAYER_MOVING_LEFT);

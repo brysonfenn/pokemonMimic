@@ -30,6 +30,7 @@ void draw_vermillion_city() {
 
     add_connection_to_big_map(MAP_TOP, 3, MAP_UG_NS);
     add_connection_to_big_map(MAP_BOTTOM, 25, MAP_SS_ANNE1);
+    add_connection_to_big_map(MAP_RIGHT, 6, MAP_R6);
 
     drawBuilding_default(MAP_X+15,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+30, MAP_Y+9, "Lab", FOSSIL_PROCESS_ACTION);
@@ -93,4 +94,41 @@ void draw_ss_anne2() {
     add_trainer_by_id(MAP_X+36, MAP_Y+11, 31, PLAYER_MOVING_LEFT);
     add_trainer_by_id(MAP_X+38, MAP_Y+8, 35, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+50, MAP_Y+9, 253, PLAYER_MOVING_RIGHT);
+}
+
+
+void draw_route6() {
+    draw_big_map("Route 6");
+    add_connection_to_big_map(MAP_LEFT, 6, MAP_VERM_CITY);
+
+    //Draw Building and link to SouthEast Diglett's Cave
+    drawBuilding_default(MAP_X+2, MAP_Y+1, "CAVE", DOORS_NEW_MAP);
+    add_portal(MAP_X+2+9/2, MAP_Y+1+2, MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-2, MAP_DIG_CAVE, true);
+
+    add_npc_by_id(MAP_X+1, MAP_Y+12, 7, PLAYER_MOVING_RIGHT);
+}
+
+
+void draw_dig_cave() {
+    draw_big_map("Diglett's Cave");
+    
+    //Bottom-right portal goes to route 6
+    draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 4);
+    add_portal(MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-1, MAP_X+2+9/2, MAP_Y+1+2+1, MAP_R6, true);
+
+    //Bottom-left portal goes to route 7
+    draw_town_exit(MAP_BOTTOM, 2);
+    add_portal(MAP_X+2, MAP_Y+MAP_HEIGHT-1, MAP_X+47+9/2, MAP_Y+12+2+1, MAP_R7, true);
+}
+
+
+void draw_route7() {
+    draw_big_map("Route 7");
+
+    //Draw Building and link to South-West Diglett's Cave
+    drawBuilding_default(MAP_X+47, MAP_Y+12, "CAVE", DOORS_NEW_MAP);
+    add_portal(MAP_X+47+9/2, MAP_Y+12+2, MAP_X+2, MAP_Y+MAP_HEIGHT-2, MAP_DIG_CAVE, true);
+
+    add_connection_to_big_map(MAP_LEFT, 2, MAP_VIR_FOREST);
+    add_cuttable_tree(MAP_X+10, MAP_Y+2);
 }

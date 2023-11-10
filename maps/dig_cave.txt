@@ -1,0 +1,19 @@
+   012345678911234567892123456789312345678941234567895123456
+00 ┌────────────────────────────────────────────────────────┐
+01 │                                 ooooo                  │
+02 │     oo                 o       oo   oo                 │
+03 │     o    oooooo        ooooooooo     ooooooooooo       │
+04 │    oo         oooooooooo                       oo      │
+05 │     o                                           ooo    │
+06 │     ooooooo                   o    ooooooooo      o    │
+07 │           oooooooo      ooooooo   oo       ooo         │
+08 │                  oooooooo     o  o           ooo       │
+09 │                       oo      ooo              oo      │
+10 │   ooooooo            o       oo      ooo        ooo    │
+11 │  oo                 oo      oo       o            ooo  │
+12 │oo                  o       oo       oo    oo        ooo│
+13 │       oooo     oooo       oo        o      oo          │
+14 │          ooooooo                    o       o          │
+15 │                                     o       o          │
+16 │                                     o       oo         │
+f  └────────────────────────────────────────────────────────┘

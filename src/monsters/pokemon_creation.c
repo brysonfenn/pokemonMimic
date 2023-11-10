@@ -165,7 +165,7 @@ bool give_pokemon_to_player(Pokemon * pok) {
   char print_str[64];
 
   //If player already has 6 pokemon, transfer the new pokemon to the PC
-  if (player.numInParty >= 6 && player.numInPCStorage >= 15) {
+  if (player.numInParty >= 6 && player.numInPCStorage >= MAX_IN_PC_STORAGE) {
     return false;
   }
   else if (player.numInParty >= 6) {

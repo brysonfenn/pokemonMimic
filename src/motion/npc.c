@@ -18,9 +18,10 @@ static NPC n3 = { 003, "Bill", SS_TICKET };
 static NPC n4 = { 004, "Guard", NO_ITEM };
 static NPC n5 = { 005, "Guard", NO_ITEM };
 static NPC n6 = { 006, "Captain Jacobs", HM_CUT };
+static NPC n7 = { 007, "Lily", LEAF_STONE };
 
 
-static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2, &n3, &n4, &n5, &n6 };
+static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2, &n3, &n4, &n5, &n6, &n7 };
 
 struct NPC * get_npc(int npc_id) {
     return npcs[npc_id];

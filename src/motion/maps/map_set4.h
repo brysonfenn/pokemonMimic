@@ -11,4 +11,10 @@ void draw_ss_anne1();
 
 void draw_ss_anne2();
 
+void draw_route6();
+
+void draw_dig_cave();
+
+void draw_route7();
+
 #endif //MAP_SET4_H

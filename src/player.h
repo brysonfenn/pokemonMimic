@@ -9,6 +9,7 @@ struct Location;
 struct Item;
 
 #define PLAYER_DEFAULT_POKEMON -1
+#define MAX_IN_PC_STORAGE 18
 
 
 struct playerCharacter {

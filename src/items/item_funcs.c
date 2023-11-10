@@ -54,7 +54,7 @@ int attempt_catch(int catch_rate, char * name) {
         print_to_list("You can't use that!"); sleep(2);
         return ITEM_FAILURE;
     }
-    else if (player.numInParty >= 6 && player.numInPCStorage >= 15) {
+    else if (player.numInParty >= 6 && player.numInPCStorage >= MAX_IN_PC_STORAGE) {
         begin_list();
         print_to_list("Your party and your PC storage are full!"); sleep(2);
         return ITEM_FAILURE;
