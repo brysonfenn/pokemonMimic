@@ -3,6 +3,9 @@
 
 #include <stdbool.h>
 
+//Should be followed by: add_portal() or add_building_portal() depending on if this leads to a building interior
+#define DOORS_NEW_MAP -1
+
 struct Location;
 
 //Add a door at a given location associated with an action

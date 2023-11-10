@@ -27,7 +27,7 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
 char map_file_name[32];
 static int * wild_pok_list;
 
-static Pokemon_id wild_pok_lists[30][10] = {
+static Pokemon_id wild_pok_lists[32][12] = {
 //#Pok, levels, ID'S...
   { 2,   3, 5,  POKEMON_PIDGEY, POKEMON_RATTATA }, //#0 Viridian City
   { 2,   2, 4,  POKEMON_PIDGEY, POKEMON_RATTATA }, //#1 Route 1

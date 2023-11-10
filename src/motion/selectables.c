@@ -234,10 +234,20 @@ int handle_cut(struct Selectable * selectable_ptr) {
         }
 
         sprintf(print_str, "%s used Cut!", cut_pok->name);
-        print_to_message_box(print_str); await_user();
+        print_to_message_box(print_str);
 
-        //Delete and remove pointer
-        mvaddch(selectable_ptr->y, selectable_ptr->x, ' ');
+        //Flash and Delete Tree, and remove pointer
+        for (int i = 0; i < 3; i++) {
+            attrset(COLOR_PAIR(TREE_COLOR));
+            mvaddch(selectable_ptr->y, selectable_ptr->x, 'T'); refresh();
+            usleep(200000);
+            attrset(COLOR_PAIR(DEFAULT_COLOR));
+            mvaddch(selectable_ptr->y, selectable_ptr->x, ' '); refresh();
+            usleep(200000);
+        }
+
+        // await_user();
+
         selectable_ptr->y = 0;
         selectable_ptr->x = 0;
     }

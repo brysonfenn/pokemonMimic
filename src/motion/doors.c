@@ -31,7 +31,7 @@ void add_door(char x, char y, short action, bool vertical) {
 void add_portal(char x, char y, char next_x, char next_y, char next_map, bool vertical) {
     doors[door_count].x = x;
     doors[door_count].y = y;
-    doors[door_count].action = -1;
+    doors[door_count].action = DOORS_NEW_MAP;
     doors[door_count].next_x = next_x;
     doors[door_count].next_y = next_y;
     doors[door_count].next_map = next_map;

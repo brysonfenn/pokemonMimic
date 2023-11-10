@@ -61,8 +61,8 @@ void draw_pew_city() {
 
     add_connection_to_big_map(MAP_BOTTOM, MAP_WIDTH-8, MAP_VIR_FOREST);
     add_connection_to_big_map(MAP_RIGHT, 8, MAP_R3);
-
-    drawBuilding_default(MAP_X+5,MAP_Y+2, "GYM", -1);
+    
+    drawBuilding_default(MAP_X+5,MAP_Y+2, "GYM", DOORS_NEW_MAP);
     add_building_portal(MAP_X+5, MAP_Y+2, MAP_GYM1);
 
     drawBuilding_default(MAP_X+25,MAP_Y+5, "Poke", POKE_CENTER_ACTION);

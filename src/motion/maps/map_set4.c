@@ -15,7 +15,7 @@
 void draw_underground() {
     draw_big_map("Underground");
 
-    drawBuilding_default(49, 6, " CC ", -1);
+    drawBuilding_default(49, 6, " CC ", DOORS_NEW_MAP);
     add_portal(49+9/2, 6+2, MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-2, MAP_CER_CITY, true);
 
     add_connection_to_big_map(MAP_BOTTOM, 3, MAP_VERM_CITY);
@@ -44,7 +44,7 @@ void draw_vermillion_city() {
         add_npc_by_id(MAP_X+27, MAP_Y+MAP_HEIGHT-2, 5, PLAYER_MOVING_LEFT);
     }
 
-    drawBuilding_default(MAP_X+4, MAP_Y+11, "GYM", -1);
+    drawBuilding_default(MAP_X+4, MAP_Y+11, "GYM", DOORS_NEW_MAP);
     add_building_portal(MAP_X+4, MAP_Y+11, MAP_GYM3);
     
     add_cuttable_tree(MAP_X+18, MAP_Y+14);

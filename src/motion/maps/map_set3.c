@@ -65,7 +65,7 @@ void draw_cer_city() {
     drawBuilding_default(MAP_X+30,MAP_Y+8, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+10,MAP_Y+12, "Mart", MART_ACTION);
 
-    drawBuilding_default(MAP_X+30+DEFAULT_BUILDING_WIDTH,MAP_Y+8, "GYM", -1);
+    drawBuilding_default(MAP_X+30+DEFAULT_BUILDING_WIDTH,MAP_Y+8, "GYM", DOORS_NEW_MAP);
     add_building_portal(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+8, MAP_GYM2);
 
     if (!has_battled_trainer(202)) {
