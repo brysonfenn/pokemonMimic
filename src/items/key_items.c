@@ -146,7 +146,12 @@ void give_fossil_pokemon(int fossil_index, int fossil_type) {
 
     print_to_list("Your fossil was successfully processed!\n \n"); sleep(3);
 
-    Pokemon fossil_pok = *create_new_pokemon(id, 15, 0, 0);
+    //Fossil Pokemon level should be average of pokemon in party
+    int level = 0;
+    for (int i = 0; i < player.numInParty; i++) level += (player.party[i].level);
+    level /= player.numInParty;
+
+    Pokemon fossil_pok = *create_new_pokemon(id, level, 0, 0);
 
     //If player already has 6 pokemon, transfer the new pokemon to the PC
     if (player.numInParty >= 6) {
