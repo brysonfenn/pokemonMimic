@@ -19,32 +19,6 @@ Pokemon emptyPok = {"MissingNo",    0,100,100,   0,   0,    0,    0,    0, NO_TY
 static Pokemon_id pok_id_list[10] = { POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE, POKEMON_CATERPIE, POKEMON_WEEDLE,
   POKEMON_PIDGEY, POKEMON_RATTATA, POKEMON_SANDSHREW };
 
-static Pokemon_id wild_pok_lists[30][10] = {
-//#Pok, levels, ID'S...
-  { 3,   5, 7,  POKEMON_BULBASAUR, POKEMON_CHARMANDER, POKEMON_SQUIRTLE }, //No Map is #0
-  { 2,   3, 5,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #1 Viridian City
-  { 3,   3, 5,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_ODDISH }, //Map #2 Route 2
-  { 2,   2, 4,  POKEMON_PIDGEY, POKEMON_RATTATA }, //Map #3 Route 1
-  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #4 Starter Town
-  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #5 Lab
-  { 6,   3, 6,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU, POKEMON_METAPOD, POKEMON_KAKUNA, POKEMON_PIDGEOTTO }, //Map #6 Vir Forest
-  { 3,   4, 6,  POKEMON_NIDORAN_F, POKEMON_SANDSHREW, POKEMON_SPEAROW }, //Map #7 Pewter City
-  // { 1,  17,17,  POKEMON_KADABRA }, //Map #7 Pewter City Test Pokemon
-  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #8 Gym
-  { 3,   5, 8,  POKEMON_JIGGLYPUFF, POKEMON_MANKEY, POKEMON_NIDORAN_M }, //Map #9 Route 3
-  { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //Map #10 Mt Moon N
-  { 3,   8, 10, POKEMON_VULPIX, POKEMON_EKANS, POKEMON_MANKEY }, //Map #11 Cerulean City
-  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #12 Gym 2
-  { 4,   8, 10, POKEMON_PONYTA, POKEMON_POLIWAG, POKEMON_VULPIX, POKEMON_MEOWTH }, //Map #13 Route 4
-  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #14 Underground NS
-  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #15 Vermillion City
-  { 4,   9, 12, POKEMON_BELLSPROUT, POKEMON_PONYTA, POKEMON_DODUO, POKEMON_DROWZEE }, //Map #16 Route 5
-  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #17 Vermillion City
-  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #18 Vermillion City
-  { 1,  95,95,  POKEMON_CHARMELEON }, //Map #19 Vermillion City
-  { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //Map #20 Mt Moon S
-};
-
 static Pokemon newest_pokemon;
 
 
@@ -67,6 +41,7 @@ void pokemon_init(Pokemon * new_pok, int level, int level_min, int level_max) {
   pokemon_give_moves(new_pok);
 }
 
+
 //Create a new pokemon. **Immediately dereference the returned pokemon**
 Pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int level_max) {
   newest_pokemon = *get_pokemon_frame(pok_id);
@@ -74,18 +49,15 @@ Pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int le
   return (&newest_pokemon);
 }
 
+
 //Free all memory used by a pokemon
 void destroy_pokemon(Pokemon * pok) {
   if (pok->hidden_conditions != NULL) {
     free(pok->hidden_conditions);
   }
-}
-
-//Return a random pokemon of any possible
-Pokemon * get_random_pokemon(int level_min, int level_max) {
-  int pok_position = rand() % NUM_CREATED_POKEMON;
-  Pokemon * new_pok = create_new_pokemon(pok_id_list[pok_position], RANDOM_LEVEL, level_min, level_max);
-  return new_pok;
+  if (pok->hidden_condition_values != NULL) {
+    free(pok->hidden_condition_values);
+  }
 }
 
 
@@ -104,11 +76,13 @@ Pokemon * get_random_wild_pokemon(int level_min, int level_max) {
     set_level = 99;
   }
   else {
+    int * wild_pok_list = get_wild_pok_list();
+
     //Get the position of a random pokemon based on the the player's current map
-    pok_position = (rand() % wild_pok_lists[player.loc->map][0]) + 3;
-    new_pok_id = wild_pok_lists[player.loc->map][pok_position];
-    min_level = wild_pok_lists[player.loc->map][1];
-    max_level = wild_pok_lists[player.loc->map][2];
+    pok_position = (rand() % wild_pok_list[0]) + 3;
+    new_pok_id = wild_pok_list[pok_position];
+    min_level = wild_pok_list[1];
+    max_level = wild_pok_list[2];
   }
 
   // new_pok_id = POKEMON_PIDGEY;

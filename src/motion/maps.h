@@ -15,6 +15,8 @@ typedef enum { MAP_GENERIC,
 //Draw elements (like grass, trees, etc) according to map text file
 void draw_static_elements();
 
+int * get_wild_pok_list();
+
 //Change map drawing function according to map_num
 void change_map_funcs(int map_num, void (**draw_map)());
 

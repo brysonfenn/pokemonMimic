@@ -15,6 +15,7 @@
 #include "../player.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
+#include "../monsters/pokemon.h"
 
 //Map functions
 static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map, 
@@ -23,49 +24,87 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_cer_city, &draw_gym2, &draw_route4, &draw_underground, &draw_vermillion_city,
                                     &draw_route5, &draw_ss_anne1, &draw_ss_anne2, &draw_gym3, &draw_mt_moon_s };
 
-//Draw elements (like grass, trees, etc) according to map text file
-void draw_static_elements() {
-    char map_name[32] = "empty_map";
+char map_file_name[32];
+static int * wild_pok_list;
 
+static Pokemon_id wild_pok_lists[30][10] = {
+//#Pok, levels, ID'S...
+  { 2,   3, 5,  POKEMON_PIDGEY, POKEMON_RATTATA }, //#0 Viridian City
+  { 2,   2, 4,  POKEMON_PIDGEY, POKEMON_RATTATA }, //#1 Route 1
+  { 3,   3, 5,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_ODDISH }, //#2 Route 2
+  { 6,   3, 6,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU, POKEMON_METAPOD, POKEMON_KAKUNA, POKEMON_PIDGEOTTO }, //#3 Vir Forest
+  { 3,   4, 6,  POKEMON_NIDORAN_F, POKEMON_SANDSHREW, POKEMON_SPEAROW }, //#4 Pewter City
+  { 3,   5, 8,  POKEMON_JIGGLYPUFF, POKEMON_MANKEY, POKEMON_NIDORAN_M }, //#5 Route 3
+  { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //#6 Mt Moon S
+  { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //#7 Mt Moon N
+  { 3,   8, 10, POKEMON_VULPIX, POKEMON_EKANS, POKEMON_MANKEY }, //#8 Cerulean City
+  { 4,   8, 10, POKEMON_PONYTA, POKEMON_POLIWAG, POKEMON_VULPIX, POKEMON_MEOWTH }, //#9 Route 4
+  { 4,   9, 12, POKEMON_BELLSPROUT, POKEMON_PONYTA, POKEMON_DODUO, POKEMON_DROWZEE }, //#10 Route 5
+  { 1,  99, 99, POKEMON_CHARMELEON } //#11 Default list
+};
+
+
+//Change map drawing function according to map_num
+void change_map_funcs(int map_num, void (**draw_map)()) {
+    //If map is outside the range, choose generic map functions
+    if (map_num < 1 || map_num > MAX_MAP_NUM) {
+        *draw_map = &draw_generic_map;
+        return;
+    }
+    *draw_map = draw_funcs[map_num];
+
+    //Update Static elements map
+    char map_name[32] = "empty_map";
     switch (player.loc->map) {
         case MAP_R1:
             sprintf(map_name, "route1");
+            wild_pok_list = &(wild_pok_lists[1]);
             break;
         case MAP_VIRIDIAN:
             sprintf(map_name, "vir_city");
+            wild_pok_list = &(wild_pok_lists[0]);
             break;
         case MAP_R2:
             sprintf(map_name, "route2");
+            wild_pok_list = &(wild_pok_lists[2]);
             break;
         case MAP_VIR_FOREST:
             sprintf(map_name, "vir_forest");
+            wild_pok_list = &(wild_pok_lists[3]);
             break;
         case MAP_PEW_CITY:
             sprintf(map_name, "pew_city");
+            wild_pok_list = &(wild_pok_lists[4]);
             break;
         case MAP_R3:
             sprintf(map_name, "route3");
-            break;
-        case MAP_MT_MOON_N:
-            sprintf(map_name, "mt_moon_n");
+            wild_pok_list = &(wild_pok_lists[5]);
             break;
         case MAP_MT_MOON_S:
             sprintf(map_name, "mt_moon_s");
+            wild_pok_list = &(wild_pok_lists[6]);
+            break;
+        case MAP_MT_MOON_N:
+            sprintf(map_name, "mt_moon_n");
+            wild_pok_list = &(wild_pok_lists[7]);
             break;
         case MAP_CER_CITY:
             sprintf(map_name, "cer_city");
+            wild_pok_list = &(wild_pok_lists[8]);
             break;
         case MAP_GYM2:
             sprintf(map_name, "gym2");
             break;
         case MAP_R4:
             sprintf(map_name, "route4");
+            wild_pok_list = &(wild_pok_lists[9]);
             break;
         case MAP_UG_NS:
             sprintf(map_name, "underground");
             break;
         case MAP_R5:
             sprintf(map_name, "route5");
+            wild_pok_list = &(wild_pok_lists[10]);
             break;
         case MAP_SS_ANNE1:
             sprintf(map_name, "ss_anne1");
@@ -78,11 +117,23 @@ void draw_static_elements() {
             break;
         default:
             sprintf(map_name, "empty_map");
+            wild_pok_list = &(wild_pok_lists[11]);
             break;
     }
 
-    char file_name[64];
-    sprintf(file_name, "maps/%s.txt", map_name);
+    sprintf(map_file_name, "maps/%s.txt", map_name);
+}
+
+
+int * get_wild_pok_list() {
+    return wild_pok_list;
+}
+
+
+//Draw elements (like grass, trees, etc) according to map text file
+void draw_static_elements() {
+    char file_name[64] = "maps/empty_map.txt";
+    sprintf(file_name, "%s", map_file_name);
     FILE *file = fopen(file_name, "r");  // Open the file for reading
 
     if (file == NULL) {
@@ -141,16 +192,6 @@ void draw_static_elements() {
     fclose(file);  // Close the file
 }
 
-
-//Change map drawing function according to map_num
-void change_map_funcs(int map_num, void (**draw_map)()) {
-    //If map is outside the range, choose generic map functions
-    if (map_num < 1 || map_num > MAX_MAP_NUM) {
-        *draw_map = &draw_generic_map;
-        return;
-    }
-    *draw_map = draw_funcs[map_num];
-}
 
 //Notify player of moving back to pokecenter, then move them
 void move_player_to_poke_center() {

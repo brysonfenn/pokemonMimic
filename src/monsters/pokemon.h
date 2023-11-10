@@ -128,9 +128,6 @@ Pokemon * create_new_pokemon(Pokemon_id pok_id, int level, int level_min, int le
 //Free all memory used by a pokemon
 void destroy_pokemon(Pokemon * pok);
 
-//Return a random pokemon of any possible
-Pokemon * get_random_pokemon(int level_min, int level_max);
-
 //Return a random pokemon, excluding starters
 //Always immediately dereference the return value of this function.
 Pokemon * get_random_wild_pokemon(int level_min, int level_max);
