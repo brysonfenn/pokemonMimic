@@ -21,7 +21,7 @@ void default_load();
 //Initialize player struct
 //  If save_file == 0, start new game
 //  If save_file != 0, load player from previous save file
-void player_init(int save_file) {
+void player_init(int save_file) { 
   player.bag = malloc(sizeof(Item) * 30);
   player.key_items = malloc(sizeof(int) * 30);
   player.hm_tms = malloc(sizeof(int) * 30);
