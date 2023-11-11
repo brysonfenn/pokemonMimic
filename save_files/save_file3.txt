@@ -1,6 +1,6 @@
 Last Saved: 11/06/2023 21:05:55
 Player: Elliot H
-6 6 5 3770 0
+6 6 5 3770 1
 Location: {11,(41,12)}
 Heal Center: {11,(37,12)}
 Pokemon: 

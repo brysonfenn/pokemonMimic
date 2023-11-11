@@ -11,17 +11,18 @@
 #define NUM_NPCS 30
 char message[LINE_SIZE];
 
-static NPC n0 = { 000, "No Name", NO_ITEM };
-static NPC n1 = { 001, "Finn", FIRE_STONE };
-static NPC n2 = { 002, "Monty", MOON_STONE };
-static NPC n3 = { 003, "Bill", SS_TICKET };
-static NPC n4 = { 004, "Guard", NO_ITEM };
-static NPC n5 = { 005, "Guard", NO_ITEM };
-static NPC n6 = { 006, "Captain Jacobs", HM_CUT };
-static NPC n7 = { 007, "Lily", LEAF_STONE };
+static NPC n0 = {  0, "No Name", NO_ITEM };
+static NPC n1 = {  1, "Finn", FIRE_STONE };
+static NPC n2 = {  2, "Monty", MOON_STONE };
+static NPC n3 = {  3, "Bill", SS_TICKET };
+static NPC n4 = {  4, "Guard", NO_ITEM };
+static NPC n5 = {  5, "Guard", NO_ITEM };
+static NPC n6 = {  6, "Captain Jacobs", HM_CUT };
+static NPC n7 = {  7, "Lily", LEAF_STONE };
+static NPC n8 = {  8, "Ted", K_ITEM_FOSSIL_AMBER };
 
 
-static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2, &n3, &n4, &n5, &n6, &n7 };
+static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2, &n3, &n4, &n5, &n6, &n7, &n8 };
 
 struct NPC * get_npc(int npc_id) {
     return npcs[npc_id];

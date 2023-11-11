@@ -6,8 +6,8 @@
 #include "../monsters/pokemon.h"
 #include "../monsters/conditions.h"
 
-static char key_item_names[10][32] = {"Empty Key Item", "Helix Fossil", "Dome Fossil", "Helix Fossil Voucher",
-    "Dome Fossil Voucher", "SS Ticket" };
+static char key_item_names[10][32] = {"Empty Key Item", "Helix Fossil", "Dome Fossil", "Old Amber",
+    "Helix Fossil Voucher", "Dome Fossil Voucher", "Old Amber Voucher", "SS Ticket" };
 
 
 void take_fossil(int fossil_index, int fossil_type);
@@ -52,11 +52,7 @@ void handle_get_fossil() {
     clear();
     begin_list();
 
-    if (has_key_item(K_ITEM_FOSSIL_HELIX) >= 0 || has_key_item(K_ITEM_FOSSIL_DOME) >= 0) {
-        print_to_list("You already have a fossil!"); sleep(2);
-        player.loc->y += 1;
-        return;
-    }
+    player.NPCs_done |= 0x01;
 
     print_to_list("Select one:\n  Helix Fossil\n  Dome Fossil\n  Cancel");
     int input = get_selection(1, 2, 0);
@@ -88,6 +84,10 @@ void handle_process_fossil() {
         item_id = K_ITEM_FOSSIL_DOME;
         item_index = has_key_item(K_ITEM_FOSSIL_DOME);
     }
+    else if (has_key_item(K_ITEM_FOSSIL_AMBER) >= 0) {
+        item_id = K_ITEM_FOSSIL_AMBER;
+        item_index = has_key_item(K_ITEM_FOSSIL_AMBER);
+    }
     else if (has_key_item(K_HELIX_VOUCHER) >= 0) {
         item_id = K_HELIX_VOUCHER;
         item_index = has_key_item(K_HELIX_VOUCHER);
@@ -96,13 +96,17 @@ void handle_process_fossil() {
         item_id = K_DOME_VOUCHER;
         item_index = has_key_item(K_DOME_VOUCHER);
     }
+    else if (has_key_item(K_AMBER_VOUCHER) >= 0) {
+        item_id = K_AMBER_VOUCHER;
+        item_index = has_key_item(K_AMBER_VOUCHER);
+    }
     else {
         print_to_list("You don't have a fossil!"); sleep(2);
         player.loc->y += 1;
         return;
     }
 
-    if (item_id == K_ITEM_FOSSIL_DOME || item_id == K_ITEM_FOSSIL_HELIX) {
+    if (item_id == K_ITEM_FOSSIL_DOME || item_id == K_ITEM_FOSSIL_HELIX || item_id == K_ITEM_FOSSIL_AMBER) {
         take_fossil(item_index, item_id);
     }
     else {
@@ -122,7 +126,8 @@ void take_fossil(int fossil_index, int fossil_type) {
     int input = get_selection(1, 1, 0);
 
     if (fossil_type == K_ITEM_FOSSIL_DOME) fossil_type = K_DOME_VOUCHER;
-    else fossil_type = K_HELIX_VOUCHER;
+    else if (fossil_type == K_ITEM_FOSSIL_HELIX) fossil_type = K_HELIX_VOUCHER;
+    else fossil_type = K_AMBER_VOUCHER;
     id = fossil_type - 200;
 
     if (input == 0) {           //Yes
@@ -140,8 +145,9 @@ void give_fossil_pokemon(int fossil_index, int fossil_type) {
     int id = 0;
 
     if (fossil_type == K_HELIX_VOUCHER) { id = POKEMON_OMANYTE; }
-    else { id = POKEMON_KABUTO; }
-
+    else if (fossil_type == K_DOME_VOUCHER) { id = POKEMON_KABUTO; }
+    else { id = POKEMON_AERODACTYL; }
+ 
     remove_key_item(fossil_type);
 
     print_to_list("Your fossil was successfully processed!\n \n"); sleep(3);

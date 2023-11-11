@@ -23,7 +23,7 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_vir_forest, &draw_pew_city, &draw_gym1, &draw_route3, &draw_mt_moon_n,
                                     &draw_cer_city, &draw_gym2, &draw_route4, &draw_underground, &draw_vermillion_city,
                                     &draw_route5, &draw_ss_anne1, &draw_ss_anne2, &draw_gym3, &draw_mt_moon_s,
-                                    &draw_route6, &draw_dig_cave, &draw_route7 };
+                                    &draw_route6, &draw_dig_cave, &draw_route7, &draw_museum };
 
 char map_file_name[32];
 static int * wild_pok_list;
@@ -43,7 +43,8 @@ static Pokemon_id wild_pok_lists[32][12] = {
   { 4,   9, 12, POKEMON_BELLSPROUT, POKEMON_PONYTA, POKEMON_DODUO, POKEMON_DROWZEE }, //#10 Route 5
   { 1,  99, 99, POKEMON_CHARMELEON }, //#11 Default list
   { 4,  11, 14, POKEMON_ABRA, POKEMON_DROWZEE, POKEMON_KOFFING, POKEMON_TANGELA }, //#12 Route 6
-  { 2,  14, 16, POKEMON_DIGLETT, POKEMON_DUGTRIO } //#13 Diglett's Cave
+  { 2,  14, 16, POKEMON_DIGLETT, POKEMON_DUGTRIO }, //#13 Diglett's Cave
+  { 4,  13, 15, POKEMON_ABRA, POKEMON_TANGELA, POKEMON_BEEDRILL, POKEMON_BUTTERFREE } //#14 Route 7
 };
 
 
@@ -128,7 +129,10 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             break;
         case MAP_R7:
             sprintf(map_name, "route7");
-            wild_pok_list = &(wild_pok_lists[12]);
+            wild_pok_list = &(wild_pok_lists[14]);
+            break;
+        case MAP_MUSEUM:
+            sprintf(map_name, "museum");
             break;
         default:
             sprintf(map_name, "empty_map");

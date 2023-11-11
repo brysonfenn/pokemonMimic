@@ -6,6 +6,7 @@
 #include "../location.h"
 #include "../doors.h"
 #include "../maps.h"
+#include "../selectables.h"
 
 #include "../../battles/trainer.h"
 #include "../../print/print_utils.h"
@@ -63,11 +64,16 @@ void draw_pew_city() {
     add_connection_to_big_map(MAP_BOTTOM, MAP_WIDTH-8, MAP_VIR_FOREST);
     add_connection_to_big_map(MAP_RIGHT, 8, MAP_R3);
     
-    drawBuilding_default(MAP_X+5,MAP_Y+2, "GYM", DOORS_NEW_MAP);
-    add_building_portal(MAP_X+5, MAP_Y+2, MAP_GYM1);
+    drawBuilding_default(MAP_X+9,MAP_Y+10, "GYM", DOORS_NEW_MAP);
+    add_building_portal(MAP_X+9, MAP_Y+10, MAP_GYM1);
 
-    drawBuilding_default(MAP_X+25,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+8,MAP_Y+11, "Mart", MART_ACTION);
+    drawBuilding_default(MAP_X+1,MAP_Y+1, "MUS", DOORS_NEW_MAP);
+    add_building_portal(MAP_X+1, MAP_Y+1, MAP_MUSEUM);
+
+    add_cuttable_tree(MAP_X+10, MAP_Y+4);
+
+    drawBuilding_default(MAP_X+33,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
+    drawBuilding_default(MAP_X+26,MAP_Y+6, "Mart", MART_ACTION);
 
     add_trainer_by_id(MAP_X+45,MAP_Y+1, 9, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+48,MAP_Y+1, 10, PLAYER_MOVING_DOWN);
@@ -80,7 +86,7 @@ void draw_pew_city() {
 
 
 void draw_gym1() {
-    draw_interior(MAP_X+5, MAP_Y+2, MAP_PEW_CITY);
+    draw_interior(MAP_X+9, MAP_Y+10, MAP_PEW_CITY);
     begin_message_box();
     draw_big_map("Pewter City Gym");
 
@@ -94,4 +100,13 @@ void draw_gym1() {
     mvaddch(INTERIOR_Y+1, INTERIOR_X+1, ACS_LRCORNER);
     add_trainer_by_id(INTERIOR_X+1, INTERIOR_Y+2, 201, PLAYER_MOVING_RIGHT);
     mvaddch(INTERIOR_Y+3, INTERIOR_X+1, ACS_URCORNER);
+}
+
+
+void draw_museum() {
+    draw_interior(MAP_X+1, MAP_Y+1, MAP_PEW_CITY);
+    begin_message_box();
+    draw_big_map("Pewter City Museum");
+
+    add_npc_by_id(INTERIOR_X+INTERIOR_WIDTH-4, INTERIOR_Y+3, 8, PLAYER_MOVING_RIGHT);
 }

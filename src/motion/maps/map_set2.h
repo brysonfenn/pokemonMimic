@@ -11,4 +11,6 @@ void draw_pew_city();
 
 void draw_gym1();
 
+void draw_museum();
+
 #endif //MAP_SET2_H
