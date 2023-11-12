@@ -19,15 +19,83 @@
 #include "menu.h"
 
 
+#define BEGIN_X MAP_X + 2
+#define BEGIN_Y MAP_Y + 2
+char example_str[30] = "";
+
+
+void print_alphabet(char curr_char);
 
 void test_function() {
-    load_game(1);
+    char curr_char = ' ';
+    int ch, string_length = 0;
+    print_alphabet(curr_char);
+    sprintf(example_str, "");
+    mvprintw(MAP_Y+17, MAP_X+3, "[%s]", example_str);
 
-    init_motion();
-    change_map(player.loc->map, player.loc->x, player.loc->y);
+    while (1) {
+        ch = getch();
 
-    begin_message_box();
-    print_to_message_box("Mr. and Mrs. Dursley, of number four, Privet Drive, were proud to say that they were perfectly normal, thank you very much. They were the last people you'd expect to be involved in anything strange or mysterious, because they just didn't hold with such nonsense.");
-    
+        switch (ch) {
+            case KEY_UP:
+                if (curr_char - 14 >= ' ') curr_char -= 14;
+                break;
+            case KEY_DOWN:
+                if (curr_char + 14 <= 'z') curr_char += 14;
+                break;
+            case KEY_LEFT:
+                if (curr_char == 't') curr_char = 'z';
+                else if ((curr_char - ' ') % 14 == 0) curr_char += 13;
+                else curr_char--;
+                break;
+            case KEY_RIGHT:
+                if (curr_char == 'z') curr_char = 't';
+                else if ((curr_char - ' ') % 14 == 13) curr_char -= 13;
+                else curr_char++;
+                break;
+            case SELECT_CHAR:
+                string_length = strlen(example_str);
+                if (string_length < 30) {
+                    example_str[string_length] = curr_char;
+                    example_str[string_length+1] = '\0';
+                }
+                break;
+            case CANCEL_CHAR:
+                string_length = strlen(example_str);
+                if (string_length > 0) {
+                    example_str[string_length-1] = '\0';
+                }
+                break;
+            default:
+                break;
+        }
+
+        print_alphabet(curr_char);
+        mvprintw(MAP_Y+17, MAP_X+3, "[%s]", example_str);
+        
+
+    }
+
     await_user();
+}
+
+
+void print_alphabet(char curr_char) {
+    int curr_x = BEGIN_X;
+    int curr_y = BEGIN_Y;
+    char c = ' ';
+
+    begin_list();
+
+    while (c <= 'z') {
+        if (c == curr_char) attrset(COLOR_PAIR(INVERSE_COLOR));
+        mvprintw(curr_y, curr_x, "%c", c);
+        curr_x += 4;
+        if (curr_x >= MAP_X+MAP_WIDTH) {
+            curr_x = BEGIN_X;
+            curr_y += 2;
+        }
+        if (c == curr_char) attrset(COLOR_PAIR(DEFAULT_COLOR));
+        c++;
+    }
 }

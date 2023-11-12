@@ -59,6 +59,7 @@
 #define TREE_COLOR 7
 #define WATER_COLOR 8
 #define NPC_COLOR 9
+#define INVERSE_COLOR 10
 
 #define SELECT_CHAR 'z'
 #define CANCEL_CHAR 'x'

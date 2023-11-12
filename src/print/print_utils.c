@@ -120,6 +120,7 @@ void resume_ncurses() {
   init_pair(TREE_COLOR, COLOR_RED, COLOR_GREEN);
   init_pair(WATER_COLOR, COLOR_BLUE, COLOR_BLACK);
   init_pair(NPC_COLOR, COLOR_BLUE, COLOR_BLACK);
+  init_pair(INVERSE_COLOR, COLOR_BLACK, COLOR_WHITE);
 }
 
 //End ncurses library functionality
