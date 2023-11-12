@@ -32,12 +32,6 @@ typedef struct Item {
   int func_arg;
 } Item;
 
-extern Item empty_item;
-extern Item potion;
-extern Item super_potion;
-extern Item pokeball;
-extern Item greatball;
-
 //Returns an item pointer by its ID number. Should be immediately dereferenced
 Item * get_item_by_id(int id_num);
 

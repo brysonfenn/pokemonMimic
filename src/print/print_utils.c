@@ -391,7 +391,7 @@ void print_alphabet(char curr_char) {
   while (c <= INPUT_NAME_DONE_CHAR) {
     if (c == curr_char) attrset(COLOR_PAIR(INVERSE_COLOR));
 
-    if (c == INPUT_NAME_DONE_CHAR) mvprintw(curr_y, curr_x, "Done");
+    if (c == INPUT_NAME_DONE_CHAR) mvprintw(curr_y, MAP_X+MAP_WIDTH-10, "Done");
     else mvprintw(curr_y, curr_x, "%c", c);
     
     curr_x += 4;
