@@ -44,8 +44,9 @@ void main_menu() {
         //This is the actual main menu
         case MENU:
             begin_list();
-            print_to_list("  Back\n  Pokemon\n  Bag\n  Key Items\n  HMs/TMs\n  Player\n");
-            print_to_list("  Save Game\n  Load Game\n  Power Off\n\n");
+            sprintf(print_str, "  Back\n  Pokemon\n  Bag\n  Key Items\n  HMs/TMs\n  %s\n", player.name);
+            sprintf(print_str, "%s  Save Game\n  Load Game\n  Power Off\n\n", print_str);
+            print_to_list(print_str);
 
             inputNum = get_selection(0, 8, last_selection);
             if (inputNum == PRESSED_B) inputNum = MOVING;

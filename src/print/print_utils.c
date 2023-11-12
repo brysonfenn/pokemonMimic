@@ -20,6 +20,9 @@
 #include "print_defines.h"
 
 
+static char name_input_str[30] = "";
+
+
 //Print a list of Pokemon (used for party and PC)
 void print_pokemon_list(struct Pokemon * pokList, int list_size) {
   char list_str[8192] = "";
@@ -317,4 +320,86 @@ void restore_print_state() {
     }
   }
   refresh();
+}
+
+
+//Get name input from user
+char * get_name_input(char * target_for_name) {
+  char curr_char = ' ';
+  int ch, string_length = 0;
+  print_alphabet(curr_char);
+  sprintf(name_input_str, "");
+  mvprintw(MAP_Y+2, MAP_X+1, "Name %s: [%s]", target_for_name, name_input_str);
+
+  while (1) {
+    ch = getch();
+
+    switch (ch) {
+      case KEY_UP:
+        if (curr_char - 14 >= ' ') curr_char -= 14;
+        break;
+      case KEY_DOWN:
+        if (curr_char + 14 > 'z' && curr_char <= 's') curr_char = INPUT_NAME_DONE_CHAR;
+        else if (curr_char + 14 <= 'z') curr_char += 14;
+        break;
+      case KEY_LEFT:
+        if (curr_char == 't') curr_char = INPUT_NAME_DONE_CHAR;
+        else if ((curr_char - ' ') % 14 == 0) curr_char += 13;
+        else curr_char--;
+        break;
+      case KEY_RIGHT:
+        if (curr_char == INPUT_NAME_DONE_CHAR) curr_char = 't';
+        else if (curr_char == 'z') curr_char = INPUT_NAME_DONE_CHAR;
+        else if ((curr_char - ' ') % 14 == 13) curr_char -= 13;
+        else curr_char++;
+        break;
+      case SELECT_CHAR:
+        string_length = strlen(name_input_str);
+        //Handle done
+        if (string_length > 0 && curr_char == INPUT_NAME_DONE_CHAR) {
+          return name_input_str;
+        }
+        //Add letter to the string
+        else if (string_length < 30) {
+          name_input_str[string_length] = curr_char;
+          name_input_str[string_length+1] = '\0';
+        }
+          break;
+      case CANCEL_CHAR:
+        string_length = strlen(name_input_str);
+        if (string_length > 0) {
+          name_input_str[string_length-1] = '\0';
+        }
+        break;
+      default:
+        break;  
+    }
+
+    print_alphabet(curr_char);
+    mvprintw(MAP_Y+2, MAP_X+1, "Name %s: [%s]", target_for_name, name_input_str);
+  }
+}
+
+//Print all typable letters
+void print_alphabet(char curr_char) {
+  int curr_x = ALPHABET_BEGIN_X;
+  int curr_y = ALPHABET_BEGIN_Y;
+  char c = ' ';
+
+  begin_list();
+
+  while (c <= INPUT_NAME_DONE_CHAR) {
+    if (c == curr_char) attrset(COLOR_PAIR(INVERSE_COLOR));
+
+    if (c == INPUT_NAME_DONE_CHAR) mvprintw(curr_y, curr_x, "Done");
+    else mvprintw(curr_y, curr_x, "%c", c);
+    
+    curr_x += 4;
+    if (curr_x >= MAP_X+MAP_WIDTH) {
+      curr_x = ALPHABET_BEGIN_X;
+      curr_y += 2;
+    }
+    if (c == curr_char) attrset(COLOR_PAIR(DEFAULT_COLOR));
+    c++;
+  }
 }

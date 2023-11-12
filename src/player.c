@@ -114,7 +114,7 @@ void set_enemy_pokemon(struct Pokemon * pok) {
 //Print player information
 void printPlayer() {
   char print_str[1024] = "";
-  sprintf(print_str, "%s  B:\n", print_str);
+  sprintf(print_str, "%s  %s:\n", print_str, player.name);
   sprintf(print_str, "%s  Number of Pokemon: %d\n", print_str, player.numInParty);
   sprintf(print_str, "%s  Money: $%d\n \n  Badges:\n    ", print_str, player.money);
 

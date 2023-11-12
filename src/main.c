@@ -56,6 +56,8 @@ int main(void) {
       }
     }
     else if (input_num == 0) {
+      sprintf(player.name, "%s", get_name_input("yourself"));
+
       begin_list();
       print_to_list("Select a starter Pokémon: \n  Bulbasaur\n  Charmander\n  Squirtle\n  Cancel");
       input_num = get_selection(1, 3, 0);

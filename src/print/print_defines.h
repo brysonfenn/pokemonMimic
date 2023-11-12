@@ -65,4 +65,10 @@
 #define CANCEL_CHAR 'x'
 #define MENU_CHAR 'm'
 
+
+//NAME INPUT
+#define ALPHABET_BEGIN_X MAP_X + 2
+#define ALPHABET_BEGIN_Y MAP_Y + 6
+#define INPUT_NAME_DONE_CHAR ('z' + 1)
+
 #endif // PRINT_DEFINES_H
