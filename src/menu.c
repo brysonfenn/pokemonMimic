@@ -135,8 +135,14 @@ void main_menu() {
         case PLAYER:
             begin_list();
             printPlayer();
-            print_to_list("\n \n  Cancel\n");
-            inputNum = get_selection(8,0,0);
+            print_to_list("\n \n  Change Player Name\n  Cancel\n");
+            inputNum = get_selection(8,1,1);
+
+            //Change name if input is 0
+            if (inputNum == 0) {
+                sprintf(player.name, "%s", get_name_input("yourself"));
+            }
+
             current_display = MENU;
             break;
 

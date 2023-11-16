@@ -19,8 +19,9 @@
 
 #include "print_defines.h"
 
+#define MAX_NAME_INPUT_LENGTH 10
 
-static char name_input_str[30] = "";
+static char name_input_str[MAX_NAME_INPUT_LENGTH] = "";
 
 
 //Print a list of Pokemon (used for party and PC)
@@ -332,11 +333,13 @@ char * get_name_input(char * target_for_name) {
   mvprintw(MAP_Y+2, MAP_X+1, "Name %s: [%s]", target_for_name, name_input_str);
 
   while (1) {
+    flushinp();
     ch = getch();
 
     switch (ch) {
       case KEY_UP:
-        if (curr_char - 14 >= ' ') curr_char -= 14;
+        if (curr_char == INPUT_NAME_DONE_CHAR) curr_char = 'r';
+        else if (curr_char - 14 >= ' ') curr_char -= 14;
         break;
       case KEY_DOWN:
         if (curr_char + 14 > 'z' && curr_char <= 's') curr_char = INPUT_NAME_DONE_CHAR;
@@ -356,15 +359,20 @@ char * get_name_input(char * target_for_name) {
       case SELECT_CHAR:
         string_length = strlen(name_input_str);
         //Handle done
-        if (string_length > 0 && curr_char == INPUT_NAME_DONE_CHAR) {
-          return name_input_str;
+        if (curr_char == INPUT_NAME_DONE_CHAR) {
+          //Make sure there are enough characters, and name cannot be a space
+          if (string_length > 0) {
+            if (name_input_str[0] == ' ') { mvprintw(MAP_Y+3, MAP_X+1, "Name cannot begin with space"); refresh(); sleep(2); break; }
+            else { return name_input_str; }
+          }
+          else break;
         }
         //Add letter to the string
-        else if (string_length < 30) {
+        else if (string_length < MAX_NAME_INPUT_LENGTH) {
           name_input_str[string_length] = curr_char;
           name_input_str[string_length+1] = '\0';
         }
-          break;
+        break;
       case CANCEL_CHAR:
         string_length = strlen(name_input_str);
         if (string_length > 0) {
@@ -391,7 +399,7 @@ void print_alphabet(char curr_char) {
   while (c <= INPUT_NAME_DONE_CHAR) {
     if (c == curr_char) attrset(COLOR_PAIR(INVERSE_COLOR));
 
-    if (c == INPUT_NAME_DONE_CHAR) mvprintw(curr_y, MAP_X+MAP_WIDTH-10, "Done");
+    if (c == INPUT_NAME_DONE_CHAR) mvprintw(curr_y, MAP_X+MAP_WIDTH-8, "Done");
     else mvprintw(curr_y, curr_x, "%c", c);
     
     curr_x += 4;
