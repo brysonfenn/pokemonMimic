@@ -106,6 +106,7 @@ void draw_route6() {
     add_portal(MAP_X+2+9/2, MAP_Y+1+2, MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-2, MAP_DIG_CAVE, true);
 
     add_npc_by_id(MAP_X+1, MAP_Y+12, 7, PLAYER_MOVING_RIGHT);
+    add_npc_by_id(MAP_X+5, MAP_Y+4, 9, PLAYER_MOVING_DOWN);
 }
 
 

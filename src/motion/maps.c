@@ -23,28 +23,29 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_vir_forest, &draw_pew_city, &draw_gym1, &draw_route3, &draw_mt_moon_n,
                                     &draw_cer_city, &draw_gym2, &draw_route4, &draw_underground, &draw_vermillion_city,
                                     &draw_route5, &draw_ss_anne1, &draw_ss_anne2, &draw_gym3, &draw_mt_moon_s,
-                                    &draw_route6, &draw_dig_cave, &draw_route7, &draw_museum };
+                                    &draw_route6, &draw_dig_cave, &draw_route7, &draw_museum, &draw_route8 };
 
 char map_file_name[32];
 static int * wild_pok_list;
 
 static Pokemon_id wild_pok_lists[32][12] = {
-//#Pok, levels, ID'S...
-  { 2,   3, 5,  POKEMON_PIDGEY, POKEMON_RATTATA }, //#0 Viridian City
-  { 2,   2, 4,  POKEMON_PIDGEY, POKEMON_RATTATA }, //#1 Route 1
-  { 3,   3, 5,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_ODDISH }, //#2 Route 2
-  { 6,   3, 6,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU, POKEMON_METAPOD, POKEMON_KAKUNA, POKEMON_PIDGEOTTO }, //#3 Vir Forest
-  { 3,   4, 6,  POKEMON_NIDORAN_F, POKEMON_SANDSHREW, POKEMON_SPEAROW }, //#4 Pewter City
-  { 3,   5, 8,  POKEMON_JIGGLYPUFF, POKEMON_MANKEY, POKEMON_NIDORAN_M }, //#5 Route 3
-  { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //#6 Mt Moon S
-  { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //#7 Mt Moon N
-  { 3,   8, 10, POKEMON_VULPIX, POKEMON_EKANS, POKEMON_MANKEY }, //#8 Cerulean City
-  { 4,   8, 10, POKEMON_PONYTA, POKEMON_POLIWAG, POKEMON_VULPIX, POKEMON_MEOWTH }, //#9 Route 4
-  { 4,   9, 12, POKEMON_BELLSPROUT, POKEMON_PONYTA, POKEMON_DODUO, POKEMON_DROWZEE }, //#10 Route 5
-  { 1,  99, 99, POKEMON_CHARMELEON }, //#11 Default list
-  { 4,  11, 14, POKEMON_ABRA, POKEMON_DROWZEE, POKEMON_KOFFING, POKEMON_TANGELA }, //#12 Route 6
-  { 2,  14, 16, POKEMON_DIGLETT, POKEMON_DUGTRIO }, //#13 Diglett's Cave
-  { 4,  13, 15, POKEMON_ABRA, POKEMON_TANGELA, POKEMON_BEEDRILL, POKEMON_BUTTERFREE } //#14 Route 7
+//  #Pok, levels, ID'S...
+    { 2,   3, 5,  POKEMON_PIDGEY, POKEMON_RATTATA }, //#0 Viridian City
+    { 2,   2, 4,  POKEMON_PIDGEY, POKEMON_RATTATA }, //#1 Route 1
+    { 3,   3, 5,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_ODDISH }, //#2 Route 2
+    { 6,   3, 6,  POKEMON_CATERPIE, POKEMON_WEEDLE, POKEMON_PIKACHU, POKEMON_METAPOD, POKEMON_KAKUNA, POKEMON_PIDGEOTTO }, //#3 Vir Forest
+    { 3,   4, 6,  POKEMON_NIDORAN_F, POKEMON_SANDSHREW, POKEMON_SPEAROW }, //#4 Pewter City
+    { 3,   5, 8,  POKEMON_JIGGLYPUFF, POKEMON_MANKEY, POKEMON_NIDORAN_M }, //#5 Route 3
+    { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //#6 Mt Moon S
+    { 4,   7, 9,  POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_CLEFAIRY, POKEMON_PARAS }, //#7 Mt Moon N
+    { 3,   8, 10, POKEMON_VULPIX, POKEMON_EKANS, POKEMON_MANKEY }, //#8 Cerulean City
+    { 4,   8, 10, POKEMON_PONYTA, POKEMON_POLIWAG, POKEMON_VULPIX, POKEMON_MEOWTH }, //#9 Route 4
+    { 4,   9, 12, POKEMON_BELLSPROUT, POKEMON_PONYTA, POKEMON_DODUO, POKEMON_DROWZEE }, //#10 Route 5
+    { 1,  99, 99, POKEMON_CHARMELEON }, //#11 Default list
+    { 4,  11, 14, POKEMON_ABRA, POKEMON_DROWZEE, POKEMON_KOFFING, POKEMON_TANGELA }, //#12 Route 6
+    { 2,  14, 16, POKEMON_DIGLETT, POKEMON_DUGTRIO }, //#13 Diglett's Cave
+    { 4,  13, 15, POKEMON_ABRA, POKEMON_TANGELA, POKEMON_BEEDRILL, POKEMON_BUTTERFREE }, //#14 Route 7
+    { 3,  15, 19, POKEMON_TAUROS, POKEMON_EKANS, POKEMON_DODUO, POKEMON_FARFETCHD }         //#15 Route 8
 };
 
 
@@ -133,6 +134,10 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             break;
         case MAP_MUSEUM:
             sprintf(map_name, "museum");
+            break;
+        case MAP_R8:
+            sprintf(map_name, "route8");
+            wild_pok_list = &(wild_pok_lists[15]);
             break;
         default:
             sprintf(map_name, "empty_map");

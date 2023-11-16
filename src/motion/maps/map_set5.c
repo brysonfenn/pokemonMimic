@@ -12,3 +12,9 @@
 #include "../../print/print_defines.h"
 
 
+void draw_route8() {
+    draw_big_map("Route 8");
+
+    add_connection_to_big_map(MAP_LEFT, 8, MAP_CER_CITY);
+    add_cuttable_tree(MAP_X+4, MAP_Y+8);
+}

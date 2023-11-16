@@ -132,7 +132,7 @@ void take_fossil(int fossil_index, int fossil_type) {
 
     if (input == 0) {           //Yes
         player.key_items[fossil_index] = fossil_type;
-        sprintf(print_str, "Received a %s", key_item_names[id]);
+        sprintf(print_str, "Received %s", key_item_names[id]);
         print_to_list(print_str); sleep(2);
     }
     else if (input == 1) {      //No

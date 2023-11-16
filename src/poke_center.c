@@ -119,6 +119,22 @@ void handle_PC() {
         }
       }
 
+      //View attack stats
+      else if (input_num2 == 2) {
+        input_num2 = 0;
+        while (input_num2 != 4 && input_num2 != PRESSED_B) {
+          tempPok = player.pc_storage[input_num1];
+          begin_list();
+          sprintf(print_str, "%s Attacks:", tempPok.name);
+          print_to_list(print_str);
+          print_pokemon_attacks(&(player.pc_storage[input_num1]), LIST_BOX_Y+3);
+          mvprintw(LIST_BOX_Y+4,POKE_SUMMARY_ATKS_X+MOVE_SELECT_SPACING*2, "  Cancel");
+          input_num2 = 
+            get_move_selection(POKE_SUMMARY_ATKS_X-2, LIST_BOX_Y+3, &(player.pc_storage[input_num1]), 0);
+        }
+        continue;
+      }
+
     }
   }
   

@@ -138,10 +138,16 @@ int get_move_selection(int start_x, int start_y, struct Pokemon* pok, int last_s
   flushinp();
   while (1) {
     mvprintw(start_y+3, start_x+2, "\t\t\t\t\t");
+    mvprintw(start_y+4, start_x+2, "\t\t\t\t\t");
     if (selection != 4) {
       currAttack = pok->attacks[selection];
       mvprintw(start_y+3, start_x+2, "%s", get_type_string_by_id(currAttack.type));
       mvprintw(start_y+3, start_x+14, "PP: %d/%d", currAttack.curr_pp, currAttack.max_pp);
+      mvprintw(start_y+4, start_x+2, "Power: %d", pok->attacks[selection].power);
+
+      if (pok->attacks[selection].accuracy == NO_MISS) mvprintw(start_y+4, start_x+14, "Accuracy: ---");
+      else mvprintw(start_y+4, start_x+14, "Accuracy: %d", pok->attacks[selection].accuracy);
+      
     }
 
     adjust_cursors(selection, start_x, start_y);
@@ -152,9 +158,9 @@ int get_move_selection(int start_x, int start_y, struct Pokemon* pok, int last_s
     switch (ch) {
       case KEY_UP:
       case KEY_DOWN:
-        if (selection == 0 && player.current_pokemon->numAttacks > 2) 
+        if (selection == 0 && pok->numAttacks > 2) 
           selection = 2;
-        else if (selection == 1 && player.current_pokemon->numAttacks > 3) 
+        else if (selection == 1 && pok->numAttacks > 3) 
           selection = 3;
         else if (selection == 2) selection = 0;
         else if (selection == 3) selection = 1;

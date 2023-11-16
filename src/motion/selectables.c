@@ -252,5 +252,7 @@ int handle_cut(struct Selectable * selectable_ptr) {
         selectable_ptr->x = 0;
     }
 
+    begin_message_box();
+
     return 0;
 }

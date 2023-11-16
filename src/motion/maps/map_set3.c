@@ -59,6 +59,7 @@ void draw_cer_city() {
 
     add_connection_to_big_map(MAP_LEFT, 7, MAP_MT_MOON_N);
     add_connection_to_big_map(MAP_TOP, MAP_WIDTH - 5, MAP_R4);
+    add_connection_to_big_map(MAP_RIGHT, 8, MAP_R8);
 
     //Bottom-right portal goes to Underground
     draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 4);
