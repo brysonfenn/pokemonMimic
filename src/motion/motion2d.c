@@ -160,7 +160,7 @@ void handle_motion() {
 
         int random = rand() % 100;
         bool encounter = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR);
-        encounter = encounter || ((player.loc->map==MAP_MT_MOON_N || player.loc->map==MAP_MT_MOON_S /*|| player.loc->map==MAP_DIG_CAVE*/) 
+        encounter = encounter || ((player.loc->map==MAP_MT_MOON_N || player.loc->map==MAP_MT_MOON_S || player.loc->map==MAP_DIG_CAVE) 
                 && random < 5);   //Extra percentage for caves
         encounter = encounter && !(leave_msg_count < 5) && (random < 10);     //Chance of encounter
 
