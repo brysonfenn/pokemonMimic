@@ -61,8 +61,10 @@
 #define NPC_COLOR 9
 #define INVERSE_COLOR 10
 
-#define SELECT_CHAR 'z'
-#define CANCEL_CHAR 'x'
+#define SELECT_CHAR 'a'
+#define SELECT_CHAR_2 'z'
+#define CANCEL_CHAR 'b'
+#define CANCEL_CHAR_2 'x'
 #define MENU_CHAR 'm'
 
 

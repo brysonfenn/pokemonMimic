@@ -60,7 +60,4 @@ void restore_print_state();
 //Get name input from user
 char * get_name_input(char * target_for_name);
 
-//Print all typable letters
-void print_alphabet(char curr_char);
-
 #endif // PRINT_UTILS_H

@@ -20,9 +20,11 @@
 #include "print_defines.h"
 
 #define MAX_NAME_INPUT_LENGTH 10
+#define PRINT_ENTIRE_ALPHABET 0
 
 static char name_input_str[MAX_NAME_INPUT_LENGTH] = "";
 
+void print_alphabet(char curr_char, char last_char);
 
 //Print a list of Pokemon (used for party and PC)
 void print_pokemon_list(struct Pokemon * pokList, int list_size) {
@@ -165,8 +167,10 @@ int get_selection(int first_line, int highest_option_num, int last_selection) {
         else cursor_y++;
         break;
       case SELECT_CHAR:
+      case SELECT_CHAR_2:
         return (cursor_y - actual_first_line);
       case CANCEL_CHAR:
+      case CANCEL_CHAR_2:
         return (PRESSED_B);
         break;
       default:
@@ -237,7 +241,7 @@ int await_user() {
   int ch = '~';
   flushinp();
   mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "Press '%c'", SELECT_CHAR); refresh();
-  while (ch != SELECT_CHAR) ch = getch();
+  while (ch != SELECT_CHAR && ch != SELECT_CHAR_2) ch = getch();
 
   mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "           "); refresh();
 }
@@ -327,10 +331,11 @@ void restore_print_state() {
 //Get name input from user
 char * get_name_input(char * target_for_name) {
   char curr_char = ' ';
+  char last_char = PRINT_ENTIRE_ALPHABET;
   int ch, string_length = 0;
-  print_alphabet(curr_char);
+  print_alphabet(curr_char, last_char);
   sprintf(name_input_str, "");
-  mvprintw(MAP_Y+2, MAP_X+1, "Name %s: [%s]", target_for_name, name_input_str);
+  mvprintw(MAP_Y+2, MAP_X+1, "Name %s: [%s] ", target_for_name, name_input_str);
 
   while (1) {
     flushinp();
@@ -357,13 +362,17 @@ char * get_name_input(char * target_for_name) {
         else curr_char++;
         break;
       case SELECT_CHAR:
+      case SELECT_CHAR_2:
         string_length = strlen(name_input_str);
         //Handle done
         if (curr_char == INPUT_NAME_DONE_CHAR) {
           //Make sure there are enough characters, and name cannot be a space
           if (string_length > 0) {
-            if (name_input_str[0] == ' ') { mvprintw(MAP_Y+3, MAP_X+1, "Name cannot begin with space"); refresh(); sleep(2); break; }
-            else { return name_input_str; }
+            if (name_input_str[0] == ' ' || name_input_str[string_length-1] == ' ') 
+              { mvprintw(MAP_Y+3, MAP_X+1, "Name cannot begin or end with a space"); refresh(); sleep(2); 
+                mvprintw(MAP_Y+3, MAP_X+1, "                                     "); break; }
+            else 
+              { return name_input_str; }
           }
           else break;
         }
@@ -374,6 +383,7 @@ char * get_name_input(char * target_for_name) {
         }
         break;
       case CANCEL_CHAR:
+      case CANCEL_CHAR_2:
         string_length = strlen(name_input_str);
         if (string_length > 0) {
           name_input_str[string_length-1] = '\0';
@@ -383,24 +393,29 @@ char * get_name_input(char * target_for_name) {
         break;  
     }
 
-    print_alphabet(curr_char);
-    mvprintw(MAP_Y+2, MAP_X+1, "Name %s: [%s]", target_for_name, name_input_str);
+    print_alphabet(curr_char, last_char);
+    last_char = curr_char;
+    mvprintw(MAP_Y+2, MAP_X+1, "Name %s: [%s] ", target_for_name, name_input_str);
   }
 }
 
-//Print all typable letters
-void print_alphabet(char curr_char) {
+//Print all typable letters if last_char == PRINT_ENTIRE_ALPHABET, else update to highlight new letter
+void print_alphabet(char curr_char, char last_char) {
   int curr_x = ALPHABET_BEGIN_X;
   int curr_y = ALPHABET_BEGIN_Y;
   char c = ' ';
 
-  begin_list();
+  if (last_char == PRINT_ENTIRE_ALPHABET) begin_list();
 
   while (c <= INPUT_NAME_DONE_CHAR) {
     if (c == curr_char) attrset(COLOR_PAIR(INVERSE_COLOR));
 
-    if (c == INPUT_NAME_DONE_CHAR) mvprintw(curr_y, MAP_X+MAP_WIDTH-8, "Done");
-    else mvprintw(curr_y, curr_x, "%c", c);
+    //Print every letter if PRINT_ENTIRE_ALPHABET requested, else just update single letters
+    if (c == curr_char || c == last_char || last_char == PRINT_ENTIRE_ALPHABET) {
+      if (c == INPUT_NAME_DONE_CHAR) mvprintw(curr_y, MAP_X+MAP_WIDTH-8, "Done");
+      else mvprintw(curr_y, curr_x, "%c", c);
+    }
+    
     
     curr_x += 4;
     if (curr_x >= MAP_X+MAP_WIDTH) {

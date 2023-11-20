@@ -113,6 +113,7 @@ void handle_motion() {
                 break;
 
             case SELECT_CHAR:
+            case SELECT_CHAR_2:
                 //Redraw player
                 attrset(COLOR_PAIR(PLAYER_COLOR)); mvaddch(*player_y, *player_x, player_char); 
                 attrset(COLOR_PAIR(DEFAULT_COLOR));

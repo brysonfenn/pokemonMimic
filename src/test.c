@@ -24,12 +24,6 @@ static char test_str[64] = "";
 static char test_str2[64] = "";
 
 
-void print_alphabet(char curr_char);
-
 void test_function() {
-    sprintf(test_str, "%s", get_name_input("yourself"));
 
-    begin_list();
-    sprintf(test_str2, "Entered String: %s", test_str);
-    print_to_list(test_str2); sleep(2);
 }

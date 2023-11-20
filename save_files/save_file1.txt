@@ -1,24 +1,20 @@
-Last Saved: 11/06/2023 21:05:40
-Player: B
-2 1 4 1100 2
-Location: {1,(22,10)}
-Heal Center: {1,(32,9)}
+Last Saved: 11/19/2023 19:00:57
+Player: B Test Man
+2 0 2 2005 0
+Location: {7,(41,5)}
+Heal Center: {7,(41,5)}
 Pokemon: 
-Bulbasaur 1 25 25 3 12 12 12 12 12 8 728 GRASS POISON 576b8a59 0 0
-	Tackle. 1 35
+Charmander 4 22 22 3 12 11 11 11 14 7 465 FIRE NONE 1ff70e76 0 0
+	Scratch. 2 35
 	Growl. 3 40
-	Leech seed. 11 10
-Rattata 19 19 19 2 11 9 7 8 13 6 216 NORMAL NONE 554805e5 0 0
+	Ember. 12 25
+Rattata 19 19 19 2 11 9 7 8 13 6 220 NORMAL NONE 3658114b 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 PC: 
-Rattata2 19 19 19 1 11 9 7 8 13 6 216 NORMAL NONE 554805e5 0 0
-	Tackle. 1 35
 Bag:
 Potion. 1 1
-Super Potion. 2 2
-Poke Ball. 3 4
-Fire Stone. 12 1
+Poke Ball. 3 3
 
 Key Items: 0
   
@@ -26,5 +22,5 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 0
-  
+Trainers Battled: 4
+  251 1 5 7 

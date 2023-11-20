@@ -96,9 +96,11 @@ int handle_mart() {
         else inputNum--;
         break;
       case SELECT_CHAR:
+      case SELECT_CHAR_2:
         done_selecting = 1;
         break;
       case CANCEL_CHAR:
+      case CANCEL_CHAR_2:
         return ITEM_FAILURE;
         break;
       default:

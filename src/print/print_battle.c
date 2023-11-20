@@ -114,6 +114,7 @@ int get_battle_selection(int first_line, int last_selection) {
          else selection++;
         break;
       case SELECT_CHAR:
+      case SELECT_CHAR_2:
         return (selection);
       default:
         break;
@@ -176,6 +177,7 @@ int get_move_selection(int start_x, int start_y, struct Pokemon* pok, int last_s
          else selection++;
         break;
       case SELECT_CHAR:
+      case SELECT_CHAR_2:
         //Do not allow if PP is gone
         if (pok->attacks[selection].curr_pp == 0 && selection != 4) {
           text_box_cursors(TEXT_BOX_BEGINNING);
@@ -193,6 +195,7 @@ int get_move_selection(int start_x, int start_y, struct Pokemon* pok, int last_s
         clear_selection_text();
         return (selection);
       case CANCEL_CHAR:
+      case CANCEL_CHAR_2:
         return (PRESSED_B);
       default:
         break;

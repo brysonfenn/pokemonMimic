@@ -278,7 +278,7 @@ int handle_evolve_in_battle(Pokemon * pok, int next_pok_id) {
 
   while (1) {
     int ch = getch();
-    if (ch == CANCEL_CHAR) {
+    if (ch == CANCEL_CHAR || ch == CANCEL_CHAR_2) {
       pressed_b = true;
       break;
     }
