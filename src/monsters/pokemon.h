@@ -36,6 +36,7 @@ typedef struct Pokemon {
   int16_t baseSpeed;
 
   int32_t iv;
+  int32_t ev;
 
   Type type1;
   Type type2;
@@ -111,6 +112,9 @@ void pokemon_give_moves(Pokemon *pok);
 
 //Return iv field
 int pokemon_get_iv(Pokemon * pok, char type);
+
+//Return ev field
+int pokemon_get_ev(Pokemon * pok, char type);
 
 //Put evolution level for pokemon with ID # pok_id in level_target and ID # of evolution in evolve_id
 void get_evolve_level_and_id(int pok_id, int * level_target, int * evolve_id);

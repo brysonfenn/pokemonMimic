@@ -28,6 +28,7 @@ static Pokemon newest_pokemon;
   //if level = 0, get random level from range level_min:level_max
 void pokemon_init(Pokemon * new_pok, int level, int level_min, int level_max) {
   new_pok->iv = rand();
+  new_pok->ev = 0;
   new_pok->numAttacks = 0;
   new_pok->visible_condition = NO_CONDITION;
   new_pok->num_hidden_conditions = 0;

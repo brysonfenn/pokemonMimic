@@ -21,6 +21,7 @@
 
 #define MAX_NAME_INPUT_LENGTH 10
 #define PRINT_ENTIRE_ALPHABET 0
+#define ALPHABET_FIRST_CHAR 'A'
 
 static char name_input_str[MAX_NAME_INPUT_LENGTH] = "";
 
@@ -330,7 +331,7 @@ void restore_print_state() {
 
 //Get name input from user
 char * get_name_input(char * target_for_name) {
-  char curr_char = ' ';
+  char curr_char = ALPHABET_FIRST_CHAR;
   char last_char = PRINT_ENTIRE_ALPHABET;
   int ch, string_length = 0;
   print_alphabet(curr_char, last_char);
@@ -343,22 +344,24 @@ char * get_name_input(char * target_for_name) {
 
     switch (ch) {
       case KEY_UP:
-        if (curr_char == INPUT_NAME_DONE_CHAR) curr_char = 'r';
-        else if (curr_char - 14 >= ' ') curr_char -= 14;
+        if (curr_char == INPUT_NAME_DONE_CHAR) curr_char = ALPHABET_FIRST_CHAR + ((('z' - ALPHABET_FIRST_CHAR+1) / 14) * 14) - 1;
+        else if (curr_char - 14 >= ALPHABET_FIRST_CHAR) curr_char -= 14;
         break;
       case KEY_DOWN:
-        if (curr_char + 14 > 'z' && curr_char <= 's') curr_char = INPUT_NAME_DONE_CHAR;
+        if (curr_char + 14 > 'z') curr_char = INPUT_NAME_DONE_CHAR;
         else if (curr_char + 14 <= 'z') curr_char += 14;
         break;
       case KEY_LEFT:
-        if (curr_char == 't') curr_char = INPUT_NAME_DONE_CHAR;
-        else if ((curr_char - ' ') % 14 == 0) curr_char += 13;
+        if (curr_char == INPUT_NAME_DONE_CHAR) curr_char = INPUT_NAME_DONE_CHAR;
+        else if (curr_char == ALPHABET_FIRST_CHAR + ((('z' - ALPHABET_FIRST_CHAR) / 14) * 14)) curr_char = INPUT_NAME_DONE_CHAR;
+        else if ((curr_char - ALPHABET_FIRST_CHAR) % 14 == 0) curr_char += 13;
         else curr_char--;
         break;
       case KEY_RIGHT:
-        if (curr_char == INPUT_NAME_DONE_CHAR) curr_char = 't';
+        if (curr_char == INPUT_NAME_DONE_CHAR) curr_char = INPUT_NAME_DONE_CHAR;
+        else if (curr_char == INPUT_NAME_DONE_CHAR) curr_char = ALPHABET_FIRST_CHAR + ((('z' - ALPHABET_FIRST_CHAR) / 14) * 14);
+        else if ((curr_char - ALPHABET_FIRST_CHAR) % 14 == 13) curr_char -= 13;
         else if (curr_char == 'z') curr_char = INPUT_NAME_DONE_CHAR;
-        else if ((curr_char - ' ') % 14 == 13) curr_char -= 13;
         else curr_char++;
         break;
       case SELECT_CHAR:
@@ -403,7 +406,7 @@ char * get_name_input(char * target_for_name) {
 void print_alphabet(char curr_char, char last_char) {
   int curr_x = ALPHABET_BEGIN_X;
   int curr_y = ALPHABET_BEGIN_Y;
-  char c = ' ';
+  char c = ALPHABET_FIRST_CHAR;
 
   if (last_char == PRINT_ENTIRE_ALPHABET) begin_list();
 
@@ -412,7 +415,7 @@ void print_alphabet(char curr_char, char last_char) {
 
     //Print every letter if PRINT_ENTIRE_ALPHABET requested, else just update single letters
     if (c == curr_char || c == last_char || last_char == PRINT_ENTIRE_ALPHABET) {
-      if (c == INPUT_NAME_DONE_CHAR) mvprintw(curr_y, MAP_X+MAP_WIDTH-8, "Done");
+      if (c == INPUT_NAME_DONE_CHAR) mvprintw(curr_y+2, MAP_X+MAP_WIDTH-8, "Done");
       else mvprintw(curr_y, curr_x, "%c", c);
     }
     

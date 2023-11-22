@@ -381,3 +381,29 @@ int pokemon_get_iv(Pokemon * pok, char type) {
 
   return 0;
 }
+
+
+//Return ev field
+int pokemon_get_ev(Pokemon * pok, char type) {
+  //Each iv occupies 5 bits of the iv random number
+  switch (type) {
+    case IV_HP:
+      return ((pok->ev >> 0) & 0xFF);
+      break;
+    case IV_ATTACK:
+    case IV_SP_ATTACK:
+      return ((pok->ev >> 8) & 0xFF);
+      break;
+    case IV_DEFENSE:
+    case IV_SP_DEFENSE:
+      return ((pok->ev >> 16) & 0xFF);
+      break;
+    case IV_SPEED:
+      return ((pok->ev >> 24) & 0xFF);
+      break;
+    default:
+      break;
+  }
+
+  return 0;
+}

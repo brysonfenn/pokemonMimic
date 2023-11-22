@@ -64,7 +64,8 @@ void handle_motion() {
 
     while (1) {
         flushinp();
-        if ((ch = getch()) == MENU_CHAR) break;
+        ch = getch();
+        if (ch == MENU_CHAR || ch == MENU_CHAR_2) break;
         
         mvaddch(*player_y, *player_x, ' '); 
         switch (ch) {

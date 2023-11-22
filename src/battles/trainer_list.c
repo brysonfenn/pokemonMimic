@@ -17,7 +17,6 @@ static Trainer t007 = {7, "Bugcatcher Josh", "I like Bug Pokemon, what about you
 static Trainer t008 = {8, "Trainer Liam", "I'm a trainer, just like you!", 2, {POKEMON_ODDISH, POKEMON_NIDORAN_M}, {5,5} };
 static Trainer t009 = {9, "Trainer Allison", "I'm not supposed to be here.", 2, {POKEMON_PIDGEY, POKEMON_MANKEY}, {6,7} };
 static Trainer t010 = {10, "Trainer Michelle", "I was forced into this.", 2, {POKEMON_MEOWTH, POKEMON_PSYDUCK}, {6,7} };
-
 static Trainer t011 = {11, "Trainer Olivia", "I'm not super into this.", 2, {POKEMON_NIDORAN_F, POKEMON_VULPIX}, {7,7} };
 static Trainer t012 = {12, "Trainer Jordan", "Stonks.", 2, {POKEMON_SANDSHREW, POKEMON_DIGLETT}, {7,9} };
 static Trainer t013 = {13, "Trainer Heather", "There's no Rowlett in this Generation.", 2, {POKEMON_ODDISH, POKEMON_PIDGEOTTO}, {8,7} };
@@ -44,10 +43,11 @@ static Trainer t032 = {32, "Traveler Jackson", "This boat is huge!", 3, {POKEMON
 static Trainer t033 = {33, "Madame Halpin", "I'm getting too old for battles!", 2, {POKEMON_TANGELA, POKEMON_JYNX}, {18,18} };
 static Trainer t034 = {34, "Sailor Garth", "My water type Pokemon love this boat", 3, {POKEMON_SEEL, POKEMON_POLIWHIRL, POKEMON_CLOYSTER}, {18,18,19} };
 static Trainer t035 = {35, "Sir Lewis", "I'm starting my retirement here", 2, {POKEMON_PERSIAN, POKEMON_ELECTABUZZ}, {19,20} };
+static Trainer t036 = {22, "Trainer Mindy", "I'm scared of bugs!", 2, {POKEMON_VULPIX, POKEMON_PIKACHU}, {6,7} };
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
     &t001, &t002, &t003, &t004, &t005, &t006, &t007, &t008, &t009, &t010, &t011, &t012, &t013, &t014, &t015, &t016, &t017, &t018, &t019, &t020,
-    &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028, &t029, &t030, &t031, &t032, &t033, &t034, &t035
+    &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028, &t029, &t030, &t031, &t032, &t033, &t034, &t035, &t036
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };

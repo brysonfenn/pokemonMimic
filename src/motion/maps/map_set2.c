@@ -55,6 +55,7 @@ void draw_vir_forest() {
 
     add_trainer_by_id(MAP_X+11, MAP_Y+7, 5, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+6, 7, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+1, MAP_Y+3, 36, PLAYER_MOVING_RIGHT);
 }
 
 

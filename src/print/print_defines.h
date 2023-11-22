@@ -65,7 +65,8 @@
 #define SELECT_CHAR_2 'z'
 #define CANCEL_CHAR 'b'
 #define CANCEL_CHAR_2 'x'
-#define MENU_CHAR 'm'
+#define MENU_CHAR 'y'
+#define MENU_CHAR_2 'm'
 
 
 //NAME INPUT
