@@ -1,19 +1,19 @@
-Last Saved: 11/06/2023 21:06:24
+Last Saved: 11/23/2023 10:25:22
 Player: Olivia
 4 0 2 2335 0
 Location: {2,(10,2)}
 Heal Center: {1,(32,9)}
 Pokemon: 
-Charmander 4 31 31 3 17 15 11 10 20 12 1728 FIRE NONE 76bc4c2d 0 0
+Charmander 4 31 31 3 17 15 11 10 20 12 1728 FIRE NONE 76bc4c2d 0 0 0
 	Scratch. 2 35
 	Growl. 3 40
 	Ember. 12 25
-Pidgey 16 17 17 1 8 8 6 6 9 4 64 NORMAL FLYING 442d5b41 0 0
+Pidgey 16 17 17 1 8 8 6 6 9 4 64 NORMAL FLYING 442d5b41 0 0 0
 	Tackle. 1 35
-Sandshrew 27 22 22 2 14 15 8 8 9 6 216 GROUND NONE 7dc22b5e 0 0
+Sandshrew 27 22 22 2 14 15 8 8 9 6 216 GROUND NONE 7dc22b5e 0 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
-Bulbasaur 1 25 25 3 12 12 14 14 12 8 512 GRASS POISON 56ad68d2 0 0
+Bulbasaur 1 25 25 3 12 12 14 14 12 8 512 GRASS POISON 56ad68d2 0 0 0
 	Tackle. 1 35
 	Growl. 3 40
 	Leech seed. 11 10

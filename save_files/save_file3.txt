@@ -1,28 +1,28 @@
-Last Saved: 11/06/2023 21:05:55
+Last Saved: 11/23/2023 10:24:56
 Player: Elliot H
 6 6 5 3770 1
 Location: {11,(41,12)}
 Heal Center: {11,(37,12)}
 Pokemon: 
-Poliwag 60 29 29 2 16 13 14 12 24 11 1372 WATER NONE 7e0bfcc1 0 0
+Poliwag 60 29 29 2 16 13 14 12 24 11 1372 WATER NONE 7e0bfcc1 0 0 0
 	Bubble. 13 30
 	Hypnosis. 125 20
-Nidoran♂ 32 24 24 2 15 10 12 11 12 7 343 POISON NONE 42cd13d1 0 0
+Nidoran♂ 32 24 24 2 15 10 12 11 12 7 343 POISON NONE 42cd13d1 0 0 0
 	Leer. 52 30
 	Peck. 51 35
-Charmeleon 5 44 44 4 30 23 35 28 34 16 4836 FIRE NONE 772e8be0 0 4
+Charmeleon 5 44 44 4 30 23 35 28 34 16 4836 FIRE NONE 772e8be0 0 0 4
 	Scratch. 2 35
 	Growl. 3 40
 	Ember. 12 25
 	Metal Claw. 17 35
-Sandshrew 27 30 30 2 20 22 8 8 13 10 1051 GROUND NONE 24456825 0 0
+Sandshrew 27 30 30 2 20 22 8 8 13 10 1051 GROUND NONE 24456825 0 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
-Oddish 43 36 36 3 19 20 9 9 13 14 3239 GRASS POISON 12b62529 0 2
+Oddish 43 36 36 3 19 20 9 9 13 14 3239 GRASS POISON 12b62529 0 0 2
 	Absorb. 100 20
 	Sweet Scent. 19 20
 	Poison Powder. 14 35
-Pikachu 25 33 33 4 20 16 11 11 30 14 2865 ELECTRIC NONE 78e5409f 0 0
+Pikachu 25 33 33 4 20 16 11 11 30 14 2865 ELECTRIC NONE 78e5409f 0 0 0
 	Thunder Shock. 55 30
 	Growl. 3 40
 	Quick Attack. 8 30

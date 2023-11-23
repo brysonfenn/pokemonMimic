@@ -1,26 +1,26 @@
-Last Saved: 11/21/2023 17:20:48
+Last Saved: 11/23/2023 11:15:17
 Player: B Test Man
 5 0 2 2665 0
-Location: {8,(16,4)}
+Location: {7,(59,13)}
 Heal Center: {7,(40,5)}
 Pokemon: 
-Charmander 4 34 34 4 19 17 11 11 23 14 2754 FIRE NONE 1ff70e76 0 0
+Charmander 4 34 34 4 19 17 11 11 23 14 2754 FIRE NONE 1ff70e76 0 0 0
 	Scratch. 2 35
 	Growl. 3 40
 	Ember. 12 25
 	Metal Claw. 17 35
-Pidgeotto 17 34 34 3 18 17 10 11 20 11 1343 NORMAL FLYING bd87ce5 0 0
+Pidgeotto 17 34 34 3 18 17 10 11 20 11 1343 NORMAL FLYING bd87ce5 0 0 0
 	Tackle. 1 35
 	Sand Attack. 7 15
 	Gust. 38 35
-Rattata 19 21 21 3 12 9 7 8 15 7 396 NORMAL NONE 3658114b 0 0
+Rattata 19 21 21 3 12 9 7 8 15 7 396 NORMAL NONE 3658114b 0 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 	Quick Attack. 8 30
-Nidoran♀ 29 24 24 2 11 11 11 9 11 6 216 POISON NONE 7e0a221c 0 0
+Nidoran♀ 29 24 24 2 11 11 11 9 11 6 216 POISON NONE 7e0a221c 0 0 0
 	Growl. 3 40
 	Scratch. 2 35
-Pikachu 25 21 21 3 12 10 11 12 17 6 216 ELECTRIC NONE 7182ce31 0 0
+Pikachu 25 21 21 3 12 10 11 12 17 6 336 ELECTRIC NONE 7182ce31 ffffffff 0 0
 	Thunder Shock. 55 30
 	Growl. 3 40
 	Tail Whip. 4 30

@@ -24,7 +24,7 @@ static bool pokemon_needing_exp[6] = {false, false, false, false, false, false};
 //Forward Declarations
 int perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_num);
 int get_enemy_move(Pokemon * pok);
-void handle_exp(int exp);
+void handle_exp(int exp, int ev_stat_id);
 bool run_attempt();
 
 
@@ -354,11 +354,27 @@ int handle_battle(struct Pokemon * enemyPok) {
   // END BATTLE LOOP //
 
   if (!run_success && !catch_success) {
+    //Get EXP
     int exp = pokemon_get_exp_yield(enemyPok);
     float random = (float) (rand() % 25);
     exp *= (1.0 + (random / 100.0));
     if (player.trainer_battle) exp *= 1.5;
-    handle_exp(exp);
+
+    //Get ev increment
+    int stat_list[6] = {enemyPok->maxHP, enemyPok->baseAttack, enemyPok->baseDefense, 
+                    enemyPok->baseSpAttack, enemyPok->baseSpDefense, enemyPok->baseSpeed};
+    char stat_id_list[6] = { IV_HP, IV_ATTACK, IV_DEFENSE, IV_SP_ATTACK, IV_SP_DEFENSE, IV_SPEED };
+    int max_stat_val = 0;
+    int stat_id = IV_HP;
+
+    for (int i = 0; i < 6; i++) {
+      if (stat_list[i] > max_stat_val) {
+        max_stat_val = stat_list[i];
+        stat_id = stat_id_list[i];
+      }
+    }
+
+    handle_exp(exp, stat_id);
   }
 
   remove_all_hidden_conditions(enemyPok);
@@ -484,7 +500,7 @@ int get_enemy_move(Pokemon * pok) {
 
 
 //Give all pokemon exp that need it, and level up
-void handle_exp(int exp) {
+void handle_exp(int exp, int ev_stat_id) {
   Pokemon * currentPok;
   int next_level_exp;
   int num_exp_earned_pokemon = 0;
@@ -510,6 +526,9 @@ void handle_exp(int exp) {
       currentPok->exp += (exp);
       refresh(); sleep(2);
     }
+
+    //Give active pokemon ev points
+    pokemon_increment_ev(currentPok, ev_stat_id);
 
     next_level_exp = pokemon_get_next_level_exp(currentPok);
 

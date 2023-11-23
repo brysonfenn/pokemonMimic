@@ -1,17 +1,17 @@
-Last Saved: 11/06/2023 21:06:34
+Last Saved: 11/23/2023 10:25:31
 Player: Test_Player
 3 5 2 790 0
 Location: {7,(41,13)}
 Heal Center: {7,(32,9)}
 Pokemon: 
-Charizard 6 240 240 4 156 145 216 162 185 90 734250 FIRE FLYING 12bcdf73 0 0
+Charizard 6 240 240 4 156 145 216 162 185 90 734250 FIRE FLYING 12bcdf73 0 0 0
 	Disable. 115 20
 	Defense Curl. 9 20
 	Icicle Spear. 156 30
 	Sweet Scent. 19 20
-Abra 63 16 16 1 7 6 14 9 13 4 64 PSYCHIC NONE 3a4b33f6 0 0
+Abra 63 16 16 1 7 6 14 9 13 4 64 PSYCHIC NONE 3a4b33f6 0 0 0
 	Teleport. 129 20
-Caterpie 10 18 18 2 40 10 9 10 10 6 342 NONE NONE 2df200a1 0 0
+Caterpie 10 18 18 2 40 10 9 10 10 6 342 NONE NONE 2df200a1 0 0 0
 	Tackle. 1 35
 	String Shot. 5 40
 PC: 
