@@ -362,13 +362,12 @@ int handle_battle(struct Pokemon * enemyPok) {
 
         Pokemon framePok = *get_pokemon_frame(enemyPok->id_num);
 
-        //Get ev increment
+        //GET EV STAT TO INCREMENT
         int stat_list[6] = {framePok.maxHP, framePok.baseAttack, framePok.baseDefense, 
                         framePok.baseSpAttack, framePok.baseSpDefense, framePok.baseSpeed};
         char stat_id_list[6] = { IV_HP, IV_ATTACK, IV_DEFENSE, IV_SP_ATTACK, IV_SP_DEFENSE, IV_SPEED };
         int max_stat_val = 0;
         int stat_id = IV_HP;
-
         for (int i = 0; i < 6; i++) {
             if (stat_list[i] > max_stat_val) {
                 max_stat_val = stat_list[i];
@@ -376,6 +375,7 @@ int handle_battle(struct Pokemon * enemyPok) {
             }
         }
 
+        //Handle EXP and ev yield
         handle_exp(exp, stat_id);
     }
 
