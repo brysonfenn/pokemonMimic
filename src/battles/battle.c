@@ -529,8 +529,10 @@ void handle_exp(int exp, int ev_stat_id) {
             refresh(); sleep(2);
         }
 
-        //Give active pokemon ev points
-        pokemon_increment_ev(currentPok, ev_stat_id);
+        //Give active pokemon ev points if ev isn't maxed out
+        if (pokemon_get_ev(currentPok, ev_stat_id) < 0xff) {
+            pokemon_increment_ev(currentPok, ev_stat_id);
+        }
 
         next_level_exp = pokemon_get_next_level_exp(currentPok);
 

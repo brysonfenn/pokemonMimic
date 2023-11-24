@@ -1,33 +1,23 @@
-Last Saved: 11/23/2023 17:24:53
+Last Saved: 11/23/2023 21:43:58
 Player: B Test Man
-5 0 2 2665 0
-Location: {7,(59,13)}
+3 0 1 3215 0
+Location: {7,(40,5)}
 Heal Center: {7,(40,5)}
 Pokemon: 
-Charmander 4 34 31 4 19 17 11 11 23 14 2931 FIRE NONE 1ff70e76 1010001 0 0
+Charmander 4 28 28 3 17 15 11 11 18 10 1256 FIRE NONE 583c265 ffffffff 0 0
 	Scratch. 2 35
 	Growl. 3 40
-	Ember. 12 23
-	Metal Claw. 17 32
-Pidgeotto 17 34 34 3 18 17 10 11 20 11 1343 NORMAL FLYING bd87ce5 0 0 0
-	Tackle. 1 35
-	Sand Attack. 7 15
-	Gust. 38 35
-Rattata 19 21 21 3 12 9 7 8 15 7 396 NORMAL NONE 3658114b 0 0 0
-	Tackle. 1 35
-	Tail Whip. 4 30
-	Quick Attack. 8 30
-Nidoran♀ 29 24 24 2 11 11 11 9 11 6 216 POISON NONE 7e0a221c 0 0 0
-	Growl. 3 40
+	Ember. 12 25
+Charmander 4 28 28 3 17 15 11 11 18 10 1256 FIRE NONE 583c265 7060303 0 0
 	Scratch. 2 35
-Pikachu 25 21 21 3 12 10 11 12 17 6 336 ELECTRIC NONE 7182ce31 ffffffff 0 0
-	Thunder Shock. 55 30
 	Growl. 3 40
-	Tail Whip. 4 30
+	Ember. 12 25
+Oddish 43 28 28 2 14 16 12 12 11 9 880 GRASS POISON 19b2348e 6020300 0 0
+	Absorb. 100 20
+	Sweet Scent. 19 20
 PC: 
 Bag:
-Poke Ball. 3 3
-Potion. 1 2
+Potion. 1 1
 
 Key Items: 0
   
@@ -35,5 +25,5 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 12
-  251 1 5 7 2 3 12 9 10 11 22 6 
+Trainers Battled: 9
+  251 1 8 2 3 5 7 22 9 
