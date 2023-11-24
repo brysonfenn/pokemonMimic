@@ -1,14 +1,14 @@
-Last Saved: 11/23/2023 11:15:17
+Last Saved: 11/23/2023 17:24:53
 Player: B Test Man
 5 0 2 2665 0
 Location: {7,(59,13)}
 Heal Center: {7,(40,5)}
 Pokemon: 
-Charmander 4 34 34 4 19 17 11 11 23 14 2754 FIRE NONE 1ff70e76 0 0 0
+Charmander 4 34 31 4 19 17 11 11 23 14 2931 FIRE NONE 1ff70e76 1010001 0 0
 	Scratch. 2 35
 	Growl. 3 40
-	Ember. 12 25
-	Metal Claw. 17 35
+	Ember. 12 23
+	Metal Claw. 17 32
 Pidgeotto 17 34 34 3 18 17 10 11 20 11 1343 NORMAL FLYING bd87ce5 0 0 0
 	Tackle. 1 35
 	Sand Attack. 7 15
