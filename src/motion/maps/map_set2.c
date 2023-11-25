@@ -22,6 +22,7 @@
 
 void draw_vir_city() {
     draw_big_map("Viridian City");
+    loop_audio_file("vir_city.mp3");
 
     drawBuilding_default(VIR_MART_X,VIR_MART_Y, "Mart", MART_ACTION);
     drawBuilding_default(VIR_POKE_CENTER_X, VIR_POKE_CENTER_Y, "Poke", POKE_CENTER_ACTION);
@@ -47,6 +48,7 @@ void draw_route2() {
 
 void draw_vir_forest() {
     draw_big_map("Viridian Forest");
+    loop_audio_file("vir_forest.mp3");
 
     add_connection_to_big_map(MAP_BOTTOM, 7, MAP_R2);
     add_connection_to_big_map(MAP_BOTTOM, 40, MAP_R2);

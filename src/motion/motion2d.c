@@ -184,9 +184,8 @@ void handle_motion() {
             save_print_state();
             end_loop();
             play_audio_file("begin_battle.wav");
-            blink_screen(6, restore_print_state);
+            blink_screen(8, restore_print_state);
             begin_message_box(); save_print_state();
-            loop_audio_file("wild_battle.mp3");
             battle_wild_pokemon();
             init_map();
             continue;
@@ -204,6 +203,7 @@ void handle_motion() {
             trainer_x = &(curr_sel->x);
             trainer_y = &(curr_sel->y);
             trainer_ch = mvinch(*trainer_y, *trainer_x);
+            loop_audio_file("trainer_approach.mp3");
             
             while ((mvinch(*trainer_y + y_inc, *trainer_x + x_inc) & A_CHARTEXT) == ' ') {
                 attrset(COLOR_PAIR(TRAINER_COLOR));
@@ -254,13 +254,14 @@ void init_map() {
     clear();
     clear_doors();
     clear_selectables();
+
+    loop_audio_file("pallet.wav");
+
     draw_map();
     print_btn_instructions(true);
     draw_static_elements();
     draw_box(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5); //Draw message box
     leave_msg_count = 0;    //leave map label for 5 movements
-
-    loop_audio_file("pallet.wav");
 
     attrset(COLOR_PAIR(PLAYER_COLOR));
     mvaddch(*player_y, *player_x, player_char);

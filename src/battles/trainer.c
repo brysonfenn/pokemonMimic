@@ -24,10 +24,14 @@ int battle_trainer(Trainer * trainer) {
   sprintf(print_str, "\"%s\"", trainer->message);
   print_to_message_box(print_str); await_user();
 
+  end_loop();
+  play_audio_file("begin_battle.wav");
+
   //Blink screen and reset screen without battle message
   save_print_state();
-  blink_screen(5, restore_print_state);
+  blink_screen(8, restore_print_state);
   begin_message_box(); save_print_state();
+  loop_audio_file("wild_battle.mp3");
 
   //Do not allow a player with no pokemon to battle a trainer
   if (!player_get_num_alive()) {

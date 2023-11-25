@@ -6,12 +6,15 @@
 #include "../monsters/pokemon.h"
 #include "../print/print_utils.h"
 #include "battle.h"
+#include "../audio/audio_player.h"
 
 //Battle a random wild pokemon
 int battle_wild_pokemon() {
     Pokemon example_pokemon;
     char print_str[256];
     int battle_result = 0;
+
+    loop_audio_file("wild_battle.mp3");
 
     player.trainer_battle = false;
 

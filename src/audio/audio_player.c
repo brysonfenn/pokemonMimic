@@ -15,6 +15,7 @@ static ma_decoder decoder;
 static ma_device device;
 static bool looping = false;
 
+char file_path[64];
 char looping_file_name[64] = "empty";
 
 
@@ -27,7 +28,9 @@ void play_audio_file(char * file_name) {
         init_audio_player();
     }
     engine_started = true;
-    ma_engine_play_sound(&engine, file_name, NULL);
+
+    sprintf(file_path, "audio/%s", file_name);
+    ma_engine_play_sound(&engine, file_path, NULL);
 }
 
 
@@ -45,7 +48,8 @@ void loop_audio_file(char * file_name) {
         ma_decoder_uninit(&decoder);
     }
 
-    result = ma_decoder_init_file(file_name, NULL, &decoder);
+    sprintf(file_path, "audio/%s", file_name);
+    result = ma_decoder_init_file(file_path, NULL, &decoder);
     if (result != MA_SUCCESS) {
         return -2;
     }

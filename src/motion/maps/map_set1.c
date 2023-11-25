@@ -29,6 +29,7 @@ void draw_starter_town() {
 
 void draw_route1() {
     draw_big_map("Route 1");
+    loop_audio_file("route1.mp3");
     add_connection_to_big_map(MAP_TOP, 25, MAP_VIRIDIAN);
     add_connection_to_big_map(MAP_BOTTOM, 41, MAP_STARTER_TOWN);
 }
