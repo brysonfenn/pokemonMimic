@@ -13,6 +13,7 @@
 #include "monsters/pokemon.h"
 #include "menu.h"
 #include "test.h"
+#include "audio/audio_player.h"
 
 void control_c_handler();
 
@@ -21,6 +22,7 @@ int main(void) {
 
     signal(SIGINT, control_c_handler);
     resume_ncurses();
+    init_audio_player();
     
     //Initiate Everything
     srand(time(NULL));
@@ -80,7 +82,7 @@ int main(void) {
     }
 
     main_menu();
-    
+
     //Clear everything and finish
     control_c_handler();
     return 0;
@@ -90,6 +92,8 @@ int main(void) {
 void control_c_handler() {
     clear();
     pause_ncurses();
+    end_loop();
+    end_play();
 
     clearTerminal();
     free(player.loc);

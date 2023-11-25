@@ -22,6 +22,7 @@
 
 #include "../player.h"
 #include "../poke_center.h"
+#include "../audio/audio_player.h"
 
 
 //Function pointers
@@ -181,8 +182,11 @@ void handle_motion() {
 
         if (encounter) {
             save_print_state();
-            blink_screen(5, restore_print_state);
+            end_loop();
+            play_audio_file("begin_battle.wav");
+            blink_screen(6, restore_print_state);
             begin_message_box(); save_print_state();
+            loop_audio_file("wild_battle.mp3");
             battle_wild_pokemon();
             init_map();
             continue;
@@ -255,6 +259,8 @@ void init_map() {
     draw_static_elements();
     draw_box(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5); //Draw message box
     leave_msg_count = 0;    //leave map label for 5 movements
+
+    loop_audio_file("pallet.wav");
 
     attrset(COLOR_PAIR(PLAYER_COLOR));
     mvaddch(*player_y, *player_x, player_char);

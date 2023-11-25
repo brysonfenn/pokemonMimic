@@ -10,14 +10,9 @@
 
 #include "print/print_utils.h"
 #include "print/print_defines.h"
-#include "load_save.h"
 #include "player.h"
-#include "motion/location.h"
-#include "monsters/pokemon.h"
-#include "motion/map_drawing.h"
-#include "motion/motion2d.h"
-#include "menu.h"
 
+#include "audio/audio_player.h"
 
 
 static char test_str[64] = "";
@@ -25,5 +20,12 @@ static char test_str2[64] = "";
 
 
 void test_function() {
+    // play_audio_file("pallet.wav");
 
+    loop_audio_file("pallet.wav");
+
+    printw("Press Enter to quit..."); refresh();
+    sleep(2);
+    loop_audio_file("wild_battle.wav");
+    getch();
 }
