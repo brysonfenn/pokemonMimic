@@ -6,6 +6,7 @@
 
 #include "../player.h"
 #include "../monsters/pokemon.h"
+#include "../audio/audio_player.h"
 
 #define BLINK_TIME_MICROS 100000
 
@@ -115,6 +116,7 @@ int get_battle_selection(int first_line, int last_selection) {
         break;
       case SELECT_CHAR:
       case SELECT_CHAR_2:
+        audio_play_file("select_button.mp3");
         return (selection);
       default:
         break;
@@ -178,6 +180,7 @@ int get_move_selection(int start_x, int start_y, struct Pokemon* pok, int last_s
         break;
       case SELECT_CHAR:
       case SELECT_CHAR_2:
+        audio_play_file("select_button.mp3");
         //Do not allow if PP is gone
         if (pok->attacks[selection].curr_pp == 0 && selection != 4) {
           text_box_cursors(TEXT_BOX_BEGINNING);

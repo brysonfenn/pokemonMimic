@@ -157,7 +157,7 @@ void add_connection_to_big_map(int map_side, int position_on_side, int map_id) {
 
 //Blink screen a given number of times, pass in a map function to blink
 void blink_screen(int num_times, void (*draw_map_func) ()) {
-    usleep(200000);
+    usleep(150000);
     for (int i = 0; i < num_times; i++) {
         clear();
         refresh();

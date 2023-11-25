@@ -1,20 +1,16 @@
-Last Saved: 11/24/2023 22:38:22
+Last Saved: 11/25/2023 15:03:40
 Player: B Test Man
-3 0 1 3215 0
-Location: {7,(42,14)}
+2 0 1 3905 0
+Location: {7,(40,5)}
 Heal Center: {7,(40,5)}
 Pokemon: 
-Charmander 4 28 28 3 17 15 11 11 18 10 1256 FIRE NONE 583c265 ffffffff 0 0
-	Scratch. 2 35
-	Growl. 3 40
-	Ember. 12 25
-Charmander 4 28 28 3 17 15 11 11 18 10 1256 FIRE NONE 583c265 7060303 0 0
-	Scratch. 2 35
-	Growl. 3 40
-	Ember. 12 25
-Oddish 43 28 28 2 14 16 12 12 11 9 880 GRASS POISON 19b2348e 6020300 0 0
+Oddish 43 30 30 2 15 17 12 12 12 10 1191 GRASS POISON 19b2348e 7020401 0 0
 	Absorb. 100 20
 	Sweet Scent. 19 20
+Charmander 4 30 30 3 18 16 11 11 19 11 1591 FIRE NONE 583c265 8070304 0 0
+	Scratch. 2 35
+	Growl. 3 40
+	Ember. 12 25
 PC: 
 Bag:
 Potion. 1 1
@@ -25,5 +21,5 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 9
-  251 1 8 2 3 5 7 22 9 
+Trainers Battled: 11
+  251 1 8 2 3 5 7 22 9 12 10 

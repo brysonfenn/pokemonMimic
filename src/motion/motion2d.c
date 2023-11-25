@@ -183,8 +183,8 @@ void handle_motion() {
         if (encounter) {
             save_print_state();
             audio_end_loop();
-            audio_play_file("begin_battle.wav");
-            blink_screen(8, restore_print_state);
+            audio_play_file("begin_battle.mp3");
+            blink_screen(7, restore_print_state);
             begin_message_box(); save_print_state();
             battle_wild_pokemon();
             init_map();

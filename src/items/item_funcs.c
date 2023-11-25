@@ -6,6 +6,7 @@
 #include "../print/print_battle.h"
 #include "../monsters/pokemon.h"
 #include "../player.h"
+#include "../audio/audio_player.h"
 
 
 //Potion execute function
@@ -79,13 +80,16 @@ int attempt_catch(int catch_rate, char * name) {
     printBattle();
 
     text_box_cursors(TEXT_BOX_BEGINNING);
+    audio_play_file("throw_pokeball.mp3");
     printw("%s threw a %s!", player.name, name); refresh(); sleep(2);
 
     text_box_cursors(TEXT_BOX_NEXT_LINE); //Set next line for successful or unsuccessful catch
 
     //Pokemon is only caught if
     if (random < catch_rate) {
-        printw("%s was caught!", enemy_pok->name); refresh(); sleep(2);
+        audio_end_loop();
+        audio_play_file("capture.mp3");
+        printw("%s was caught!", enemy_pok->name); refresh(); sleep(3);
         give_pokemon_to_player(enemy_pok);
         return ITEM_CATCH_SUCCESS;
     }

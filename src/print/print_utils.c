@@ -16,6 +16,7 @@
 #include "../battles/battle.h"
 #include "../items/items.h"
 #include "../motion/map_drawing.h"
+#include "../audio/audio_player.h"
 
 #include "print_defines.h"
 
@@ -167,6 +168,7 @@ int get_selection(int first_line, int highest_option_num, int last_selection) {
             break;
         case SELECT_CHAR:
         case SELECT_CHAR_2:
+            audio_play_file("select_button.mp3");
             return (cursor_y - actual_first_line);
         case CANCEL_CHAR:
         case CANCEL_CHAR_2:
@@ -362,6 +364,7 @@ char * get_name_input(char * target_for_name) {
             break;
         case SELECT_CHAR:
         case SELECT_CHAR_2:
+            audio_play_file("select_button.mp3");
             string_length = strlen(name_input_str);
             //Handle done
             if (curr_char == INPUT_NAME_DONE_CHAR) {

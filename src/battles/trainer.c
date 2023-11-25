@@ -26,11 +26,11 @@ int battle_trainer(Trainer * trainer) {
     print_to_message_box(print_str); await_user();
 
     audio_end_loop();
-    audio_play_file("begin_battle.wav");
+    audio_play_file("begin_battle.mp3");
 
     //Blink screen and reset screen without battle message
     save_print_state();
-    blink_screen(8, restore_print_state);
+    blink_screen(7, restore_print_state);
     begin_message_box(); save_print_state();
     audio_loop_file("wild_battle.mp3");
 
