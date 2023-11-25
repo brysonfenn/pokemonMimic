@@ -240,6 +240,7 @@ int handle_cut(struct Selectable * selectable_ptr) {
             return 0;
         }
 
+        audio_play_file("cut_hm.mp3");
         sprintf(print_str, "%s used Cut!", cut_pok->name);
         print_to_message_box(print_str);
 

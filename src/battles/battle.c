@@ -556,6 +556,7 @@ bool run_attempt() {
     clear_text_box();
     text_box_cursors(TEXT_BOX_BEGINNING);
     if (random < chance) {
+        audio_play_file("run_away.mp3");
         printw("Got away safely."); refresh(); sleep(2);
         return true;
     }
