@@ -1,10 +1,10 @@
-eLast Saved: 11/23/2023 10:25:31
+Last Saved: 11/23/2023 10:25:31
 Player: Test_Player
 3 5 2 790 0
 Location: {7,(41,13)}
 Heal Center: {7,(32,9)}
 Pokemon: 
-Charizard 6 240 240 4 156 145 216 162 185 90 734250 FIRE FLYING 12bcdf73 0 0 0
+Charizard 6 240 240 4 156 145 216 162 185 89 734250 FIRE FLYING 12bcdf73 0 0 0
 	Disable. 115 20
 	Defense Curl. 9 20
 	Icicle Spear. 156 30

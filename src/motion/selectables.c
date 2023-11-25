@@ -14,6 +14,7 @@
 #include "../print/print_utils.h"
 #include "../player.h"
 #include "npc.h"
+#include "../audio/audio_player.h"
 
 #define HORIZONTAL_DISTANCE 10
 #define VERTICAL_DISTANCE 4
@@ -128,8 +129,14 @@ int handle_selected_selectable(int player_x, int player_y, char player_char) {
             print_to_message_box("\"We already battled\"");
             return SELECTABLE_CONTINUE_WHILE;
         }
+
+        audio_save_looping_file(0);
+        audio_loop_file("trainer_approach.mp3");
+
         //Handle trainer battle and return values from that function
         if (battle_trainer(trainer_ptr) != BATTLE_WHITE_OUT) { restore_print_state(); }
+        audio_restore_looping_file(0);
+
         return SELECTABLE_CONTINUE_WHILE;
     }
     else if (selectable_ptr->selectable_id == SELECTABLE_NPC) {

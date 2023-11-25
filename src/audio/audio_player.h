@@ -2,15 +2,19 @@
 #define AUDIO_PLAYER_H
 
 
-void play_audio_file(char * file_name);
+void audio_play_file(char * file_name);
 
-void loop_audio_file(char * file_name);
+void audio_loop_file(char * file_name);
+
+void audio_save_looping_file(int index);
+
+void audio_restore_looping_file(int index);
 
 void init_audio_player();
 
-void end_play();
+void audio_end_play();
 
-void end_loop();
+void audio_end_loop();
 
 
 #endif // AUDIO_PLAYER_H

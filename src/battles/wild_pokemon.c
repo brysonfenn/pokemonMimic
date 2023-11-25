@@ -14,7 +14,7 @@ int battle_wild_pokemon() {
     char print_str[256];
     int battle_result = 0;
 
-    loop_audio_file("wild_battle.mp3");
+    audio_loop_file("wild_battle.mp3");
 
     player.trainer_battle = false;
 

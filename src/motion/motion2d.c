@@ -182,8 +182,8 @@ void handle_motion() {
 
         if (encounter) {
             save_print_state();
-            end_loop();
-            play_audio_file("begin_battle.wav");
+            audio_end_loop();
+            audio_play_file("begin_battle.wav");
             blink_screen(8, restore_print_state);
             begin_message_box(); save_print_state();
             battle_wild_pokemon();
@@ -203,7 +203,9 @@ void handle_motion() {
             trainer_x = &(curr_sel->x);
             trainer_y = &(curr_sel->y);
             trainer_ch = mvinch(*trainer_y, *trainer_x);
-            loop_audio_file("trainer_approach.mp3");
+            
+            audio_save_looping_file(0);
+            audio_loop_file("trainer_approach.mp3");
             
             while ((mvinch(*trainer_y + y_inc, *trainer_x + x_inc) & A_CHARTEXT) == ' ') {
                 attrset(COLOR_PAIR(TRAINER_COLOR));
@@ -219,6 +221,7 @@ void handle_motion() {
                 restore_print_state();
                 print_btn_instructions(true); 
             }
+            audio_restore_looping_file(0);
             continue;
         }
     }
@@ -254,8 +257,6 @@ void init_map() {
     clear();
     clear_doors();
     clear_selectables();
-
-    loop_audio_file("pallet.wav");
 
     draw_map();
     print_btn_instructions(true);

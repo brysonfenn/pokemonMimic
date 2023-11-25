@@ -22,7 +22,7 @@
 
 void draw_vir_city() {
     draw_big_map("Viridian City");
-    loop_audio_file("vir_city.mp3");
+    audio_loop_file("vir_city.mp3");
 
     drawBuilding_default(VIR_MART_X,VIR_MART_Y, "Mart", MART_ACTION);
     drawBuilding_default(VIR_POKE_CENTER_X, VIR_POKE_CENTER_Y, "Poke", POKE_CENTER_ACTION);
@@ -34,6 +34,7 @@ void draw_vir_city() {
 
 void draw_route2() {
     draw_big_map("Route 2");
+    audio_loop_file("route1.mp3");
 
     add_connection_to_big_map(MAP_BOTTOM, 10, MAP_VIRIDIAN);
     add_connection_to_big_map(MAP_TOP, 7, MAP_VIR_FOREST);
@@ -48,7 +49,7 @@ void draw_route2() {
 
 void draw_vir_forest() {
     draw_big_map("Viridian Forest");
-    loop_audio_file("vir_forest.mp3");
+    audio_loop_file("vir_forest.mp3");
 
     add_connection_to_big_map(MAP_BOTTOM, 7, MAP_R2);
     add_connection_to_big_map(MAP_BOTTOM, 40, MAP_R2);
@@ -63,6 +64,7 @@ void draw_vir_forest() {
 
 void draw_pew_city() {
     draw_big_map("Pewter City");
+    audio_loop_file("pew_city.mp3");
 
     add_connection_to_big_map(MAP_BOTTOM, MAP_WIDTH-8, MAP_VIR_FOREST);
     add_connection_to_big_map(MAP_RIGHT, 8, MAP_R3);
@@ -92,6 +94,7 @@ void draw_gym1() {
     draw_interior(MAP_X+9, MAP_Y+10, MAP_PEW_CITY);
     begin_message_box();
     draw_big_map("Pewter City Gym");
+    audio_loop_file("gym.mp3");
 
     for (int i = 1; i <= 16; i++) {
         mvaddch(INTERIOR_Y+4, INTERIOR_X+i, '-');
@@ -110,6 +113,7 @@ void draw_museum() {
     draw_interior(MAP_X+1, MAP_Y+1, MAP_PEW_CITY);
     begin_message_box();
     draw_big_map("Pewter City Museum");
+    audio_loop_file("pallet.mp3");
 
     add_npc_by_id(INTERIOR_X+INTERIOR_WIDTH-4, INTERIOR_Y+3, 8, PLAYER_MOVING_RIGHT);
 }

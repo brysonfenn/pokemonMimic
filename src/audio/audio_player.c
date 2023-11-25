@@ -17,12 +17,13 @@ static bool looping = false;
 
 char file_path[64];
 char looping_file_name[64] = "empty";
+char saved_looping_file_names[3][64] = { "wild_battle.mp3", "wild_battle.mp3", "wild_battle.mp3" };
 
 
 void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount);
 
 
-void play_audio_file(char * file_name) {
+void audio_play_file(char * file_name) {
     if (engine_started) {
         ma_engine_uninit(&engine);
         init_audio_player();
@@ -34,7 +35,7 @@ void play_audio_file(char * file_name) {
 }
 
 
-void loop_audio_file(char * file_name) {
+void audio_loop_file(char * file_name) {
     ma_result result;
     ma_device_config deviceConfig;
 
@@ -84,6 +85,17 @@ void loop_audio_file(char * file_name) {
 }
 
 
+void audio_save_looping_file(int index) {
+    sprintf(saved_looping_file_names[index], "%s", looping_file_name);
+}
+
+
+void audio_restore_looping_file(int index) {
+    audio_loop_file(saved_looping_file_names[index]);
+}
+
+
+
 void init_audio_player() {
     result = ma_engine_init(NULL, &engine);
     if (result != MA_SUCCESS) {
@@ -93,7 +105,7 @@ void init_audio_player() {
 }
 
 
-void end_play() {
+void audio_end_play() {
     if (engine_started) {
         ma_engine_uninit(&engine);
         engine_started = false;
@@ -101,7 +113,7 @@ void end_play() {
 }
 
 
-void end_loop() {
+void audio_end_loop() {
     if (looping) {
         ma_device_uninit(&device);
         ma_decoder_uninit(&decoder);

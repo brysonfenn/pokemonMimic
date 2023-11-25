@@ -8,6 +8,7 @@
 #include "../print/print_utils.h"
 #include "../print/print_battle.h"
 #include "../player.h"
+#include "../audio/audio_player.h"
 
 int evolve(Pokemon * pok, int next_pok_id);
 int handle_evolve_in_battle(Pokemon * pok, int next_pok_id);
@@ -15,6 +16,8 @@ void handle_learnset(Pokemon * pok);
 
 //Handle leveling up - also handles learning moves from new level
 void pokemon_level_up(Pokemon *pok, int next_level_exp) {
+    audio_save_looping_file(1);
+    audio_loop_file("level_up.mp3");
 
     //Pokemon over level 100 should not be given exp
     if (pok->level >= 100) return;
@@ -37,7 +40,8 @@ void pokemon_level_up(Pokemon *pok, int next_level_exp) {
 
     text_box_cursors(TEXT_BOX_BEGINNING);
     printw("%s has grown to level %d!", pok->name, pok->level);
-    refresh(); sleep(2);
+    refresh(); sleep(3);
+    audio_restore_looping_file(1);
 
     //learn_moves again
     int level_target, evolve_id;

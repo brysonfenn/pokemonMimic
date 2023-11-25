@@ -14,6 +14,7 @@
 
 void draw_underground() {
     draw_big_map("Underground");
+    audio_loop_file("pallet.mp3");
 
     drawBuilding_default(49, 6, " CC ", DOORS_NEW_MAP);
     add_portal(49+9/2, 6+2, MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-2, MAP_CER_CITY, true);
@@ -27,6 +28,7 @@ void draw_underground() {
 
 void draw_vermillion_city() {
     draw_big_map("Vermillion City");
+    audio_loop_file("ver_city.mp3");
 
     add_connection_to_big_map(MAP_TOP, 3, MAP_UG_NS);
     add_connection_to_big_map(MAP_BOTTOM, 25, MAP_SS_ANNE1);
@@ -56,6 +58,7 @@ void draw_gym3() {
     draw_interior(MAP_X+4, MAP_Y+11, MAP_VERM_CITY);
     begin_message_box();
     print_to_message_box("Vermillion City Gym");
+    audio_loop_file("gym.mp3");
 
     add_trainer_by_id(INTERIOR_X+14, INTERIOR_Y+1, 203, PLAYER_MOVING_DOWN);
 }
@@ -63,6 +66,7 @@ void draw_gym3() {
 
 void draw_ss_anne1() {
     draw_big_map("SS Anne (Upper)");
+    audio_loop_file("ss_anne.mp3");
 
     add_connection_to_big_map(MAP_TOP, 25, MAP_VERM_CITY);
     add_connection_to_big_map(MAP_BOTTOM, 3, MAP_SS_ANNE2);
@@ -83,6 +87,7 @@ void draw_ss_anne1() {
 
 void draw_ss_anne2() {
     draw_big_map("SS Anne (Lower)");
+    audio_loop_file("ss_anne.mp3");
 
     add_connection_to_big_map(MAP_TOP, 3, MAP_SS_ANNE1);
     add_connection_to_big_map(MAP_TOP, 13, MAP_SS_ANNE1);
@@ -100,6 +105,7 @@ void draw_ss_anne2() {
 void draw_route6() {
     draw_big_map("Route 6");
     add_connection_to_big_map(MAP_LEFT, 6, MAP_VERM_CITY);
+    audio_loop_file("route1.mp3");
 
     //Draw Building and link to SouthEast Diglett's Cave
     drawBuilding_default(MAP_X+2, MAP_Y+1, "CAVE", DOORS_NEW_MAP);
@@ -112,6 +118,7 @@ void draw_route6() {
 
 void draw_dig_cave() {
     draw_big_map("Diglett's Cave");
+    audio_loop_file("mt_moon.mp3");
     
     //Bottom-right portal goes to route 6
     draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 4);
@@ -125,6 +132,7 @@ void draw_dig_cave() {
 
 void draw_route7() {
     draw_big_map("Route 7");
+    audio_loop_file("route3.mp3");
 
     //Draw Building and link to South-West Diglett's Cave
     drawBuilding_default(MAP_X+47, MAP_Y+12, "CAVE", DOORS_NEW_MAP);

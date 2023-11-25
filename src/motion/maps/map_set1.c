@@ -15,6 +15,7 @@
 
 void draw_starter_town() {
     draw_big_map("Starter Town");
+    audio_loop_file("pallet.mp3");
 
     drawBuilding_default(MAP_X+6,MAP_Y+7, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+20,MAP_Y+12, "LAB", DOORS_NEW_MAP);
@@ -29,7 +30,7 @@ void draw_starter_town() {
 
 void draw_route1() {
     draw_big_map("Route 1");
-    loop_audio_file("route1.mp3");
+    audio_loop_file("route1.mp3");
     add_connection_to_big_map(MAP_TOP, 25, MAP_VIRIDIAN);
     add_connection_to_big_map(MAP_BOTTOM, 41, MAP_STARTER_TOWN);
 }
@@ -39,6 +40,7 @@ void draw_lab() {
     draw_interior(MAP_X+20, MAP_Y+12, MAP_STARTER_TOWN);
     begin_message_box();
     print_to_message_box("Professor's Lab");
+    audio_loop_file("pallet.mp3");
 
     add_trainer_by_id(INTERIOR_X+10, INTERIOR_Y+3, 251, PLAYER_MOVING_DOWN);
 }

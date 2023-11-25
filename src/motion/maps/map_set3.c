@@ -16,6 +16,7 @@
 
 void draw_route3() {
     draw_big_map("Route 3");
+    audio_loop_file("route3.mp3");
 
     //Draw Doors
     add_connection_to_big_map(MAP_LEFT, 8, MAP_PEW_CITY);
@@ -30,6 +31,7 @@ void draw_route3() {
 
 void draw_mt_moon_n() {
     draw_big_map("Mt. Moon North");
+    audio_loop_file("mt_moon.mp3");
 
     add_connection_to_big_map(MAP_BOTTOM, MAP_WIDTH - 4, MAP_MT_MOON_S);
     add_connection_to_big_map(MAP_RIGHT, 7, MAP_CER_CITY);
@@ -49,6 +51,7 @@ void draw_mt_moon_n() {
 
 void draw_mt_moon_s() {
     draw_big_map("Mt. Moon South");
+    audio_loop_file("mt_moon.mp3");
 
     add_connection_to_big_map(MAP_BOTTOM, MAP_WIDTH - 4, MAP_R3);
     add_connection_to_big_map(MAP_TOP, MAP_WIDTH-4, MAP_MT_MOON_N);
@@ -56,6 +59,7 @@ void draw_mt_moon_s() {
 
 void draw_cer_city() {
     draw_big_map("Cerulean City");
+    audio_loop_file("cer_city.mp3");
 
     add_connection_to_big_map(MAP_LEFT, 7, MAP_MT_MOON_N);
     add_connection_to_big_map(MAP_TOP, MAP_WIDTH - 5, MAP_R4);
@@ -81,6 +85,7 @@ void draw_gym2() {
     draw_interior(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+8, MAP_CER_CITY);
     begin_message_box();
     print_to_message_box("Cerulean City Gym");
+    audio_loop_file("gym.mp3");
 
     add_trainer_by_id(INTERIOR_X+7, INTERIOR_Y+5, 20, PLAYER_MOVING_LEFT);
     add_trainer_by_id(INTERIOR_X+INTERIOR_WIDTH-2, INTERIOR_Y+4, 21, PLAYER_MOVING_LEFT);
@@ -90,6 +95,7 @@ void draw_gym2() {
 
 void draw_route4() {
     draw_big_map("Route 4");
+    audio_loop_file("route3.mp3");
 
     add_connection_to_big_map(MAP_BOTTOM, MAP_WIDTH - 5, MAP_CER_CITY);
     add_connection_to_big_map(MAP_RIGHT, 3, MAP_R5);
@@ -104,6 +110,7 @@ void draw_route4() {
 
 void draw_route5() {
     draw_big_map("Route 5");
+    audio_loop_file("route3.mp3");
 
     add_connection_to_big_map(MAP_LEFT, 3, MAP_R4);
 

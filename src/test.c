@@ -22,10 +22,10 @@ static char test_str2[64] = "";
 void test_function() {
     // play_audio_file("pallet.wav");
 
-    loop_audio_file("pallet.wav");
+    audio_loop_file("pallet.mp3");
 
     printw("Press Enter to quit..."); refresh();
     sleep(2);
-    loop_audio_file("wild_battle.wav");
+    audio_loop_file("wild_battle.wav");
     getch();
 }

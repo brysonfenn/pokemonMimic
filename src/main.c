@@ -92,8 +92,8 @@ int main(void) {
 void control_c_handler() {
     clear();
     pause_ncurses();
-    end_loop();
-    end_play();
+    audio_end_loop();
+    audio_end_loop();
 
     clearTerminal();
     free(player.loc);
