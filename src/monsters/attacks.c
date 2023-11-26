@@ -86,7 +86,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     }
 
     //Decrement pp and assign attack
-    perp->attacks[move_num].curr_pp--;
+    if (!has_hidden_condition(perp, REPEAT_MOVE)) perp->attacks[move_num].curr_pp--;
     attack chosenAttack = perp->attacks[move_num];
     perp->last_move = move_num;
 

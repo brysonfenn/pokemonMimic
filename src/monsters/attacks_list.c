@@ -49,7 +49,7 @@ attack bite         = {"Bite"         , 29, 25,  60,      100, DARK,     false, 
 attack rapid_spin   = {"Rapid Spin"   , 30, 40,  20,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 
 attack protect      = {"Protect"      , 31, 10,   0,       75, NORMAL,   true,  &self_inflict_condition, PROTECTED, 100 };
-attack skull_bash   = {"Skull Bash"   , 32, 15, 100,      100, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
+attack skull_bash   = {"Skull Bash"   , 32, 15, 100,      100, NORMAL,   false, &skull_bash_move_func, ATTACK_SPECIAL_MOVE, 100 };
 attack hydro_pump   = {"Hydro Pump"   , 33,  5, 120,       80, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
 attack harden       = {"Harden"       , 34, 30,   0,  NO_MISS, NORMAL,   false, &increment_self_stat, DEFENSE_STAT, 100 };
 attack supersonic   = {"Supersonic"   , 35, 20,   0,       55, NORMAL,   false, &inflict_condition, CONFUSED, 100 };
@@ -99,7 +99,7 @@ attack moonlight    = {"Moonlight"    , 74,  5,   0,  NO_MISS, NORMAL,   false, 
 attack meteor_mash  = {"Meteor Mash"  , 75, 10, 100,       85, STEEL,    false, &increment_self_stat, ATTACK_STAT, 100 };
 attack rock_throw   = {"Rock Throw"   , 76, 15,  50,       90, ROCK,     false, &attack_do_nothing, NO_CONDITION, 0 };
 attack synthesis    = {"Synthesis"    , 77,  5,   0,  NO_MISS, GRASS,    false, &self_heal, HP_PERCENTAGE, 50 };
-attack solar_beam   = {"Solar Beam"   , 78, 10,  90,      100, GRASS,    false, &attack_do_nothing, NO_CONDITION, 0 };
+attack solar_beam   = {"Solar Beam"   , 78, 10,  90,      100, GRASS,    false, &solar_beam_move_func, ATTACK_SPECIAL_MOVE, 0 };
 attack selfdestruct = {"Selfdestruct" , 79,  5, 400,      100, NORMAL,   false, &self_inflict_damage, HP_PERCENTAGE, 150 };
 attack rock_blast   = {"Rock Blast"   , 80, 10,  25,       80, ROCK,     false, &hit_2_5_times, NO_CONDITION, 0 };
 

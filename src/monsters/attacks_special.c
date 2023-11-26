@@ -112,8 +112,10 @@ int magnitude_move_func(int nothing1, int nothing2, struct Pokemon * victim, int
 }
 
 
-//Add repeat condition if not already set -> return 0
-//Get repeat value if repeat is already set
+//Add repeat condition if not already set 
+//  -> return ADDED_REPEATS after first call
+//  -> return decremented repeat value (>0) if repeat is already set
+//  -> return REMOVED_REPEATS once repeat value reaches 0
 int handle_repeats(int repeat_times, struct Pokemon * pok) {
 
     //Add repeat condition if it is not already there
@@ -309,6 +311,38 @@ int splash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int da
 
 //Special function for Solar Beam
 int solar_beam_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
+    else { self = player.current_pokemon; }
+    int repeat_val = handle_repeats(1, self);   //Repeat once
+
     text_box_cursors(TEXT_BOX_NEXT_LINE);
-    printw("Nothing Happened!"); refresh(); sleep(2);
+    if (repeat_val == ADDED_REPEATS) {
+        printw("%s took in sunlight", self->name); refresh(); sleep(2);
+    }
+    else if (repeat_val == REMOVED_REPEATS) {
+        printw("%s released energy absorbed from the Sun!", self->name); refresh(); sleep(2);
+        deal_damage(90, self, victim, GRASS);
+    }
+    
+    return ATTACK_SUCCESS;
+}
+
+//Special function for Skull Bash
+int skull_bash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
+    else { self = player.current_pokemon; }
+    int repeat_val = handle_repeats(1, self);   //Repeat once
+
+    if (repeat_val == ADDED_REPEATS) {
+        text_box_cursors(TEXT_BOX_NEXT_LINE);
+        printw("%s lowered its head", self->name); refresh(); sleep(2);
+        increment_self_stat(DEFENSE_STAT, 100, victim, 0);
+    }
+    else if (repeat_val == REMOVED_REPEATS) {
+        deal_damage(100, self, victim, GRASS);
+    }
+    
+    return ATTACK_SUCCESS;
 }
