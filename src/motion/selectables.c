@@ -120,13 +120,15 @@ int handle_selected_selectable(int player_x, int player_y, char player_char) {
     Selectable * selectable_ptr;
     Trainer * trainer_ptr;
     NPC * npc_ptr;
+    char print_str[256];
 
     selectable_ptr = get_selectable(player_x, player_y, player_char);
     if (selectable_ptr->selectable_id == SELECTABLE_NONE) return SELECTABLE_CONTINUE_WHILE;
     if (selectable_ptr->selectable_id == SELECTABLE_TRAINER) {
         trainer_ptr = (Trainer *) selectable_ptr->data;
         if (has_battled_trainer(trainer_ptr->id_num)) {
-            print_to_message_box("\"We already battled\"");
+            sprintf(print_str, "%s: \"We already battled\"", trainer_ptr->name);
+            print_to_message_box(print_str);
             return SELECTABLE_CONTINUE_WHILE;
         }
 

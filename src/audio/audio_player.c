@@ -69,13 +69,13 @@ void audio_loop_file(char * file_name) {
     deviceConfig.pUserData         = &decoder;
 
     if (ma_device_init(NULL, &deviceConfig, &device) != MA_SUCCESS) {
-        printf("Failed to open playback device.\n");
+        printw("Failed to open playback device.\n");
         ma_decoder_uninit(&decoder);
         return -3;
     }
 
     if (ma_device_start(&device) != MA_SUCCESS) {
-        printf("Failed to start playback device.\n");
+        printw("Failed to start playback device.\n");
         ma_device_uninit(&device);
         ma_decoder_uninit(&decoder);
         return -4;

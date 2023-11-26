@@ -53,4 +53,7 @@ int flail_move_func(int nothing1, int nothing2, struct Pokemon * victim, int dam
 //Special function for Splash move
 int splash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
+//Special function for Solar Beam
+int solar_beam_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+
 #endif // ATTACKS_SPECIAL_H

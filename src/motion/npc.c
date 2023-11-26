@@ -11,16 +11,16 @@
 #define NUM_NPCS 30
 char message[LINE_SIZE];
 
-static NPC n0 = {  0, "No Name", NO_ITEM };
-static NPC n1 = {  1, "Finn", FIRE_STONE };
-static NPC n2 = {  2, "Monty", MOON_STONE };
-static NPC n3 = {  3, "Bill", SS_TICKET };
-static NPC n4 = {  4, "Guard", NO_ITEM };
-static NPC n5 = {  5, "Guard", NO_ITEM };
-static NPC n6 = {  6, "Captain Jacobs", HM_CUT };
-static NPC n7 = {  7, "Lily", LEAF_STONE };
-static NPC n8 = {  8, "Ted", K_ITEM_FOSSIL_AMBER };
-static NPC n9 = {  9, "Calvin", NO_ITEM};
+static NPC n0 = {  0, "No Name", NO_ITEM, 0 };
+static NPC n1 = {  1, "Finn", FIRE_STONE, 1 };
+static NPC n2 = {  2, "Monty", MOON_STONE, 2 };
+static NPC n3 = {  3, "Bill", SS_TICKET, 3 };
+static NPC n4 = {  4, "Guard", NO_ITEM, 0 };
+static NPC n5 = {  5, "Guard", NO_ITEM, 0 };
+static NPC n6 = {  6, "Captain Jacobs", HM_CUT, 4 };
+static NPC n7 = {  7, "Lily", LEAF_STONE, 5 };
+static NPC n8 = {  8, "Ted", K_ITEM_FOSSIL_AMBER, 6 };
+static NPC n9 = {  9, "Calvin", NO_ITEM, 0};
 
 
 static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2, &n3, &n4, &n5, &n6, &n7, &n8, &n9 };
@@ -79,7 +79,7 @@ void handle_npc_selection(struct NPC * npc_ptr) {
         }
 
         //Check if player has already received an item from the NPC
-        if ((player.NPCs_done >> (npc_ptr->id_num)) & 0x01) {
+        if ((player.NPCs_done >> (npc_ptr->record_bit_num)) & 0x01) {
             sprintf(print_str, "%s: I already gave you my %s", npc_ptr->name, item_name);
             print_to_message_box(print_str);
         }
@@ -94,7 +94,7 @@ void handle_npc_selection(struct NPC * npc_ptr) {
             else if (npc_ptr->givable_item >= HM_EMPTY) add_hm_tm(npc_ptr->givable_item);
             else give_item_to_player(get_item_by_id(npc_ptr->givable_item), 1);
         }
-        player.NPCs_done |= ((long long) 1 << npc_ptr->id_num);
+        player.NPCs_done |= ((long long) 1 << npc_ptr->record_bit_num);
     }
     await_user();
     begin_message_box();

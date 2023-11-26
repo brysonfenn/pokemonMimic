@@ -306,3 +306,9 @@ int splash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int da
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("Nothing Happened!"); refresh(); sleep(2);
 }
+
+//Special function for Solar Beam
+int solar_beam_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("Nothing Happened!"); refresh(); sleep(2);
+}

@@ -22,7 +22,7 @@ int battle_trainer(Trainer * trainer) {
     char print_str[1024];
 
     //Print trainer's battle message
-    sprintf(print_str, "\"%s\"", trainer->message);
+    sprintf(print_str, "%s: \"%s\"", trainer->name, trainer->message);
     print_to_message_box(print_str); await_user();
 
     audio_end_loop();

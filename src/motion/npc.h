@@ -7,6 +7,7 @@ typedef struct NPC {
     int id_num;
     char name[30];
     int givable_item;
+    int record_bit_num;
 } NPC;
 
 
