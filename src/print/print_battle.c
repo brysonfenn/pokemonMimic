@@ -3,7 +3,6 @@
 #include <ncurses.h>
 
 #include "print_defines.h"
-
 #include "../player.h"
 #include "../monsters/pokemon.h"
 #include "../audio/audio_player.h"

@@ -1,8 +1,9 @@
 #include "doors.h"
 
+#include <ncurses.h>
+
 #include "location.h"
 #include "map_drawing.h"
-#include <ncurses.h>
 
 #define MAX_DOOR_COUNT 60
 

@@ -5,20 +5,18 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-
 #include <fcntl.h>
 #include <ncurses.h>
 #include <locale.h>
 
-#include "../monsters/conditions.h"
+#include "print_defines.h"
 #include "../player.h"
+#include "../monsters/conditions.h"
 #include "../monsters/pokemon.h"
 #include "../battles/battle.h"
 #include "../items/items.h"
 #include "../motion/map_drawing.h"
 #include "../audio/audio_player.h"
-
-#include "print_defines.h"
 
 #define MAX_NAME_INPUT_LENGTH 10
 #define PRINT_ENTIRE_ALPHABET 0

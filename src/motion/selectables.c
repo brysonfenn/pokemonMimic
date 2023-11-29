@@ -4,16 +4,15 @@
 #include <stdbool.h>
 #include <ncurses.h>
 
+#include "npc.h"
+#include "map_drawing.h"
+#include "../player.h"
 #include "../battles/trainer.h"
 #include "../battles/trainer_list.h"
 #include "../battles/battle.h"
 #include "../monsters/pokemon.h"
-
-#include "map_drawing.h"
 #include "../print/print_defines.h"
 #include "../print/print_utils.h"
-#include "../player.h"
-#include "npc.h"
 #include "../audio/audio_player.h"
 
 #define HORIZONTAL_DISTANCE 10

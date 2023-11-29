@@ -1,5 +1,6 @@
 #include "poke_center.h"
 
+#include "player.h"
 #include "monsters/pokemon.h"
 #include "monsters/conditions.h"
 #include "print/print_utils.h"
@@ -7,7 +8,6 @@
 #include "motion/location.h"
 #include "audio/audio_player.h"
 
-#include "player.h"
 
 //Forward Declarations
 void handle_PC();

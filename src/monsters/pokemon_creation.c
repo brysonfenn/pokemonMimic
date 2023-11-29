@@ -3,10 +3,10 @@
 #include <stdio.h>
 #include <ncurses.h>
 
+#include "../player.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 #include "../print/print_battle.h"
-#include "../player.h"
 #include "../motion/location.h"
 #include "../motion/maps.h"
 

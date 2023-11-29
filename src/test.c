@@ -8,10 +8,9 @@
 #include <termios.h>
 #include <unistd.h>
 
+#include "player.h"
 #include "print/print_utils.h"
 #include "print/print_defines.h"
-#include "player.h"
-
 #include "audio/audio_player.h"
 
 

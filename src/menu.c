@@ -10,7 +10,6 @@
 #include "items/items.h"
 #include "items/key_items.h"
 #include "items/hm_tms.h"
-
 #include "motion/maps.h"
 
 static enum display { MOVING, POKEMON, BAG, KEY_ITEMS, HM_or_TMs, PLAYER, SAVE, LOAD,

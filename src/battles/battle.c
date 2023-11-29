@@ -1,14 +1,13 @@
+#include "battle.h"
+
 #include <stdbool.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <ncurses.h>
 
-#include "ncurses.h"
-
-#include "battle.h"
 #include "../player.h"
 #include "../monsters/conditions.h"
 #include "../monsters/pokemon.h"
-
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 #include "../print/print_battle.h"

@@ -3,7 +3,6 @@
 #include <ncurses.h>
 
 #include "item_funcs.h"
-
 #include "../player.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"

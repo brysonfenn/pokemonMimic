@@ -4,7 +4,6 @@
 
 #include "items.h"
 #include "../player.h"
-
 #include "../motion/location.h"
 #include "../motion/maps.h"
 #include "../print/print_utils.h"

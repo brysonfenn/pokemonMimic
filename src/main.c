@@ -5,15 +5,15 @@
 #include <ncurses.h>
 #include <unistd.h>
 
+#include "load_save.h"
+#include "player.h"
+#include "menu.h"
+#include "test.h"
 #include "print/print_utils.h"
 #include "print/print_defines.h"
 #include "monsters/pokemon.h"
 #include "audio/audio_player.h"
 
-#include "load_save.h"
-#include "player.h"
-#include "menu.h"
-#include "test.h"
 
 void control_c_handler();
 

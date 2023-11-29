@@ -1,11 +1,12 @@
 #include "npc.h"
 
+#include <stdio.h>
+
+#include "../player.h"
 #include "../items/items.h"
 #include "../items/hm_tms.h"
 #include "../items/key_items.h"
-#include <stdio.h>
 #include "../print/print_defines.h"
-#include "../player.h"
 
 
 #define NUM_NPCS 30

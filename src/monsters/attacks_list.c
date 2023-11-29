@@ -2,15 +2,14 @@
 
 #include <stdint.h>
 
-#include "../player.h"
 #include "conditions.h"
+#include "attacks_special.h"
+#include "pokemon.h"
+#include "../player.h"
 #include "../print/print_defines.h"
 #include "../print/print_utils.h"
 #include "../print/print_battle.h"
 #include "../audio/audio_player.h"
-
-#include "attacks_special.h"
-#include "pokemon.h"
 
 #define NUM_ATTACKS 210
 

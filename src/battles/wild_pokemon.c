@@ -2,10 +2,10 @@
 
 #include <ncurses.h>
 
+#include "battle.h"
 #include "../player.h"
 #include "../monsters/pokemon.h"
 #include "../print/print_utils.h"
-#include "battle.h"
 #include "../audio/audio_player.h"
 
 //Battle a random wild pokemon

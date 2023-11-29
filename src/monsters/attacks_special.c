@@ -1,16 +1,16 @@
 #include "attacks_special.h"
 
-#include "pokemon.h"
 #include <ncurses.h>
 
-#include "../player.h"
-
+#include "pokemon.h"
+#include "typings.h"
+#include "attacks.h"
 #include "conditions.h"
+#include "../player.h"
 #include "../print/print_defines.h"
 #include "../print/print_utils.h"
 #include "../print/print_battle.h"
-#include "typings.h"
-#include "attacks.h"
+
 
 int deal_damage(int power, Pokemon * perp, Pokemon * victim, Type move_type) {
     int flags = 0;

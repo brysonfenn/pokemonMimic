@@ -12,6 +12,8 @@
 #include "selectables.h"
 #include "npc.h"
 
+#include "../player.h"
+#include "../poke_center.h"
 #include "../battles/trainer.h"
 #include "../battles/wild_pokemon.h"
 #include "../battles/battle.h"
@@ -19,9 +21,6 @@
 #include "../print/print_defines.h"
 #include "../items/items.h"
 #include "../items/key_items.h"
-
-#include "../player.h"
-#include "../poke_center.h"
 #include "../audio/audio_player.h"
 
 

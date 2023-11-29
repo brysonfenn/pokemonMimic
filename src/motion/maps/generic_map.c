@@ -6,7 +6,6 @@
 #include "../location.h"
 #include "../doors.h"
 #include "../maps.h"
-
 #include "../../print/print_defines.h"
 
 

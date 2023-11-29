@@ -1,13 +1,12 @@
 #include "typings.h"
 
 #include <string.h>
+#include <math.h>
 
 #include "pokemon.h"
 #include "../player.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
-
-#include "math.h"
 
 #define NUM_TYPES 18
 
