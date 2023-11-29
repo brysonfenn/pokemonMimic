@@ -1,6 +1,7 @@
 #include "trainer.h"
 
 #include <stdio.h>
+#include <ncurses.h>
 
 #include "battle.h"
 #include "../monsters/pokemon.h"
@@ -26,13 +27,15 @@ int battle_trainer(Trainer * trainer) {
     print_to_message_box(print_str); await_user();
 
     audio_end_loop();
-    audio_play_file("begin_battle.mp3");
+    audio_play_file("trainer_begin.mp3");
 
     //Blink screen and reset screen without battle message
     save_print_state();
-    blink_screen(7, restore_print_state);
+    blink_screen(10, restore_print_state);       //7        / 10
     begin_message_box(); save_print_state();
-    audio_loop_file("wild_battle.mp3");
+    begin_list();
+    usleep(550000);                            //1200000    / 550000
+    audio_loop_file("trainer_battle.mp3");
 
     //Do not allow a player with no pokemon to battle a trainer
     if (!player_get_num_alive()) {

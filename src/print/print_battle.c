@@ -48,6 +48,16 @@ void blinkPokemon(bool blink_player, int color, int num_times) {
   char poke_string[128];
   int text_x, text_y;
 
+  if (color == DAMAGED_COLOR) {
+    switch (rand() % 3) {
+      case 0: audio_play_file("low_kick.mp3"); break;
+      case 1: audio_play_file("double_kick.mp3"); break;
+      case 2: audio_play_file("slash.mp3"); break;
+      default: audio_play_file("low_kick.mp3"); break;
+    }
+  }
+  else if (color == HEAL_COLOR) audio_play_file("recover.mp3"); 
+
   //Set up location and pokemon depending on whether enemy attacked
   if (!blink_player) {
     pok = player.enemy_pokemon;

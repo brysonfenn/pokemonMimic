@@ -7,6 +7,7 @@
 #include "../print/print_defines.h"
 #include "../print/print_utils.h"
 #include "../print/print_battle.h"
+#include "../audio/audio_player.h"
 
 #include "attacks_special.h"
 #include "pokemon.h"
@@ -334,7 +335,6 @@ int change_stat(Condition stat_type, int stage_number, struct Pokemon* pok) {
 
             if (*stat_stage < -6) (*stat_stage) = -6; //Stat stage can be -6 min
         }
-        refresh(); sleep(2);
     }
     else if (stage_number > 0) {
         if (pok == player.enemy_pokemon) printw(ENEMY_TEXT);
@@ -349,8 +349,11 @@ int change_stat(Condition stat_type, int stage_number, struct Pokemon* pok) {
 
             if (*stat_stage > 6) (*stat_stage) = 6; //Stat stage can be 6 max
         }
-        refresh(); sleep(2);
     }
+    refresh(); sleep(1);
+    if (stage_number > 0) audio_play_file("up_stat.mp3");
+    else audio_play_file("down_stat.mp3");
+    sleep(1);
 }
 
 //Certain attacks can increment a pokemon's own stat
