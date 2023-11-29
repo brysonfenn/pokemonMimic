@@ -42,48 +42,48 @@ static * item_array[NUM_ITEMS] = { &empty_item,
 
 //Returns an item pointer by its ID number. Should be immediately dereferenced
 Item * get_item_by_id(int id_num) {
-  return item_array[id_num];
+    return item_array[id_num];
 }
 
 //Use an item, calling its execute function
 int use_item(int item_num) {
-  Item * this_item = &(player.bag[item_num]);
+    Item * this_item = &(player.bag[item_num]);
 
-  int return_execute = this_item->execute(this_item->func_arg, this_item->name);
+    int return_execute = this_item->execute(this_item->func_arg, this_item->name);
 
-  if (return_execute == ITEM_SUCCESS || return_execute == ITEM_CATCH_SUCCESS || return_execute == ITEM_CATCH_FAILURE) {
-    this_item->number--;
-    //If number of items there is zero, adjust entire bag
-    if (!this_item->number) {
-      player.numInBag--;
-      for (int i = item_num; i < player.numInBag; i++) {
-        player.bag[i] = player.bag[i+1];
-      }
-      player.bag[player.numInBag] = empty_item;
+    if (return_execute == ITEM_SUCCESS || return_execute == ITEM_CATCH_SUCCESS || return_execute == ITEM_CATCH_FAILURE) {
+        this_item->number--;
+        //If number of items there is zero, adjust entire bag
+        if (!this_item->number) {
+            player.numInBag--;
+            for (int i = item_num; i < player.numInBag; i++) {
+                player.bag[i] = player.bag[i+1];
+            }
+            player.bag[player.numInBag] = empty_item;
+        }
     }
-  }
-  else if (return_execute == ITEM_FAILURE) {
-    
-  }
+    else if (return_execute == ITEM_FAILURE) {
+        
+    }
 
-  return return_execute;
+    return return_execute;
 }
 
 
 //Give player a number of items by id number
 void give_item_to_player(Item * item_to_get, int num_items) {
-  bool foundItem = false;
-  //Find if there were any of the selected item in the bag
-  for (int i = 0; i < player.numInBag; i++) {
-    if (player.bag[i].id_num == (*item_to_get).id_num) {
-      foundItem = true;
-      player.bag[i].number += num_items;
+    bool foundItem = false;
+    //Find if there were any of the selected item in the bag
+    for (int i = 0; i < player.numInBag; i++) {
+        if (player.bag[i].id_num == (*item_to_get).id_num) {
+            foundItem = true;
+            player.bag[i].number += num_items;
+        }
     }
-  }
 
-  if (!foundItem) {
-    player.bag[player.numInBag] = *(item_to_get);
-    player.bag[player.numInBag].number = num_items;
-    player.numInBag++;
-  }
+    if (!foundItem) {
+        player.bag[player.numInBag] = *(item_to_get);
+        player.bag[player.numInBag].number = num_items;
+        player.numInBag++;
+    }
 }

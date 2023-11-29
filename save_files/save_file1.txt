@@ -1,14 +1,14 @@
-Last Saved: 11/28/2023 18:44:58
+Last Saved: 11/28/2023 20:27:57
 Player: B Test Man
 2 0 0 6645 0
-Location: {9,(14,14)}
+Location: {7,(41,5)}
 Heal Center: {7,(41,5)}
 Pokemon: 
-Oddish 43 38 24 3 19 22 12 12 15 14 2964 GRASS POISON 19b2348e 7060402 0 0
-	Absorb. 100 15
+Oddish 43 38 38 3 19 22 12 12 15 14 2964 GRASS POISON 19b2348e 7060402 0 0
+	Absorb. 100 20
 	Sweet Scent. 19 20
 	Poison Powder. 14 35
-Charmander 4 32 0 3 19 17 11 11 21 12 1770 FIRE NONE 583c265 8080304 0 0
+Charmander 4 32 32 3 19 17 11 11 21 12 1770 FIRE NONE 583c265 8080304 0 0
 	Scratch. 2 35
 	Growl. 3 40
 	Ember. 12 25
