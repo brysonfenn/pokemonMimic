@@ -1,19 +1,32 @@
-Last Saved: 11/28/2023 20:27:57
+Last Saved: 11/29/2023 13:08:38
 Player: B Test Man
-2 0 0 6645 0
-Location: {7,(41,5)}
-Heal Center: {7,(41,5)}
+4 0 5 4875 0
+Location: {10,(41,14)}
+Heal Center: {9,(49,5)}
 Pokemon: 
-Oddish 43 38 38 3 19 22 12 12 15 14 2964 GRASS POISON 19b2348e 7060402 0 0
+Mankey 56 26 1 3 21 11 9 9 18 9 861 FIGHTING NONE 567c1363 20603 0 0
+	Scratch. 2 35
+	Leer. 52 30
+	Low Kick. 116 17
+Oddish 43 40 40 3 20 23 12 12 15 15 3563 GRASS POISON 19b2348e 7080803 0 0
 	Absorb. 100 20
 	Sweet Scent. 19 20
 	Poison Powder. 14 35
-Charmander 4 32 32 3 19 17 11 11 21 12 1770 FIRE NONE 583c265 8080304 0 0
+Charmander 4 33 33 4 21 18 11 11 22 13 2700 FIRE NONE 583c265 a080905 0 4
 	Scratch. 2 35
 	Growl. 3 40
 	Ember. 12 25
+	Metal Claw. 17 35
+Geodude 74 23 3 2 18 20 11 10 7 7 343 ROCK GROUND 36dcb8a 0 0 0
+	Tackle. 1 34
+	Defense Curl. 9 40
 PC: 
 Bag:
+Poke Ball. 3 6
+Potion. 1 1
+Antidote. 6 1
+Awakening. 8 1
+Paralyze Heal. 7 1
 
 Key Items: 0
   
@@ -21,5 +34,5 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 14
-  251 1 8 2 3 5 7 22 9 12 10 6 11 201 
+Trainers Battled: 17
+  251 1 8 2 3 5 7 36 9 12 10 6 11 201 14 13 37 

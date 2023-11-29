@@ -26,6 +26,7 @@ void draw_route3() {
 
     add_trainer_by_id(MAP_X+12,MAP_Y+12, 13, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+13,MAP_Y+7, 14, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+56, MAP_Y+8, 37, PLAYER_MOVING_LEFT);
 }
 
 
