@@ -170,6 +170,7 @@ int get_selection(int first_line, int highest_option_num, int last_selection) {
             return (cursor_y - actual_first_line);
         case CANCEL_CHAR:
         case CANCEL_CHAR_2:
+            audio_play_file("back_button.mp3");
             return (PRESSED_B);
             break;
         default:
@@ -387,6 +388,7 @@ char * get_name_input(char * target_for_name) {
             break;
         case CANCEL_CHAR:
         case CANCEL_CHAR_2:
+            audio_play_file("back_button.mp3");
             string_length = strlen(name_input_str);
             if (string_length > 0) {
                 name_input_str[string_length-1] = '\0';

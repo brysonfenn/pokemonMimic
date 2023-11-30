@@ -65,10 +65,15 @@ void handle_motion() {
     while (1) {
         flushinp();
         ch = getch();
-        if (ch == MENU_CHAR || ch == MENU_CHAR_2) break;
         
         mvaddch(*player_y, *player_x, ' '); 
         switch (ch) {
+            case MENU_CHAR:
+            case MENU_CHAR_2:
+                audio_end_loop();
+                audio_play_file("pause.mp3");
+                return;
+                break;
         	case KEY_UP:
                 if (player_char != PLAYER_MOVING_UP) player_char = PLAYER_MOVING_UP;
                 else if (*player_y > 1 && is_movable_space(-1,0)) (*player_y)--;

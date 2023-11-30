@@ -90,7 +90,10 @@ void draw_gym2() {
 
     add_trainer_by_id(INTERIOR_X+7, INTERIOR_Y+5, 20, PLAYER_MOVING_LEFT);
     add_trainer_by_id(INTERIOR_X+INTERIOR_WIDTH-2, INTERIOR_Y+4, 21, PLAYER_MOVING_LEFT);
+
+    mvaddch(INTERIOR_Y+1, INTERIOR_X+13, ACS_LRCORNER);
     add_trainer_by_id(INTERIOR_X+14, INTERIOR_Y+1, 202, PLAYER_MOVING_DOWN);
+    mvaddch(INTERIOR_Y+1, INTERIOR_X+15, ACS_LLCORNER);
 }
 
 

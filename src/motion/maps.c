@@ -120,6 +120,9 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
         case MAP_VERM_CITY:
             sprintf(map_name, "verm_city");
             break;
+        case MAP_GYM3:
+            sprintf(map_name, "gym3");
+            break;
         case MAP_R6:
             sprintf(map_name, "route6");
             wild_pok_list = &(wild_pok_lists[12]);

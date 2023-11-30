@@ -102,6 +102,7 @@ int handle_mart() {
             break;
         case CANCEL_CHAR:
         case CANCEL_CHAR_2:
+            audio_play_file("back_button.mp3");
             return ITEM_FAILURE;
             break;
         default:

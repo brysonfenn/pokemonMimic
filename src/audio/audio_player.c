@@ -39,7 +39,7 @@ void audio_loop_file(char * file_name) {
     ma_result result;
     ma_device_config deviceConfig;
 
-    if (strcmp(looping_file_name, file_name) == 0) {
+    if (strcmp(looping_file_name, file_name) == 0 && looping) {
         return;
     }
     sprintf(looping_file_name, "%s", file_name);

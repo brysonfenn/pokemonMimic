@@ -207,6 +207,7 @@ int get_move_selection(int start_x, int start_y, struct Pokemon* pok, int last_s
                 return (selection);
             case CANCEL_CHAR:
             case CANCEL_CHAR_2:
+                audio_play_file("back_button.mp3");
                 return (PRESSED_B);
             default:
                 break;
@@ -260,7 +261,7 @@ void text_box_cursors(int next_line) {
 //Clear all text from the battle box
 void clear_battle_box() {
     for (int i = 0; i < (BATTLE_BOX_HEIGHT - 2); i++) {
-        mvprintw(BATTLE_BOX_Y+1+i, BATTLE_BOX_X+1, "                                               ");                           
+        mvprintw(BATTLE_BOX_Y+1+i, BATTLE_BOX_X+1, "                                                      ");                           
     }
     refresh();
 }
@@ -268,13 +269,13 @@ void clear_battle_box() {
 //Clear all text from the text box where selections are made
 void clear_selection_text() {
     for (int i = 0; i < 4; i++) {
-        mvprintw(TEXT_BOX_Y+1+i, TEXT_BOX_X+1, "                                               ");                           
+        mvprintw(TEXT_BOX_Y+1+i, TEXT_BOX_X+1, "                                                      ");                           
     }
 }
 
 //Clear all text from the text box where messages are displayed
 void clear_text_box() {
     for (int i = 0; i < 4; i++) {
-        mvprintw(TEXT_BOX_Y+5+i, TEXT_BOX_X+1, "                                               ");                           
+        mvprintw(TEXT_BOX_Y+5+i, TEXT_BOX_X+1, "                                                      ");                           
     }
 }

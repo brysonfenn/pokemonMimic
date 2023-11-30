@@ -1,5 +1,7 @@
 #include "map_set4.h"
 
+#include <ncurses.h>
+
 #include "../map_drawing.h"
 #include "../location.h"
 #include "../doors.h"
@@ -60,7 +62,9 @@ void draw_gym3() {
     print_to_message_box("Vermillion City Gym");
     audio_loop_file("gym.mp3");
 
-    add_trainer_by_id(INTERIOR_X+14, INTERIOR_Y+1, 203, PLAYER_MOVING_DOWN);
+    mvaddch(INTERIOR_Y+1, INTERIOR_X+24, ACS_LRCORNER);
+    add_trainer_by_id(INTERIOR_X+25, INTERIOR_Y+1, 203, PLAYER_MOVING_DOWN);
+    mvaddch(INTERIOR_Y+1, INTERIOR_X+26, ACS_LLCORNER);
 }
 
 

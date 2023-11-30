@@ -150,6 +150,14 @@ int battle_trainer(Trainer * trainer) {
         printw("defeating %s",  trainer->name);
         player.money += money_earned;
         refresh(); await_user();
+
+        //Notify badge earned if gym leader
+        if (trainer->id_num > 200 && trainer->id_num <= 208) {
+            text_box_cursors(TEXT_BOX_BEGINNING);
+            printw("Congratulations! %s received badge #%d", player.name, trainer->id_num - 200);
+            text_box_cursors(TEXT_BOX_NEXT_LINE);
+            printw("from %s",  trainer->name); refresh(); await_user();
+        }
     }
 
     //Reset all stat stages of player pokemon
