@@ -1,10 +1,10 @@
-Last Saved: 11/30/2023 19:38:38
+Last Saved: 12/01/2023 08:05:11
 Player: B Test Man
-4 0 5 7570 5 0
+4 0 7 6070 5 0
 Location: {11,(38,12)}
 Heal Center: {11,(38,12)}
 Pokemon: 
-Geodude 74 23 23 2 18 20 11 10 7 7 474 ROCK GROUND 36dcb8a 100 0 0
+Geodude 74 29 29 2 23 26 11 10 9 10 1097 ROCK GROUND 36dcb8a 200 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
 Mankey 56 31 31 4 27 14 9 9 23 12 1842 FIGHTING NONE 567c1363 2040703 0 0
@@ -29,6 +29,8 @@ Antidote. 6 1
 Awakening. 8 1
 Paralyze Heal. 7 1
 Moon Stone. 16 1
+Burn Heal. 9 1
+Super Potion. 2 1
 
 Key Items: 1
   202 
