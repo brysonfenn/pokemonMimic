@@ -3,6 +3,7 @@
 #include "trainer.h"
 #include "../player.h"
 #include "../monsters/pokemon.h"
+#include "../print/print_utils.h"
 
 #define NUM_TRAINERS 50
 
@@ -91,11 +92,14 @@ void update_rival(int id) {
     int rival_starter_index = 0;
     int player_starter = POKEMON_MISSING_NO;
 
-    //Find where BULBASAUR is
+    //Find where BULBASAUR evolution is
     for (int i = 0; i < curr_rival->num_in_party; i++) {
         if (curr_rival->party_id_list[i] <= POKEMON_VENUSAUR) {
             rival_starter_index = i;
             rival_starter = curr_rival->party_id_list[i];
+        }
+        else if (curr_rival->party_id_list[i] <= POKEMON_BLASTOISE) {
+            return;
         }
     }
 

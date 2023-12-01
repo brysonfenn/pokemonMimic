@@ -77,9 +77,18 @@ int handle_mart() {
         maximum = 99;
     }
 
+    bool foundItem = false;
+    int num_already_in_bag = 0;
+    //Find if there were any of the selected item in the bag
+    for (int i = 0; i < player.numInBag; i++) {
+        if (player.bag[i].id_num == example_item.id_num) 
+            num_already_in_bag = player.bag[i].number;
+    }
+
     inputNum = 0;
     sprintf(print_str, "Select a quantity of %s(s) to buy: %02d\n \n", example_item.name, inputNum);
-    sprintf(print_str, "%sCost: $%d\nYou have $%d\n", print_str, 0, player.money);
+    sprintf(print_str, "%sCost: $%d\nYou have $%d\n \n \n", print_str, 0, player.money);
+    sprintf(print_str, "%sYou currently have %d %s(s) in your bag\n", print_str, num_already_in_bag, example_item.name);
     print_to_list(print_str);
 
     int done_selecting = 0;
@@ -120,7 +129,8 @@ int handle_mart() {
         else { 
             begin_list();
             sprintf(print_str, "Select a quantity of %s(s) to buy: %02d\n \n", example_item.name, inputNum);
-            sprintf(print_str, "%sCost: $%d\nYou have $%d\n", print_str, example_item.cost*inputNum, player.money);
+            sprintf(print_str, "%sCost: $%d\nYou have $%d\n \n \n", print_str, example_item.cost*inputNum, player.money);
+            sprintf(print_str, "%sYou currently have %d %s(s) in your bag\n", print_str, num_already_in_bag, example_item.name);
             print_to_list(print_str);
         }
     }
