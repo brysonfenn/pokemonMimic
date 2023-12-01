@@ -16,6 +16,9 @@ int revive_pokemon(int percent, char * name);
 //Get player selection to evolve, and evolve
 int use_evolve_stone(int stone_id, char * name);
 
+//Use Repel - Repel pokemon for num_steps
+int use_repel(int num_steps, char * name);
+
 //Filler function for empty_item that does nothing
 int do_nothing(int input_num);
 

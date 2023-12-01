@@ -104,7 +104,6 @@ int get_battle_selection(int first_line, int last_selection) {
     flushinp();
     while (1) {
         ch = getch();
-
         mvaddch(cursor_y, cursor_x, ' ');
 
         switch (ch) {
@@ -147,7 +146,6 @@ int get_move_selection(int start_x, int start_y, struct Pokemon* pok, int last_s
 
     int ch;
 
-    flushinp();
     while (1) {
         mvprintw(start_y+3, start_x+2, "\t\t\t\t\t");
         mvprintw(start_y+4, start_x+2, "\t\t\t\t\t");
@@ -163,6 +161,7 @@ int get_move_selection(int start_x, int start_y, struct Pokemon* pok, int last_s
 
         adjust_cursors(selection, start_x, start_y);
 
+        flushinp();
         ch = getch();
         mvaddch(cursor_y, cursor_x, ' ');
 

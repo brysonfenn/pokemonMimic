@@ -25,18 +25,20 @@ Item awakening     = {AWAKENING,     "Awakening"    , 0, 250,   &heal_condition,
 Item burn_heal     = {BURN_HEAL,     "Burn Heal"    , 0, 200,   &heal_condition,  BURNED};
 Item freeze_heal   = {FREEZE_HEAL,   "Freeze Heal"  , 0, 200,   &heal_condition,  FROZEN};           // 10
 
-Item revive        = {REVIVE,        "Revive"       , 0, 1500,  &revive_pokemon,  50};
+Item revive        = {REVIVE,        "Revive"       , 0, 1500,  &revive_pokemon,    50};
 Item fire_stone    = {FIRE_STONE,    "Fire Stone"   , 0, 5000,  &use_evolve_stone,  202};
 Item water_stone   = {WATER_STONE,   "Water Stone"  , 0, 5000,  &use_evolve_stone,  203};
 Item thunder_stone = {THUNDER_STONE, "Thunder Stone", 0, 5000,  &use_evolve_stone,  204};
 Item leaf_stone    = {LEAF_STONE,    "Leaf Stone"   , 0, 5000,  &use_evolve_stone,  205};
 Item moon_stone    = {MOON_STONE,    "Moon Stone"   , 0, 5000,  &use_evolve_stone,  206};
+Item repel         = {REPEL,         "Repel"        , 0,  350,  &use_repel,         100};
+Item super_repel   = {SUPER_REPEL,   "Super Repel"  , 0,  500,  &use_repel,         200};
 
 
 //NOTE: Make sure to add item to this list after creating it
 static * item_array[NUM_ITEMS] = { &empty_item, 
     &potion, &super_potion, &pokeball, &greatball, &ultraball, &antidote, &paralyze_heal, &awakening, &burn_heal, &freeze_heal, //    1-10
-    &revive, &fire_stone, &water_stone, &thunder_stone, &leaf_stone, &moon_stone
+    &revive, &fire_stone, &water_stone, &thunder_stone, &leaf_stone, &moon_stone, &repel, &super_repel
 };
 
 //Returns an item pointer by its ID number. Should be immediately dereferenced

@@ -175,6 +175,12 @@ int use_evolve_stone(int input_stone_id, char * name) {
     int current_stone_id, evolve_id, input_num;
     char print_str[128];
 
+    if (player.is_battle || player.trainer_battle) {
+        begin_list();
+        print_to_list("You can't use that!"); sleep(2);
+        return ITEM_FAILURE;
+    }
+
     //Get stone's ability to evolve
     bool able_array[6] = {false, false, false, false, false, false};
     for (int i = 0; i < player.numInParty; i++) {
@@ -200,6 +206,9 @@ int use_evolve_stone(int input_stone_id, char * name) {
         }
         if (able_array[selected_pok]) {
             begin_list();
+            if (player.party[selected_pok].currentHP == 0) {
+                print_to_list("You cannot evolve a fainted Pokemon"); sleep(2); return ITEM_FAILURE;
+            }
             sprintf(print_str, "Are you sure you want to evolve %s?\n  Yes\n  No", player.party[selected_pok].name);
             print_to_list(print_str);
             input_num = get_selection(1, 1, 0);
@@ -222,6 +231,24 @@ int use_evolve_stone(int input_stone_id, char * name) {
     
     handle_evolve_outside_battle(&(player.party[selected_pok]), evolve_id);
 
+    return ITEM_SUCCESS;
+}
+
+
+//Use Repel - Repel pokemon for num_steps
+int use_repel(int num_steps, char * name) {
+    char print_str[128];
+
+    begin_list();
+    if (player.is_battle || player.trainer_battle) {
+        print_to_list("You can't use that!"); sleep(2);
+        return ITEM_FAILURE;
+    }
+
+    player.repel_steps = num_steps;
+    begin_list();
+    sprintf(print_str, "Pokemon below your first Pokemon's level will be repelled for %d steps", num_steps);
+    print_to_list(print_str); await_user();
     return ITEM_SUCCESS;
 }
 

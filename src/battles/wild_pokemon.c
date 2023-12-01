@@ -9,8 +9,8 @@
 #include "../audio/audio_player.h"
 
 //Battle a random wild pokemon
-int battle_wild_pokemon() {
-    Pokemon example_pokemon;
+int battle_wild_pokemon(struct Pokemon * pok) {
+    Pokemon example_pokemon = *pok;
     char print_str[256];
     int battle_result = 0;
 
@@ -22,7 +22,6 @@ int battle_wild_pokemon() {
     
     set_current_pokemon(PLAYER_DEFAULT_POKEMON);
     if (player_get_num_alive()) {
-        example_pokemon = *(get_random_wild_pokemon(2, 6));
         sprintf(print_str, "  A wild %s appeared!\n", example_pokemon.name);
         print_to_list(print_str);
         sleep(2);

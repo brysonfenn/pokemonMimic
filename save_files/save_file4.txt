@@ -1,6 +1,6 @@
 Last Saved: 11/23/2023 10:25:05
 Player: Oliver H
-4 0 1 1585 0
+4 0 1 1585 0 0
 Location: {1,(32,10)}
 Heal Center: {1,(32,10)}
 Pokemon: 

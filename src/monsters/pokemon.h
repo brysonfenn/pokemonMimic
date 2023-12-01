@@ -138,7 +138,7 @@ void destroy_pokemon(Pokemon * pok);
 
 //Return a random pokemon, excluding starters
 //Always immediately dereference the return value of this function.
-Pokemon * get_random_wild_pokemon(int level_min, int level_max);
+Pokemon * get_random_wild_pokemon();
 
 //Get a starter pokemon
 Pokemon * get_starter(int starter);

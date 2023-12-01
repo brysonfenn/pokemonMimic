@@ -16,7 +16,7 @@ static int * mart_array;
                                //NUM// ITEMS...
 static int default_mart[10] =   { 1, FREEZE_HEAL };
 static int viridian_mart[10] =  { 4, POKE_BALL, POTION, ANTIDOTE, PARALYZE_HEAL };
-static int pewter_mart[10] =    { 5, POKE_BALL, POTION, ANTIDOTE, AWAKENING, PARALYZE_HEAL };
+static int pewter_mart[10] =    { 6, POKE_BALL, POTION, ANTIDOTE, AWAKENING, PARALYZE_HEAL, REPEL };
 static int cerulean_mart[10] =  { 6, POKE_BALL, POTION, SUPER_POTION, ANTIDOTE, PARALYZE_HEAL, BURN_HEAL };
 static int vermillion_mart[10] ={ 6, POKE_BALL, GREAT_BALL, POTION, SUPER_POTION, THUNDER_STONE, AWAKENING };
 
@@ -85,28 +85,36 @@ int handle_mart() {
     int done_selecting = 0;
     
     while (1) {
+        flushinp();
         ch = getch();
         switch (ch) {
-        case KEY_UP:
-            if (inputNum == maximum) inputNum = 0;
-            else inputNum++;
-            break;
-        case KEY_DOWN:
-            if (inputNum == 0) inputNum = maximum;
-            else inputNum--;
-            break;
-        case SELECT_CHAR:
-        case SELECT_CHAR_2:
-            audio_play_file("select_button.mp3");
-            done_selecting = 1;
-            break;
-        case CANCEL_CHAR:
-        case CANCEL_CHAR_2:
-            audio_play_file("back_button.mp3");
-            return ITEM_FAILURE;
-            break;
-        default:
-            break;
+            case KEY_UP: case KEY_DOWN:
+                audio_play_file("move_cursor.mp3");
+                break;
+            default: break; 
+        }
+
+        switch (ch) {
+            case KEY_UP:
+                if (inputNum == maximum) inputNum = 0;
+                else inputNum++;
+                break;
+            case KEY_DOWN:
+                if (inputNum == 0) inputNum = maximum;
+                else inputNum--;
+                break;
+            case SELECT_CHAR:
+            case SELECT_CHAR_2:
+                audio_play_file("select_button.mp3");
+                done_selecting = 1;
+                break;
+            case CANCEL_CHAR:
+            case CANCEL_CHAR_2:
+                audio_play_file("back_button.mp3");
+                return ITEM_FAILURE;
+                break;
+            default:
+                break;
         }
         if (done_selecting) break;
         else { 

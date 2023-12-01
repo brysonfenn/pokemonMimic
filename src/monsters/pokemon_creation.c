@@ -65,11 +65,9 @@ void destroy_pokemon(Pokemon * pok) {
 
 //Return a random pokemon, excluding starters
 //Always immediately dereference the return value of this function.
-Pokemon * get_random_wild_pokemon(int level_min, int level_max) {
+Pokemon * get_random_wild_pokemon() {
     int pok_position, new_pok_id;
-    int min_level = 2;
-    int max_level = 6;
-    int set_level = RANDOM_LEVEL;
+    int min_level, max_level, set_level = 0;
 
     //Get pokemon according to map, if it is an unknown map, get level 99 ivysaur
     if (player.loc->map < 1 || player.loc->map > MAX_MAP_NUM) {

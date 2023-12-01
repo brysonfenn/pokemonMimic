@@ -1,6 +1,6 @@
 Last Saved: 11/29/2023 20:12:24
 Player: Test_Player
-3 5 2 1295 0
+3 5 2 1295 0 0
 Location: {8,(16,5)}
 Heal Center: {7,(32,9)}
 Pokemon: 

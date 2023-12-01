@@ -22,6 +22,7 @@
 #include "../items/items.h"
 #include "../items/key_items.h"
 #include "../audio/audio_player.h"
+#include "../monsters/pokemon.h"
 
 
 //Function pointers
@@ -61,12 +62,16 @@ void handle_motion() {
 
     int ch;
     char next_char;
+    
 
     while (1) {
         flushinp();
         ch = getch();
-        
         mvaddch(*player_y, *player_x, ' '); 
+
+        char prev_player_x = *player_x;
+        char prev_player_y = *player_y;
+
         switch (ch) {
             case MENU_CHAR:
             case MENU_CHAR_2:
@@ -145,6 +150,16 @@ void handle_motion() {
         mvaddch(*player_y, *player_x, player_char);
         attrset(COLOR_PAIR(DEFAULT_COLOR));
 
+        //Decrement repel 
+        if (player.repel_steps > 0) {
+            if (*player_y != prev_player_y || *player_x != prev_player_x) {
+                player.repel_steps--;
+                if (player.repel_steps == 0) {
+                    print_to_message_box("Repel's effect wore off..."); await_user();
+                }
+            }
+        }
+
         // Check if action or portal needs to be handled
         Location door = *(get_door(*player_x, *player_y));
         int action = door.action;
@@ -165,34 +180,36 @@ void handle_motion() {
 
         draw_static_elements();
 
+        //Get encounter chance
         int random = rand() % 100;
         bool encounter = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR);
         encounter = encounter || ((player.loc->map==MAP_MT_MOON_N || player.loc->map==MAP_MT_MOON_S || player.loc->map==MAP_DIG_CAVE) 
                 && random < 5);   //Extra percentage for caves
         encounter = encounter && !(leave_msg_count < 5) && (random < 10);     //Chance of encounter
-
-        //Uncomment to disable encounters
-        // encounter = false;
+        encounter = encounter;
 
         // Set player color, move, and unset
         attrset(COLOR_PAIR(PLAYER_COLOR));
         mvaddch(*player_y, *player_x, player_char);
         attrset(COLOR_PAIR(DEFAULT_COLOR));
-
-        //Display player location
-        // sprintf(print_str, "Player location (%d,%d)", *player_x, *player_y);
-        // mvprintw(21,4, print_str); 
         refresh();
 
+        //Handle Wild pokemon encounter
         if (encounter) {
-            save_print_state();
-            audio_end_loop();
-            audio_play_file("begin_battle.mp3");
-            blink_screen(7, restore_print_state);
-            begin_message_box(); save_print_state();
-            battle_wild_pokemon();
-            init_map();
-            continue;
+            Pokemon * wild_pok = get_random_wild_pokemon();
+            set_current_pokemon(PLAYER_DEFAULT_POKEMON);
+
+            //Handle Repel
+            if (player.repel_steps == 0 || player.current_pokemon->level <= wild_pok->level) {
+                save_print_state();
+                audio_end_loop();
+                audio_play_file("begin_battle.mp3");
+                blink_screen(7, restore_print_state);
+                begin_message_box(); save_print_state();
+                battle_wild_pokemon(wild_pok);
+                init_map();
+                continue;
+            }
         }
 
         // Handle trainers that are in range to see the player //

@@ -32,6 +32,7 @@ struct playerCharacter {
   uint8_t trainers_battled_id[256];
   uint16_t num_trainers_battled;
   int32_t money;
+  int32_t repel_steps;
 
   bool trainer_battle;
   bool is_battle;

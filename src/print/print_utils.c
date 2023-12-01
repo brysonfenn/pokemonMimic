@@ -149,9 +149,15 @@ int get_selection(int first_line, int highest_option_num, int last_selection) {
 
     int ch;
 
-    flushinp();
     while (1) {
+        flushinp();
         ch = getch();
+        switch (ch) {
+            case KEY_UP: case KEY_DOWN:
+                audio_play_file("move_cursor.mp3");
+                break;
+            default: break; 
+        }
 
         mvaddch(cursor_y, cursor_x, ' ');
 
@@ -240,7 +246,7 @@ int await_user() {
     int ch = '~';
     flushinp();
     mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "Press '%c'", SELECT_CHAR); refresh();
-    while (ch != SELECT_CHAR && ch != SELECT_CHAR_2) ch = getch();
+    while (ch != SELECT_CHAR && ch != SELECT_CHAR_2) { flushinp(); ch = getch(); }
 
     mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "           "); refresh();
 }
@@ -338,6 +344,12 @@ char * get_name_input(char * target_for_name) {
     while (1) {
         flushinp();
         ch = getch();
+        switch (ch) {
+            case KEY_UP: case KEY_DOWN: case KEY_RIGHT: case KEY_LEFT:
+                audio_play_file("move_cursor.mp3");
+                break;
+            default: break; 
+        }
 
         switch (ch) {
         case KEY_UP:
