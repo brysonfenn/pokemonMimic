@@ -23,6 +23,8 @@
 #define ALPHABET_FIRST_CHAR 'A'
 
 static char name_input_str[MAX_NAME_INPUT_LENGTH] = "";
+static char pokemon_str_list[50][64];
+static char * str_ptr_list[50];
 
 void print_alphabet(char curr_char, char last_char);
 
@@ -49,6 +51,38 @@ void print_pokemon_list(struct Pokemon * pokList, int list_size) {
         sprintf(list_str, "%s\n", list_str);
     }
     print_to_list(list_str);
+}
+
+
+//Print a list of Pokemon (used for party and PC)
+int get_pokemon_list_selection(struct Pokemon * pokList, int list_size, int last_selection) {
+    char list_str[64] = "";
+    int i;
+    for (i = 0; i < list_size; i++) {
+        Pokemon current_pok = pokList[i];
+        int current = current_pok.currentHP;
+        int max = current_pok.maxHP;
+        sprintf(list_str, "%s", current_pok.name);
+
+        //Handle spacing
+        for (int j = strlen(current_pok.name); j < 15; j++) sprintf(list_str, "%s ", list_str);
+        //Fix Nidoran male/female symbol spacing
+        bool is_nidoran = ((current_pok.id_num == POKEMON_NIDORAN_F) || (current_pok.id_num == POKEMON_NIDORAN_M));
+        if (is_nidoran) sprintf(list_str, "%s  ", list_str);
+
+        //Add other pokemon info
+        sprintf(list_str, "%sLVL %d\tHP: %d/%d ", list_str, current_pok.level, current, max);
+        if (!(current)) sprintf(list_str, "%s (Fainted) ", list_str);
+        add_condition_string(list_str, &current_pok);
+
+        //Add String
+        sprintf(pokemon_str_list[i], "%s", list_str);
+        str_ptr_list[i] = pokemon_str_list[i];
+    }
+    sprintf(pokemon_str_list[i], "Cancel");
+    str_ptr_list[i] = pokemon_str_list[i];
+
+    return get_scrollable_selection("PC: ", str_ptr_list, list_size+1, last_selection);
 }
 
 
@@ -152,39 +186,39 @@ int get_selection(int first_line, int highest_option_num, int last_selection) {
     while (1) {
         flushinp();
         ch = getch();
+        mvaddch(cursor_y, cursor_x, ' ');
+
+        switch (ch) {
+            case KEY_UP:
+                if (cursor_y == actual_first_line) cursor_y = actual_first_line + highest_option_num;
+                else cursor_y--;
+                break;
+            case KEY_DOWN:
+                if (cursor_y == actual_first_line + highest_option_num) cursor_y = actual_first_line;
+                else cursor_y++;
+                break;
+            case SELECT_CHAR:
+            case SELECT_CHAR_2:
+                audio_play_file("select_button.mp3");
+                return (cursor_y - actual_first_line);
+            case CANCEL_CHAR:
+            case CANCEL_CHAR_2:
+                audio_play_file("back_button.mp3");
+                return (PRESSED_B);
+                break;
+            default:
+                break;
+        }
+        mvaddch(cursor_y, cursor_x, SELECTION_CHAR);
+        refresh();  
+
         switch (ch) {
             case KEY_UP: case KEY_DOWN:
                 audio_play_file("move_cursor.mp3");
                 break;
             default: break; 
         }
-
-        mvaddch(cursor_y, cursor_x, ' ');
-
-        switch (ch) {
-        case KEY_UP:
-            if (cursor_y == actual_first_line) cursor_y = actual_first_line + highest_option_num;
-            else cursor_y--;
-            break;
-        case KEY_DOWN:
-            if (cursor_y == actual_first_line + highest_option_num) cursor_y = actual_first_line;
-            else cursor_y++;
-            break;
-        case SELECT_CHAR:
-        case SELECT_CHAR_2:
-            audio_play_file("select_button.mp3");
-            return (cursor_y - actual_first_line);
-        case CANCEL_CHAR:
-        case CANCEL_CHAR_2:
-            audio_play_file("back_button.mp3");
-            return (PRESSED_B);
-            break;
-        default:
-            break;
-        }
-        mvaddch(cursor_y, cursor_x, SELECTION_CHAR);
-        refresh();  
-  }
+    }
 
   return -1;
 }

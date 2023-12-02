@@ -9,6 +9,9 @@ struct Pokemon;
 //Print a list of Pokemon (used for party and PC)
 void print_pokemon_list(struct Pokemon * pokList, int list_size);
 
+//Print a list of Pokemon (used for party and PC)
+int get_pokemon_list_selection(struct Pokemon * pokList, int list_size, int last_selection);
+
 //Print the player's current pokemon party
 void printParty();
 
@@ -64,6 +67,6 @@ char * get_name_input(char * target_for_name);
 //  str_list is the list of strings representing elements in list
 //  num_in_list is the number of strings in the list
 //  last_selection is where the cursor will begin (usually 0 or the last option selected)
-int get_scrollable_selection(char ** str_list, int num_in_list, int last_selection);
+int get_scrollable_selection(char * title, char ** str_list, int num_in_list, int last_selection);
 
 #endif // PRINT_UTILS_H

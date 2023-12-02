@@ -54,12 +54,13 @@ void handle_PC() {
     Pokemon tempPok;
     
     while (1) {
-        begin_list();
-        print_to_list("Welcome to the PC! Select a Pokemon from storage below");
-        print_pokemon_list(player.pc_storage, player.numInPCStorage);
-        print_to_list("  Cancel");
+        // begin_list();
+        // print_to_list("Welcome to the PC! Select a Pokemon from storage below");
+        // print_pokemon_list(player.pc_storage, player.numInPCStorage);
+        // print_to_list("  Cancel");
+        // input_num1 = get_selection(1, player.numInPCStorage, input_num1);
+        input_num1 = get_pokemon_list_selection(player.pc_storage, player.numInPCStorage, input_num1);
 
-        input_num1 = get_selection(1, player.numInPCStorage, input_num1);
         if (input_num1 == player.numInPCStorage || input_num1 == PRESSED_B) { break; }   //Cancel
         else {
             begin_list();
