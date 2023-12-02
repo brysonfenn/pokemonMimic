@@ -273,25 +273,28 @@ void pokemon_give_moves(Pokemon *pok) {
 int handle_evolve_in_battle(Pokemon * pok, int next_pok_id) {
     char og_pok_name[LINE_SIZE];
     sprintf(og_pok_name, "%s", pok->name);  //Preserve some information like name
+    int ch;
 
     clear();
     printBattle();
     text_box_cursors(TEXT_BOX_BEGINNING); printw("What? %s is evolving!", og_pok_name);
     text_box_cursors(TEXT_BOX_NEXT_LINE); printw("Press '%c' to cancel ", CANCEL_CHAR); refresh();
+    audio_save_looping_file(2);
+    audio_end_loop();
+    audio_play_file("evolution_theme.mp3");
 
     int count = 0;
     bool pressed_b = false;
     nodelay(stdscr, TRUE);
 
     while (1) {
-        flushinp();
-        int ch = getch();
+        ch = getch();
         if (ch == CANCEL_CHAR || ch == CANCEL_CHAR_2) {
             pressed_b = true;
             break;
         }
 
-        if (count > 3000) break;
+        if (count > 7000) break;
         count++;
 
         if (!(count % 500)) {
@@ -304,14 +307,20 @@ int handle_evolve_in_battle(Pokemon * pok, int next_pok_id) {
     usleep(500000);
     nodelay(stdscr, FALSE);
     if (pressed_b) {
+        audio_end_play();
+        audio_restore_looping_file(2);
         text_box_cursors(TEXT_BOX_NEXT_LINE); printw("%s did not evolve!", og_pok_name); refresh(); sleep(2);
         return 1;
     }
+
+    audio_play_file("evolution_complete.mp3");
 
     evolve(pok, next_pok_id);
 
     text_box_cursors(TEXT_BOX_BEGINNING); printw("Congratulations! %s evolved", og_pok_name);
     text_box_cursors(TEXT_BOX_NEXT_LINE); printw("into %s!", pok->name); refresh(); sleep(3);
+
+    audio_restore_looping_file(2);
 
     return 0;
 }
@@ -324,7 +333,9 @@ void handle_evolve_outside_battle(Pokemon * pok, int next_pok_id) {
     
     begin_list();
     sprintf(print_str, "What? %s is evolving!", og_pok_name);
-    print_to_list(print_str); sleep(4);
+    print_to_list(print_str); 
+    audio_play_file("evolution_theme.mp3"); usleep(13400000);
+    audio_play_file("evolution_complete.mp3");
     
     evolve(pok, next_pok_id);
 
