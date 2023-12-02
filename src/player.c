@@ -30,7 +30,7 @@ void player_init(int save_file) {
     player.blackout_center = malloc(sizeof(Location));
 
     player.party = malloc(sizeof(Pokemon) * 6);
-    player.pc_storage = malloc(sizeof(Pokemon) * 20);
+    player.pc_storage = malloc(sizeof(Pokemon) * 150);
 
     player.num_trainers_battled = 0;
     
@@ -40,7 +40,8 @@ void player_init(int save_file) {
         load_game(save_file);
 
     player.current_pokemon = &(player.party[0]);
-    player.trainer_battle = false;
+    player.is_trainer_battle = false;
+    player.is_uncaught_pokemon = false;
 }
 
 
@@ -83,7 +84,7 @@ int player_get_num_alive() {
 
 //Set current pokemon according to position in the party
 //  if position == PLAYER_DEFAULT_POKEMON, set to first pokemon alive
-void set_current_pokemon(int position) {
+void player_set_current_pokemon(int position) {
     if (position < 0 || position >= player.numInParty || player.party[position].currentHP == 0) {
         // Find first available alive pokemon
         for (int i = 0; i < player.numInParty; i++) {
@@ -104,20 +105,20 @@ void set_current_pokemon(int position) {
 
 
 //Set enemy pokemon using a pointer to it
-void set_enemy_pokemon(struct Pokemon * pok) {
+void player_set_enemy_pokemon(struct Pokemon * pok) {
     player.enemy_pokemon = pok;
 }
 
 
 //Print player information
-void printPlayer() {
+void player_print() {
     char print_str[1024] = "";
     sprintf(print_str, "%s  %s:\n", print_str, player.name);
     sprintf(print_str, "%s  Number of Pokemon: %d\tRepel Steps: %d\n", print_str, player.numInParty, player.repel_steps);
     sprintf(print_str, "%s  Money: $%d\n \n  Badges:\n    ", print_str, player.money);
 
     for (int leader_id = 201; leader_id <= 208; leader_id++) {
-        if (has_battled_trainer(leader_id)) sprintf(print_str, "%s%d  ", print_str, leader_id - 200);
+        if (player_has_battled_trainer(leader_id)) sprintf(print_str, "%s%d  ", print_str, leader_id - 200);
         else sprintf(print_str, "%s-  ", print_str);
 
         if (leader_id == 204) sprintf(print_str, "%s\n    ", print_str);
@@ -131,15 +132,27 @@ void printPlayer() {
 //Handle trainers already battled
 
 //Add a trainer id to list of battled trainer
-void add_battled_trainer(int id) {
+void player_add_battled_trainer(int id) {
     player.trainers_battled_id[player.num_trainers_battled] = id;
     player.num_trainers_battled++;
 }
 
 //Returns true only if the player has already battled the trainer
-bool has_battled_trainer(int id) {
+bool player_has_battled_trainer(int id) {
     for (int i = 0; i < player.num_trainers_battled; i++) {
         if (player.trainers_battled_id[i] == id) return true;
     }
+    return false;
+}
+
+//Returns true only if the player has the pokemon in PC or Party
+bool player_has_pokemon(int id) {
+    for (int i = 0; i < player.numInParty; i++) {
+        if (player.party[i].id_num == id) return true;
+    }
+    for (int i = 0; i < player.numInPCStorage; i++) {
+        if (player.pc_storage[i].id_num == id) return true;
+    }
+
     return false;
 }

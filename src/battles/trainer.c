@@ -49,7 +49,7 @@ int battle_trainer(Trainer * trainer) {
     int inputNum, battle_result, return_execute;
     Pokemon trainer_pokemon[trainer->num_in_party];
     battle_result = BATTLE_WIN;
-    player.trainer_battle = true;
+    player.is_trainer_battle = true;
     bool switch_chosen = true;
 
     //Introductory message
@@ -63,7 +63,7 @@ int battle_trainer(Trainer * trainer) {
     }
 
     //Set up first player pokemon
-    set_current_pokemon(PLAYER_DEFAULT_POKEMON);
+    player_set_current_pokemon(PLAYER_DEFAULT_POKEMON);
 
 
 
@@ -115,7 +115,7 @@ int battle_trainer(Trainer * trainer) {
             }
             else {
                 reset_stat_stages(player.current_pokemon);
-                set_current_pokemon(inputNum);
+                player_set_current_pokemon(inputNum);
                 switch_chosen = true;
                 break;
             }
@@ -176,7 +176,7 @@ int battle_trainer(Trainer * trainer) {
         return BATTLE_WHITE_OUT;
     }
     else {
-        add_battled_trainer(trainer->id_num);
+        player_add_battled_trainer(trainer->id_num);
         return BATTLE_WIN;
     }
 }

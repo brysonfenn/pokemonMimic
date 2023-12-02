@@ -297,7 +297,7 @@ int handle_battle(struct Pokemon * enemyPok) {
 
                     //Make switch
                     reset_stat_stages(currentPok);
-                    set_current_pokemon(pokemon_selected);
+                    player_set_current_pokemon(pokemon_selected);
                     currentPok = player.current_pokemon;
                     enemy_attacks = true;
 
@@ -312,7 +312,7 @@ int handle_battle(struct Pokemon * enemyPok) {
                 }
                 break;
             case RUN:
-                if (player.trainer_battle) {
+                if (player.is_trainer_battle) {
                     text_box_cursors(TEXT_BOX_BEGINNING);
                     printw("You can't run from a trainer battle!"); refresh(); sleep(2);
                     enemy_attacks = false;
@@ -357,7 +357,7 @@ int handle_battle(struct Pokemon * enemyPok) {
         int exp = pokemon_get_exp_yield(enemyPok);
         float random = (float) (rand() % 25);
         exp *= (1.0 + (random / 100.0));
-        if (player.trainer_battle) exp *= 1.5;
+        if (player.is_trainer_battle) exp *= 1.5;
 
         Pokemon framePok = *get_pokemon_frame(enemyPok->id_num);
 

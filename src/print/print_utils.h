@@ -10,7 +10,7 @@ struct Pokemon;
 void print_pokemon_list(struct Pokemon * pokList, int list_size);
 
 //Print a list of Pokemon (used for party and PC)
-int get_pokemon_list_selection(struct Pokemon * pokList, int list_size, int last_selection);
+int get_pc_selection(int last_selection);
 
 //Print the player's current pokemon party
 void printParty();

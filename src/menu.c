@@ -133,7 +133,7 @@ void main_menu() {
         //Display player data
         case PLAYER:
             begin_list();
-            printPlayer();
+            player_print();
             print_to_list("\n \n  Change Player Name\n  Cancel\n");
             inputNum = get_selection(8,1,1);
 

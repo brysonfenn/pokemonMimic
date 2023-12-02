@@ -147,8 +147,6 @@ void give_fossil_pokemon(int fossil_index, int fossil_type) {
     if (fossil_type == K_HELIX_VOUCHER) { id = POKEMON_OMANYTE; }
     else if (fossil_type == K_DOME_VOUCHER) { id = POKEMON_KABUTO; }
     else { id = POKEMON_AERODACTYL; }
- 
-    remove_key_item(fossil_type);
 
     print_to_list("Your fossil was successfully processed!\n \n"); sleep(3);
 
@@ -156,8 +154,14 @@ void give_fossil_pokemon(int fossil_index, int fossil_type) {
     int level = 0;
     for (int i = 0; i < player.numInParty; i++) level += (player.party[i].level);
     level /= player.numInParty;
-
     Pokemon fossil_pok = *create_new_pokemon(id, level, 0, 0);
 
-    give_pokemon_to_player(&fossil_pok);
+    bool added = give_pokemon_to_player(&fossil_pok);
+    if (!added) {
+        sprintf(print_str, "%s could not be added. Your PC box is full!", fossil_pok.name);
+        print_to_list(print_str); sleep(3);
+        return;
+    }
+ 
+    remove_key_item(fossil_type);
 }

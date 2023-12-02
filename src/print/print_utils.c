@@ -18,6 +18,10 @@
 #include "../motion/map_drawing.h"
 #include "../audio/audio_player.h"
 
+#define POK_INFO_NORMAL 1
+#define POK_INFO_ABLE 2
+#define POK_INFO_UNABLE 3
+
 #define MAX_NAME_INPUT_LENGTH 10
 #define PRINT_ENTIRE_ALPHABET 0
 #define ALPHABET_FIRST_CHAR 'A'
@@ -28,55 +32,59 @@ static char * str_ptr_list[50];
 
 void print_alphabet(char curr_char, char last_char);
 
+
+void put_pokemon_line(Pokemon * pok, char * input_str, char info_type) {
+    int current = pok->currentHP;
+    int max = pok->maxHP;
+
+    sprintf(input_str, "%s", pok->name);
+    //Handle spacing
+    for (int j = strlen(pok->name); j < 15; j++) sprintf(input_str, "%s ", input_str);
+    //Fix Nidoran male/female symbol spacing
+    bool is_nidoran = ((pok->id_num == POKEMON_NIDORAN_F) || (pok->id_num == POKEMON_NIDORAN_M));
+    if (is_nidoran) sprintf(input_str, "%s  ", input_str);
+
+    //Add other pokemon info
+    if (info_type == POK_INFO_ABLE) {
+        sprintf(input_str, "%sAble", input_str);
+    }
+    else if (info_type == POK_INFO_UNABLE) {
+        sprintf(input_str, "%sUnable", input_str);
+    }
+    else {
+        sprintf(input_str, "%sLVL %d\tHP: %d/%d ", input_str, pok->level, current, max);
+        if (!(current)) sprintf(input_str, "%s (Fainted) ", input_str);
+    }
+
+    add_condition_string(input_str, pok);
+}
+
+
 //Print a list of Pokemon (used for party and PC)
 void print_pokemon_list(struct Pokemon * pokList, int list_size) {
     char list_str[8192] = "";
+    char pok_line[64] = "";
 
     for (int i = 0; i < list_size; i++) {
-        Pokemon current_pok = pokList[i];
-        int current = current_pok.currentHP;
-        int max = current_pok.maxHP;
-        sprintf(list_str, "%s  %s" , list_str, current_pok.name);
-
-        //Handle spacing
-        for (int j = strlen(current_pok.name); j < 15; j++) sprintf(list_str, "%s ", list_str);
-        //Fix Nidoran male/female symbol spacing
-        bool is_nidoran = ((current_pok.id_num == POKEMON_NIDORAN_F) || (current_pok.id_num == POKEMON_NIDORAN_M));
-        if (is_nidoran) sprintf(list_str, "%s  ", list_str);
-
-        //Add other pokemon info
-        sprintf(list_str, "%sLVL %d\tHP: %d/%d ", list_str, current_pok.level, current, max);
-        if (!(current)) sprintf(list_str, "%s (Fainted) ", list_str);
-        add_condition_string(list_str, &current_pok);
-        sprintf(list_str, "%s\n", list_str);
+        put_pokemon_line(&(pokList[i]), pok_line, POK_INFO_NORMAL);
+        sprintf(list_str, "%s  %s\n" , list_str, pok_line);
     }
     print_to_list(list_str);
 }
 
 
 //Print a list of Pokemon (used for party and PC)
-int get_pokemon_list_selection(struct Pokemon * pokList, int list_size, int last_selection) {
-    char list_str[64] = "";
+int get_pc_selection(int last_selection) {
+    char pok_line[64] = "";
+    int list_size = player.numInPCStorage;
+    Pokemon * pokList = player.pc_storage;
+
     int i;
     for (i = 0; i < list_size; i++) {
-        Pokemon current_pok = pokList[i];
-        int current = current_pok.currentHP;
-        int max = current_pok.maxHP;
-        sprintf(list_str, "%s", current_pok.name);
-
-        //Handle spacing
-        for (int j = strlen(current_pok.name); j < 15; j++) sprintf(list_str, "%s ", list_str);
-        //Fix Nidoran male/female symbol spacing
-        bool is_nidoran = ((current_pok.id_num == POKEMON_NIDORAN_F) || (current_pok.id_num == POKEMON_NIDORAN_M));
-        if (is_nidoran) sprintf(list_str, "%s  ", list_str);
-
-        //Add other pokemon info
-        sprintf(list_str, "%sLVL %d\tHP: %d/%d ", list_str, current_pok.level, current, max);
-        if (!(current)) sprintf(list_str, "%s (Fainted) ", list_str);
-        add_condition_string(list_str, &current_pok);
+        put_pokemon_line(&(pokList[i]), pok_line, POK_INFO_NORMAL);
 
         //Add String
-        sprintf(pokemon_str_list[i], "%s", list_str);
+        sprintf(pokemon_str_list[i], "%s", pok_line);
         str_ptr_list[i] = pokemon_str_list[i];
     }
     sprintf(pokemon_str_list[i], "Cancel");
@@ -95,23 +103,13 @@ void printParty() {
 
 //Print the player's party, with able/unable based on size [6] bool array
 void print_party_able_unable(const bool able_array[6]) {
-    char list_str[8192] = "";
+    char list_str[1024] = "";
+    char pok_line[64] = "";
 
     for (int i = 0; i < player.numInParty; i++) {
-        Pokemon current_pok = player.party[i];
-        sprintf(list_str, "%s  %s" , list_str, current_pok.name);
-
-        //Handle spacing
-        for (int j = strlen(current_pok.name); j < 15; j++) sprintf(list_str, "%s ", list_str);
-        //Fix Nidoran male/female symbol spacing
-        bool is_nidoran = ((current_pok.id_num == POKEMON_NIDORAN_F) || (current_pok.id_num == POKEMON_NIDORAN_M));
-        if (is_nidoran) sprintf(list_str, "%s  ", list_str);
-
-        //Add able/unable info
-        char able_unable[32];
-        if (able_array[i]) sprintf(able_unable, "%s", "Able");
-        else sprintf(able_unable, "%s", "Unable");
-        sprintf(list_str, "%s%s\n", list_str, able_unable);
+        if (able_array[i]) put_pokemon_line(&(player.party[i]), pok_line, POK_INFO_ABLE);
+        else put_pokemon_line(&(player.party[i]), pok_line, POK_INFO_UNABLE);
+        sprintf(list_str, "%s  %s\n", list_str, pok_line);
     }
     print_to_list(list_str);
 }

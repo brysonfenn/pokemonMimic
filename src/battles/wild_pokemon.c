@@ -16,16 +16,18 @@ int battle_wild_pokemon(struct Pokemon * pok) {
 
     audio_loop_file("wild_battle.mp3");
 
-    player.trainer_battle = false;
+    player.is_trainer_battle = false;
 
     begin_list();
     
-    set_current_pokemon(PLAYER_DEFAULT_POKEMON);
+    player_set_current_pokemon(PLAYER_DEFAULT_POKEMON);
     if (player_get_num_alive()) {
         sprintf(print_str, "  A wild %s appeared!\n", example_pokemon.name);
         print_to_list(print_str);
         sleep(2);
+        player.is_uncaught_pokemon = !player_has_pokemon(example_pokemon.id_num);
         battle_result = handle_battle(&example_pokemon);
+        player.is_uncaught_pokemon = false;
     }
     else {
         print_to_list("  All Pokemon have fainted, please heal them.\n");

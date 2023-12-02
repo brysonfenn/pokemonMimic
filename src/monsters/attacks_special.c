@@ -210,7 +210,7 @@ int seismic_toss_move_func(int nothing1, int nothing2, struct Pokemon * victim, 
 
 //Special Function for Teleport
 int teleport_move_func(int nothing1, int chance, struct Pokemon * victim, int damage) {
-    if ((rand() % 100) < chance && !player.trainer_battle) {
+    if ((rand() % 100) < chance && !player.is_trainer_battle) {
         return ATTACK_END_BATTLE;
     }
     else {

@@ -9,7 +9,7 @@ struct Location;
 struct Item;
 
 #define PLAYER_DEFAULT_POKEMON -1
-#define MAX_IN_PC_STORAGE 18
+#define MAX_IN_PC_STORAGE 145
 
 
 struct playerCharacter {
@@ -34,8 +34,9 @@ struct playerCharacter {
   int32_t money;
   int32_t repel_steps;
 
-  bool trainer_battle;
+  bool is_trainer_battle;
   bool is_battle;
+  bool is_uncaught_pokemon;
   
   struct Pokemon * current_pokemon;
   struct Pokemon * enemy_pokemon;
@@ -56,18 +57,21 @@ int player_get_num_alive();
 
 //Set current pokemon according to position in the party
 //  if position == PLAYER_DEFAULT_POKEMON, set to first pokemon alive
-void set_current_pokemon(int position);
+void player_set_current_pokemon(int position);
 
 //Set enemy pokemon using a pointer to it
-void set_enemy_pokemon(struct Pokemon * pok);
+void player_set_enemy_pokemon(struct Pokemon * pok);
 
 //Print player information
-void printPlayer();
+void player_print();
 
 //Add a trainer id to list of battled trainer
-void add_battled_trainer(int id);
+void player_add_battled_trainer(int id);
 
 //Returns true only if the player has already battled the trainer
-bool has_battled_trainer(int id);
+bool player_has_battled_trainer(int id);
+
+//Returns true only if the player has the pokemon in PC or Party
+bool player_has_pokemon(int id);
 
 #endif // PLAYER_H

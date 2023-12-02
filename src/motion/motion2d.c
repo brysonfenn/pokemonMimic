@@ -197,7 +197,7 @@ void handle_motion() {
         //Handle Wild pokemon encounter
         if (encounter) {
             Pokemon * wild_pok = get_random_wild_pokemon();
-            set_current_pokemon(PLAYER_DEFAULT_POKEMON);
+            player_set_current_pokemon(PLAYER_DEFAULT_POKEMON);
 
             //Handle Repel
             if (player.repel_steps == 0 || player.current_pokemon->level <= wild_pok->level) {

@@ -125,7 +125,7 @@ int handle_selected_selectable(int player_x, int player_y, char player_char) {
     if (selectable_ptr->selectable_id == SELECTABLE_NONE) return SELECTABLE_CONTINUE_WHILE;
     if (selectable_ptr->selectable_id == SELECTABLE_TRAINER) {
         trainer_ptr = (Trainer *) selectable_ptr->data;
-        if (has_battled_trainer(trainer_ptr->id_num)) {
+        if (player_has_battled_trainer(trainer_ptr->id_num)) {
             sprintf(print_str, "%s: \"We already battled\"", trainer_ptr->name);
             print_to_message_box(print_str);
             return SELECTABLE_CONTINUE_WHILE;
@@ -174,7 +174,7 @@ Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, in
         curr_sel = &(selectables[i]);
         if (curr_sel->selectable_id == SELECTABLE_TRAINER) {
             Trainer * trainer_ptr = (Trainer *) curr_sel->data;
-            if (has_battled_trainer(trainer_ptr->id_num) || ((trainer_ptr->id_num > 200) && (trainer_ptr->id_num < 250))) continue;
+            if (player_has_battled_trainer(trainer_ptr->id_num) || ((trainer_ptr->id_num > 200) && (trainer_ptr->id_num < 250))) continue;
             x = curr_sel->x;
             y = curr_sel->y;
             char ch = mvinch(y,x);

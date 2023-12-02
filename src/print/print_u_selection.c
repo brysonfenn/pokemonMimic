@@ -4,7 +4,7 @@
 
 #include "print_defines.h"
 
-#define MAX_LIST 5
+#define MAX_LIST 19
 
 //Get player selection from scrollable list
 //  str_list is the list of strings representing elements in list
@@ -53,6 +53,15 @@ int get_scrollable_selection(char * title, char ** str_list, int num_in_list, in
             print_to_list(print_str);
         }
         mvaddch(cursor_y, cursor_x, SELECTION_CHAR);
+
+        if (list_end < num_in_list) {
+            mvaddch(LIST_BOX_Y+LIST_BOX_HEIGHT - 2, LIST_BOX_X+LIST_BOX_WIDTH - 15, 'v');
+            mvaddch(LIST_BOX_Y+LIST_BOX_HEIGHT - 2, LIST_BOX_X+LIST_BOX_WIDTH - 13, 'v');
+        }
+        if (list_begin > 0) {
+            mvaddch(LIST_BOX_Y+1, LIST_BOX_X+LIST_BOX_WIDTH - 15, '^');
+            mvaddch(LIST_BOX_Y+1, LIST_BOX_X+LIST_BOX_WIDTH - 13, '^');
+        }
 
         flushinp();
         ch = getch();

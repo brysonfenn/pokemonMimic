@@ -50,7 +50,7 @@ int execute_potion(int hp_gain, char * name) {
 int attempt_catch(int catch_rate, char * name) {
     Pokemon * enemy_pok = player.enemy_pokemon;
 
-    if (!player.is_battle || player.trainer_battle) {
+    if (!player.is_battle || player.is_trainer_battle) {
         begin_list();
         print_to_list("You can't use that!"); sleep(2);
         return ITEM_FAILURE;
@@ -175,7 +175,7 @@ int use_evolve_stone(int input_stone_id, char * name) {
     int current_stone_id, evolve_id, input_num;
     char print_str[128];
 
-    if (player.is_battle || player.trainer_battle) {
+    if (player.is_battle || player.is_trainer_battle) {
         begin_list();
         print_to_list("You can't use that!"); sleep(2);
         return ITEM_FAILURE;
@@ -240,7 +240,7 @@ int use_repel(int num_steps, char * name) {
     char print_str[128];
 
     begin_list();
-    if (player.is_battle || player.trainer_battle) {
+    if (player.is_battle || player.is_trainer_battle) {
         print_to_list("You can't use that!"); sleep(2);
         return ITEM_FAILURE;
     }

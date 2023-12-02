@@ -28,6 +28,11 @@ void printBattle() {
     mvprintw(BATTLE_BOX_ENEMY_Y, BATTLE_BOX_ENEMY_X, poke_string);
     mvprintw(BATTLE_BOX_ENEMY_Y+1, BATTLE_BOX_ENEMY_X, "HP: % 3d/%d ", enemy_pok->currentHP, enemy_pok->maxHP);
 
+    //Display Indication if Pokemon is uncaught
+    if (player.is_uncaught_pokemon) {
+        mvprintw(BATTLE_BOX_ENEMY_Y, BATTLE_BOX_ENEMY_X - 4, "*");
+    }
+
     sprintf(poke_string,  "%s  Lvl %d  ", player_pok->name, player_pok->level);
     add_condition_string(poke_string, player_pok);
     mvprintw(BATTLE_BOX_PLAYER_Y, BATTLE_BOX_PLAYER_X, poke_string);
