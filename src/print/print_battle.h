@@ -15,7 +15,7 @@ struct Pokemon;
 void printBattle();
 
 //Blink enemy if enemy is true, if not, blink player
-void blinkPokemon(bool blink_player, int color, int num_times);
+void blinkPokemon(bool blink_player, int color, int num_times, struct Pokemon * victim);
 
 //Get selection from the user for battle: FIGHT, BAG, POKEMON, or RUN
 int get_battle_selection(int first_line, int last_selection);

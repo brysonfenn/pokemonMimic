@@ -8,4 +8,5 @@
 7: You're not from around here are you? Wait... you already have multiple gym badges? That's great! It looks like you're making progress as a trainer. I'm sure you already know about evolution stones. I found this one a right here on the ground.
 8: Excuse me... I'm working. I am a researcher for this museum. I specialize in Fossil Pokemon. You may already know, but there is a Lab in Vermillion City that can restore these fossils to life. We just got a new shipment.
 9: This cave leads right to Pewter City, but it's full of Diglett and Dugtrio. I hear there is a Museum in Pewter City where you can look at Fossils.
+10: You're a new trainer? I have a really cool tip for you. During wild Pokemon battles, if you see an asterisk '*' next to a Pokemon's name, that means you haven't caught that Pokemon yet!
 777: Reached End of npc_messages.txt file

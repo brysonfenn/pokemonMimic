@@ -46,10 +46,13 @@ static Trainer t034 = {34, "Sailor Garth", "My water type Pokemon love this boat
 static Trainer t035 = {35, "Sir Lewis", "I'm starting my retirement here", 2, {POKEMON_PERSIAN, POKEMON_ELECTABUZZ}, {19,20} };
 static Trainer t036 = {36, "Trainer Mindy", "I'm scared of bugs!", 2, {POKEMON_VULPIX, POKEMON_PIKACHU}, {6,7} };
 static Trainer t037 = {37, "Traveler Veronica", "I'm from Vermillion City. Have you been there?", 2, {POKEMON_DROWZEE, POKEMON_NIDORINO}, {9,9} };
+static Trainer t038 = {38, "Gym Trainer Mike", "This is a tough Gym. Good Luck!", 2, {POKEMON_VOLTORB, POKEMON_MAGNEMITE}, {19,20} };
+static Trainer t039 = {39, "Gym Trainer Lee", "I love Electric Types!", 2, {POKEMON_PIKACHU, POKEMON_ELECTRODE}, {20,20} };
+static Trainer t040 = {40, "Gym Trainer Ignacio", "I have Steel Electric types, Get ready!", 2, {POKEMON_MAGNEMITE, POKEMON_MAGNETON}, {19,21} };
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
     &t001, &t002, &t003, &t004, &t005, &t006, &t007, &t008, &t009, &t010, &t011, &t012, &t013, &t014, &t015, &t016, &t017, &t018, &t019, &t020,
-    &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028, &t029, &t030, &t031, &t032, &t033, &t034, &t035, &t036, &t037
+    &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028, &t029, &t030, &t031, &t032, &t033, &t034, &t035, &t036, &t037, &t038, &t039, &t040
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };

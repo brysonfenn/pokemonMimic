@@ -35,7 +35,7 @@ int deal_damage(int power, Pokemon * perp, Pokemon * victim, Type move_type) {
 
     //Drop HP only if attack has damage power
     if (damage > 0) {
-        blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
+        blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
         victim->currentHP -= damage;
         if (victim->currentHP < 0) victim->currentHP = 0;
         printBattle();

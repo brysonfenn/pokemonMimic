@@ -7,6 +7,7 @@
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 #include "../print/print_battle.h"
+#include "../audio/audio_player.h"
 
 
 //Inflict condition on pok given, handle accuracy
@@ -83,9 +84,9 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 				return 1;
 			}
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
+			audio_play_file("inflict_confusion.mp3");
 			printw("%s is now confused!", pok->name); refresh(); sleep(2);
-			add_hidden_condition(pok, CONFUSED, 0);
-			pok->confusion_count = (rand() % 4) + 1;
+			add_hidden_condition(pok, CONFUSED, (rand() % 4) + 3);	//This is 2-5 turns
 			break;
 
 		case FLINCHED:

@@ -57,14 +57,14 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     //Handle Confusion
     if (has_hidden_condition(perp, CONFUSED)) {
         text_box_cursors(TEXT_BOX_BEGINNING);
-        if (perp->confusion_count <= 0) {
+        if (decrement_hidden_condition_val(perp, CONFUSED) <= 0) {
             if (enemy) printw(ENEMY_TEXT);
             printw("%s snapped out of confusion!", perp->name); refresh(); sleep(2);
             remove_hidden_condition(perp, CONFUSED);
         }
         else {
-            perp->confusion_count--;
             if (enemy) printw(ENEMY_TEXT);
+            audio_play_file("confused.mp3");
             printw("%s is confused...", perp->name); refresh(); sleep(2);
             //Hurt self in 50% of cases
             if (rand() % 2 == 0) {
@@ -74,6 +74,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
 
                 //Player attacks itself with base power 40
                 int damage = get_basic_damage(perp->level, 40, perp->baseAttack, perp->baseDefense, perp->atk_stage, perp->def_stage);
+                blinkPokemon(!enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, perp);
                 perp->currentHP -= damage;
                 return ATTACK_SUCCESS;
             }
@@ -136,7 +137,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     //Drop HP only if attack has damage power & it is not a special move (magnitude, etc.)
     if (chosenAttack.power != 0 && chosenAttack.var1 != ATTACK_SPECIAL_MOVE) {
         damage = get_damage(perp, move_num, victim, true, &flags);
-        if (damage > 0) blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
+        if (damage > 0) blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
         victim->currentHP -= damage;
         if (victim->currentHP < 0) victim->currentHP = 0;
         printBattle();
@@ -263,11 +264,11 @@ int perform_struggle(struct Pokemon *perp, struct Pokemon *victim, bool enemy) {
     printw("%s used Struggle!", perp->name);
     refresh(); sleep(1);
 
-    blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
+    blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
     victim->currentHP -= (perp->maxHP / 16 + 1);
     printBattle();
 
-    blinkPokemon(!enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
+    blinkPokemon(!enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
     perp->currentHP -= (perp->maxHP / 16 + 1);
     printBattle();
 }

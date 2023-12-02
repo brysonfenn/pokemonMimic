@@ -26,6 +26,8 @@ void draw_vir_city() {
 
     drawBuilding_default(VIR_MART_X,VIR_MART_Y, "Mart", MART_ACTION);
     drawBuilding_default(VIR_POKE_CENTER_X, VIR_POKE_CENTER_Y, "Poke", POKE_CENTER_ACTION);
+
+    add_npc_by_id(MAP_X+25, MAP_Y+9, 10, PLAYER_MOVING_DOWN);
     
     add_connection_to_big_map(MAP_TOP, 10, MAP_R2);
     add_connection_to_big_map(MAP_BOTTOM, 25, MAP_R1);

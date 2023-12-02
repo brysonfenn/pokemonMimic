@@ -53,7 +53,6 @@ typedef struct Pokemon {
 
   int8_t level;
   int8_t sleep_count;
-  uint8_t confusion_count;
   uint32_t exp;
   
   Condition visible_condition;

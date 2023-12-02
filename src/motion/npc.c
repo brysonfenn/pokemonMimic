@@ -12,19 +12,20 @@
 #define NUM_NPCS 30
 char message[LINE_SIZE];
 
-static NPC n0 = {  0, "No Name", NO_ITEM, 0 };
-static NPC n1 = {  1, "Finn", FIRE_STONE, 1 };
-static NPC n2 = {  2, "Monty", MOON_STONE, 2 };
-static NPC n3 = {  3, "Bill", SS_TICKET, 3 };
-static NPC n4 = {  4, "Guard", NO_ITEM, 0 };
-static NPC n5 = {  5, "Guard", NO_ITEM, 0 };
-static NPC n6 = {  6, "Captain Jacobs", HM_CUT, 4 };
-static NPC n7 = {  7, "Lily", LEAF_STONE, 5 };
-static NPC n8 = {  8, "Ted", K_ITEM_FOSSIL_AMBER, 6 };
-static NPC n9 = {  9, "Calvin", NO_ITEM, 0};
+static NPC n0  = {  0, "No Name", NO_ITEM, 0 };
+static NPC n1  = {  1, "Finn", FIRE_STONE, 1 };
+static NPC n2  = {  2, "Monty", MOON_STONE, 2 };
+static NPC n3  = {  3, "Bill", SS_TICKET, 3 };
+static NPC n4  = {  4, "Guard", NO_ITEM, 0 };
+static NPC n5  = {  5, "Guard", NO_ITEM, 0 };
+static NPC n6  = {  6, "Captain Jacobs", HM_CUT, 4 };
+static NPC n7  = {  7, "Lily", LEAF_STONE, 5 };
+static NPC n8  = {  8, "Ted", K_ITEM_FOSSIL_AMBER, 6 };
+static NPC n9  = {  9, "Calvin", NO_ITEM, 0};
+static NPC n10 = { 10, "Taylor", NO_ITEM, 0};
 
 
-static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2, &n3, &n4, &n5, &n6, &n7, &n8, &n9 };
+static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2, &n3, &n4, &n5, &n6, &n7, &n8, &n9, &n10 };
 
 struct NPC * get_npc(int npc_id) {
     return npcs[npc_id];

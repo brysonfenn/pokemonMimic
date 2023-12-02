@@ -47,17 +47,27 @@ void printBattle() {
 
 
 //Blink player's pokemon if blink_player is true. If false, blink enemy pokemon
-void blinkPokemon(bool blink_player, int color, int num_times) {
+void blinkPokemon(bool blink_player, int color, int num_times, Pokemon * victim) {
     Pokemon * pok;
     char poke_string[128];
     int text_x, text_y;
 
+    
+
     if (color == DAMAGED_COLOR) {
-        switch (rand() % 3) {
-            case 0: audio_play_file("low_kick.mp3"); break;
-            case 1: audio_play_file("double_kick.mp3"); break;
-            case 2: audio_play_file("slash.mp3"); break;
-            default: audio_play_file("low_kick.mp3"); break;
+        //Find used move
+        Pokemon * self;
+        if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
+        else { self = player.current_pokemon; }
+        int attack_id = self->attacks[self->last_move].id_num;
+
+        switch (attack_id % 5) {
+            case 0: audio_play_file("attack_low_kick.mp3"); break;
+            case 1: audio_play_file("attack_double_kick.mp3"); break;
+            case 2: audio_play_file("attack_slash.mp3"); break;
+            case 3: audio_play_file("attack_absorb.mp3"); break;
+            case 4: audio_play_file("attack_scratch.mp3"); break;
+            default: audio_play_file("attack_low_kick.mp3"); break;
         }
     }
     else if (color == HEAL_COLOR) audio_play_file("recover.mp3"); 

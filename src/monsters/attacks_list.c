@@ -40,7 +40,7 @@ attack growth       = {"Growth"       , 20, 40,   0,  NO_MISS, GRASS,    false, 
 attack scary_face   = {"Scary Face"   , 21, 15,   0,       90, NORMAL,   false, &decrement_opponent_stat2, SPEED_STAT, 100 };
 attack flame_thrower= {"Flame Thrower", 22, 15,  95,      100, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack slash        = {"Slash"        , 23, 20,  70,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
-attack dragon_rage  = {"Dragon Rage"  , 24, 10,   0,      100, DRAGON,   false, &deal_specific_damage, NO_CONDITION, 40};
+attack dragon_rage  = {"Dragon Rage"  , 24, 10,   0,      100, DRAGON,   false, &deal_specific_damage, ATTACK_SPECIAL_MOVE, 40};
 attack fire_spin    = {"Fire Spin"    , 25, 15,  15,       70, FIRE,     false, &inflict_condition, FIRE_SPINNED, 0 };
 attack wing_attack  = {"Wing Attack"  , 26, 35,  60,      100, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack withdraw     = {"Withdraw"     , 27, 40,   0,  NO_MISS, WATER,    false, &increment_self_stat, DEFENSE_STAT, 100 };
@@ -134,7 +134,7 @@ attack magnitude    = {"Magnitude"    ,106, 30,  70,      100, GROUND,   false, 
 attack rollout      = {"Rollout"      ,107, 20,  70,      100, ROCK,     false, &rollout_move_func, ATTACK_SPECIAL_MOVE, 0 };
 attack mud_slap     = {"Mud-Slap"     ,108, 10,  20,      100, GROUND,   false, &decrement_opponent_stat, ACCURACY_STAT, 100 };
 attack swagger      = {"Swagger"      ,109, 15,   0,       90, NORMAL,   false, &swagger_move_func, NO_CONDITION, 0 };
-attack fissure      = {"Fissure"      ,110,  5,   0,       30, GROUND,   false, &deal_specific_damage, NO_CONDITION, 5000 };
+attack fissure      = {"Fissure"      ,110,  5,   0,       30, GROUND,   false, &deal_specific_damage, ATTACK_SPECIAL_MOVE, 5000 };
 
 attack tri_attack   = {"Tri Attack"   ,111, 10,  80,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
 attack pay_day      = {"Pay Day"      ,112, 20,  40,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
@@ -166,7 +166,7 @@ attack amnesia      = {"Amnesia"      ,135, 20,   0,  NO_MISS, PSYCHIC,  false, 
 attack yawn         = {"Yawn"         ,136, 10,   0,  NO_MISS, PSYCHIC,  false, &inflict_condition, YAWNED, 100 };
 attack headbutt     = {"Headbutt"     ,137, 15,  70,      100, NORMAL,   false, &inflict_condition, FLINCHED, 30 };
 attack metal_sound  = {"Metal Sound"  ,138, 40,   0,       85, STEEL,    false, &decrement_opponent_stat, SP_DEFENSE_STAT, 100 };
-attack sonic_boom   = {"Sonic Boom"   ,139, 15,  70,      100, NORMAL,   false, &deal_specific_damage, NO_CONDITION, 20 };
+attack sonic_boom   = {"Sonic Boom"   ,139, 15,  70,      100, NORMAL,   false, &deal_specific_damage, ATTACK_SPECIAL_MOVE, 20 };
 attack spark        = {"Spark"        ,140, 20,  65,      100, ELECTRIC, false, &inflict_condition, PARALYZED, 30 };
 
 attack zap_cannon   = {"Zap Cannon"   ,141,  5, 100,       50, ELECTRIC, false, &inflict_condition, PARALYZED, 100 };
@@ -407,7 +407,7 @@ int decrement_opponent_stat2(Condition stat_type, int chance, struct Pokemon* vi
 
 int deal_specific_damage(Condition nothing1, int hp, struct Pokemon* victim, int nothing2) {
     bool enemy = (victim != player.enemy_pokemon);
-    blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
+    blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
     victim->currentHP -= hp;
     return ATTACK_SUCCESS;
 }
@@ -430,7 +430,7 @@ int hit_2_5_times(int nothing1, int nothing2, struct Pokemon* victim, int damage
     // Do not hit again if victim has fainted, hit up to random times - 1 (because we already hit once)
     while (victim->currentHP > 0 && i < rand_times-1) {
         sleep(1);
-        blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
+        blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
         victim->currentHP -= damage;
         if (victim->currentHP < 0) victim->currentHP = 0;
         i++;
@@ -453,7 +453,7 @@ int hit_twice(int nothing1, int nothing2, struct Pokemon* victim, int damage) {
     // Do not hit again if victim has fainted
     if (victim->currentHP > 0) {
         sleep(1);
-        blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
+        blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
         victim->currentHP -= damage;
         times++;
         if (victim->currentHP < 0) victim->currentHP = 0;
@@ -470,7 +470,7 @@ int hit_twice(int nothing1, int nothing2, struct Pokemon* victim, int damage) {
 //Some attacks deal a percentage of damage left
 int deal_percentage_damage(Condition nothing, int percent, struct Pokemon* victim, int damage) {
     bool enemy = (victim != player.enemy_pokemon);
-    blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES);
+    blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
 
     float percent_f = ((float) percent) / 100.0;
 
@@ -499,7 +499,7 @@ int self_heal(int heal_type, int hp, struct Pokemon* victim, int damage) {
     float percentage;
     int gain;
 
-    blinkPokemon(self == player.current_pokemon, HEAL_COLOR, 3);
+    blinkPokemon(self == player.current_pokemon, HEAL_COLOR, 3, victim);
 
     switch (heal_type) {
         case HP_PERCENTAGE:
@@ -543,7 +543,7 @@ int self_inflict_damage(int damage_type, int hp, struct Pokemon* victim, int dam
     float percentage;
     int recoil;
 
-    blinkPokemon(self == player.current_pokemon, DAMAGED_COLOR, 3);
+    blinkPokemon(self == player.current_pokemon, DAMAGED_COLOR, 3, victim);
 
     switch (damage_type) {
         case HP_PERCENTAGE:

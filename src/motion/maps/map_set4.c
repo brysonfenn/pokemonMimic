@@ -36,9 +36,9 @@ void draw_vermillion_city() {
     add_connection_to_big_map(MAP_BOTTOM, 25, MAP_SS_ANNE1);
     add_connection_to_big_map(MAP_RIGHT, 6, MAP_R6);
 
-    drawBuilding_default(MAP_X+15,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+30, MAP_Y+9, "Lab", FOSSIL_PROCESS_ACTION);
-    drawBuilding_default(MAP_X+42, MAP_Y+9, "Mart", MART_ACTION);
+    drawBuilding_default(MAP_X+15,MAP_Y+3, "Poke", POKE_CENTER_ACTION);
+    drawBuilding_default(MAP_X+30, MAP_Y+6, "Lab", FOSSIL_PROCESS_ACTION);
+    drawBuilding_default(MAP_X+42, MAP_Y+6, "Mart", MART_ACTION);
 
     if (has_key_item(SS_TICKET) == -1) {
         add_npc_by_id(MAP_X+25, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);
@@ -61,6 +61,10 @@ void draw_gym3() {
     begin_message_box();
     print_to_message_box("Vermillion City Gym");
     audio_loop_file("gym.mp3");
+
+    add_trainer_by_id(INTERIOR_X+11, INTERIOR_Y+2, 38, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(INTERIOR_X+15, INTERIOR_Y+3, 39, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(INTERIOR_X+24, INTERIOR_Y+5, 40, PLAYER_MOVING_DOWN);
 
     mvaddch(INTERIOR_Y+1, INTERIOR_X+24, ACS_LRCORNER);
     add_trainer_by_id(INTERIOR_X+25, INTERIOR_Y+1, 203, PLAYER_MOVING_DOWN);

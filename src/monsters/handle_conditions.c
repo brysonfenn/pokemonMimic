@@ -122,9 +122,9 @@ int handle_leech_seed(bool is_enemy, struct Pokemon * pok, struct Pokemon * perp
     printw("%s's HP was sapped!", pok->name); refresh(); sleep(1);
     int sappedHP = ((pok->maxHP / 8) + 1);
 
-    blinkPokemon(!is_enemy, DAMAGED_COLOR, LEECH_SEED_BLINK_TIMES); 
+    blinkPokemon(!is_enemy, DAMAGED_COLOR, LEECH_SEED_BLINK_TIMES, pok); 
     printBattle();
-    blinkPokemon(is_enemy, HEAL_COLOR, LEECH_SEED_BLINK_TIMES);
+    blinkPokemon(is_enemy, HEAL_COLOR, LEECH_SEED_BLINK_TIMES, pok);
 
     //Give HP equal to taken HP and fix any issues
     if (sappedHP > pok->currentHP) { perp->currentHP += pok->currentHP; pok->currentHP = 0; }
@@ -142,7 +142,7 @@ int handle_ingrain(bool is_enemy, struct Pokemon * pok) {
     printw("%s absorbed HP from its roots!", pok->name); refresh(); sleep(1);
     int heal_hp = ((pok->maxHP / 16) + 1);
 
-    blinkPokemon(!is_enemy, HEAL_COLOR, LEECH_SEED_BLINK_TIMES);
+    blinkPokemon(!is_enemy, HEAL_COLOR, LEECH_SEED_BLINK_TIMES, pok);
 
     //Give HP to pokemon
     pok->currentHP += heal_hp;
@@ -157,7 +157,7 @@ int handle_hurt_fraction(bool enemy, struct Pokemon * pok, char * pok_condition_
     text_box_cursors(TEXT_BOX_BEGINNING);
     if (enemy) printw("%s", ENEMY_TEXT);
     printw("%s was hurt by %s!", pok->name, pok_condition_text); refresh(); sleep(1);
-    blinkPokemon(!enemy, DAMAGED_COLOR, 3);
+    blinkPokemon(!enemy, DAMAGED_COLOR, 3, pok);
 
     pok->currentHP -= ((pok->maxHP / fraction) + 1);
     if (pok->currentHP < 0) pok->currentHP = 0;
