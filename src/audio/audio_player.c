@@ -109,6 +109,7 @@ void audio_end_play() {
     if (engine_started) {
         ma_engine_uninit(&engine);
         engine_started = false;
+        init_audio_player();
     }
 }
 
