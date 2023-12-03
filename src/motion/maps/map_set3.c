@@ -45,7 +45,7 @@ void draw_mt_moon_n() {
 
     add_npc_by_id(MAP_X+45, MAP_Y+9, 2, PLAYER_MOVING_LEFT);
 
-    if (!(player.NPCs_done & 0x01)) {
+    if (!(player.record_bits & 0x01)) {
         drawBuilding_default(MAP_X+MAP_WIDTH-2-DEFAULT_BUILDING_WIDTH, MAP_Y+1, "FOSL", FOSSIL_ACTION);
     }
 }

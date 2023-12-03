@@ -4,6 +4,8 @@
 //Initialize handling motion
 void init_motion();
 
+void init_map();
+
 // Draw the current map to the screen and handle player motion until user returns to the menu
 void handle_motion();
 

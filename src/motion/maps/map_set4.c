@@ -40,7 +40,7 @@ void draw_vermillion_city() {
     drawBuilding_default(MAP_X+30, MAP_Y+6, "Lab", FOSSIL_PROCESS_ACTION);
     drawBuilding_default(MAP_X+42, MAP_Y+6, "Mart", MART_ACTION);
 
-    if (has_key_item(SS_TICKET) == -1) {
+    if (has_key_item(K_ITEM_SS_TICKET) == -1) {
         add_npc_by_id(MAP_X+25, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);
         add_npc_by_id(MAP_X+26, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);
     }
@@ -121,6 +121,8 @@ void draw_route6() {
 
     add_npc_by_id(MAP_X+1, MAP_Y+12, 7, PLAYER_MOVING_RIGHT);
     add_npc_by_id(MAP_X+5, MAP_Y+4, 9, PLAYER_MOVING_DOWN);
+
+    add_snorlax(MAP_X+55, MAP_Y+14, 0);
 }
 
 

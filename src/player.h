@@ -27,7 +27,9 @@ struct playerCharacter {
   uint8_t numHMTMs;
   uint8_t numInPCStorage;
 
-  long long NPCs_done;
+  char player_char;
+
+  long long record_bits;
 
   uint8_t trainers_battled_id[256];
   uint16_t num_trainers_battled;

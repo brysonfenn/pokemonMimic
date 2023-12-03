@@ -7,7 +7,7 @@
 #include "../monsters/conditions.h"
 
 static char key_item_names[10][32] = {"Empty Key Item", "Helix Fossil", "Dome Fossil", "Old Amber",
-    "Helix Fossil Voucher", "Dome Fossil Voucher", "Old Amber Voucher", "SS Ticket" };
+    "Helix Fossil Voucher", "Dome Fossil Voucher", "Old Amber Voucher", "SS Ticket", "Pokemon Flute" };
 
 
 void take_fossil(int fossil_index, int fossil_type);
@@ -52,7 +52,7 @@ void handle_get_fossil() {
     clear();
     begin_list();
 
-    player.NPCs_done |= 0x01;
+    player.record_bits |= 0x01;
 
     print_to_list("Select one:\n  Helix Fossil\n  Dome Fossil\n  Cancel");
     int input = get_selection(1, 2, 0);

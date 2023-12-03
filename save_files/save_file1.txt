@@ -1,10 +1,10 @@
-Last Saved: 12/02/2023 15:27:35
+Last Saved: 12/02/2023 19:28:05
 Player: B Test Man
-4 0 7 6070 5 0
-Location: {11,(6,8)}
-Heal Center: {11,(38,12)}
+4 0 7 6545 5 0
+Location: {11,(37,12)}
+Heal Center: {11,(37,12)}
 Pokemon: 
-Geodude 74 30 30 3 25 28 11 10 9 11 1536 ROCK GROUND 36dcb8a 600 0 0
+Geodude 74 32 32 3 27 31 11 10 9 12 1893 ROCK GROUND 36dcb8a 10601 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
 	Rock Throw. 76 15
@@ -39,5 +39,5 @@ Key Items: 1
 HM/TMs: 0
   
 
-Trainers Battled: 20
-  251 1 8 2 3 5 7 36 9 12 10 6 11 201 14 13 37 15 16 252 
+Trainers Battled: 21
+  251 1 8 2 3 5 7 36 9 12 10 6 11 201 14 13 37 15 16 252 22 

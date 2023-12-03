@@ -23,6 +23,7 @@ static int num_selectables = 0;
 
 const char * empty_string = "NONE";
 static Selectable empty_selectable = {0, 0, SELECTABLE_NONE};
+static char snorlax_bits[2] = { 7 };
 
 
 //Add a trainer by ID Number at a given location (See trainer_list.c)
@@ -85,6 +86,32 @@ void add_cuttable_tree(char x, char y) {
     attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
 
+//Add Cuttable Tree at a location
+void add_snorlax(char x, char y, char snorlax_id_num) {
+    char record_bit_num = snorlax_bits[snorlax_id_num];
+
+    //Do not add snorlax if already fought
+    if ((player.record_bits >> record_bit_num) & 0x01) {
+        return;
+    }
+
+    Selectable new_selectable;
+    new_selectable.data = &(snorlax_bits[snorlax_id_num]);
+    new_selectable.selectable_id = SELECTABLE_SNORLAX;
+
+    new_selectable.x = x;
+    new_selectable.y = y;
+    selectables[num_selectables] = new_selectable;
+    num_selectables++;
+    mvaddch(y,x,'o');
+    
+    new_selectable.x = x;
+    new_selectable.y = y+1;
+    selectables[num_selectables] = new_selectable;
+    num_selectables++;
+    mvaddch(y+1,x,'O'); refresh();
+}
+
 
 // Return a door (if there is one) at player location, else return zero-door
 Selectable * get_selectable(int player_x, int player_y, char player_char) {
@@ -111,46 +138,6 @@ Selectable * get_selectable(int player_x, int player_y, char player_char) {
         }
     }
     return &empty_selectable;
-}
-
-
-// Handle a selected selectable
-int handle_selected_selectable(int player_x, int player_y, char player_char) {
-    Selectable * selectable_ptr;
-    Trainer * trainer_ptr;
-    NPC * npc_ptr;
-    char print_str[256];
-
-    selectable_ptr = get_selectable(player_x, player_y, player_char);
-    if (selectable_ptr->selectable_id == SELECTABLE_NONE) return SELECTABLE_CONTINUE_WHILE;
-    if (selectable_ptr->selectable_id == SELECTABLE_TRAINER) {
-        trainer_ptr = (Trainer *) selectable_ptr->data;
-        if (player_has_battled_trainer(trainer_ptr->id_num)) {
-            sprintf(print_str, "%s: \"We already battled\"", trainer_ptr->name);
-            print_to_message_box(print_str);
-            return SELECTABLE_CONTINUE_WHILE;
-        }
-
-        audio_save_looping_file(0);
-        audio_loop_file("trainer_approach.mp3");
-
-        //Handle trainer battle and return values from that function
-        if (battle_trainer(trainer_ptr) != BATTLE_WHITE_OUT) { restore_print_state(); }
-        audio_restore_looping_file(0);
-
-        return SELECTABLE_CONTINUE_WHILE;
-    }
-    else if (selectable_ptr->selectable_id == SELECTABLE_NPC) {
-        npc_ptr = (NPC *) selectable_ptr->data;
-        handle_npc_selection(npc_ptr);
-        return SELECTABLE_CONTINUE_WHILE;
-    }
-    else if (selectable_ptr->selectable_id == SELECTABLE_CUTTABLE_TREE) {
-        handle_cut(selectable_ptr);
-        return SELECTABLE_CONTINUE_WHILE;
-    }
-
-    return SELECTABLE_BREAK_WHILE;
 }
 
 
@@ -211,57 +198,4 @@ Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, in
     }
     
     return &empty_selectable;
-}
-
-
-//Handle Cutting down a tree
-int handle_cut(struct Selectable * selectable_ptr) {
-    char print_str[256];
-
-    print_to_message_box("It looks like this tree can be cut"); await_user();
-    Pokemon * curr_pok;
-    Pokemon * cut_pok;
-    bool has_cut = false;
-
-    for (int i = 0; i < player.numInParty; i++) {
-        curr_pok = &(player.party[i]);
-        for (int j = 0; j < curr_pok->numAttacks; j++) {
-            if (curr_pok->attacks[j].id_num == 206) {
-                cut_pok = curr_pok;
-                has_cut = true;
-            }
-        }
-    }
-
-    if (has_cut) {
-        sprintf(print_str, "Would you like %s to use Cut?\n  Yes\n  No", cut_pok->name);
-        print_to_message_box(print_str);
-        if (get_selection(MAP_HEIGHT+1, 1, 0) == 1) {
-            begin_message_box();
-            return 0;
-        }
-
-        audio_play_file("cut_hm.mp3");
-        sprintf(print_str, "%s used Cut!", cut_pok->name);
-        print_to_message_box(print_str);
-
-        //Flash and Delete Tree, and remove pointer
-        for (int i = 0; i < 3; i++) {
-            attrset(COLOR_PAIR(TREE_COLOR));
-            mvaddch(selectable_ptr->y, selectable_ptr->x, 'T'); refresh();
-            usleep(200000);
-            attrset(COLOR_PAIR(DEFAULT_COLOR));
-            mvaddch(selectable_ptr->y, selectable_ptr->x, ' '); refresh();
-            usleep(200000);
-        }
-
-        // await_user();
-
-        selectable_ptr->y = 0;
-        selectable_ptr->x = 0;
-    }
-
-    begin_message_box();
-
-    return 0;
 }

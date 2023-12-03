@@ -30,7 +30,7 @@ typedef void (*init_map_func) ();
 
 static init_map_func draw_map;
 
-static char player_char = PLAYER_MOVING_DOWN;
+static char * player_char_ptr;
 
 static char * player_y;
 static char * player_x;
@@ -46,6 +46,7 @@ static int leave_msg_count = 0;
 void init_motion() {
     player_y = &(player.loc->y);
     player_x = &(player.loc->x);
+    player_char_ptr = &(player.player_char);
 }
 
 // BEGIN HANDLE MOTION //
@@ -80,19 +81,19 @@ void handle_motion() {
                 return;
                 break;
         	case KEY_UP:
-                if (player_char != PLAYER_MOVING_UP) player_char = PLAYER_MOVING_UP;
+                if (*player_char_ptr != PLAYER_MOVING_UP) *player_char_ptr = PLAYER_MOVING_UP;
                 else if (*player_y > 1 && is_movable_space(-1,0)) (*player_y)--;
                 break;
 
             case KEY_DOWN:
                 next_char = mvinch(*player_y+1, *player_x);
-                if (player_char != PLAYER_MOVING_DOWN) player_char = PLAYER_MOVING_DOWN;
+                if (*player_char_ptr != PLAYER_MOVING_DOWN) *player_char_ptr = PLAYER_MOVING_DOWN;
                 //If next space is a fence, jump it
                 else if (next_char == '-') {
                     attrset(COLOR_PAIR(PLAYER_COLOR));
-                    mvaddch(++(*player_y), *player_x, player_char); refresh();
+                    mvaddch(++(*player_y), *player_x, *player_char_ptr); refresh();
                     usleep(300000);
-                    mvaddch(++(*player_y), *player_x, player_char); refresh();
+                    mvaddch(++(*player_y), *player_x, *player_char_ptr); refresh();
                     attrset(COLOR_PAIR(DEFAULT_COLOR));
                     mvaddch((*player_y-1), *player_x, '-');
                     flushinp(); continue;
@@ -102,7 +103,7 @@ void handle_motion() {
                 break;
 
             case KEY_LEFT:
-                if (player_char != PLAYER_MOVING_LEFT) player_char = PLAYER_MOVING_LEFT;
+                if (*player_char_ptr != PLAYER_MOVING_LEFT) *player_char_ptr = PLAYER_MOVING_LEFT;
                 //Move only one space if next space is surrounded (door);
                 else if (*player_x > 1 && !is_movable_space(-1,-1) && !is_movable_space(1,-1) && is_movable_space(0,-1)) 
                     (*player_x)--;
@@ -113,7 +114,7 @@ void handle_motion() {
                 break;
 
             case KEY_RIGHT:
-                if (player_char != PLAYER_MOVING_RIGHT) player_char = PLAYER_MOVING_RIGHT;
+                if (*player_char_ptr != PLAYER_MOVING_RIGHT) *player_char_ptr = PLAYER_MOVING_RIGHT;
                 //Move only one space if next space is surrounded (door);
                 else if (*player_x < 100 && !is_movable_space(-1,1) && !is_movable_space(1,1) && is_movable_space(0,1)) 
                     (*player_x)++;
@@ -126,17 +127,17 @@ void handle_motion() {
             case SELECT_CHAR:
             case SELECT_CHAR_2:
                 //Redraw player
-                attrset(COLOR_PAIR(PLAYER_COLOR)); mvaddch(*player_y, *player_x, player_char); 
+                attrset(COLOR_PAIR(PLAYER_COLOR)); mvaddch(*player_y, *player_x, *player_char_ptr); 
                 attrset(COLOR_PAIR(DEFAULT_COLOR));
 
-                return_value = handle_selected_selectable(*player_x, *player_y, player_char);
+                return_value = handle_selected_selectable(*player_x, *player_y, *player_char_ptr);
                 if (return_value == SELECTABLE_CONTINUE_WHILE) continue;
                 else if (return_value == SELECTABLE_BREAK_WHILE) break;
 
                 break;
             default:
                 attrset(COLOR_PAIR(PLAYER_COLOR));
-                mvaddch(*player_y, *player_x, player_char);
+                mvaddch(*player_y, *player_x, *player_char_ptr);
                 attrset(COLOR_PAIR(DEFAULT_COLOR));
                 continue;
         }
@@ -147,7 +148,7 @@ void handle_motion() {
 
         // Set player color, move, and unset
         attrset(COLOR_PAIR(PLAYER_COLOR));
-        mvaddch(*player_y, *player_x, player_char);
+        mvaddch(*player_y, *player_x, *player_char_ptr);
         attrset(COLOR_PAIR(DEFAULT_COLOR));
 
         //Decrement repel 
@@ -173,7 +174,7 @@ void handle_motion() {
         else if (action != 0) {
             usleep(100000);
             handle_actions(action);
-            player_char = PLAYER_MOVING_DOWN;
+            *player_char_ptr = PLAYER_MOVING_DOWN;
             init_map();
             continue;
         }
@@ -190,7 +191,7 @@ void handle_motion() {
 
         // Set player color, move, and unset
         attrset(COLOR_PAIR(PLAYER_COLOR));
-        mvaddch(*player_y, *player_x, player_char);
+        mvaddch(*player_y, *player_x, *player_char_ptr);
         attrset(COLOR_PAIR(DEFAULT_COLOR));
         refresh();
 
@@ -286,7 +287,7 @@ void init_map() {
     leave_msg_count = 0;    //leave map label for 5 movements
 
     attrset(COLOR_PAIR(PLAYER_COLOR));
-    mvaddch(*player_y, *player_x, player_char);
+    mvaddch(*player_y, *player_x, *player_char_ptr);
     attrset(COLOR_PAIR(DEFAULT_COLOR));
     refresh();
 }

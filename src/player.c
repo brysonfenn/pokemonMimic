@@ -33,6 +33,7 @@ void player_init(int save_file) {
     player.pc_storage = malloc(sizeof(Pokemon) * 150);
 
     player.num_trainers_battled = 0;
+    player.player_char = PLAYER_MOVING_DOWN;
     
     if (!save_file)
         default_load();
@@ -55,7 +56,7 @@ void default_load() {
     player.bag[1] = *get_item_by_id(POKE_BALL);
     player.bag[1].number += 5;
     player.money = 1000;
-    player.NPCs_done = 0;
+    player.record_bits = 0;
     player.repel_steps = 0;
 
     player.numKeyItems = 0;

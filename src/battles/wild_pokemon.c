@@ -22,7 +22,9 @@ int battle_wild_pokemon(struct Pokemon * pok) {
     
     player_set_current_pokemon(PLAYER_DEFAULT_POKEMON);
     if (player_get_num_alive()) {
-        sprintf(print_str, "  A wild %s appeared!\n", example_pokemon.name);
+        if (example_pokemon.id_num == POKEMON_SNORLAX) sprintf(print_str, "  A wild Snorlax wants to fight!");
+        else sprintf(print_str, "  A wild %s appeared!\n", example_pokemon.name);
+
         print_to_list(print_str);
         sleep(2);
         player.is_uncaught_pokemon = !player_has_pokemon(example_pokemon.id_num);
@@ -37,7 +39,7 @@ int battle_wild_pokemon(struct Pokemon * pok) {
 
     clear();
 
-    //If this pokemon was caught, free all memory allocated for it
+    //If this pokemon wasn't caught, free all memory allocated for it
     if (battle_result != BATTLE_CAUGHT_POKE) {
         destroy_pokemon(&example_pokemon);
     }
@@ -46,5 +48,11 @@ int battle_wild_pokemon(struct Pokemon * pok) {
     for (int i = 0; i < player.numInParty; i++) {
       reset_stat_stages(&(player.party[i]));
     }
-    return 0;
+
+    if (battle_result == BATTLE_WHITE_OUT) {
+        return BATTLE_WHITE_OUT;
+    }
+    else {
+        return BATTLE_WIN;
+    }
 }
