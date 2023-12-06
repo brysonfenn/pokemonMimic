@@ -68,7 +68,7 @@ void draw_cer_city() {
 
     //Bottom-right portal goes to Underground
     draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 4);
-    add_portal(MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-1, 49+9/2, 6+2+1, MAP_UG_NS, true);
+    add_portal_big_map_to_building(49, 6, MAP_UNDERGROUND, MAP_BOTTOM, MAP_WIDTH-4);
 
     drawBuilding_default(MAP_X+30,MAP_Y+8, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+10,MAP_Y+12, "Mart", MART_ACTION);

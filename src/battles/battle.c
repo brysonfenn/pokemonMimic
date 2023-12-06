@@ -14,6 +14,7 @@
 #include "../items/items.h"
 #include "../motion/motion2d.h"
 #include "../motion/maps.h"
+#include "../audio/audio_player.h"
 
 static enum display { MAIN, FIGHT, BAG, POKEMON } current_display = MAIN;
 static enum decision {NONE, ATTACK, ITEM, SWITCH, RUN } current_decision = NONE;
@@ -74,6 +75,7 @@ int handle_battle(struct Pokemon * enemyPok) {
             
             // Handle White out
             if (player_get_num_alive() == 0) {
+                audio_end_loop();
                 text_box_cursors(TEXT_BOX_BEGINNING);
                 printw("....."); refresh(); sleep(2);
                 text_box_cursors(TEXT_BOX_BEGINNING);

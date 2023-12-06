@@ -3,4 +3,12 @@
 
 void draw_route8();
 
+void draw_route9();
+
+void draw_rock_tunnel_n();
+
+void draw_rock_tunnel_s();
+
+void draw_lavender_town();
+
 #endif //MAP_SET4_H

@@ -23,7 +23,8 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_vir_forest, &draw_pew_city, &draw_gym1, &draw_route3, &draw_mt_moon_n,
                                     &draw_cer_city, &draw_gym2, &draw_route4, &draw_underground, &draw_vermillion_city,
                                     &draw_route5, &draw_ss_anne1, &draw_ss_anne2, &draw_gym3, &draw_mt_moon_s,
-                                    &draw_route6, &draw_dig_cave, &draw_route7, &draw_museum, &draw_route8 };
+                                    &draw_route6, &draw_dig_cave, &draw_route7, &draw_museum, &draw_route8, &draw_route9,
+                                    &draw_rock_tunnel_n, &draw_rock_tunnel_s, &draw_lavender_town };
 
 char map_file_name[32];
 static int * wild_pok_list;
@@ -45,7 +46,8 @@ static Pokemon_id wild_pok_lists[32][12] = {
     { 4,  11, 14, POKEMON_ABRA, POKEMON_DROWZEE, POKEMON_KOFFING, POKEMON_TANGELA }, //#12 Route 6
     { 2,  14, 16, POKEMON_DIGLETT, POKEMON_DUGTRIO }, //#13 Diglett's Cave
     { 4,  13, 15, POKEMON_ABRA, POKEMON_TANGELA, POKEMON_BEEDRILL, POKEMON_BUTTERFREE }, //#14 Route 7
-    { 3,  15, 19, POKEMON_TAUROS, POKEMON_EKANS, POKEMON_DODUO, POKEMON_FARFETCHD }         //#15 Route 8
+    { 4,  15, 19, POKEMON_TAUROS, POKEMON_EKANS, POKEMON_DODUO, POKEMON_FARFETCHD },         //#15 Route 8
+    { 4,  16, 19, POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_MACHOP, POKEMON_ONIX }         //#16 Rock Tunnel
 };
 
 
@@ -104,7 +106,7 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             sprintf(map_name, "route4");
             wild_pok_list = &(wild_pok_lists[9]);
             break;
-        case MAP_UG_NS:
+        case MAP_UNDERGROUND:
             sprintf(map_name, "underground");
             break;
         case MAP_R5:
@@ -141,6 +143,18 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
         case MAP_R8:
             sprintf(map_name, "route8");
             wild_pok_list = &(wild_pok_lists[15]);
+            break;
+        case MAP_R9:
+            sprintf(map_name, "route9");
+            wild_pok_list = &(wild_pok_lists[15]);
+            break;
+        case MAP_ROCK_TUNNEL_N:
+            sprintf(map_name, "rock_tunnel_n");
+            wild_pok_list = &(wild_pok_lists[16]);
+            break;
+        case MAP_ROCK_TUNNEL_S:
+            sprintf(map_name, "rock_tunnel_s");
+            wild_pok_list = &(wild_pok_lists[16]);
             break;
         default:
             sprintf(map_name, "empty_map");

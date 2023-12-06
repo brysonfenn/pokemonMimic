@@ -1,0 +1,25 @@
+Last Saved: 12/04/2023 20:41:54
+Player: A
+2 0 2 175 0 0
+Location: {1,(25,11)}
+Heal Center: {1,(33,10)}
+Pokemon: 
+Squirtle 7 24 24 3 13 14 10 12 13 100 346 WATER NONE 3f8117b9 3000100 0 0
+	Tackle. 1 35
+	Tail Whip. 4 30
+	Bubble. 13 30
+Pidgey 16 16 16 1 7 7 7 8 9 3 27 NORMAL FLYING 2df3a8bb 0 0 0
+	Tackle. 1 35
+PC: 
+Bag:
+Potion. 1 2
+Poke Ball. 3 8
+
+Key Items: 0
+  
+
+HM/TMs: 0
+  
+
+Trainers Battled: 1
+  251 

@@ -47,6 +47,58 @@ void add_building_portal(char building_x, char building_y, char next_map) {
     add_portal(building_x+9/2, building_y+2, INTERIOR_X+10, INTERIOR_Y+INTERIOR_HEIGHT-2, next_map, true);
 }
 
+//Auto add portal from building entrance to big map
+void add_portal_building_to_big_map(char building_x, char building_y, char map, int side, int position) {
+    int min_x = MAP_X + position;
+    int min_y = MAP_Y + position;
+    int max_x = MAP_WIDTH + MAP_X - 1;
+    int max_y = MAP_HEIGHT + MAP_Y - 1;
+    int building_enter_x = building_x+9/2;
+    int building_enter_y = building_y+2;
+
+    //49+9/2, 6+2
+
+    switch (side) {
+        case MAP_BOTTOM:
+            add_portal(building_enter_x, building_enter_y, min_x, max_y-1, map, true);
+            break;
+        case MAP_TOP:
+            add_portal(building_enter_x, building_enter_y, min_x, MAP_Y+1, map, true);
+            break;
+        case MAP_LEFT:
+            add_portal(building_enter_x, building_enter_y, MAP_X+1, min_y, map, false);
+            break;
+        case MAP_RIGHT:
+            add_portal(building_enter_x, building_enter_y, max_x-1, min_y, map, false);
+            break;
+    }
+}
+
+//Auto add portal from big map exit to building entrance 
+void add_portal_big_map_to_building(char building_x, char building_y, char map, int side, int position) {
+    int min_x = MAP_X + position;
+    int min_y = MAP_Y + position;
+    int max_x = MAP_WIDTH + MAP_X - 1;
+    int max_y = MAP_HEIGHT + MAP_Y - 1;
+    int building_enter_x = building_x+9/2;
+    int building_enter_y = building_y+3;
+
+    switch (side) {
+        case MAP_TOP:
+            add_portal(min_x, MAP_Y, building_enter_x, building_enter_y, map, true);
+            break;
+        case MAP_BOTTOM:
+            add_portal(min_x, max_y, building_enter_x, building_enter_y, map, true);
+            break;
+        case MAP_RIGHT:
+            add_portal(max_x, min_y, building_enter_x, building_enter_y, map, false);
+            break;
+        case MAP_LEFT:
+            add_portal(MAP_X, min_y, building_enter_x, building_enter_y, map, false);
+            break;
+    }
+}
+
 //Auto add exit
 void add_exit_portal(int side, int position, int map) {
     int min_x = MAP_X + position;

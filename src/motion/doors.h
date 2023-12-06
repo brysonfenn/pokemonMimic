@@ -19,6 +19,12 @@ void add_portal(char x, char y, char next_x, char next_y, char next_map, bool ve
 //Auto add portal to a building
 void add_building_portal(char building_x, char building_y, char next_map);
 
+//Auto add portal from building entrance to big map
+void add_portal_building_to_big_map(char building_x, char building_y, char map, int side, int position);
+
+//Auto add portal from big map exit to building entrance 
+void add_portal_big_map_to_building(char building_x, char building_y, char map, int side, int position);
+
 //Auto add exit
 void add_exit_portal(int side, int position, int map);
 
