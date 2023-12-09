@@ -1,5 +1,7 @@
 #include "trainer_list.h"
 
+#include <string.h>
+
 #include "trainer.h"
 #include "../player.h"
 #include "../monsters/pokemon.h"
@@ -64,9 +66,9 @@ static Trainer * leaders[10] = { &t000,
     &leader201, &leader202, &leader203
 };
 
-static Trainer rival001 = {251, "Rival G", "I'm your rival, Let's Battle!", 1, {POKEMON_BULBASAUR}, {5} };
-static Trainer rival002 = {252, "Rival G", "It's been a while, are you any better?", 3, {POKEMON_GEODUDE, POKEMON_RATTATA, POKEMON_BULBASAUR}, {10,11,13} };
-static Trainer rival003 = {253, "Rival G", "You'll have to beat me to see the Captain", 4, {POKEMON_RATICATE, POKEMON_GRAVELER, POKEMON_KADABRA, POKEMON_IVYSAUR}, {19,20,20,22} };
+static Trainer rival001 = {251, "Rival", "I'm your rival, Let's Battle!", 1, {POKEMON_BULBASAUR}, {5} };
+static Trainer rival002 = {252, "Rival", "It's been a while, are you any better?", 3, {POKEMON_GEODUDE, POKEMON_RATTATA, POKEMON_BULBASAUR}, {10,11,13} };
+static Trainer rival003 = {253, "Rival", "You'll have to beat me to see the Captain", 4, {POKEMON_RATICATE, POKEMON_GRAVELER, POKEMON_KADABRA, POKEMON_IVYSAUR}, {19,20,20,22} };
 
 static Trainer * rivals[10] = { &t000,
     &rival001, &rival002, &rival003
@@ -93,7 +95,9 @@ void update_rival(int id) {
     Trainer * curr_rival = rivals[id];
     int rival_starter = POKEMON_BULBASAUR;
     int rival_starter_index = 0;
-    int player_starter = POKEMON_MISSING_NO;
+    
+    if (strcmp(curr_rival->name, "Rival") != 0) return;
+    sprintf(curr_rival->name, "Rival %s", player.rival_name);
 
     //Find where BULBASAUR evolution is
     for (int i = 0; i < curr_rival->num_in_party; i++) {
@@ -101,40 +105,21 @@ void update_rival(int id) {
             rival_starter_index = i;
             rival_starter = curr_rival->party_id_list[i];
         }
-        else if (curr_rival->party_id_list[i] <= POKEMON_BLASTOISE) {
-            return;
-        }
     }
 
-    //Find which starter the player has
-    for (int i = 0; i < player.numInParty; i++) {
-        //If starter found
-        if (player.party[i].id_num <= POKEMON_BLASTOISE) {
-            player_starter = player.party[i].id_num;
-        }
-    }
-    for (int i = 0; i < player.numInPCStorage; i++) {
-        //If starter found
-        if (player.pc_storage[i].id_num <= POKEMON_BLASTOISE) {
-            player_starter = player.pc_storage[i].id_num;
-        }
-    }
-
-    //Change Rival based on player's starter
-    if (player_starter == POKEMON_MISSING_NO) {
-        curr_rival->party_id_list[rival_starter_index] = POKEMON_EEVEE;
-    }
-    else if (player_starter <= POKEMON_VENUSAUR) {
-        curr_rival->party_id_list[rival_starter_index] = POKEMON_CHARMANDER + rival_starter - 1;
-    }
-    else if (player_starter <= POKEMON_CHARIZARD) {
-        curr_rival->party_id_list[rival_starter_index] = POKEMON_SQUIRTLE + rival_starter - 1;
-    }
-    else if (player_starter <= POKEMON_BLASTOISE) {
-        curr_rival->party_id_list[rival_starter_index] = POKEMON_BULBASAUR + rival_starter - 1;
-    }
-    else {
-        curr_rival->party_id_list[rival_starter_index] = POKEMON_PIKACHU;
+    switch (player.original_starter) {
+        case POKEMON_BULBASAUR:
+            curr_rival->party_id_list[rival_starter_index] = POKEMON_CHARMANDER + rival_starter - 1;
+            break;
+        case POKEMON_CHARMANDER:
+            curr_rival->party_id_list[rival_starter_index] = POKEMON_SQUIRTLE + rival_starter - 1;
+            break;
+        case POKEMON_SQUIRTLE:
+            curr_rival->party_id_list[rival_starter_index] = POKEMON_BULBASAUR + rival_starter - 1;
+            break;
+        default:
+            curr_rival->party_id_list[rival_starter_index] = POKEMON_EEVEE;
+            break;
     }
 
 }

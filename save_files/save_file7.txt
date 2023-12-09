@@ -1,6 +1,6 @@
 Last Saved: 11/23/2023 10:25:22
-Player: Olivia
-4 0 2 2335 0 0
+Player: Olivia.
+4 0 2 2335 0 0 4 B man.
 Location: {2,(10,2)}
 Heal Center: {1,(32,9)}
 Pokemon: 

@@ -15,5 +15,5 @@
 13 │         o      ooooooooooo     oo      oo     oo       │
 14 │        o   ooooo                oo      oo             │
 15 │       o   oo                             oo o          │
-16 │                                           oooo         │
+16 │       o   o                               oooo         │
 f  └────────────────────────────────────────────────────────┘

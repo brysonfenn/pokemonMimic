@@ -2,14 +2,14 @@
 00 ┌────────────────────────────────────────────────────────┐
 01 │                ooo              ooooo                  │
 02 │     oo           oooo               oo                 │
-03 │     ooo  oooooo        ooooooooo     ooooooooooo       │
+03 │     ooooooooooo        ooooooooo     ooooooooooo       │
 04 │    oo         oooooooooo                       oo      │
 05 │     o                                           ooo    │
 06 │     ooooooo             ooooooo    oooooo         o    │
 07 │           oooooo       oo     o   oo    ooo            │
-08 │              ooooo            o  o        oooooo       │
-09 │                  oooooo       o o              oo      │
-10 │   ooooooo  ooooooo                              o      │
+08 │              ooooo     o      o  o        oooooo       │
+09 │                  ooooooo      o o              oo      │
+10 │   ooooooo  ooooooo            ooo               o      │
 11 │  oo        o                  oo     oo         oo     │
 12 │oo        ooo                   o    oooo               │
 13 │         o      ooooooooooo     oo      oo              │

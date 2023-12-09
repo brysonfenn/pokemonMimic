@@ -19,6 +19,7 @@ void control_c_handler();
 
 //Main function
 int main(void) {
+    char print_str[256];
 
     signal(SIGINT, control_c_handler);
     resume_ncurses();
@@ -58,7 +59,26 @@ int main(void) {
             }
         }
         else if (input_num == 0) {
-            sprintf(player.name, "%s", get_name_input("yourself"));
+            //Get Player Name
+            bool done_naming = false;
+            while (!done_naming) {
+                sprintf(player.name, "%s", get_name_input("yourself"));
+                begin_list();
+                sprintf(print_str, "So, your name is %s?\n  Yes\n  No", player.name);
+                print_to_list(print_str);
+                done_naming = (get_selection(1, 1, 0) == 0);
+            }
+
+            //Get Rival name
+            done_naming = false;
+            while (!done_naming) {
+                sprintf(player.rival_name, "%s", get_name_input("your rival"));
+                begin_list();
+                sprintf(print_str, "So, your rival's name is %s?\n  Yes\n  No", player.rival_name);
+                print_to_list(print_str);
+                done_naming = (get_selection(1, 1, 0) == 0);
+            }
+            
 
             begin_list();
             print_to_list("Select a starter Pokémon: \n  Bulbasaur\n  Charmander\n  Squirtle\n  Cancel");
@@ -69,6 +89,7 @@ int main(void) {
             
             player.numInParty = 1;
             player.party[0] = *(get_starter(input_num));  //Give the player a starter based on selection
+            player.original_starter = player.party[0].id_num;
 
             break;
         }

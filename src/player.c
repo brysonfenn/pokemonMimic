@@ -34,6 +34,8 @@ void player_init(int save_file) {
 
     player.num_trainers_battled = 0;
     player.player_char = PLAYER_MOVING_DOWN;
+    player.original_starter = POKEMON_BULBASAUR;
+    sprintf(player.rival_name, "Not Found");
     
     if (!save_file)
         default_load();
@@ -115,7 +117,7 @@ void player_set_enemy_pokemon(struct Pokemon * pok) {
 void player_print() {
     char print_str[1024] = "";
     sprintf(print_str, "%s  %s:\n", print_str, player.name);
-    sprintf(print_str, "%s  Number of Pokemon: %d\tRepel Steps: %d\n", print_str, player.numInParty, player.repel_steps);
+    sprintf(print_str, "%s  Number of Pokemon: %d\n", print_str, player.numInParty + player.numInPCStorage);
     sprintf(print_str, "%s  Money: $%d\n \n  Badges:\n    ", print_str, player.money);
 
     for (int leader_id = 201; leader_id <= 208; leader_id++) {

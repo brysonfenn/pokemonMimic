@@ -1,6 +1,6 @@
 Last Saved: 12/05/2023 20:38:03
-Player: Player1
-2 4 7 18335 1c 0
+Player: Player1.
+2 4 7 18335 1c 0 1 Blue.
 Location: {29,(58,14)}
 Heal Center: {15,(23,7)}
 Pokemon: 

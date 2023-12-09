@@ -138,8 +138,8 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     if (chosenAttack.power != 0 && chosenAttack.var1 != ATTACK_SPECIAL_MOVE) {
         damage = get_damage(perp, move_num, victim, true, &flags);
         if (damage > 0) blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
+        if (damage > victim->currentHP) damage = victim->currentHP;
         victim->currentHP -= damage;
-        if (victim->currentHP < 0) victim->currentHP = 0;
         printBattle();
     }
 

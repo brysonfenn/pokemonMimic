@@ -14,6 +14,7 @@ struct Item;
 
 struct playerCharacter {
   char name[32];
+  char rival_name[32];
 
   struct Pokemon * party;
   struct Item * bag;
@@ -28,6 +29,7 @@ struct playerCharacter {
   uint8_t numInPCStorage;
 
   char player_char;
+  int original_starter;
 
   long long record_bits;
 

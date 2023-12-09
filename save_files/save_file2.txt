@@ -1,6 +1,6 @@
 Last Saved: 12/04/2023 20:41:54
-Player: A
-2 0 2 175 0 0
+Player: A.
+2 0 2 175 0 0 7 M.
 Location: {1,(25,11)}
 Heal Center: {1,(33,10)}
 Pokemon: 

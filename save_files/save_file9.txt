@@ -1,6 +1,6 @@
 Last Saved: 12/02/2023 09:43:31
-Player: Test_Player
-3 20 2 1295 0 0
+Player: Test_Player. 
+3 20 2 1295 0 0 1 Test_Rival.
 Location: {7,(41,14)}
 Heal Center: {7,(32,9)}
 Pokemon: 

@@ -1,13 +1,14 @@
-Last Saved: 12/02/2023 19:28:05
-Player: B Test Man
-4 0 7 6545 5 0
-Location: {11,(37,12)}
+Last Saved: 12/09/2023 09:19:59
+Player: B Test Man.
+4 0 7 6545 5 0 4 G Test Man.
+Location: {11,(4,9)}
 Heal Center: {11,(37,12)}
 Pokemon: 
-Geodude 74 32 32 3 27 31 11 10 9 12 1893 ROCK GROUND 36dcb8a 10601 0 0
-	Tackle. 1 35
-	Defense Curl. 9 40
-	Rock Throw. 76 15
+Oddish 43 42 42 4 21 25 12 12 16 16 4235 GRASS POISON 19b2348e 70a0803 0 0
+	Absorb. 100 20
+	Sweet Scent. 19 20
+	Poison Powder. 14 35
+	Stun Spore. 37 30
 Mankey 56 31 31 4 27 14 9 9 23 12 1908 FIGHTING NONE 567c1363 2040803 0 0
 	Scratch. 2 35
 	Leer. 52 30
@@ -18,11 +19,10 @@ Charmander 4 35 35 4 22 19 11 11 23 14 3097 FIRE NONE 583c265 b080b05 0 4
 	Growl. 3 40
 	Ember. 12 25
 	Metal Claw. 17 35
-Oddish 43 42 42 4 21 25 12 12 16 16 4235 GRASS POISON 19b2348e 70a0803 0 0
-	Absorb. 100 20
-	Sweet Scent. 19 20
-	Poison Powder. 14 35
-	Stun Spore. 37 30
+Geodude 74 32 32 3 27 31 11 10 9 12 1893 ROCK GROUND 36dcb8a 10601 0 0
+	Tackle. 1 35
+	Defense Curl. 9 40
+	Rock Throw. 76 15
 PC: 
 Bag:
 Poke Ball. 3 6
@@ -39,5 +39,5 @@ Key Items: 1
 HM/TMs: 0
   
 
-Trainers Battled: 21
-  251 1 8 2 3 5 7 36 9 12 10 6 11 201 14 13 37 15 16 252 22 
+Trainers Battled: 20
+  251 1 8 2 3 5 7 36 9 12 10 6 11 201 14 13 37 15 16 22 
