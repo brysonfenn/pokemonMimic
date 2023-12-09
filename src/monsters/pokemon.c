@@ -71,7 +71,7 @@ void print_pokemon_attacks(Pokemon *pok, int first_line) {
 void print_pokemon_summary(Pokemon *pok) {
     char print_str[8192];
 
-    sprintf(print_str, "%s  LVL %d\n\t%s ", pok->name, pok->level, get_type_string_by_id(pok->type1));
+    sprintf(print_str, "%s - %s  - LVL %d\n\t%s ", pok->nickname, pok->name, pok->level, get_type_string_by_id(pok->type1));
     if (pok->type2 != NO_TYPE) sprintf(print_str, "%s%s", print_str, get_type_string_by_id(pok->type2));
     sprintf(print_str, "%s\n", print_str);
     sprintf(print_str, "%sEXP to next Level: %d\n", print_str, pokemon_get_next_level_exp(pok) - pok->exp);

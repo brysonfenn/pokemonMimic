@@ -1,19 +1,19 @@
    012345678911234567892123456789312345678941234567895123456
 00 ┌────────────────────────────────────────────────────────┐
-01 │                ooo              ooooo                  │
-02 │     oo           oooo               oo                 │
-03 │     ooooooooooo        ooooooooo     ooooooooooo       │
-04 │    oo         oooooooooo                       oo      │
-05 │     o                                           ooo    │
-06 │     ooooooo             ooooooo    oooooo         o    │
-07 │           oooooo       oo     o   oo    ooo            │
-08 │              ooooo     o      o  o        oooooo       │
-09 │                  ooooooo      o o              oo      │
-10 │   ooooooo  ooooooo            ooo               o      │
-11 │  oo        o                  oo     oo         oo     │
-12 │oo        ooo                   o    oooo               │
-13 │         o      ooooooooooo     oo      oo              │
-14 │        o   ooooo                oo      oo             │
-15 │       o   oo                             oo            │
-16 │       o   o                               oooo         │
+01 │                ooo           oo     o                  │
+02 │     oo           oooo         oo    oo                 │
+03 │     ooooooooooo                o     ooooooooooo       │
+04 │               ooo       oo     oo              oo      │
+05 │                 o       o       o               ooo    │
+06 │     ooooooo     oo      o       o                 o    │
+07 │           ooo   oo     oo       oooo                   │
+08 │                        o      o  o       ooooooo       │
+09 │                      ooo      o o      ooo     oo      │
+10 │   ooooooooooo  ooooooo        ooo     ooo       o      │
+11 │  oo        ooooo              oo     oo         oo     │
+12 │oo                              o    oooo               │
+13 │      oo             ooooo      oo      oo              │
+14 │            oooooooooo   oooooooo       oo              │
+15 │  ooo                                   ooo             │
+16 │           o  ooo                     oooo              │
 f  └────────────────────────────────────────────────────────┘

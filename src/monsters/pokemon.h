@@ -25,6 +25,7 @@
 
 typedef struct Pokemon {
   char name[30];
+  char nickname[16];
   int16_t id_num;
   int16_t maxHP;
   int16_t currentHP;

@@ -48,6 +48,7 @@ int execute_potion(int hp_gain, char * name) {
 
 //Pokeball execute function (catch_rate is % multiplier)
 int attempt_catch(int catch_rate, char * name) {
+    char print_str[256];
     Pokemon * enemy_pok = player.enemy_pokemon;
 
     if (!player.is_battle || player.is_trainer_battle) {
@@ -89,7 +90,17 @@ int attempt_catch(int catch_rate, char * name) {
     if (random < catch_rate) {
         audio_end_loop();
         audio_play_file("capture.mp3");
-        printw("%s was caught!", enemy_pok->name); refresh(); sleep(3);
+        printw("%s was caught!", enemy_pok->name); refresh(); await_user();
+
+        //Nickname Pokemon
+        text_box_cursors(TEXT_BOX_BEGINNING);
+        printw("Would you like to give a nickname to %s?", enemy_pok->name);
+        text_box_cursors(TEXT_BOX_NEXT_LINE); printw("Yes");
+        text_box_cursors(TEXT_BOX_NEXT_LINE); printw("No");
+        
+        int answer = get_selection(BATTLE_BOX_Y+BATTLE_BOX_HEIGHT+4, 1, 0);
+        if (answer == 0) sprintf(enemy_pok->nickname, "%s", get_name_input(enemy_pok->name));
+
         give_pokemon_to_player(enemy_pok);
         return ITEM_CATCH_SUCCESS;
     }

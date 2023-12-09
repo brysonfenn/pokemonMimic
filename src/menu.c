@@ -71,10 +71,10 @@ void main_menu() {
                     begin_list();
                     printParty();
                     print_to_list("  Cancel");
-                    inputNum = get_selection(1, player.numInParty, selected_item);
-                    if (inputNum == player.numInParty || inputNum == PRESSED_B) { break; }   //Cancel
+                    selected_item = get_selection(1, player.numInParty, selected_item);
+                    if (selected_item == player.numInParty || selected_item == PRESSED_B) { break; }   //Cancel
                 }
-                return_execute = handle_pokemon_menu(inputNum);
+                return_execute = handle_pokemon_menu(selected_item);
                 if (return_execute == RETURN_TO_MENU) break;    //Break if requested
             }
 

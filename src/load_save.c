@@ -71,8 +71,9 @@ int save_game(int file_num) {
 	fprintf(fp, "Pokemon: \n");
 	for (int i = 0; i < player.numInParty; i++) {
 		curr_pok = player.party[i];
-		fprintf(fp, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %x %x %d %d\n", curr_pok.name, curr_pok.id_num, curr_pok.maxHP, curr_pok.currentHP,
-			curr_pok.numAttacks, curr_pok.baseAttack, curr_pok.baseDefense, curr_pok.baseSpAttack, curr_pok.baseSpDefense,
+
+		fprintf(fp, "%s %s. %d %d %d %d %d %d %d %d %d %d %d %s %s %x %x %d %d\n", curr_pok.nickname, curr_pok.name, curr_pok.id_num, curr_pok.maxHP, 
+			curr_pok.currentHP, curr_pok.numAttacks, curr_pok.baseAttack, curr_pok.baseDefense, curr_pok.baseSpAttack, curr_pok.baseSpDefense,
 			curr_pok.baseSpeed, curr_pok.level, curr_pok.exp, get_type_string_by_id(curr_pok.type1), get_type_string_by_id(curr_pok.type2),
 			curr_pok.iv, curr_pok.ev, curr_pok.visible_condition, curr_pok.sleep_count);
 			
@@ -85,8 +86,8 @@ int save_game(int file_num) {
 	fprintf(fp, "PC: \n");
 	for (int i = 0; i < player.numInPCStorage; i++) {
 		curr_pok = player.pc_storage[i];
-		fprintf(fp, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %x %x %d %d\n", curr_pok.name, curr_pok.id_num, curr_pok.maxHP, curr_pok.currentHP,
-			curr_pok.numAttacks, curr_pok.baseAttack, curr_pok.baseDefense, curr_pok.baseSpAttack, curr_pok.baseSpDefense,
+		fprintf(fp, "%s %s. %d %d %d %d %d %d %d %d %d %d %d %s %s %x %x %d %d\n", curr_pok.name, curr_pok.nickname, curr_pok.id_num, curr_pok.maxHP, 
+			curr_pok.currentHP, curr_pok.numAttacks, curr_pok.baseAttack, curr_pok.baseDefense, curr_pok.baseSpAttack, curr_pok.baseSpDefense,
 			curr_pok.baseSpeed, curr_pok.level, curr_pok.exp, get_type_string_by_id(curr_pok.type1), get_type_string_by_id(curr_pok.type2),
 			curr_pok.iv, curr_pok.ev, curr_pok.visible_condition, curr_pok.sleep_count);
 			
@@ -374,14 +375,14 @@ void get_pokemon_from_file(FILE *fp, int num_in_list, Pokemon * pokList) {
 		char type2[20];
 		int exp, iv, ev;
 
-		matched_elements = sscanf(line, "%s %d %d %d %d %d %d %d %d %d %d %d %s %s %x %x %d %d", &(curr_pok->name), &(curr_pok->id_num), 
-			&(curr_pok->maxHP), &(curr_pok->currentHP), &(curr_pok->numAttacks), &(curr_pok->baseAttack), 
+		matched_elements = sscanf(line, "%s %[^.]. %d %d %d %d %d %d %d %d %d %d %d %s %s %x %x %d %d", &(curr_pok->name), &(curr_pok->nickname),
+			&(curr_pok->id_num), &(curr_pok->maxHP), &(curr_pok->currentHP), &(curr_pok->numAttacks), &(curr_pok->baseAttack), 
 			&(curr_pok->baseDefense), &(curr_pok->baseSpAttack), &(curr_pok->baseSpDefense), &(curr_pok->baseSpeed), 
 			&(curr_pok->level), &exp, &type1, &type2, &iv, &ev, &(curr_pok->visible_condition), &(curr_pok->sleep_count));
 
 		//Check if the line matched correctly
-		if (matched_elements != 18) {
-			notify_error("POKEMON", line, 17, matched_elements);
+		if (matched_elements != 19) {
+			notify_error("POKEMON", line, 19, matched_elements);
 			return LOAD_FAILURE;
 		}
 

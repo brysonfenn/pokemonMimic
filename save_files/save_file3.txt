@@ -1,50 +1,50 @@
-Last Saved: 11/23/2023 10:24:56
+Last Saved: 12/09/2023 13:00:10
 Player: Elliot H.
 6 6 5 3770 1 0 4 Gary.
 Location: {11,(41,12)}
 Heal Center: {11,(37,12)}
 Pokemon: 
-Poliwag 60 29 29 2 16 13 14 12 24 11 1372 WATER NONE 7e0bfcc1 0 0 0
+Poliwag Poliwag. 60 29 29 2 16 13 14 12 24 11 1372 WATER NONE 7e0bfcc1 0 0 0
 	Bubble. 13 30
 	Hypnosis. 125 20
-Nidoran♂ 32 24 24 2 15 10 12 11 12 7 343 POISON NONE 42cd13d1 0 0 0
+Nidoran(m) Nidoran(m). 32 24 24 2 15 10 12 11 12 7 343 POISON NONE 42cd13d1 0 0 0
 	Leer. 52 30
 	Peck. 51 35
-Charmeleon 5 44 44 4 30 23 35 28 34 16 4836 FIRE NONE 772e8be0 0 0 4
+Charmeleon Charmeleon. 5 44 44 4 30 23 35 28 34 16 4836 FIRE NONE 772e8be0 0 0 4
 	Scratch. 2 35
 	Growl. 3 40
 	Ember. 12 25
 	Metal Claw. 17 35
-Sandshrew 27 30 30 2 20 22 8 8 13 10 1051 GROUND NONE 24456825 0 0 0
+Sandshrew Sandshrew. 27 30 30 2 20 22 8 8 13 10 1051 GROUND NONE 24456825 0 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
-Oddish 43 36 36 3 19 20 9 9 13 14 3239 GRASS POISON 12b62529 0 0 2
+Oddish Oddish. 43 36 36 3 19 20 9 9 13 14 3239 GRASS POISON 12b62529 0 0 2
 	Absorb. 100 20
 	Sweet Scent. 19 20
 	Poison Powder. 14 35
-Pikachu 25 33 33 4 20 16 11 11 30 14 2865 ELECTRIC NONE 78e5409f 0 0 0
+Pikachu Pikachu. 25 33 33 4 20 16 11 11 30 14 2865 ELECTRIC NONE 78e5409f 0 0 0
 	Thunder Shock. 55 30
 	Growl. 3 40
 	Quick Attack. 8 30
 	Thunder Wave. 56 20
 PC: 
-Rattata 19 16 16 2 9 7 6 7 10 4 67 NORMAL NONE 612ec9 0 0 0
+Rattata Rattata. 19 16 16 2 9 7 6 7 10 4 67 NORMAL NONE 612ec9 0 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
-Zubat 41 24 24 2 12 11 11 11 14 8 512 POISON FLYING e08c4e2 0 0 0
+Zubat Zubat. 41 24 24 2 12 11 11 11 14 8 512 POISON FLYING e08c4e2 0 0 0
 	Leech Life. 96 15
 	Astonish. 97 15
-Clefairy 35 35 35 3 16 16 19 20 14 10 1000 NONE NONE 31dccf2e 0 0 0
+Clefairy Clefairy. 35 35 35 3 16 16 19 20 14 10 1000 NONE NONE 31dccf2e 0 0 0
 	Pound. 69 35
 	Growl. 3 40
 	Sing. 70 15
-Paras 46 28 28 2 19 16 14 18 12 10 1000 BUG GRASS 71700850 0 0 0
+Paras Paras. 46 28 28 2 19 16 14 18 12 10 1000 BUG GRASS 71700850 0 0 0
 	Scratch. 2 35
 	Stun Spore. 37 30
-Vulpix 37 24 24 2 12 13 14 16 17 8 512 FIRE NONE 7c9bdd8a 0 0 0
+Vulpix Vulpix. 37 24 24 2 12 13 14 16 17 8 512 FIRE NONE 7c9bdd8a 0 0 0
 	Ember. 12 25
 	Tail Whip. 4 30
-Pidgey 16 19 19 2 9 9 7 7 10 5 192 NORMAL FLYING 669bd0ab 0 0 1
+Pidgey Pidgey. 16 19 19 2 9 9 7 7 10 5 192 NORMAL FLYING 669bd0ab 0 0 1
 	Tackle. 1 35
 	Sand Attack. 7 15
 Bag:

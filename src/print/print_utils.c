@@ -37,12 +37,9 @@ void put_pokemon_line(Pokemon * pok, char * input_str, char info_type) {
     int current = pok->currentHP;
     int max = pok->maxHP;
 
-    sprintf(input_str, "%s", pok->name);
+    sprintf(input_str, "%s", pok->nickname);
     //Handle spacing
-    for (int j = strlen(pok->name); j < 15; j++) sprintf(input_str, "%s ", input_str);
-    //Fix Nidoran male/female symbol spacing
-    bool is_nidoran = ((pok->id_num == POKEMON_NIDORAN_F) || (pok->id_num == POKEMON_NIDORAN_M));
-    if (is_nidoran) sprintf(input_str, "%s  ", input_str);
+    for (int j = strlen(pok->nickname); j < 15; j++) sprintf(input_str, "%s ", input_str);
 
     //Add other pokemon info
     if (info_type == POK_INFO_ABLE) {

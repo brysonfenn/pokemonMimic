@@ -191,7 +191,7 @@ void handle_motion() {
                 && random < 5);   //Extra percentage for caves
         encounter = encounter && !(leave_msg_count < 5) && (random < 10);     //Chance of encounter
         encounter = encounter;
-        encounter = false;
+        // encounter = false;
 
         // Set player color, move, and unset
         attrset(COLOR_PAIR(PLAYER_COLOR));

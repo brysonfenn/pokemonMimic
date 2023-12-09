@@ -153,6 +153,9 @@ Pokemon * get_pokemon_frame(Pokemon_id pok_id) {
     pok->baseDefense = def; pok->baseSpAttack = sp_Attack; 
     pok->baseSpDefense = sp_Defense; pok->baseSpeed = spd;
 
+    //Give nickname
+    sprintf(pok->nickname, "%s", pok->name);
+
     fclose(fp);
 
     return pok;
