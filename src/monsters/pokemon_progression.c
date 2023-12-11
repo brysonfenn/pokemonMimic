@@ -163,23 +163,35 @@ void learn_move(Pokemon * pok, attack * new_attack) {
     }
     else {
 
-        text_box_cursors(TEXT_BOX_BEGINNING); text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("%s wants to learn %s,", pok->name, new_attack->name); 
+        bool made_selection = false;
 
-        text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("but %s already knows 4 moves.", pok->name);
-        refresh(); sleep(2);
+        while (!made_selection) {
+            mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  %s", pok->attacks[0].name); 
+            mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  %s", pok->attacks[1].name); 
+            mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  %s", pok->attacks[2].name); 
+            mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  %s", pok->attacks[3].name); 
+            mvprintw(SELECT_Y+1,BATTLE_SELECT_3_X,"  Cancel");
 
-        mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  %s", pok->attacks[0].name); 
-        mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  %s", pok->attacks[1].name); 
-        mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  %s", pok->attacks[2].name); 
-        mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  %s", pok->attacks[3].name); 
-        mvprintw(SELECT_Y+1,BATTLE_SELECT_3_X,"  Cancel");
+            text_box_cursors(TEXT_BOX_BEGINNING); 
+            text_box_cursors(TEXT_BOX_NEXT_LINE); text_box_cursors(TEXT_BOX_NEXT_LINE);
+            printw("%s wants to learn %s!", pok->name, new_attack->name); 
+            refresh(); sleep(2);
 
-        text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("Select a move to forget.");
-            
-        input_num = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, pok, 0);
+            text_box_cursors(TEXT_BOX_NEXT_LINE);
+            printw("Select a move to forget.");
+                
+            input_num = get_move_selection(BATTLE_SELECT_1_X, SELECT_Y, pok, 0);
+            if (input_num >= 0 && input_num <= 3) {
+                text_box_cursors(TEXT_BOX_BEGINNING);
+                printw("Forget %s?", pok->attacks[input_num].name);
+                text_box_cursors(TEXT_BOX_NEXT_LINE); printw("Yes");
+                text_box_cursors(TEXT_BOX_NEXT_LINE); printw("No");
+                made_selection = !get_selection(BATTLE_BOX_Y+BATTLE_BOX_HEIGHT+4, 1, 0);
+            }
+            else {
+                made_selection = true;
+            }
+        }
 
         if (player.is_battle) {
             clear(); printBattle();

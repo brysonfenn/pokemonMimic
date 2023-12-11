@@ -1,6 +1,8 @@
 #ifndef MAP_DRAWING_H
 #define MAP_DRAWING_H
 
+#include <stdbool.h>
+
 #define MAP_WIDTH 58
 #define MAP_HEIGHT 18
 #define MAP_X 3
@@ -56,5 +58,7 @@ void add_connection_to_big_map(int map_side, int position_on_side, int map_id);
 
 //Blink screen a given number of times, pass in a map function to blink
 void blink_screen(int num_times, void (*draw_map_func) ());
+
+bool is_text_in_message_box();
 
 #endif //MAP_DRAWING_H

@@ -271,11 +271,30 @@ void begin_list() {
 
 //Wait for user to press 'a' button ('z')
 int await_user() {
+    int count = 0;
     usleep(500000);
     int ch = '~';
-    flushinp();
-    mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "Press '%c'", SELECT_CHAR); refresh();
-    while (ch != SELECT_CHAR && ch != SELECT_CHAR_2) { flushinp(); ch = getch(); }
+
+    nodelay(stdscr, TRUE);
+
+    while (1) {
+        ch = getch();
+        if (ch == SELECT_CHAR || ch == SELECT_CHAR_2) {
+            break;
+            flushinp();
+        }
+        
+        if ((count % 500) == 0) {
+            mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "Press '%c'", SELECT_CHAR); refresh();
+        }
+        else if (count % 250 == 0) {
+            mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "         ", SELECT_CHAR); refresh();
+        }
+        
+        usleep(1000); //Sleep 1 ms
+        count++;
+    }
+    nodelay(stdscr, FALSE);
 
     mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "           "); refresh();
 }

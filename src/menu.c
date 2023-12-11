@@ -12,14 +12,14 @@
 #include "items/hm_tms.h"
 #include "motion/maps.h"
 
-static enum display { MOVING, POKEMON, BAG, KEY_ITEMS, HM_or_TMs, PLAYER, SAVE, LOAD,
-    POWER_OFF, MENU } current_display = MOVING;
+static enum display { EXIT_MENU, POKEMON, BAG, KEY_ITEMS, HM_or_TMs, PLAYER, SAVE, LOAD,
+    POWER_OFF, MENU } current_display = MENU;
 
 static bool power_off = false;
 
 
 //Handle start menu
-void main_menu() {
+int main_menu() {
 
     int inputNum, inputNum2, return_execute, num_files, selected_item;
     char print_str[1024] = "";
@@ -29,11 +29,6 @@ void main_menu() {
 
     //This is the main menu while loop.
     while(1) {
-        player.is_battle = false;
-
-        for (int i = 0; i < player.numInParty; i++) {
-            reset_stat_stages(&(player.party[i]));
-        }
 
         clear();
 
@@ -48,7 +43,7 @@ void main_menu() {
             print_to_list(print_str);
 
             inputNum = get_selection(0, 8, last_selection);
-            if (inputNum == PRESSED_B) inputNum = MOVING;
+            if (inputNum == PRESSED_B) inputNum = EXIT_MENU;
 
             last_selection = inputNum;
             current_display = inputNum;
@@ -56,10 +51,9 @@ void main_menu() {
             break;
 
         //Allow player to walk around. PokeCenter and Mart are here
-        case MOVING:
-            handle_motion();
+        case EXIT_MENU:
             current_display = MENU;
-            break;
+            return MENU_RETURN_DEFAULT;
 
         //Handle party changes, releases, and viewing stats
         case POKEMON:
@@ -169,7 +163,8 @@ void main_menu() {
             if (inputNum == 9 || inputNum == PRESSED_B) { current_display = MENU; break; }
             load_game(inputNum+1);
             current_display = MENU;
-            break;
+
+            return MENU_LOADED_GAME;
 
         //Allow loop to break and end game
         case POWER_OFF:
@@ -184,5 +179,8 @@ void main_menu() {
         }
 
         if (power_off) break;
+
     }
+
+    return MENU_RETURN_DEFAULT;
 }

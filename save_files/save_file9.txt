@@ -86,8 +86,8 @@ Poke Ball. 3 1
 Key Items: 0
   
 
-HM/TMs: 0
-  
+HM/TMs: 1
+  101
 
 Trainers Battled: 2
   12 6 

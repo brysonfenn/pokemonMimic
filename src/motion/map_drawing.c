@@ -8,11 +8,13 @@
 #include "../print/print_defines.h"
 
 static int message_line = 0;
-char line1[100]; char line2[100]; char line3[100];
-char * lines[3] = {line1, line2, line3};
+static char line1[100]; static char line2[100]; static char line3[100];
+static char * lines[3] = {line1, line2, line3};
+static bool text_in_message_box = false;
 
 //Clear message box and start at the beginning
 void begin_message_box() {
+    text_in_message_box = false;
     //Clear box
     int start_y = MESSAGE_BOX_Y+1;
     int start_x = MESSAGE_BOX_X+1;
@@ -29,6 +31,7 @@ void print_to_message_box(const char * message_str) {
     char* token;
     char* input = strdup(message_str); //input is mutable version of input str
     begin_message_box();
+    text_in_message_box = true;
 
     fix_list_box_overflow(input);
     int count = 0;
@@ -166,4 +169,8 @@ void blink_screen(int num_times, void (*draw_map_func) ()) {
         refresh();
         usleep(100000);
     }
+}
+
+bool is_text_in_message_box() {
+    return text_in_message_box;
 }

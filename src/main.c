@@ -7,7 +7,7 @@
 
 #include "load_save.h"
 #include "player.h"
-#include "menu.h"
+#include "motion/motion2d.h"
 #include "test.h"
 #include "print/print_utils.h"
 #include "print/print_defines.h"
@@ -102,7 +102,7 @@ int main(void) {
         }
     }
 
-    main_menu();
+    handle_motion();
 
     //Clear everything and finish
     control_c_handler();

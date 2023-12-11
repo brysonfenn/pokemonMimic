@@ -13,6 +13,7 @@
 #include "npc.h"
 
 #include "../player.h"
+#include "../menu.h"
 #include "../poke_center.h"
 #include "../battles/trainer.h"
 #include "../battles/wild_pokemon.h"
@@ -54,6 +55,11 @@ void init_motion() {
 void handle_motion() {
     char print_str[2048];
 
+    player.is_battle = false;
+    for (int i = 0; i < player.numInParty; i++) {
+        reset_stat_stages(&(player.party[i]));
+    }
+
     init_motion();
     Trainer * trainer_ptr;
     char * message_ptr;
@@ -68,7 +74,7 @@ void handle_motion() {
     while (1) {
         flushinp();
         ch = getch();
-        mvaddch(*player_y, *player_x, ' '); 
+        //mvaddch(*player_y, *player_x, ' '); 
 
         char prev_player_x = *player_x;
         char prev_player_y = *player_y;
@@ -76,10 +82,20 @@ void handle_motion() {
         switch (ch) {
             case MENU_CHAR:
             case MENU_CHAR_2:
+                audio_save_looping_file(0);
                 audio_end_loop();
                 audio_play_file("pause.mp3");
-                return;
-                break;
+                save_print_state();
+
+                return_value = main_menu();
+                if (return_value == MENU_LOADED_GAME) {
+                    change_map(player.loc->map, player.loc->x, player.loc->y);
+                    continue;
+                }
+
+                audio_restore_looping_file(0);
+                restore_print_state();
+                continue;
         	case KEY_UP:
                 if (*player_char_ptr != PLAYER_MOVING_UP) *player_char_ptr = PLAYER_MOVING_UP;
                 else if (*player_y > 1 && is_movable_space(-1,0)) (*player_y)--;
@@ -143,11 +159,12 @@ void handle_motion() {
         }
 
         //Leave printed message for 5 movements
-        if (leave_msg_count < 5) leave_msg_count++;
-        else begin_message_box();
+        if (leave_msg_count < 15) { leave_msg_count++; }
+        else if (is_text_in_message_box()) { begin_message_box(); }
 
         // Set player color, move, and unset
         attrset(COLOR_PAIR(PLAYER_COLOR));
+        mvaddch(prev_player_y, prev_player_x, ' '); 
         mvaddch(*player_y, *player_x, *player_char_ptr);
         attrset(COLOR_PAIR(DEFAULT_COLOR));
 
