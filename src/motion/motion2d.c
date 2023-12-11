@@ -107,6 +107,7 @@ void handle_motion() {
                 //If next space is a fence, jump it
                 else if (next_char == '-') {
                     attrset(COLOR_PAIR(PLAYER_COLOR));
+                    mvaddch((*player_y), *player_x, ' ');
                     mvaddch(++(*player_y), *player_x, *player_char_ptr); refresh();
                     usleep(300000);
                     mvaddch(++(*player_y), *player_x, *player_char_ptr); refresh();
