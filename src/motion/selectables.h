@@ -39,7 +39,7 @@ Selectable * get_selectable(int player_x, int player_y, char player_char);
 void clear_selectables();
 
 //Return a selectable containing a trainer if it is within battle distance of the player
-Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, int *y_inc);
+Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, int *y_inc, char * next_player_char);
 
 
 

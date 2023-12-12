@@ -149,7 +149,7 @@ void clear_selectables() {
 
 //Return a selectable containing a trainer if it is within battle distance of the player
 //  x_inc and y_inc will indicate which direction the trainer should move
-Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, int *y_inc) {
+Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, int *y_inc, char * next_player_char) {
     Selectable * curr_sel;
     int x = 0;
     int y = 0;
@@ -170,24 +170,28 @@ Selectable * get_triggered_selectable(int player_x, int player_y, int *x_inc, in
                     *x_inc = -1;
                     *y_inc = 0;
                     distance = x - player_x;
+                    *next_player_char = PLAYER_MOVING_RIGHT;
                     if (distance < HORIZONTAL_DISTANCE && distance > 0 && y == player_y) return curr_sel;
                     break;
                 case PLAYER_MOVING_RIGHT:
                     *x_inc = 1;
                     *y_inc = 0;
                     distance = player_x - x;
+                    *next_player_char = PLAYER_MOVING_LEFT;
                     if (distance < HORIZONTAL_DISTANCE && distance > 0 && y == player_y) return curr_sel;
                     break;
                 case PLAYER_MOVING_UP:
                     *y_inc = -1;
                     *x_inc = 0;
                     distance = y - player_y;
+                    *next_player_char = PLAYER_MOVING_DOWN;
                     if (distance < VERTICAL_DISTANCE && distance > 0 && x == player_x) return curr_sel;
                     break;
                 case PLAYER_MOVING_DOWN:
                     *y_inc = 1;
                     *x_inc = 0;
                     distance = player_y - y;
+                    *next_player_char = PLAYER_MOVING_UP;
                     if (distance < VERTICAL_DISTANCE && distance > 0 && x == player_x) return curr_sel;
                     break;
                 default:

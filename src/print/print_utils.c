@@ -285,10 +285,10 @@ int await_user() {
         }
         
         if ((count % 500) == 0) {
-            mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "Press '%c'", SELECT_CHAR); refresh();
+            mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+3, "Press '%c'", SELECT_CHAR); refresh();
         }
         else if (count % 250 == 0) {
-            mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+1, "         ", SELECT_CHAR); refresh();
+            mvprintw(AWAIT_USER_Y+1, AWAIT_USER_X+3, "         ", SELECT_CHAR); refresh();
         }
         
         usleep(1000); //Sleep 1 ms

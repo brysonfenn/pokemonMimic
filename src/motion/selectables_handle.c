@@ -38,7 +38,7 @@ int handle_selected_selectable(int player_x, int player_y, char player_char) {
         trainer_ptr = (Trainer *) selectable_ptr->data;
         if (player_has_battled_trainer(trainer_ptr->id_num)) {
             sprintf(print_str, "%s: \"We already battled\"", trainer_ptr->name);
-            print_to_message_box(print_str);
+            print_to_message_box(print_str); await_user(); begin_message_box();
             return SELECTABLE_CONTINUE_WHILE;
         }
 

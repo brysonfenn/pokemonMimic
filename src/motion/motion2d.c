@@ -240,8 +240,9 @@ void handle_motion() {
         int * trainer_x;
         int * trainer_y;
         char trainer_ch;
+        char next_player_char;
 
-        Selectable * curr_sel = get_triggered_selectable(*player_x, *player_y, &x_inc, &y_inc);
+        Selectable * curr_sel = get_triggered_selectable(*player_x, *player_y, &x_inc, &y_inc, &next_player_char);
         if (curr_sel->selectable_id == SELECTABLE_TRAINER) {
             trainer_ptr = (Trainer *) curr_sel->data;
             trainer_x = &(curr_sel->x);
@@ -260,6 +261,12 @@ void handle_motion() {
                 refresh();
                 usleep(100000);
             }
+
+            //Player faces trainer
+            attrset(COLOR_PAIR(PLAYER_COLOR));
+            *player_char_ptr = next_player_char;
+            mvaddch(*player_y, *player_x, *player_char_ptr);
+            attrset(COLOR_PAIR(DEFAULT_COLOR));
 
             if (battle_trainer(trainer_ptr) != BATTLE_WHITE_OUT) {
                 restore_print_state();
