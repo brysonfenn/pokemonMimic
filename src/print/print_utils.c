@@ -29,6 +29,7 @@
 static char name_input_str[MAX_NAME_INPUT_LENGTH] = "";
 static char pokemon_str_list[50][64];
 static char * str_ptr_list[50];
+const char default_name_str[10] = DEFAULT_NAME_STR;
 
 void print_alphabet(char curr_char, char last_char);
 
@@ -437,6 +438,7 @@ char * get_name_input(char * target_for_name) {
                         return name_input_str; 
                     }
                 }
+                else if (string_length == 0) return default_name_str;
                 else break;
             }
             //Add letter to the string

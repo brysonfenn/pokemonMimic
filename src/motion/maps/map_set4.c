@@ -23,8 +23,7 @@ void draw_underground() {
 
     add_connection_to_big_map(MAP_BOTTOM, 3, MAP_VERM_CITY);
     add_connection_to_big_map(MAP_RIGHT, 3, MAP_LAV_TOWN);
-
-    draw_town_exit(MAP_LEFT, 3);    //Add connection toward Celadon City
+    add_connection_to_big_map(MAP_LEFT, 3, MAP_CEL_CITY);
 }
 
 

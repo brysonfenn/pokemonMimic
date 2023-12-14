@@ -52,9 +52,17 @@ static Trainer t038 = {38, "Gym Trainer Mike", "This is a tough Gym. Good Luck!"
 static Trainer t039 = {39, "Gym Trainer Lee", "I love Electric Types!", 2, {POKEMON_PIKACHU, POKEMON_ELECTRODE}, {20,20} };
 static Trainer t040 = {40, "Gym Trainer Ignacio", "I have Steel Electric types, Get ready!", 2, {POKEMON_MAGNEMITE, POKEMON_MAGNETON}, {19,21} };
 
+static Trainer t041 = {41, "Trainer Gerald", "You already have 3 badges? I should be easy then.", 2, {POKEMON_GRIMER, POKEMON_ARBOK}, {19,21} };
+static Trainer t042 = {42, "Traveler Johnson", "It's a nice day out for a Pokemon Battle!", 2, {POKEMON_GEODUDE, POKEMON_PRIMEAPE}, {20,21} };
+static Trainer t043 = {43, "Traveler Evan", "I'm from Lavender Town. What about you? Let's Battle!", 2, {POKEMON_LICKITUNG, POKEMON_HAUNTER}, {21,21} };
+static Trainer t044 = {44, "Miner Jack", "Rock Tunnel is full of strong Pokemon. You might want to get some Repels.", 2, {POKEMON_GRAVELER, POKEMON_CUBONE}, {21,21} };
+static Trainer t045 = {45, "Miner Vincent", "You heard Jack. I would also recommend getting some Repels.", 2, {POKEMON_MACHOKE, POKEMON_MAROWAK}, {21,22} };
+static Trainer t046 = {46, "Trainer Emmett", "I love the wild Pokemon around here", 3, {POKEMON_FARFETCHD, POKEMON_EKANS, POKEMON_TAUROS}, {21,22,22} };
+
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
     &t001, &t002, &t003, &t004, &t005, &t006, &t007, &t008, &t009, &t010, &t011, &t012, &t013, &t014, &t015, &t016, &t017, &t018, &t019, &t020,
-    &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028, &t029, &t030, &t031, &t032, &t033, &t034, &t035, &t036, &t037, &t038, &t039, &t040
+    &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028, &t029, &t030, &t031, &t032, &t033, &t034, &t035, &t036, &t037, &t038, &t039, &t040,
+    &t041, &t042, &t043, &t044, &t045, &t046
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };

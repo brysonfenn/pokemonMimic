@@ -63,6 +63,7 @@ int main(void) {
             bool done_naming = false;
             while (!done_naming) {
                 sprintf(player.name, "%s", get_name_input("yourself"));
+                if (strcmp(player.name, DEFAULT_NAME_STR) == 0) sprintf(player.name, "Beige");
                 begin_list();
                 sprintf(print_str, "So, your name is %s?\n  Yes\n  No", player.name);
                 print_to_list(print_str);
@@ -73,6 +74,7 @@ int main(void) {
             done_naming = false;
             while (!done_naming) {
                 sprintf(player.rival_name, "%s", get_name_input("your rival"));
+                if (strcmp(player.rival_name, DEFAULT_NAME_STR) == 0) sprintf(player.rival_name, "Khaki");
                 begin_list();
                 sprintf(print_str, "So, your rival's name is %s?\n  Yes\n  No", player.rival_name);
                 print_to_list(print_str);

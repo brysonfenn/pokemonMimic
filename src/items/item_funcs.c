@@ -100,6 +100,7 @@ int attempt_catch(int catch_rate, char * name) {
         
         int answer = get_selection(BATTLE_BOX_Y+BATTLE_BOX_HEIGHT+4, 1, 0);
         if (answer == 0) sprintf(enemy_pok->nickname, "%s", get_name_input(enemy_pok->name));
+        if (strcmp(enemy_pok->nickname, DEFAULT_NAME_STR) == 0) sprintf(enemy_pok->nickname, "%s", enemy_pok->name);
 
         give_pokemon_to_player(enemy_pok);
         return ITEM_CATCH_SUCCESS;

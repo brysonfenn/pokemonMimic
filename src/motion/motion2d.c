@@ -98,7 +98,7 @@ void handle_motion() {
                 continue;
         	case KEY_UP:
                 if (*player_char_ptr != PLAYER_MOVING_UP) *player_char_ptr = PLAYER_MOVING_UP;
-                else if (*player_y > 1 && is_movable_space(-1,0)) (*player_y)--;
+                else if (*player_y > 1 && is_movable_space(-1,0)) {(*player_y)--; usleep(80000); }
                 break;
 
             case KEY_DOWN:
@@ -116,7 +116,7 @@ void handle_motion() {
                     flushinp(); continue;
                 }
                 //Else just move one down
-            	else if (*player_y < 20 && is_movable_space(1,0)) (*player_y)++;
+            	else if (*player_y < 20 && is_movable_space(1,0)) { (*player_y)++; usleep(80000); }
                 break;
 
             case KEY_LEFT:

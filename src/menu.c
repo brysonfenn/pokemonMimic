@@ -133,7 +133,9 @@ int main_menu() {
 
             //Change name if input is 0
             if (inputNum == 0) {
+                sprintf(print_str, "%s", player.name);
                 sprintf(player.name, "%s", get_name_input("yourself"));
+                if (strcmp(player.name, DEFAULT_NAME_STR) == 0) sprintf(player.name, "%s", print_str);
             }
 
             current_display = MENU;

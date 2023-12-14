@@ -11,4 +11,6 @@ void draw_rock_tunnel_s();
 
 void draw_lavender_town();
 
+void draw_cel_city();
+
 #endif //MAP_SET4_H

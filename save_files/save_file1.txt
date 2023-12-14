@@ -1,7 +1,7 @@
 Last Saved: 12/10/2023 19:07:35
 Player: B Test Man.
 4 0 7 6545 5 0 4 G Test Man.
-Location: {11,(56,3)}
+Location: {11,(24,15)}
 Heal Center: {11,(37,12)}
 Pokemon: 
 Geodude Geodude. 74 32 32 3 27 31 11 10 9 12 1893 ROCK GROUND 36dcb8a 10601 0 0

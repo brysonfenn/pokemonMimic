@@ -5,6 +5,8 @@
 
 struct Pokemon;
 
+#define DEFAULT_NAME_STR "~`~"
+
 
 //Print a list of Pokemon (used for party and PC)
 void print_pokemon_list(struct Pokemon * pokList, int list_size);
@@ -60,7 +62,7 @@ void save_print_state();
 //Reprint the saved print state - cannot be called without first calling save_print_state
 void restore_print_state();
 
-//Get name input from user
+//Get name input from user -- Returns DEFAULT_NAME_STR if player enters without typing
 char * get_name_input(char * target_for_name);
 
 //Get player selection from scrollable list
