@@ -99,7 +99,7 @@ void draw_route10() {
 
 void draw_rocket1() {
     draw_big_map("Rocket Hideout");
-    audio_loop_file("celadon_city.mp3");
+    audio_loop_file("rocket_hideout.mp3");
 
     add_portal_big_map_to_building(MAP_X+18, MAP_Y+7, MAP_CEL_CITY, MAP_BOTTOM, 6);
     add_connection_to_big_map(MAP_TOP, 18, MAP_ROCKET2);
@@ -110,7 +110,7 @@ void draw_rocket1() {
 
 void draw_rocket2() {
     draw_big_map("Rocket Hideout");
-    audio_loop_file("celadon_city.mp3");
+    audio_loop_file("rocket_hideout.mp3");
 
     add_connection_to_big_map(MAP_BOTTOM, 18, MAP_ROCKET1);
     add_connection_to_big_map(MAP_BOTTOM, 24, MAP_ROCKET1);
@@ -119,7 +119,7 @@ void draw_rocket2() {
 
 void draw_rocket3() {
     draw_big_map("Rocket Hideout");
-    audio_loop_file("celadon_city.mp3");
+    audio_loop_file("rocket_hideout.mp3");
 
     add_connection_to_big_map(MAP_LEFT, 7, MAP_ROCKET1);
 }
