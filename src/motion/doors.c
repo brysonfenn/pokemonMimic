@@ -83,6 +83,8 @@ void add_portal_big_map_to_building(char building_x, char building_y, char map, 
     int building_enter_x = building_x+9/2;
     int building_enter_y = building_y+3;
 
+    draw_town_exit(side, position);
+
     switch (side) {
         case MAP_TOP:
             add_portal(min_x, MAP_Y, building_enter_x, building_enter_y, map, true);

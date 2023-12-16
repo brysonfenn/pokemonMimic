@@ -80,6 +80,9 @@ void draw_cel_city() {
 
     drawBuilding_default(MAP_X+35,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+14, MAP_Y+1, "Mart", MART_ACTION);
+
+    drawBuilding_default(MAP_X+18, MAP_Y+7, "RCKT", -1);
+    add_portal_building_to_big_map(MAP_X+18, MAP_Y+7, MAP_ROCKET1, MAP_BOTTOM, 6);
 }
 
 
@@ -91,4 +94,32 @@ void draw_route10() {
     add_connection_to_big_map(MAP_LEFT, 14, MAP_R6);
 
     add_snorlax(MAP_X+13, MAP_Y+13, 0);
+}
+
+
+void draw_rocket1() {
+    draw_big_map("Rocket Hideout");
+    audio_loop_file("celadon_city.mp3");
+
+    add_portal_big_map_to_building(MAP_X+18, MAP_Y+7, MAP_CEL_CITY, MAP_BOTTOM, 6);
+    add_connection_to_big_map(MAP_TOP, 18, MAP_ROCKET2);
+    add_connection_to_big_map(MAP_TOP, 24, MAP_ROCKET2);
+    add_connection_to_big_map(MAP_TOP, 44, MAP_ROCKET2);
+    add_connection_to_big_map(MAP_RIGHT, 7, MAP_ROCKET3);
+}
+
+void draw_rocket2() {
+    draw_big_map("Rocket Hideout");
+    audio_loop_file("celadon_city.mp3");
+
+    add_connection_to_big_map(MAP_BOTTOM, 18, MAP_ROCKET1);
+    add_connection_to_big_map(MAP_BOTTOM, 24, MAP_ROCKET1);
+    add_connection_to_big_map(MAP_BOTTOM, 44, MAP_ROCKET1);
+}
+
+void draw_rocket3() {
+    draw_big_map("Rocket Hideout");
+    audio_loop_file("celadon_city.mp3");
+
+    add_connection_to_big_map(MAP_LEFT, 7, MAP_ROCKET1);
 }
