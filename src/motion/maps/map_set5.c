@@ -65,6 +65,7 @@ void draw_lavender_town() {
 
     add_connection_to_big_map(MAP_TOP, MAP_WIDTH-4, MAP_ROCK_TUNNEL_S);
     add_connection_to_big_map(MAP_LEFT, 3, MAP_UNDERGROUND);
+    add_connection_to_big_map(MAP_BOTTOM, 38, MAP_R10);
 
     drawBuilding_default(MAP_X+15,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+18, MAP_Y+10, "Mart", MART_ACTION);
@@ -79,4 +80,15 @@ void draw_cel_city() {
 
     drawBuilding_default(MAP_X+35,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+14, MAP_Y+1, "Mart", MART_ACTION);
+}
+
+
+void draw_route10() {
+    draw_big_map("Route 10");
+    audio_loop_file("beach.mp3");
+
+    add_connection_to_big_map(MAP_TOP, 38, MAP_LAV_TOWN);
+    add_connection_to_big_map(MAP_LEFT, 14, MAP_R6);
+
+    add_snorlax(MAP_X+13, MAP_Y+13, 0);
 }

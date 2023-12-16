@@ -111,8 +111,10 @@ void draw_ss_anne2() {
 
 void draw_route6() {
     draw_big_map("Route 6");
-    add_connection_to_big_map(MAP_LEFT, 6, MAP_VERM_CITY);
     audio_loop_file("route1.mp3");
+
+    add_connection_to_big_map(MAP_LEFT, 6, MAP_VERM_CITY);
+    add_connection_to_big_map(MAP_RIGHT, 14, MAP_R10);
 
     //Draw Building and link to SouthEast Diglett's Cave
     drawBuilding_default(MAP_X+2, MAP_Y+1, "CAVE", DOORS_NEW_MAP);
@@ -120,8 +122,6 @@ void draw_route6() {
 
     add_npc_by_id(MAP_X+1, MAP_Y+12, 7, PLAYER_MOVING_RIGHT);
     add_npc_by_id(MAP_X+5, MAP_Y+4, 9, PLAYER_MOVING_DOWN);
-
-    add_snorlax(MAP_X+55, MAP_Y+14, 0);
 }
 
 

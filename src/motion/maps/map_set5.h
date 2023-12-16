@@ -13,4 +13,6 @@ void draw_lavender_town();
 
 void draw_cel_city();
 
+void draw_route10();
+
 #endif //MAP_SET4_H
