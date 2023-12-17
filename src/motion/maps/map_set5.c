@@ -69,6 +69,14 @@ void draw_lavender_town() {
 
     drawBuilding_default(MAP_X+15,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+18, MAP_Y+10, "Mart", MART_ACTION);
+
+    add_trainer_by_id(MAP_X+4, MAP_Y+9, 47, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+4, MAP_Y+8, 48, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+4, MAP_Y+7, 49, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+4, MAP_Y+6, 50, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+4, MAP_Y+5, 51, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+4, MAP_Y+4, 52, PLAYER_MOVING_LEFT);
+
 }
 
 

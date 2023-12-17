@@ -7,7 +7,7 @@
 #include "../monsters/pokemon.h"
 #include "../print/print_utils.h"
 
-#define NUM_TRAINERS 50
+#define NUM_TRAINERS 60
 
 static Trainer t000  = {0, "Trainer Empty", "Hi! I train Pokemon too!", 2, {POKEMON_RATTATA, POKEMON_PIDGEY}, {4,4} };
 static Trainer t001 = {1, "Trainer John", "Hi! I train Pokemon too!", 2, {POKEMON_RATTATA, POKEMON_PIDGEY}, {4,4} };
@@ -58,11 +58,17 @@ static Trainer t043 = {43, "Traveler Evan", "I'm from Lavender Town. What about 
 static Trainer t044 = {44, "Miner Jack", "Rock Tunnel is full of strong Pokemon. You might want to get some Repels.", 2, {POKEMON_GRAVELER, POKEMON_CUBONE}, {21,21} };
 static Trainer t045 = {45, "Miner Vincent", "You heard Jack. I would also recommend getting some Repels.", 2, {POKEMON_MACHOKE, POKEMON_MAROWAK}, {21,22} };
 static Trainer t046 = {46, "Trainer Emmett", "I love the wild Pokemon around here", 3, {POKEMON_FARFETCHD, POKEMON_EKANS, POKEMON_TAUROS}, {21,22,22} };
+static Trainer t047 = {47, "Trainer Augustin", "I'm not sure why we are standing in a line", 2, {POKEMON_BELLSPROUT, POKEMON_GROWLITHE}, {22,22} };
+static Trainer t048 = {48, "Trainer Justin", "I like this town. But It's kind of Spooky", 2, {POKEMON_NIDORAN_M, POKEMON_NIDORAN_F}, {22,22} };
+static Trainer t049 = {49, "Trainer Ricardo", "Have you been to Celadon City?", 2, {POKEMON_WEEPINBELL, POKEMON_ARCANINE}, {23,23} };
+static Trainer t050 = {50, "Trainer Julie", "I'm here hanging out with some friends", 2, {POKEMON_NIDORINO, POKEMON_NIDORINA}, {23,23} };
+static Trainer t051 = {51, "Trainer Jasper", "If you fight all of us, you get more experience!", 2, {POKEMON_SCYTHER, POKEMON_PINSIR}, {23,24} };
+static Trainer t052 = {52, "Trainer Ronda", "If you fight all of us, you get more experience!", 2, {POKEMON_ELECTABUZZ, POKEMON_JYNX}, {23,24} };
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
     &t001, &t002, &t003, &t004, &t005, &t006, &t007, &t008, &t009, &t010, &t011, &t012, &t013, &t014, &t015, &t016, &t017, &t018, &t019, &t020,
     &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028, &t029, &t030, &t031, &t032, &t033, &t034, &t035, &t036, &t037, &t038, &t039, &t040,
-    &t041, &t042, &t043, &t044, &t045, &t046
+    &t041, &t042, &t043, &t044, &t045, &t046, &t047, &t048, &t049, &t050, &t051, &t052
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
