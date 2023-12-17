@@ -43,9 +43,13 @@ void draw_vermillion_city() {
         add_npc_by_id(MAP_X+25, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);
         add_npc_by_id(MAP_X+26, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);
     }
-    else {
+    else if ((player.record_bits >> 8) & 1) {
         add_npc_by_id(MAP_X+24, MAP_Y+MAP_HEIGHT-2, 5, PLAYER_MOVING_RIGHT);
         add_npc_by_id(MAP_X+27, MAP_Y+MAP_HEIGHT-2, 5, PLAYER_MOVING_LEFT);
+    }
+    else {
+        add_npc_by_id(MAP_X+25, MAP_Y+MAP_HEIGHT-2, 5, PLAYER_MOVING_UP);
+        add_npc_by_id(MAP_X+26, MAP_Y+MAP_HEIGHT-2, 5, PLAYER_MOVING_UP);
     }
 
     drawBuilding_default(MAP_X+4, MAP_Y+11, "GYM", DOORS_NEW_MAP);

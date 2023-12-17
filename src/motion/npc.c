@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 
+#include "location.h"
+#include "motion2d.h"
 #include "../player.h"
 #include "../items/items.h"
 #include "../items/hm_tms.h"
@@ -12,17 +14,19 @@
 #define NUM_NPCS 30
 char message[LINE_SIZE];
 
-static NPC n0  = {  0, "No Name", NO_ITEM, 0 };
-static NPC n1  = {  1, "Finn", FIRE_STONE, 1 };
-static NPC n2  = {  2, "Monty", MOON_STONE, 2 };
-static NPC n3  = {  3, "Bill", K_ITEM_SS_TICKET, 3 };
-static NPC n4  = {  4, "Guard", NO_ITEM, 0 };
-static NPC n5  = {  5, "Guard", NO_ITEM, 0 };
-static NPC n6  = {  6, "Captain Jacobs", HM_CUT, 4 };
-static NPC n7  = {  7, "Lily", LEAF_STONE, 5 };
-static NPC n8  = {  8, "Ted", K_ITEM_FOSSIL_AMBER, 6 };
-static NPC n9  = {  9, "Calvin", NO_ITEM, 0};
-static NPC n10 = { 10, "Taylor", NO_ITEM, 0};
+enum {NPC_ACTION_NONE, NPC_ACTION_RESET_MAP };
+
+static NPC n0  = {  0, "No Name", NO_ITEM, 0, NPC_ACTION_NONE};
+static NPC n1  = {  1, "Finn", FIRE_STONE, 1, NPC_ACTION_NONE};
+static NPC n2  = {  2, "Monty", MOON_STONE, 2, NPC_ACTION_NONE};
+static NPC n3  = {  3, "Bill", K_ITEM_SS_TICKET, 3, NPC_ACTION_NONE };
+static NPC n4  = {  4, "Guard", NO_ITEM, 0, NPC_ACTION_NONE };
+static NPC n5  = {  5, "Guard", NO_ITEM, 8, NPC_ACTION_RESET_MAP };
+static NPC n6  = {  6, "Captain Jacobs", HM_CUT, 4, NPC_ACTION_NONE };
+static NPC n7  = {  7, "Lily", LEAF_STONE, 5, NPC_ACTION_NONE };
+static NPC n8  = {  8, "Ted", K_ITEM_FOSSIL_AMBER, 6, NPC_ACTION_NONE };
+static NPC n9  = {  9, "Calvin", NO_ITEM, 0, NPC_ACTION_NONE };
+static NPC n10 = { 10, "Taylor", NO_ITEM, 0, NPC_ACTION_NONE };
 
 
 static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2, &n3, &n4, &n5, &n6, &n7, &n8, &n9, &n10 };
@@ -96,10 +100,25 @@ void handle_npc_selection(struct NPC * npc_ptr) {
             else if (npc_ptr->givable_item >= HM_EMPTY) add_hm_tm(npc_ptr->givable_item);
             else give_item_to_player(get_item_by_id(npc_ptr->givable_item), 1);
         }
-        player.record_bits |= ((long long) 1 << npc_ptr->record_bit_num);
     }
+
     await_user();
     begin_message_box();
+
+    //Record npc if not 0
+    if (npc_ptr->record_bit_num != 0 && !((player.record_bits >> npc_ptr->record_bit_num) & 1)) {
+        player.record_bits |= ((long long) 1 << npc_ptr->record_bit_num);
+
+        switch (npc_ptr->action) {
+        case NPC_ACTION_RESET_MAP:
+            change_map(player.loc->map, player.loc->x, player.loc->y);
+            break;
+        case NPC_ACTION_NONE:
+        default:
+            break;
+        }
+    }
+
     usleep(500000);
 }
 

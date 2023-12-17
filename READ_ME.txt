@@ -7,3 +7,4 @@ Player Record Bits
 5: Leaf Stone
 6: Amber Fossil
 7: Snorlax - Route 6
+8: SS Anne Guards

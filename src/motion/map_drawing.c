@@ -7,6 +7,9 @@
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 
+#define MESSAGE_BOX_COLOR_1 DEFAULT_COLOR
+#define MESSAGE_BOX_COLOR_2 PLAYER_COLOR
+
 static int message_line = 0;
 static char line1[100]; static char line2[100]; static char line3[100];
 static char * lines[3] = {line1, line2, line3};
@@ -45,22 +48,46 @@ void print_to_message_box(const char * message_str) {
         count++;
     }
     for (int i = 0; i < count; i++) {
+        switch (i % 2) {
+            case 1: attrset(COLOR_PAIR(MESSAGE_BOX_COLOR_2)); break;
+            default: attrset(COLOR_PAIR(MESSAGE_BOX_COLOR_1)); break;
+        }
         mvprintw(MESSAGE_BOX_Y+1 + i, MESSAGE_BOX_X+2, lines[i]);
     }
     
     //Print the rest of the lines, if there are more
     while ((token = strtok(NULL, "\n")) != NULL) {
+        attrset(COLOR_PAIR(DEFAULT_COLOR));
         await_user();
         sprintf(lines[0], "%s", lines[1]);
         sprintf(lines[1], "%s", lines[2]);
         sprintf(lines[2], "%s", token);
 
         begin_message_box();
+        
+        switch (count % 2) {
+            case 1: attrset(COLOR_PAIR(MESSAGE_BOX_COLOR_2)); break;
+            default: attrset(COLOR_PAIR(MESSAGE_BOX_COLOR_1)); break;
+        }
         mvprintw(MESSAGE_BOX_Y+1 + 0, MESSAGE_BOX_X+2, lines[0]);
+
+        switch (count % 2) {
+            case 1: attrset(COLOR_PAIR(MESSAGE_BOX_COLOR_1)); break;
+            default: attrset(COLOR_PAIR(MESSAGE_BOX_COLOR_2)); break;
+        }
         mvprintw(MESSAGE_BOX_Y+1 + 1, MESSAGE_BOX_X+2, lines[1]);
+
+        switch (count % 2) {
+            case 1: attrset(COLOR_PAIR(MESSAGE_BOX_COLOR_2)); break;
+            default: attrset(COLOR_PAIR(MESSAGE_BOX_COLOR_1)); break;
+        }
         mvprintw(MESSAGE_BOX_Y+1 + 2, MESSAGE_BOX_X+2, lines[2]);
+
+        count++;
     }
     refresh();
+
+    attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
 
 
