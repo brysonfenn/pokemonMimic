@@ -61,6 +61,7 @@ void pokemon_level_up(Pokemon *pok, int next_level_exp) {
 //Return exp required for Pokemon pok to reach the next level
 uint32_t pokemon_get_next_level_exp(Pokemon *pok) {
     uint32_t next_level = pok->level + 1;
+    if (pok->level == 100) return pok->exp;
     return (next_level * next_level * next_level);  //Next level exp = n^3
 }
 

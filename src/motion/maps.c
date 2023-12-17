@@ -163,6 +163,9 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
         case MAP_R10:
             sprintf(map_name, "route10");
             break;
+        case MAP_CEL_CITY:
+            sprintf(map_name, "cel_city");
+            break;
         case MAP_ROCKET1:
             sprintf(map_name, "rocket1");
             break;

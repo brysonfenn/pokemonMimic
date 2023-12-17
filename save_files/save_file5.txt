@@ -1,7 +1,7 @@
-Last Saved: 12/16/2023 20:20:12
+Last Saved: 12/16/2023 20:39:08
 Player: Player1.
 2 4 7 18335 11c 0 1 Blue.
-Location: {17,(55,2)}
+Location: {30,(26,11)}
 Heal Center: {30,(43,5)}
 Pokemon: 
 Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0

@@ -79,10 +79,13 @@ void draw_cel_city() {
     add_connection_to_big_map(MAP_RIGHT, 3, MAP_UNDERGROUND);
 
     drawBuilding_default(MAP_X+35,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+14, MAP_Y+1, "Mart", MART_ACTION);
+    drawBuilding_default(MAP_X+10, MAP_Y+2, "Mart", MART_ACTION);
 
     drawBuilding_default(MAP_X+18, MAP_Y+7, "RCKT", -1);
     add_portal_building_to_big_map(MAP_X+18, MAP_Y+7, MAP_ROCKET1, MAP_BOTTOM, 6);
+
+    add_cuttable_tree(MAP_X+31, MAP_Y+15);
+    add_cuttable_tree(MAP_X+31, MAP_Y+16);
 }
 
 
