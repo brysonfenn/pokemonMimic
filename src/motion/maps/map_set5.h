@@ -11,14 +11,8 @@ void draw_rock_tunnel_s();
 
 void draw_lavender_town();
 
-void draw_cel_city();
-
 void draw_route10();
 
-void draw_rocket1();
-
-void draw_rocket2();
-
-void draw_rocket3();
+void draw_tower1();
 
 #endif //MAP_SET4_H

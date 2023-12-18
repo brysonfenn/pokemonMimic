@@ -70,11 +70,15 @@ void print_pokemon_attacks(Pokemon *pok, int first_line) {
 //Print stats, attacks, etc of a given pokemon
 void print_pokemon_summary(Pokemon *pok) {
     char print_str[8192];
+    int exp_to_next_level;
+
+    if (pok->level < 100) exp_to_next_level = pokemon_get_next_level_exp(pok) - pok->exp;
+    else exp_to_next_level = 0;
 
     sprintf(print_str, "%s - %s  - LVL %d\n\t%s ", pok->nickname, pok->name, pok->level, get_type_string_by_id(pok->type1));
     if (pok->type2 != NO_TYPE) sprintf(print_str, "%s%s", print_str, get_type_string_by_id(pok->type2));
     sprintf(print_str, "%s\n", print_str);
-    sprintf(print_str, "%sEXP to next Level: %d\n", print_str, pokemon_get_next_level_exp(pok) - pok->exp);
+    sprintf(print_str, "%sEXP to next Level: %d\n", print_str, exp_to_next_level);
     sprintf(print_str, "%sHP: %d/%d", print_str, pok->currentHP, pok->maxHP);
     if (!(pok->currentHP)) sprintf(print_str, "%s  (Fainted)", print_str);
     sprintf(print_str, "%s\n \nATTACK: %d\nDEFENSE: %d\n", print_str, pok->baseAttack, pok->baseDefense);

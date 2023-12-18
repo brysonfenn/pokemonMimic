@@ -1,4 +1,4 @@
-#include "map_set4.h"
+#include "map_set5.h"
 
 #include "../map_drawing.h"
 #include "../location.h"
@@ -7,9 +7,14 @@
 #include "../maps.h"
 
 #include "../../player.h"
+#include "../../items/key_items.h"
 #include "../../battles/trainer.h"
 #include "../../print/print_utils.h"
 #include "../../print/print_defines.h"
+
+
+static const int pokemon_tower_gate_x = INTERIOR_X + 6;
+static const int pokemon_tower_gate_y = INTERIOR_Y;
 
 
 void draw_route8() {
@@ -70,6 +75,9 @@ void draw_lavender_town() {
     drawBuilding_default(MAP_X+15,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
     drawBuilding_default(MAP_X+18, MAP_Y+10, "Mart", MART_ACTION);
 
+    drawBuilding_default(MAP_X+34, MAP_Y+1, "TOWR", -1);
+    add_building_portal(MAP_X+34, MAP_Y+1, MAP_TOWER1);
+
     add_trainer_by_id(MAP_X+4, MAP_Y+9, 47, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+4, MAP_Y+8, 48, PLAYER_MOVING_LEFT);
     add_trainer_by_id(MAP_X+4, MAP_Y+7, 49, PLAYER_MOVING_RIGHT);
@@ -77,23 +85,6 @@ void draw_lavender_town() {
     add_trainer_by_id(MAP_X+4, MAP_Y+5, 51, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+4, MAP_Y+4, 52, PLAYER_MOVING_LEFT);
 
-}
-
-
-void draw_cel_city() {
-    draw_big_map("Celadon City");
-    audio_loop_file("celadon_city.mp3");
-
-    add_connection_to_big_map(MAP_RIGHT, 3, MAP_UNDERGROUND);
-
-    drawBuilding_default(MAP_X+35,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+10, MAP_Y+2, "Mart", MART_ACTION);
-
-    drawBuilding_default(MAP_X+18, MAP_Y+7, "RCKT", -1);
-    add_portal_building_to_big_map(MAP_X+18, MAP_Y+7, MAP_ROCKET1, MAP_BOTTOM, 6);
-
-    add_cuttable_tree(MAP_X+31, MAP_Y+15);
-    add_cuttable_tree(MAP_X+31, MAP_Y+16);
 }
 
 
@@ -107,30 +98,33 @@ void draw_route10() {
     add_snorlax(MAP_X+13, MAP_Y+13, 0);
 }
 
+void draw_tower1() {
+    draw_interior(MAP_X+34, MAP_Y+1, MAP_LAV_TOWN);
+    begin_message_box();
+    print_to_message_box("Pokemon Tower");
+    audio_loop_file("lavender_town.mp3");
 
-void draw_rocket1() {
-    draw_big_map("Rocket Hideout");
-    audio_loop_file("rocket_hideout.mp3");
+    drawBuilding_default(pokemon_tower_gate_x, pokemon_tower_gate_y, " ", -1);
 
-    add_portal_big_map_to_building(MAP_X+18, MAP_Y+7, MAP_CEL_CITY, MAP_BOTTOM, 6);
-    add_connection_to_big_map(MAP_TOP, 18, MAP_ROCKET2);
-    add_connection_to_big_map(MAP_TOP, 24, MAP_ROCKET2);
-    add_connection_to_big_map(MAP_TOP, 44, MAP_ROCKET2);
-    add_connection_to_big_map(MAP_RIGHT, 7, MAP_ROCKET3);
-}
+    if (has_key_item(K_ITEM_SILPH_SCOPE) == -1) {
+        add_npc_by_id(pokemon_tower_gate_x+4, pokemon_tower_gate_y+3, 14, PLAYER_MOVING_DOWN);
+        add_npc_by_id(pokemon_tower_gate_x+5, pokemon_tower_gate_y+3, 14, PLAYER_MOVING_DOWN);
+    }
+    else if ((player.record_bits >> 10) & 1) {
+        add_npc_by_id(pokemon_tower_gate_x+3, pokemon_tower_gate_y+3, 15, PLAYER_MOVING_RIGHT);
+        add_npc_by_id(pokemon_tower_gate_x+6, pokemon_tower_gate_y+3, 15, PLAYER_MOVING_LEFT);
+    }
+    else {
+        add_npc_by_id(pokemon_tower_gate_x+4, pokemon_tower_gate_y+3, 15, PLAYER_MOVING_DOWN);
+        add_npc_by_id(pokemon_tower_gate_x+5, pokemon_tower_gate_y+3, 15, PLAYER_MOVING_DOWN);
+    }
 
-void draw_rocket2() {
-    draw_big_map("Rocket Hideout");
-    audio_loop_file("rocket_hideout.mp3");
-
-    add_connection_to_big_map(MAP_BOTTOM, 18, MAP_ROCKET1);
-    add_connection_to_big_map(MAP_BOTTOM, 24, MAP_ROCKET1);
-    add_connection_to_big_map(MAP_BOTTOM, 44, MAP_ROCKET1);
-}
-
-void draw_rocket3() {
-    draw_big_map("Rocket Hideout");
-    audio_loop_file("rocket_hideout.mp3");
-
-    add_connection_to_big_map(MAP_LEFT, 7, MAP_ROCKET1);
+    draw_box(INTERIOR_X+1, INTERIOR_Y+2, 2, 2);
+    draw_box(INTERIOR_X+1, INTERIOR_Y+5, 2, 2);
+    draw_box(INTERIOR_X+4, INTERIOR_Y+2, 2, 2);
+    draw_box(INTERIOR_X+4, INTERIOR_Y+5, 2, 2);
+    draw_box(INTERIOR_X+18, INTERIOR_Y+2, 2, 2);
+    draw_box(INTERIOR_X+18, INTERIOR_Y+5, 2, 2);
+    draw_box(INTERIOR_X+22, INTERIOR_Y+2, 2, 2);
+    draw_box(INTERIOR_X+22, INTERIOR_Y+5, 2, 2);
 }

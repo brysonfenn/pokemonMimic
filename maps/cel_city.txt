@@ -11,8 +11,8 @@
 09 │                                     YYYYY              │
 10 │                                                        │
 11 │YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY                         │
-12 │                              Y             Y           │
-13 │                              Y             Y           │
+12 │            Y                 Y             Y           │
+13 │            Y    Y       Y    Y             Y           │
 14 │                              Y             YYYY        │
 15 │                                                        │
 16 │                                                        │

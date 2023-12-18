@@ -16,20 +16,27 @@ char message[LINE_SIZE];
 
 enum {NPC_ACTION_NONE, NPC_ACTION_RESET_MAP };
 
-static NPC n0  = {  0, "No Name", NO_ITEM, 0, NPC_ACTION_NONE};
-static NPC n1  = {  1, "Finn", FIRE_STONE, 1, NPC_ACTION_NONE};
-static NPC n2  = {  2, "Monty", MOON_STONE, 2, NPC_ACTION_NONE};
-static NPC n3  = {  3, "Bill", K_ITEM_SS_TICKET, 3, NPC_ACTION_NONE };
-static NPC n4  = {  4, "Guard", NO_ITEM, 0, NPC_ACTION_NONE };
-static NPC n5  = {  5, "Guard", NO_ITEM, 8, NPC_ACTION_RESET_MAP };
-static NPC n6  = {  6, "Captain Jacobs", HM_CUT, 4, NPC_ACTION_NONE };
-static NPC n7  = {  7, "Lily", LEAF_STONE, 5, NPC_ACTION_NONE };
-static NPC n8  = {  8, "Ted", K_ITEM_FOSSIL_AMBER, 6, NPC_ACTION_NONE };
-static NPC n9  = {  9, "Calvin", NO_ITEM, 0, NPC_ACTION_NONE };
+static NPC n00 = {  0, "No Name", NO_ITEM, 0, NPC_ACTION_NONE};
+static NPC n01 = {  1, "Finn", FIRE_STONE, 1, NPC_ACTION_NONE};
+static NPC n02 = {  2, "Monty", MOON_STONE, 2, NPC_ACTION_NONE};
+static NPC n03 = {  3, "Bill", K_ITEM_SS_TICKET, 3, NPC_ACTION_NONE };
+static NPC n04 = {  4, "Guard", NO_ITEM, 0, NPC_ACTION_NONE };
+static NPC n05 = {  5, "Guard", NO_ITEM, 8, NPC_ACTION_RESET_MAP };
+static NPC n06 = {  6, "Captain Jacobs", HM_CUT, 4, NPC_ACTION_NONE };
+static NPC n07 = {  7, "Lily", LEAF_STONE, 5, NPC_ACTION_NONE };
+static NPC n08 = {  8, "Ted", K_ITEM_FOSSIL_AMBER, 6, NPC_ACTION_NONE };
+static NPC n09 = {  9, "Calvin", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n10 = { 10, "Taylor", NO_ITEM, 0, NPC_ACTION_NONE };
+static NPC n11 = { 11, "Jan", NO_ITEM, 0, NPC_ACTION_NONE };
+static NPC n12 = { 12, "Finn", NO_ITEM, 0, NPC_ACTION_NONE };
+static NPC n13 = { 13, "Locklyn", K_ITEM_SILPH_SCOPE, 9, NPC_ACTION_RESET_MAP };
+static NPC n14 = { 14, "Guard", NO_ITEM, 0, NPC_ACTION_NONE };
+static NPC n15 = { 15, "Guard", NO_ITEM, 10, NPC_ACTION_RESET_MAP };
 
 
-static NPC * npcs[NUM_NPCS] = { &n0, &n1, &n2, &n3, &n4, &n5, &n6, &n7, &n8, &n9, &n10 };
+static NPC * npcs[NUM_NPCS] = 
+    { &n00, &n01, &n02, &n03, &n04, &n05, &n06, &n07, &n08, &n09, &n10, &n11, &n12, &n13, &n14, &n15 };
+
 
 struct NPC * get_npc(int npc_id) {
     return npcs[npc_id];

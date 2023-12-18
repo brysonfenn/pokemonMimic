@@ -8,3 +8,5 @@ Player Record Bits
 6: Amber Fossil
 7: Snorlax - Route 6
 8: SS Anne Guards
+9: Silph Scope
+10: Pokemon Tower Guards
