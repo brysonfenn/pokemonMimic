@@ -26,7 +26,8 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_route5, &draw_ss_anne1, &draw_ss_anne2, &draw_gym3, &draw_mt_moon_s,
                                     &draw_route6, &draw_dig_cave, &draw_route7, &draw_museum, &draw_route8, &draw_route9,
                                     &draw_rock_tunnel_n, &draw_rock_tunnel_s, &draw_lavender_town, &draw_cel_city, &draw_route10,
-                                    &draw_rocket1, &draw_rocket2, &draw_rocket3, &draw_game_corner, &draw_gym4, &draw_tower1 };
+                                    &draw_rocket1, &draw_rocket2, &draw_rocket3, &draw_game_corner, &draw_gym4, &draw_tower1,
+                                    &draw_tower2 };
 
 char map_file_name[32];
 static int * wild_pok_list;
@@ -49,7 +50,8 @@ static Pokemon_id wild_pok_lists[32][12] = {
     { 2,  14, 16, POKEMON_DIGLETT, POKEMON_DUGTRIO }, //#13 Diglett's Cave
     { 4,  13, 15, POKEMON_ABRA, POKEMON_TANGELA, POKEMON_BEEDRILL, POKEMON_BUTTERFREE }, //#14 Route 7
     { 4,  15, 19, POKEMON_TAUROS, POKEMON_EKANS, POKEMON_DODUO, POKEMON_FARFETCHD },         //#15 Route 8
-    { 4,  16, 19, POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_MACHOP, POKEMON_ONIX }         //#16 Rock Tunnel
+    { 4,  16, 19, POKEMON_GEODUDE, POKEMON_ZUBAT, POKEMON_MACHOP, POKEMON_ONIX },         //#16 Rock Tunnel
+    { 4,  17, 20, POKEMON_GASTLY, POKEMON_GASTLY, POKEMON_GASTLY, POKEMON_HAUNTER }         //#17 Pokemon Tower
 };
 
 
@@ -175,6 +177,10 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             break;
         case MAP_ROCKET3:
             sprintf(map_name, "rocket3");
+            break;
+        case MAP_TOWER2:
+            sprintf(map_name, "tower2");
+            wild_pok_list = &(wild_pok_lists[17]);
             break;
         case MAP_GYM4:
             sprintf(map_name, "gym4");

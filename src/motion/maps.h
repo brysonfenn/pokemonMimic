@@ -9,11 +9,12 @@ typedef enum { MAP_GENERIC,
                 MAP_SS_ANNE1, MAP_SS_ANNE2, MAP_GYM3, MAP_MT_MOON_S, MAP_R6,
                 MAP_DIG_CAVE, MAP_R7, MAP_MUSEUM, MAP_R8, MAP_R9, MAP_ROCK_TUNNEL_N,
                 MAP_ROCK_TUNNEL_S, MAP_LAV_TOWN, MAP_CEL_CITY, MAP_R10, MAP_ROCKET1,
-                MAP_ROCKET2, MAP_ROCKET3, MAP_GAME_CORNER, MAP_GYM4, MAP_TOWER1
+                MAP_ROCKET2, MAP_ROCKET3, MAP_GAME_CORNER, MAP_GYM4, MAP_TOWER1,
+                MAP_TOWER2
 } Map_id;
 
 //Change when adding a map
-#define MAX_MAP_NUM MAP_TOWER1
+#define MAX_MAP_NUM MAP_TOWER2
 
 //Draw elements (like grass, trees, etc) according to map text file
 void draw_static_elements();

@@ -106,6 +106,7 @@ void draw_tower1() {
     audio_loop_file("poke_tower.mp3");
 
     drawBuilding_default(pokemon_tower_gate_x, pokemon_tower_gate_y, " ", -1);
+    add_portal_building_to_big_map(pokemon_tower_gate_x, pokemon_tower_gate_y, MAP_TOWER2, MAP_BOTTOM, MAP_WIDTH/2);
 
     if (has_key_item(K_ITEM_SILPH_SCOPE) == -1) {
         add_npc_by_id(pokemon_tower_gate_x+4, pokemon_tower_gate_y+3, 14, PLAYER_MOVING_DOWN);
@@ -128,4 +129,12 @@ void draw_tower1() {
     draw_box(INTERIOR_X+18, INTERIOR_Y+5, 2, 2);
     draw_box(INTERIOR_X+22, INTERIOR_Y+2, 2, 2);
     draw_box(INTERIOR_X+22, INTERIOR_Y+5, 2, 2);
+}
+
+
+void draw_tower2() {
+    draw_big_map("Pokemon Tower");
+    audio_loop_file("poke_tower.mp3");
+
+    add_portal_big_map_to_building(pokemon_tower_gate_x, pokemon_tower_gate_y, MAP_TOWER1, MAP_BOTTOM, MAP_WIDTH/2);
 }

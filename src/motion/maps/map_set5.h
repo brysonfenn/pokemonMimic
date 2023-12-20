@@ -15,4 +15,6 @@ void draw_route10();
 
 void draw_tower1();
 
+void draw_tower2();
+
 #endif //MAP_SET4_H

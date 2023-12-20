@@ -465,7 +465,7 @@ int get_enemy_move(Pokemon * pok) {
             curr_damage = 3 * get_damage(pok, curr_attack, player.current_pokemon, false, &flags_var);
         }
         //Curse and Night shade
-        else if (attack_id == 160 || attack_id == 161) {
+        else if ((attack_id == 160 && !has_hidden_condition(player.current_pokemon, CURSED)) || attack_id == 161) {
             curr_damage = pok->level;
         }
         //Seismic Toss
