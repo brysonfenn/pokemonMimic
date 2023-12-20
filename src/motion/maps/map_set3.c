@@ -77,7 +77,8 @@ void draw_cer_city() {
     add_building_portal(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+8, MAP_GYM2);
 
     if (!player_has_battled_trainer(202)) {
-        for (int i = 0; i < 4; i++) { mvprintw(MAP_Y+MAP_HEIGHT-2,MAP_X+MAP_WIDTH-5+i, "_"); }
+        add_npc_by_id(MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-2, 17, PLAYER_MOVING_UP);
+        add_npc_by_id(MAP_X+MAP_WIDTH-3, MAP_Y+MAP_HEIGHT-2, 17, PLAYER_MOVING_UP);
     }
 }
 

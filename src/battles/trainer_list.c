@@ -77,21 +77,28 @@ static Trainer t061 = {61, "Rocket Grunt", "I found the kid!", 2, {POKEMON_CLEFA
 static Trainer t062 = {62, "Rocket Grunt", "How did you find this place?", 2, {POKEMON_MAGIKARP, POKEMON_GYARADOS}, {24,24} };
 static Trainer t063 = {63, "Giovanni", "So, you're the one that is causing trouble? Well, I'll show you who's boss", 3, 
                                                     {POKEMON_ONIX, POKEMON_RHYHORN, POKEMON_PERSIAN}, {25,25,29} };
+static Trainer t064 = {64, "Gym Trainer Daisy", "I like grass type Pokemon!", 2, {POKEMON_ODDISH, POKEMON_GLOOM}, {24,26} };
+static Trainer t065 = {65, "Gym Trainer Violet", "Grass Types are beautiful.", 2, {POKEMON_BELLSPROUT, POKEMON_WEEPINBELL}, {24,26} };
+static Trainer t066 = {66, "Gym Trainer Lily", "Erika is a tough trainer. Watch out!", 2, {POKEMON_TANGELA, POKEMON_IVYSAUR}, {26,27} };
+static Trainer t067 = {67, "Gym Trainer Clover", "You seem like a good trainer. Let's see how you battle!", 3, 
+                                                    {POKEMON_TANGELA, POKEMON_BUTTERFREE, POKEMON_BEEDRILL}, {26,26,27} };
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
     &t001, &t002, &t003, &t004, &t005, &t006, &t007, &t008, &t009, &t010, &t011, &t012, &t013, &t014, &t015, &t016, &t017, &t018, &t019, &t020,
     &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028, &t029, &t030, &t031, &t032, &t033, &t034, &t035, &t036, &t037, &t038, &t039, &t040,
     &t041, &t042, &t043, &t044, &t045, &t046, &t047, &t048, &t049, &t050, &t051, &t052, &t053, &t054, &t055, &t056, &t057, &t058, &t059, &t060,
-    &t061, &t062, &t063
+    &t061, &t062, &t063, &t064, &t065, &t066, &t067
 };
 
-static Trainer leader201 = {201, "Leader Brock", "I am the First Gym Leader. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
-static Trainer leader202 = {202, "Leader Misty", "I am Misty, the Second Gym Leader. Let's Battle!", 2, {POKEMON_STARYU, POKEMON_STARMIE}, {18,21} };
+static Trainer leader201 = {201, "Leader Brock", "I am Brock, Gym Leader of Pewter. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
+static Trainer leader202 = {202, "Leader Misty", "I am Misty, my water Type Pokemon are tough, Let's battle!", 2, {POKEMON_STARYU, POKEMON_STARMIE}, {18,21} };
 static Trainer leader203 = {203, "Lieutenant Surge", "I am Lt. Surge, Gym Leader of Vermillion. Get ready to be shocked!", 
                                 3, {POKEMON_VOLTORB, POKEMON_PIKACHU, POKEMON_RAICHU}, {21,18,24} };
+static Trainer leader204 = {204, "Leader Erika", "Welcome to the Celadon Gym. Grass Type Pokemon are stronger than they look. Get ready!", 
+                                3, {POKEMON_VICTREEBEL, POKEMON_TANGELA, POKEMON_VILEPLUME}, {29,24,29} };
 
 static Trainer * leaders[10] = { &t000,
-    &leader201, &leader202, &leader203
+    &leader201, &leader202, &leader203, &leader204
 };
 
 static Trainer rival001 = {251, "Rival", "I'm your rival, Let's Battle!", 1, {POKEMON_BULBASAUR}, {5} };

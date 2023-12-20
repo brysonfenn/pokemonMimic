@@ -22,8 +22,9 @@ void draw_route8() {
     audio_loop_file("route3.mp3");
 
     add_connection_to_big_map(MAP_LEFT, 8, MAP_CER_CITY);
-    add_connection_to_big_map(MAP_RIGHT, 6, MAP_R9);
     add_cuttable_tree(MAP_X+4, MAP_Y+8);
+
+    add_connection_to_big_map(MAP_RIGHT, 6, MAP_R9);
 
     add_trainer_by_id(MAP_X+17, MAP_Y+7, 41, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+56, MAP_Y+12, 42, PLAYER_MOVING_LEFT);
@@ -41,9 +42,9 @@ void draw_route9() {
     add_trainer_by_id(MAP_X+12, MAP_Y+1, 43, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+1, MAP_Y+11, 44, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+9, MAP_Y+12, 45, PLAYER_MOVING_LEFT);
-    add_trainer_by_id(MAP_X+16, MAP_Y+11, 46, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+1, MAP_Y+14, 46, PLAYER_MOVING_RIGHT);
 
-
+    drawBuilding_default(MAP_X+13, MAP_Y+9, "POKE", POKE_CENTER_ACTION);
 }
 
 void draw_rock_tunnel_n() {
@@ -95,14 +96,14 @@ void draw_route10() {
     add_connection_to_big_map(MAP_TOP, 38, MAP_LAV_TOWN);
     add_connection_to_big_map(MAP_LEFT, 14, MAP_R6);
 
-    add_snorlax(MAP_X+13, MAP_Y+13, 0);
+    add_snorlax(MAP_X+35, MAP_Y+13, 0);
 }
 
 void draw_tower1() {
     draw_interior(MAP_X+34, MAP_Y+1, MAP_LAV_TOWN);
     begin_message_box();
     print_to_message_box("Pokemon Tower");
-    audio_loop_file("lavender_town.mp3");
+    audio_loop_file("poke_tower.mp3");
 
     drawBuilding_default(pokemon_tower_gate_x, pokemon_tower_gate_y, " ", -1);
 

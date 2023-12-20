@@ -70,6 +70,12 @@ void draw_pew_city() {
 
     add_connection_to_big_map(MAP_BOTTOM, MAP_WIDTH-8, MAP_VIR_FOREST);
     add_connection_to_big_map(MAP_RIGHT, 8, MAP_R3);
+
+    if (!player_has_battled_trainer(201)) {
+        add_npc_by_id(MAP_X+MAP_WIDTH-2, MAP_Y+8, 16, PLAYER_MOVING_LEFT);
+    }
+
+    mvprintw(MAP_Y+7, MAP_X+MAP_WIDTH-2, "|"); mvprintw(MAP_Y+9, MAP_X+MAP_WIDTH-2, "|");
     
     drawBuilding_default(MAP_X+9,MAP_Y+10, "GYM", DOORS_NEW_MAP);
     add_building_portal(MAP_X+9, MAP_Y+10, MAP_GYM1);
@@ -85,10 +91,6 @@ void draw_pew_city() {
     add_trainer_by_id(MAP_X+45,MAP_Y+1, 9, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+48,MAP_Y+1, 10, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+51,MAP_Y+1, 11, PLAYER_MOVING_DOWN);
-
-    if (!player_has_battled_trainer(201)) {
-        for (int i = 0; i < 3; i++) { mvprintw(MAP_Y+7+i,MAP_X+MAP_WIDTH-2, "|"); }
-    }
 }
 
 

@@ -1,13 +1,13 @@
-Last Saved: 12/09/2023 13:00:52
+Last Saved: 12/20/2023 15:35:36
 Player: Test_Player.
 3 20 2 1295 0 0 1 Test_Rival.
-Location: {7,(41,14)}
-Heal Center: {7,(32,9)}
+Location: {26,(9,16)}
+Heal Center: {26,(20,13)}
 Pokemon: 
 Charizard Charizard. 6 257 257 4 180 166 216 162 193 90 734814 FIRE FLYING 12bcdf73 20000 0 0
 	Disable. 115 20
-	Confuse Ray. 93 20
-	Icicle Spear. 156 28
+	Confuse Ray. 93 10
+	Icicle Spear. 156 30
 	Solar Beam. 78 10
 Caterpie Caterpie. 10 18 18 2 40 10 9 10 10 6 342 NONE NONE 2df200a1 0 0 0
 	Tackle. 1 35
@@ -87,7 +87,7 @@ Key Items: 0
   
 
 HM/TMs: 1
-  101
+  101 
 
 Trainers Battled: 2
   12 6 

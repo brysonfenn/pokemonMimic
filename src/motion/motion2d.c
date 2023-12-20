@@ -113,7 +113,7 @@ void handle_motion() {
                     mvaddch(++(*player_y), *player_x, *player_char_ptr); refresh();
                     attrset(COLOR_PAIR(DEFAULT_COLOR));
                     mvaddch((*player_y-1), *player_x, '-');
-                    flushinp(); continue;
+                    flushinp();
                 }
                 //Else just move one down
             	else if (*player_y < 20 && is_movable_space(1,0)) { (*player_y)++; usleep(80000); }

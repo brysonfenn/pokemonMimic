@@ -14,4 +14,6 @@
 13: You did a great job, kid. I was investigating Team Rocket for weeks but they captured me. I am very grateful to you. Here, I found that Team Rocket stole this Silph Scope. It should help you to see Ghost Pokemon, like those in Lavender Town. Good Luck kid!
 14: You can't enter here. There are lots of Wild Ghost Pokemon. You would need a device like a Silph Scope in order to properly see them. Otherwise, it's very dangerous. Team Rocket Stole a Silph Scope from this tower. I heard they have a hideout somewhere in Celadon City.
 15: Is that a Silph Scope? Please, enter here.
+16: You need to defeat Brock at the Pokemon Gym before you can pass through to Mt. Moon!
+17: This Underground Path is closed right now due to some criminal activity... Hey, you're a Pokemon Trainer! Why don't you go fight Misty at the Pokemon Gym?
 777: Reached End of npc_messages.txt file

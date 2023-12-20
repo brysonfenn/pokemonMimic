@@ -54,7 +54,7 @@ int battle_trainer(Trainer * trainer) {
 
     //Introductory message
     begin_list();
-    sprintf(print_str, "  %s wants to fight!\n", trainer->name);
+    sprintf(print_str, "  %s wants to battle!\n", trainer->name);
     print_to_list(print_str); sleep(2);
 
     //Create all trainer pokemon

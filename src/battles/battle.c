@@ -78,8 +78,12 @@ int handle_battle(struct Pokemon * enemyPok) {
                 audio_end_loop();
                 text_box_cursors(TEXT_BOX_BEGINNING);
                 printw("....."); refresh(); sleep(2);
+                
+                audio_play_file("back_button.mp3");
                 text_box_cursors(TEXT_BOX_BEGINNING);
                 printw("%s is out of usable pokemon... ", player.name); refresh(); sleep(2);
+
+                audio_play_file("back_button.mp3");
                 text_box_cursors(TEXT_BOX_NEXT_LINE);
                 printw("%s whited out.", player.name); refresh(); sleep(2);
 

@@ -1,5 +1,7 @@
 #include "map_set6.h"
 
+#include <ncurses.h>
+
 #include "../map_drawing.h"
 #include "../location.h"
 #include "../doors.h"
@@ -83,7 +85,7 @@ void draw_game_corner() {
     draw_interior(MAP_X+18, MAP_Y+7, MAP_CEL_CITY);
     begin_message_box();
     print_to_message_box("Game Corner");
-    audio_loop_file("gym.mp3");
+    audio_loop_file("game_corner.mp3");
 
     draw_box(INTERIOR_X+4, INTERIOR_Y+2, 5, 2);
     draw_box(INTERIOR_X+12, INTERIOR_Y+2, 5, 2);
@@ -102,4 +104,13 @@ void draw_gym4() {
     begin_message_box();
     print_to_message_box("Celadon City Gym");
     audio_loop_file("gym.mp3");
+
+    add_trainer_by_id(INTERIOR_X+4, INTERIOR_Y+4, 64, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(INTERIOR_X+21, INTERIOR_Y+4, 65, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(INTERIOR_X+23, INTERIOR_Y+1, 66, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(INTERIOR_X+6, INTERIOR_Y+1, 67, PLAYER_MOVING_DOWN);
+
+    mvaddch(INTERIOR_Y+1, INTERIOR_X+14, ACS_LRCORNER);
+    add_trainer_by_id(INTERIOR_X+15, INTERIOR_Y+1, 204, PLAYER_MOVING_DOWN);
+    mvaddch(INTERIOR_Y+1, INTERIOR_X+16, ACS_LLCORNER);
 }

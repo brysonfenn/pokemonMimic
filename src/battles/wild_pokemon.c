@@ -22,7 +22,7 @@ int battle_wild_pokemon(struct Pokemon * pok) {
     
     player_set_current_pokemon(PLAYER_DEFAULT_POKEMON);
     if (player_get_num_alive()) {
-        if (example_pokemon.id_num == POKEMON_SNORLAX) sprintf(print_str, "  A wild Snorlax wants to fight!");
+        if (example_pokemon.id_num == POKEMON_SNORLAX) sprintf(print_str, "  A wild Snorlax wants to battle!");
         else sprintf(print_str, "  A wild %s appeared!\n", example_pokemon.name);
 
         print_to_list(print_str);

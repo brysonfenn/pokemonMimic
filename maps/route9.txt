@@ -8,9 +8,9 @@
 06 │WWWWW WWWWWWWWWWWWWW WWWWWWWW WWWWW   WW   WWW  WWW    W│
 07 │   WWWWW                               WWWWWWWWWW WWWWWW│
 08 │====================|         WWWWW                     │
-09 │         |          |         WWWWWWWWW WWWWWWWW      WW│
-10 │         | WWWWWWWWW|   WWWWW        WWWWW WWWWWW      W│
-11 │         |          |                                   │
+09 │         |                    WWWWWWWWW WWWWWWWW      WW│
+10 │         |              WWWWW        WWWWW WWWWWW      W│
+11 │         |                                              │
 12 │         |          |       WWWWWWWWWW        |=========│
 13 │WWWW      WWWWW     |   WWWWWWWW WWWWWWWWWWWWW|~~~~~~~~~│
 14 │          WWWWW   WW|WWWW WWWWWWWWWW W |=======~~~~~~~~~│

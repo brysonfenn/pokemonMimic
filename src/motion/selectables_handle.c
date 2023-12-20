@@ -139,14 +139,15 @@ int handle_snorlax(struct Selectable * selectable_ptr) {
 
         // audio_play_file("cut_hm.mp3");
         sprintf(print_str, "%s began playing the Pokemon Flute!", player.name);
-        print_to_message_box(print_str); sleep(3);
+        audio_end_loop();
+        audio_play_file("poke_flute.mp3");
+        print_to_message_box(print_str); sleep(6);
 
         print_to_message_box("The Pokemon woke up and attacked!"); sleep(2);
 
         Pokemon * wild_pok = create_new_pokemon(POKEMON_SNORLAX, 30, 0, 0);
 
         save_print_state();
-        audio_end_loop();
         audio_play_file("begin_battle.mp3");
         blink_screen(7, restore_print_state);
         begin_message_box(); save_print_state();

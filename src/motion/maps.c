@@ -176,6 +176,9 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
         case MAP_ROCKET3:
             sprintf(map_name, "rocket3");
             break;
+        case MAP_GYM4:
+            sprintf(map_name, "gym4");
+            break;
         default:
             sprintf(map_name, "empty_map");
             wild_pok_list = &(wild_pok_lists[11]);
@@ -258,6 +261,7 @@ void draw_static_elements() {
 void move_player_to_poke_center() {
     char print_str[256];
 
+    audio_play_file("back_button.mp3");
     begin_list();
     sprintf(print_str, "%s scurried back to the Pokemon Center...", player.name);
     print_to_list(print_str); sleep(2);
