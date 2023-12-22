@@ -16,4 +16,5 @@
 15: Is that a Silph Scope? Please, enter here.
 16: You need to defeat Brock at the Pokemon Gym before you can pass through to Mt. Moon!
 17: This Underground Path is closed right now due to some criminal activity... Hey, you're a Pokemon Trainer! Why don't you go fight Misty at the Pokemon Gym?
+18: Hi, I'm Mr. Fuji. Thank you so much for handling Team Rocket. I love Pokemon and I don't like how Team Rocket treats them. They kidnapped me and brought me here. Now I hear their next plan is to infiltrate Silph Co. in Saffron City. Have you heard of a Pokemon Flute? It can wake sleeping Pokemon in the wild.
 777: Reached End of npc_messages.txt file

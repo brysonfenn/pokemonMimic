@@ -17,4 +17,6 @@ void draw_tower1();
 
 void draw_tower2();
 
+void draw_tower3();
+
 #endif //MAP_SET4_H

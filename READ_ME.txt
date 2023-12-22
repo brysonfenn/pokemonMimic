@@ -10,3 +10,4 @@ Player Record Bits
 8: SS Anne Guards
 9: Silph Scope
 10: Pokemon Tower Guards
+11: Mr. Fuji - Pokemon Flute

@@ -137,4 +137,13 @@ void draw_tower2() {
     audio_loop_file("poke_tower.mp3");
 
     add_portal_big_map_to_building(pokemon_tower_gate_x, pokemon_tower_gate_y, MAP_TOWER1, MAP_BOTTOM, MAP_WIDTH/2);
+    add_connection_to_big_map(MAP_TOP, 27, MAP_TOWER3);
+}
+
+void draw_tower3() {
+    draw_big_map("Pokemon Tower");
+    audio_loop_file("poke_tower.mp3");
+
+    add_connection_to_big_map(MAP_BOTTOM, 27, MAP_TOWER2);
+    add_npc_by_id(MAP_X+28, MAP_Y+1, 18, PLAYER_MOVING_DOWN);
 }
