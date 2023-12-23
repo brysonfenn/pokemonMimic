@@ -1,24 +1,37 @@
-Last Saved: 12/09/2023 13:00:27
+Last Saved: 12/23/2023 12:06:08
 Player: Oliver H.
-4 0 1 1585 0 0 7 Blue.
-Location: {1,(32,10)}
-Heal Center: {1,(32,10)}
+6 1 2 890 0 0 7 Blue.
+Location: {23,(11,3)}
+Heal Center: {7,(40,5)}
 Pokemon: 
-Squirtle Squirtle. 7 25 25 3 12 15 10 12 11 8 568 WATER NONE 7fd958e0 0 0 0
+Caterpie Caterpie. 10 21 21 2 9 11 7 6 12 6 234 BUG NONE 398f7d65 2040001 0 0
+	Tackle. 1 35
+	String Shot. 5 40
+Pidgey Pidgey. 16 21 21 2 11 10 7 8 12 6 302 NORMAL FLYING 5ae1cf13 20101 0 0
+	Tackle. 1 35
+	Sand Attack. 7 15
+Elf Oddish. 43 19 19 1 10 10 12 12 8 5 168 GRASS POISON 190014e9 20000 0 0
+	Absorb. 100 20
+Squirtle Squirtle. 7 28 28 4 15 20 10 12 16 10 1152 WATER NONE 7fd958e0 4050102 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 	Bubble. 13 30
-Pidgey Pidgey. 16 17 17 1 9 8 7 8 10 4 114 NORMAL FLYING 5ae1cf13 0 0 0
+	Withdraw. 27 40
+HoHoHo Rattata. 19 16 16 2 10 8 6 7 10 4 85 NORMAL NONE 360f62a 1 0 0
 	Tackle. 1 35
+	Tail Whip. 4 30
+Santa Pikachu. 25 24 24 4 14 13 12 11 21 8 635 ELECTRIC NONE 2e4b714b 4030002 0 0
+	Thunder Shock. 55 30
+	Growl. 3 40
+	Tail Whip. 4 30
+	Thunder Wave. 56 20
+PC: 
 Weedle Weedle. 13 15 15 2 7 7 6 6 8 3 27 BUG POISON 54c27cc8 0 0 0
 	Poison Sting. 6 35
 	String Shot. 5 40
-Caterpie Caterpie. 10 15 15 2 7 8 7 6 8 3 27 BUG NONE 398f7d65 0 0 0
-	Tackle. 1 35
-	String Shot. 5 40
-PC: 
 Bag:
-Ultra Ball. 5 2
+Poke Ball. 3 4
+Potion. 1 2
 
 Key Items: 0
   
@@ -26,5 +39,5 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 2
-  1 2 
+Trainers Battled: 7
+  1 2 3 5 7 36 9 

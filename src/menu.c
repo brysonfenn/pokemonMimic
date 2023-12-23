@@ -180,7 +180,7 @@ int main_menu() {
             break;
         }
 
-        if (power_off) break;
+        if (power_off) return MENU_POWER_OFF;
 
     }
 
