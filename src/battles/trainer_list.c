@@ -39,7 +39,7 @@ static Trainer t025 = {25, "Cooltrainer Lydia", "I like Pokemon!!", 2, {POKEMON_
 static Trainer t026 = {26, "Cooltrainer Hailey", "I like watching Pokemon!!", 3, {POKEMON_MANKEY, POKEMON_GOLBAT, POKEMON_GLOOM}, {11,11,12} };
 static Trainer t027 = {27, "Trainer Eric", "I found some cool Pokemon here.", 3, {POKEMON_DODUO, POKEMON_PONYTA, POKEMON_BELLSPROUT}, {11,12,12} };
 static Trainer t028 = {28, "Trainer Jill", "Have you met Bill?", 2, {POKEMON_WEEPINBELL, POKEMON_DODRIO}, {12,14} };
-static Trainer t029 = {29, "Sailor Geoffrey", "Welcome to the SS Anne!", 2, {POKEMON_POLIWAG, POKEMON_MACHOP}, {14,15} };
+static Trainer t029 = {29, "Sailor Geoffrey", "Welcome to the SS Anne!", 2, {POKEMON_POLIWAG, POKEMON_MACHOP}, {15,16} };
 static Trainer t030 = {30, "Sailor Kenneth", "I'm feeling a little Seasick!", 2, {POKEMON_PSYDUCK, POKEMON_SLOWBRO}, {16,16} };
 static Trainer t031 = {31, "Sailor Sebastian", "I like Tough Pokemon!", 2, {POKEMON_HITMONCHAN, POKEMON_PINSIR}, {17,17} };
 static Trainer t032 = {32, "Traveler Jackson", "This boat is huge!", 3, {POKEMON_PIDGEOTTO, POKEMON_KADABRA, POKEMON_RAPIDASH}, {16,17,17} };
@@ -83,8 +83,8 @@ static Trainer t066 = {66, "Gym Trainer Lily", "Erika is a tough trainer. Watch 
 static Trainer t067 = {67, "Gym Trainer Clover", "You seem like a good trainer. Let's see how you battle!", 3, 
                                                     {POKEMON_TANGELA, POKEMON_BUTTERFREE, POKEMON_BEEDRILL}, {26,26,27} };
 static Trainer t068 = {68, "Rocket Grunt", "Stop trying to mess with our plans!", 2, {POKEMON_GRIMER, POKEMON_ZUBAT}, {26,27} };
-static Trainer t069 = {69, "Trainer Terrence", "I'm a trainer too!", 2, {POKEMON_HORSEA, POKEMON_SEADRA}, {18,20} };
-static Trainer t070 = {70, "Trainer Adam", "I like flying Pokemon!", 2, {POKEMON_GYARADOS, POKEMON_FEAROW}, {19,20} };
+static Trainer t069 = {69, "Trainer Terrence", "I'm a trainer too!", 2, {POKEMON_HORSEA, POKEMON_SEADRA}, {15,17} };
+static Trainer t070 = {70, "Trainer Adam", "I like flying Pokemon!", 2, {POKEMON_PIDGEOTTO, POKEMON_PIDGEOT}, {17,19} };
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
     &t001, &t002, &t003, &t004, &t005, &t006, &t007, &t008, &t009, &t010, &t011, &t012, &t013, &t014, &t015, &t016, &t017, &t018, &t019, &t020,
