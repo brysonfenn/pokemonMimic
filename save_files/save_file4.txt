@@ -1,26 +1,28 @@
-Last Saved: 12/23/2023 12:06:08
+Last Saved: 12/27/2023 09:35:58
 Player: Oliver H.
-6 1 2 890 0 0 7 Blue.
-Location: {23,(11,3)}
-Heal Center: {7,(40,5)}
+6 2 3 1540 0 0 7 Blue.
+Location: {7,(41,5)}
+Heal Center: {7,(41,5)}
 Pokemon: 
-Caterpie Caterpie. 10 21 21 2 9 11 7 6 12 6 234 BUG NONE 398f7d65 2040001 0 0
+Ameirica Sandshrew. 27 33 33 3 22 25 8 9 14 11 1429 GROUND NONE 4ed844e9 e070007 0 0
 	Tackle. 1 35
-	String Shot. 5 40
+	Defense Curl. 9 40
+	Sand Attack. 7 15
 Pidgey Pidgey. 16 21 21 2 11 10 7 8 12 6 302 NORMAL FLYING 5ae1cf13 20101 0 0
 	Tackle. 1 35
 	Sand Attack. 7 15
-Elf Oddish. 43 19 19 1 10 10 12 12 8 5 168 GRASS POISON 190014e9 20000 0 0
-	Absorb. 100 20
-Squirtle Squirtle. 7 28 28 4 15 20 10 12 16 10 1152 WATER NONE 7fd958e0 4050102 0 0
+Caterpie Metapod. 11 24 24 3 8 14 10 10 11 7 395 BUG NONE 398f7d65 5060001 0 0
+	Tackle. 1 35
+	String Shot. 5 40
+	Harden. 34 30
+Squirtle Squirtle. 7 30 30 4 16 21 10 12 17 11 1683 WATER NONE 7fd958e0 6090203 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 	Bubble. 13 30
 	Withdraw. 27 40
-HoHoHo Rattata. 19 16 16 2 10 8 6 7 10 4 85 NORMAL NONE 360f62a 1 0 0
-	Tackle. 1 35
-	Tail Whip. 4 30
-Santa Pikachu. 25 24 24 4 14 13 12 11 21 8 635 ELECTRIC NONE 2e4b714b 4030002 0 0
+Oddish Elf. 43 21 21 1 11 11 12 12 9 6 255 GRASS POISON 190014e9 1030001 0 0
+	Absorb. 100 20
+Pikachu Santa. 25 26 26 4 15 14 12 11 23 9 960 ELECTRIC NONE 2e4b714b 8040104 0 0
 	Thunder Shock. 55 30
 	Growl. 3 40
 	Tail Whip. 4 30
@@ -29,9 +31,13 @@ PC:
 Weedle Weedle. 13 15 15 2 7 7 6 6 8 3 27 BUG POISON 54c27cc8 0 0 0
 	Poison Sting. 6 35
 	String Shot. 5 40
+HoHoHo Rattata. 19 16 16 2 10 8 6 7 10 4 85 NORMAL NONE 360f62a 1 0 0
+	Tackle. 1 35
+	Tail Whip. 4 30
 Bag:
-Poke Ball. 3 4
+Poke Ball. 3 3
 Potion. 1 2
+Antidote. 6 1
 
 Key Items: 0
   
@@ -39,5 +45,5 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 7
-  1 2 3 5 7 36 9 
+Trainers Battled: 10
+  1 2 3 5 7 36 9 10 11 12 

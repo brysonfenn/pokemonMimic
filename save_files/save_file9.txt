@@ -1,17 +1,17 @@
-Last Saved: 12/20/2023 15:35:36
+Last Saved: 12/27/2023 10:33:58
 Player: Test_Player.
 3 20 2 1295 0 0 1 Test_Rival.
-Location: {26,(9,16)}
+Location: {26,(17,14)}
 Heal Center: {26,(20,13)}
 Pokemon: 
-Charizard Charizard. 6 257 257 4 180 166 216 162 193 90 734814 FIRE FLYING 12bcdf73 20000 0 0
-	Disable. 115 20
-	Confuse Ray. 93 10
-	Icicle Spear. 156 30
-	Solar Beam. 78 10
-Caterpie Caterpie. 10 18 18 2 40 10 9 10 10 6 342 NONE NONE 2df200a1 0 0 0
+Caterpie Caterpie. 10 25 25 2 10 10 9 10 13 8 552 BUG NONE 2df200a1 100 0 0
 	Tackle. 1 35
 	String Shot. 5 40
+Charizard Charizard. 6 257 253 4 180 166 216 162 193 90 735024 FIRE FLYING 12bcdf73 20100 0 0
+	Disable. 115 20
+	Confuse Ray. 93 10
+	Icicle Spear. 156 29
+	Solar Beam. 78 10
 Abra Abra. 63 16 16 1 7 6 14 9 13 4 64 PSYCHIC NONE 3a4b33f6 0 0 0
 	Teleport. 129 20
 PC: 
