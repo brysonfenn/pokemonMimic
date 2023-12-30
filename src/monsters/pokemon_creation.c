@@ -185,10 +185,10 @@ bool give_pokemon_to_player(Pokemon * pok) {
 
         if (player.is_battle) {
             text_box_cursors(TEXT_BOX_NEXT_LINE);
-            printw("%s was transferred to PC storage.", new_pok->name); refresh(); sleep(2);
+            printw("%s was transferred to PC storage.", new_pok->nickname); refresh(); sleep(2);
         }
         else {
-            sprintf(print_str, "%s was transferred to PC storage.", new_pok->name); 
+            sprintf(print_str, "%s was transferred to PC storage.", new_pok->nickname); 
             print_to_list(print_str); sleep(2);
         }
     }
@@ -197,7 +197,7 @@ bool give_pokemon_to_player(Pokemon * pok) {
         player.party[player.numInParty] = (*pok);
         player.numInParty++;
         if (!player.is_battle) {
-            sprintf(print_str, "%s was added to your party.", pok->name);
+            sprintf(print_str, "%s was added to your party.", pok->nickname);
             print_to_list(print_str); sleep(2);
         }
     }

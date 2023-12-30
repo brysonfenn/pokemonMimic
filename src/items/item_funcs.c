@@ -129,14 +129,14 @@ int heal_condition(int condition, char * name) {
     selected_pok = &(player.party[input]);
 
     if (selected_pok->currentHP == 0 || selected_pok->visible_condition != condition) {
-        sprintf(print_str, " \nCould not apply %s on %s.\n", name, selected_pok->name);
+        sprintf(print_str, " \nCould not apply %s on %s.\n", name, selected_pok->nickname);
         print_to_list(print_str); sleep(2);
         return ITEM_FAILURE;
     }
     
     selected_pok->visible_condition = NO_CONDITION;
 
-    sprintf(print_str, " \n%s's condition was healed!\n", selected_pok->name);
+    sprintf(print_str, " \n%s's condition was healed!\n", selected_pok->nickname);
     print_to_list(print_str); sleep(2);
 
     begin_list();
@@ -163,7 +163,7 @@ int revive_pokemon(int percent, char * name) {
     selected_pok = &(player.party[input]);
 
     if (selected_pok->currentHP != 0) {
-        sprintf(print_str, " \nCould not apply %s on %s.\n", name, selected_pok->name);
+        sprintf(print_str, " \nCould not apply %s on %s.\n", name, selected_pok->nickname);
         print_to_list(print_str); sleep(2);
         return ITEM_FAILURE;
     }
@@ -172,7 +172,7 @@ int revive_pokemon(int percent, char * name) {
     
     selected_pok->currentHP = half_hp;
 
-    sprintf(print_str, " \n%s was revived!\n", selected_pok->name);
+    sprintf(print_str, " \n%s was revived!\n", selected_pok->nickname);
     print_to_list(print_str); sleep(2);
 
     begin_list();

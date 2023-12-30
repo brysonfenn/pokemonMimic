@@ -54,7 +54,7 @@ int handle_end_conditions(struct Pokemon * pok) {
         success = decrement_hidden_condition_val(pok, TIGHT_HOLD);
         if (!success) {
             text_box_cursors(TEXT_BOX_BEGINNING);
-            printw("%s was released from tight hold", pok->name); refresh(); sleep(2);
+            printw("%s was released from tight hold", pok->nickname); refresh(); sleep(2);
             remove_hidden_condition(pok, TIGHT_HOLD);
             return ATTACK_SUCCESS;
         }
@@ -66,7 +66,7 @@ int handle_end_conditions(struct Pokemon * pok) {
         success = decrement_hidden_condition_val(pok, SAND_TOMBED);
         if (!success) {
             text_box_cursors(TEXT_BOX_BEGINNING);
-            printw("%s was released from sand tomb", pok->name); refresh(); sleep(2);
+            printw("%s was released from sand tomb", pok->nickname); refresh(); sleep(2);
             remove_hidden_condition(pok, SAND_TOMBED);
             return ATTACK_SUCCESS;
         }
@@ -78,7 +78,7 @@ int handle_end_conditions(struct Pokemon * pok) {
         success = decrement_hidden_condition_val(pok, FIRE_SPINNED);
         if (!success) {
             text_box_cursors(TEXT_BOX_BEGINNING);
-            printw("%s was released from fire spin", pok->name); refresh(); sleep(2);
+            printw("%s was released from fire spin", pok->nickname); refresh(); sleep(2);
             remove_hidden_condition(pok, FIRE_SPINNED);
             return ATTACK_SUCCESS;
         }
@@ -119,7 +119,7 @@ int handle_leech_seed(bool is_enemy, struct Pokemon * pok, struct Pokemon * perp
 
     text_box_cursors(TEXT_BOX_BEGINNING);
     if (is_enemy) printw("%s", ENEMY_TEXT);
-    printw("%s's HP was sapped!", pok->name); refresh(); sleep(1);
+    printw("%s's HP was sapped!", pok->nickname); refresh(); sleep(1);
     int sappedHP = ((pok->maxHP / 8) + 1);
 
     blinkPokemon(!is_enemy, DAMAGED_COLOR, LEECH_SEED_BLINK_TIMES, pok); 
@@ -139,7 +139,7 @@ int handle_ingrain(bool is_enemy, struct Pokemon * pok) {
 
     text_box_cursors(TEXT_BOX_BEGINNING);
     if (is_enemy) printw("%s", ENEMY_TEXT);
-    printw("%s absorbed HP from its roots!", pok->name); refresh(); sleep(1);
+    printw("%s absorbed HP from its roots!", pok->nickname); refresh(); sleep(1);
     int heal_hp = ((pok->maxHP / 16) + 1);
 
     blinkPokemon(!is_enemy, HEAL_COLOR, LEECH_SEED_BLINK_TIMES, pok);
@@ -156,7 +156,7 @@ int handle_hurt_fraction(bool enemy, struct Pokemon * pok, char * pok_condition_
 
     text_box_cursors(TEXT_BOX_BEGINNING);
     if (enemy) printw("%s", ENEMY_TEXT);
-    printw("%s was hurt by %s!", pok->name, pok_condition_text); refresh(); sleep(1);
+    printw("%s was hurt by %s!", pok->nickname, pok_condition_text); refresh(); sleep(1);
     blinkPokemon(!enemy, DAMAGED_COLOR, 3, pok);
 
     pok->currentHP -= ((pok->maxHP / fraction) + 1);

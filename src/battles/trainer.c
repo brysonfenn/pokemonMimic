@@ -77,7 +77,7 @@ int battle_trainer(Trainer * trainer) {
         //Only display sent out message if player switched a pokemon
         if (switch_chosen) {
             switch_chosen = false;
-            sprintf(print_str, " \n  %s sent out %s\n", player.name, player.current_pokemon->name);
+            sprintf(print_str, " \n  %s sent out %s\n", player.name, player.current_pokemon->nickname);
             print_to_list(print_str); sleep(2);
         }
 

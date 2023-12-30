@@ -71,7 +71,7 @@ int handle_battle(struct Pokemon * enemyPok) {
             sleep(2);
             text_box_cursors(TEXT_BOX_BEGINNING);
             remove_hidden_condition(currentPok, REPEAT_MOVE);
-            printw("%s fainted. ", currentPok->name); refresh(); sleep(2);
+            printw("%s fainted. ", currentPok->nickname); refresh(); sleep(2);
             
             // Handle White out
             if (player_get_num_alive() == 0) {
@@ -311,7 +311,7 @@ int handle_battle(struct Pokemon * enemyPok) {
                     clear();
                     printBattle();
                     text_box_cursors(TEXT_BOX_BEGINNING);
-                    printw("%s sent out %s!", player.name, player.current_pokemon->name); refresh(); sleep(2);
+                    printw("%s sent out %s!", player.name, player.current_pokemon->nickname); refresh(); sleep(2);
 
                     // New pokemon needs exp
                     pokemon_needing_exp[pokemon_selected] = true;
@@ -529,7 +529,7 @@ void handle_exp(int exp, int ev_stat_id) {
         //Pokemon at level 100 should not gain experience.
         if (player_get_num_alive() && (currentPok->level < 100)) {
             text_box_cursors(TEXT_BOX_NEXT_LINE);
-            printw("%s gained %d experience points!", currentPok->name, exp);
+            printw("%s gained %d experience points!", currentPok->nickname, exp);
             currentPok->exp += (exp);
             refresh(); sleep(2);
         }

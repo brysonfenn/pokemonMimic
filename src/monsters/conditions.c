@@ -27,21 +27,21 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 	switch (condition) {
 		case POISONED:
 			if (pok->visible_condition != NO_CONDITION) {
-				printw("%s could not be poisoned!", pok->name); refresh(); sleep(2);
+				printw("%s could not be poisoned!", pok->nickname); refresh(); sleep(2);
 				return 1;
 			}
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
-			printw("%s was badly poisoned!", pok->name); refresh(); sleep(2);
+			printw("%s was badly poisoned!", pok->nickname); refresh(); sleep(2);
 			pok->visible_condition = POISONED;
 			break;
 
 		case PARALYZED:
 			if (pok->visible_condition != NO_CONDITION) {
-				printw("%s could not be paralyzed!", pok->name); refresh(); sleep(2);
+				printw("%s could not be paralyzed!", pok->nickname); refresh(); sleep(2);
 				return 1;
 			}
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
-			printw("%s is now paralyzed.", pok->name); 
+			printw("%s is now paralyzed.", pok->nickname); 
 			text_box_cursors(TEXT_BOX_NEXT_LINE);
 			printw("It may be unable to move!"); refresh(); sleep(2);
 			pok->visible_condition = PARALYZED;
@@ -49,22 +49,22 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 
 		case ASLEEP:
 			if (pok->visible_condition != NO_CONDITION) {
-				printw("%s could not be put to sleep!", pok->name); refresh(); sleep(2);
+				printw("%s could not be put to sleep!", pok->nickname); refresh(); sleep(2);
 				return 1;
 			}
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
-			printw("%s fell asleep!", pok->name); refresh(); sleep(2);
+			printw("%s fell asleep!", pok->nickname); refresh(); sleep(2);
 			pok->visible_condition = ASLEEP;
 			pok->sleep_count = (rand() % 4) + 2;
 			break;
 
 		case BURNED:
 			if (pok->visible_condition != NO_CONDITION) {
-				printw("%s could not be burned!", pok->name); refresh(); sleep(2);
+				printw("%s could not be burned!", pok->nickname); refresh(); sleep(2);
 				return 1;
 			}
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
-			printw("%s was badly burned!", pok->name); refresh(); sleep(2);
+			printw("%s was badly burned!", pok->nickname); refresh(); sleep(2);
 			pok->visible_condition = BURNED;
 			break;
 
@@ -74,18 +74,18 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 				return 1;
 			}
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
-			printw("%s was seeded!", pok->name); refresh(); sleep(2);
+			printw("%s was seeded!", pok->nickname); refresh(); sleep(2);
 			add_hidden_condition(pok, SEEDED, 0);
 			break;
 
 		case CONFUSED:
 			if (has_hidden_condition(pok, CONFUSED)) {
-				printw("%s could not be confused!", pok->name); refresh(); sleep(2);
+				printw("%s could not be confused!", pok->nickname); refresh(); sleep(2);
 				return 1;
 			}
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
 			audio_play_file("inflict_confusion.mp3");
-			printw("%s is now confused!", pok->name); refresh(); sleep(2);
+			printw("%s is now confused!", pok->nickname); refresh(); sleep(2);
 			add_hidden_condition(pok, CONFUSED, (rand() % 4) + 3);	//This is 2-5 turns
 			break;
 
@@ -96,7 +96,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 		case TIGHT_HOLD:
 			if (has_hidden_condition(pok, TIGHT_HOLD)) return ATTACK_FAIL;
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
-			printw("%s was held very tightly", pok->name); refresh(); sleep(2);
+			printw("%s was held very tightly", pok->nickname); refresh(); sleep(2);
 
 			//Bind lasts 2-5 turns
 			add_hidden_condition(pok, TIGHT_HOLD, (rand() % 4) + 2);
@@ -105,7 +105,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 		case SAND_TOMBED:
 			if (has_hidden_condition(pok, SAND_TOMBED)) return ATTACK_FAIL;
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
-			printw("%s was trapped in a sand tomb!", pok->name); refresh(); sleep(2);
+			printw("%s was trapped in a sand tomb!", pok->nickname); refresh(); sleep(2);
 
 			//Bind lasts 2-5 turns
 			add_hidden_condition(pok, SAND_TOMBED, (rand() % 4) + 2);
@@ -114,7 +114,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 		case FIRE_SPINNED:
 			if (has_hidden_condition(pok, FIRE_SPINNED)) return ATTACK_FAIL;
 			if (pok != player.current_pokemon) printw(ENEMY_TEXT);
-			printw("%s was trapped in a fire spin!", pok->name); refresh(); sleep(2);
+			printw("%s was trapped in a fire spin!", pok->nickname); refresh(); sleep(2);
 
 			//Bind lasts 2-5 turns
 			add_hidden_condition(pok, FIRE_SPINNED, (rand() % 4) + 2);
@@ -122,10 +122,10 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 
 		case DISABLED:
 			if (has_hidden_condition(pok, DISABLED) || pok->last_move == NO_LAST_MOVE) {
-				printw("%s could not be disabled", pok->name); refresh(); sleep(2);
+				printw("%s could not be disabled", pok->nickname); refresh(); sleep(2);
 				return ATTACK_FAIL;
 			}
-			printw("%s's %s was disabled!", pok->name, pok->attacks[pok->last_move].name); refresh(); sleep(2);
+			printw("%s's %s was disabled!", pok->nickname, pok->attacks[pok->last_move].name); refresh(); sleep(2);
 			add_hidden_condition(pok, DISABLED, pok->last_move);
 			break;
 
@@ -135,25 +135,25 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon* pok, in
 				printw("It had no effect!"); refresh(); sleep(2);
 				return ATTACK_FAIL;
 			}
-			printw("%s grew drowsy!", pok->name); refresh(); sleep(2);
+			printw("%s grew drowsy!", pok->nickname); refresh(); sleep(2);
 			add_hidden_condition(pok, YAWNED, 2);	//Yawn should put pokemon to sleep the turn after.
 			break;
 
 		case CURSED:
 			if (has_hidden_condition(pok, CURSED)) {
-				printw("%s could not be cursed!", pok->name); refresh(); sleep(2);
+				printw("%s could not be cursed!", pok->nickname); refresh(); sleep(2);
 				return ATTACK_FAIL;
 			}
-			printw("%s was cursed!", pok->name); refresh(); sleep(2);
+			printw("%s was cursed!", pok->nickname); refresh(); sleep(2);
 			add_hidden_condition(pok, CURSED, 0);
 			break;
 
 		case INGRAINED:
 			if (has_hidden_condition(pok, INGRAINED)) {
-				printw("%s has already ingrained its roots!", pok->name); refresh(); sleep(2);
+				printw("%s has already ingrained its roots!", pok->nickname); refresh(); sleep(2);
 				return ATTACK_FAIL;
 			}
-			printw("%s ingrained its roots!", pok->name); refresh(); sleep(2);
+			printw("%s ingrained its roots!", pok->nickname); refresh(); sleep(2);
 			add_hidden_condition(pok, INGRAINED, 0);
 			break;
 

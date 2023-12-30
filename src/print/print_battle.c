@@ -23,7 +23,7 @@ void printBattle() {
     //Draw battle box
     draw_box(BATTLE_BOX_X, BATTLE_BOX_Y, BATTLE_BOX_WIDTH, BATTLE_BOX_HEIGHT);
 
-    sprintf(poke_string, "%s  Lvl %d  ", enemy_pok->name, enemy_pok->level);
+    sprintf(poke_string, "%s  Lvl %d  ", enemy_pok->nickname, enemy_pok->level);
     add_condition_string(poke_string, enemy_pok);
     mvprintw(BATTLE_BOX_ENEMY_Y, BATTLE_BOX_ENEMY_X, poke_string);
     mvprintw(BATTLE_BOX_ENEMY_Y+1, BATTLE_BOX_ENEMY_X, "HP: % 3d/%d ", enemy_pok->currentHP, enemy_pok->maxHP);
@@ -33,7 +33,7 @@ void printBattle() {
         mvprintw(BATTLE_BOX_ENEMY_Y, BATTLE_BOX_ENEMY_X - 4, "*");
     }
 
-    sprintf(poke_string,  "%s  Lvl %d  ", player_pok->name, player_pok->level);
+    sprintf(poke_string,  "%s  Lvl %d  ", player_pok->nickname, player_pok->level);
     add_condition_string(poke_string, player_pok);
     mvprintw(BATTLE_BOX_PLAYER_Y, BATTLE_BOX_PLAYER_X, poke_string);
     mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "HP: % 3d/%d ", player_pok->currentHP, player_pok->maxHP);
@@ -86,7 +86,7 @@ void blinkPokemon(bool blink_player, int color, int num_times, Pokemon * victim)
     }
 
     //Prepare string
-    sprintf(poke_string, "%s  Lvl %d  ", pok->name, pok->level);
+    sprintf(poke_string, "%s  Lvl %d  ", pok->nickname, pok->level);
     add_condition_string(poke_string, pok);
 
     attrset(COLOR_PAIR(color));

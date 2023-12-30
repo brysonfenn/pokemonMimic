@@ -39,7 +39,7 @@ void pokemon_level_up(Pokemon *pok, int next_level_exp) {
     pok->baseSpeed = frame.baseSpeed;
 
     text_box_cursors(TEXT_BOX_BEGINNING);
-    printw("%s has grown to level %d!", pok->name, pok->level);
+    printw("%s has grown to level %d!", pok->nickname, pok->level);
     refresh(); sleep(3);
     audio_restore_looping_file(1);
 
@@ -174,7 +174,7 @@ void learn_move(Pokemon * pok, attack * new_attack) {
 
             text_box_cursors(TEXT_BOX_BEGINNING); 
             text_box_cursors(TEXT_BOX_NEXT_LINE); text_box_cursors(TEXT_BOX_NEXT_LINE);
-            printw("%s wants to learn %s!", pok->name, new_attack->name); 
+            printw("%s wants to learn %s!", pok->nickname, new_attack->name); 
             refresh(); sleep(2);
 
             text_box_cursors(TEXT_BOX_NEXT_LINE);
@@ -200,18 +200,18 @@ void learn_move(Pokemon * pok, attack * new_attack) {
         text_box_cursors(TEXT_BOX_BEGINNING);
 
         if (input_num == 4 || input_num == PRESSED_B) {
-            printw("%s did not learn %s!", pok->name, new_attack->name); refresh(); sleep(2); return;
+            printw("%s did not learn %s!", pok->nickname, new_attack->name); refresh(); sleep(2); return;
         }
 
         printw("1...2...and...poof!"); refresh(); sleep(2);
 
         text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("%s forgot %s, and...", pok->name, pok->attacks[input_num]); refresh(); sleep(2);
+        printw("%s forgot %s, and...", pok->nickname, pok->attacks[input_num]); refresh(); sleep(2);
         pok->attacks[input_num] = *new_attack;
     }
 
     text_box_cursors(TEXT_BOX_NEXT_LINE);
-    printw("%s learned %s!", pok->name, new_attack->name); refresh(); sleep(2);
+    printw("%s learned %s!", pok->nickname, new_attack->name); refresh(); sleep(2);
     
 }
 
@@ -284,7 +284,7 @@ void pokemon_give_moves(Pokemon *pok) {
 
 int handle_evolve_in_battle(Pokemon * pok, int next_pok_id) {
     char og_pok_name[LINE_SIZE];
-    sprintf(og_pok_name, "%s", pok->name);  //Preserve some information like name
+    sprintf(og_pok_name, "%s", pok->nickname);  //Preserve some information like name
     int ch;
 
     clear();
@@ -332,6 +332,18 @@ int handle_evolve_in_battle(Pokemon * pok, int next_pok_id) {
     text_box_cursors(TEXT_BOX_BEGINNING); printw("Congratulations! %s evolved", og_pok_name);
     text_box_cursors(TEXT_BOX_NEXT_LINE); printw("into %s!", pok->name); refresh(); sleep(3);
 
+    //Nickname Pokemon
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    printw("Would you like to give a nickname to %s?", pok->name);
+    text_box_cursors(TEXT_BOX_NEXT_LINE); printw("Yes");
+    text_box_cursors(TEXT_BOX_NEXT_LINE); printw("No");
+    
+    int answer = get_selection(BATTLE_BOX_Y+BATTLE_BOX_HEIGHT+4, 1, 0);
+    if (answer == 0) sprintf(pok->nickname, "%s", get_name_input(pok->name));
+    else sprintf(pok->nickname, "%s", pok->name);
+    
+    if (strcmp(pok->nickname, DEFAULT_NAME_STR) == 0) sprintf(pok->nickname, "%s", pok->name);
+
     audio_restore_looping_file(2);
 
     return 0;
@@ -341,7 +353,7 @@ int handle_evolve_in_battle(Pokemon * pok, int next_pok_id) {
 void handle_evolve_outside_battle(Pokemon * pok, int next_pok_id) {
     char print_str[256];
     char og_pok_name[LINE_SIZE];
-    sprintf(og_pok_name, "%s", pok->name);  //Preserve some information like name
+    sprintf(og_pok_name, "%s", pok->nickname);  //Preserve some information like name
     
     begin_list();
     sprintf(print_str, "What? %s is evolving!", og_pok_name);
@@ -352,7 +364,21 @@ void handle_evolve_outside_battle(Pokemon * pok, int next_pok_id) {
     evolve(pok, next_pok_id);
 
     sprintf(print_str, " \nCongratulations! %s evolved into %s!", og_pok_name, pok->name);
+
     print_to_list(print_str); sleep(3);
+
+    
+    //Nickname Pokemon
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    printw("Would you like to give a nickname to %s?", pok->name);
+    text_box_cursors(TEXT_BOX_NEXT_LINE); printw("Yes");
+    text_box_cursors(TEXT_BOX_NEXT_LINE); printw("No");
+    
+    int answer = get_selection(BATTLE_BOX_Y+BATTLE_BOX_HEIGHT+4, 1, 0);
+    if (answer == 0) sprintf(pok->nickname, "%s", get_name_input(pok->name));
+    else sprintf(pok->nickname, "%s", pok->name);
+
+    if (strcmp(pok->nickname, DEFAULT_NAME_STR) == 0) sprintf(pok->nickname, "%s", pok->name);
 }
 
 
