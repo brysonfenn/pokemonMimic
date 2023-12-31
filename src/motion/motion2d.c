@@ -55,7 +55,6 @@ void init_motion() {
 void handle_motion() {
     char print_str[2048];
 
-    player.is_battle = false;
     for (int i = 0; i < player.numInParty; i++) {
         reset_stat_stages(&(player.party[i]));
     }
@@ -78,6 +77,7 @@ void handle_motion() {
 
         char prev_player_x = *player_x;
         char prev_player_y = *player_y;
+        player.is_battle = false;
 
         switch (ch) {
             case MENU_CHAR:

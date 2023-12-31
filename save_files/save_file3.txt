@@ -1,34 +1,34 @@
-Last Saved: 12/28/2023 11:49:17
+Last Saved: 12/30/2023 17:10:19
 Player: Elliot H.
-6 15 5 7215 d 0 4 Gary.
-Location: {10,(49,12)}
-Heal Center: {11,(38,12)}
+6 18 4 21885 13d 0 4 Gary.
+Location: {15,(22,7)}
+Heal Center: {15,(22,7)}
 Pokemon: 
-Sandshrew Sandshrew. 27 44 40 4 31 38 8 8 22 17 5093 GROUND NONE 24456825 8071803 0 0
+Sandshrew Sandshrew. 27 49 49 4 34 42 8 8 24 19 7633 GROUND NONE 24456825 d091904 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
-	Sand Attack. 7 15
-	Poison Sting. 6 34
-Pikachu Pikachu. 25 58 58 4 33 29 11 11 55 24 15503 ELECTRIC NONE 78e5409f 121d1302 0 0
-	Thunder Shock. 55 30
-	Double Team. 57 15
-	Quick Attack. 8 30
-	Slam. 58 20
-Charmeleon Charmeleon. 5 62 55 4 44 34 35 28 50 24 15488 FIRE NONE 772e8be0 13132311 0 4
+	Cut. 206 30
+	Poison Sting. 6 35
+Nidoking Thorn. 34 79 79 4 66 46 46 38 48 25 15668 POISON GROUND 42cd13d1 a182d00 0 0
+	Thrash. 67 20
+	Peck. 51 35
+	Double Kick. 61 30
+	Poison Sting. 6 35
+Charmeleon Charmeleon. 5 65 65 4 47 35 35 28 52 25 17321 FIRE NONE 772e8be0 14142611 0 4
 	Scratch. 2 35
 	Smoke Screen. 18 20
 	Ember. 12 25
-	Metal Claw. 17 32
-Nidoking Thorn. 34 65 65 4 53 37 46 38 39 20 8750 POISON GROUND 42cd13d1 4182b00 9 0
-	Leer. 52 30
-	Peck. 51 35
-	Double Kick. 61 29
-	Poison Sting. 6 35
-Butterfree Bungo. 12 47 47 4 22 23 23 22 29 15 3522 BUG FLYING 2cf05e9d 5081902 0 0
-	Tackle. 1 35
-	Sleep Powder. 15 15
-	Stun Spore. 37 30
-	Confusion. 36 25
+	Metal Claw. 17 35
+Pikachu Pikachu. 25 64 64 4 37 33 11 11 62 27 21251 ELECTRIC NONE 78e5409f 16211802 0 0
+	Thunder Shock. 55 30
+	Thunderbolt. 59 15
+	Quick Attack. 8 30
+	Slam. 58 20
+Omanyte Omanyte. 138 55 55 4 28 58 42 28 23 25 16916 ROCK WATER 6742dad 2050100 0 0
+	Constrict. 133 35
+	Mud Shot. 166 15
+	Bite. 29 25
+	Water Gun. 28 25
 Oddish Oddish. 43 43 43 4 23 25 9 9 16 17 5176 GRASS POISON 12b62529 60e0500 0 2
 	Absorb. 100 20
 	Sweet Scent. 19 20
@@ -86,18 +86,31 @@ Doduo Two`san. 84 29 29 3 24 16 13 14 22 11 1372 NORMAL FLYING 50e32d6a 2 0 0
 Bellsprout Brush. 69 28 28 2 20 13 18 12 13 9 729 GRASS POISON 23b44e60 0 0 0
 	Vine whip. 10 25
 	Growth. 20 40
+Butterfree Bungo. 12 47 47 4 22 23 23 22 29 15 3522 BUG FLYING 2cf05e9d 5081902 0 0
+	Tackle. 1 35
+	Sleep Powder. 15 15
+	Stun Spore. 37 30
+	Confusion. 36 25
+Koffing Bleh. 109 30 30 3 19 27 19 16 14 11 1331 POISON NONE 1927b80a 0 0 0
+	Poison Gas. 152 40
+	Tackle. 1 35
+	Smog. 188 20
+Diglett Brug. 50 29 29 4 23 14 18 23 37 16 4096 GROUND NONE 17c6a8a0 0 0 0
+	Scratch. 2 35
+	Sand Attack. 7 15
+	Growl. 3 40
+	Magnitude. 106 30
 Bag:
-Ultra Ball. 5 1
 Paralyze Heal. 7 1
-Poke Ball. 3 2
 Potion. 1 4
 Burn Heal. 9 3
+Leaf Stone. 15 1
 
-Key Items: 2
-  201 207 
+Key Items: 1
+  207 
 
-HM/TMs: 0
-  
+HM/TMs: 1
+  101 
 
-Trainers Battled: 29
-  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 
+Trainers Battled: 37
+  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 202 29 30 31 32 34 35 253 

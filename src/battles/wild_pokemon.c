@@ -49,6 +49,8 @@ int battle_wild_pokemon(struct Pokemon * pok) {
       reset_stat_stages(&(player.party[i]));
     }
 
+    player.is_battle = false;
+
     if (battle_result == BATTLE_WHITE_OUT) {
         return BATTLE_WHITE_OUT;
     }

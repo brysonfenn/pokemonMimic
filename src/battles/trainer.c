@@ -169,6 +169,8 @@ int battle_trainer(Trainer * trainer) {
     for (int i = 0; i < trainer->num_in_party; i++) {
         destroy_pokemon(&(trainer_pokemon[i]));
     }
+
+    player.is_battle = false;
     
     //Handle return values
     if (battle_result == BATTLE_WHITE_OUT) {

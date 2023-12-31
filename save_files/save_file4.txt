@@ -1,29 +1,30 @@
-Last Saved: 12/28/2023 11:58:25
+Last Saved: 12/30/2023 16:49:22
 Player: Oliver H.
-6 5 3 1040 0 0 7 Blue.
-Location: {6,(17,3)}
-Heal Center: {7,(40,5)}
+6 5 3 1550 0 0 7 Blue.
+Location: {7,(59,14)}
+Heal Center: {7,(41,5)}
 Pokemon: 
-Beedrill Beedrill. 15 38 29 2 26 16 14 23 23 11 1456 BUG POISON 2390c17f 15110008 0 0
+Butterfree Butter. 12 34 34 4 16 19 26 23 23 11 1533 BUG FLYING 398f7d65 d13000a 0 0
+	Tackle. 1 35
+	String Shot. 5 40
 	Harden. 34 30
-	Fury Attack. 41 14
-Sandshrew Ameirica. 27 35 35 3 23 27 8 9 15 12 1762 GROUND NONE 4ed844e9 1308000c 0 0
-	Tackle. 1 34
+	Confusion. 36 23
+Sandshrew Ameirica. 27 35 35 3 23 27 8 9 15 12 2025 GROUND NONE 4ed844e9 15080011 0 0
+	Tackle. 1 35
 	Defense Curl. 9 40
 	Sand Attack. 7 15
 Oddish Elf. 43 23 23 2 12 13 12 12 10 7 413 GRASS POISON 190014e9 4050001 0 0
 	Absorb. 100 20
 	Sweet Scent. 19 20
-Squirtle Squirtle. 7 32 32 4 17 23 10 12 19 12 2088 WATER NONE 7fd958e0 8140205 0 0
-	Tackle. 1 35
+Squirtle Squirtle. 7 36 36 4 19 27 10 12 21 14 2749 WATER NONE 7fd958e0 81d0206 0 0
+	Water Gun. 28 25
 	Tail Whip. 4 30
 	Bubble. 13 30
 	Withdraw. 27 40
-Metapod Metapod. 11 24 24 3 8 14 10 10 11 7 492 BUG NONE 398f7d65 5080003 0 0
-	Tackle. 1 35
-	String Shot. 5 40
+Beedrill Beedrill. 15 38 38 2 26 16 14 23 23 11 1698 BUG POISON 2390c17f 18130009 0 0
 	Harden. 34 30
-Pikachu Santa. 25 30 30 4 18 16 12 11 27 11 1477 ELECTRIC NONE 2e4b714b 19040106 0 0
+	Fury Attack. 41 20
+Pikachu Santa. 25 30 30 4 18 16 12 11 27 11 1706 ELECTRIC NONE 2e4b714b 20050106 0 0
 	Thunder Shock. 55 30
 	Quick Attack. 8 30
 	Tail Whip. 4 30
@@ -55,5 +56,5 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 10
-  1 2 3 5 7 36 9 10 11 12 
+Trainers Battled: 11
+  1 2 3 5 7 36 9 10 11 12 6 
