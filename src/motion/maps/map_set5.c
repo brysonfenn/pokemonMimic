@@ -89,16 +89,6 @@ void draw_lavender_town() {
 }
 
 
-void draw_route10() {
-    draw_big_map("Route 10");
-    audio_loop_file("beach.mp3");
-
-    add_connection_to_big_map(MAP_TOP, 38, MAP_LAV_TOWN);
-    add_connection_to_big_map(MAP_LEFT, 14, MAP_R6);
-
-    add_snorlax(MAP_X+35, MAP_Y+13, 0);
-}
-
 void draw_tower1() {
     draw_interior(MAP_X+34, MAP_Y+1, MAP_LAV_TOWN);
     begin_message_box();
@@ -150,11 +140,51 @@ void draw_tower3() {
     draw_big_map("Pokemon Tower");
     audio_loop_file("poke_tower.mp3");
 
-    add_trainer_by_id(MAP_X+16, MAP_Y+5, 76, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+41, MAP_Y+11, 76, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+49, MAP_Y+7, 77, PLAYER_MOVING_LEFT);
     add_trainer_by_id(MAP_X+8, MAP_Y+7, 78, PLAYER_MOVING_RIGHT);
-    add_trainer_by_id(MAP_X+41, MAP_Y+11, 79, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+16, MAP_Y+5, 79, PLAYER_MOVING_LEFT);
 
     add_connection_to_big_map(MAP_BOTTOM, 27, MAP_TOWER2);
     add_npc_by_id(MAP_X+28, MAP_Y+1, 18, PLAYER_MOVING_DOWN);
+}
+
+
+void draw_route10() {
+    draw_big_map("Route 10");
+    audio_loop_file("beach.mp3");
+
+    add_connection_to_big_map(MAP_TOP, 38, MAP_LAV_TOWN);
+    add_connection_to_big_map(MAP_LEFT, 14, MAP_R6);
+    add_connection_to_big_map(MAP_BOTTOM, 36, MAP_R11);
+
+    add_snorlax(MAP_X+35, MAP_Y+13, 0);
+}
+
+
+void draw_route11() {
+    draw_big_map("Route 11");
+    audio_loop_file("beach.mp3");
+
+    add_connection_to_big_map(MAP_TOP, 36, MAP_R10);
+    add_connection_to_big_map(MAP_LEFT, 14, MAP_R12);
+}
+
+
+void draw_route12() {
+    draw_big_map("Route 12");
+    audio_loop_file("route1.mp3");
+
+    add_cuttable_tree(MAP_X+6, MAP_Y+10); add_cuttable_tree(MAP_X+7, MAP_Y+10);
+
+    add_connection_to_big_map(MAP_RIGHT, 14, MAP_R11);
+    add_connection_to_big_map(MAP_LEFT, 14, MAP_FU_CITY);
+}
+
+
+void draw_fuschia_city() {
+    draw_big_map("Fuschia City");
+    audio_loop_file("fuschia_city.mp3");
+
+    add_connection_to_big_map(MAP_RIGHT, 14, MAP_R12);
 }

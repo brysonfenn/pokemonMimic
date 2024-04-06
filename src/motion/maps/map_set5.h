@@ -11,12 +11,18 @@ void draw_rock_tunnel_s();
 
 void draw_lavender_town();
 
-void draw_route10();
-
 void draw_tower1();
 
 void draw_tower2();
 
 void draw_tower3();
+
+void draw_route10();
+
+void draw_route11();
+
+void draw_route12();
+
+void draw_fuschia_city();
 
 #endif //MAP_SET4_H

@@ -132,7 +132,8 @@ int handle_snorlax(struct Selectable * selectable_ptr) {
 
     if (has_key_item(K_ITEM_SS_TICKET) != -1) {
         print_to_message_box("Would you like to play the Pokemon Flute?\n  Yes\n  No");
-        if (get_selection(MAP_HEIGHT+1, 1, 0) == 1) {
+        int input = get_selection(MAP_HEIGHT+1, 1, 0);
+        if (input == 1 || input == PRESSED_B) {
             begin_message_box();
             return 0;
         }
