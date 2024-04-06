@@ -136,6 +136,12 @@ void draw_tower2() {
     draw_big_map("Pokemon Tower");
     audio_loop_file("poke_tower.mp3");
 
+    add_trainer_by_id(MAP_X+23, MAP_Y+11, 71, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+42, MAP_Y+14, 72, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+15, MAP_Y+7, 73, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+40, MAP_Y+7, 74, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+25, MAP_Y+5, 75, PLAYER_MOVING_RIGHT);
+
     add_portal_big_map_to_building(pokemon_tower_gate_x, pokemon_tower_gate_y, MAP_TOWER1, MAP_BOTTOM, MAP_WIDTH/2);
     add_connection_to_big_map(MAP_TOP, 27, MAP_TOWER3);
 }
@@ -143,6 +149,11 @@ void draw_tower2() {
 void draw_tower3() {
     draw_big_map("Pokemon Tower");
     audio_loop_file("poke_tower.mp3");
+
+    add_trainer_by_id(MAP_X+16, MAP_Y+5, 76, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+49, MAP_Y+7, 77, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+8, MAP_Y+7, 78, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+41, MAP_Y+11, 79, PLAYER_MOVING_RIGHT);
 
     add_connection_to_big_map(MAP_BOTTOM, 27, MAP_TOWER2);
     add_npc_by_id(MAP_X+28, MAP_Y+1, 18, PLAYER_MOVING_DOWN);

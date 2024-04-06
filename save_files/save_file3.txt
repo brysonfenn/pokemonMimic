@@ -1,39 +1,39 @@
-Last Saved: 12/30/2023 17:10:19
+Last Saved: 01/02/2024 14:24:49
 Player: Elliot H.
-6 18 4 21885 13d 0 4 Gary.
-Location: {15,(22,7)}
-Heal Center: {15,(22,7)}
+6 21 5 25205 17d 0 4 Gary.
+Location: {15,(23,7)}
+Heal Center: {15,(23,7)}
 Pokemon: 
-Sandshrew Sandshrew. 27 49 49 4 34 42 8 8 24 19 7633 GROUND NONE 24456825 d091904 0 0
+Diglett Brug. 50 31 31 4 25 15 18 23 41 18 6737 GROUND NONE 17c6a8a0 70400 0 0
+	Scratch. 2 35
+	Sand Attack. 7 15
+	Growl. 3 40
+	Magnitude. 106 30
+Sandshrew Sandshrew. 27 51 51 4 36 44 8 8 25 20 8429 GROUND NONE 24456825 d0a1b04 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
 	Cut. 206 30
 	Poison Sting. 6 35
-Nidoking Thorn. 34 79 79 4 66 46 46 38 48 25 15668 POISON GROUND 42cd13d1 a182d00 0 0
+Nidoking Thorn. 34 88 88 4 74 50 46 38 53 28 23179 POISON GROUND 42cd13d1 c1b3503 0 0
 	Thrash. 67 20
 	Peck. 51 35
 	Double Kick. 61 30
 	Poison Sting. 6 35
-Charmeleon Charmeleon. 5 65 65 4 47 35 35 28 52 25 17321 FIRE NONE 772e8be0 14142611 0 4
+Charmeleon Charmeleon. 5 69 69 4 50 38 35 28 56 27 21349 FIRE NONE 772e8be0 161c2611 0 4
 	Scratch. 2 35
-	Smoke Screen. 18 20
+	Scary Face. 21 15
 	Ember. 12 25
 	Metal Claw. 17 35
-Pikachu Pikachu. 25 64 64 4 37 33 11 11 62 27 21251 ELECTRIC NONE 78e5409f 16211802 0 0
-	Thunder Shock. 55 30
-	Thunderbolt. 59 15
-	Quick Attack. 8 30
-	Slam. 58 20
-Omanyte Omanyte. 138 55 55 4 28 58 42 28 23 25 16916 ROCK WATER 6742dad 2050100 0 0
+Omanyte Omanyte. 138 55 55 4 28 58 42 28 23 25 17132 ROCK WATER 6742dad 2070100 0 0
 	Constrict. 133 35
 	Mud Shot. 166 15
 	Bite. 29 25
 	Water Gun. 28 25
-Oddish Oddish. 43 43 43 4 23 25 9 9 16 17 5176 GRASS POISON 12b62529 60e0500 0 2
-	Absorb. 100 20
-	Sweet Scent. 19 20
-	Poison Powder. 14 35
-	Stun Spore. 37 30
+Pikachu Pikachu. 25 66 66 4 38 34 11 11 64 28 23302 ELECTRIC NONE 78e5409f 1c221c06 0 2
+	Thunder Shock. 55 30
+	Thunderbolt. 59 15
+	Quick Attack. 8 30
+	Slam. 58 20
 PC: 
 Rattata Rattata. 19 16 16 2 9 7 6 7 10 4 67 NORMAL NONE 612ec9 0 0 0
 	Tackle. 1 35
@@ -86,25 +86,38 @@ Doduo Two`san. 84 29 29 3 24 16 13 14 22 11 1372 NORMAL FLYING 50e32d6a 2 0 0
 Bellsprout Brush. 69 28 28 2 20 13 18 12 13 9 729 GRASS POISON 23b44e60 0 0 0
 	Vine whip. 10 25
 	Growth. 20 40
-Butterfree Bungo. 12 47 47 4 22 23 23 22 29 15 3522 BUG FLYING 2cf05e9d 5081902 0 0
-	Tackle. 1 35
-	Sleep Powder. 15 15
-	Stun Spore. 37 30
-	Confusion. 36 25
+Butterfree Bungo. 12 57 57 4 27 29 23 22 35 19 7445 BUG FLYING 2cf05e9d 6131a02 0 5
+	Tackle. 1 34
+	Sleep Powder. 15 14
+	Supersonic. 35 20
+	Confusion. 36 24
 Koffing Bleh. 109 30 30 3 19 27 19 16 14 11 1331 POISON NONE 1927b80a 0 0 0
 	Poison Gas. 152 40
 	Tackle. 1 35
 	Smog. 188 20
-Diglett Brug. 50 29 29 4 23 14 18 23 37 16 4096 GROUND NONE 17c6a8a0 0 0 0
-	Scratch. 2 35
-	Sand Attack. 7 15
-	Growl. 3 40
-	Magnitude. 106 30
+Oddish Oddish. 43 43 43 4 23 25 9 9 16 17 5372 GRASS POISON 12b62529 6100500 0 2
+	Absorb. 100 20
+	Sweet Scent. 19 20
+	Poison Powder. 14 35
+	Stun Spore. 37 30
+Tangela Trock. 114 39 39 4 18 35 30 18 22 12 1728 GRASS NONE 7be7e470 0 0 0
+	Ingrain. 190 20
+	Constrict. 133 35
+	Sleep Powder. 15 15
+	Absorb. 100 20
+Abra Phych. 63 31 31 1 10 11 32 21 28 13 2197 PSYCHIC NONE 100cc91 0 0 0
+	Teleport. 129 20
+Aerodactyl Aerodactyl. 142 70 70 4 58 38 37 41 69 23 12167 ROCK FLYING 688a4301 0 0 0
+	Wing Attack. 26 35
+	Agility. 43 20
+	Bite. 29 25
+	Supersonic. 35 20
 Bag:
 Paralyze Heal. 7 1
 Potion. 1 4
 Burn Heal. 9 3
 Leaf Stone. 15 1
+Poke Ball. 3 1
 
 Key Items: 1
   207 
@@ -112,5 +125,5 @@ Key Items: 1
 HM/TMs: 1
   101 
 
-Trainers Battled: 37
-  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 202 29 30 31 32 34 35 253 
+Trainers Battled: 41
+  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 202 29 30 31 32 34 35 253 33 38 41 46 

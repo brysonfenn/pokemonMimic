@@ -208,11 +208,14 @@ void handle_motion() {
         int random = rand() % 100;
         bool encounter = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR);
         encounter = encounter || ((curr_map==MAP_MT_MOON_N || curr_map==MAP_MT_MOON_S || curr_map==MAP_DIG_CAVE 
-                                || curr_map==MAP_ROCK_TUNNEL_N || curr_map==MAP_ROCK_TUNNEL_S || curr_map==MAP_TOWER2) 
+                                || curr_map==MAP_ROCK_TUNNEL_N || curr_map==MAP_ROCK_TUNNEL_S || curr_map==MAP_TOWER2
+                                || curr_map==MAP_TOWER3) 
                 && random < 5);   //Extra percentage for caves
         encounter = encounter && !(leave_msg_count < 5) && (random < 10);     //Chance of encounter
         encounter = encounter;
-        // encounter = false;
+
+        // Disable Wild Pokemon if debug var is true
+        if (DISABLE_WILD_ENCOUNTERS) encounter = false;
 
         // Set player color, move, and unset
         attrset(COLOR_PAIR(PLAYER_COLOR));

@@ -29,7 +29,8 @@
 static char name_input_str[MAX_NAME_INPUT_LENGTH] = "";
 static char pokemon_str_list[50][64];
 static char * str_ptr_list[50];
-const char default_name_str[10] = DEFAULT_NAME_STR;
+const char default_name_str[8] = DEFAULT_NAME_STR;
+const char canceled_name_str[8] = CANCEL_STR;
 
 void print_alphabet(char curr_char, char last_char);
 
@@ -276,6 +277,7 @@ int await_user() {
     usleep(500000);
     int ch = '~';
 
+    flushinp();
     nodelay(stdscr, TRUE);
 
     while (1) {
@@ -454,6 +456,9 @@ char * get_name_input(char * target_for_name) {
             string_length = strlen(name_input_str);
             if (string_length > 0) {
                 name_input_str[string_length-1] = '\0';
+            }
+            else {
+                return canceled_name_str;
             }
             break;
         default:

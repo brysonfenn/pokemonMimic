@@ -6,6 +6,7 @@
 struct Pokemon;
 
 #define DEFAULT_NAME_STR "~`~"
+#define CANCEL_STR "`~`"
 
 
 //Print a list of Pokemon (used for party and PC)

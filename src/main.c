@@ -60,15 +60,18 @@ int main(void) {
         }
         else if (input_num == 0) {
             //Get Player Name
-            bool done_naming = false;
+            bool done_naming, cancel_name = false;
             while (!done_naming) {
                 sprintf(player.name, "%s", get_name_input("yourself"));
                 if (strcmp(player.name, DEFAULT_NAME_STR) == 0) sprintf(player.name, "Beige");
+                if (strcmp(player.name, CANCEL_STR) == 0) { cancel_name = true; break; }
                 begin_list();
                 sprintf(print_str, "So, your name is %s?\n  Yes\n  No", player.name);
                 print_to_list(print_str);
                 done_naming = (get_selection(1, 1, 0) == 0);
             }
+
+            if (cancel_name) continue;
 
             //Get Rival name
             done_naming = false;

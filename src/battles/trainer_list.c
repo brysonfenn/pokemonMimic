@@ -86,11 +86,22 @@ static Trainer t068 = {68, "Rocket Grunt", "Stop trying to mess with our plans!"
 static Trainer t069 = {69, "Trainer Terrence", "I'm a trainer too!", 2, {POKEMON_HORSEA, POKEMON_SEADRA}, {15,17} };
 static Trainer t070 = {70, "Trainer Adam", "I like flying Pokemon!", 2, {POKEMON_PIDGEOTTO, POKEMON_PIDGEOT}, {17,19} };
 
+static Trainer t071 = {71, "Channeler Patricia", "Ghost Pokemon are everywhere around here.", 2, {POKEMON_GASTLY, POKEMON_GASTLY}, {24, 24} };
+static Trainer t072 = {72, "Channeler Karina", "Without that Silph Scope, you wouldn't see Ghost Pokemon!", 2, {POKEMON_GASTLY, POKEMON_GASTLY}, {24, 25} };
+static Trainer t073 = {73, "Channeler Angelica", "Be gone!", 2, {POKEMON_GASTLY, POKEMON_HAUNTER}, {24, 26} };
+static Trainer t074 = {74, "Channeler Jennifer", "Team Rocket is horrible! Make them Leave!", 2, {POKEMON_GASTLY, POKEMON_HAUNTER}, {25, 26} };
+static Trainer t075 = {75, "Channeler Hope", "Team Rocket kidnapped Mr. Fuji. Are you with them?", 2, {POKEMON_HAUNTER, POKEMON_HAUNTER}, {24, 26} };
+static Trainer t076 = {76, "Rocket Grunt", "You broke into our hideout in Celadon!", 3, {POKEMON_ZUBAT, POKEMON_ZUBAT, POKEMON_GOLBAT}, {25,25,25} };
+static Trainer t077 = {77, "Rocket Grunt", "You should join us!", 4, {POKEMON_ZUBAT, POKEMON_ZUBAT, POKEMON_RATTATA, POKEMON_RATICATE}, {23,24,23,25} };
+static Trainer t078 = {78, "Rocket Grunt", "Get out of here, kid!", 2, {POKEMON_KOFFING, POKEMON_DROWZEE}, {26,26} };
+static Trainer t079 = {79, "Rocket Grunt", "If you beat me, we'll leave...", 2, {POKEMON_EKANS, POKEMON_WEEZING}, {26,27} };
+
+
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
     &t001, &t002, &t003, &t004, &t005, &t006, &t007, &t008, &t009, &t010, &t011, &t012, &t013, &t014, &t015, &t016, &t017, &t018, &t019, &t020,
     &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028, &t029, &t030, &t031, &t032, &t033, &t034, &t035, &t036, &t037, &t038, &t039, &t040,
     &t041, &t042, &t043, &t044, &t045, &t046, &t047, &t048, &t049, &t050, &t051, &t052, &t053, &t054, &t055, &t056, &t057, &t058, &t059, &t060,
-    &t061, &t062, &t063, &t064, &t065, &t066, &t067, &t068, &t069, &t070
+    &t061, &t062, &t063, &t064, &t065, &t066, &t067, &t068, &t069, &t070, &t071, &t072, &t073, &t074, &t075, &t076, &t077, &t078, &t079
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am Brock, Gym Leader of Pewter. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
