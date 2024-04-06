@@ -182,9 +182,9 @@ void draw_route12() {
 }
 
 
-void draw_fuschia_city() {
-    draw_big_map("Fuschia City");
-    audio_loop_file("fuschia_city.mp3");
+void draw_fuchsia_city() {
+    draw_big_map("Fuchsia City");
+    audio_loop_file("fuchsia_city.mp3");
 
     add_connection_to_big_map(MAP_RIGHT, 14, MAP_R12);
 }

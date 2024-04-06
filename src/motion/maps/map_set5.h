@@ -23,6 +23,6 @@ void draw_route11();
 
 void draw_route12();
 
-void draw_fuschia_city();
+void draw_fuchsia_city();
 
 #endif //MAP_SET4_H
