@@ -10,6 +10,7 @@
 #include "../print/print_utils.h"
 #include "../print/print_battle.h"
 #include "../audio/audio_player.h"
+#include "../motion/map_drawing.h"
 
 #define NAME_MAX_LENGTH 20
 

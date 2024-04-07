@@ -4,7 +4,7 @@
 
 #include "print_defines.h"
 
-#define MAX_LIST 19
+#define MAX_LIST 20
 
 //Get player selection from scrollable list
 //  str_list is the list of strings representing elements in list

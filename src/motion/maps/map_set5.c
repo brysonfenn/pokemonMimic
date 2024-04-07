@@ -176,6 +176,7 @@ void draw_route12() {
     audio_loop_file("route1.mp3");
 
     add_cuttable_tree(MAP_X+6, MAP_Y+10); add_cuttable_tree(MAP_X+7, MAP_Y+10);
+    add_npc_by_id(MAP_X+51, MAP_Y+2, 19, PLAYER_MOVING_LEFT);
 
     add_connection_to_big_map(MAP_RIGHT, 14, MAP_R11);
     add_connection_to_big_map(MAP_LEFT, 14, MAP_FU_CITY);

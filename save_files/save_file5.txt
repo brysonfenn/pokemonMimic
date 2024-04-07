@@ -1,7 +1,7 @@
-Last Saved: 04/06/2024 15:27:41
+Last Saved: 04/07/2024 10:55:52
 Player: Player1.
-2 4 7 37590 d9c 0 1 Blue.
-Location: {41,(10,14)}
+6 4 7 37590 d9c 0 1 Blue.
+Location: {15,(38,10)}
 Heal Center: {30,(43,5)}
 Pokemon: 
 Ivysaur Ivysaur. 2 67 833 4 137 137 132 131 136 100 18737 GRASS POISON 448493fb b070e02 8 4
@@ -9,6 +9,26 @@ Ivysaur Ivysaur. 2 67 833 4 137 137 132 131 136 100 18737 GRASS POISON 448493fb 
 	Sleep Powder. 15 15
 	Leech seed. 11 10
 	Cut. 206 7
+Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+	Thunder Shock. 55 30
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Thunder Wave. 56 20
+Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+	Thunder Shock. 55 30
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Thunder Wave. 56 20
+Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+	Thunder Shock. 55 30
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Thunder Wave. 56 20
+Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+	Thunder Shock. 55 30
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Thunder Wave. 56 20
 Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
 	Thunder Shock. 55 30
 	Quick Attack. 8 30
@@ -41,7 +61,7 @@ Super Potion. 2 4
 Potion. 1 3
 
 Key Items: 5
-  207 202 203 209 208 
+  207 205 206 209 208 
 
 HM/TMs: 1
   101 

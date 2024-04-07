@@ -189,7 +189,8 @@ bool give_pokemon_to_player(Pokemon * pok) {
         }
         else {
             sprintf(print_str, "%s was transferred to PC storage.", new_pok->nickname); 
-            print_to_list(print_str); sleep(2);
+            // print_to_list(print_str); sleep(2);
+            print_to_message_box(print_str); sleep(2);
         }
     }
     //Add Pokemon to party
@@ -198,7 +199,8 @@ bool give_pokemon_to_player(Pokemon * pok) {
         player.numInParty++;
         if (!player.is_battle) {
             sprintf(print_str, "%s was added to your party.", pok->nickname);
-            print_to_list(print_str); sleep(2);
+            // print_to_list(print_str); sleep(2);
+            print_to_message_box(print_str);
         }
     }
 
