@@ -89,10 +89,10 @@ void handle_npc_selection(struct NPC * npc_ptr) {
         //if givable item is a pokemon
         if (npc_ptr->givable_item >= GIVE_POK_START_INDEX) {
             new_pok = *create_new_pokemon(npc_ptr->givable_item - GIVE_POK_START_INDEX, 25, 0, 0);
-            sprintf(item_name, "%s", new_pok.name);
+            sprintf(item_name, "%s", new_pok.nickname);
         }
         //if givable item is a key item
-        if (npc_ptr->givable_item >= K_ITEM_EMPTY) {
+        else if (npc_ptr->givable_item >= K_ITEM_EMPTY) {
             sprintf(item_name, "%s", get_key_item_name(npc_ptr->givable_item));
         }
         //else if givable item is an HM/TM

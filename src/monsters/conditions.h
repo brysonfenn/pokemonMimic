@@ -43,4 +43,7 @@ int handle_end_conditions(struct Pokemon * pok);
 //print a pokemon's condition abbreviation
 void add_condition_string(char * str, struct Pokemon * pok);
 
+//Return true if Pokemon has a condition that stops escape or switching
+bool conditions_pok_is_stuck(struct Pokemon * pok);
+
 #endif // CONDITIONS_H

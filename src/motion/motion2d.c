@@ -71,6 +71,8 @@ void handle_motion() {
     
 
     while (1) {
+        print_btn_instructions(true); 
+
         flushinp();
         ch = getch();
         //mvaddch(*player_y, *player_x, ' '); 
@@ -108,7 +110,7 @@ void handle_motion() {
                 next_char = mvinch(*player_y+1, *player_x);
                 if (*player_char_ptr != PLAYER_MOVING_DOWN) *player_char_ptr = PLAYER_MOVING_DOWN;
                 //If next space is a fence, jump it
-                else if (next_char == '-') {
+                else if (next_char == '-' && is_movable_space(2,0)) {
                     attrset(COLOR_PAIR(PLAYER_COLOR));
                     mvaddch((*player_y), *player_x, ' ');
                     mvaddch(++(*player_y), *player_x, *player_char_ptr); refresh();

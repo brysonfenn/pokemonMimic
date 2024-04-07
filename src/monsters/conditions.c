@@ -286,3 +286,17 @@ void add_condition_string(char * str, struct Pokemon * pok) {
 	else if (pok->visible_condition == ASLEEP)
 		sprintf(str, "%s SLP", str);
 }
+
+//Return true if Pokemon has a condition that stops escape or switching
+bool conditions_pok_is_stuck(struct Pokemon * pok) {
+	if (pok->currentHP <= 0) {
+		return false;
+	}
+	else if (has_hidden_condition(pok, FIRE_SPINNED) || has_hidden_condition(pok, TIGHT_HOLD) ||
+			has_hidden_condition(pok, SAND_TOMBED)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}

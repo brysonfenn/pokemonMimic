@@ -116,11 +116,11 @@ int handle_battle(struct Pokemon * enemyPok) {
         ///////// GET DECISION /////////
         while (current_decision == NONE) {
             clear();
+            printBattle();
 
             switch (current_display) {
                 
             case MAIN:
-                printBattle();
                 mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  Fight"); mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  Bag");
                 mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  Pokémon"); mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  Run");
                 text_box_cursors(TEXT_BOX_BEGINNING);
@@ -153,7 +153,6 @@ int handle_battle(struct Pokemon * enemyPok) {
                 }
 
                 //If any pp, get attack choice
-                printBattle();
                 mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[0].name); 
                 mvprintw(SELECT_Y,BATTLE_SELECT_1_X+MOVE_SELECT_SPACING,"  %s", currentPok->attacks[1].name); 
                 mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  %s", currentPok->attacks[2].name); 
@@ -184,6 +183,12 @@ int handle_battle(struct Pokemon * enemyPok) {
                 break;
                 
             case POKEMON:
+                if (conditions_pok_is_stuck(player.current_pokemon)) {
+                    text_box_cursors(TEXT_BOX_BEGINNING);
+                    printw("%s can't switch out due to a condition!", player.current_pokemon->nickname); refresh(); sleep(2);
+                    current_display = MAIN; continue;
+                }
+
                 max_input = player.numInParty-1;
                 begin_list();
                 print_to_list("Select a pokemon to use.\n");
@@ -323,6 +328,11 @@ int handle_battle(struct Pokemon * enemyPok) {
                     printw("You can't run from a trainer battle!"); refresh(); sleep(2);
                     enemy_attacks = false;
                 }
+                else if (conditions_pok_is_stuck(player.current_pokemon)) {
+                    text_box_cursors(TEXT_BOX_BEGINNING);
+                    printw("%s can't escape due to a condition!", player.current_pokemon->nickname); refresh(); sleep(2);
+                    current_display = MAIN; continue;
+                }
                 else {
                     run_success = run_attempt();
                     enemy_attacks = true;
@@ -418,6 +428,9 @@ int perform_enemy_attack(Pokemon * currentPok, Pokemon * enemyPok, int attack_nu
 
 //Get a move number randomly (move with highest damage has a higher chance)
 int get_enemy_move(Pokemon * pok) {
+    if (ENABLE_FORCE_ENEMY_MOVE)
+        return FORCED_ENEMY_MOVE;
+
     int num_available_attacks = 0;
     int available_attacks[4];
     int curr_attack;
