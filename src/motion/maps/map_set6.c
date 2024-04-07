@@ -24,13 +24,13 @@ void draw_cel_city() {
 
     add_connection_to_big_map(MAP_RIGHT, 3, MAP_UNDERGROUND);
 
-    drawBuilding_default(MAP_X+35,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+10, MAP_Y+2, "Mart", MART_ACTION);
+    draw_building_default(MAP_X+35,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+10, MAP_Y+2, "Mart", MART_ACTION);
 
-    drawBuilding_default(MAP_X+18, MAP_Y+7, "GAME", -1);
+    draw_building_default(MAP_X+18, MAP_Y+7, "GAME", -1);
     add_building_portal(MAP_X+18, MAP_Y+7, MAP_GAME_CORNER);
 
-    drawBuilding_default(MAP_X+1, MAP_Y+12, "Gym", -1);
+    draw_building_default(MAP_X+1, MAP_Y+12, "Gym", -1);
     add_building_portal(MAP_X+1, MAP_Y+12, MAP_GYM4);
 
     add_cuttable_tree(MAP_X+31, MAP_Y+15);
@@ -92,7 +92,7 @@ void draw_game_corner() {
     add_npc_by_id(INTERIOR_X+3, INTERIOR_Y+2, 11, PLAYER_MOVING_RIGHT);
     add_npc_by_id(INTERIOR_X+7, INTERIOR_Y+4, 12, PLAYER_MOVING_UP);
 
-    drawBuilding_default(game_corner_rocket_x, game_corner_rocket_y, " ", -1);
+    draw_building_default(game_corner_rocket_x, game_corner_rocket_y, " ", -1);
     add_portal_building_to_big_map(game_corner_rocket_x, game_corner_rocket_y, MAP_ROCKET1, MAP_BOTTOM, 6);
 
     add_trainer_by_id(game_corner_rocket_x+2, game_corner_rocket_y+DEFAULT_BUILDING_HEIGHT, 53, PLAYER_MOVING_RIGHT);

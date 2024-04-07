@@ -18,7 +18,7 @@ void draw_underground() {
     draw_big_map("Underground");
     audio_loop_file("pallet.mp3");
 
-    drawBuilding_default(49, 6, " CC ", DOORS_NEW_MAP);
+    draw_building_default(49, 6, " CC ", DOORS_NEW_MAP);
     add_portal_building_to_big_map(49, 6, MAP_CER_CITY, MAP_BOTTOM, MAP_WIDTH-4);
 
     add_connection_to_big_map(MAP_BOTTOM, 3, MAP_VERM_CITY);
@@ -35,9 +35,9 @@ void draw_vermillion_city() {
     add_connection_to_big_map(MAP_BOTTOM, 25, MAP_SS_ANNE1);
     add_connection_to_big_map(MAP_RIGHT, 6, MAP_R6);
 
-    drawBuilding_default(MAP_X+15,MAP_Y+3, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+30, MAP_Y+6, "Lab", FOSSIL_PROCESS_ACTION);
-    drawBuilding_default(MAP_X+42, MAP_Y+6, "Mart", MART_ACTION);
+    draw_building_default(MAP_X+15,MAP_Y+3, "Poke", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+30, MAP_Y+6, "Lab", FOSSIL_PROCESS_ACTION);
+    draw_building_default(MAP_X+42, MAP_Y+6, "Mart", MART_ACTION);
 
     if (has_key_item(K_ITEM_SS_TICKET) == -1) {
         add_npc_by_id(MAP_X+25, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);
@@ -52,7 +52,7 @@ void draw_vermillion_city() {
         add_npc_by_id(MAP_X+26, MAP_Y+MAP_HEIGHT-2, 5, PLAYER_MOVING_UP);
     }
 
-    drawBuilding_default(MAP_X+4, MAP_Y+11, "GYM", DOORS_NEW_MAP);
+    draw_building_default(MAP_X+4, MAP_Y+11, "GYM", DOORS_NEW_MAP);
     add_building_portal(MAP_X+4, MAP_Y+11, MAP_GYM3);
     
     add_cuttable_tree(MAP_X+18, MAP_Y+14);
@@ -121,7 +121,7 @@ void draw_route6() {
     add_connection_to_big_map(MAP_RIGHT, 14, MAP_R10);
 
     //Draw Building and link to SouthEast Diglett's Cave
-    drawBuilding_default(MAP_X+2, MAP_Y+1, "CAVE", DOORS_NEW_MAP);
+    draw_building_default(MAP_X+2, MAP_Y+1, "CAVE", DOORS_NEW_MAP);
     add_portal_building_to_big_map(MAP_X+2, MAP_Y+1, MAP_DIG_CAVE, MAP_BOTTOM, MAP_WIDTH - 4);
 
     add_npc_by_id(MAP_X+1, MAP_Y+12, 7, PLAYER_MOVING_RIGHT);
@@ -150,7 +150,7 @@ void draw_route7() {
     audio_loop_file("route3.mp3");
 
     //Draw Building and link to South-West Diglett's Cave
-    drawBuilding_default(MAP_X+47, MAP_Y+12, "CAVE", DOORS_NEW_MAP);
+    draw_building_default(MAP_X+47, MAP_Y+12, "CAVE", DOORS_NEW_MAP);
     add_portal(MAP_X+47+9/2, MAP_Y+12+2, MAP_X+2, MAP_Y+MAP_HEIGHT-2, MAP_DIG_CAVE, true);
 
     add_connection_to_big_map(MAP_LEFT, 2, MAP_VIR_FOREST);

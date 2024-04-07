@@ -36,7 +36,7 @@ void draw_route9() {
 
     add_connection_to_big_map(MAP_LEFT, 6, MAP_R8);
 
-    drawBuilding_default(MAP_X+1, MAP_Y+8, "ROCK", -1);
+    draw_building_default(MAP_X+1, MAP_Y+8, "ROCK", -1);
     add_portal_building_to_big_map(MAP_X+1, MAP_Y+8, MAP_ROCK_TUNNEL_N, MAP_BOTTOM, 15);
 
     add_trainer_by_id(MAP_X+12, MAP_Y+1, 43, PLAYER_MOVING_DOWN);
@@ -44,7 +44,7 @@ void draw_route9() {
     add_trainer_by_id(MAP_X+9, MAP_Y+12, 45, PLAYER_MOVING_LEFT);
     add_trainer_by_id(MAP_X+1, MAP_Y+14, 46, PLAYER_MOVING_RIGHT);
 
-    drawBuilding_default(MAP_X+13, MAP_Y+9, "POKE", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+13, MAP_Y+9, "POKE", POKE_CENTER_ACTION);
 }
 
 void draw_rock_tunnel_n() {
@@ -73,10 +73,10 @@ void draw_lavender_town() {
     add_connection_to_big_map(MAP_LEFT, 3, MAP_UNDERGROUND);
     add_connection_to_big_map(MAP_BOTTOM, 38, MAP_R10);
 
-    drawBuilding_default(MAP_X+15,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+18, MAP_Y+10, "Mart", MART_ACTION);
+    draw_building_default(MAP_X+15,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+18, MAP_Y+10, "Mart", MART_ACTION);
 
-    drawBuilding_default(MAP_X+34, MAP_Y+1, "TOWR", -1);
+    draw_building_default(MAP_X+34, MAP_Y+1, "TOWR", -1);
     add_building_portal(MAP_X+34, MAP_Y+1, MAP_TOWER1);
 
     add_trainer_by_id(MAP_X+4, MAP_Y+9, 47, PLAYER_MOVING_RIGHT);
@@ -95,7 +95,7 @@ void draw_tower1() {
     print_to_message_box("Pokemon Tower");
     audio_loop_file("poke_tower.mp3");
 
-    drawBuilding_default(pokemon_tower_gate_x, pokemon_tower_gate_y, " ", -1);
+    draw_building_default(pokemon_tower_gate_x, pokemon_tower_gate_y, " ", -1);
     add_portal_building_to_big_map(pokemon_tower_gate_x, pokemon_tower_gate_y, MAP_TOWER2, MAP_BOTTOM, MAP_WIDTH/2);
 
     if (has_key_item(K_ITEM_SILPH_SCOPE) == -1) {
@@ -187,4 +187,7 @@ void draw_fuchsia_city() {
     audio_loop_file("fuchsia_city.mp3");
 
     add_connection_to_big_map(MAP_RIGHT, 14, MAP_R12);
+
+    draw_building_default(MAP_X+10, MAP_Y+11, "POKE", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+20, MAP_Y+11, "MART", MART_ACTION);
 }

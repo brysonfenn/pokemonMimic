@@ -22,7 +22,7 @@ void draw_route3() {
     add_connection_to_big_map(MAP_LEFT, 8, MAP_PEW_CITY);
     add_connection_to_big_map(MAP_TOP, MAP_WIDTH - 4, MAP_MT_MOON_S);
 
-    drawBuilding_default(MAP_X+42,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+42,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
 
     add_trainer_by_id(MAP_X+12,MAP_Y+12, 13, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+13,MAP_Y+7, 14, PLAYER_MOVING_RIGHT);
@@ -46,7 +46,7 @@ void draw_mt_moon_n() {
     add_npc_by_id(MAP_X+45, MAP_Y+9, 2, PLAYER_MOVING_LEFT);
 
     if (!(player.record_bits & 0x01)) {
-        drawBuilding_default(MAP_X+MAP_WIDTH-2-DEFAULT_BUILDING_WIDTH, MAP_Y+1, "FOSL", FOSSIL_ACTION);
+        draw_building_default(MAP_X+MAP_WIDTH-2-DEFAULT_BUILDING_WIDTH, MAP_Y+1, "FOSL", FOSSIL_ACTION);
     }
 }
 
@@ -70,10 +70,10 @@ void draw_cer_city() {
     draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 4);
     add_portal_big_map_to_building(49, 6, MAP_UNDERGROUND, MAP_BOTTOM, MAP_WIDTH-4);
 
-    drawBuilding_default(MAP_X+30,MAP_Y+8, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+10,MAP_Y+12, "Mart", MART_ACTION);
+    draw_building_default(MAP_X+30,MAP_Y+8, "Poke", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+10,MAP_Y+12, "Mart", MART_ACTION);
 
-    drawBuilding_default(MAP_X+30+DEFAULT_BUILDING_WIDTH,MAP_Y+8, "GYM", DOORS_NEW_MAP);
+    draw_building_default(MAP_X+30+DEFAULT_BUILDING_WIDTH,MAP_Y+8, "GYM", DOORS_NEW_MAP);
     add_building_portal(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+8, MAP_GYM2);
 
     if (!player_has_battled_trainer(202)) {

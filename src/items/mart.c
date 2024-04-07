@@ -20,7 +20,8 @@ static int pewter_mart[10] =    { 6, POKE_BALL, POTION, ANTIDOTE, AWAKENING, PAR
 static int cerulean_mart[10] =  { 7, POKE_BALL, POTION, SUPER_POTION, ANTIDOTE, PARALYZE_HEAL, BURN_HEAL, REPEL };
 static int vermillion_mart[10] ={ 7, POKE_BALL, GREAT_BALL, POTION, SUPER_POTION, THUNDER_STONE, AWAKENING, SUPER_REPEL };
 static int lavender_mart[10] =  { 6, POKE_BALL, GREAT_BALL, SUPER_POTION, MOON_STONE, ANTIDOTE, REPEL };
-static int celadon_mart[10] = { 8, POKE_BALL, GREAT_BALL, SUPER_POTION, LEAF_STONE, ANTIDOTE, REPEL, PARALYZE_HEAL, AWAKENING };
+static int celadon_mart[10] =   { 8, POKE_BALL, GREAT_BALL, SUPER_POTION, LEAF_STONE, ANTIDOTE, REPEL, PARALYZE_HEAL, AWAKENING };
+static int fuchsia_mart[10] =   { 7, GREAT_BALL, SUPER_POTION, WATER_STONE, ANTIDOTE, SUPER_REPEL, MAX_REPEL, PARALYZE_HEAL };
 
 void set_mart();
 
@@ -159,8 +160,9 @@ void set_mart() {
         case MAP_PEW_CITY:  mart_array = pewter_mart; break;
         case MAP_CER_CITY:  mart_array = cerulean_mart; break;
         case MAP_VERM_CITY: mart_array = vermillion_mart; break;
-        case MAP_LAV_TOWN: mart_array = lavender_mart; break;
-        case MAP_CEL_CITY: mart_array = celadon_mart; break;
+        case MAP_LAV_TOWN:  mart_array = lavender_mart; break;
+        case MAP_CEL_CITY:  mart_array = celadon_mart; break;
+        case MAP_FU_CITY:   mart_array = fuchsia_mart; break;
         default: mart_array = default_mart; break;
     }
 }

@@ -39,10 +39,10 @@ void begin_message_box();
 void print_to_message_box(const char * message_str);
 
 //Draw a house-sized building with a door and an action attached
-void drawBuilding_default(int x, int y, const char* str, int action);
+void draw_building_default(int x, int y, const char* str, int action);
 
 //Draw a custom-sized building with a door and an action attached
-void drawBuilding(int x, int y, int w, int h, const char* str, int action);
+void draw_building(int x, int y, int w, int h, const char* str, int action);
 
 //Draw big map outline and print message to message box
 void draw_big_map(const char * map_title);

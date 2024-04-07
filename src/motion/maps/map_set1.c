@@ -17,8 +17,8 @@ void draw_starter_town() {
     draw_big_map("Starter Town");
     audio_loop_file("pallet.mp3");
 
-    drawBuilding_default(MAP_X+6,MAP_Y+7, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+20,MAP_Y+12, "LAB", DOORS_NEW_MAP);
+    draw_building_default(MAP_X+6,MAP_Y+7, "Poke", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+20,MAP_Y+12, "LAB", DOORS_NEW_MAP);
     add_building_portal(MAP_X+20, MAP_Y+12, MAP_LAB);
     
     //Draw Doors

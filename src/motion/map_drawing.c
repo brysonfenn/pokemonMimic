@@ -92,13 +92,13 @@ void print_to_message_box(const char * message_str) {
 
 
 //Draw a house-sized building with a name, door at the bottom-center, and an action attached to the door
-void drawBuilding_default(int x, int y, const char* name, int action) { 
-    drawBuilding(x,y,DEFAULT_BUILDING_WIDTH,DEFAULT_BUILDING_HEIGHT,name,action); 
+void draw_building_default(int x, int y, const char* name, int action) { 
+    draw_building(x,y,DEFAULT_BUILDING_WIDTH,DEFAULT_BUILDING_HEIGHT,name,action); 
 }
 
 
 //Draw a custom-sized building with a name, door at the bottom-center, and an action attached to the door
-void drawBuilding(int x, int y, int w, int h, const char* name, int action) {
+void draw_building(int x, int y, int w, int h, const char* name, int action) {
     draw_box(x,y,w,h);
 
     // Print the string (max size 6) inside the box

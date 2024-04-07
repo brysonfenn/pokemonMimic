@@ -24,8 +24,8 @@ void draw_vir_city() {
     draw_big_map("Viridian City");
     audio_loop_file("vir_city.mp3");
 
-    drawBuilding_default(VIR_MART_X,VIR_MART_Y, "Mart", MART_ACTION);
-    drawBuilding_default(VIR_POKE_CENTER_X, VIR_POKE_CENTER_Y, "Poke", POKE_CENTER_ACTION);
+    draw_building_default(VIR_MART_X,VIR_MART_Y, "Mart", MART_ACTION);
+    draw_building_default(VIR_POKE_CENTER_X, VIR_POKE_CENTER_Y, "Poke", POKE_CENTER_ACTION);
 
     add_npc_by_id(MAP_X+25, MAP_Y+9, 10, PLAYER_MOVING_DOWN);
     
@@ -77,16 +77,16 @@ void draw_pew_city() {
 
     mvprintw(MAP_Y+7, MAP_X+MAP_WIDTH-2, "|"); mvprintw(MAP_Y+9, MAP_X+MAP_WIDTH-2, "|");
     
-    drawBuilding_default(MAP_X+9,MAP_Y+10, "GYM", DOORS_NEW_MAP);
+    draw_building_default(MAP_X+9,MAP_Y+10, "GYM", DOORS_NEW_MAP);
     add_building_portal(MAP_X+9, MAP_Y+10, MAP_GYM1);
 
-    drawBuilding_default(MAP_X+1,MAP_Y+1, "MUS", DOORS_NEW_MAP);
+    draw_building_default(MAP_X+1,MAP_Y+1, "MUS", DOORS_NEW_MAP);
     add_building_portal(MAP_X+1, MAP_Y+1, MAP_MUSEUM);
 
     add_cuttable_tree(MAP_X+10, MAP_Y+4);
 
-    drawBuilding_default(MAP_X+33,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
-    drawBuilding_default(MAP_X+26,MAP_Y+6, "Mart", MART_ACTION);
+    draw_building_default(MAP_X+33,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+26,MAP_Y+6, "Mart", MART_ACTION);
 
     add_trainer_by_id(MAP_X+45,MAP_Y+1, 9, PLAYER_MOVING_DOWN);
     add_trainer_by_id(MAP_X+48,MAP_Y+1, 10, PLAYER_MOVING_DOWN);
