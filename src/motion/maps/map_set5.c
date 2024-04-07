@@ -166,6 +166,11 @@ void draw_route11() {
     draw_big_map("Route 11");
     audio_loop_file("beach.mp3");
 
+    add_trainer_by_id(MAP_X+51, MAP_Y+7, 80, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+40, MAP_Y+7, 81, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+18, MAP_Y+13, 82, PLAYER_MOVING_DOWN);
+
+
     add_connection_to_big_map(MAP_TOP, 36, MAP_R10);
     add_connection_to_big_map(MAP_LEFT, 14, MAP_R12);
 }
@@ -176,6 +181,9 @@ void draw_route12() {
     audio_loop_file("route1.mp3");
 
     add_cuttable_tree(MAP_X+6, MAP_Y+10); add_cuttable_tree(MAP_X+7, MAP_Y+10);
+
+    add_trainer_by_id(MAP_X+21, MAP_Y+11, 83, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+5, MAP_Y+9, 84, PLAYER_MOVING_RIGHT);
     add_npc_by_id(MAP_X+51, MAP_Y+2, 19, PLAYER_MOVING_LEFT);
 
     add_connection_to_big_map(MAP_RIGHT, 14, MAP_R11);
