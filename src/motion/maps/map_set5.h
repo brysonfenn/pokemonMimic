@@ -25,4 +25,6 @@ void draw_route12();
 
 void draw_fuchsia_city();
 
+void draw_gym5();
+
 #endif //MAP_SET4_H

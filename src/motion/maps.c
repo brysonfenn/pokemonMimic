@@ -27,7 +27,7 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_route6, &draw_dig_cave, &draw_route7, &draw_museum, &draw_route8, &draw_route9,
                                     &draw_rock_tunnel_n, &draw_rock_tunnel_s, &draw_lavender_town, &draw_cel_city, &draw_route10,
                                     &draw_rocket1, &draw_rocket2, &draw_rocket3, &draw_game_corner, &draw_gym4, &draw_tower1,
-                                    &draw_tower2, &draw_tower3, &draw_route11, &draw_route12, &draw_fuchsia_city };
+                                    &draw_tower2, &draw_tower3, &draw_route11, &draw_route12, &draw_fuchsia_city, &draw_gym5 };
 
 char map_file_name[32];
 static int * wild_pok_list;
@@ -213,6 +213,10 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             break;
         case MAP_R12:
             sprintf(map_name, "route12");
+            wild_pok_list = &(wild_pok_lists[18]);
+            break;
+        case MAP_GYM5:
+            sprintf(map_name, "gym5");
             wild_pok_list = &(wild_pok_lists[18]);
             break;
         default:

@@ -1,5 +1,7 @@
 #include "map_set5.h"
 
+#include <ncurses.h>
+
 #include "../map_drawing.h"
 #include "../location.h"
 #include "../doors.h"
@@ -197,6 +199,27 @@ void draw_fuchsia_city() {
 
     add_connection_to_big_map(MAP_RIGHT, 14, MAP_R12);
 
-    draw_building_default(MAP_X+10, MAP_Y+11, "POKE", POKE_CENTER_ACTION);
-    draw_building_default(MAP_X+20, MAP_Y+11, "MART", MART_ACTION);
+    draw_building_default(MAP_X+4, MAP_Y+11, "GYM", -1);
+    add_building_portal(MAP_X+4, MAP_Y+11, MAP_GYM5);
+    draw_building_default(MAP_X+13, MAP_Y+11, "POKE", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+22, MAP_Y+11, "MART", MART_ACTION);
+    
+}
+
+
+void draw_gym5() {
+    draw_interior(MAP_X+4, MAP_Y+11, MAP_FU_CITY);
+    begin_message_box();
+    print_to_message_box("Fuchsia City Gym");
+    audio_loop_file("gym.mp3");
+
+    add_trainer_by_id(INTERIOR_X+14, INTERIOR_Y+6, 85, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(INTERIOR_X+20, INTERIOR_Y+4, 86, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(INTERIOR_X+8, INTERIOR_Y+6, 87, PLAYER_MOVING_UP);
+
+    add_trainer_by_id(INTERIOR_X+3, INTERIOR_Y+1, 88, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(INTERIOR_X+23, INTERIOR_Y+1, 89, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(INTERIOR_X+1, INTERIOR_Y+2, 90, PLAYER_MOVING_DOWN);
+
+    add_trainer_by_id(INTERIOR_X+25, INTERIOR_Y+3, 205, PLAYER_MOVING_RIGHT);
 }
