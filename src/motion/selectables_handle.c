@@ -140,6 +140,7 @@ int handle_snorlax(struct Selectable * selectable_ptr) {
 
         // audio_play_file("cut_hm.mp3");
         sprintf(print_str, "%s began playing the Pokemon Flute!", player.name);
+        audio_save_looping_file(0);
         audio_end_loop();
         audio_play_file("poke_flute.mp3");
         print_to_message_box(print_str); sleep(6);
@@ -174,6 +175,8 @@ int handle_snorlax(struct Selectable * selectable_ptr) {
             selectable_ptr->x = 0;
             selectable_ptr2->y = 0;
             selectable_ptr2->x = 0;
+
+            audio_restore_looping_file(0);
         }
     
         // await_user();

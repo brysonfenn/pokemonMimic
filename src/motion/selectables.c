@@ -23,7 +23,7 @@ static int num_selectables = 0;
 
 const char * empty_string = "NONE";
 static Selectable empty_selectable = {0, 0, SELECTABLE_NONE};
-static char snorlax_bits[2] = { 7 };
+static char snorlax_bits[2] = { 7,  12 };
 
 
 //Add a trainer by ID Number at a given location (See trainer_list.c)

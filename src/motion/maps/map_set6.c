@@ -23,6 +23,7 @@ void draw_cel_city() {
     audio_loop_file("celadon_city.mp3");
 
     add_connection_to_big_map(MAP_RIGHT, 3, MAP_UNDERGROUND);
+    add_connection_to_big_map(MAP_LEFT, 5, MAP_R15);
 
     draw_building_default(MAP_X+35,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
     draw_building_default(MAP_X+10, MAP_Y+2, "Mart", MART_ACTION);

@@ -11,3 +11,4 @@ Player Record Bits
 9: Silph Scope
 10: Pokemon Tower Guards
 11: Mr. Fuji - Pokemon Flute
+12: Snorlax - route 15

@@ -203,6 +203,8 @@ void draw_fuchsia_city() {
     add_building_portal(MAP_X+4, MAP_Y+11, MAP_GYM5);
     draw_building_default(MAP_X+13, MAP_Y+11, "POKE", POKE_CENTER_ACTION);
     draw_building_default(MAP_X+22, MAP_Y+11, "MART", MART_ACTION);
+
+    add_connection_to_big_map(MAP_LEFT, 15, MAP_R13);
     
 }
 
@@ -222,4 +224,31 @@ void draw_gym5() {
     add_trainer_by_id(INTERIOR_X+1, INTERIOR_Y+2, 90, PLAYER_MOVING_DOWN);
 
     add_trainer_by_id(INTERIOR_X+25, INTERIOR_Y+3, 205, PLAYER_MOVING_RIGHT);
+}
+
+
+void draw_route13() {
+    draw_big_map("Route 13");
+    audio_loop_file("route3.mp3");
+
+    add_connection_to_big_map(MAP_RIGHT, 15, MAP_FU_CITY);
+    add_connection_to_big_map(MAP_TOP, 50, MAP_R14);
+}
+
+void draw_route14() {
+    draw_big_map("Route 14");
+    audio_loop_file("route3.mp3");
+
+    add_connection_to_big_map(MAP_BOTTOM, 50, MAP_R13);
+    add_connection_to_big_map(MAP_TOP, 50, MAP_R15);
+}
+
+void draw_route15() {
+    draw_big_map("Route 15");
+    audio_loop_file("route3.mp3");
+
+    add_connection_to_big_map(MAP_BOTTOM, 50, MAP_R14);
+    add_connection_to_big_map(MAP_RIGHT, 5, MAP_CEL_CITY);
+
+    add_snorlax(MAP_X+53, MAP_Y+5, 1);
 }
