@@ -1,35 +1,32 @@
-Last Saved: 01/02/2024 14:24:49
+Last Saved: 07/09/2024 08:41:17
 Player: Elliot H.
-6 21 5 25205 17d 0 4 Gary.
-Location: {15,(23,7)}
-Heal Center: {15,(23,7)}
+6 21 6 25570 17d 0 4 Gary.
+Location: {20,(46,10)}
+Heal Center: {9,(50,5)}
 Pokemon: 
-Diglett Brug. 50 31 31 4 25 15 18 23 41 18 6737 GROUND NONE 17c6a8a0 70400 0 0
-	Scratch. 2 35
-	Sand Attack. 7 15
-	Growl. 3 40
-	Magnitude. 106 30
-Sandshrew Sandshrew. 27 51 51 4 36 44 8 8 25 20 8429 GROUND NONE 24456825 d0a1b04 0 0
+Abra Phych. 63 31 31 1 10 11 32 21 28 13 2308 PSYCHIC NONE 100cc91 300 0 0
+	Teleport. 129 20
+Sandshrew Sandshrew. 27 53 53 4 38 46 8 8 26 21 10236 GROUND NONE 24456825 e0a1f04 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
 	Cut. 206 30
 	Poison Sting. 6 35
-Nidoking Thorn. 34 88 88 4 74 50 46 38 53 28 23179 POISON GROUND 42cd13d1 c1b3503 0 0
+Nidoking Thorn. 34 90 90 4 76 52 46 38 55 29 26318 POISON GROUND 42cd13d1 d1c3603 0 0
 	Thrash. 67 20
 	Peck. 51 35
 	Double Kick. 61 30
 	Poison Sting. 6 35
-Charmeleon Charmeleon. 5 69 69 4 50 38 35 28 56 27 21349 FIRE NONE 772e8be0 161c2611 0 4
+Charmeleon Charmeleon. 5 69 69 4 50 38 35 28 56 27 21379 FIRE NONE 772e8be0 161c2711 0 4
 	Scratch. 2 35
 	Scary Face. 21 15
 	Ember. 12 25
 	Metal Claw. 17 35
-Omanyte Omanyte. 138 55 55 4 28 58 42 28 23 25 17132 ROCK WATER 6742dad 2070100 0 0
+Omanyte Omanyte. 138 55 52 4 28 58 42 28 23 25 17213 ROCK WATER 6742dad 2070300 0 0
 	Constrict. 133 35
 	Mud Shot. 166 15
 	Bite. 29 25
-	Water Gun. 28 25
-Pikachu Pikachu. 25 66 66 4 38 34 11 11 64 28 23302 ELECTRIC NONE 78e5409f 1c221c06 0 2
+	Water Gun. 28 24
+Pikachu Pikachu. 25 66 66 4 38 34 11 11 64 28 23540 ELECTRIC NONE 78e5409f 1c221d06 0 2
 	Thunder Shock. 55 30
 	Thunderbolt. 59 15
 	Quick Attack. 8 30
@@ -105,8 +102,11 @@ Tangela Trock. 114 39 39 4 18 35 30 18 22 12 1728 GRASS NONE 7be7e470 0 0 0
 	Constrict. 133 35
 	Sleep Powder. 15 15
 	Absorb. 100 20
-Abra Phych. 63 31 31 1 10 11 32 21 28 13 2197 PSYCHIC NONE 100cc91 0 0 0
-	Teleport. 129 20
+Diglett Brug. 50 32 32 4 27 16 18 23 43 19 7013 GROUND NONE 17c6a8a0 80400 0 0
+	Scratch. 2 35
+	Sand Attack. 7 15
+	Growl. 3 40
+	Magnitude. 106 30
 Aerodactyl Aerodactyl. 142 70 70 4 58 38 37 41 69 23 12167 ROCK FLYING 688a4301 0 0 0
 	Wing Attack. 26 35
 	Agility. 43 20
@@ -118,6 +118,7 @@ Potion. 1 4
 Burn Heal. 9 3
 Leaf Stone. 15 1
 Poke Ball. 3 1
+Repel. 17 1
 
 Key Items: 1
   207 
@@ -125,5 +126,5 @@ Key Items: 1
 HM/TMs: 1
   101 
 
-Trainers Battled: 41
-  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 202 29 30 31 32 34 35 253 33 38 41 46 
+Trainers Battled: 42
+  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 202 29 30 31 32 34 35 253 33 38 41 46 45 

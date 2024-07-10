@@ -132,7 +132,7 @@ void handle_motion() {
                 //Default movement for horizontal is 1 spaces
                 else if (*player_x > 1 && is_movable_space(0,-1) && is_movable_space(0,-2)) (*player_x)-=1;
                 //Only move one space if there is only one space to move
-                else if (*player_x > 1 && is_movable_space(0,-1)) (*player_x)--;
+                else if (*player_x > 1 && is_movable_space(0,-1)) { (*player_x)--;  }
                 break;
 
             case KEY_RIGHT:
@@ -143,7 +143,7 @@ void handle_motion() {
                 //Default movement for horizontal is 1 spaces
                 else if (*player_x < 100 && is_movable_space(0,1) && is_movable_space(0,2)) (*player_x)+=1;
                 //Only move one space if there is only one space to move
-                else if (*player_x < 100 && is_movable_space(0,1)) (*player_x)++;
+                else if (*player_x < 100 && is_movable_space(0,1)) { (*player_x)++;  }
                 break;
 
             case SELECT_CHAR:
