@@ -233,6 +233,9 @@ void draw_route13() {
 
     add_connection_to_big_map(MAP_RIGHT, 15, MAP_FU_CITY);
     add_connection_to_big_map(MAP_TOP, 50, MAP_R14);
+
+    add_trainer_by_id(MAP_X+51, MAP_Y+3, 94, PLAYER_MOVING_LEFT);
+    add_trainer_by_id(MAP_X+47, MAP_Y+9, 95, PLAYER_MOVING_RIGHT);
 }
 
 void draw_route14() {
@@ -251,4 +254,8 @@ void draw_route15() {
     add_connection_to_big_map(MAP_RIGHT, 5, MAP_CEL_CITY);
 
     add_snorlax(MAP_X+53, MAP_Y+5, 1);
+
+    add_trainer_by_id(MAP_X+42, MAP_Y+7, 91, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+47, MAP_Y+10, 92, PLAYER_MOVING_RIGHT);
+    add_trainer_by_id(MAP_X+42, MAP_Y+14, 93, PLAYER_MOVING_DOWN);
 }

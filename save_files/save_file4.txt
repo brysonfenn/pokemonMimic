@@ -1,38 +1,39 @@
-Last Saved: 01/02/2024 14:00:43
+Last Saved: 07/10/2024 17:43:32
 Player: Oliver H.
-6 11 2 3025 0 0 7 Blue.
-Location: {10,(36,13)}
-Heal Center: {9,(50,5)}
+6 11 2 3505 0 0 7 Blue.
+Location: {6,(35,3)}
+Heal Center: {7,(40,5)}
 Pokemon: 
-Sandshrew Ameirica. 27 42 12 3 28 33 8 9 18 15 3895 GROUND NONE 4ed844e9 190a0917 0 0
-	Tackle. 1 19
-	Defense Curl. 9 40
-	Sand Attack. 7 15
+Kakuna COOn. 14 23 17 3 8 14 8 9 10 7 360 BUG POISON 54c27cc8 4040003 0 0
+	Poison Sting. 6 32
+	String Shot. 5 40
+	Harden. 34 30
 Butterfree Butter. 12 39 39 4 18 22 26 23 27 13 2319 BUG FLYING 398f7d65 e14040f 0 5
 	Tackle. 1 35
 	String Shot. 5 40
 	Poison Powder. 14 35
 	Confusion. 36 25
-Wartortle Bam. 8 47 44 4 27 37 28 36 30 17 5712 WATER NONE 7fd958e0 d250a0a 0 0
-	Water Gun. 28 23
+Wartortle Bam. 8 49 47 4 29 39 28 36 32 18 5983 WATER NONE 7fd958e0 e2a0a0a 0 0
+	Water Gun. 28 24
 	Tail Whip. 4 30
 	Bubble. 13 30
 	Withdraw. 27 40
-Nidoran(m) Dude. 32 31 14 2 18 13 12 11 16 10 1036 POISON NONE 22589a3a 1000602 0 5
-	Leer. 52 30
-	Peck. 51 33
-Beedrill Beedrill. 15 41 41 2 27 17 14 23 25 12 1771 BUG POISON 2390c17f 1813010a 0 0
+Paras Cute. 46 25 25 2 18 15 13 17 10 9 729 BUG GRASS 61c294e7 0 0 0
+	Scratch. 2 35
+	Stun Spore. 37 30
+Beedrill Beedrill. 15 41 41 2 27 17 14 23 25 12 1956 BUG POISON 2390c17f 1a13010c 0 0
 	Harden. 34 30
 	Fury Attack. 41 20
-Pikachu Santa. 25 33 33 4 20 19 12 11 32 13 2209 ELECTRIC NONE 2e4b714b 24060107 0 0
-	Thunder Shock. 55 30
-	Quick Attack. 8 30
+Pikachu Santa. 25 33 19 4 20 19 12 11 32 13 2664 ELECTRIC NONE 2e4b714b 28070207 0 0
+	Thunder Shock. 55 28
+	Quick Attack. 8 28
 	Tail Whip. 4 30
-	Thunder Wave. 56 20
+	Thunder Wave. 56 19
 PC: 
-Weedle Weedle. 13 15 15 2 7 7 6 6 8 3 27 BUG POISON 54c27cc8 0 0 0
-	Poison Sting. 6 35
-	String Shot. 5 40
+Sandshrew Ameirica. 27 44 44 3 30 35 8 9 19 16 4169 GROUND NONE 4ed844e9 1c0b0917 0 0
+	Tackle. 1 35
+	Defense Curl. 9 40
+	Sand Attack. 7 15
 Rattata HoHoHo. 19 16 16 2 10 8 6 7 10 4 85 NORMAL NONE 360f62a 1 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
@@ -48,9 +49,9 @@ Nidoran(f) Dudette. 29 21 21 2 10 10 9 8 9 5 154 POISON NONE 548b9ef4 2010001 0 
 Jigglypuff Sleep. 39 34 34 2 12 8 13 9 9 7 343 NORMAL NONE 70cdb615 0 0 0
 	Sing. 70 15
 	Defense Curl. 9 40
-Paras Cute. 46 25 25 2 18 15 13 17 10 9 729 BUG GRASS 61c294e7 0 0 0
-	Scratch. 2 35
-	Stun Spore. 37 30
+Nidoran(m) Dude. 32 31 31 2 18 13 12 11 16 10 1036 POISON NONE 22589a3a 1000602 0 5
+	Leer. 52 30
+	Peck. 51 35
 Oddish Elf. 43 23 23 2 12 13 12 12 10 7 413 GRASS POISON 190014e9 4050001 0 0
 	Absorb. 100 20
 	Sweet Scent. 19 20
@@ -73,5 +74,5 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 15
-  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 
+Trainers Battled: 16
+  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 
