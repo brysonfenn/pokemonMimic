@@ -24,13 +24,13 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     if (perp->visible_condition == ASLEEP) {
         if (enemy) printw(ENEMY_TEXT);
         if (perp->sleep_count > 0) {
-            printw("%s is fast asleep...", perp->name);
+            printw("%s is fast asleep...", perp->nickname);
             refresh(); sleep(2);
             perp->sleep_count--;
             return ATTACK_SUCCESS;
         }
         else {
-            printw("%s woke up!", perp->name);
+            printw("%s woke up!", perp->nickname);
             perp->visible_condition = NO_CONDITION;
             refresh(); sleep(2);
             clear(); printBattle();
@@ -41,7 +41,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     else if (perp->visible_condition == PARALYZED) {
         if ((rand() % 100) < 25) {
             if (enemy) printw(ENEMY_TEXT);
-            printw("%s is paralyzed, it can't move!", perp->name);
+            printw("%s is paralyzed, it can't move!", perp->nickname);
             refresh(); sleep(2);
             return ATTACK_SUCCESS;
         }
@@ -50,7 +50,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     //Handle Flinch
     else if (has_hidden_condition(perp, FLINCHED)) {
         if (enemy) printw(ENEMY_TEXT);
-        printw("%s flinched!", perp->name);
+        printw("%s flinched!", perp->nickname);
         refresh(); sleep(1); return ATTACK_SUCCESS;
     }
 
@@ -59,18 +59,18 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
         text_box_cursors(TEXT_BOX_BEGINNING);
         if (decrement_hidden_condition_val(perp, CONFUSED) <= 0) {
             if (enemy) printw(ENEMY_TEXT);
-            printw("%s snapped out of confusion!", perp->name); refresh(); sleep(2);
+            printw("%s snapped out of confusion!", perp->nickname); refresh(); sleep(2);
             remove_hidden_condition(perp, CONFUSED);
         }
         else {
             if (enemy) printw(ENEMY_TEXT);
             audio_play_file("confused.mp3");
-            printw("%s is confused...", perp->name); refresh(); sleep(2);
+            printw("%s is confused...", perp->nickname); refresh(); sleep(2);
             //Hurt self in 50% of cases
             if (rand() % 2 == 0) {
                 text_box_cursors(TEXT_BOX_NEXT_LINE);
                 if (enemy) printw(ENEMY_TEXT);
-                printw("%s hurt itself in its confusion!", perp->name); refresh(); sleep(2);
+                printw("%s hurt itself in its confusion!", perp->nickname); refresh(); sleep(2);
 
                 //Player attacks itself with base power 40
                 int damage = get_basic_damage(perp->level, 40, perp->baseAttack, perp->baseDefense, perp->atk_stage, perp->def_stage);
@@ -106,7 +106,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     //Use attack
     text_box_cursors(TEXT_BOX_BEGINNING);
     if (enemy) printw(ENEMY_TEXT);
-    printw("%s used %s!", perp->name, chosenAttack.name);
+    printw("%s used %s!", perp->nickname, chosenAttack.name);
     refresh(); sleep(1);
 
     //Check if missed
@@ -114,7 +114,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
         text_box_cursors(TEXT_BOX_NEXT_LINE);
         if (chosenAttack.power) {
             if (enemy) printw(ENEMY_TEXT);
-            printw("%s's attack missed.", perp->name);
+            printw("%s's attack missed.", perp->nickname);
         }
         else {
             printw("But it failed!");
@@ -126,7 +126,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
     if (has_hidden_condition(victim, PROTECTED)) {
         text_box_cursors(TEXT_BOX_BEGINNING); sleep(1);
         if (enemy) printw(ENEMY_TEXT);
-        printw("%s protected itself!", victim->name);
+        printw("%s protected itself!", victim->nickname);
         refresh(); sleep(2);
         return ATTACK_SUCCESS;
     }
@@ -261,7 +261,7 @@ int perform_struggle(struct Pokemon *perp, struct Pokemon *victim, bool enemy) {
 
     text_box_cursors(TEXT_BOX_BEGINNING);
     if (enemy) printw(ENEMY_TEXT);
-    printw("%s used Struggle!", perp->name);
+    printw("%s used Struggle!", perp->nickname);
     refresh(); sleep(1);
 
     blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
