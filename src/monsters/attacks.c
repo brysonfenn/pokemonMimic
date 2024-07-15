@@ -75,7 +75,9 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
                 //Player attacks itself with base power 40
                 int damage = get_basic_damage(perp->level, 40, perp->baseAttack, perp->baseDefense, perp->atk_stage, perp->def_stage);
                 blinkPokemon(!enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, perp);
+                
                 perp->currentHP -= damage;
+                if (perp->currentHP < 0) perp->currentHP = 0;
                 return ATTACK_SUCCESS;
             }
         }
