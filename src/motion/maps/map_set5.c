@@ -160,7 +160,7 @@ void draw_route10() {
     add_connection_to_big_map(MAP_LEFT, 14, MAP_R6);
     add_connection_to_big_map(MAP_BOTTOM, 36, MAP_R11);
 
-    // add_snorlax(MAP_X+35, MAP_Y+13, 0);
+    add_snorlax(MAP_X+35, MAP_Y+13, 0);
 }
 
 

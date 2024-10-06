@@ -157,6 +157,9 @@ void give_fossil_pokemon(int fossil_index, int fossil_type) {
     level /= player.numInParty;
     Pokemon fossil_pok = *create_new_pokemon(id, level, 0, 0);
 
+    sprintf(print_str, "%s received %s", player.name, fossil_pok.name); 
+    print_to_list(print_str); sleep(2);
+
     bool added = give_pokemon_to_player(&fossil_pok);
     if (!added) {
         sprintf(print_str, "%s could not be added. Your PC box is full!", fossil_pok.name);
