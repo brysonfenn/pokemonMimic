@@ -83,7 +83,7 @@ void print_pokemon_summary(Pokemon *pok) {
     if (!(pok->currentHP)) sprintf(print_str, "%s  (Fainted)", print_str);
     sprintf(print_str, "%s\n \nATTACK: %d\nDEFENSE: %d\n", print_str, pok->baseAttack, pok->baseDefense);
     sprintf(print_str, "%sSP ATTACK: %d\nSP DEFENSE: %d\n", print_str, pok->baseSpAttack, pok->baseSpDefense);
-    sprintf(print_str, "%sSPEED: %d  ev: %x\n", print_str, pok->baseSpeed, pok->ev);
+    sprintf(print_str, "%sSPEED: %d\n", print_str, pok->baseSpeed);
     sprintf(print_str, "%s \nAttacks: \n", print_str);
 
     print_to_list(print_str);
@@ -109,11 +109,13 @@ int handle_pokemon_menu(int input_num1) {
     else if (input_num2 == 0) {
         begin_list();
         if (player.numInParty <= 1) { print_to_list("You only have 1 Pokémon!\n"); sleep(2); return RETURN_TO_SUMMARY; }
-        sprintf(print_str, "Which pokemon would you like to switch with %s?\n", player.party[input_num1].name);
-        print_to_list(print_str);
+        
         printParty();
         print_to_list("  Cancel");
-        input_num2 = get_selection(2, player.numInParty, input_num1);
+        sprintf(print_str, " \nWhich pokemon would you like to switch with %s?\n", player.party[input_num1].name);
+        print_to_list(print_str);
+
+        input_num2 = get_selection(1, player.numInParty, input_num1);
 
         if (input_num2 == player.numInParty || input_num2 == PRESSED_B) { return RETURN_TO_SUMMARY; }
         if (input_num2 == input_num1) { return RETURN_TO_SUMMARY; }
@@ -123,10 +125,12 @@ int handle_pokemon_menu(int input_num1) {
         player.party[input_num2] = tempPok;
 
         begin_list();
-        print_to_list(" \n");
+        // print_to_list(" \n");
         printParty(); sleep(1);
         sprintf(print_str, " \n \n%s switched %s with %s!", player.name, player.party[input_num2].name, player.party[input_num1].name);
         print_to_list(print_str); sleep(2);
+        
+        return RETURN_TO_PARTY;
     }
 
     //Release
@@ -148,6 +152,7 @@ int handle_pokemon_menu(int input_num1) {
             }
             player.party[player.numInParty] = emptyPok;
         }
+
     }
 
     //View attack stats

@@ -69,8 +69,7 @@ int perform_attack(struct Pokemon *perp, int move_num, struct Pokemon *victim, b
             //Hurt self in 50% of cases
             if (rand() % 2 == 0) {
                 text_box_cursors(TEXT_BOX_NEXT_LINE);
-                if (enemy) printw(ENEMY_TEXT);
-                printw("%s hurt itself in its confusion!", perp->nickname); refresh(); sleep(2);
+                printw("it hurt itself in its confusion!"); refresh(); sleep(2);
 
                 //Player attacks itself with base power 40
                 int damage = get_basic_damage(perp->level, 40, perp->baseAttack, perp->baseDefense, perp->atk_stage, perp->def_stage);
