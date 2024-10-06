@@ -36,10 +36,10 @@ int main(void) {
         print_to_list("  New Game\n  Load Game\n");
 
         //                                       // To Test:
-        print_to_list("  Test");                 // Uncomment
-        input_num = get_selection(0, 2, 0);      // Uncomment
+        // print_to_list("  Test");                 // Uncomment
+        // input_num = get_selection(0, 2, 0);      // Uncomment
 
-        // input_num = get_selection(0, 1, 0);   // Comment
+        input_num = get_selection(0, 1, 0);   // Comment
 
         //Handle main select returning -1
         if (input_num == PRESSED_B) {control_c_handler(); return 0;}

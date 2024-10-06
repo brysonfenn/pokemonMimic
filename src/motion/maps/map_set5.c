@@ -160,7 +160,7 @@ void draw_route10() {
     add_connection_to_big_map(MAP_LEFT, 14, MAP_R6);
     add_connection_to_big_map(MAP_BOTTOM, 36, MAP_R11);
 
-    add_snorlax(MAP_X+35, MAP_Y+13, 0);
+    // add_snorlax(MAP_X+35, MAP_Y+13, 0);
 }
 
 
@@ -172,6 +172,10 @@ void draw_route11() {
     add_trainer_by_id(MAP_X+40, MAP_Y+7, 81, PLAYER_MOVING_LEFT);
     add_trainer_by_id(MAP_X+18, MAP_Y+13, 82, PLAYER_MOVING_DOWN);
 
+    //Add Blocking NPC if player doesn't have 3rd and 4th badge
+    if (!(player_has_battled_trainer(203) && player_has_battled_trainer(204))) {
+        add_npc_by_id(MAP_X+41, MAP_Y+5, 20, PLAYER_MOVING_LEFT);
+    }
 
     add_connection_to_big_map(MAP_TOP, 36, MAP_R10);
     add_connection_to_big_map(MAP_LEFT, 14, MAP_R12);
