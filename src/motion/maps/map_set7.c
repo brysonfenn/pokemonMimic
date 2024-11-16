@@ -15,10 +15,10 @@
 
 
 void draw_safari1() {
-    draw_big_map("Safari Zones");
+    draw_big_map("Safari Zone");
     audio_loop_file("evolution_theme.mp3");
 
-    add_connection_to_big_map(MAP_BOTTOM, 25, MAP_FU_CITY);
+    add_portal_big_map_to_building(MAP_X+18, MAP_Y+1, MAP_FU_CITY, MAP_BOTTOM, 25);
 }
 
 void draw_safari2() {

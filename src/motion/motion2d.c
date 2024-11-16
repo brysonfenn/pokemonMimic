@@ -18,12 +18,14 @@
 #include "../battles/trainer.h"
 #include "../battles/wild_pokemon.h"
 #include "../battles/battle.h"
+#include "../battles/safari_zone.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
 #include "../items/items.h"
 #include "../items/key_items.h"
 #include "../audio/audio_player.h"
 #include "../monsters/pokemon.h"
+
 
 
 //Function pointers
@@ -192,6 +194,31 @@ void handle_motion() {
         if (action == -1) {
             usleep(100000);
             change_map(door.next_map, door.next_x, door.next_y);
+            continue;
+        }
+        else if (action == -2) {
+            // TODO: Handle Safari Zone Payment
+            sprintf(print_str, "Would you like to enter the Safari Zone for $500?\n  Yes\t\tYour current Money: $%d\n  No", player.money);
+            print_to_message_box(print_str);
+
+            //If Answer = No, move player back
+            if (get_selection(MESSAGE_BOX_Y, 1, 0) == 1) {
+                // Set player color, move, and unset
+                attrset(COLOR_PAIR(PLAYER_COLOR));
+                mvaddch(*player_y, *player_x, ' '); 
+                (*player_y)++;
+                mvaddch(*player_y, *player_x, *player_char_ptr);
+                attrset(COLOR_PAIR(DEFAULT_COLOR));
+                begin_message_box();
+                continue;
+            }
+
+            //Else Subtract 500 and move player in
+            player.money -= 500;
+            setup_safari_zone();
+
+            usleep(100000);
+            change_map(MAP_SAFARI1, MAP_X+25, MAP_Y+MAP_HEIGHT-2);
             continue;
         }
         else if (action != 0) {

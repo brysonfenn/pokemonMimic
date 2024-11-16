@@ -129,7 +129,8 @@ void draw_fuchsia_city() {
     draw_building_default(MAP_X+22, MAP_Y+11, "MART", MART_ACTION);
 
     add_connection_to_big_map(MAP_LEFT, 15, MAP_R13);
-    add_connection_to_big_map(MAP_TOP, 25, MAP_SAFARI1);
+
+    draw_building_default(MAP_X+18, MAP_Y+1, "SFRI", -2);
 }
 
 

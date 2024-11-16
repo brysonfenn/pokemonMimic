@@ -16,20 +16,65 @@
 #include "../motion/maps.h"
 #include "../audio/audio_player.h"
 
+static enum decision {NONE, BALL, BAIT, APPROACH, RUN } current_decision = NONE;
+
 int safari_ball_count = 0;
 
 void print_safari_battle();
 
-void set_up_safari_zone() {
+void setup_safari_zone() {
     safari_ball_count = 30;
 }
 
 //Begin a Battle with a pokemon in the safari zone
 int safari_zone_encounter(struct Pokemon * enemyPoke) {
+    int input_num, last_selection = 0;
+    
     player.enemy_pokemon = enemyPoke;
     player.is_battle = true;
 
-    print_safari_battle(); sleep(5);
+    print_safari_battle();
+
+    ///////// GET DECISION /////////
+    while (current_decision != RUN) {
+        clear();
+        printBattle();
+
+        //Get Decision
+        mvprintw(SELECT_Y,BATTLE_SELECT_1_X,"  Ball"); mvprintw(SELECT_Y,BATTLE_SELECT_2_X,"  Bait");
+        mvprintw(SELECT_Y+1,BATTLE_SELECT_1_X,"  Approach"); mvprintw(SELECT_Y+1,BATTLE_SELECT_2_X,"  Run");
+        text_box_cursors(TEXT_BOX_BEGINNING);
+        printw("What will %s do?", player.name);
+
+        input_num = get_battle_selection(SELECT_Y, last_selection);
+        last_selection = input_num;
+        current_decision = input_num + 1; // In this case, the decision will be one more than selection
+
+        switch (current_decision) {
+            
+            case BALL:
+                text_box_cursors(TEXT_BOX_BEGINNING);
+                printw("%s threw a Safari Ball!", player.name); refresh(); sleep(2);
+                break;
+                
+            case BAIT:
+                //Decrease Flee Chance
+                
+                break;
+                
+            case APPROACH:
+                //Increase Flee Chance, Increase Catch Chance
+
+                break;
+                
+            case RUN:
+                break;
+            default:
+                current_decision = NONE;
+                break;
+        }
+    }
+    ///////// END GET DECISION /////////
 
     return BATTLE_WIN;
 }
