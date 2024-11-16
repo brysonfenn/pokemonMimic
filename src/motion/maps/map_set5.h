@@ -23,14 +23,5 @@ void draw_route11();
 
 void draw_route12();
 
-void draw_fuchsia_city();
-
-void draw_gym5();
-
-void draw_route13();
-
-void draw_route14();
-
-void draw_route15();
 
 #endif //MAP_SET5_H

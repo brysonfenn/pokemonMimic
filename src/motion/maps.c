@@ -9,6 +9,7 @@
 #include "maps/map_set4.h"
 #include "maps/map_set5.h"
 #include "maps/map_set6.h"
+#include "maps/map_set7.h"
 
 #include "map_drawing.h"
 #include "motion2d.h"
@@ -28,7 +29,8 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_rock_tunnel_n, &draw_rock_tunnel_s, &draw_lavender_town, &draw_cel_city, &draw_route10,
                                     &draw_rocket1, &draw_rocket2, &draw_rocket3, &draw_game_corner, &draw_gym4, &draw_tower1,
                                     &draw_tower2, &draw_tower3, &draw_route11, &draw_route12, &draw_fuchsia_city, &draw_gym5,
-                                    &draw_route13, &draw_route14, &draw_route15 };
+                                    &draw_route13, &draw_route14, &draw_route15, &draw_safari1, &draw_safari2, &draw_safari3,
+                                    &draw_safari4 };
 
 char map_file_name[32];
 static int * wild_pok_list;
@@ -56,7 +58,7 @@ static Pokemon_id wild_pok_lists[32][12] = {
     { 4,  23, 29, POKEMON_KRABBY, POKEMON_SHELLDER, POKEMON_RHYHORN, POKEMON_GROWLITHE },        //#18 Route 12
     { 4,  25, 30, POKEMON_VOLTORB, POKEMON_VENONAT, POKEMON_EXEGGCUTE, POKEMON_MAGNEMITE },         //#19 Route 13
     { 4,  28, 33, POKEMON_PSYDUCK, POKEMON_CUBONE, POKEMON_PARASECT, POKEMON_PERSIAN },         //#20 Route 14
-    { 4,  25, 30, POKEMON_MAGMAR, POKEMON_SEEL, POKEMON_GRIMER, POKEMON_GLOOM }         //#21 Route 13
+    { 4,  25, 30, POKEMON_MAGMAR, POKEMON_SEEL, POKEMON_GRIMER, POKEMON_GLOOM }         //#21 Route 15
 };
 
 //     POKEMON_BEEDRILL, POKEMON_PIDGEOT, POKEMON_RATICATE, POKEMON_FEAROW, 
@@ -230,6 +232,10 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             wild_pok_list = &(wild_pok_lists[20]);
             break;
         case MAP_R15:
+            sprintf(map_name, "route15");
+            wild_pok_list = &(wild_pok_lists[21]);
+            break;
+        case MAP_SAFARI1:
             sprintf(map_name, "route15");
             wild_pok_list = &(wild_pok_lists[21]);
             break;

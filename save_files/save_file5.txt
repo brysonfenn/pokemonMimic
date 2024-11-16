@@ -1,11 +1,11 @@
-Last Saved: 07/14/2024 19:31:52
+Last Saved: 11/16/2024 08:29:19
 Player: Player1.
-6 6 6 45240 1d9c 0 1 Blue.
-Location: {30,(42,5)}
+6 6 6 49070 1d9c 0 1 Blue.
+Location: {42,(5,16)}
 Heal Center: {30,(42,5)}
 Pokemon: 
-Ivysaur Ivysaur. 2 67 67 4 137 137 132 131 136 100 18737 GRASS POISON 448493fb d0c1103 0 4
-	Razor Leaf. 16 25
+Ivysaur Ivysaur. 2 67 67 4 137 137 132 131 136 100 18737 GRASS POISON 448493fb f0d1303 0 4
+	Razor Leaf. 16 20
 	Sleep Powder. 15 15
 	Leech seed. 11 10
 	Cut. 206 30
@@ -75,5 +75,5 @@ Key Items: 5
 HM/TMs: 1
   101 
 
-Trainers Battled: 43
-  1 2 3 5 7 13 6 12 201 14 20 252 27 29 30 31 32 22 23 24 25 26 202 15 16 53 63 55 65 66 67 72 74 75 78 76 77 79 82 84 93 92 91 
+Trainers Battled: 45
+  1 2 3 5 7 13 6 12 201 14 20 252 27 29 30 31 32 22 23 24 25 26 202 15 16 53 63 55 65 66 67 72 74 75 78 76 77 79 82 84 93 92 91 94 95 

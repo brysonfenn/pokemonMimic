@@ -13,4 +13,14 @@ void draw_game_corner();
 
 void draw_gym4();
 
+void draw_fuchsia_city();
+
+void draw_gym5();
+
+void draw_route13();
+
+void draw_route14();
+
+void draw_route15();
+
 #endif //MAP_SET4_H

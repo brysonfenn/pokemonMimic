@@ -3,10 +3,13 @@
 #include <ncurses.h>
 
 #include "battle.h"
+#include "safari_zone.h"
 #include "../player.h"
 #include "../monsters/pokemon.h"
 #include "../print/print_utils.h"
 #include "../audio/audio_player.h"
+#include "../motion/location.h"
+#include "../motion/maps.h"
 
 //Battle a random wild pokemon
 int battle_wild_pokemon(struct Pokemon * pok) {
@@ -28,7 +31,15 @@ int battle_wild_pokemon(struct Pokemon * pok) {
         print_to_list(print_str);
         sleep(2);
         player.is_uncaught_pokemon = !player_has_pokemon(example_pokemon.id_num);
-        battle_result = handle_battle(&example_pokemon);
+
+        //Encounter in the Safari Zone or Regular Battle everywhere else
+        if (player.loc->map >= MAP_SAFARI1 && player.loc->map <= MAP_SAFARI4) {
+            battle_result = safari_zone_encounter(&example_pokemon);
+        }
+        else {
+            battle_result = handle_battle(&example_pokemon);
+        }
+
         player.is_uncaught_pokemon = false;
     }
     else {
