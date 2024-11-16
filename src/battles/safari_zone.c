@@ -32,6 +32,7 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
     
     player.enemy_pokemon = enemyPoke;
     player.is_battle = true;
+    current_decision = NONE;
 
     print_safari_battle();
 

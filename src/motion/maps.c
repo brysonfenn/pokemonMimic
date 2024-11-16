@@ -236,7 +236,7 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             wild_pok_list = &(wild_pok_lists[21]);
             break;
         case MAP_SAFARI1:
-            sprintf(map_name, "route15");
+            sprintf(map_name, "safari1");
             wild_pok_list = &(wild_pok_lists[21]);
             break;
         default:
