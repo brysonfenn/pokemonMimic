@@ -40,10 +40,12 @@ static NPC n17 = { 17, "Officer", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n18 = { 18, "Mr. Fuji", K_ITEM_FLUTE, 11, NPC_ACTION_RESET_MAP };
 static NPC n19 = { 19, "Ella", GIVE_POK_START_INDEX + POKEMON_EEVEE, 12, NPC_ACTION_NONE };
 static NPC n20 = { 20, "Pokemon League Rep", NO_ITEM, 0, NPC_ACTION_NONE };
+static NPC n21 = { 21, "Safari Ranger", NO_ITEM, 0, NPC_ACTION_NONE};
 
 
 static NPC * npcs[NUM_NPCS] = 
-    { &n00, &n01, &n02, &n03, &n04, &n05, &n06, &n07, &n08, &n09, &n10, &n11, &n12, &n13, &n14, &n15, &n16, &n17, &n18, &n19, &n20 };
+    { &n00, &n01, &n02, &n03, &n04, &n05, &n06, &n07, &n08, &n09, &n10, &n11, &n12, &n13, &n14, &n15, &n16, &n17, &n18, &n19, &n20,
+            &n21 };
 
 
 struct NPC * get_npc(int npc_id) {

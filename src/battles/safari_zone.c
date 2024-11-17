@@ -31,7 +31,7 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
     int distance = 50;
     int flee_chance = 30; //Percentage
     int hit_chance = 50; //
-    bool eating = false;
+    char eating = 0;
     
     player.enemy_pokemon = enemyPoke;
     player.is_battle = true;
@@ -103,7 +103,7 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
                 if (player.bait_count > 0) {
                     printw("%s threw some bait!", player.name); refresh(); sleep(2);
                     player.bait_count--;
-                    eating = true;
+                    eating = 2;
                     if (flee_chance > 10) {
                         flee_chance -= 10;
                         bait_bonus += 15;
@@ -132,6 +132,7 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
             case RUN:
                 text_box_cursors(TEXT_BOX_BEGINNING);
                 printw("Got Away Safely!"); refresh(); await_user();
+                return BATTLE_WIN;
                 break;
             default:
                 current_decision = NONE;
@@ -143,10 +144,15 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
             printw("%s fled!", enemyPoke->nickname); refresh(); await_user();
             return BATTLE_WIN;
         }
-        else if (eating) {
+        else if (eating == 2) {
             text_box_cursors(TEXT_BOX_BEGINNING);
             printw("%s took the Bait!", enemyPoke->nickname); refresh(); sleep(2);
-            eating = false;
+            eating--;
+        }
+        else if (eating == 1) {
+            text_box_cursors(TEXT_BOX_BEGINNING);
+            printw("%s is still eating the Bait.", enemyPoke->nickname); refresh(); sleep(2);
+            eating--;
         }
         else {
             text_box_cursors(TEXT_BOX_BEGINNING);
