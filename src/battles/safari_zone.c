@@ -18,22 +18,20 @@
 
 static enum decision {NONE, BALL, BAIT, APPROACH, RUN } current_decision = NONE;
 
-int safari_ball_count = 0;
-int bait_count = 0;
-
 void print_safari_battle(int distance);
 
 void setup_safari_zone() {
-    safari_ball_count = 30;
-    bait_count = 30;
+    player.safari_balls = 30;
+    player.bait_count = 30;
 }
 
 //Begin a Battle with a pokemon in the safari zone
 int safari_zone_encounter(struct Pokemon * enemyPoke) {
-    int input_num, last_selection = 0;
+    int input_num, last_selection = 0, catch_rate = 0, bait_bonus = 0;
     int distance = 50;
-    int flee_chance = 50; //Percentage
+    int flee_chance = 30; //Percentage
     int hit_chance = 50; //
+    bool eating = false;
     
     player.enemy_pokemon = enemyPoke;
     player.is_battle = true;
@@ -59,22 +57,42 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
             case BALL:
                 text_box_cursors(TEXT_BOX_BEGINNING);
 
-                if (safari_ball_count > 0) {
+                if (player.safari_balls > 0) {
                     printw("%s threw a Safari Ball!", player.name); refresh(); sleep(2);
-                    safari_ball_count--;
+                    player.safari_balls--;
 
                     //Ball Hits - Attempt Catch
                     if (rand() % 100 < hit_chance) {
                         //TODO: HANDLE CATCH - Then add pokemone and return
+                        text_box_cursors(TEXT_BOX_NEXT_LINE);
+                        printw("It hit!"); refresh(); sleep(2);
+                        
+                        //Catch rate calculations
+                        
+                        catch_rate = pokemon_get_catch_rate(enemyPoke->id_num) / 3 + bait_bonus;
+                        if (catch_rate < 1) catch_rate = 1;
+
+                        //Check if Pokemon was caught
+                        text_box_cursors(TEXT_BOX_NEXT_LINE);
+                        if (rand() % 256 < catch_rate) {
+                            printw("%s was caught!", enemyPoke->name); refresh(); sleep(2);
+                            give_pokemon_to_player(enemyPoke); await_user();
+                            return BATTLE_WIN;
+                        }
+                        else {
+                            printw("But %s escaped!", enemyPoke->name); refresh(); sleep(2);
+                        }
+
                     }
                     //Ball Misses
                     else {
                         text_box_cursors(TEXT_BOX_BEGINNING);
-                        printw("It Missed!"); refresh(); sleep(2);
+                        printw("But it Missed!"); refresh(); sleep(2);
                     }
                 }
                 else {
                     printw("Out of Safari Balls"); refresh(); sleep(2);
+                    continue;
                 }
                 break;
                 
@@ -82,24 +100,29 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
                 //Decrease Flee Chance
                 text_box_cursors(TEXT_BOX_BEGINNING);
                 
-                if (bait_count > 0) {
+                if (player.bait_count > 0) {
                     printw("%s threw some bait!", player.name); refresh(); sleep(2);
-                    bait_count--;
+                    player.bait_count--;
+                    eating = true;
+                    if (flee_chance > 10) {
+                        flee_chance -= 10;
+                        bait_bonus += 15;
+                    }
                 }
                 else {
                     printw("Out of Bait"); refresh(); sleep(2);
+                    continue;
                 }
 
-                if (flee_chance > 10) {
-                    flee_chance -= 10;
-                }
+                
                 break;
                 
             case APPROACH:
                 //Increase Flee Chance, Increase Catch Chance
                 text_box_cursors(TEXT_BOX_BEGINNING);
-                printw("%s approached the %s!", player.name, enemyPoke->nickname); refresh(); sleep(2);
+                printw("%s approached %s!", player.name, enemyPoke->nickname); refresh(); sleep(2);
                 distance -= 10;
+                flee_chance += 10;
                 hit_chance += 10;
                 if (distance <= 0) {
                     flee_chance = 100;
@@ -107,6 +130,8 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
                 break;
                 
             case RUN:
+                text_box_cursors(TEXT_BOX_BEGINNING);
+                printw("Got Away Safely!"); refresh(); await_user();
                 break;
             default:
                 current_decision = NONE;
@@ -115,8 +140,17 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
 
         if ((rand() % 100) < flee_chance) {
             text_box_cursors(TEXT_BOX_BEGINNING);
-            printw("The %s fled!", enemyPoke->nickname); refresh(); await_user();
+            printw("%s fled!", enemyPoke->nickname); refresh(); await_user();
             return BATTLE_WIN;
+        }
+        else if (eating) {
+            text_box_cursors(TEXT_BOX_BEGINNING);
+            printw("%s took the Bait!", enemyPoke->nickname); refresh(); sleep(2);
+            eating = false;
+        }
+        else {
+            text_box_cursors(TEXT_BOX_BEGINNING);
+            printw("%s is watching carefully...", enemyPoke->nickname); refresh(); sleep(2);
         }
     }
     ///////// END GET DECISION /////////
@@ -135,7 +169,7 @@ void print_safari_battle(int distance) {
     draw_box(BATTLE_BOX_X, BATTLE_BOX_Y, BATTLE_BOX_WIDTH, BATTLE_BOX_HEIGHT);
 
     mvprintw(BATTLE_BOX_PLAYER_Y, BATTLE_BOX_PLAYER_X, "%s", player.name);
-    mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "Safari Balls: %d -- Bait: %d", safari_ball_count, bait_count);
+    mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "Safari Balls: %d -- Bait: %d", player.safari_balls, player.bait_count);
 
     //Display Indication if Pokemon is uncaught
     if (player.is_uncaught_pokemon) {

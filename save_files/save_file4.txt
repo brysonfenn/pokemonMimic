@@ -1,6 +1,6 @@
 Last Saved: 07/10/2024 17:43:32
 Player: Oliver H.
-6 11 2 3505 0 0 7 Blue.
+6 11 2 3505 0 0 0 0 7 Blue.
 Location: {6,(35,3)}
 Heal Center: {7,(40,5)}
 Pokemon: 

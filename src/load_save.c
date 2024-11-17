@@ -64,8 +64,9 @@ int save_game(int file_num) {
     fprintf(fp, "Last Saved: %s\n", time_string);
 
 	// Write the message to the file
-	fprintf(fp, "Player: %s.\n%d %d %d %d %x %d %d %s.\n", player.name, player.numInParty, player.numInPCStorage, player.numInBag, 
-												player.money, player.record_bits, player.repel_steps, player.original_starter, player.rival_name);
+	fprintf(fp, "Player: %s.\n%d %d %d %d %x %d %d %d %d %s.\n", player.name, player.numInParty, player.numInPCStorage, player.numInBag, 
+												player.money, player.record_bits, player.repel_steps, player.safari_balls, player.bait_count,
+												player.original_starter, player.rival_name);
 	fprintf(fp, "Location: {%d,(%d,%d)}\n", player.loc->map, player.loc->x, player.loc->y);
 	fprintf(fp, "Heal Center: {%d,(%d,%d)}\n", player.blackout_center->map, player.blackout_center->x, player.blackout_center->y);
 	fprintf(fp, "Pokemon: \n");
@@ -172,8 +173,9 @@ int load_game(int file_num) {
 
     fgets(line, LINE_SIZE, fp);	// Basic numbers
 	int num, num2;
-    sscanf(line, "%d %d %d %d %x %d %d %[^.]", &(player.numInParty), &num, &(player.numInBag), &(player.money), 
-										&(player.record_bits), &(player.repel_steps), &num2, player.rival_name);
+    sscanf(line, "%d %d %d %d %x %d %d %d %d %[^.]", &(player.numInParty), &num, &(player.numInBag), &(player.money), 
+										&(player.record_bits), &(player.repel_steps), &(player.safari_balls), &(player.bait_count),
+										&num2, player.rival_name);
 	player.numInPCStorage = num;
 	player.original_starter = num2;
 

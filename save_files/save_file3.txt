@@ -1,6 +1,6 @@
 Last Saved: 07/11/2024 13:31:58
 Player: Elliot H.
-6 22 7 41760 77d 0 4 Gary.
+6 22 7 41760 77d 0 0 0 4 Gary.
 Location: {29,(42,15)}
 Heal Center: {30,(42,5)}
 Pokemon: 

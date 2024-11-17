@@ -33,10 +33,12 @@ struct playerCharacter {
 
   long long record_bits;
 
-  uint8_t trainers_battled_id[256];
-  uint16_t num_trainers_battled;
-  int32_t money;
-  int32_t repel_steps;
+  char trainers_battled_id[256];
+  int num_trainers_battled;
+  int money;
+  int repel_steps;
+  int safari_balls;
+  int bait_count;
 
   bool is_trainer_battle;
   bool is_battle;

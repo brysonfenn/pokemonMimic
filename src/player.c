@@ -35,6 +35,8 @@ void player_init(int save_file) {
     player.num_trainers_battled = 0;
     player.player_char = PLAYER_MOVING_DOWN;
     player.original_starter = POKEMON_BULBASAUR;
+    player.safari_balls = 0;
+    player.bait_count = 0;
     sprintf(player.rival_name, "Not Found");
     
     if (!save_file)

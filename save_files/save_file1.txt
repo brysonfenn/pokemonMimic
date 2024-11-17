@@ -1,6 +1,6 @@
 Last Saved: 10/06/2024 15:51:25
 Player: B Test Man.
-5 0 12 14075 12d 0 4 G Test Man.
+5 0 12 14075 12d 0 0 0 4 G Test Man.
 Location: {15,(22,7)}
 Heal Center: {15,(22,7)}
 Pokemon: 

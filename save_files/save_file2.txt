@@ -1,6 +1,6 @@
 Last Saved: 07/14/2024 20:02:48
 Player: Beige.
-3 0 2 1345 0 0 1 Khaki.
+3 0 2 1345 0 0 0 0 1 Khaki.
 Location: {1,(33,10)}
 Heal Center: {1,(33,10)}
 Pokemon: 
