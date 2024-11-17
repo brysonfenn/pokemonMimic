@@ -55,11 +55,14 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
         switch (current_decision) {
             
             case BALL:
-                text_box_cursors(TEXT_BOX_BEGINNING);
+                
 
                 if (player.safari_balls > 0) {
-                    printw("%s threw a Safari Ball!", player.name); refresh(); sleep(2);
                     player.safari_balls--;
+                    print_safari_battle(distance);
+                    text_box_cursors(TEXT_BOX_BEGINNING);
+                    printw("%s threw a Safari Ball!", player.name); refresh(); sleep(2);
+                    
 
                     //Ball Hits - Attempt Catch
                     if (rand() % 100 < hit_chance) {
@@ -91,6 +94,7 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
                     }
                 }
                 else {
+                    text_box_cursors(TEXT_BOX_BEGINNING);
                     printw("Out of Safari Balls"); refresh(); sleep(2);
                     continue;
                 }
@@ -98,11 +102,13 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
                 
             case BAIT:
                 //Decrease Flee Chance
-                text_box_cursors(TEXT_BOX_BEGINNING);
+                
                 
                 if (player.bait_count > 0) {
-                    printw("%s threw some bait!", player.name); refresh(); sleep(2);
                     player.bait_count--;
+                    print_safari_battle(distance);
+                    text_box_cursors(TEXT_BOX_BEGINNING);
+                    printw("%s threw some bait!", player.name); refresh(); sleep(2);
                     eating = 2;
                     if (flee_chance > 10) {
                         flee_chance -= 10;
@@ -110,6 +116,7 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
                     }
                 }
                 else {
+                    text_box_cursors(TEXT_BOX_BEGINNING);
                     printw("Out of Bait"); refresh(); sleep(2);
                     continue;
                 }
@@ -119,9 +126,10 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
                 
             case APPROACH:
                 //Increase Flee Chance, Increase Catch Chance
+                distance -= 10;
+                print_safari_battle(distance);
                 text_box_cursors(TEXT_BOX_BEGINNING);
                 printw("%s approached %s!", player.name, enemyPoke->nickname); refresh(); sleep(2);
-                distance -= 10;
                 flee_chance += 10;
                 hit_chance += 10;
                 if (distance <= 0) {
@@ -144,10 +152,12 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
             printw("%s fled!", enemyPoke->nickname); refresh(); await_user();
             return BATTLE_WIN;
         }
-        else if (eating == 2) {
+        else if (eating == 2) { 
+            eating--;
             text_box_cursors(TEXT_BOX_BEGINNING);
             printw("%s took the Bait!", enemyPoke->nickname); refresh(); sleep(2);
-            eating--;
+            
+            
         }
         else if (eating == 1) {
             text_box_cursors(TEXT_BOX_BEGINNING);
