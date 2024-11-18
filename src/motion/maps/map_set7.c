@@ -23,8 +23,12 @@ void draw_safari1() {
     add_portal_big_map_to_building(MAP_X+18, MAP_Y+1, MAP_FU_CITY, MAP_BOTTOM, 25);
     add_connection_to_big_map(MAP_LEFT, 14, MAP_SAFARI2);
     add_connection_to_big_map(MAP_LEFT, 2, MAP_SAFARI2);
+    add_connection_to_big_map(MAP_LEFT, 8, MAP_SAFARI2);
+
     add_connection_to_big_map(MAP_TOP, 6, MAP_SAFARI4);
     add_connection_to_big_map(MAP_TOP, 53, MAP_SAFARI4);
+
+    add_surf_selectable(MAP_X+4, MAP_Y+5);
 }
 
 void draw_safari2() {
@@ -33,6 +37,8 @@ void draw_safari2() {
     
     add_connection_to_big_map(MAP_RIGHT, 14, MAP_SAFARI1);
     add_connection_to_big_map(MAP_RIGHT, 2, MAP_SAFARI1);
+    add_connection_to_big_map(MAP_RIGHT, 8, MAP_SAFARI1);
+
     add_connection_to_big_map(MAP_TOP, 32, MAP_SAFARI3);
     add_connection_to_big_map(MAP_TOP, 6, MAP_SAFARI3);
 }
@@ -55,4 +61,6 @@ void draw_safari4() {
     add_connection_to_big_map(MAP_BOTTOM, 53, MAP_SAFARI1);
     add_connection_to_big_map(MAP_LEFT, 15, MAP_SAFARI3);
     add_connection_to_big_map(MAP_LEFT, 5, MAP_SAFARI3);
+
+    add_npc_by_id(MAP_X+42, MAP_Y+10, 22, PLAYER_MOVING_DOWN);
 }

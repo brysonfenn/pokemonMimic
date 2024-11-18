@@ -10,7 +10,7 @@
 #include "../monsters/attacks.h"
 
 
-static char key_item_names[10][32] = {"Empty HM/TM", "HM01 Cut" };
+static char key_item_names[10][32] = {"Empty HM/TM", "HM01 Cut", "HM02 Surf" };
 
 
 char * get_hm_tm_name(int id) {

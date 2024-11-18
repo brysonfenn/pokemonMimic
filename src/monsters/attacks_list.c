@@ -241,6 +241,7 @@ attack ancient_power= {"Ancient Power",203,  5,  60,      100, ROCK,     false, 
 attack heat_wave    = {"Heat Wave"    ,204, 10, 100,       90, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack outrage      = {"Outrage"      ,205, 15,  90,      100, NORMAL,   false, &thrash_move_func, ATTACK_SPECIAL_MOVE, DRAGON };
 attack cut          = {"Cut"          ,206, 30,  50,       95, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack surf         = {"Surf"         ,207, 15,  90,      100, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -264,7 +265,7 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &bone_club, &bonemerang, &bone_rush, &rolling_kick, &jump_kick, &brick_break, &hi_jump_kick, &mega_kick, &comet_punch, &mach_punch,     // #171-180
     &thunder_punch, &ice_punch, &fire_punch, &sky_uppercut, &mega_punch, &detect, &refresh_move, &smog, &softboiled, &ingrain,              // #181-190
     &dizzy_punch, &twister, &dragon_dance, &flail, &waterfall, &magical_leaf, &lovely_kiss, &powder_snow, &fake_tears, &blizzard,           // #191-200
-    &splash, &sharpen, &ancient_power, &heat_wave, &outrage, &cut
+    &splash, &sharpen, &ancient_power, &heat_wave, &outrage, &cut, &surf
 };
 
 

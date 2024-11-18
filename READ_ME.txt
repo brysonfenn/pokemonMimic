@@ -12,3 +12,4 @@ Player Record Bits
 10: Pokemon Tower Guards
 11: Mr. Fuji - Pokemon Flute
 12: Snorlax - route 15
+13: HM Surf

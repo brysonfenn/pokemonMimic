@@ -4,7 +4,7 @@
 02 │            WWW   WWWW              WWWWW WW|WW         │
 03 │WWWW   WW    |----------=========-------|   |           │
 04 │     WWWWWWWW|              WWWWWWWWWWWWWWW |-----------│
-05 │=============|           WWWWWWWWWWWWWWWWWWW|           │
+05 │=== =========|           WWWWWWWWWWWWWWWWWWW|           │
 06 │~~~~~~~~~~~~~|W    WWW   WWWWW ---------====|           │
 07 │~~~~~~~~~~~~~|WWWWWW     WWWWWWWWWWWWWW  WWW            │
 08 │~~~~~~~~~~~~~|                WWWWWWWWWWWWWWWWWW        │

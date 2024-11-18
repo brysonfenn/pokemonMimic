@@ -331,7 +331,7 @@ void change_map(int map, int x, int y) {
 //Check if a given space movement would result in a collision
 bool is_movable_space(int yInc, int xInc) {
     char next_tile = mvinch(*player_y+yInc, *player_x+xInc);
-    if (next_tile == ' ' || next_tile == GRASS_CHAR)
+    if (next_tile == ' ' || next_tile == GRASS_CHAR || next_tile == WATER_CHAR)
         return true;
     else
         return false;

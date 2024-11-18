@@ -8,7 +8,7 @@
 
 static char key_item_names[10][32] = {"Empty Key Item", "Helix Fossil", "Dome Fossil", "Old Amber",
     "Helix Fossil Voucher", "Dome Fossil Voucher", "Old Amber Voucher", "SS Ticket", "Pokemon Flute",
-    "Silph Scope" };
+    "Silph Scope", "Surf Flag" };
 
 
 void take_fossil(int fossil_index, int fossil_type);

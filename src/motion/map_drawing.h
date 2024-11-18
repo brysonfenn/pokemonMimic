@@ -25,6 +25,7 @@
 #define FOSSIL_PROCESS_ACTION 4
 
 #define GRASS_CHAR 'W'
+#define WATER_CHAR '~'
 
 //Sides of map - used to call "draw_town_exit()"
 enum town_side { MAP_TOP, MAP_BOTTOM, MAP_LEFT, MAP_RIGHT };

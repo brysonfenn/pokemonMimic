@@ -1,7 +1,7 @@
-Last Saved: 11/17/2024 10:04:27
+Last Saved: 11/18/2024 17:44:03
 Player: Player1.
 6 6 6 47570 1d9c 0 21 28 1 Blue.
-Location: {47,(57,2)}
+Location: {47,(7,5)}
 Heal Center: {30,(42,5)}
 Pokemon: 
 Ivysaur Ivysaur. 2 67 67 4 137 137 132 131 136 100 18737 GRASS POISON 448493fb f0d1303 0 4
@@ -13,7 +13,7 @@ Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
 	Thunder Shock. 55 30
 	Quick Attack. 8 30
 	Tail Whip. 4 30
-	Thunder Wave. 56 20
+	Surf. 207 20
 Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
 	Thunder Shock. 55 30
 	Quick Attack. 8 30

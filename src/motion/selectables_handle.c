@@ -22,6 +22,7 @@
 
 //Handle Cutting down a tree
 int handle_cut(struct Selectable * selectable_ptr);
+int handle_surf(struct Selectable * selectable_ptr);
 int handle_snorlax(struct Selectable * selectable_ptr);
 
 
@@ -58,6 +59,10 @@ int handle_selected_selectable(int player_x, int player_y, char player_char) {
     }
     else if (selectable_ptr->selectable_id == SELECTABLE_CUTTABLE_TREE) {
         handle_cut(selectable_ptr);
+        return SELECTABLE_CONTINUE_WHILE;
+    }
+    else if (selectable_ptr->selectable_id == SELECTABLE_SURF) {
+        handle_surf(selectable_ptr);
         return SELECTABLE_CONTINUE_WHILE;
     }
     else if (selectable_ptr->selectable_id == SELECTABLE_SNORLAX) {
@@ -115,6 +120,112 @@ int handle_cut(struct Selectable * selectable_ptr) {
 
         selectable_ptr->y = 0;
         selectable_ptr->x = 0;
+    }
+
+    begin_message_box();
+
+    return 0;
+}
+
+
+//Handle Surfing
+int handle_surf(struct Selectable * selectable_ptr) {
+    char print_str[256];
+
+    if (!has_key_item(K_ITEM_SURF_FLAG)) {
+        print_to_message_box("It looks like the water is surfable here."); await_user();
+    }
+    
+
+    Pokemon * curr_pok;
+    Pokemon * cut_pok;
+    bool has_surf = false;
+
+    //Handle Start Surf
+    if (has_key_item(K_ITEM_SURF_FLAG) == -1) {
+
+        for (int i = 0; i < player.numInParty; i++) {
+            curr_pok = &(player.party[i]);
+            for (int j = 0; j < curr_pok->numAttacks; j++) {
+                if (curr_pok->attacks[j].id_num == 207) {
+                    cut_pok = curr_pok;
+                    has_surf = true;
+                }
+            }
+        }
+
+        if (has_surf) {
+            sprintf(print_str, "Would you like %s to use Surf?\n  Yes\n  No", cut_pok->nickname);
+            print_to_message_box(print_str);
+            if (get_selection(MAP_HEIGHT+1, 1, 0) == 1) {
+                begin_message_box();
+                return 0;
+            }
+
+            audio_play_file("surf_hm.mp3");
+            sprintf(print_str, "%s used Surf!", cut_pok->nickname);
+            print_to_message_box(print_str); sleep(1);
+            add_key_item(K_ITEM_SURF_FLAG);
+
+            if (player.player_char == PLAYER_MOVING_DOWN) {
+                attrset(COLOR_PAIR(PLAYER_COLOR));
+                mvaddch((player.loc->y), player.loc->x, ' ');
+                mvaddch(++(player.loc->y), player.loc->x, player.player_char); refresh();
+                usleep(300000);
+                mvaddch(++(player.loc->y), player.loc->x, player.player_char); refresh();
+                attrset(COLOR_PAIR(WATER_COLOR));
+                mvaddch((player.loc->y - 1), player.loc->x, 'S');
+                flushinp();
+                attrset(COLOR_PAIR(DEFAULT_COLOR));
+            }
+            else if (player.player_char == PLAYER_MOVING_UP) {
+                attrset(COLOR_PAIR(PLAYER_COLOR));
+                mvaddch((player.loc->y), player.loc->x, ' ');
+                mvaddch(--(player.loc->y), player.loc->x, player.player_char); refresh();
+                usleep(300000);
+                mvaddch(--(player.loc->y), player.loc->x, player.player_char); refresh();
+                attrset(COLOR_PAIR(WATER_COLOR));
+                mvaddch((player.loc->y + 1), player.loc->x, 'S');
+                flushinp();
+                attrset(COLOR_PAIR(DEFAULT_COLOR));
+            }
+        }
+    }
+    //Handle End Surf
+    else {
+        sprintf(print_str, "Would you like to leave the water?\n  Yes\n  No", cut_pok->nickname);
+            print_to_message_box(print_str);
+            if (get_selection(MAP_HEIGHT+1, 1, 0) == 1) {
+                begin_message_box();
+                return 0;
+            }
+
+            remove_key_item(K_ITEM_SURF_FLAG);
+
+            if (player.player_char == PLAYER_MOVING_DOWN) {
+                attrset(COLOR_PAIR(WATER_COLOR));
+                mvaddch((player.loc->y), player.loc->x, '~');
+                attrset(COLOR_PAIR(PLAYER_COLOR));
+                mvaddch(++(player.loc->y), player.loc->x, player.player_char); refresh();
+                usleep(300000);
+                mvaddch(++(player.loc->y), player.loc->x, player.player_char); refresh();
+                attrset(COLOR_PAIR(WATER_COLOR));
+                mvaddch((player.loc->y - 1), player.loc->x, 'S');
+                flushinp();
+                attrset(COLOR_PAIR(DEFAULT_COLOR));
+            }
+            else if (player.player_char == PLAYER_MOVING_UP) {
+                attrset(COLOR_PAIR(WATER_COLOR));
+                mvaddch((player.loc->y), player.loc->x, '~');
+                attrset(COLOR_PAIR(PLAYER_COLOR));
+                mvaddch(--(player.loc->y), player.loc->x, player.player_char); refresh();
+                usleep(300000);
+                mvaddch(--(player.loc->y), player.loc->x, player.player_char); refresh();
+                attrset(COLOR_PAIR(WATER_COLOR));
+                mvaddch((player.loc->y + 1), player.loc->x, 'S');
+                flushinp();
+                attrset(COLOR_PAIR(DEFAULT_COLOR));
+            }
     }
 
     begin_message_box();

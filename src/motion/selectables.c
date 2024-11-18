@@ -87,6 +87,22 @@ void add_cuttable_tree(char x, char y) {
 }
 
 //Add Cuttable Tree at a location
+void add_surf_selectable(char x, char y) {
+    Selectable new_selectable;
+    new_selectable.data = empty_string;
+    new_selectable.x = x;
+    new_selectable.y = y;
+    new_selectable.selectable_id = SELECTABLE_SURF;
+    
+    selectables[num_selectables] = new_selectable;
+    num_selectables++;
+
+    attrset(COLOR_PAIR(WATER_COLOR));
+    mvaddch(y,x,'S'); refresh();
+    attrset(COLOR_PAIR(DEFAULT_COLOR));
+}
+
+//Add Cuttable Tree at a location
 void add_snorlax(char x, char y, char snorlax_id_num) {
     char record_bit_num = snorlax_bits[snorlax_id_num];
 
