@@ -33,7 +33,7 @@ struct playerCharacter {
 
   long long record_bits;
 
-  char trainers_battled_id[256];
+  unsigned char trainers_battled_id[256];
   int num_trainers_battled;
   int money;
   int repel_steps;

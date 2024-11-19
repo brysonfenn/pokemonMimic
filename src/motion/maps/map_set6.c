@@ -23,7 +23,7 @@ void draw_cel_city() {
     audio_loop_file("celadon_city.mp3");
 
     add_connection_to_big_map(MAP_RIGHT, 3, MAP_UNDERGROUND);
-    add_connection_to_big_map(MAP_LEFT, 5, MAP_R15);
+    add_connection_to_big_map(MAP_LEFT, 4, MAP_R15);
 
     draw_building_default(MAP_X+35,MAP_Y+1, "Poke", POKE_CENTER_ACTION);
     draw_building_default(MAP_X+10, MAP_Y+2, "Mart", MART_ACTION);
@@ -176,9 +176,14 @@ void draw_route15() {
     audio_loop_file("route3.mp3");
 
     add_connection_to_big_map(MAP_BOTTOM, 50, MAP_R14);
-    add_connection_to_big_map(MAP_RIGHT, 5, MAP_CEL_CITY);
+    add_connection_to_big_map(MAP_RIGHT, 4, MAP_CEL_CITY);
 
-    add_snorlax(MAP_X+53, MAP_Y+5, 1);
+    add_snorlax(MAP_X+50, MAP_Y+4, 1);
+
+    //Add Blocking NPC if player doesn't have 3rd and 4th badge
+    if (!(player_has_battled_trainer(203) && player_has_battled_trainer(204))) {
+        add_npc_by_id(MAP_X+53, MAP_Y+4, 23, PLAYER_MOVING_RIGHT);
+    }
 
     add_trainer_by_id(MAP_X+42, MAP_Y+7, 91, PLAYER_MOVING_RIGHT);
     add_trainer_by_id(MAP_X+47, MAP_Y+10, 92, PLAYER_MOVING_RIGHT);
