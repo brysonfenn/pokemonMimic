@@ -9,7 +9,7 @@
 07 │~~~~~~~~~~~~~|WWWWWW     WWWWWWWWWWWWWW  WWW            │
 08 │~~~~~~~~~~~~~|                WWWWWWWWWWWWWWWWWW        │
 09 │~~~~~~~~~~~~~|--------------------------|               │
-10 │=============|                     WWWWW|-----------    │
+10 │=== =========|                     WWWWW|-----------    │
 11 │        WW       WWWWWWWWWWWWW   WWWWWW |               │
 12 │                   WWWWWWWWWWW  WW      |               │
 13 │      WWWW       |             |WWWW    |               │

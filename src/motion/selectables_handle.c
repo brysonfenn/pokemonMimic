@@ -132,7 +132,7 @@ int handle_cut(struct Selectable * selectable_ptr) {
 int handle_surf(struct Selectable * selectable_ptr) {
     char print_str[256];
 
-    if (!has_key_item(K_ITEM_SURF_FLAG)) {
+    if (has_key_item(K_ITEM_SURF_FLAG) == -1) {
         print_to_message_box("It looks like the water is surfable here."); await_user();
     }
     

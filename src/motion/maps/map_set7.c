@@ -29,6 +29,7 @@ void draw_safari1() {
     add_connection_to_big_map(MAP_TOP, 53, MAP_SAFARI4);
 
     add_surf_selectable(MAP_X+4, MAP_Y+5);
+    add_surf_selectable(MAP_X+4, MAP_Y+10);
 }
 
 void draw_safari2() {
@@ -41,6 +42,9 @@ void draw_safari2() {
 
     add_connection_to_big_map(MAP_TOP, 32, MAP_SAFARI3);
     add_connection_to_big_map(MAP_TOP, 6, MAP_SAFARI3);
+
+    add_surf_selectable(MAP_X+5, MAP_Y+5);
+    add_surf_selectable(MAP_X+5, MAP_Y+10);
 }
 
 void draw_safari3() {
