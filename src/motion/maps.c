@@ -14,6 +14,7 @@
 #include "map_drawing.h"
 #include "motion2d.h"
 #include "location.h"
+#include "../items/key_items.h"
 #include "../player.h"
 #include "../print/print_utils.h"
 #include "../print/print_defines.h"
@@ -30,12 +31,13 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_route10, &draw_rocket1, &draw_rocket2, &draw_rocket3, &draw_game_corner,                  //31-35
                                     &draw_gym4, &draw_tower1, &draw_tower2, &draw_tower3, &draw_route11,                            //36-40
                                     &draw_route12, &draw_fuchsia_city, &draw_gym5, &draw_route13, &draw_route14,                    //41-45
-                                    &draw_route15, &draw_safari1, &draw_safari2, &draw_safari3, &draw_safari4                       //46-50
-                                    
+                                    &draw_route15, &draw_safari1, &draw_safari2, &draw_safari3, &draw_safari4,                      //46-50
+                                    &draw_route16
                                     };
 
 char map_file_name[32];
 static int * wild_pok_list;
+static int * water_pok_list;
 
 static Pokemon_id wild_pok_lists[32][16] = {
 //  #Pok, levels, ID'S...
@@ -71,6 +73,13 @@ static Pokemon_id wild_pok_lists[32][16] = {
                     POKEMON_NIDORINO,POKEMON_SCYTHER, POKEMON_DRATINI, POKEMON_DODRIO, POKEMON_CHANSEY },         //#25 Safari 4
 };
 
+static Pokemon_id water_pok_lists[32][16] = {
+//  #Pok, levels, ID'S...
+    { 2,   42, 42, POKEMON_MAGIKARP, POKEMON_MAGIKARP }, //#0 Default Water
+    { 6,   25, 31,  POKEMON_GOLDEEN, POKEMON_GOLDEEN, POKEMON_SEAKING, POKEMON_STARYU, POKEMON_SLOWPOKE, POKEMON_HORSEA }, //#1 Safari
+    { 6,   25, 31,  POKEMON_TENTACOOL, POKEMON_TENTACOOL, POKEMON_TENTACOOL, POKEMON_HORSEA, POKEMON_TENTACRUEL, POKEMON_HORSEA } //#2
+};
+
 //     POKEMON_BEEDRILL, POKEMON_PIDGEOT, POKEMON_FEAROW, 
 //     POKEMON_ARBOK, POKEMON_RAICHU, POKEMON_NIDOQUEEN, POKEMON_NIDOKING, 
 //     POKEMON_CLEFABLE, POKEMON_NINETALES, POKEMON_WIGGLYTUFF, POKEMON_GOLBAT, POKEMON_VILEPLUME,
@@ -82,7 +91,7 @@ static Pokemon_id wild_pok_lists[32][16] = {
 //     POKEMON_GENGAR, POKEMON_HYPNO, POKEMON_KINGLER, POKEMON_ELECTRODE, 
 //     POKEMON_EXEGGUTOR, POKEMON_HITMONLEE, POKEMON_HITMONCHAN
 //     POKEMON_WEEZING, POKEMON_RHYDON, POKEMON_HORSEA, 
-//     POKEMON_SEADRA, POKEMON_GOLDEEN, POKEMON_SEAKING, POKEMON_STARYU, POKEMON_STARMIE,
+//     POKEMON_SEADRA, POKEMON_STARMIE,
 //     POKEMON_MAGIKARP, POKEMON_GYARADOS, 
 //     POKEMON_LAPRAS, POKEMON_DITTO, POKEMON_EEVEE, POKEMON_VAPOREON, POKEMON_JOLTEON, POKEMON_FLAREON, POKEMON_PORYGON, 
 //     POKEMON_OMANYTE, POKEMON_OMASTAR, POKEMON_KABUTO, POKEMON_KABUTOPS, POKEMON_AERODACTYL, POKEMON_ARTICUNO, 
@@ -97,6 +106,8 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
         return;
     }
     *draw_map = draw_funcs[map_num];
+
+    water_pok_list = &(water_pok_lists[0]);
 
     //Update Static elements map
     char map_name[32] = "empty_map";
@@ -230,6 +241,10 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             sprintf(map_name, "route12");
             wild_pok_list = &(wild_pok_lists[18]);
             break;
+        case MAP_FU_CITY:
+            sprintf(map_name, "fu_city");
+            water_pok_list = &(water_pok_lists[2]);
+            break;
         case MAP_GYM5:
             sprintf(map_name, "gym5");
             break;
@@ -248,10 +263,12 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
         case MAP_SAFARI1:
             sprintf(map_name, "safari1");
             wild_pok_list = &(wild_pok_lists[22]);
+            water_pok_list = &(water_pok_lists[1]);
             break;
         case MAP_SAFARI2:
             sprintf(map_name, "safari2");
             wild_pok_list = &(wild_pok_lists[23]);
+            water_pok_list = &(water_pok_lists[1]);
             break;
         case MAP_SAFARI3:
             sprintf(map_name, "safari3");
@@ -260,6 +277,10 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
         case MAP_SAFARI4:
             sprintf(map_name, "safari4");
             wild_pok_list = &(wild_pok_lists[25]);
+            break;
+        case MAP_R16:
+            sprintf(map_name, "route16");
+            water_pok_list = &(water_pok_lists[2]);
             break;
         default:
             sprintf(map_name, "empty_map");
@@ -272,7 +293,10 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
 
 
 int * get_wild_pok_list() {
-    return wild_pok_list;
+    if (has_key_item(K_ITEM_SURF_FLAG) != -1)
+        return water_pok_list;
+    else
+        return wild_pok_list;
 }
 
 

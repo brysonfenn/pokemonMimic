@@ -197,7 +197,6 @@ void handle_motion() {
             continue;
         }
         else if (action == -2) {
-            // TODO: Handle Safari Zone Payment
             sprintf(print_str, "Would you like to enter the Safari Zone for $500?\n  Yes\t\tYour current Money: $%d\n  No", player.money);
             print_to_message_box(print_str);
 
@@ -221,6 +220,25 @@ void handle_motion() {
             change_map(MAP_SAFARI1, MAP_X+25, MAP_Y+MAP_HEIGHT-2);
             continue;
         }
+        else if (action == -3) {
+            print_to_message_box("Are you sure you want to leave the Safari Zone?\n  Yes\n  No");
+
+            //If Answer = No, move player back
+            if (get_selection(MESSAGE_BOX_Y, 1, 0) == 1) {
+                // Set player color, move, and unset
+                attrset(COLOR_PAIR(PLAYER_COLOR));
+                mvaddch(*player_y, *player_x, ' '); 
+                (*player_y)--;
+                mvaddch(*player_y, *player_x, *player_char_ptr);
+                attrset(COLOR_PAIR(DEFAULT_COLOR));
+                begin_message_box();
+                continue;
+            }
+
+            usleep(100000);
+            change_map(MAP_FU_CITY, MAP_X+22, MAP_Y+DEFAULT_BUILDING_HEIGHT+1);
+            continue;
+        }
         else if (action != 0) {
             usleep(100000);
             handle_actions(action);
@@ -240,6 +258,9 @@ void handle_motion() {
                                 || curr_map==MAP_ROCK_TUNNEL_N || curr_map==MAP_ROCK_TUNNEL_S || curr_map==MAP_TOWER2
                                 || curr_map==MAP_TOWER3) 
                 && random < 5);   //Extra percentage for caves
+        
+        encounter = encounter || (((mvinch(*player_y, *player_x) & A_CHARTEXT) == WATER_CHAR) && random < 5);   //Percentage for water
+
         encounter = encounter && !(leave_msg_count < 5) && (random < 10);     //Chance of encounter
         encounter = encounter;
 

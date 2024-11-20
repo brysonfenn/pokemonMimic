@@ -9,4 +9,6 @@ void draw_safari3();
 
 void draw_safari4();
 
+void draw_route16();
+
 #endif //MAP_SET4_H

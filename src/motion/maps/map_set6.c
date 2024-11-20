@@ -123,14 +123,17 @@ void draw_fuchsia_city() {
 
     add_connection_to_big_map(MAP_RIGHT, 14, MAP_R12);
 
-    draw_building_default(MAP_X+4, MAP_Y+11, "GYM", -1);
-    add_building_portal(MAP_X+4, MAP_Y+11, MAP_GYM5);
-    draw_building_default(MAP_X+13, MAP_Y+11, "POKE", POKE_CENTER_ACTION);
-    draw_building_default(MAP_X+22, MAP_Y+11, "MART", MART_ACTION);
+    draw_building_default(MAP_X+4, MAP_Y+8, "GYM", -1);
+    add_building_portal(MAP_X+4, MAP_Y+8, MAP_GYM5);
+    draw_building_default(MAP_X+13, MAP_Y+8, "POKE", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+22, MAP_Y+8, "MART", MART_ACTION);
 
     add_connection_to_big_map(MAP_LEFT, 15, MAP_R13);
 
     draw_building_default(MAP_X+18, MAP_Y+1, "SFRI", -2);
+
+    add_surf_selectable(MAP_X+38,MAP_Y+13);
+    add_connection_to_big_map(MAP_BOTTOM, 36, MAP_R16);
 }
 
 

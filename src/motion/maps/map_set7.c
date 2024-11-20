@@ -20,7 +20,10 @@ void draw_safari1() {
 
     add_npc_by_id(MAP_X+31, MAP_Y+13, 21, PLAYER_MOVING_DOWN);
 
-    add_portal_big_map_to_building(MAP_X+18, MAP_Y+1, MAP_FU_CITY, MAP_BOTTOM, 25);
+    // add_portal_big_map_to_building(MAP_X+18, MAP_Y+1, MAP_FU_CITY, MAP_BOTTOM, 25);
+    add_door(MAP_X+25, MAP_Y+MAP_HEIGHT-1, -3, true);
+    draw_town_exit(MAP_BOTTOM, 25);
+
     add_connection_to_big_map(MAP_LEFT, 14, MAP_SAFARI2);
     add_connection_to_big_map(MAP_LEFT, 2, MAP_SAFARI2);
     add_connection_to_big_map(MAP_LEFT, 8, MAP_SAFARI2);
@@ -67,4 +70,11 @@ void draw_safari4() {
     add_connection_to_big_map(MAP_LEFT, 5, MAP_SAFARI3);
 
     add_npc_by_id(MAP_X+42, MAP_Y+10, 22, PLAYER_MOVING_DOWN);
+}
+
+void draw_route16() {
+    draw_big_map("Route 16");
+    audio_loop_file("beach.mp3");
+
+    add_connection_to_big_map(MAP_TOP, 36, MAP_FU_CITY);
 }
