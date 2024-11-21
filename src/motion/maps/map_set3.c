@@ -66,15 +66,18 @@ void draw_cer_city() {
     add_connection_to_big_map(MAP_TOP, MAP_WIDTH - 5, MAP_R4);
     add_connection_to_big_map(MAP_RIGHT, 8, MAP_R8);
 
+    add_surf_selectable(MAP_X+29, MAP_Y+13);
+    add_connection_to_big_map(MAP_BOTTOM, 29, MAP_SAFF_CITY);
+
     //Bottom-right portal goes to Underground
     draw_town_exit(MAP_BOTTOM, MAP_WIDTH - 4);
     add_portal_big_map_to_building(49, 6, MAP_UNDERGROUND, MAP_BOTTOM, MAP_WIDTH-4);
 
-    draw_building_default(MAP_X+30,MAP_Y+8, "Poke", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+30,MAP_Y+7, "Poke", POKE_CENTER_ACTION);
     draw_building_default(MAP_X+10,MAP_Y+12, "Mart", MART_ACTION);
 
-    draw_building_default(MAP_X+30+DEFAULT_BUILDING_WIDTH,MAP_Y+8, "GYM", DOORS_NEW_MAP);
-    add_building_portal(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+8, MAP_GYM2);
+    draw_building_default(MAP_X+30+DEFAULT_BUILDING_WIDTH,MAP_Y+7, "GYM", DOORS_NEW_MAP);
+    add_building_portal(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+7, MAP_GYM2);
 
     if (!player_has_battled_trainer(202)) {
         add_npc_by_id(MAP_X+MAP_WIDTH-4, MAP_Y+MAP_HEIGHT-2, 17, PLAYER_MOVING_UP);
@@ -84,7 +87,7 @@ void draw_cer_city() {
 
 
 void draw_gym2() {
-    draw_interior(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+8, MAP_CER_CITY);
+    draw_interior(MAP_X+30+DEFAULT_BUILDING_WIDTH, MAP_Y+7, MAP_CER_CITY);
     begin_message_box();
     print_to_message_box("Cerulean City Gym");
     audio_loop_file("gym.mp3");

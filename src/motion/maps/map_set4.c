@@ -35,9 +35,12 @@ void draw_vermillion_city() {
     add_connection_to_big_map(MAP_BOTTOM, 25, MAP_SS_ANNE1);
     add_connection_to_big_map(MAP_RIGHT, 6, MAP_R6);
 
-    draw_building_default(MAP_X+15,MAP_Y+3, "Poke", POKE_CENTER_ACTION);
-    draw_building_default(MAP_X+30, MAP_Y+6, "Lab", FOSSIL_PROCESS_ACTION);
-    draw_building_default(MAP_X+42, MAP_Y+6, "Mart", MART_ACTION);
+    add_surf_selectable(MAP_X+29, MAP_Y+4);
+    add_connection_to_big_map(MAP_TOP, 29, MAP_SAFF_CITY);
+
+    draw_building_default(MAP_X+12,MAP_Y+3, "Poke", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+30, MAP_Y+8, "Lab", FOSSIL_PROCESS_ACTION);
+    draw_building_default(MAP_X+42, MAP_Y+8, "Mart", MART_ACTION);
 
     if (has_key_item(K_ITEM_SS_TICKET) == -1) {
         add_npc_by_id(MAP_X+25, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);

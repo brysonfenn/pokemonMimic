@@ -74,6 +74,7 @@ void draw_lavender_town() {
     add_connection_to_big_map(MAP_TOP, MAP_WIDTH-4, MAP_ROCK_TUNNEL_S);
     add_connection_to_big_map(MAP_LEFT, 3, MAP_UNDERGROUND);
     add_connection_to_big_map(MAP_BOTTOM, 38, MAP_R10);
+    add_connection_to_big_map(MAP_LEFT, 13, MAP_SAFF_CITY);
 
     draw_building_default(MAP_X+15,MAP_Y+5, "Poke", POKE_CENTER_ACTION);
     draw_building_default(MAP_X+18, MAP_Y+10, "Mart", MART_ACTION);

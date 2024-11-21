@@ -11,4 +11,8 @@ void draw_safari4();
 
 void draw_route16();
 
+void draw_saffron_city();
+
+void draw_gym6();
+
 #endif //MAP_SET4_H

@@ -32,7 +32,7 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_gym4, &draw_tower1, &draw_tower2, &draw_tower3, &draw_route11,                            //36-40
                                     &draw_route12, &draw_fuchsia_city, &draw_gym5, &draw_route13, &draw_route14,                    //41-45
                                     &draw_route15, &draw_safari1, &draw_safari2, &draw_safari3, &draw_safari4,                      //46-50
-                                    &draw_route16
+                                    &draw_route16, &draw_saffron_city, &draw_gym6
                                     };
 
 char map_file_name[32];
@@ -75,7 +75,7 @@ static Pokemon_id wild_pok_lists[32][16] = {
 
 static Pokemon_id water_pok_lists[32][16] = {
 //  #Pok, levels, ID'S...
-    { 2,   42, 42, POKEMON_MAGIKARP, POKEMON_MAGIKARP }, //#0 Default Water
+    { 2,   15, 20, POKEMON_MAGIKARP, POKEMON_TENTACOOL }, //#0 Default Water
     { 6,   25, 31,  POKEMON_GOLDEEN, POKEMON_GOLDEEN, POKEMON_SEAKING, POKEMON_STARYU, POKEMON_SLOWPOKE, POKEMON_HORSEA }, //#1 Safari
     { 6,   25, 31,  POKEMON_TENTACOOL, POKEMON_TENTACOOL, POKEMON_TENTACOOL, POKEMON_HORSEA, POKEMON_TENTACRUEL, POKEMON_HORSEA } //#2
 };
@@ -281,6 +281,12 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
         case MAP_R16:
             sprintf(map_name, "route16");
             water_pok_list = &(water_pok_lists[2]);
+            break;
+        case MAP_SAFF_CITY:
+            sprintf(map_name, "saff_city");
+            break;
+        case MAP_GYM6:
+            sprintf(map_name, "gym6");
             break;
         default:
             sprintf(map_name, "empty_map");

@@ -1,8 +1,8 @@
-Last Saved: 10/06/2024 15:51:25
+Last Saved: 11/20/2024 20:41:59
 Player: B Test Man.
-5 0 12 14075 12d 0 0 0 4 G Test Man.
-Location: {15,(22,7)}
-Heal Center: {15,(22,7)}
+6 1 12 14075 12d 0 0 0 4 G Test Man.
+Location: {52,(26,10)}
+Heal Center: {52,(18,14)}
 Pokemon: 
 Mankey Mankey. 56 39 39 4 35 17 9 9 29 16 4490 FIGHTING NONE 567c1363 3070b05 0 0
 	Scratch. 2 35
@@ -29,7 +29,16 @@ Gloom Gloom. 44 63 63 4 36 40 41 42 26 23 13408 GRASS POISON 19b2348e c0f0c03 0 
 	Sleep Powder. 15 15
 	Poison Powder. 14 35
 	Stun Spore. 37 30
+Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+	Thunder Shock. 55 30
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Surf. 207 15
 PC: 
+Kabuto Kabuto. 140 38 38 3 34 37 25 25 24 17 4913 ROCK WATER 4bc4b1a7 0 0 0
+	Scratch. 2 35
+	Harden. 34 30
+	Absorb. 100 20
 Bag:
 Poke Ball. 3 5
 Paralyze Heal. 7 1
@@ -44,8 +53,8 @@ Great Ball. 4 2
 Awakening. 8 1
 Super Repel. 18 2
 
-Key Items: 2
-  205 207 
+Key Items: 1
+  207 
 
 HM/TMs: 0
   

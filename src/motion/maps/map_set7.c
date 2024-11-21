@@ -78,3 +78,42 @@ void draw_route16() {
 
     add_connection_to_big_map(MAP_TOP, 36, MAP_FU_CITY);
 }
+
+void draw_saffron_city() {
+    draw_big_map("Saffron City");
+    audio_loop_file("vir_city.mp3");
+
+    add_surf_selectable(MAP_X+29, MAP_Y+4);
+    add_connection_to_big_map(MAP_TOP, 29, MAP_CER_CITY);
+    add_surf_selectable(MAP_X+29, MAP_Y+13);
+    add_connection_to_big_map(MAP_BOTTOM, 29, MAP_VERM_CITY);
+
+    add_surf_selectable(MAP_X+54, MAP_Y+11);
+    add_surf_selectable(MAP_X+54, MAP_Y+8);
+    add_connection_to_big_map(MAP_RIGHT, 13, MAP_LAV_TOWN);
+
+    add_surf_selectable(MAP_X+3, MAP_Y+13);
+    add_surf_selectable(MAP_X+3, MAP_Y+10);
+    add_connection_to_big_map(MAP_LEFT, 8, MAP_CEL_CITY);
+
+    draw_building_default(MAP_X+11, MAP_Y+8, "POKE", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+40, MAP_Y+10, "MART", MART_ACTION);
+    
+    draw_building_default(MAP_X+38, MAP_Y+4, "Gym", -1);
+    add_building_portal(MAP_X+38, MAP_Y+4, MAP_GYM6);
+}
+
+void draw_gym6() {
+    draw_interior(MAP_X+38, MAP_Y+4, MAP_SAFF_CITY);
+    begin_message_box();
+    print_to_message_box("Saffron City Gym");
+    audio_loop_file("gym.mp3");
+
+    add_trainer_by_id(INTERIOR_X+3, INTERIOR_Y+1, 96, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(INTERIOR_X+12, INTERIOR_Y+1, 97, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(INTERIOR_X+23, INTERIOR_Y+4, 98, PLAYER_MOVING_DOWN);
+
+    mvaddch(INTERIOR_Y+1, INTERIOR_X+24, ACS_LRCORNER);
+    add_trainer_by_id(INTERIOR_X+25, INTERIOR_Y+1, 206, PLAYER_MOVING_DOWN);
+    mvaddch(INTERIOR_Y+1, INTERIOR_X+26, ACS_LLCORNER);
+}

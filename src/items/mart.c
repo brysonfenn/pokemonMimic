@@ -22,6 +22,7 @@ static int vermillion_mart[10] ={ 7, POKE_BALL, GREAT_BALL, POTION, SUPER_POTION
 static int lavender_mart[10] =  { 6, POKE_BALL, GREAT_BALL, SUPER_POTION, MOON_STONE, ANTIDOTE, REPEL };
 static int celadon_mart[10] =   { 8, POKE_BALL, GREAT_BALL, SUPER_POTION, LEAF_STONE, ANTIDOTE, REPEL, PARALYZE_HEAL, AWAKENING };
 static int fuchsia_mart[10] =   { 7, GREAT_BALL, SUPER_POTION, WATER_STONE, ANTIDOTE, SUPER_REPEL, MAX_REPEL, PARALYZE_HEAL };
+static int saffron_mart[10] =   { 8, ULTRA_BALL, GREAT_BALL, SUPER_POTION, HYPER_POTION, ANTIDOTE, MAX_REPEL, PARALYZE_HEAL, AWAKENING };
 
 void set_mart();
 
@@ -163,6 +164,7 @@ void set_mart() {
         case MAP_LAV_TOWN:  mart_array = lavender_mart; break;
         case MAP_CEL_CITY:  mart_array = celadon_mart; break;
         case MAP_FU_CITY:   mart_array = fuchsia_mart; break;
+        case MAP_SAFF_CITY: mart_array = saffron_mart; break;
         default: mart_array = default_mart; break;
     }
 }

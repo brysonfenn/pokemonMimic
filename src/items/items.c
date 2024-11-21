@@ -34,12 +34,13 @@ Item moon_stone    = {MOON_STONE,    "Moon Stone"   , 0, 5000,  &use_evolve_ston
 Item repel         = {REPEL,         "Repel"        , 0,  350,  &use_repel,         100};
 Item super_repel   = {SUPER_REPEL,   "Super Repel"  , 0,  500,  &use_repel,         200};
 Item max_repel     = {MAX_REPEL,     "Max Repel"    , 0,  700,  &use_repel,         250};
+Item hyper_repel   = {HYPER_POTION,  "Hyper Potion" , 0, 1500,  &execute_potion,    200};
 
 
 //NOTE: Make sure to add item to this list after creating it
 static * item_array[NUM_ITEMS] = { &empty_item, 
-    &potion, &super_potion, &pokeball, &greatball, &ultraball, &antidote, &paralyze_heal, &awakening, &burn_heal, &freeze_heal, //    1-10
-    &revive, &fire_stone, &water_stone, &thunder_stone, &leaf_stone, &moon_stone, &repel, &super_repel, &max_repel
+    &potion, &super_potion, &pokeball, &greatball, &ultraball, &antidote, &paralyze_heal, &awakening, &burn_heal, &freeze_heal,   //  1-10
+    &revive, &fire_stone, &water_stone, &thunder_stone, &leaf_stone, &moon_stone, &repel, &super_repel, &max_repel, &hyper_repel  //  11-20  
 };
 
 //Returns an item pointer by its ID number. Should be immediately dereferenced
