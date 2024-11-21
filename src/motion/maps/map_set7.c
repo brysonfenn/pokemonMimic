@@ -77,6 +77,7 @@ void draw_route16() {
     audio_loop_file("beach.mp3");
 
     add_connection_to_big_map(MAP_TOP, 36, MAP_FU_CITY);
+    add_connection_to_big_map(MAP_LEFT, 5, MAP_CIN_ISLAND);
 }
 
 void draw_saffron_city() {
@@ -116,4 +117,17 @@ void draw_gym6() {
     mvaddch(INTERIOR_Y+1, INTERIOR_X+24, ACS_LRCORNER);
     add_trainer_by_id(INTERIOR_X+25, INTERIOR_Y+1, 206, PLAYER_MOVING_DOWN);
     mvaddch(INTERIOR_Y+1, INTERIOR_X+26, ACS_LLCORNER);
+}
+
+void draw_cinnabar_island() {
+    draw_big_map("Cinnabar Island");
+    audio_loop_file("beach.mp3");
+
+    add_connection_to_big_map(MAP_RIGHT, 5, MAP_R16);
+
+    draw_building_default(MAP_X+6,MAP_Y+8,"POKE",POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+6+DEFAULT_BUILDING_WIDTH,MAP_Y+8,"MART",MART_ACTION);
+
+    add_surf_selectable(MAP_X+39, MAP_Y+12);
+    add_surf_selectable(MAP_X+26, MAP_Y+2);
 }

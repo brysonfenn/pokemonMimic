@@ -15,4 +15,6 @@ void draw_saffron_city();
 
 void draw_gym6();
 
+void draw_cinnabar_island();
+
 #endif //MAP_SET4_H
