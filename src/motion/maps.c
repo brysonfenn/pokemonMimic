@@ -32,7 +32,7 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_gym4, &draw_tower1, &draw_tower2, &draw_tower3, &draw_route11,                            //36-40
                                     &draw_route12, &draw_fuchsia_city, &draw_gym5, &draw_route13, &draw_route14,                    //41-45
                                     &draw_route15, &draw_safari1, &draw_safari2, &draw_safari3, &draw_safari4,                      //46-50
-                                    &draw_route16, &draw_saffron_city, &draw_gym6, &draw_cinnabar_island
+                                    &draw_route16, &draw_saffron_city, &draw_gym6, &draw_cinnabar_island, &draw_route17             //51-55
                                     };
 
 char map_file_name[32];
@@ -112,6 +112,9 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
     //Update Static elements map
     char map_name[32] = "empty_map";
     switch (player.loc->map) {
+        case MAP_STARTER_TOWN:
+            sprintf(map_name, "starter_town");
+            break;
         case MAP_R1:
             sprintf(map_name, "route1");
             wild_pok_list = &(wild_pok_lists[1]);

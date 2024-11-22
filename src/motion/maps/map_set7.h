@@ -17,4 +17,6 @@ void draw_gym6();
 
 void draw_cinnabar_island();
 
+void draw_route17();
+
 #endif //MAP_SET4_H

@@ -124,10 +124,19 @@ void draw_cinnabar_island() {
     audio_loop_file("beach.mp3");
 
     add_connection_to_big_map(MAP_RIGHT, 5, MAP_R16);
+    add_connection_to_big_map(MAP_TOP, 48, MAP_R17);
 
     draw_building_default(MAP_X+6,MAP_Y+8,"POKE",POKE_CENTER_ACTION);
     draw_building_default(MAP_X+6+DEFAULT_BUILDING_WIDTH,MAP_Y+8,"MART",MART_ACTION);
 
     add_surf_selectable(MAP_X+39, MAP_Y+12);
     add_surf_selectable(MAP_X+26, MAP_Y+2);
+}
+
+void draw_route17() {
+    draw_big_map("Route 16");
+    audio_loop_file("beach.mp3");
+
+    add_connection_to_big_map(MAP_TOP, 10, MAP_STARTER_TOWN);
+    add_connection_to_big_map(MAP_BOTTOM, 48, MAP_R17);
 }

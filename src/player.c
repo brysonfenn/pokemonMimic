@@ -68,11 +68,11 @@ void default_load() {
     player.numInPCStorage = 0;
 
     player.loc->x = MAP_X + 10;
-    player.loc->y = MAP_Y + 10;
+    player.loc->y = MAP_Y + 5;
     player.loc->map = 4;
 
     player.blackout_center->x = MAP_X + 10;
-    player.blackout_center->y = MAP_Y + 10;
+    player.blackout_center->y = MAP_Y + 5;
     player.blackout_center->map = 4;
 }
 

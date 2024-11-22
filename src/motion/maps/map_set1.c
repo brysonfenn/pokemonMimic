@@ -6,6 +6,7 @@
 #include "../location.h"
 #include "../doors.h"
 #include "../maps.h"
+#include "../selectables.h"
 
 #include "../../battles/trainer.h"
 #include "../../monsters/pokemon_id_list.h"
@@ -17,12 +18,15 @@ void draw_starter_town() {
     draw_big_map("Starter Town");
     audio_loop_file("pallet.mp3");
 
-    draw_building_default(MAP_X+6,MAP_Y+7, "Poke", POKE_CENTER_ACTION);
-    draw_building_default(MAP_X+20,MAP_Y+12, "LAB", DOORS_NEW_MAP);
-    add_building_portal(MAP_X+20, MAP_Y+12, MAP_LAB);
+    draw_building_default(MAP_X+6,MAP_Y+2, "Poke", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+30,MAP_Y+5, "LAB", DOORS_NEW_MAP);
+    add_building_portal(MAP_X+30, MAP_Y+5, MAP_LAB);
     
     //Draw Doors
     add_connection_to_big_map(MAP_TOP, 41, MAP_R1);
+    add_connection_to_big_map(MAP_BOTTOM, 10, MAP_R17);
+
+    add_surf_selectable(MAP_X+10, MAP_Y+11);
 
     refresh();
 }
@@ -37,7 +41,7 @@ void draw_route1() {
 
 
 void draw_lab() {
-    draw_interior(MAP_X+20, MAP_Y+12, MAP_STARTER_TOWN);
+    draw_interior(MAP_X+30, MAP_Y+5, MAP_STARTER_TOWN);
     begin_message_box();
     print_to_message_box("Professor's Lab");
     audio_loop_file("pallet.mp3");
