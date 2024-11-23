@@ -90,6 +90,8 @@ int handle_battle(struct Pokemon * enemyPok) {
                 //Go to pokecenter and then heal
                 move_player_to_poke_center();
 
+                player.is_battle = false;
+
                 return BATTLE_WHITE_OUT;
             }
 
@@ -395,6 +397,8 @@ int handle_battle(struct Pokemon * enemyPok) {
     }
 
     remove_all_hidden_conditions(enemyPok);
+
+    player.is_battle = false;
     
     if (catch_success) return BATTLE_CAUGHT_POKE;
     else return BATTLE_WIN;

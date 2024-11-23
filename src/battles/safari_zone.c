@@ -80,6 +80,9 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
                         if (rand() % 256 < catch_rate) {
                             printw("%s was caught!", enemyPoke->name); refresh(); sleep(2);
                             give_pokemon_to_player(enemyPoke); await_user();
+
+                            player.is_battle = false;
+
                             return BATTLE_WIN;
                         }
                         else {
@@ -140,6 +143,7 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
             case RUN:
                 text_box_cursors(TEXT_BOX_BEGINNING);
                 printw("Got Away Safely!"); refresh(); await_user();
+                player.is_battle = false;
                 return BATTLE_WIN;
                 break;
             default:
@@ -150,6 +154,7 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
         if ((rand() % 100) < flee_chance) {
             text_box_cursors(TEXT_BOX_BEGINNING);
             printw("%s fled!", enemyPoke->nickname); refresh(); await_user();
+            player.is_battle = false;
             return BATTLE_WIN;
         }
         else if (eating == 2) { 
@@ -171,6 +176,7 @@ int safari_zone_encounter(struct Pokemon * enemyPoke) {
     }
     ///////// END GET DECISION /////////
 
+    player.is_battle = false;
     return BATTLE_WIN;
 }
 
