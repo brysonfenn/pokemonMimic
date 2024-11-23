@@ -127,10 +127,26 @@ void draw_cinnabar_island() {
     add_connection_to_big_map(MAP_TOP, 48, MAP_R17);
 
     draw_building_default(MAP_X+6,MAP_Y+8,"POKE",POKE_CENTER_ACTION);
-    draw_building_default(MAP_X+6+DEFAULT_BUILDING_WIDTH,MAP_Y+8,"MART",MART_ACTION);
+    draw_building_default(MAP_X+15,MAP_Y+8,"MART",MART_ACTION);
 
     add_surf_selectable(MAP_X+39, MAP_Y+12);
     add_surf_selectable(MAP_X+26, MAP_Y+2);
+
+    draw_building_default(MAP_X+15, MAP_Y+3, "GYM", DOORS_NEW_MAP);
+    add_building_portal(MAP_X+15, MAP_Y+3, MAP_GYM7);
+}
+
+void draw_gym7() {
+    draw_interior(MAP_X+15, MAP_Y+3, MAP_CIN_ISLAND);
+    begin_message_box();
+    draw_big_map("Cinnabar Island Gym");
+    audio_loop_file("gym.mp3");
+
+    // add_trainer_by_id(INTERIOR_X+17, INTERIOR_Y+3, 99, PLAYER_MOVING_DOWN);
+    // add_trainer_by_id(INTERIOR_X+21, INTERIOR_Y+3, 100, PLAYER_MOVING_DOWN);
+    // add_trainer_by_id(INTERIOR_X+15, INTERIOR_Y+4, 101, PLAYER_MOVING_LEFT);
+    // add_trainer_by_id(INTERIOR_X+4, INTERIOR_Y+2, 102, PLAYER_MOVING_UP);
+    add_trainer_by_id(INTERIOR_X+1, INTERIOR_Y+6, 207, PLAYER_MOVING_UP);
 }
 
 void draw_route17() {
@@ -138,5 +154,5 @@ void draw_route17() {
     audio_loop_file("beach.mp3");
 
     add_connection_to_big_map(MAP_TOP, 10, MAP_STARTER_TOWN);
-    add_connection_to_big_map(MAP_BOTTOM, 48, MAP_R17);
+    add_connection_to_big_map(MAP_BOTTOM, 48, MAP_CIN_ISLAND);
 }

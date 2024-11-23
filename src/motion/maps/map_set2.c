@@ -11,6 +11,8 @@
 #include "../../battles/trainer.h"
 #include "../../print/print_utils.h"
 #include "../../print/print_defines.h"
+#include "../../player.h"
+
 
 #define VIR_POKE_CENTER_X 28
 #define VIR_POKE_CENTER_Y 7
@@ -28,9 +30,26 @@ void draw_vir_city() {
     draw_building_default(VIR_POKE_CENTER_X, VIR_POKE_CENTER_Y, "Poke", POKE_CENTER_ACTION);
 
     add_npc_by_id(MAP_X+25, MAP_Y+9, 10, PLAYER_MOVING_DOWN);
+
+    if (!(player_has_battled_trainer(205) && player_has_battled_trainer(206) && player_has_battled_trainer(207))) {
+        add_npc_by_id(MAP_X+47, MAP_Y+5, 24, PLAYER_MOVING_RIGHT);
+    }
     
     add_connection_to_big_map(MAP_TOP, 10, MAP_R2);
     add_connection_to_big_map(MAP_BOTTOM, 25, MAP_R1);
+
+    draw_building_default(MAP_X+39,MAP_Y+2, "GYM", DOORS_NEW_MAP);
+    add_building_portal(MAP_X+39, MAP_Y+2, MAP_GYM8);
+}
+
+
+void draw_gym8() {
+    draw_interior(MAP_X+39, MAP_Y+2, MAP_VIR_CITY);
+    begin_message_box();
+    draw_big_map("Viridian City Gym");
+    audio_loop_file("gym.mp3");
+
+    
 }
 
 
@@ -38,7 +57,7 @@ void draw_route2() {
     draw_big_map("Route 2");
     audio_loop_file("route1.mp3");
 
-    add_connection_to_big_map(MAP_BOTTOM, 10, MAP_VIRIDIAN);
+    add_connection_to_big_map(MAP_BOTTOM, 10, MAP_VIR_CITY);
     add_connection_to_big_map(MAP_TOP, 7, MAP_VIR_FOREST);
     add_connection_to_big_map(MAP_TOP, 40, MAP_VIR_FOREST);
 

@@ -32,7 +32,8 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_gym4, &draw_tower1, &draw_tower2, &draw_tower3, &draw_route11,                            //36-40
                                     &draw_route12, &draw_fuchsia_city, &draw_gym5, &draw_route13, &draw_route14,                    //41-45
                                     &draw_route15, &draw_safari1, &draw_safari2, &draw_safari3, &draw_safari4,                      //46-50
-                                    &draw_route16, &draw_saffron_city, &draw_gym6, &draw_cinnabar_island, &draw_route17             //51-55
+                                    &draw_route16, &draw_saffron_city, &draw_gym6, &draw_cinnabar_island, &draw_route17,            //51-55
+                                    &draw_gym7, &draw_gym8
                                     };
 
 char map_file_name[32];
@@ -76,8 +77,9 @@ static Pokemon_id wild_pok_lists[32][16] = {
 static Pokemon_id water_pok_lists[32][16] = {
 //  #Pok, levels, ID'S...
     { 2,   15, 20, POKEMON_MAGIKARP, POKEMON_TENTACOOL }, //#0 Default Water
-    { 6,   25, 31,  POKEMON_GOLDEEN, POKEMON_GOLDEEN, POKEMON_SEAKING, POKEMON_STARYU, POKEMON_SLOWPOKE, POKEMON_HORSEA }, //#1 Safari
-    { 6,   25, 31,  POKEMON_TENTACOOL, POKEMON_TENTACOOL, POKEMON_TENTACOOL, POKEMON_HORSEA, POKEMON_TENTACRUEL, POKEMON_HORSEA } //#2
+    { 6,   25, 31,  POKEMON_GOLDEEN, POKEMON_GOLDEEN, POKEMON_SEAKING, POKEMON_STARYU, POKEMON_SLOWPOKE, POKEMON_HORSEA },          //#1 Safari
+    { 6,   25, 31,  POKEMON_TENTACOOL, POKEMON_TENTACOOL, POKEMON_TENTACOOL, POKEMON_HORSEA, POKEMON_TENTACRUEL, POKEMON_HORSEA },  //#2
+    { 6,   27, 34,  POKEMON_TENTACOOL, POKEMON_TENTACOOL, POKEMON_SEADRA, POKEMON_HORSEA, POKEMON_STARMIE, POKEMON_SLOWPOKE }       //#3
 };
 
 //     POKEMON_BEEDRILL, POKEMON_PIDGEOT, POKEMON_FEAROW, 
@@ -85,14 +87,12 @@ static Pokemon_id water_pok_lists[32][16] = {
 //     POKEMON_CLEFABLE, POKEMON_NINETALES, POKEMON_WIGGLYTUFF, POKEMON_GOLBAT, POKEMON_VILEPLUME,
 //     POKEMON_GOLDUCK, 
 //     POKEMON_POLIWRATH, POKEMON_KADABRA, POKEMON_ALAKAZAM, POKEMON_MACHOKE, 
-//     POKEMON_MACHAMP, POKEMON_WEEPINBELL, POKEMON_VICTREEBEL, POKEMON_TENTACOOL, POKEMON_TENTACRUEL, 
-//     POKEMON_GRAVELER, POKEMON_GOLEM, POKEMON_SLOWPOKE, POKEMON_SLOWBRO, 
+//     POKEMON_MACHAMP, POKEMON_WEEPINBELL, POKEMON_VICTREEBEL,
+//     POKEMON_GRAVELER, POKEMON_GOLEM, POKEMON_SLOWBRO, 
 //     POKEMON_MAGNETON, POKEMON_DEWGONG, POKEMON_MUK, POKEMON_CLOYSTER, 
 //     POKEMON_GENGAR, POKEMON_HYPNO, POKEMON_KINGLER, POKEMON_ELECTRODE, 
 //     POKEMON_EXEGGUTOR, POKEMON_HITMONLEE, POKEMON_HITMONCHAN
-//     POKEMON_WEEZING, POKEMON_RHYDON, POKEMON_HORSEA, 
-//     POKEMON_SEADRA, POKEMON_STARMIE,
-//     POKEMON_MAGIKARP, POKEMON_GYARADOS, 
+//     POKEMON_WEEZING, POKEMON_RHYDON, POKEMON_GYARADOS, 
 //     POKEMON_LAPRAS, POKEMON_DITTO, POKEMON_EEVEE, POKEMON_VAPOREON, POKEMON_JOLTEON, POKEMON_FLAREON, POKEMON_PORYGON, 
 //     POKEMON_OMANYTE, POKEMON_OMASTAR, POKEMON_KABUTO, POKEMON_KABUTOPS, POKEMON_AERODACTYL, POKEMON_ARTICUNO, 
 //     POKEMON_ZAPDOS, POKEMON_MOLTRES, POKEMON_DRAGONAIR, POKEMON_DRAGONITE, POKEMON_MEWTWO, POKEMON_MEW
@@ -119,7 +119,7 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             sprintf(map_name, "route1");
             wild_pok_list = &(wild_pok_lists[1]);
             break;
-        case MAP_VIRIDIAN:
+        case MAP_VIR_CITY:
             sprintf(map_name, "vir_city");
             wild_pok_list = &(wild_pok_lists[0]);
             break;
@@ -293,6 +293,13 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             break;
         case MAP_CIN_ISLAND:
             sprintf(map_name, "cin_island");
+            break;
+        case MAP_R17:
+            sprintf(map_name, "route17");
+            water_pok_list = &(water_pok_lists[3]);
+            break;
+        case MAP_GYM7:
+            sprintf(map_name, "gym7");
             break;
         default:
             sprintf(map_name, "empty_map");

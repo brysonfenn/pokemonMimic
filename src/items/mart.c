@@ -158,7 +158,7 @@ int handle_mart() {
 
 void set_mart() {
     switch (player.loc->map) {
-        case MAP_VIRIDIAN:  mart_array =  viridian_mart; break;
+        case MAP_VIR_CITY:  mart_array =  viridian_mart; break;
         case MAP_PEW_CITY:  mart_array =  pewter_mart; break;
         case MAP_CER_CITY:  mart_array =  cerulean_mart; break;
         case MAP_VERM_CITY: mart_array =  vermillion_mart; break;

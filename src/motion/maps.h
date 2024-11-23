@@ -3,7 +3,7 @@
 
 //enumerate the map function indexes
 typedef enum { MAP_GENERIC, 
-                MAP_VIRIDIAN, MAP_R2, MAP_R1, MAP_STARTER_TOWN, MAP_LAB, 
+                MAP_VIR_CITY, MAP_R2, MAP_R1, MAP_STARTER_TOWN, MAP_LAB, 
                 MAP_VIR_FOREST, MAP_PEW_CITY, MAP_GYM1, MAP_R3, MAP_MT_MOON_N,
                 MAP_CER_CITY, MAP_GYM2, MAP_R4, MAP_UNDERGROUND, MAP_VERM_CITY, MAP_R5,
                 MAP_SS_ANNE1, MAP_SS_ANNE2, MAP_GYM3, MAP_MT_MOON_S, MAP_R6,
@@ -12,11 +12,12 @@ typedef enum { MAP_GENERIC,
                 MAP_ROCKET2, MAP_ROCKET3, MAP_GAME_CORNER, MAP_GYM4, MAP_TOWER1,
                 MAP_TOWER2, MAP_TOWER3, MAP_R11, MAP_R12, MAP_FU_CITY, MAP_GYM5,
                 MAP_R13, MAP_R14, MAP_R15, MAP_SAFARI1, MAP_SAFARI2, MAP_SAFARI3, 
-                MAP_SAFARI4, MAP_R16, MAP_SAFF_CITY, MAP_GYM6, MAP_CIN_ISLAND, MAP_R17
+                MAP_SAFARI4, MAP_R16, MAP_SAFF_CITY, MAP_GYM6, MAP_CIN_ISLAND, MAP_R17,
+                MAP_GYM7, MAP_GYM8
 } Map_id;
 
 //Change when adding a map
-#define MAX_MAP_NUM MAP_R17
+#define MAX_MAP_NUM MAP_GYM8
 
 
 //Draw elements (like grass, trees, etc) according to map text file

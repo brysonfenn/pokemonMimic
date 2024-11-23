@@ -1,19 +1,24 @@
-Last Saved: 11/21/2024 17:18:16
+Last Saved: 11/21/2024 19:40:09
 Player: A.
-1 0 2 1000 0 0 0 0 4 Khaki.
-Location: {4,(38,11)}
+2 0 2 1000 0 0 0 0 4 Khaki.
+Location: {55,(52,17)}
 Heal Center: {4,(13,11)}
 Pokemon: 
 Charmander Charmander. 4 18 18 2 11 10 12 10 11 5 125 FIRE NONE a3ac281 0 0 0
 	Scratch. 2 35
 	Growl. 3 40
+Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+	Thunder Shock. 55 30
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Surf. 207 20
 PC: 
 Bag:
 Potion. 1 2
 Poke Ball. 3 5
 
-Key Items: 0
-  
+Key Items: 1
+  210 
 
 HM/TMs: 0
   

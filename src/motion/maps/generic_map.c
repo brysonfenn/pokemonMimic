@@ -16,7 +16,7 @@ void draw_generic_map() {
     print_to_message_box("Unknown Location: Update maps.c & maps.h to add maps");
 
     draw_town_exit(MAP_RIGHT, 10);
-    add_portal(MAP_X+MAP_WIDTH-1, MAP_Y+10, MAP_X+10, MAP_Y+10, MAP_VIRIDIAN, true);
+    add_portal(MAP_X+MAP_WIDTH-1, MAP_Y+10, MAP_X+10, MAP_Y+10, MAP_VIR_CITY, true);
 
     grass_generic_map();
 

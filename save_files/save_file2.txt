@@ -1,7 +1,7 @@
-Last Saved: 07/14/2024 20:02:48
+Last Saved: 11/23/2024 10:20:49
 Player: Beige.
 3 0 2 1345 0 0 0 0 1 Khaki.
-Location: {1,(33,10)}
+Location: {1,(47,6)}
 Heal Center: {1,(33,10)}
 Pokemon: 
 Caterpie Caterpie. 10 18 18 2 8 8 7 6 9 4 119 BUG NONE 1c2ae2b1 2000000 0 0
@@ -24,5 +24,5 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 1
-  251 
+Trainers Battled: 8
+  251 201 202 203 204 205 206 207 

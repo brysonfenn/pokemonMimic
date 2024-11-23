@@ -3,6 +3,8 @@
 
 void draw_vir_city();
 
+void draw_gym8();
+
 void draw_route2();
 
 void draw_vir_forest();

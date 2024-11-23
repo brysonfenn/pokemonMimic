@@ -115,6 +115,10 @@ static Trainer t095 = {95, "Tamer Natalie", "I like Cats, do you?", 2, {POKEMON_
 static Trainer t096 = {96, "Psychic Cameron", "I knew I'd meet you here.", 3, {POKEMON_SLOWPOKE, POKEMON_SLOWPOKE, POKEMON_SLOWBRO}, {33,33,34} };
 static Trainer t097 = {97, "Psychic Tyron", "I've trained with Sabrina for 5 years!", 2, {POKEMON_MR_MIME, POKEMON_KADABRA}, {34,35} };
 static Trainer t098 = {98, "Psychic Johan", "Can you defeat Psychic Type Pokemon?", 4, {POKEMON_SLOWPOKE,POKEMON_KADABRA,POKEMON_KADABRA,POKEMON_MR_MIME}, {31,31,32,33} };
+static Trainer t099 = {99, "Scientist Quinn", "Researching Fire Pokemon is my specialty.", 3, {POKEMON_GROWLITHE, POKEMON_VULPIX, POKEMON_NINETALES}, {36,36,37} };
+static Trainer t100 = {100,"Firebreather Erik", "Fire is the element of power!", 4, {POKEMON_PONYTA, POKEMON_CHARMELEON, POKEMON_GROWLITHE, POKEMON_NINETALES}, {34,34,35,36} };
+static Trainer t101 = {101,"Scientist Lucy", "We don't believe in air conditioning here.", 3, {POKEMON_VULPIX, POKEMON_VULPIX, POKEMON_MAGMAR}, {36,36,37} };
+static Trainer t102 = {102,"Gym Trainer Dusty", "I love dogs and fire type Pokemon!", 3, {POKEMON_GROWLITHE, POKEMON_VULPIX, POKEMON_FLAREON}, {36,36,37} };
 
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
@@ -122,7 +126,8 @@ static Trainer * trainers[NUM_TRAINERS] = { &t000,
     &t021, &t022, &t023, &t024, &t025, &t026, &t027, &t028, &t029, &t030, &t031, &t032, &t033, &t034, &t035, &t036, &t037, &t038, &t039, &t040,
     &t041, &t042, &t043, &t044, &t045, &t046, &t047, &t048, &t049, &t050, &t051, &t052, &t053, &t054, &t055, &t056, &t057, &t058, &t059, &t060,
     &t061, &t062, &t063, &t064, &t065, &t066, &t067, &t068, &t069, &t070, &t071, &t072, &t073, &t074, &t075, &t076, &t077, &t078, &t079, &t080,
-    &t081, &t082, &t083, &t084, &t085, &t086, &t087, &t088, &t089, &t090, &t091, &t092, &t093, &t094, &t095, &t096, &t097, &t098
+    &t081, &t082, &t083, &t084, &t085, &t086, &t087, &t088, &t089, &t090, &t091, &t092, &t093, &t094, &t095, &t096, &t097, &t098, &t099, &t100,
+    &t101, &t102
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am Brock, Gym Leader of Pewter. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
@@ -133,11 +138,13 @@ static Trainer leader204 = {204, "Leader Erika", "Welcome to the Celadon Gym. Gr
                                 3, {POKEMON_VICTREEBEL, POKEMON_TANGELA, POKEMON_VILEPLUME}, {29,24,29} };
 static Trainer leader205 = {205, "Master Koga", "Hello. I am Master Koga, Leader of the Fuschia Gym. Do you have the strength to defeat a ninja?", 
                                 4, {POKEMON_KOFFING, POKEMON_KOFFING, POKEMON_WEEZING, POKEMON_MUK}, {37,37,43,39} };
-static Trainer leader206 = {205, "Leader Sabrina", "Greetings. I am Sabrina, Leader of the Saffron Gym. My Psychic Pokemon can be... unpredictable.", 
+static Trainer leader206 = {206, "Leader Sabrina", "Greetings. I am Sabrina, Leader of the Saffron Gym. My Psychic Pokemon can be... unpredictable.", 
                                 4, {POKEMON_KADABRA, POKEMON_MR_MIME, POKEMON_ALAKAZAM, POKEMON_VENOMOTH}, {38,37,43,38} };
+static Trainer leader207 = {207, "Leader Blaine", "I am Blaine, Leader of Cinnabar Gym. My battle techniques are like Wildfire!", 
+                                4, {POKEMON_PONYTA, POKEMON_GROWLITHE, POKEMON_RAPIDASH, POKEMON_ARCANINE}, {40,42,42,47} };
 
 static Trainer * leaders[10] = { &t000,
-    &leader201, &leader202, &leader203, &leader204, &leader205, &leader206
+    &leader201, &leader202, &leader203, &leader204, &leader205, &leader206, &leader207
 };
 
 static Trainer rival001 = {251, "Rival", "I'm your rival, Let's Battle!", 1, {POKEMON_BULBASAUR}, {5} };
