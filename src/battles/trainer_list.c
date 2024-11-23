@@ -7,7 +7,7 @@
 #include "../monsters/pokemon.h"
 #include "../print/print_utils.h"
 
-#define NUM_TRAINERS 110
+#define NUM_TRAINERS 120
 
 static Trainer t000  = {0, "Trainer Empty", "Hi! I train Pokemon too!", 2, {POKEMON_RATTATA, POKEMON_PIDGEY}, {4,4} };
 static Trainer t001 = {1, "Trainer John", "Hi! I train Pokemon too!", 2, {POKEMON_RATTATA, POKEMON_PIDGEY}, {4,4} };
@@ -123,6 +123,8 @@ static Trainer t103 = {103,"Tamer Cole", "I'm hard on my Pokemon, and they are s
 static Trainer t104 = {104,"Black Belt Atsuishi", "I'm a fan of fighting-types.", 3, {POKEMON_MACHOKE, POKEMON_HITMONCHAN, POKEMON_MACHAMP}, {40,40,41} };
 static Trainer t105 = {105,"Cooltrainer Yuji", "Rock and Ground, a great balance of types!", 4, {POKEMON_SANDSLASH,POKEMON_ONIX,POKEMON_GRAVELER,POKEMON_MAROWAK}, {38,38,40,41} };
 static Trainer t106 = {106,"Cooltrainer Samuel", "The Gym Leader here is mysterious. But he pays well!", 3, {POKEMON_RHYHORN, POKEMON_NIDORINO, POKEMON_NIDOKING}, {42,39,43} };
+static Trainer t107 = {107,"Trainer Rojo", "Oh, you had to choose a Starter?", 3, {POKEMON_VENUSAUR, POKEMON_CHARIZARD, POKEMON_BLASTOISE}, {36,36,36} };
+static Trainer t108 = {108,"Adventurer Harold", "Have you been to Cinnabar Island yet?", 3, {POKEMON_MUK, POKEMON_RAICHU, POKEMON_VENOMOTH}, {32,34,38} };
 
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
@@ -131,7 +133,7 @@ static Trainer * trainers[NUM_TRAINERS] = { &t000,
     &t041, &t042, &t043, &t044, &t045, &t046, &t047, &t048, &t049, &t050, &t051, &t052, &t053, &t054, &t055, &t056, &t057, &t058, &t059, &t060,
     &t061, &t062, &t063, &t064, &t065, &t066, &t067, &t068, &t069, &t070, &t071, &t072, &t073, &t074, &t075, &t076, &t077, &t078, &t079, &t080,
     &t081, &t082, &t083, &t084, &t085, &t086, &t087, &t088, &t089, &t090, &t091, &t092, &t093, &t094, &t095, &t096, &t097, &t098, &t099, &t100,
-    &t101, &t102, &t103, &t104, &t105, &t106
+    &t101, &t102, &t103, &t104, &t105, &t106, &t107, &t108
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am Brock, Gym Leader of Pewter. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };

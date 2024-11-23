@@ -155,4 +155,13 @@ void draw_route17() {
 
     add_connection_to_big_map(MAP_TOP, 10, MAP_STARTER_TOWN);
     add_connection_to_big_map(MAP_BOTTOM, 48, MAP_CIN_ISLAND);
+
+    add_surf_selectable(MAP_X+26, MAP_Y+4);
+    add_surf_selectable(MAP_X+26, MAP_Y+12);
+    add_surf_selectable(MAP_X+53, MAP_Y+2);
+    add_surf_selectable(MAP_X+55, MAP_Y+13);
+
+    add_trainer_by_id(MAP_X+56, MAP_Y+4, 107, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+30, MAP_Y+6, 108, PLAYER_MOVING_DOWN);
+    
 }
