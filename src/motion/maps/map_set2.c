@@ -49,7 +49,15 @@ void draw_gym8() {
     draw_big_map("Viridian City Gym");
     audio_loop_file("gym.mp3");
 
-    
+    add_trainer_by_id(INTERIOR_X+4, INTERIOR_Y+5, 103, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(INTERIOR_X+8, INTERIOR_Y+3, 104, PLAYER_MOVING_UP);
+    add_trainer_by_id(INTERIOR_X+24, INTERIOR_Y+6, 105, PLAYER_MOVING_UP);
+    add_trainer_by_id(INTERIOR_X+20, INTERIOR_Y+3, 106, PLAYER_MOVING_DOWN);
+
+
+    mvaddch(INTERIOR_Y+3, INTERIOR_X+15, ACS_LRCORNER);
+    add_trainer_by_id(INTERIOR_X+14, INTERIOR_Y+3, 208, PLAYER_MOVING_DOWN);
+    mvaddch(INTERIOR_Y+3, INTERIOR_X+13, ACS_LLCORNER);
 }
 
 
