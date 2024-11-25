@@ -1,34 +1,34 @@
-Last Saved: 11/20/2024 20:41:59
+Last Saved: 11/25/2024 10:03:04
 Player: B Test Man.
-6 1 12 14075 12d 0 0 0 4 G Test Man.
-Location: {52,(26,10)}
+6 1 12 14200 12d 0 0 0 4 G Test Man.
+Location: {18,(34,6)}
 Heal Center: {52,(18,14)}
 Pokemon: 
-Mankey Mankey. 56 39 39 4 35 17 9 9 29 16 4490 FIGHTING NONE 567c1363 3070b05 0 0
-	Scratch. 2 35
-	Fury Swipes. 50 15
-	Low Kick. 116 20
-	Karate Chop. 117 20
-Drowzee Drowzee. 96 51 51 4 26 21 16 28 22 18 6194 PSYCHIC NONE 5c3106cb 60b00 0 4
+Gloom Gloom. 44 66 65 4 37 42 41 42 27 24 13938 GRASS POISON 19b2348e c100c03 0 2
+	Absorb. 100 19
+	Sleep Powder. 15 14
+	Poison Powder. 14 35
+	Acid. 91 30
+Drowzee Drowzee. 96 51 11 4 26 21 16 28 22 18 6724 PSYCHIC NONE 5c3106cb 70b00 0 4
 	Headbutt. 137 15
 	Hypnosis. 125 20
 	Disable. 115 20
-	Confusion. 36 25
-Charmeleon Charmeleon. 5 47 47 4 30 27 32 29 32 17 5005 FIRE NONE 583c265 b090f05 0 4
+	Confusion. 36 23
+Charmeleon Charmeleon. 5 49 15 4 32 29 32 29 34 18 6228 FIRE NONE 583c265 b091005 0 4
 	Scratch. 2 35
 	Growl. 3 40
-	Ember. 12 25
+	Ember. 12 23
 	Metal Claw. 17 35
 Geodude Geodude. 74 44 44 4 39 44 11 10 12 18 5959 ROCK GROUND 36dcb8a 5020a01 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
 	Rock Throw. 76 15
 	Magnitude. 106 30
-Gloom Gloom. 44 63 63 4 36 40 41 42 26 23 13408 GRASS POISON 19b2348e c0f0c03 0 2
-	Absorb. 100 20
-	Sleep Powder. 15 15
-	Poison Powder. 14 35
-	Stun Spore. 37 30
+Mankey Mankey. 56 39 39 4 35 17 9 9 29 16 4490 FIGHTING NONE 567c1363 3070b05 0 0
+	Scratch. 2 35
+	Fury Swipes. 50 15
+	Low Kick. 116 20
+	Karate Chop. 117 20
 Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
 	Thunder Shock. 55 30
 	Quick Attack. 8 30
@@ -47,7 +47,7 @@ Burn Heal. 9 1
 Antidote. 6 2
 Super Potion. 2 3
 Potion. 1 3
-Repel. 17 1
+Repel. 17 3
 Leaf Stone. 15 1
 Great Ball. 4 2
 Awakening. 8 1
@@ -59,5 +59,5 @@ Key Items: 1
 HM/TMs: 0
   
 
-Trainers Battled: 34
-  251 1 8 2 3 5 7 36 9 12 10 6 11 201 14 13 37 15 16 22 20 23 24 25 26 27 21 28 69 70 202 29 252 30 
+Trainers Battled: 35
+  251 1 8 2 3 5 7 36 9 12 10 6 11 201 14 13 37 15 16 22 20 23 24 25 26 27 21 28 69 70 202 29 252 30 31 
