@@ -1,14 +1,14 @@
-Last Saved: 11/23/2024 16:01:12
+Last Saved: 11/25/2024 08:00:10
 Player: Oliver H.
-6 11 3 6960 5 0 0 0 7 Blue.
-Location: {13,(59,14)}
+6 11 3 8535 5 0 0 0 7 Blue.
+Location: {12,(30,6)}
 Heal Center: {11,(37,11)}
 Pokemon: 
-Wartortle Bam. 8 51 47 4 30 41 28 36 33 19 7030 WATER NONE 7fd958e0 102c0a0b 0 0
-	Water Gun. 28 22
-	Bite. 29 25
-	Bubble. 13 30
-	Withdraw. 27 40
+Pikachu Santa. 25 39 0 4 24 22 12 11 39 16 4108 ELECTRIC NONE 2e4b714b 29080408 0 0
+	Thunder Shock. 55 26
+	Quick Attack. 8 30
+	Double Team. 57 15
+	Thunder Wave. 56 20
 Butterfree Butter. 12 39 39 4 18 22 26 23 27 13 2319 BUG FLYING 398f7d65 e14040f 0 5
 	Tackle. 1 35
 	String Shot. 5 40
@@ -21,14 +21,14 @@ Kakuna COOn. 14 23 23 3 8 14 8 9 10 7 370 BUG POISON 54c27cc8 4040004 0 0
 Paras Cute. 46 25 25 2 18 15 13 17 10 9 729 BUG GRASS 61c294e7 0 0 0
 	Scratch. 2 35
 	Stun Spore. 37 30
-Beedrill Beedrill. 15 44 44 2 29 18 14 23 27 13 2504 BUG POISON 2390c17f 1a13030c 0 0
+Beedrill Beedrill. 15 46 46 2 31 19 14 23 29 14 3329 BUG POISON 2390c17f 1a13050c 0 0
 	Harden. 34 30
-	Fury Attack. 41 20
-Pikachu Santa. 25 35 35 4 21 20 12 11 34 14 2912 ELECTRIC NONE 2e4b714b 29070308 0 0
-	Thunder Shock. 55 30
-	Quick Attack. 8 30
-	Tail Whip. 4 30
-	Thunder Wave. 56 20
+	Fury Attack. 41 19
+Wartortle Bam. 8 51 51 4 30 41 28 36 33 19 7828 WATER NONE 7fd958e0 102d0b0b 0 0
+	Water Gun. 28 25
+	Bite. 29 25
+	Bubble. 13 30
+	Withdraw. 27 40
 PC: 
 Sandshrew Ameirica. 27 44 44 3 30 35 8 9 19 16 4169 GROUND NONE 4ed844e9 1c0b0917 0 0
 	Tackle. 1 35
@@ -75,5 +75,5 @@ Key Items: 1
 HM/TMs: 0
   
 
-Trainers Battled: 19
-  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 
+Trainers Battled: 21
+  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 20 21 

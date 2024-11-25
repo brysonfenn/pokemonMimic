@@ -172,6 +172,7 @@ int battle_trainer(Trainer * trainer) {
     }
 
     player.is_battle = false;
+    player.is_trainer_battle = false;
     
     //Handle return values
     if (battle_result == BATTLE_WHITE_OUT) {
