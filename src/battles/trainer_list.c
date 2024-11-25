@@ -86,7 +86,7 @@ static Trainer t068 = {68, "Rocket Grunt", "Stop trying to mess with our plans!"
 static Trainer t069 = {69, "Trainer Terrence", "I'm a trainer too!", 2, {POKEMON_HORSEA, POKEMON_SEADRA}, {15,17} };
 static Trainer t070 = {70, "Trainer Adam", "I like flying Pokemon!", 2, {POKEMON_PIDGEOTTO, POKEMON_PIDGEOT}, {17,19} };
 static Trainer t071 = {71, "Channeler Patricia", "Ghost Pokemon are everywhere around here.", 2, {POKEMON_GASTLY, POKEMON_GASTLY}, {24, 24} };
-static Trainer t072 = {72, "Channeler Karina", "Without that Silph Scope, you wouldn't see Ghost Pokemon!", 2, {POKEMON_GASTLY, POKEMON_GASTLY}, {24, 25} };
+static Trainer t072 = {72, "Channeler Karina", "Without that Silph Scope, you wouldn't see my Ghost Pokemon!", 2, {POKEMON_GASTLY, POKEMON_GASTLY}, {24, 25} };
 static Trainer t073 = {73, "Channeler Angelica", "Be gone!", 2, {POKEMON_GASTLY, POKEMON_HAUNTER}, {24, 26} };
 static Trainer t074 = {74, "Channeler Jennifer", "Team Rocket is horrible! Make them Leave!", 2, {POKEMON_GASTLY, POKEMON_HAUNTER}, {25, 26} };
 static Trainer t075 = {75, "Channeler Hope", "Team Rocket kidnapped Mr. Fuji. Are you with them?", 2, {POKEMON_HAUNTER, POKEMON_HAUNTER}, {24, 26} };
@@ -106,7 +106,6 @@ static Trainer t087 = {87, "Juggler Kirk", "Will you ever find Master Koga?", 4,
 static Trainer t088 = {88, "Tamer Edgar", "I have strong Pokemon!", 4, {POKEMON_ARBOK, POKEMON_ARBOK, POKEMON_SANDSLASH}, {33,33,33} };
 static Trainer t089 = {89, "Tamer Phil", "Do you have any ground-type pokemon?", 4, {POKEMON_SANDSLASH, POKEMON_ARBOK}, {34,34} };
 static Trainer t090 = {90, "Juggler Shawn", "I like Psychic types.", 4, {POKEMON_DROWZEE, POKEMON_HYPNO}, {34,34} };
-
 static Trainer t091 = {91, "Trainer Tristan", "I'm from Fushcia. What about you?", 2, {POKEMON_VULPIX, POKEMON_NINETALES}, {30,30} };
 static Trainer t092 = {92, "Cooltrainer Sally", "Have you been to Fuchsia City?", 2, {POKEMON_CUBONE, POKEMON_GRIMER}, {29,31} };
 static Trainer t093 = {93, "Birdcatcher Esther", "I love catching bird Pokemon!", 2, {POKEMON_SPEAROW, POKEMON_PIDGEOT}, {30,31} };
@@ -117,6 +116,7 @@ static Trainer t097 = {97, "Psychic Tyron", "I've trained with Sabrina for 5 yea
 static Trainer t098 = {98, "Psychic Johan", "Can you defeat Psychic Type Pokemon?", 4, {POKEMON_SLOWPOKE,POKEMON_KADABRA,POKEMON_KADABRA,POKEMON_MR_MIME}, {31,31,32,33} };
 static Trainer t099 = {99, "Scientist Quinn", "Researching Fire Pokemon is my specialty.", 3, {POKEMON_GROWLITHE, POKEMON_VULPIX, POKEMON_NINETALES}, {36,36,37} };
 static Trainer t100 = {100,"Firebreather Erik", "Fire is the element of power!", 4, {POKEMON_PONYTA, POKEMON_CHARMELEON, POKEMON_GROWLITHE, POKEMON_NINETALES}, {34,34,35,36} };
+
 static Trainer t101 = {101,"Scientist Lucy", "We don't believe in air conditioning here.", 3, {POKEMON_VULPIX, POKEMON_VULPIX, POKEMON_MAGMAR}, {36,36,37} };
 static Trainer t102 = {102,"Gym Trainer Dusty", "I love dogs and fire type Pokemon!", 3, {POKEMON_GROWLITHE, POKEMON_VULPIX, POKEMON_FLAREON}, {36,36,37} };
 static Trainer t103 = {103,"Tamer Cole", "I'm hard on my Pokemon, and they are strong!", 3, {POKEMON_ARBOK, POKEMON_ONIX, POKEMON_TAUROS}, {39,39,41} };

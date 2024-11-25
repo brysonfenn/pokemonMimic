@@ -68,6 +68,7 @@
 #define NPC_COLOR 9
 #define INVERSE_COLOR 10
 
+//Select Characters
 #define SELECT_CHAR 'a'
 #define SELECT_CHAR_2 'z'
 #define CANCEL_CHAR 'b'
@@ -83,7 +84,7 @@
 
 
 //TEST-DEBUG VARIABLES
-#define DISABLE_WILD_ENCOUNTERS false
+#define DISABLE_WILD_ENCOUNTERS true
 #define ENABLE_FORCE_ENEMY_MOVE false
 #define FORCED_ENEMY_MOVE 0
 
