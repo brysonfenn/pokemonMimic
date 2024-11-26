@@ -1,30 +1,30 @@
-Last Saved: 11/25/2024 09:10:50
+Last Saved: 11/26/2024 14:12:32
 Player: Oliver H.
-6 11 3 11085 5 0 0 0 7 Blue.
-Location: {15,(29,16)}
-Heal Center: {15,(19,7)}
+6 12 3 16440 10d 0 0 0 7 Blue.
+Location: {17,(17,17)}
+Heal Center: {15,(20,7)}
 Pokemon: 
-Pikachu Santa. 25 39 39 4 24 22 12 11 39 16 4108 ELECTRIC NONE 2e4b714b 29080408 0 0
+Pikachu Santa. 25 42 42 4 26 24 12 11 43 18 6252 ELECTRIC NONE 2e4b714b 2a090909 0 0
 	Thunder Shock. 55 30
 	Quick Attack. 8 30
 	Double Team. 57 15
 	Thunder Wave. 56 20
-Butterfree Butter. 12 39 39 4 18 22 26 23 27 13 2319 BUG FLYING 398f7d65 e14040f 0 5
-	Tackle. 1 35
-	String Shot. 5 40
+Butterfree Butter. 12 46 46 4 21 26 26 23 32 16 4619 BUG FLYING 398f7d65 f140a0f 0 5
+	Sleep Powder. 15 15
+	Stun Spore. 37 30
 	Poison Powder. 14 35
 	Confusion. 36 25
-Kakuna COOn. 14 23 23 3 8 14 8 9 10 7 370 BUG POISON 54c27cc8 4040004 0 0
-	Poison Sting. 6 35
-	String Shot. 5 40
+Kabuto Kabuto. 140 33 33 3 31 33 19 18 23 14 3083 ROCK WATER 6cb26bcb 100 0 0
+	Scratch. 2 35
 	Harden. 34 30
+	Absorb. 100 20
 Paras Cute. 46 25 25 2 18 15 13 17 10 9 729 BUG GRASS 61c294e7 0 0 0
 	Scratch. 2 35
 	Stun Spore. 37 30
-Beedrill Beedrill. 15 46 46 2 31 19 14 23 29 14 3329 BUG POISON 2390c17f 1a13050c 0 0
+Beedrill Beedrill. 15 49 49 2 33 20 14 23 30 15 3932 BUG POISON 2390c17f 1b13060c 0 0
 	Harden. 34 30
 	Fury Attack. 41 20
-Wartortle Bam. 8 56 56 4 33 45 28 36 36 21 10449 WATER NONE 7fd958e0 122d0b0b 0 0
+Wartortle Bam. 8 60 60 4 36 49 28 36 39 23 13214 WATER NONE 7fd958e0 132f0e0b 0 0
 	Water Gun. 28 25
 	Bite. 29 25
 	Bubble. 13 30
@@ -64,16 +64,20 @@ Mankey Kung fu. 56 19 19 2 13 9 9 10 12 5 125 FIGHTING NONE 1b0e3c00 0 0 0
 Geodude Gem. 74 24 24 2 19 21 10 10 8 8 512 ROCK GROUND a331e07 0 0 0
 	Tackle. 1 35
 	Defense Curl. 9 40
+Kakuna COOn. 14 23 23 3 8 14 8 9 10 7 370 BUG POISON 54c27cc8 4040004 0 0
+	Poison Sting. 6 35
+	String Shot. 5 40
+	Harden. 34 30
 Bag:
 Potion. 1 2
 Antidote. 6 2
 Moon Stone. 16 1
 
 Key Items: 1
-  202 
+  207 
 
 HM/TMs: 0
   
 
-Trainers Battled: 22
-  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 20 21 202 
+Trainers Battled: 30
+  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 20 21 202 23 24 25 26 27 28 29 30 
