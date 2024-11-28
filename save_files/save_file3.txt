@@ -1,17 +1,17 @@
-Last Saved: 11/26/2024 14:29:30
+Last Saved: 11/27/2024 19:00:33
 Player: Elliot H.
-6 23 7 54130 f7d 0 0 0 4 Gary.
+6 23 7 54685 ffd 0 0 0 4 Gary.
 Location: {30,(42,5)}
 Heal Center: {30,(42,5)}
 Pokemon: 
-Omanyte Omanyte. 138 70 70 4 37 75 42 28 29 33 38609 ROCK WATER 6742dad 4101200 0 0
+Omanyte Omanyte. 138 72 72 4 37 78 42 28 30 34 41938 ROCK WATER 6742dad 4111401 0 4
 	Constrict. 133 35
 	Mud Shot. 166 15
 	Bite. 29 25
 	Water Gun. 28 25
-Charmeleon Charmeleon. 5 80 80 4 59 45 35 28 67 32 35611 FIRE NONE 772e8be0 21203213 0 3
+Charmeleon Charmeleon. 5 87 87 4 65 49 35 28 73 35 43408 FIRE NONE 772e8be0 21213713 0 3
 	Scratch. 2 35
-	Scary Face. 21 15
+	Flame Thrower. 22 15
 	Ember. 12 25
 	Metal Claw. 17 35
 Ponyta Incario. 77 50 50 4 41 33 19 21 44 20 8489 FIRE NONE 61e8f922 5071303 0 2
@@ -19,7 +19,7 @@ Ponyta Incario. 77 50 50 4 41 33 19 21 44 20 8489 FIRE NONE 61e8f922 5071303 0 2
 	Growl. 3 40
 	Stomp. 127 20
 	Ember. 12 25
-Nidoking Thorn. 34 127 127 4 110 74 46 38 79 42 74448 POISON GROUND 42cd13d1 1a204706 0 0
+Nidoking Thorn. 34 127 127 4 110 74 46 38 79 42 75529 POISON GROUND 42cd13d1 1a204707 0 0
 	Thrash. 67 20
 	Peck. 51 35
 	Double Kick. 61 30
@@ -128,8 +128,8 @@ Paralyze Heal. 7 1
 Burn Heal. 9 3
 Leaf Stone. 15 1
 Poke Ball. 3 1
-Super Potion. 2 1
-Great Ball. 4 1
+Super Potion. 2 3
+Great Ball. 4 3
 Super Repel. 18 1
 
 Key Items: 3
@@ -138,5 +138,5 @@ Key Items: 3
 HM/TMs: 1
   101 
 
-Trainers Battled: 68
-  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 202 29 30 31 32 34 35 253 33 38 41 46 45 39 42 43 44 48 50 52 53 55 54 62 56 57 58 59 60 63 40 203 71 72 74 75 76 77 79 
+Trainers Battled: 71
+  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 202 29 30 31 32 34 35 253 33 38 41 46 45 39 42 43 44 48 50 52 53 55 54 62 56 57 58 59 60 63 40 203 71 72 74 75 76 77 79 64 65 66 

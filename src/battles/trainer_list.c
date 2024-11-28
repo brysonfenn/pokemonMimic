@@ -45,7 +45,7 @@ static Trainer t031 = {31, "Sailor Sebastian", "I like Tough Pokemon!", 2, {POKE
 static Trainer t032 = {32, "Traveler Jackson", "This boat is huge!", 3, {POKEMON_PIDGEOTTO, POKEMON_KADABRA, POKEMON_RAPIDASH}, {16,17,17} };
 static Trainer t033 = {33, "Madame Halpin", "I'm getting too old for battles!", 2, {POKEMON_TANGELA, POKEMON_JYNX}, {18,18} };
 static Trainer t034 = {34, "Sailor Garth", "My water type Pokemon love this boat", 3, {POKEMON_SEEL, POKEMON_POLIWHIRL, POKEMON_CLOYSTER}, {18,18,19} };
-static Trainer t035 = {35, "Sir Lewis", "I'm starting my retirement here", 2, {POKEMON_PERSIAN, POKEMON_ELECTABUZZ}, {19,20} };
+static Trainer t035 = {35, "Sir Lewis", "I'm starting my retirement here", 2, {POKEMON_PERSIAN, POKEMON_ELECTABUZZ}, {18,18} };
 static Trainer t036 = {36, "Trainer Mindy", "I'm scared of bugs!", 2, {POKEMON_VULPIX, POKEMON_PIKACHU}, {6,7} };
 static Trainer t037 = {37, "Traveler Veronica", "I'm from Vermillion City. Have you been there?", 2, {POKEMON_DROWZEE, POKEMON_NIDORINO}, {9,9} };
 static Trainer t038 = {38, "Gym Trainer Mike", "This is a tough Gym. Good Luck!", 2, {POKEMON_VOLTORB, POKEMON_MAGNEMITE}, {19,20} };
@@ -157,7 +157,7 @@ static Trainer * leaders[10] = { &t000,
 
 static Trainer rival001 = {251, "Rival", "I'm your rival, Let's Battle!", 1, {POKEMON_BULBASAUR}, {5} };
 static Trainer rival002 = {252, "Rival", "It's been a while, are you any better?", 3, {POKEMON_GEODUDE, POKEMON_RATTATA, POKEMON_BULBASAUR}, {10,11,13} };
-static Trainer rival003 = {253, "Rival", "You'll have to beat me to see the Captain", 4, {POKEMON_RATICATE, POKEMON_GRAVELER, POKEMON_KADABRA, POKEMON_IVYSAUR}, {19,20,20,22} };
+static Trainer rival003 = {253, "Rival", "You'll have to beat me to see the Captain", 4, {POKEMON_RATICATE, POKEMON_GRAVELER, POKEMON_KADABRA, POKEMON_IVYSAUR}, {18,19,19,20} };
 
 static Trainer * rivals[10] = { &t000,
     &rival001, &rival002, &rival003
