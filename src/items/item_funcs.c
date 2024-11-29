@@ -262,7 +262,7 @@ int use_repel(int num_steps, char * name) {
     player.repel_steps = num_steps;
     begin_list();
     sprintf(print_str, "Pokemon below your first Pokemon's level will be repelled for %d steps", num_steps);
-    print_to_list(print_str); await_user();
+    print_to_list(print_str); await_user(); 
     return ITEM_SUCCESS;
 }
 

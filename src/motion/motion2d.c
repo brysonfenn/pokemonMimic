@@ -181,7 +181,7 @@ void handle_motion() {
             if (*player_y != prev_player_y || *player_x != prev_player_x) {
                 player.repel_steps--;
                 if (player.repel_steps == 0) {
-                    print_to_message_box("Repel's effect wore off..."); await_user();
+                    print_to_message_box("Repel's effect wore off..."); await_user(); begin_message_box();
                 }
             }
         }

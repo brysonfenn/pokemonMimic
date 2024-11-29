@@ -1,21 +1,22 @@
-Last Saved: 11/28/2024 16:05:32
+Last Saved: 11/29/2024 10:38:58
 Player: Oliver H.
-6 12 7 16870 11d 0 0 0 7 Blue.
-Location: {22,(58,17)}
-Heal Center: {11,(38,11)}
+6 15 7 15820 17d 0 0 0 7 Blue.
+Location: {15,(54,12)}
+Heal Center: {15,(19,7)}
 Pokemon: 
+Wartortle Bam. 8 69 69 4 41 57 28 36 46 27 21852 WATER NONE 7fd958e0 18330f0b 0 0
+	Water Gun. 28 25
+	Bite. 29 25
+	Rapid Spin. 30 40
+	Withdraw. 27 40
+Nidoran(m) Dude. 32 31 31 2 18 13 12 11 16 10 1036 POISON NONE 22589a3a 1000602 0 5
+	Leer. 52 30
+	Peck. 51 35
 Butterfree Butter. 12 51 51 4 23 29 26 23 35 18 5998 BUG FLYING 398f7d65 10140a0f 0 5
 	Sleep Powder. 15 15
 	Supersonic. 35 20
 	Poison Powder. 14 35
 	Confusion. 36 25
-Nidoran(m) Dude. 32 31 31 2 18 13 12 11 16 10 1036 POISON NONE 22589a3a 1000602 0 5
-	Leer. 52 30
-	Peck. 51 35
-Kabuto Kabuto. 140 37 37 3 35 37 19 18 26 16 4438 ROCK WATER 6cb26bcb 1000100 0 0
-	Scratch. 2 35
-	Harden. 34 30
-	Absorb. 100 20
 Pikachu Santa. 25 46 46 4 29 27 12 11 47 20 8876 ELECTRIC NONE 2e4b714b 2b0b0a09 0 0
 	Thunder Shock. 55 30
 	Quick Attack. 8 30
@@ -25,11 +26,10 @@ Beedrill Beedrill. 15 60 60 3 41 24 14 23 38 19 7806 BUG POISON 2390c17f 1c13080
 	Harden. 34 30
 	Fury Attack. 41 20
 	Cut. 206 30
-Wartortle Bam. 8 69 69 4 41 57 28 36 46 27 20797 WATER NONE 7fd958e0 15330f0b 0 0
-	Water Gun. 28 25
-	Bite. 29 25
-	Rapid Spin. 30 40
-	Withdraw. 27 40
+Kabuto Kabuto. 140 37 37 3 35 37 19 18 26 16 4627 ROCK WATER 6cb26bcb 2000100 0 0
+	Scratch. 2 35
+	Harden. 34 30
+	Absorb. 100 20
 PC: 
 Paras Cute. 46 25 25 2 18 15 13 17 10 9 729 BUG GRASS 61c294e7 0 0 0
 	Scratch. 2 35
@@ -69,14 +69,28 @@ Kakuna COOn. 14 23 23 3 8 14 8 9 10 7 370 BUG POISON 54c27cc8 4040004 0 0
 	Poison Sting. 6 35
 	String Shot. 5 40
 	Harden. 34 30
+Tangela Tangela. 114 42 42 4 22 36 31 19 24 13 2197 GRASS NONE 3dc3a757 0 0 1
+	Growth. 20 40
+	Constrict. 133 35
+	Sleep Powder. 15 15
+	Absorb. 100 20
+Diglett Dirt. 50 29 29 4 25 13 19 22 34 15 3375 GROUND NONE 4fde238a 0 0 0
+	Scratch. 2 35
+	Sand Attack. 7 15
+	Growl. 3 40
+	Magnitude. 106 30
+Aerodactyl Aerodactyl. 142 61 61 3 44 31 27 35 55 18 5832 ROCK FLYING 2753cd7b 0 0 0
+	Wing Attack. 26 35
+	Agility. 43 20
+	Bite. 29 25
 Bag:
 Potion. 1 2
 Antidote. 6 2
 Moon Stone. 16 1
-Poke Ball. 3 2
 Thunder Stone. 14 1
 Super Potion. 2 2
 Repel. 17 1
+Leaf Stone. 15 1
 
 Key Items: 1
   207 

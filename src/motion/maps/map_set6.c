@@ -139,7 +139,7 @@ void draw_fuchsia_city() {
 
 
 void draw_gym5() {
-    draw_interior(MAP_X+4, MAP_Y+11, MAP_FU_CITY);
+    draw_interior(MAP_X+4, MAP_Y+8, MAP_FU_CITY);
     begin_message_box();
     print_to_message_box("Fuchsia City Gym");
     audio_loop_file("gym.mp3");

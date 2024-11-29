@@ -1,27 +1,27 @@
-Last Saved: 11/28/2024 20:43:39
+Last Saved: 11/29/2024 10:13:38
 Player: Elliot H.
-6 26 7 64335 3ffd 0 25 23 4 Gary.
-Location: {46,(53,17)}
-Heal Center: {52,(18,12)}
+6 28 7 69575 7ffd 0 29 28 4 Gary.
+Location: {43,(23,8)}
+Heal Center: {42,(21,12)}
 Pokemon: 
-Nidoking Thorn. 34 130 130 4 113 76 46 38 81 43 83733 POISON GROUND 42cd13d1 1b224808 0 0
-	Thrash. 67 20
-	Peck. 51 35
-	Double Kick. 61 30
-	Megahorn. 68 10
-Omanyte Omanyte. 138 74 74 4 39 80 42 28 30 35 43011 ROCK WATER 6742dad 4121401 0 4
+Scyther Scyther. 123 72 72 4 67 49 35 52 67 26 18787 BUG FLYING 3d83b260 200 0 0
+	Agility. 43 20
+	Wing Attack. 26 35
+	Pursuit. 42 10
+	False Swipe. 145 40
+Omanyte Omanyte. 138 74 74 4 39 80 42 28 30 35 45483 ROCK WATER 6742dad 4131601 0 4
 	Constrict. 133 35
 	Mud Shot. 166 15
 	Bite. 29 25
 	Water Gun. 28 25
-Ponyta Incario. 77 50 50 4 41 33 19 21 44 20 8489 FIRE NONE 61e8f922 5071303 0 2
-	Quick Attack. 8 30
-	Growl. 3 40
-	Stomp. 127 20
+Charizard Inferspark. 6 119 119 4 94 75 98 75 103 42 76388 FIRE FLYING 772e8be0 23243e15 0 3
+	Wing Attack. 26 35
+	Flame Thrower. 22 15
 	Ember. 12 25
-Pikachu Pikachu. 25 78 3 4 46 40 11 11 78 34 39513 ELECTRIC NONE 78e5409f 21232206 0 2
+	Metal Claw. 17 35
+Pikachu Pikachu. 25 78 78 4 46 40 11 11 78 34 39513 ELECTRIC NONE 78e5409f 21232206 0 2
 	Surf. 207 15
-	Thunderbolt. 59 7
+	Thunderbolt. 59 15
 	Quick Attack. 8 30
 	Slam. 58 20
 Sandslash Porky. 28 94 94 4 74 87 28 30 56 33 37158 GROUND NONE 24456825 1d0e2809 0 0
@@ -29,11 +29,11 @@ Sandslash Porky. 28 94 94 4 74 87 28 30 56 33 37158 GROUND NONE 24456825 1d0e280
 	Swift. 49 20
 	Cut. 206 30
 	Poison Sting. 6 35
-Charizard Inferspark. 6 108 108 4 85 68 98 75 94 38 58594 FIRE FLYING 772e8be0 21233b15 0 3
-	Wing Attack. 26 35
-	Flame Thrower. 22 15
-	Ember. 12 25
-	Metal Claw. 17 35
+Nidoking Thorn. 34 130 130 4 113 76 46 38 81 43 83733 POISON GROUND 42cd13d1 1b224808 0 0
+	Thrash. 67 20
+	Peck. 51 35
+	Double Kick. 61 30
+	Megahorn. 68 10
 PC: 
 Rattata Rattata. 19 16 16 2 9 7 6 7 10 4 67 NORMAL NONE 612ec9 0 0 0
 	Tackle. 1 35
@@ -123,11 +123,11 @@ Tauros Stubby. 128 65 65 4 51 44 26 35 54 20 8000 NORMAL NONE 78ce1bfc 0 0 0
 	Tail Whip. 4 30
 	Horn Attack. 65 25
 	Scary Face. 21 15
-Scyther Scyther. 123 72 72 4 67 49 35 52 67 26 17576 BUG FLYING 3d83b260 0 0 0
-	Agility. 43 20
-	Wing Attack. 26 35
-	Pursuit. 42 10
-	False Swipe. 145 40
+Ponyta Incario. 77 50 50 4 41 33 19 21 44 20 8489 FIRE NONE 61e8f922 5071303 0 2
+	Quick Attack. 8 30
+	Growl. 3 40
+	Stomp. 127 20
+	Ember. 12 25
 Arcanine Arcanine. 59 82 82 4 61 49 57 47 55 25 15625 FIRE NONE 56944c88 0 0 0
 	Bite. 29 25
 	Ember. 12 25
@@ -136,20 +136,30 @@ Arcanine Arcanine. 59 82 82 4 61 49 57 47 55 25 15625 FIRE NONE 56944c88 0 0 0
 Magikarp Eweek. 129 35 35 2 8 27 14 17 36 18 5832 WATER NONE 23ea3840 0 0 0
 	Splash. 201 40
 	Tackle. 1 35
+Eevee Eevee. 133 63 63 4 36 30 29 43 37 25 15625 NORMAL NONE 2b940e02 0 0 0
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Sand Attack. 7 15
+	Growl. 3 40
+Psyduck Ayesie. 54 71 71 4 37 43 44 36 39 30 27000 WATER NONE c517c85 0 0 0
+	Screech. 84 40
+	Tail Whip. 4 30
+	Disable. 115 20
+	Confusion. 36 25
 Bag:
 Paralyze Heal. 7 1
 Burn Heal. 9 3
 Leaf Stone. 15 1
 Poke Ball. 3 1
 Super Potion. 2 6
-Great Ball. 4 6
+Great Ball. 4 5
 Super Repel. 18 1
 
-Key Items: 3
-  207 209 208 
+Key Items: 4
+  207 209 208 433 
 
 HM/TMs: 2
   101 102 
 
-Trainers Battled: 78
-  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 202 29 30 31 32 34 35 253 33 38 41 46 45 39 42 43 44 48 50 52 53 55 54 62 56 57 58 59 60 63 40 203 71 72 74 75 76 77 79 64 65 66 67 204 80 81 82 83 93 
+Trainers Battled: 81
+  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 202 29 30 31 32 34 35 253 33 38 41 46 45 39 42 43 44 48 50 52 53 55 54 62 56 57 58 59 60 63 40 203 71 72 74 75 76 77 79 64 65 66 67 204 80 81 82 83 93 94 95 84 
