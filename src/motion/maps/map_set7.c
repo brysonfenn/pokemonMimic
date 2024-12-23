@@ -97,8 +97,11 @@ void draw_saffron_city() {
     add_surf_selectable(MAP_X+3, MAP_Y+10);
     add_connection_to_big_map(MAP_LEFT, 8, MAP_CEL_CITY);
 
-    draw_building_default(MAP_X+11, MAP_Y+8, "POKE", POKE_CENTER_ACTION);
+    draw_building_default(MAP_X+11, MAP_Y+3, "POKE", POKE_CENTER_ACTION);
     draw_building_default(MAP_X+40, MAP_Y+10, "MART", MART_ACTION);
+
+    draw_building_default(MAP_X+20, MAP_Y+8, "SLPH", -1);
+    add_portal_building_to_big_map(MAP_X+20, MAP_Y+8, MAP_SILPH1, MAP_BOTTOM, 6);
     
     draw_building_default(MAP_X+38, MAP_Y+4, "Gym", -1);
     add_building_portal(MAP_X+38, MAP_Y+4, MAP_GYM6);
@@ -119,49 +122,10 @@ void draw_gym6() {
     mvaddch(INTERIOR_Y+1, INTERIOR_X+26, ACS_LLCORNER);
 }
 
-void draw_cinnabar_island() {
-    draw_big_map("Cinnabar Island");
-    audio_loop_file("beach.mp3");
 
-    add_connection_to_big_map(MAP_RIGHT, 5, MAP_R16);
-    add_connection_to_big_map(MAP_TOP, 48, MAP_R17);
+void draw_silph1() {
+    draw_big_map("Silph Co.");
+    audio_loop_file("silph_co.mp3");
 
-    draw_building_default(MAP_X+6,MAP_Y+8,"POKE",POKE_CENTER_ACTION);
-    draw_building_default(MAP_X+15,MAP_Y+8,"MART",MART_ACTION);
-
-    add_surf_selectable(MAP_X+39, MAP_Y+12);
-    add_surf_selectable(MAP_X+26, MAP_Y+2);
-
-    draw_building_default(MAP_X+15, MAP_Y+3, "GYM", DOORS_NEW_MAP);
-    add_building_portal(MAP_X+15, MAP_Y+3, MAP_GYM7);
-}
-
-void draw_gym7() {
-    draw_interior(MAP_X+15, MAP_Y+3, MAP_CIN_ISLAND);
-    begin_message_box();
-    draw_big_map("Cinnabar Island Gym");
-    audio_loop_file("gym.mp3");
-
-    add_trainer_by_id(INTERIOR_X+17, INTERIOR_Y+3, 99, PLAYER_MOVING_DOWN);
-    add_trainer_by_id(INTERIOR_X+21, INTERIOR_Y+3, 100, PLAYER_MOVING_DOWN);
-    add_trainer_by_id(INTERIOR_X+15, INTERIOR_Y+4, 101, PLAYER_MOVING_LEFT);
-    add_trainer_by_id(INTERIOR_X+4, INTERIOR_Y+2, 102, PLAYER_MOVING_UP);
-    add_trainer_by_id(INTERIOR_X+1, INTERIOR_Y+6, 207, PLAYER_MOVING_UP);
-}
-
-void draw_route17() {
-    draw_big_map("Route 16");
-    audio_loop_file("beach.mp3");
-
-    add_connection_to_big_map(MAP_TOP, 10, MAP_STARTER_TOWN);
-    add_connection_to_big_map(MAP_BOTTOM, 48, MAP_CIN_ISLAND);
-
-    add_surf_selectable(MAP_X+26, MAP_Y+4);
-    add_surf_selectable(MAP_X+26, MAP_Y+12);
-    add_surf_selectable(MAP_X+53, MAP_Y+2);
-    add_surf_selectable(MAP_X+55, MAP_Y+13);
-
-    add_trainer_by_id(MAP_X+56, MAP_Y+4, 107, PLAYER_MOVING_DOWN);
-    add_trainer_by_id(MAP_X+30, MAP_Y+6, 108, PLAYER_MOVING_DOWN);
-    
+    add_portal_big_map_to_building(MAP_X+21, MAP_Y+8, MAP_SAFF_CITY, MAP_BOTTOM, 6);
 }

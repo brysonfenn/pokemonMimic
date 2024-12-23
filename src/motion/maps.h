@@ -13,11 +13,11 @@ typedef enum { MAP_GENERIC,
                 MAP_TOWER2, MAP_TOWER3, MAP_R11, MAP_R12, MAP_FU_CITY, MAP_GYM5,
                 MAP_R13, MAP_R14, MAP_R15, MAP_SAFARI1, MAP_SAFARI2, MAP_SAFARI3, 
                 MAP_SAFARI4, MAP_R16, MAP_SAFF_CITY, MAP_GYM6, MAP_CIN_ISLAND, MAP_R17,
-                MAP_GYM7, MAP_GYM8
+                MAP_GYM7, MAP_GYM8, MAP_SILPH1
 } Map_id;
 
 //Change when adding a map
-#define MAX_MAP_NUM MAP_GYM8
+#define MAX_MAP_NUM MAP_SILPH1
 
 
 //Draw elements (like grass, trees, etc) according to map text file

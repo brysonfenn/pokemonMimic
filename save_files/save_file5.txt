@@ -1,7 +1,7 @@
-Last Saved: 11/23/2024 11:26:15
+Last Saved: 12/23/2024 14:54:19
 Player: Player1.
-6 6 6 47570 d9c 0 21 28 1 Blue.
-Location: {54,(26,8)}
+6 6 6 47570 1d9c 0 21 28 1 Blue.
+Location: {52,(26,17)}
 Heal Center: {30,(42,5)}
 Pokemon: 
 Ivysaur Ivysaur. 2 67 67 4 137 137 132 131 136 100 18737 GRASS POISON 448493fb f0d1303 0 4

@@ -10,6 +10,7 @@
 #include "maps/map_set5.h"
 #include "maps/map_set6.h"
 #include "maps/map_set7.h"
+#include "maps/map_set8.h"
 
 #include "map_drawing.h"
 #include "motion2d.h"
@@ -33,7 +34,7 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_route12, &draw_fuchsia_city, &draw_gym5, &draw_route13, &draw_route14,                    //41-45
                                     &draw_route15, &draw_safari1, &draw_safari2, &draw_safari3, &draw_safari4,                      //46-50
                                     &draw_route16, &draw_saffron_city, &draw_gym6, &draw_cinnabar_island, &draw_route17,            //51-55
-                                    &draw_gym7, &draw_gym8
+                                    &draw_gym7, &draw_gym8, &draw_silph1
                                     };
 
 char map_file_name[32];
