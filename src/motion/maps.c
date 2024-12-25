@@ -305,6 +305,9 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
         case MAP_GYM8:
             sprintf(map_name, "gym8");
             break;
+        case MAP_SILPH1:
+            sprintf(map_name, "silph1");
+            break;
         default:
             sprintf(map_name, "empty_map");
             wild_pok_list = &(wild_pok_lists[11]);

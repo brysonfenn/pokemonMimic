@@ -127,5 +127,5 @@ void draw_silph1() {
     draw_big_map("Silph Co.");
     audio_loop_file("silph_co.mp3");
 
-    add_portal_big_map_to_building(MAP_X+21, MAP_Y+8, MAP_SAFF_CITY, MAP_BOTTOM, 6);
+    add_portal_big_map_to_building(MAP_X+20, MAP_Y+8, MAP_SAFF_CITY, MAP_BOTTOM, 6);
 }

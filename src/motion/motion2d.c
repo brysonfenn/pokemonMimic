@@ -199,9 +199,10 @@ void handle_motion() {
         else if (action == -2) {
             sprintf(print_str, "Would you like to enter the Safari Zone for $500?\n  Yes\t\tYour current Money: $%d\n  No", player.money);
             print_to_message_box(print_str);
+            return_value = get_selection(MESSAGE_BOX_Y, 1, 0);
 
             //If Answer = No, move player back
-            if (get_selection(MESSAGE_BOX_Y, 1, 0) == 1) {
+            if (return_value == 1 || return_value == PRESSED_B) {
                 // Set player color, move, and unset
                 attrset(COLOR_PAIR(PLAYER_COLOR));
                 mvaddch(*player_y, *player_x, ' '); 
@@ -210,6 +211,10 @@ void handle_motion() {
                 attrset(COLOR_PAIR(DEFAULT_COLOR));
                 begin_message_box();
                 continue;
+            }
+
+            if (player.money < 500) {
+                print_to_message_box("You don't have enough money."); await_user();
             }
 
             //Else Subtract 500 and move player in
@@ -222,9 +227,10 @@ void handle_motion() {
         }
         else if (action == -3) {
             print_to_message_box("Are you sure you want to leave the Safari Zone?\n  Yes\n  No");
+            return_value = get_selection(MESSAGE_BOX_Y, 1, 0);
 
             //If Answer = No, move player back
-            if (get_selection(MESSAGE_BOX_Y, 1, 0) == 1) {
+            if (return_value == 1 || return_value == PRESSED_B) {
                 // Set player color, move, and unset
                 attrset(COLOR_PAIR(PLAYER_COLOR));
                 mvaddch(*player_y, *player_x, ' '); 
