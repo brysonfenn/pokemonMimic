@@ -4,12 +4,12 @@ Player: Player1.
 Location: {52,(26,17)}
 Heal Center: {30,(42,5)}
 Pokemon: 
-Ivysaur Ivysaur. 2 67 67 4 137 137 132 131 136 100 18737 GRASS POISON 448493fb f0d1303 0 4
+Ivysaur Ivysaur. 2 67 1 4 137 137 132 131 136 100 18737 GRASS POISON 448493fb f0d1303 0 4
 	Razor Leaf. 16 20
 	Sleep Powder. 15 15
 	Leech seed. 11 10
 	Cut. 206 30
-Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+Pikachu Pikachu. 25 32 1 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
 	Thunder Shock. 55 30
 	Quick Attack. 8 30
 	Tail Whip. 4 30

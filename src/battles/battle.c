@@ -356,8 +356,8 @@ int handle_battle(struct Pokemon * enemyPok) {
             break;
         }
 
-        // Enemy performs attack if we just did something
-        if (enemy_attacks && !fainted_switch) {
+        // Enemy performs attack if player just did something, and if player pokemon is still alive
+        if (enemy_attacks && !fainted_switch && player.current_pokemon->currentHP > 0) {
             attack_result = perform_enemy_attack(currentPok, enemyPok, enemy_attack_num);
             if (attack_result == ATTACK_END_BATTLE) {run_success = true; break; } //End battle if enemy used leave battle attack
         }
