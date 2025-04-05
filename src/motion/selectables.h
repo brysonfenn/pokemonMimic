@@ -6,7 +6,7 @@
 #define SELECTABLE_CONTINUE_WHILE 1
 #define SELECTABLE_BREAK_WHILE 2
 
-enum { SELECTABLE_NONE, SELECTABLE_TRAINER, SELECTABLE_NPC, SELECTABLE_CUTTABLE_TREE, SELECTABLE_SNORLAX, SELECTABLE_SURF
+enum { SELECTABLE_NONE, SELECTABLE_TRAINER, SELECTABLE_NPC, SELECTABLE_CUTTABLE_TREE, SELECTABLE_SNORLAX, SELECTABLE_SURF, SELECTABLE_LOCK
 
 };
 
@@ -32,8 +32,11 @@ void add_cuttable_tree(char x, char y);
 //Add Surf selectable
 void add_surf_selectable(char x, char y);
 
-//Add Cuttable Tree at a location
+//Add Snorlax at a location
 void add_snorlax(char x, char y, char record_bit_num);
+
+//Add Locked Door at a location
+void add_locked_door(char x, char y, char key_id);
 
 // Return a selectable
 Selectable * get_selectable(int player_x, int player_y, char player_char);

@@ -14,6 +14,7 @@
 #include "../print/print_defines.h"
 #include "../print/print_utils.h"
 #include "../audio/audio_player.h"
+#include "../items/key_items.h"
 
 #define HORIZONTAL_DISTANCE 10
 #define VERTICAL_DISTANCE 4
@@ -24,6 +25,8 @@ static int num_selectables = 0;
 const char * empty_string = "NONE";
 static Selectable empty_selectable = {0, 0, SELECTABLE_NONE};
 static char snorlax_bits[2] = { 7,  12 };
+static int key_silph = K_ITEM_KEY_SILPH;
+static int key_cinnabar = K_ITEM_KEY_SILPH;
 
 
 //Add a trainer by ID Number at a given location (See trainer_list.c)
@@ -102,7 +105,7 @@ void add_surf_selectable(char x, char y) {
     attrset(COLOR_PAIR(DEFAULT_COLOR));
 }
 
-//Add Cuttable Tree at a location
+//Add Snorlax at a location
 void add_snorlax(char x, char y, char snorlax_id_num) {
     char record_bit_num = snorlax_bits[snorlax_id_num];
 
@@ -126,6 +129,25 @@ void add_snorlax(char x, char y, char snorlax_id_num) {
     selectables[num_selectables] = new_selectable;
     num_selectables++;
     mvaddch(y+1,x,'O'); refresh();
+}
+
+//Add Locked Door at a location
+void add_locked_door(char x, char y, char key_id) {
+    Selectable new_selectable;
+
+    if (key_id == key_cinnabar)
+        new_selectable.data = &key_cinnabar;
+    if (key_id == key_silph)
+        new_selectable.data = &key_silph;
+    
+    new_selectable.x = x;
+    new_selectable.y = y;
+    new_selectable.selectable_id = SELECTABLE_LOCK;
+    
+    selectables[num_selectables] = new_selectable;
+    num_selectables++;
+
+    mvaddch(y,x,'H'); refresh();
 }
 
 
