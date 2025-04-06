@@ -133,7 +133,7 @@ void handle_npc_selection(struct NPC * npc_ptr) {
     await_user();
     begin_message_box();
 
-    //Record npc if not 0
+    //Record that npc has been talked to if not, and then reset map
     if (npc_ptr->record_bit_num != 0 && !((player.record_bits >> npc_ptr->record_bit_num) & 1)) {
         player.record_bits |= ((long long) 1 << npc_ptr->record_bit_num);
 

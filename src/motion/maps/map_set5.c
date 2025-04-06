@@ -101,7 +101,7 @@ void draw_tower1() {
     draw_building_default(pokemon_tower_gate_x, pokemon_tower_gate_y, " ", -1);
     add_portal_building_to_big_map(pokemon_tower_gate_x, pokemon_tower_gate_y, MAP_TOWER2, MAP_BOTTOM, MAP_WIDTH/2);
 
-    if (has_key_item(K_ITEM_SILPH_SCOPE) == -1) {
+    if (player_get_key_item_index(K_ITEM_SILPH_SCOPE) == -1) {
         add_npc_by_id(pokemon_tower_gate_x+4, pokemon_tower_gate_y+3, 14, PLAYER_MOVING_DOWN);
         add_npc_by_id(pokemon_tower_gate_x+5, pokemon_tower_gate_y+3, 14, PLAYER_MOVING_DOWN);
     }

@@ -16,9 +16,6 @@ bool add_key_item(Key_Item id);
 //Returns false if player does not have the key item
 bool remove_key_item(Key_Item id);
 
-// Returns -1 if key_item not in list, else returns the index of the key item
-int has_key_item(Key_Item id);
-
 void handle_get_fossil();
 
 void handle_process_fossil();

@@ -320,7 +320,7 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
 
 
 int * get_wild_pok_list() {
-    if (has_key_item(K_ITEM_SURF_FLAG) != -1)
+    if (player_get_key_item_index(K_ITEM_SURF_FLAG) != -1)
         return water_pok_list;
     else
         return wild_pok_list;

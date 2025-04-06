@@ -42,7 +42,7 @@ void draw_vermillion_city() {
     draw_building_default(MAP_X+30, MAP_Y+8, "Lab", FOSSIL_PROCESS_ACTION);
     draw_building_default(MAP_X+42, MAP_Y+8, "Mart", MART_ACTION);
 
-    if (has_key_item(K_ITEM_SS_TICKET) == -1) {
+    if (player_get_key_item_index(K_ITEM_SS_TICKET) == -1) {
         add_npc_by_id(MAP_X+25, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);
         add_npc_by_id(MAP_X+26, MAP_Y+MAP_HEIGHT-2, 4, PLAYER_MOVING_UP);
     }

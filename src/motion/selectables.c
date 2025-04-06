@@ -132,17 +132,20 @@ void add_snorlax(char x, char y, char snorlax_id_num) {
 }
 
 //Add Locked Door at a location
-void add_locked_door(char x, char y, char key_id) {
+void add_locked_door(char x, char y, int key_id) {
     Selectable new_selectable;
 
     if (key_id == key_cinnabar)
         new_selectable.data = &key_cinnabar;
     if (key_id == key_silph)
         new_selectable.data = &key_silph;
+
+
+    char print_str[256];
     
     new_selectable.x = x;
     new_selectable.y = y;
-    new_selectable.selectable_id = SELECTABLE_LOCK;
+    new_selectable.selectable_id = SELECTABLE_LOCKED_DOOR;
     
     selectables[num_selectables] = new_selectable;
     num_selectables++;

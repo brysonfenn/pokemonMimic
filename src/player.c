@@ -161,3 +161,14 @@ bool player_has_pokemon(int id) {
 
     return false;
 }
+
+
+// Returns -1 if key_item not in list, else returns the index of the key item
+int player_get_key_item_index(int id) {
+    for (int i = 0; i < player.numKeyItems; i++) {
+        if (player.key_items[i] == id) {
+            return i;
+        }
+    }
+    return -1;
+}

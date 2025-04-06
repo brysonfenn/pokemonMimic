@@ -8,7 +8,7 @@
 
 static char key_item_names[16][32] = {"Empty Key Item", "Helix Fossil", "Dome Fossil", "Old Amber",
     "Helix Fossil Voucher", "Dome Fossil Voucher", "Old Amber Voucher", "SS Ticket", "Pokemon Flute",
-    "Silph Scope", "Surf Flag" };
+    "Silph Scope", "Surf Flag", "Silph Master Key", "Secret Key" };
 
 
 void take_fossil(int fossil_index, int fossil_type);
@@ -21,7 +21,7 @@ char * get_key_item_name(int id) {
 
 //Returns false if player already has the key item
 bool add_key_item(Key_Item id) {
-    if (has_key_item(id) >= 0) return false;
+    if (player_get_key_item_index(id) >= 0) return false;
     player.key_items[player.numKeyItems] = id;
     player.numKeyItems++;
     return true;
@@ -29,7 +29,7 @@ bool add_key_item(Key_Item id) {
 
 //Returns false if player does not have the key item
 bool remove_key_item(Key_Item id) {
-    int item_index = has_key_item(id);
+    int item_index = player_get_key_item_index(id);
     if (item_index < 0) return false;
 
     player.numKeyItems--;
@@ -37,16 +37,6 @@ bool remove_key_item(Key_Item id) {
         player.key_items[i] = player.key_items[i+1];
     }
     return true;
-}
-
-// Returns -1 if key_item not in list, else returns the index of the key item
-int has_key_item(Key_Item id) {
-    for (int i = 0; i < player.numKeyItems; i++) {
-        if (player.key_items[i] == id) {
-            return i;
-        }
-    }
-    return -1;
 }
 
 void handle_get_fossil() {
@@ -77,29 +67,29 @@ void handle_process_fossil() {
     int item_id = 0;
     int item_index = 0;
 
-    if (has_key_item(K_ITEM_FOSSIL_HELIX) >= 0) {
+    if (player_get_key_item_index(K_ITEM_FOSSIL_HELIX) >= 0) {
         item_id = K_ITEM_FOSSIL_HELIX;
-        item_index = has_key_item(K_ITEM_FOSSIL_HELIX);
+        item_index = player_get_key_item_index(K_ITEM_FOSSIL_HELIX);
     }
-    else if (has_key_item(K_ITEM_FOSSIL_DOME) >= 0) {
+    else if (player_get_key_item_index(K_ITEM_FOSSIL_DOME) >= 0) {
         item_id = K_ITEM_FOSSIL_DOME;
-        item_index = has_key_item(K_ITEM_FOSSIL_DOME);
+        item_index = player_get_key_item_index(K_ITEM_FOSSIL_DOME);
     }
-    else if (has_key_item(K_ITEM_FOSSIL_AMBER) >= 0) {
+    else if (player_get_key_item_index(K_ITEM_FOSSIL_AMBER) >= 0) {
         item_id = K_ITEM_FOSSIL_AMBER;
-        item_index = has_key_item(K_ITEM_FOSSIL_AMBER);
+        item_index = player_get_key_item_index(K_ITEM_FOSSIL_AMBER);
     }
-    else if (has_key_item(K_HELIX_VOUCHER) >= 0) {
+    else if (player_get_key_item_index(K_HELIX_VOUCHER) >= 0) {
         item_id = K_HELIX_VOUCHER;
-        item_index = has_key_item(K_HELIX_VOUCHER);
+        item_index = player_get_key_item_index(K_HELIX_VOUCHER);
     }
-    else if (has_key_item(K_DOME_VOUCHER) >= 0) {
+    else if (player_get_key_item_index(K_DOME_VOUCHER) >= 0) {
         item_id = K_DOME_VOUCHER;
-        item_index = has_key_item(K_DOME_VOUCHER);
+        item_index = player_get_key_item_index(K_DOME_VOUCHER);
     }
-    else if (has_key_item(K_AMBER_VOUCHER) >= 0) {
+    else if (player_get_key_item_index(K_AMBER_VOUCHER) >= 0) {
         item_id = K_AMBER_VOUCHER;
-        item_index = has_key_item(K_AMBER_VOUCHER);
+        item_index = player_get_key_item_index(K_AMBER_VOUCHER);
     }
     else {
         print_to_list("You don't have a fossil!"); sleep(2);

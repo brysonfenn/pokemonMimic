@@ -80,4 +80,7 @@ bool player_has_battled_trainer(int id);
 //Returns true only if the player has the pokemon in PC or Party
 bool player_has_pokemon(int id);
 
+// Returns -1 if key_item not in list, else returns the index of the key item
+int player_get_key_item_index(int id);
+
 #endif // PLAYER_H

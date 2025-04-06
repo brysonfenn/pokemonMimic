@@ -12,6 +12,7 @@
 #include "../../battles/trainer.h"
 #include "../../print/print_utils.h"
 #include "../../print/print_defines.h"
+#include "../../items/key_items.h"
 
 
 void draw_safari1() {
@@ -128,4 +129,7 @@ void draw_silph1() {
     audio_loop_file("silph_co.mp3");
 
     add_portal_big_map_to_building(MAP_X+20, MAP_Y+8, MAP_SAFF_CITY, MAP_BOTTOM, 6);
+
+    add_locked_door(MAP_X+8, MAP_Y+11, K_ITEM_KEY_SILPH);
+    add_locked_door(MAP_X+38, MAP_Y+9, K_ITEM_KEY_SILPH);
 }

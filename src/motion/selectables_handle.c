@@ -24,6 +24,7 @@
 int handle_cut(struct Selectable * selectable_ptr);
 int handle_surf(struct Selectable * selectable_ptr);
 int handle_snorlax(struct Selectable * selectable_ptr);
+int handle_lock(struct Selectable * selectable_ptr);
 
 
 // Handle a selected selectable
@@ -44,7 +45,6 @@ int handle_selected_selectable(int player_x, int player_y, char player_char) {
         }
 
         audio_save_looping_file(0);
-        audio_loop_file("trainer_approach.mp3");
 
         //Handle trainer battle and return values from that function
         if (battle_trainer(trainer_ptr) != BATTLE_WHITE_OUT) { restore_print_state(); }
@@ -67,6 +67,10 @@ int handle_selected_selectable(int player_x, int player_y, char player_char) {
     }
     else if (selectable_ptr->selectable_id == SELECTABLE_SNORLAX) {
         handle_snorlax(selectable_ptr);
+        return SELECTABLE_CONTINUE_WHILE;
+    }
+    else if (selectable_ptr->selectable_id == SELECTABLE_LOCKED_DOOR) {
+        handle_lock(selectable_ptr);
         return SELECTABLE_CONTINUE_WHILE;
     }
 
@@ -132,7 +136,7 @@ int handle_cut(struct Selectable * selectable_ptr) {
 int handle_surf(struct Selectable * selectable_ptr) {
     char print_str[256];
 
-    if (has_key_item(K_ITEM_SURF_FLAG) == -1) {
+    if (player_get_key_item_index(K_ITEM_SURF_FLAG) == -1) {
         print_to_message_box("It looks like the water is surfable here."); await_user();
     }
     
@@ -142,7 +146,7 @@ int handle_surf(struct Selectable * selectable_ptr) {
     bool has_surf = false;
 
     //Handle Start Surf
-    if (has_key_item(K_ITEM_SURF_FLAG) == -1) {
+    if (player_get_key_item_index(K_ITEM_SURF_FLAG) == -1) {
 
         for (int i = 0; i < player.numInParty; i++) {
             curr_pok = &(player.party[i]);
@@ -241,7 +245,7 @@ int handle_snorlax(struct Selectable * selectable_ptr) {
     Pokemon * curr_pok;
     Pokemon * cut_pok;
 
-    if (has_key_item(K_ITEM_FLUTE) != -1) {
+    if (player_get_key_item_index(K_ITEM_FLUTE) != -1) {
         print_to_message_box("Would you like to play the Pokemon Flute?\n  Yes\n  No");
         int input = get_selection(MAP_HEIGHT+1, 1, 0);
         if (input == 1 || input == PRESSED_B) {
@@ -291,6 +295,51 @@ int handle_snorlax(struct Selectable * selectable_ptr) {
         }
     
         // await_user();
+    }
+
+    begin_message_box();
+
+    return 0;
+}
+
+//Handle lock, checking relevant key
+int handle_lock(struct Selectable * selectable_ptr) {
+    char print_str[256];
+    int * key_type = (int *) selectable_ptr->data;
+
+    switch (*key_type) {
+        case K_ITEM_KEY_SILPH:
+            if (player_get_key_item_index(K_ITEM_KEY_SILPH) != -1) {
+                sprintf(print_str, "%s unlocked the door with Silph Master Key.", player.name);
+                print_to_message_box(print_str);
+        
+                //Wait for user to press a, and then erase the door
+                await_user();
+                mvaddch(selectable_ptr->y, selectable_ptr->x, ' '); refresh();
+                selectable_ptr->y = 0;
+                selectable_ptr->x = 0;
+            }
+            else {
+                print_to_message_box("It looks like this door is locked!"); await_user();
+            }
+            break;
+        case K_ITEM_KEY_CINNABAR:
+            if (player_get_key_item_index(K_ITEM_KEY_CINNABAR) != -1) {
+                sprintf(print_str, "%s unlocked the door with Secret Key.", player.name);
+                print_to_message_box(print_str);
+        
+                //Wait for user to press a, and then erase the door
+                await_user();
+                mvaddch(selectable_ptr->y, selectable_ptr->x, ' '); refresh();
+                selectable_ptr->y = 0;
+                selectable_ptr->x = 0;
+            }
+            else {
+                print_to_message_box("It looks like this door is locked!"); await_user();
+            }
+            break;
+        default:
+            break;
     }
 
     begin_message_box();
