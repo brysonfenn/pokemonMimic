@@ -24,4 +24,5 @@
 23: You can't come through here yet. According to Pokemon League Rules, only trainers with at least 4 badges can enter this area. There are Gym Leaders in Vermillion City and Celadon City. Celadon City is directly East of here. Vermillion City is West of Route 10, which is to the South of Lavender Town.
 24: You can't come through here yet. According to Pokemon League Rules, only trainers with at least 7 badges can enter this Gym. There are Gym Leaders in places like Fuschia City, Saffron City, and Cinnabar Island. Please come back when you have earned at least 7 badges.
 25: Team Rocket is in charge around here, and we say you can't enter this Gym. You don't like that? Take it up with the boss at Silph Co.
+26: This is awful! Team Rocket has infiltrated Silph Co. Are you here to defeat team rocket? You seem like a great trainer. The Silph Master Key should help you to get around in here.
 777: Reached End of npc_messages.txt file

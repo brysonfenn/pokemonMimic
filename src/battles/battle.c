@@ -62,6 +62,7 @@ int handle_battle(struct Pokemon * enemyPok) {
             printBattle(); sleep(2);
             text_box_cursors(TEXT_BOX_BEGINNING);
             printw("%s%s fainted.", ENEMY_TEXT, enemyPok->name); refresh(); sleep(2);
+
             break;
         }
 
@@ -75,22 +76,7 @@ int handle_battle(struct Pokemon * enemyPok) {
             
             // Handle White out
             if (player_get_num_alive() == 0) {
-                audio_end_loop();
-                text_box_cursors(TEXT_BOX_BEGINNING);
-                printw("....."); refresh(); sleep(2);
-                
-                audio_play_file("back_button.mp3");
-                text_box_cursors(TEXT_BOX_BEGINNING);
-                printw("%s is out of usable pokemon... ", player.name); refresh(); sleep(2);
-
-                audio_play_file("back_button.mp3");
-                text_box_cursors(TEXT_BOX_NEXT_LINE);
-                printw("%s whited out.", player.name); refresh(); sleep(2);
-
-                //Go to pokecenter and then heal
-                move_player_to_poke_center();
-
-                player.is_battle = false;
+                handle_white_out();
 
                 return BATTLE_WHITE_OUT;
             }
@@ -370,6 +356,14 @@ int handle_battle(struct Pokemon * enemyPok) {
     }
     // END BATTLE LOOP //
 
+
+    // Handle Possible white out (if  self destruct on last pokemon)
+    if (player_get_num_alive() == 0) {
+        handle_white_out();
+        return BATTLE_WHITE_OUT;
+    }
+
+
     if (!run_success && !catch_success) {
         //Get EXP
         int exp = pokemon_get_exp_yield(enemyPok);
@@ -585,4 +579,23 @@ bool run_attempt() {
         printw("Can't escape!"); refresh(); sleep(2);
         return false;
     }
+}
+
+int handle_white_out() {
+    audio_end_loop();
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    printw("....."); refresh(); sleep(2);
+    
+    audio_play_file("back_button.mp3");
+    text_box_cursors(TEXT_BOX_BEGINNING);
+    printw("%s is out of usable pokemon... ", player.name); refresh(); sleep(2);
+
+    audio_play_file("back_button.mp3");
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("%s whited out.", player.name); refresh(); sleep(2);
+
+    //Go to pokecenter and then heal
+    move_player_to_poke_center();
+
+    player.is_battle = false;
 }

@@ -1,39 +1,14 @@
-Last Saved: 10/05/2025 11:41:31
+Last Saved: 10/05/2025 15:03:51
 Player: Player1.
-6 6 6 47570 1d9c 0 21 28 1 Blue.
-Location: {63,(39,10)}
+1 11 6 49155 11d9c 0 21 28 1 Blue.
+Location: {59,(29,10)}
 Heal Center: {30,(42,5)}
 Pokemon: 
-Ivysaur Ivysaur. 2 67 1 4 137 137 132 131 136 100 18737 GRASS POISON 448493fb f0d1303 0 4
-	Razor Leaf. 16 20
+Ivysaur Ivysaur. 2 67 1 4 137 137 132 131 136 100 18737 GRASS POISON 448493fb f0e1403 0 4
+	Razor Leaf. 16 18
 	Sleep Powder. 15 15
 	Leech seed. 11 10
 	Cut. 206 30
-Pikachu Pikachu. 25 32 1 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
-	Thunder Shock. 55 30
-	Quick Attack. 8 30
-	Tail Whip. 4 30
-	Surf. 207 20
-Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
-	Thunder Shock. 55 30
-	Quick Attack. 8 30
-	Tail Whip. 4 30
-	Thunder Wave. 56 20
-Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
-	Thunder Shock. 55 30
-	Quick Attack. 8 30
-	Tail Whip. 4 30
-	Thunder Wave. 56 20
-Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
-	Thunder Shock. 55 30
-	Quick Attack. 8 30
-	Tail Whip. 4 30
-	Thunder Wave. 56 20
-Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
-	Thunder Shock. 55 30
-	Quick Attack. 8 30
-	Tail Whip. 4 30
-	Thunder Wave. 56 20
 PC: 
 Eevee Eevee. 133 31 31 4 16 15 8 8 16 10 1226 NORMAL NONE 3b7526f1 0 0 0
 	Tackle. 1 35
@@ -61,6 +36,31 @@ Gloom Gloom. 44 84 84 4 50 47 58 51 38 30 27000 GRASS POISON 7c448a9d 0 0 3
 	Acid. 91 30
 	Poison Powder. 14 35
 	Stun Spore. 37 30
+Pikachu Pikachu. 25 32 1 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+	Thunder Shock. 55 30
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Surf. 207 20
+Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+	Thunder Shock. 55 30
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Thunder Wave. 56 20
+Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+	Thunder Shock. 55 30
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Thunder Wave. 56 20
+Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+	Thunder Shock. 55 30
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Thunder Wave. 56 20
+Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
+	Thunder Shock. 55 30
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Thunder Wave. 56 20
 Bag:
 Thunder Stone. 14 1
 Water Stone. 13 1

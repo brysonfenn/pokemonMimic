@@ -7,7 +7,7 @@
 #include "../monsters/pokemon.h"
 #include "../print/print_utils.h"
 
-#define NUM_TRAINERS 120
+#define NUM_TRAINERS 130
 
 static Trainer t000  = {0, "Trainer Empty", "Hi! I train Pokemon too!", 2, {POKEMON_RATTATA, POKEMON_PIDGEY}, {4,4} };
 static Trainer t001 = {1, "Trainer John", "Hi! I train Pokemon too!", 2, {POKEMON_RATTATA, POKEMON_PIDGEY}, {4,4} };
@@ -125,6 +125,23 @@ static Trainer t105 = {105,"Cooltrainer Yuji", "Rock and Ground, a great balance
 static Trainer t106 = {106,"Cooltrainer Samuel", "The Gym Leader here is mysterious. But he pays well!", 3, {POKEMON_RHYHORN, POKEMON_NIDORINO, POKEMON_NIDOKING}, {42,39,43} };
 static Trainer t107 = {107,"Trainer Rojo", "Oh, you had to choose a Starter?", 3, {POKEMON_VENUSAUR, POKEMON_CHARIZARD, POKEMON_BLASTOISE}, {36,36,36} };
 static Trainer t108 = {108,"Adventurer Harold", "Have you been to Cinnabar Island yet?", 3, {POKEMON_MUK, POKEMON_RAICHU, POKEMON_VENOMOTH}, {32,34,38} };
+static Trainer t109 = {109,"Rocket Grunt", "What are you doing here?", 2, {POKEMON_EKANS, POKEMON_WEEZING}, {31,33} };
+static Trainer t110 = {110,"Rocket Grunt", "You should join Team Rocket!", 2, {POKEMON_ZUBAT, POKEMON_GOLBAT}, {32,33} };
+static Trainer t111 = {111,"Rocket Grunt", "You'll never stop Team Rocket!", 3, {POKEMON_RATTATA, POKEMON_MACHOP, POKEMON_RATICATE}, {31,33,34} };
+static Trainer t112 = {112,"Rocket Grunt", "Saffron City is ours!", 3, {POKEMON_SANDSHREW, POKEMON_DROWZEE, POKEMON_SANDSLASH}, {31,33,34} };
+static Trainer t113 = {113,"Rocket Grunt", "Get out of here, kid!", 2, {POKEMON_KOFFING, POKEMON_HYPNO}, {32,33} };
+static Trainer t114 = {114,"Rocket Grunt", "Who are you?", 2, {POKEMON_MACHOP, POKEMON_MACHOKE}, {33,35} };
+static Trainer t115 = {115,"Rocket Grunt", "Team Rocket isn't so bad!", 3, {POKEMON_KOFFING, POKEMON_SANDSHREW, POKEMON_EKANS}, {31,33,34} };
+static Trainer t116 = {116,"Rocket Grunt", "I use fighting-type Pokemon.", 2, {POKEMON_MANKEY, POKEMON_POLIWRATH}, {32,35} }; 
+static Trainer t117 = {117,"Rocket Grunt", "How did you get here?", 3, {POKEMON_RATTATA, POKEMON_CUBONE, POKEMON_GOLBAT}, {31,33,34} };
+static Trainer t118 = {118,"Rocket Grunt", "I just joined Team Rocket.", 3, {POKEMON_MEOWTH, POKEMON_CUBONE, POKEMON_MAROWAK}, {31,33,35} };
+static Trainer t119 = {119,"Rocket Grunt", "Have you met our leader, Giovanni?", 3, {POKEMON_GRIMER, POKEMON_EKANS, POKEMON_MUK}, {32,33,34} };
+static Trainer t120 = {120,"Rocket Grunt", "Team Rocket will conquer the world!", 3, {POKEMON_KOFFING, POKEMON_MEOWTH, POKEMON_WEEZING}, {32,33,35} };
+
+static Trainer t121 = {121,"Rocket Grunt", "My name? I don't have one.", 2, {POKEMON_DRATINI, POKEMON_SEADRA}, {33,34} };
+static Trainer t122 = {122,"Rocket Grunt", "What is Team Rocket? We're thieves!", 2, {POKEMON_DROWZEE, POKEMON_PERSIAN}, {32,36} };
+static Trainer t123 = {123,"Rocket Grunt", "We're not evil. Just ambitious.", 2, {POKEMON_MANKEY, POKEMON_PRIMEAPE}, {33,35} };
+static Trainer t124 = {124,"Rocket Grunt", "You'll have to go through me!", 3, {POKEMON_GRIMER, POKEMON_WEEZING, POKEMON_MACHAMP}, {32,34,36} };
 
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
@@ -133,7 +150,8 @@ static Trainer * trainers[NUM_TRAINERS] = { &t000,
     &t041, &t042, &t043, &t044, &t045, &t046, &t047, &t048, &t049, &t050, &t051, &t052, &t053, &t054, &t055, &t056, &t057, &t058, &t059, &t060,
     &t061, &t062, &t063, &t064, &t065, &t066, &t067, &t068, &t069, &t070, &t071, &t072, &t073, &t074, &t075, &t076, &t077, &t078, &t079, &t080,
     &t081, &t082, &t083, &t084, &t085, &t086, &t087, &t088, &t089, &t090, &t091, &t092, &t093, &t094, &t095, &t096, &t097, &t098, &t099, &t100,
-    &t101, &t102, &t103, &t104, &t105, &t106, &t107, &t108
+    &t101, &t102, &t103, &t104, &t105, &t106, &t107, &t108, &t109, &t110, &t111, &t112, &t113, &t114, &t115, &t116, &t117, &t118, &t119, &t120, 
+    &t121, &t122, &t123, &t124
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am Brock, Gym Leader of Pewter. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };

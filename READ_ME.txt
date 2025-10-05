@@ -15,3 +15,4 @@ Player Record Bits
 13: HM Surf
 14: Eevee
 15: Rockets in charge at Saffron
+16: Silph Co Master Key

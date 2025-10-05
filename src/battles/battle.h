@@ -10,4 +10,7 @@ struct Pokemon;
 //Begin a Battle with a given pokemon
 int handle_battle(struct Pokemon * enemyPoke);
 
+//Output White-out notification and then send player to poke center
+int handle_white_out();
+
 #endif

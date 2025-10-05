@@ -168,7 +168,13 @@ void draw_silph2() {
 
     add_locked_door(MAP_X+18, MAP_Y+7, K_ITEM_KEY_SILPH);
     add_locked_door(MAP_X+47, MAP_Y+7, K_ITEM_KEY_SILPH);
+    add_locked_door(MAP_X+10, MAP_Y+4, K_ITEM_KEY_SILPH);
 
+    add_npc_by_id(MAP_X+37, MAP_Y+4, 26, PLAYER_MOVING_LEFT);
+
+    add_trainer_by_id(MAP_X+15, MAP_Y+8, 109, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+34, MAP_Y+8, 110, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+23, MAP_Y+14, 111, PLAYER_MOVING_DOWN);
 }
 
 void draw_silph3() {
@@ -181,6 +187,15 @@ void draw_silph3() {
 
     add_connection_to_big_map(MAP_TOP, 53, MAP_SILPH6);
     add_connection_to_big_map(MAP_TOP, 43, MAP_SILPH6);
+
+    add_locked_door(MAP_X+15, MAP_Y+7, K_ITEM_KEY_SILPH);
+    add_locked_door(MAP_X+51, MAP_Y+7, K_ITEM_KEY_SILPH);
+
+    add_trainer_by_id(MAP_X+37, MAP_Y+8, 112, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+37, MAP_Y+14, 113, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+52, MAP_Y+11, 114, PLAYER_MOVING_RIGHT);
+
+    //TODO: Add Trainers starting at 115
 
 }
 
