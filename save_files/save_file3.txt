@@ -1,56 +1,59 @@
-Last Saved: 11/29/2024 10:13:38
+Last Saved: 06/13/2025 07:58:07
 Player: Elliot H.
-6 28 7 69575 7ffd 0 29 28 4 Gary.
-Location: {43,(23,8)}
+6 32 10 72870 7ffd 0 26 26 4 Gary.
+Location: {42,(21,12)}
 Heal Center: {42,(21,12)}
 Pokemon: 
-Scyther Scyther. 123 72 72 4 67 49 35 52 67 26 18787 BUG FLYING 3d83b260 200 0 0
-	Agility. 43 20
-	Wing Attack. 26 35
-	Pursuit. 42 10
-	False Swipe. 145 40
-Omanyte Omanyte. 138 74 74 4 39 80 42 28 30 35 45483 ROCK WATER 6742dad 4131601 0 4
-	Constrict. 133 35
-	Mud Shot. 166 15
-	Bite. 29 25
-	Water Gun. 28 25
-Charizard Inferspark. 6 119 119 4 94 75 98 75 103 42 76388 FIRE FLYING 772e8be0 23243e15 0 3
-	Wing Attack. 26 35
-	Flame Thrower. 22 15
-	Ember. 12 25
-	Metal Claw. 17 35
-Pikachu Pikachu. 25 78 78 4 46 40 11 11 78 34 39513 ELECTRIC NONE 78e5409f 21232206 0 2
-	Surf. 207 15
-	Thunderbolt. 59 15
-	Quick Attack. 8 30
-	Slam. 58 20
-Sandslash Porky. 28 94 94 4 74 87 28 30 56 33 37158 GROUND NONE 24456825 1d0e2809 0 0
+Diglett Brug. 50 32 32 4 27 16 18 23 43 19 7374 GROUND NONE 17c6a8a0 80500 0 0
+	Scratch. 2 35
+	Sand Attack. 7 15
+	Growl. 3 40
+	Magnitude. 106 30
+Sandslash Porky. 28 99 99 4 78 92 28 30 59 35 44786 GROUND NONE 24456825 1f0e290a 0 0
 	Slash. 23 20
 	Swift. 49 20
 	Cut. 206 30
 	Poison Sting. 6 35
-Nidoking Thorn. 34 130 130 4 113 76 46 38 81 43 83733 POISON GROUND 42cd13d1 1b224808 0 0
+Pikachu Pikachu. 25 80 80 4 48 41 11 11 80 35 43113 ELECTRIC NONE 78e5409f 24232606 0 2
+	Surf. 207 15
+	Thunderbolt. 59 15
+	Quick Attack. 8 30
+	Slam. 58 20
+Charizard Inferspark. 6 127 127 4 101 80 98 75 110 45 96019 FIRE FLYING 772e8be0 25274117 0 3
+	Wing Attack. 26 35
+	Flame Thrower. 22 15
+	Slash. 23 20
+	Metal Claw. 17 35
+Omanyte Omanyte. 138 75 75 4 40 82 42 28 31 36 48838 ROCK WATER 6742dad 4171801 0 4
+	Constrict. 133 35
+	Mud Shot. 166 15
+	Bite. 29 25
+	Water Gun. 28 25
+Nidoking Thorn. 34 139 139 4 120 81 46 38 86 46 97692 POISON GROUND 42cd13d1 1b274b0a 0 0
 	Thrash. 67 20
 	Peck. 51 35
 	Double Kick. 61 30
 	Megahorn. 68 10
 PC: 
-Rattata Rattata. 19 16 16 2 9 7 6 7 10 4 67 NORMAL NONE 612ec9 0 0 0
-	Tackle. 1 35
+Paras Paras. 46 28 28 2 19 16 14 18 12 10 1182 BUG GRASS 71700850 1010101 0 2
+	Scratch. 2 35
+	Stun Spore. 37 30
+Vulpix Vulpix. 37 34 34 3 17 18 14 16 25 13 2382 FIRE NONE 7c9bdd8a 4030602 0 0
+	Ember. 12 25
 	Tail Whip. 4 30
-Zubat Zubat. 41 24 24 2 12 11 11 11 14 8 512 POISON FLYING e08c4e2 0 0 0
+	Quick Attack. 8 30
+Zubat Zubat. 41 24 24 2 12 11 11 11 14 8 563 POISON FLYING e08c4e2 10001 0 0
 	Leech Life. 96 15
 	Astonish. 97 15
-Clefairy Clefairy. 35 35 35 3 16 16 19 20 14 10 1000 NONE NONE 31dccf2e 0 0 0
+Clefairy Clefairy. 35 37 37 3 17 17 19 20 15 11 1361 NONE NONE 31dccf2e 1000402 0 2
 	Pound. 69 35
 	Growl. 3 40
 	Sing. 70 15
-Paras Paras. 46 28 28 2 19 16 14 18 12 10 1000 BUG GRASS 71700850 0 0 0
-	Scratch. 2 35
-	Stun Spore. 37 30
-Vulpix Vulpix. 37 24 24 2 12 13 14 16 17 8 512 FIRE NONE 7c9bdd8a 0 0 0
-	Ember. 12 25
+Eevee Eevee. 133 63 63 4 36 30 29 43 37 25 17144 NORMAL NONE 2b940e02 10201 0 0
+	Quick Attack. 8 30
 	Tail Whip. 4 30
+	Sand Attack. 7 15
+	Growl. 3 40
 Pidgey Pidgey. 16 19 19 2 9 9 7 7 10 5 192 NORMAL FLYING 669bd0ab 0 0 1
 	Tackle. 1 35
 	Sand Attack. 7 15
@@ -103,11 +106,11 @@ Tangela Trock. 114 39 39 4 18 35 30 18 22 12 1728 GRASS NONE 7be7e470 0 0 0
 	Constrict. 133 35
 	Sleep Powder. 15 15
 	Absorb. 100 20
-Diglett Brug. 50 32 32 4 27 16 18 23 43 19 7013 GROUND NONE 17c6a8a0 80400 0 0
-	Scratch. 2 35
-	Sand Attack. 7 15
-	Growl. 3 40
-	Magnitude. 106 30
+Gastly Gengster. 92 50 50 4 21 22 49 25 44 22 10705 GHOST POISON 29d5d496 102 0 0
+	Confuse Ray. 93 10
+	Lick. 159 30
+	Curse. 160 10
+	Night Shade. 161 15
 Aerodactyl Aerodactyl. 142 70 70 4 58 38 37 41 69 23 12167 ROCK FLYING 688a4301 0 0 0
 	Wing Attack. 26 35
 	Agility. 43 20
@@ -136,24 +139,41 @@ Arcanine Arcanine. 59 82 82 4 61 49 57 47 55 25 15625 FIRE NONE 56944c88 0 0 0
 Magikarp Eweek. 129 35 35 2 8 27 14 17 36 18 5832 WATER NONE 23ea3840 0 0 0
 	Splash. 201 40
 	Tackle. 1 35
-Eevee Eevee. 133 63 63 4 36 30 29 43 37 25 15625 NORMAL NONE 2b940e02 0 0 0
-	Quick Attack. 8 30
-	Tail Whip. 4 30
-	Sand Attack. 7 15
-	Growl. 3 40
+Scyther Scyther. 123 74 74 4 69 51 35 52 69 27 20595 BUG FLYING 3d83b260 20300 0 0
+	Agility. 43 20
+	Wing Attack. 26 35
+	Pursuit. 42 10
+	False Swipe. 145 40
 Psyduck Ayesie. 54 71 71 4 37 43 44 36 39 30 27000 WATER NONE c517c85 0 0 0
 	Screech. 84 40
 	Tail Whip. 4 30
 	Disable. 115 20
 	Confusion. 36 25
+Shellder Sheldon. 90 49 49 4 39 56 26 21 26 23 12167 WATER NONE 5f526acd 0 0 0
+	Aurora Beam. 148 20
+	Withdraw. 27 40
+	Icicle Spear. 156 30
+	Supersonic. 35 20
+Spearow Javelin. 21 18 18 2 10 8 7 7 11 4 64 NORMAL FLYING 3000fad4 0 0 0
+	Peck. 51 35
+	Growl. 3 40
+Jigglypuff Lulaby. 39 28 28 2 10 8 10 8 7 5 125 NORMAL NONE 4378f57f 0 0 0
+	Sing. 70 15
+	Defense Curl. 9 40
+Rattata Rattata. 19 20 20 2 13 9 6 7 13 6 285 NORMAL NONE 612ec9 2000302 0 5
+	Tackle. 1 35
+	Tail Whip. 4 30
 Bag:
-Paralyze Heal. 7 1
-Burn Heal. 9 3
+Paralyze Heal. 7 2
+Burn Heal. 9 4
 Leaf Stone. 15 1
-Poke Ball. 3 1
+Poke Ball. 3 5
 Super Potion. 2 6
-Great Ball. 4 5
-Super Repel. 18 1
+Great Ball. 4 2
+Max Repel. 19 1
+Ultra Ball. 5 1
+Repel. 17 2
+Antidote. 6 2
 
 Key Items: 4
   207 209 208 433 
@@ -161,5 +181,5 @@ Key Items: 4
 HM/TMs: 2
   101 102 
 
-Trainers Battled: 81
-  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 202 29 30 31 32 34 35 253 33 38 41 46 45 39 42 43 44 48 50 52 53 55 54 62 56 57 58 59 60 63 40 203 71 72 74 75 76 77 79 64 65 66 67 204 80 81 82 83 93 94 95 84 
+Trainers Battled: 88
+  1 3 2 5 7 9 10 12 11 6 201 13 14 15 16 252 22 23 24 25 26 20 27 28 19 21 17 37 69 202 29 30 31 32 34 35 253 33 38 41 46 45 39 42 43 44 48 50 52 53 55 54 62 56 57 58 59 60 63 40 203 71 72 74 75 76 77 79 64 65 66 67 204 80 81 82 83 93 94 95 84 92 91 107 108 251 36 70 

@@ -20,35 +20,36 @@ char message[LINE_SIZE];
 enum {NPC_ACTION_NONE, NPC_ACTION_RESET_MAP };
 
 static NPC n00 = {  0, "No Name", NO_ITEM, 0, NPC_ACTION_NONE};
-static NPC n01 = {  1, "Finn", FIRE_STONE, 1, NPC_ACTION_NONE};
-static NPC n02 = {  2, "Monty", MOON_STONE, 2, NPC_ACTION_NONE};
-static NPC n03 = {  3, "Bill", K_ITEM_SS_TICKET, 3, NPC_ACTION_NONE };
+static NPC n01 = {  1, "Finn", FIRE_STONE, RECORD_BIT_1, NPC_ACTION_NONE};
+static NPC n02 = {  2, "Monty", MOON_STONE, RECORD_BIT_2, NPC_ACTION_NONE};
+static NPC n03 = {  3, "Bill", K_ITEM_SS_TICKET, RECORD_BIT_3, NPC_ACTION_NONE };
 static NPC n04 = {  4, "Guard", NO_ITEM, 0, NPC_ACTION_NONE };
-static NPC n05 = {  5, "Guard", NO_ITEM, 8, NPC_ACTION_RESET_MAP };
-static NPC n06 = {  6, "Captain Jacobs", HM_CUT, 4, NPC_ACTION_NONE };
-static NPC n07 = {  7, "Lily", LEAF_STONE, 5, NPC_ACTION_NONE };
-static NPC n08 = {  8, "Ted", K_ITEM_FOSSIL_AMBER, 6, NPC_ACTION_NONE };
+static NPC n05 = {  5, "Guard", NO_ITEM, RECORD_BIT_8, NPC_ACTION_RESET_MAP };
+static NPC n06 = {  6, "Captain Jacobs", HM_CUT, RECORD_BIT_4, NPC_ACTION_NONE };
+static NPC n07 = {  7, "Lily", LEAF_STONE, RECORD_BIT_5, NPC_ACTION_NONE };
+static NPC n08 = {  8, "Ted", K_ITEM_FOSSIL_AMBER, RECORD_BIT_6, NPC_ACTION_NONE };
 static NPC n09 = {  9, "Calvin", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n10 = { 10, "Taylor", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n11 = { 11, "Jan", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n12 = { 12, "Finn", NO_ITEM, 0, NPC_ACTION_NONE };
-static NPC n13 = { 13, "Locklyn", K_ITEM_SILPH_SCOPE, 9, NPC_ACTION_RESET_MAP };
+static NPC n13 = { 13, "Locklyn", K_ITEM_SILPH_SCOPE, RECORD_BIT_9, NPC_ACTION_RESET_MAP };
 static NPC n14 = { 14, "Guard", NO_ITEM, 0, NPC_ACTION_NONE };
-static NPC n15 = { 15, "Guard", NO_ITEM, 10, NPC_ACTION_RESET_MAP };
+static NPC n15 = { 15, "Guard", NO_ITEM, RECORD_BIT_10, NPC_ACTION_RESET_MAP };
 static NPC n16 = { 16, "Pokemon League Rep", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n17 = { 17, "Officer", NO_ITEM, 0, NPC_ACTION_NONE };
-static NPC n18 = { 18, "Mr. Fuji", K_ITEM_FLUTE, 11, NPC_ACTION_RESET_MAP };
-static NPC n19 = { 19, "Ella", GIVE_POK_START_INDEX + POKEMON_EEVEE, 14, NPC_ACTION_NONE };
+static NPC n18 = { 18, "Mr. Fuji", K_ITEM_FLUTE, RECORD_BIT_11, NPC_ACTION_RESET_MAP };
+static NPC n19 = { 19, "Ella", GIVE_POK_START_INDEX + POKEMON_EEVEE, RECORD_BIT_14, NPC_ACTION_NONE };
 static NPC n20 = { 20, "Pokemon League Rep", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n21 = { 21, "Safari Ranger", NO_ITEM, 0, NPC_ACTION_NONE};
-static NPC n22 = { 22, "Safari Manager", HM_SURF, 13, NPC_ACTION_NONE };
+static NPC n22 = { 22, "Safari Manager", HM_SURF, RECORD_BIT_13, NPC_ACTION_NONE };
 static NPC n23 = { 23, "Pokemon League Rep", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n24 = { 24, "Pokemon League Rep", NO_ITEM, 0, NPC_ACTION_NONE };
+static NPC n25 = { 25, "Rocket Grunt", NO_ITEM, 0, NPC_ACTION_NONE };
 
 
 static NPC * npcs[NUM_NPCS] = 
     { &n00, &n01, &n02, &n03, &n04, &n05, &n06, &n07, &n08, &n09, &n10, &n11, &n12, &n13, &n14, &n15, &n16, &n17, &n18, &n19, &n20,
-            &n21, &n22, &n23, &n24 };
+            &n21, &n22, &n23, &n24, &n25 };
 
 
 struct NPC * get_npc(int npc_id) {

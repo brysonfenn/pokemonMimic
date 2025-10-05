@@ -34,7 +34,8 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_route12, &draw_fuchsia_city, &draw_gym5, &draw_route13, &draw_route14,                    //41-45
                                     &draw_route15, &draw_safari1, &draw_safari2, &draw_safari3, &draw_safari4,                      //46-50
                                     &draw_route16, &draw_saffron_city, &draw_gym6, &draw_cinnabar_island, &draw_route17,            //51-55
-                                    &draw_gym7, &draw_gym8, &draw_silph1
+                                    &draw_gym7, &draw_gym8, &draw_silph1, &draw_silph2, &draw_silph3,                               //56-60
+                                    &draw_silph4, &draw_silph5, &draw_silph6
                                     };
 
 char map_file_name[32];
@@ -308,6 +309,21 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             break;
         case MAP_SILPH1:
             sprintf(map_name, "silph1");
+            break;
+        case MAP_SILPH2:
+            sprintf(map_name, "silph2");
+            break;
+        case MAP_SILPH3:
+            sprintf(map_name, "silph3");
+            break;
+        case MAP_SILPH4:
+            sprintf(map_name, "silph4");
+            break;
+        case MAP_SILPH5:
+            sprintf(map_name, "silph5");
+            break;
+        case MAP_SILPH6:
+            sprintf(map_name, "silph6");
             break;
         default:
             sprintf(map_name, "empty_map");

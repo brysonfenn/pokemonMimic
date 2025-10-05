@@ -106,6 +106,11 @@ void draw_saffron_city() {
     
     draw_building_default(MAP_X+38, MAP_Y+4, "Gym", -1);
     add_building_portal(MAP_X+38, MAP_Y+4, MAP_GYM6);
+
+    if (! ((player.record_bits >> RECORD_BIT_15) & 0x01)) {
+        add_npc_by_id(MAP_X+38+DEFAULT_BUILDING_WIDTH/2, MAP_Y+4+DEFAULT_BUILDING_HEIGHT-1, 25, PLAYER_MOVING_DOWN);
+        add_npc_by_id(MAP_X+38+DEFAULT_BUILDING_WIDTH/2 + 1, MAP_Y+4+DEFAULT_BUILDING_HEIGHT-1, 25, PLAYER_MOVING_DOWN);
+    }
 }
 
 void draw_gym6() {
@@ -124,12 +129,102 @@ void draw_gym6() {
 }
 
 
+
+//Silph co order:
+// 4 5 6
+// 1 2 3
 void draw_silph1() {
-    draw_big_map("Silph Co.");
+    draw_big_map("Silph Co. Sector 1");
     audio_loop_file("silph_co.mp3");
 
     add_portal_big_map_to_building(MAP_X+20, MAP_Y+8, MAP_SAFF_CITY, MAP_BOTTOM, 6);
 
+    add_connection_to_big_map(MAP_RIGHT, 3, MAP_SILPH2);
+    add_connection_to_big_map(MAP_RIGHT, 11, MAP_SILPH2);
+
+    add_connection_to_big_map(MAP_TOP, 3, MAP_SILPH4);
+    add_connection_to_big_map(MAP_TOP, 23, MAP_SILPH4);
+    add_connection_to_big_map(MAP_TOP, 54, MAP_SILPH4);
+
     add_locked_door(MAP_X+8, MAP_Y+11, K_ITEM_KEY_SILPH);
     add_locked_door(MAP_X+38, MAP_Y+9, K_ITEM_KEY_SILPH);
+
+    
+}
+
+void draw_silph2() {
+    draw_big_map("Silph Co. Sector 2");
+    audio_loop_file("silph_co.mp3");
+
+    add_connection_to_big_map(MAP_LEFT, 3, MAP_SILPH1);
+    add_connection_to_big_map(MAP_LEFT, 11, MAP_SILPH1);
+    add_connection_to_big_map(MAP_RIGHT, 4, MAP_SILPH3);
+    add_connection_to_big_map(MAP_RIGHT, 9, MAP_SILPH3);
+    add_connection_to_big_map(MAP_RIGHT, 14, MAP_SILPH3);
+
+    add_connection_to_big_map(MAP_TOP, 4, MAP_SILPH5);
+    add_connection_to_big_map(MAP_TOP, 15, MAP_SILPH5);
+    add_connection_to_big_map(MAP_TOP, 30, MAP_SILPH5);
+
+    add_locked_door(MAP_X+18, MAP_Y+7, K_ITEM_KEY_SILPH);
+    add_locked_door(MAP_X+47, MAP_Y+7, K_ITEM_KEY_SILPH);
+
+}
+
+void draw_silph3() {
+    draw_big_map("Silph Co. Sector 3");
+    audio_loop_file("silph_co.mp3");
+
+    add_connection_to_big_map(MAP_LEFT, 4, MAP_SILPH2);
+    add_connection_to_big_map(MAP_LEFT, 9, MAP_SILPH2);
+    add_connection_to_big_map(MAP_LEFT, 14, MAP_SILPH2);
+
+    add_connection_to_big_map(MAP_TOP, 53, MAP_SILPH6);
+    add_connection_to_big_map(MAP_TOP, 43, MAP_SILPH6);
+
+}
+
+void draw_silph4() {
+    draw_big_map("Silph Co. Sector 4");
+    audio_loop_file("silph_co.mp3");
+
+    add_connection_to_big_map(MAP_BOTTOM, 3, MAP_SILPH1);
+    add_connection_to_big_map(MAP_BOTTOM, 23, MAP_SILPH1);
+    add_connection_to_big_map(MAP_BOTTOM, 54, MAP_SILPH1);
+
+    add_connection_to_big_map(MAP_RIGHT, 4, MAP_SILPH5);
+
+    add_locked_door(MAP_X+4, MAP_Y+7, K_ITEM_KEY_SILPH);
+    add_locked_door(MAP_X+23, MAP_Y+7, K_ITEM_KEY_SILPH);
+    add_locked_door(MAP_X+47, MAP_Y+5, K_ITEM_KEY_SILPH);
+
+}
+
+void draw_silph5() {
+    draw_big_map("Silph Co. Sector 5");
+    audio_loop_file("silph_co.mp3");
+
+    add_connection_to_big_map(MAP_RIGHT, 3, MAP_SILPH6);
+    add_connection_to_big_map(MAP_RIGHT, 12, MAP_SILPH6);
+
+    add_connection_to_big_map(MAP_BOTTOM, 4, MAP_SILPH2);
+    add_connection_to_big_map(MAP_BOTTOM, 15, MAP_SILPH2);
+    add_connection_to_big_map(MAP_BOTTOM, 30, MAP_SILPH2);
+
+    add_connection_to_big_map(MAP_LEFT, 4, MAP_SILPH4);
+
+    add_locked_door(MAP_X+39, MAP_Y+11, K_ITEM_KEY_SILPH);
+    
+}
+
+void draw_silph6() {
+    draw_big_map("Silph Co. Sector 6");
+    audio_loop_file("silph_co.mp3");
+
+    add_connection_to_big_map(MAP_BOTTOM, 53, MAP_SILPH3);
+    add_connection_to_big_map(MAP_BOTTOM, 43, MAP_SILPH3);
+    add_connection_to_big_map(MAP_LEFT, 3, MAP_SILPH5);
+    add_connection_to_big_map(MAP_LEFT, 12, MAP_SILPH5);
+
+    add_locked_door(MAP_X+47, MAP_Y+7, K_ITEM_KEY_SILPH);
 }

@@ -1,7 +1,7 @@
-Last Saved: 04/06/2025 10:44:16
+Last Saved: 06/11/2025 13:06:57
 Player: B Test Man.
 6 1 12 14200 12d 0 0 0 4 G Test Man.
-Location: {15,(29,13)}
+Location: {15,(59,10)}
 Heal Center: {52,(18,14)}
 Pokemon: 
 Gloom Gloom. 44 66 65 4 37 42 41 42 27 24 13938 GRASS POISON 19b2348e c100c03 0 2

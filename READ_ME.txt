@@ -6,7 +6,7 @@ Player Record Bits
 4: HM Cut
 5: Leaf Stone
 6: Amber Fossil
-7: Snorlax - Route 6
+7: Snorlax - Route 10
 8: SS Anne Guards
 9: Silph Scope
 10: Pokemon Tower Guards
@@ -14,3 +14,4 @@ Player Record Bits
 12: Snorlax - route 15
 13: HM Surf
 14: Eevee
+15: Rockets in charge at Saffron

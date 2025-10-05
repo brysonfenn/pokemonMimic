@@ -1,10 +1,10 @@
-Last Saved: 11/29/2024 10:38:58
+Last Saved: 06/12/2025 13:59:09
 Player: Oliver H.
-6 15 7 15820 17d 0 0 0 7 Blue.
-Location: {15,(54,12)}
-Heal Center: {15,(19,7)}
+6 15 10 15770 17d 0 0 0 7 Blue.
+Location: {7,(41,5)}
+Heal Center: {7,(41,5)}
 Pokemon: 
-Wartortle Bam. 8 69 69 4 41 57 28 36 46 27 21852 WATER NONE 7fd958e0 18330f0b 0 0
+Wartortle Bam. 8 76 76 4 46 63 28 36 51 30 28471 WATER NONE 7fd958e0 2235140c 0 0
 	Water Gun. 28 25
 	Bite. 29 25
 	Rapid Spin. 30 40
@@ -12,24 +12,24 @@ Wartortle Bam. 8 69 69 4 41 57 28 36 46 27 21852 WATER NONE 7fd958e0 18330f0b 0 
 Nidoran(m) Dude. 32 31 31 2 18 13 12 11 16 10 1036 POISON NONE 22589a3a 1000602 0 5
 	Leer. 52 30
 	Peck. 51 35
-Butterfree Butter. 12 51 51 4 23 29 26 23 35 18 5998 BUG FLYING 398f7d65 10140a0f 0 5
+Butterfree Butter. 12 51 51 4 23 29 26 23 35 18 6144 BUG FLYING 398f7d65 10140b0f 0 5
 	Sleep Powder. 15 15
 	Supersonic. 35 20
 	Poison Powder. 14 35
 	Confusion. 36 25
-Pikachu Santa. 25 46 46 4 29 27 12 11 47 20 8876 ELECTRIC NONE 2e4b714b 2b0b0a09 0 0
+Pikachu Santa. 25 48 48 4 30 28 12 11 49 21 10063 ELECTRIC NONE 2e4b714b 2b0b0c0a 0 0
 	Thunder Shock. 55 30
 	Quick Attack. 8 30
 	Double Team. 57 15
 	Slam. 58 20
-Beedrill Beedrill. 15 60 60 3 41 24 14 23 38 19 7806 BUG POISON 2390c17f 1c13080c 0 0
+Beedrill Beedrill. 15 62 62 4 43 25 14 23 39 20 9100 BUG POISON 2390c17f 1c14090c 0 0
 	Harden. 34 30
 	Fury Attack. 41 20
 	Cut. 206 30
-Kabuto Kabuto. 140 37 37 3 35 37 19 18 26 16 4627 ROCK WATER 6cb26bcb 2000100 0 0
+	Twineedle. 44 20
+Nidoran(f) Dudette. 29 21 21 2 10 10 9 8 9 5 154 POISON NONE 548b9ef4 2010001 0 0
+	Growl. 3 40
 	Scratch. 2 35
-	Harden. 34 30
-	Absorb. 100 20
 PC: 
 Paras Cute. 46 25 25 2 18 15 13 17 10 9 729 BUG GRASS 61c294e7 0 0 0
 	Scratch. 2 35
@@ -43,9 +43,10 @@ Spearow Ax. 21 19 19 2 12 9 8 8 12 5 125 NORMAL FLYING 2702d740 0 0 0
 Pidgey Pidgey. 16 23 23 2 12 11 7 8 13 7 501 NORMAL FLYING 5ae1cf13 2030104 0 0
 	Tackle. 1 35
 	Sand Attack. 7 15
-Nidoran(f) Dudette. 29 21 21 2 10 10 9 8 9 5 154 POISON NONE 548b9ef4 2010001 0 0
-	Growl. 3 40
-	Scratch. 2 35
+Aerodactyl Aerodactyl. 142 64 64 3 47 33 27 35 58 19 7266 ROCK FLYING 2753cd7b 11040503 0 3
+	Wing Attack. 26 35
+	Agility. 43 20
+	Bite. 29 25
 Jigglypuff Sleep. 39 34 34 2 12 8 13 9 9 7 343 NORMAL NONE 70cdb615 0 0 0
 	Sing. 70 15
 	Defense Curl. 9 40
@@ -79,18 +80,21 @@ Diglett Dirt. 50 29 29 4 25 13 19 22 34 15 3375 GROUND NONE 4fde238a 0 0 0
 	Sand Attack. 7 15
 	Growl. 3 40
 	Magnitude. 106 30
-Aerodactyl Aerodactyl. 142 61 61 3 44 31 27 35 55 18 5832 ROCK FLYING 2753cd7b 0 0 0
-	Wing Attack. 26 35
-	Agility. 43 20
-	Bite. 29 25
+Kabuto Kabuto. 140 37 37 3 35 37 19 18 26 16 4627 ROCK WATER 6cb26bcb 2000100 0 0
+	Scratch. 2 35
+	Harden. 34 30
+	Absorb. 100 20
 Bag:
-Potion. 1 2
+Potion. 1 1
 Antidote. 6 2
 Moon Stone. 16 1
 Thunder Stone. 14 1
 Super Potion. 2 2
-Repel. 17 1
 Leaf Stone. 15 1
+Poke Ball. 3 2
+Repel. 17 1
+Awakening. 8 1
+Paralyze Heal. 7 2
 
 Key Items: 1
   207 
@@ -98,5 +102,5 @@ Key Items: 1
 HM/TMs: 1
   101 
 
-Trainers Battled: 34
-  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 20 21 202 23 24 25 26 27 28 29 30 32 31 34 253 
+Trainers Battled: 36
+  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 20 21 202 23 24 25 26 27 28 29 30 32 31 34 253 41 251 

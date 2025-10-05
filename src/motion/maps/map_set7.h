@@ -17,4 +17,14 @@ void draw_gym6();
 
 void draw_silph1();
 
+void draw_silph2();
+
+void draw_silph3();
+
+void draw_silph4();
+
+void draw_silph5();
+
+void draw_silph6();
+
 #endif //MAP_SET4_H
