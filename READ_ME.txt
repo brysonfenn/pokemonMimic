@@ -14,5 +14,6 @@ Player Record Bits
 12: Snorlax - route 15
 13: HM Surf
 14: Eevee
-15: Rockets in charge at Saffron
+15: Rockets in charge at Saffron/Masterball
 16: Silph Co Master Key
+17: Thunderstone

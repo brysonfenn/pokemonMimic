@@ -86,8 +86,8 @@ int attempt_catch(int catch_rate, char * name) {
 
     text_box_cursors(TEXT_BOX_NEXT_LINE); //Set next line for successful or unsuccessful catch
 
-    //Pokemon is only caught if
-    if (random < catch_rate) {
+    //Pokemon is only caught if successful catch or masterball
+    if (random < catch_rate || catch_rate >= 1000) {
         audio_end_loop();
         audio_play_file("capture.mp3");
         printw("%s was caught!", enemy_pok->name); refresh(); await_user();

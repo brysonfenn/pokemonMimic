@@ -46,11 +46,13 @@ static NPC n23 = { 23, "Pokemon League Rep", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n24 = { 24, "Pokemon League Rep", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n25 = { 25, "Rocket Grunt", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n26 = { 26, "Silph Co. Worker", K_ITEM_KEY_SILPH, RECORD_BIT_16, NPC_ACTION_NONE };
+static NPC n27 = { 27, "Silph Co. CEO", MASTER_BALL, RECORD_BIT_15, NPC_ACTION_RESET_MAP };
+static NPC n28 = { 28, "Silph Co. Researcher", THUNDER_STONE, RECORD_BIT_17, NPC_ACTION_NONE };
 
 
 static NPC * npcs[NUM_NPCS] = 
     { &n00, &n01, &n02, &n03, &n04, &n05, &n06, &n07, &n08, &n09, &n10, &n11, &n12, &n13, &n14, &n15, &n16, &n17, &n18, &n19, &n20,
-            &n21, &n22, &n23, &n24, &n25, &n26 };
+            &n21, &n22, &n23, &n24, &n25, &n26, &n27, &n28 };
 
 
 struct NPC * get_npc(int npc_id) {

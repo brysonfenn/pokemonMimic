@@ -149,7 +149,6 @@ void draw_silph1() {
     add_locked_door(MAP_X+8, MAP_Y+11, K_ITEM_KEY_SILPH);
     add_locked_door(MAP_X+38, MAP_Y+9, K_ITEM_KEY_SILPH);
 
-    
 }
 
 void draw_silph2() {
@@ -172,9 +171,11 @@ void draw_silph2() {
 
     add_npc_by_id(MAP_X+37, MAP_Y+4, 26, PLAYER_MOVING_LEFT);
 
-    add_trainer_by_id(MAP_X+15, MAP_Y+8, 109, PLAYER_MOVING_DOWN);
-    add_trainer_by_id(MAP_X+34, MAP_Y+8, 110, PLAYER_MOVING_DOWN);
-    add_trainer_by_id(MAP_X+23, MAP_Y+14, 111, PLAYER_MOVING_DOWN);
+    if (! ((player.record_bits >> RECORD_BIT_15) & 0x01)) {
+        add_trainer_by_id(MAP_X+15, MAP_Y+8, 109, PLAYER_MOVING_DOWN);
+        add_trainer_by_id(MAP_X+34, MAP_Y+8, 110, PLAYER_MOVING_DOWN);
+        add_trainer_by_id(MAP_X+23, MAP_Y+14, 111, PLAYER_MOVING_DOWN);
+    }
 }
 
 void draw_silph3() {
@@ -191,12 +192,12 @@ void draw_silph3() {
     add_locked_door(MAP_X+15, MAP_Y+7, K_ITEM_KEY_SILPH);
     add_locked_door(MAP_X+51, MAP_Y+7, K_ITEM_KEY_SILPH);
 
-    add_trainer_by_id(MAP_X+37, MAP_Y+8, 112, PLAYER_MOVING_DOWN);
-    add_trainer_by_id(MAP_X+37, MAP_Y+14, 113, PLAYER_MOVING_DOWN);
-    add_trainer_by_id(MAP_X+52, MAP_Y+11, 114, PLAYER_MOVING_RIGHT);
-
-    //TODO: Add Trainers starting at 115
-
+    if (! ((player.record_bits >> RECORD_BIT_15) & 0x01)) {
+        add_trainer_by_id(MAP_X+37, MAP_Y+8, 112, PLAYER_MOVING_DOWN);
+        add_trainer_by_id(MAP_X+37, MAP_Y+14, 113, PLAYER_MOVING_DOWN);
+        add_trainer_by_id(MAP_X+52, MAP_Y+11, 114, PLAYER_MOVING_RIGHT);
+        add_trainer_by_id(MAP_X+28, MAP_Y+6, 120, PLAYER_MOVING_UP);
+    }
 }
 
 void draw_silph4() {
@@ -213,6 +214,14 @@ void draw_silph4() {
     add_locked_door(MAP_X+23, MAP_Y+7, K_ITEM_KEY_SILPH);
     add_locked_door(MAP_X+47, MAP_Y+5, K_ITEM_KEY_SILPH);
 
+    if (! ((player.record_bits >> RECORD_BIT_15) & 0x01)) {
+        add_trainer_by_id(MAP_X+28, MAP_Y+14, 123, PLAYER_MOVING_DOWN);
+        add_trainer_by_id(MAP_X+28, MAP_Y+8, 124, PLAYER_MOVING_DOWN);
+        add_trainer_by_id(MAP_X+27, MAP_Y+4, 125, PLAYER_MOVING_DOWN);
+    }
+
+    add_npc_by_id(MAP_X+39, MAP_Y+5, 27, PLAYER_MOVING_LEFT);
+    add_npc_by_id(MAP_X+4, MAP_Y+1, 28, PLAYER_MOVING_DOWN);
 }
 
 void draw_silph5() {
@@ -229,6 +238,13 @@ void draw_silph5() {
     add_connection_to_big_map(MAP_LEFT, 4, MAP_SILPH4);
 
     add_locked_door(MAP_X+39, MAP_Y+11, K_ITEM_KEY_SILPH);
+
+    if (! ((player.record_bits >> RECORD_BIT_15) & 0x01)) {
+        add_trainer_by_id(MAP_X+52, MAP_Y+1, 117, PLAYER_MOVING_DOWN);
+        add_trainer_by_id(MAP_X+29, MAP_Y+7, 118, PLAYER_MOVING_RIGHT);
+        add_trainer_by_id(MAP_X+16, MAP_Y+8, 121, PLAYER_MOVING_RIGHT);
+        add_trainer_by_id(MAP_X+11, MAP_Y+15, 122, PLAYER_MOVING_RIGHT);
+    }
     
 }
 
@@ -242,4 +258,11 @@ void draw_silph6() {
     add_connection_to_big_map(MAP_LEFT, 12, MAP_SILPH5);
 
     add_locked_door(MAP_X+47, MAP_Y+7, K_ITEM_KEY_SILPH);
+
+    if (! ((player.record_bits >> RECORD_BIT_15) & 0x01)) {
+        add_trainer_by_id(MAP_X+51, MAP_Y+6, 115, PLAYER_MOVING_RIGHT);
+        add_trainer_by_id(MAP_X+21, MAP_Y+3, 116, PLAYER_MOVING_RIGHT);
+        add_trainer_by_id(MAP_X+29, MAP_Y+11, 119, PLAYER_MOVING_RIGHT);
+    }
+    
 }

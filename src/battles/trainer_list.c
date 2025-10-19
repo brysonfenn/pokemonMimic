@@ -142,6 +142,8 @@ static Trainer t121 = {121,"Rocket Grunt", "My name? I don't have one.", 2, {POK
 static Trainer t122 = {122,"Rocket Grunt", "What is Team Rocket? We're thieves!", 2, {POKEMON_DROWZEE, POKEMON_PERSIAN}, {32,36} };
 static Trainer t123 = {123,"Rocket Grunt", "We're not evil. Just ambitious.", 2, {POKEMON_MANKEY, POKEMON_PRIMEAPE}, {33,35} };
 static Trainer t124 = {124,"Rocket Grunt", "You'll have to go through me!", 3, {POKEMON_GRIMER, POKEMON_WEEZING, POKEMON_MACHAMP}, {32,34,36} };
+static Trainer t125 = {125,"Giovanni", "You keep standing in my way. You need to stop!", 4, 
+                                            {POKEMON_NIDORINO, POKEMON_KANGASKHAN, POKEMON_RHYHORN, POKEMON_NIDOQUEEN}, {37,35,37,41} };
 
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
@@ -151,7 +153,7 @@ static Trainer * trainers[NUM_TRAINERS] = { &t000,
     &t061, &t062, &t063, &t064, &t065, &t066, &t067, &t068, &t069, &t070, &t071, &t072, &t073, &t074, &t075, &t076, &t077, &t078, &t079, &t080,
     &t081, &t082, &t083, &t084, &t085, &t086, &t087, &t088, &t089, &t090, &t091, &t092, &t093, &t094, &t095, &t096, &t097, &t098, &t099, &t100,
     &t101, &t102, &t103, &t104, &t105, &t106, &t107, &t108, &t109, &t110, &t111, &t112, &t113, &t114, &t115, &t116, &t117, &t118, &t119, &t120, 
-    &t121, &t122, &t123, &t124
+    &t121, &t122, &t123, &t124, &t125
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am Brock, Gym Leader of Pewter. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
