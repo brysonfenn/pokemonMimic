@@ -4,6 +4,7 @@
 #include <time.h>
 #include <ncurses.h>
 #include <unistd.h>
+#include <signal.h>
 
 #include "load_save.h"
 #include "player.h"
