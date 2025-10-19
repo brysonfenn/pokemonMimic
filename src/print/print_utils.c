@@ -365,7 +365,7 @@ void save_print_state() {
     for (int row = 0; row < ROWS; ++row) {
         for (int col = 0; col < COLS; ++col) {
             contents[row][col] = inch();
-            move(row, col + 1);
+            move(row, col + 1); 
         }
     }
 }
