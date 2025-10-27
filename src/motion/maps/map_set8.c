@@ -12,6 +12,7 @@
 #include "../../battles/trainer.h"
 #include "../../print/print_utils.h"
 #include "../../print/print_defines.h"
+#include "../../items/key_items.h"
 
 
 void draw_cinnabar_island() {
@@ -29,6 +30,30 @@ void draw_cinnabar_island() {
 
     draw_building_default(MAP_X+15, MAP_Y+3, "GYM", DOORS_NEW_MAP);
     add_building_portal(MAP_X+15, MAP_Y+3, MAP_GYM7);
+    add_locked_door(MAP_X+15+DEFAULT_BUILDING_WIDTH/2, MAP_Y+3+DEFAULT_BUILDING_HEIGHT-1, K_ITEM_SECRET_KEY);
+    add_locked_door(MAP_X+15+DEFAULT_BUILDING_WIDTH/2 + 1, MAP_Y+3+DEFAULT_BUILDING_HEIGHT-1, K_ITEM_SECRET_KEY);
+
+    draw_building_default(MAP_X+6,MAP_Y+3,"MNSN",DOORS_NEW_MAP);
+    add_portal_building_to_big_map(MAP_X+6, MAP_Y+3, MAP_MANSION1, MAP_BOTTOM, 6);
+}
+
+void draw_mansion1() {
+    draw_big_map("Pokemon Mansion");
+    audio_loop_file("beach.mp3");
+    
+    add_portal_big_map_to_building(MAP_X+6, MAP_Y+3, MAP_CIN_ISLAND, MAP_BOTTOM, 6);
+}
+
+void draw_mansion2() {
+
+}
+
+void draw_mansion3() {
+
+}
+
+void draw_mansion4() {
+
 }
 
 void draw_gym7() {

@@ -35,7 +35,8 @@ static void (*draw_funcs[MAX_MAP_NUM+2])() = { &draw_generic_map,
                                     &draw_route15, &draw_safari1, &draw_safari2, &draw_safari3, &draw_safari4,                      //46-50
                                     &draw_route16, &draw_saffron_city, &draw_gym6, &draw_cinnabar_island, &draw_route17,            //51-55
                                     &draw_gym7, &draw_gym8, &draw_silph1, &draw_silph2, &draw_silph3,                               //56-60
-                                    &draw_silph4, &draw_silph5, &draw_silph6
+                                    &draw_silph4, &draw_silph5, &draw_silph6, &draw_mansion1, &draw_mansion2,                       //61-65
+                                    &draw_mansion3, &draw_mansion4
                                     };
 
 char map_file_name[32];
@@ -74,6 +75,14 @@ static Pokemon_id wild_pok_lists[32][16] = {
                     POKEMON_JYNX, POKEMON_ELECTABUZZ, POKEMON_MAROWAK, POKEMON_SANDSLASH, POKEMON_ARCANINE },         //#24 Safari 3
     { 10,  25, 31, POKEMON_RATICATE, POKEMON_KANGASKHAN, POKEMON_KANGASKHAN, POKEMON_PRIMEAPE, POKEMON_DRATINI, 
                     POKEMON_NIDORINO,POKEMON_SCYTHER, POKEMON_DRATINI, POKEMON_DODRIO, POKEMON_CHANSEY },         //#25 Safari 4
+    { 10,  30, 39, POKEMON_RATTATA, POKEMON_RATTATA, POKEMON_RATICATE, POKEMON_RATICATE, POKEMON_GROWLITHE, 
+                    POKEMON_GROWLITHE, POKEMON_GRIMER, POKEMON_GRIMER, POKEMON_WEEZING, POKEMON_MUK },         //#26 Mansion 1
+    { 10,  32, 40, POKEMON_RATTATA, POKEMON_PONYTA, POKEMON_RATICATE, POKEMON_RATICATE, POKEMON_GROWLITHE, 
+                    POKEMON_GRIMER, POKEMON_GRIMER, POKEMON_GRIMER, POKEMON_WEEZING, POKEMON_MUK },         //#27 Mansion 2
+    { 10,  35, 41, POKEMON_RATTATA, POKEMON_RATICATE, POKEMON_RATICATE, POKEMON_PONYTA, POKEMON_PONYTA, 
+                    POKEMON_RAPIDASH, POKEMON_MAGMAR, POKEMON_VULPIX, POKEMON_VULPIX, POKEMON_VULPIX },         //#28 Mansion 3
+    { 10,  38, 43, POKEMON_RATTATA, POKEMON_RATTATA, POKEMON_RATICATE, POKEMON_RATICATE, POKEMON_GROWLITHE, 
+                    POKEMON_GROWLITHE, POKEMON_ARCANINE, POKEMON_MAGMAR, POKEMON_MAGMAR, POKEMON_NINETALES },         //#29 Mansion 4
 };
 
 static Pokemon_id water_pok_lists[32][16] = {
@@ -96,8 +105,8 @@ static Pokemon_id water_pok_lists[32][16] = {
 //     POKEMON_GENGAR, POKEMON_HYPNO, POKEMON_KINGLER, POKEMON_ELECTRODE, 
 //     POKEMON_EXEGGUTOR, POKEMON_HITMONLEE, POKEMON_HITMONCHAN
 //     POKEMON_WEEZING, POKEMON_RHYDON, POKEMON_GYARADOS, 
-//     POKEMON_LAPRAS, POKEMON_DITTO, POKEMON_EEVEE, POKEMON_VAPOREON, POKEMON_JOLTEON, POKEMON_FLAREON, POKEMON_PORYGON, 
-//     POKEMON_OMANYTE, POKEMON_OMASTAR, POKEMON_KABUTO, POKEMON_KABUTOPS, POKEMON_AERODACTYL, POKEMON_ARTICUNO, 
+//     POKEMON_LAPRAS, POKEMON_DITTO, POKEMON_VAPOREON, POKEMON_JOLTEON, POKEMON_FLAREON, POKEMON_PORYGON, 
+//     POKEMON_OMASTAR, POKEMON_KABUTOPS, POKEMON_ARTICUNO, 
 //     POKEMON_ZAPDOS, POKEMON_MOLTRES, POKEMON_DRAGONAIR, POKEMON_DRAGONITE, POKEMON_MEWTWO, POKEMON_MEW
 
 
@@ -324,6 +333,22 @@ void change_map_funcs(int map_num, void (**draw_map)()) {
             break;
         case MAP_SILPH6:
             sprintf(map_name, "silph6");
+            break;
+        case MAP_MANSION1:
+            sprintf(map_name, "mansion1");
+            wild_pok_list = &(wild_pok_lists[26]);
+            break;
+        case MAP_MANSION2:
+            sprintf(map_name, "mansion2");
+            wild_pok_list = &(wild_pok_lists[27]);
+            break;
+        case MAP_MANSION3:
+            sprintf(map_name, "mansion3");
+            wild_pok_list = &(wild_pok_lists[28]);
+            break;
+        case MAP_MANSION4:
+            sprintf(map_name, "mansion4");
+            wild_pok_list = &(wild_pok_lists[29]);
             break;
         default:
             sprintf(map_name, "empty_map");

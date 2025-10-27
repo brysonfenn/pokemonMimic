@@ -3,6 +3,14 @@
 
 void draw_cinnabar_island();
 
+void draw_mansion1();
+
+void draw_mansion2();
+
+void draw_mansion3();
+
+void draw_mansion4();
+
 void draw_gym7();
 
 void draw_route17();

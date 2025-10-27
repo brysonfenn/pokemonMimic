@@ -323,8 +323,8 @@ int handle_lock(struct Selectable * selectable_ptr) {
                 print_to_message_box("It looks like this door is locked!"); await_user();
             }
             break;
-        case K_ITEM_KEY_CINNABAR:
-            if (player_get_key_item_index(K_ITEM_KEY_CINNABAR) != -1) {
+        case K_ITEM_SECRET_KEY:
+            if (player_get_key_item_index(K_ITEM_SECRET_KEY) != -1) {
                 sprintf(print_str, "%s unlocked the door with Secret Key.", player.name);
                 print_to_message_box(print_str);
         

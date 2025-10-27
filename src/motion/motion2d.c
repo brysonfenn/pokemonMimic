@@ -262,7 +262,8 @@ void handle_motion() {
         bool encounter = ((mvinch(*player_y, *player_x) & A_CHARTEXT) == GRASS_CHAR);
         encounter = encounter || ((curr_map==MAP_MT_MOON_N || curr_map==MAP_MT_MOON_S || curr_map==MAP_DIG_CAVE 
                                 || curr_map==MAP_ROCK_TUNNEL_N || curr_map==MAP_ROCK_TUNNEL_S || curr_map==MAP_TOWER2
-                                || curr_map==MAP_TOWER3) 
+                                || curr_map==MAP_TOWER3 || curr_map == MAP_MANSION1 || curr_map == MAP_MANSION2 
+                                || curr_map == MAP_MANSION3 || curr_map == MAP_MANSION4)
                 && random < 5);   //Extra percentage for caves
         
         encounter = encounter || (((mvinch(*player_y, *player_x) & A_CHARTEXT) == WATER_CHAR) && random < 5);   //Percentage for water
