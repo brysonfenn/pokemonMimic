@@ -370,4 +370,6 @@ int transform_move_func(int nothing1, int nothing2, struct Pokemon * victim, int
 
     text_box_cursors(TEXT_BOX_NEXT_LINE);
     printw("%s transformed into %s!", self->name, victim->name); refresh(); sleep(2);
+
+    return ATTACK_SUCCESS;
 }
