@@ -21,14 +21,15 @@ void control_c_handler();
 //Main function
 int main(void) {
     char print_str[256];
-
-    signal(SIGINT, control_c_handler);
-    resume_ncurses();
-    init_audio_player();
     
     //Initiate Everything
     srand(time(NULL));
     player_init(0);
+
+    resume_ncurses();
+    init_audio_player();
+
+    signal(SIGINT, control_c_handler);
 
     int input_num;
     
@@ -123,7 +124,22 @@ void control_c_handler() {
     audio_end_loop();
 
     clearTerminal();
+
+    //Free All Memory
     free(player.loc);
+    free(player.bag);
+    free(player.key_items);
+    free(player.hm_tms);
+    free(player.loc);
+    free(player.blackout_center);
+    free(player.party);
+    free(player.pc_storage);
+    for (int i = 0; i < player.numInParty; i++) {
+        destroy_pokemon(&(player.party[i]));
+    }
+    for (int i = 0; i < player.numInPCStorage; i++) {
+        destroy_pokemon(&(player.pc_storage[i]));
+    }
 
     exit(0);
 }

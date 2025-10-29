@@ -59,4 +59,7 @@ int solar_beam_move_func(int nothing1, int nothing2, struct Pokemon * victim, in
 //Special function for Skull Bash
 int skull_bash_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
 
+//Special function for Transform
+int transform_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage);
+
 #endif // ATTACKS_SPECIAL_H

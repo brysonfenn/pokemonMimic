@@ -11,7 +11,7 @@
 #include "../print/print_battle.h"
 #include "../audio/audio_player.h"
 
-#define NUM_ATTACKS 210
+#define NUM_ATTACKS 220
 
 attack empty_attack=  {"-------------",  0,  0, 100, 100, NO_TYPE,  false, &attack_do_nothing };
 //				 	   "Name         "  id  pp  pwr  acc    type     priority    effect         params
@@ -224,7 +224,7 @@ attack smog         = {"Smog"         ,188, 20,  20,       70, POISON,   false, 
 attack softboiled   = {"Softboiled"   ,189, 10,   0,  NO_MISS, NORMAL,   false, &self_heal, HP_PERCENTAGE, 50 };
 attack ingrain      = {"Ingrain"      ,190, 20,   0,  NO_MISS, GRASS,    false, &self_inflict_condition, INGRAINED, 100 };
 
-attack dizzy_punch  = {"Dizzy Punch"  ,191, 10,  70,      100, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack dizzy_punch  = {"Dizzy Punch"  ,191, 10,  70,      100, NORMAL,   false, &inflict_condition, CONFUSED, 20 };
 attack twister      = {"Twister"      ,192, 20,  40,      100, DRAGON,   false, &inflict_condition, FLINCHED, 20 };
 attack dragon_dance = {"Dragon Dance" ,193, 20,   0,  NO_MISS, DRAGON,   false, &increment_self_stat, ATTACK_STAT, 20 };
 attack flail        = {"Flail"        ,194, 15,  40,      100, NORMAL,   false, &flail_move_func, ATTACK_SPECIAL_MOVE, 0 };
@@ -236,12 +236,14 @@ attack fake_tears   = {"Fake Tears"   ,199, 20,   0,      100, DARK,     false, 
 attack blizzard     = {"Blizzard"     ,200,  5, 120,       70, ICE,      false, &inflict_condition, FROZEN, 30 };
 
 attack splash       = {"Splash"       ,201, 40,   0,  NO_MISS, NORMAL,   false, &splash_move_func, NO_CONDITION, 0 };
-attack sharpen      = {"Sharpen"      ,202, 30,   0,  NO_MISS, DRAGON,   false, &increment_self_stat, ATTACK_STAT, 20 };
+attack sharpen      = {"Sharpen"      ,202, 30,   0,  NO_MISS, DRAGON,   false, &increment_self_stat, ATTACK_STAT, 100 };
 attack ancient_power= {"Ancient Power",203,  5,  60,      100, ROCK,     false, &attack_do_nothing, NO_CONDITION, 0 };
 attack heat_wave    = {"Heat Wave"    ,204, 10, 100,       90, FIRE,     false, &inflict_condition, BURNED, 10 };
 attack outrage      = {"Outrage"      ,205, 15,  90,      100, NORMAL,   false, &thrash_move_func, ATTACK_SPECIAL_MOVE, DRAGON };
 attack cut          = {"Cut"          ,206, 30,  50,       95, NORMAL,   false, &attack_do_nothing, NO_CONDITION, 0 };
-attack surf         = {"Surf"         ,207, 15,  90,      100, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 };
+attack surf         = {"Surf"         ,207, 15,  90,      100, WATER,    false, &attack_do_nothing, NO_CONDITION, 0 }; 
+attack fly          = {"Fly"          ,208, 15,  90,       95, FLYING,   false, &attack_do_nothing, NO_CONDITION, 0 };
+attack transform    = {"Transform"    ,209, 10,   0,  NO_MISS, NORMAL,   false, &transform_move_func, NO_CONDITION, 0 };
 
 
 static attack * local_array[NUM_ATTACKS] = { &empty_attack, 
@@ -258,14 +260,14 @@ static attack * local_array[NUM_ATTACKS] = { &empty_attack,
     &petal_dance, &mega_drain, &spore, &giga_drain, &psychic, &magnitude, &rollout, &mud_slap, &swagger, &fissure,                          // #101-110
     &tri_attack, &pay_day, &faint_attack, &fake_out, &disable, &low_kick, &karate_chop, &seismic_toss, &cross_chop, &take_down,             // #111-120
     &flame_wheel, &extreme_speed, &recover, &bubble_beam, &hypnosis, &submission, &stomp, &fire_blast, &teleport, &kinesis,                 // #121-130
-    &vital_throw, &dynamic_punch, &constrict, &barrier, &amnesia, &yawn, &headbutt, &metal_sound, &sonic_boom, &spark,                      // #131-140
+    &vital_throw, &dynamic_punch, &constrict, &barrier, &amnesia, &yawn, &headbutt, &metal_sound, &sonic_boom, &spark,                      // rgba(39, 40, 39, 1)-140
     &zap_cannon, &knock_off, &fury_cutter, &swords_dance, &false_swipe, &uproar, &icy_wind, &aurora_beam, &ice_beam, &signal_beam,          // #141-150
     &sheer_cold, &poison_gas, &sludge, &acid_armor, &sludge_bomb, &icicle_spear, &clamp, &spike_cannon, &lick, &curse,                      // #151-160
     &night_shade, &shadow_ball, &shadow_punch, &meditate, &vice_grip, &mud_shot, &guillotine, &crab_hammer, &barrage, &egg_bomb,            // #161-170
     &bone_club, &bonemerang, &bone_rush, &rolling_kick, &jump_kick, &brick_break, &hi_jump_kick, &mega_kick, &comet_punch, &mach_punch,     // #171-180
     &thunder_punch, &ice_punch, &fire_punch, &sky_uppercut, &mega_punch, &detect, &refresh_move, &smog, &softboiled, &ingrain,              // #181-190
     &dizzy_punch, &twister, &dragon_dance, &flail, &waterfall, &magical_leaf, &lovely_kiss, &powder_snow, &fake_tears, &blizzard,           // #191-200
-    &splash, &sharpen, &ancient_power, &heat_wave, &outrage, &cut, &surf
+    &splash, &sharpen, &ancient_power, &heat_wave, &outrage, &cut, &surf, &fly, &transform
 };
 
 

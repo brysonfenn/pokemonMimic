@@ -11,7 +11,8 @@ typedef enum { NO_CONDITION, SPEED_STAT, ATTACK_STAT, DEFENSE_STAT, SP_ATTACK_ST
                 SP_DEFENSE_STAT, ACCURACY_STAT, EVASIVENESS_STAT,
                 POISONED, PARALYZED, ASLEEP, BURNED, FROZEN, 
                 CONFUSED, SEEDED, FIRE_SPINNED, TIGHT_HOLD, SAND_TOMBED, INGRAINED, 
-                REPEAT_MOVE, DISABLED, YAWNED, PROTECTED, CURSED, FLINCHED } Condition;
+                REPEAT_MOVE, DISABLED, YAWNED, PROTECTED, CURSED, FLINCHED, 
+                TRANSFORMED } Condition;
 
 //Inflict condition on pok given, handle accuracy
 int inflict_condition(Condition condition, int accuracy, struct Pokemon * pok, int damage);
@@ -20,7 +21,7 @@ int inflict_condition(Condition condition, int accuracy, struct Pokemon * pok, i
 int self_inflict_condition(Condition condition, int accuracy, struct Pokemon * pok, int damage);
 
 //Add hidden condition to pokemon, return false if condition could not be added
-bool add_hidden_condition(struct Pokemon * pok, Condition condition, int8_t value);
+bool add_hidden_condition(struct Pokemon * pok, Condition condition, int64_t value);
 
 //Check if a given pokemon has a specified hidden condition
 bool has_hidden_condition(struct Pokemon * pok, Condition condition);
@@ -29,7 +30,7 @@ bool has_hidden_condition(struct Pokemon * pok, Condition condition);
 int decrement_hidden_condition_val(struct Pokemon * pok, Condition condition);
 
 //Returns the value associated with a given condition, return value, or return -1 if condition not found
-int get_hidden_condition_val(struct Pokemon * pok, Condition condition);
+int64_t get_hidden_condition_val(struct Pokemon * pok, Condition condition);
 
 //Remove a hidden condition if it exists, return 1 if it is not there
 bool remove_hidden_condition(struct Pokemon * pok, Condition condition);

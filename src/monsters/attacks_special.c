@@ -1,6 +1,7 @@
 #include "attacks_special.h"
 
 #include <ncurses.h>
+#include <stdio.h>
 
 #include "pokemon.h"
 #include "typings.h"
@@ -341,8 +342,32 @@ int skull_bash_move_func(int nothing1, int nothing2, struct Pokemon * victim, in
         increment_self_stat(DEFENSE_STAT, 100, victim, 0);
     }
     else if (repeat_val == REMOVED_REPEATS) {
-        deal_damage(100, self, victim, GRASS);
+        deal_damage(100, self, victim, NORMAL);
     }
     
     return ATTACK_SUCCESS;
+}
+
+//Special function for Transform
+int transform_move_func(int nothing1, int nothing2, struct Pokemon * victim, int damage) {
+    Pokemon * self;
+    if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
+    else { self = player.current_pokemon; }
+
+    //Save old pokemon data, save address in hidden conditions value of TRANSFORMED
+    Pokemon * tempPok = (Pokemon *) malloc(sizeof(Pokemon));
+    *tempPok = *self; 
+    int64_t pok_addr = (int64_t) tempPok;
+    add_hidden_condition(self, TRANSFORMED, pok_addr);
+
+    self->type1 = victim->type1;
+    self->type2 = victim->type2;
+    self->numAttacks = victim->numAttacks;
+    for (int i = 0; i < victim->numAttacks; i++) {
+        self->attacks[i] = victim->attacks[i];
+        self->attacks[i].curr_pp = 5;
+    }
+
+    text_box_cursors(TEXT_BOX_NEXT_LINE);
+    printw("%s transformed into %s!", self->name, victim->name); refresh(); sleep(2);
 }

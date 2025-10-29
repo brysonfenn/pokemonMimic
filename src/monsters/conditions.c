@@ -184,14 +184,14 @@ int self_inflict_condition(Condition condition, int accuracy, struct Pokemon * p
 
 
 //Add hidden condition to pokemon, return 1 if condition could not be added
-bool add_hidden_condition(struct Pokemon * pok, Condition condition, int8_t value) {
+bool add_hidden_condition(struct Pokemon * pok, Condition condition, int64_t value) {
 	if (has_hidden_condition(pok, condition)) return false;
 
 	pok->num_hidden_conditions++;
 	pok->hidden_conditions = realloc(pok->hidden_conditions, pok->num_hidden_conditions * sizeof(Condition));
 	pok->hidden_conditions[pok->num_hidden_conditions - 1] = condition;
 
-	pok->hidden_condition_values = realloc(pok->hidden_condition_values, pok->num_hidden_conditions * sizeof(int8_t));
+	pok->hidden_condition_values = realloc(pok->hidden_condition_values, pok->num_hidden_conditions * sizeof(int64_t));
 	pok->hidden_condition_values[pok->num_hidden_conditions - 1] = value;
 
 	return true;
@@ -205,7 +205,7 @@ bool has_hidden_condition(struct Pokemon * pok, Condition condition) {
 	return false;
 }
 
-//Decrement the value associated with a given condition, return value, or return 0 if condition not found
+//Decrement the value associated with a given condition, return the value, or return 0 if condition not found
 int decrement_hidden_condition_val(struct Pokemon * pok, Condition condition) {
 	for (int i = 0; i < pok->num_hidden_conditions; i++) {
 		if (pok->hidden_conditions[i] == condition && pok->hidden_condition_values[i] > 0) {
@@ -216,8 +216,8 @@ int decrement_hidden_condition_val(struct Pokemon * pok, Condition condition) {
 	return 0;
 }
 
-//Returns the value associated with a given condition, return value, or return -1 if condition not found
-int get_hidden_condition_val(struct Pokemon * pok, Condition condition) {
+//Returns the value associated with a given condition, or return -1 if condition not found
+int64_t get_hidden_condition_val(struct Pokemon * pok, Condition condition) {
 	for (int i = 0; i < pok->num_hidden_conditions; i++) {
 		if (pok->hidden_conditions[i] == condition) {
 			return pok->hidden_condition_values[i];
@@ -258,7 +258,7 @@ bool remove_hidden_condition(struct Pokemon * pok, Condition condition) {
 	pok->hidden_conditions = realloc(pok->hidden_conditions, new_size);
 
 	// Get what size of hidden conditions value array should be and resize
-	new_size = ((new_size / sizeof(Condition)) * sizeof(int8_t));
+	new_size = ((new_size / sizeof(Condition)) * sizeof(int64_t));
 	pok->hidden_condition_values = realloc(pok->hidden_condition_values, new_size);
 
 	return found_condition;
@@ -266,9 +266,26 @@ bool remove_hidden_condition(struct Pokemon * pok, Condition condition) {
 
 //Remove all hidden conditions form a given pokemon
 void remove_all_hidden_conditions(struct Pokemon * pok) {
+	//Change Transformed Pokemon back (if transformed)
+	int64_t pok_addr = get_hidden_condition_val(pok, TRANSFORMED);
+	if (pok_addr != -1) {
+		Pokemon * tempPok = (Pokemon *) pok_addr;
+		pok->type1 = tempPok->type1;
+		pok->type2 = tempPok->type2;
+		pok->numAttacks = tempPok->numAttacks;
+
+		int i = 0;
+		for (; i < tempPok->numAttacks; i++) {
+			pok->attacks[i] = tempPok->attacks[i];
+		}
+		for (; i < 4; i++) {
+			pok->attacks[i] = tempPok->attacks[i];
+		}
+	}
+
 	// if (pok->num_hidden_conditions == 0) return;
 	pok->hidden_conditions = realloc(pok->hidden_conditions, sizeof(Condition));
-	pok->hidden_condition_values = realloc(pok->hidden_condition_values, sizeof(int8_t));
+	pok->hidden_condition_values = realloc(pok->hidden_condition_values, sizeof(int64_t));
 	pok->num_hidden_conditions = 0;
 }
 
