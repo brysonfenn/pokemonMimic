@@ -132,14 +132,14 @@ void control_c_handler() {
     free(player.hm_tms);
     free(player.loc);
     free(player.blackout_center);
-    free(player.party);
-    free(player.pc_storage);
     for (int i = 0; i < player.numInParty; i++) {
         destroy_pokemon(&(player.party[i]));
     }
     for (int i = 0; i < player.numInPCStorage; i++) {
         destroy_pokemon(&(player.pc_storage[i]));
     }
+    free(player.party);
+    free(player.pc_storage);
 
     exit(0);
 }
