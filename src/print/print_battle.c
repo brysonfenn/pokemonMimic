@@ -19,24 +19,44 @@ void printBattle() {
     Pokemon * player_pok = player.current_pokemon;
     Pokemon * enemy_pok = player.enemy_pokemon;
     char poke_string[128];
+    int i, num_symbols;
+    double hp_per_half_symbol;
 
     //Draw battle box
     draw_box(BATTLE_BOX_X, BATTLE_BOX_Y, BATTLE_BOX_WIDTH, BATTLE_BOX_HEIGHT);
 
+    //Draw Enemy Pokemon Information
     sprintf(poke_string, "%s  Lvl %d  ", enemy_pok->nickname, enemy_pok->level);
     add_condition_string(poke_string, enemy_pok);
     mvprintw(BATTLE_BOX_ENEMY_Y, BATTLE_BOX_ENEMY_X, poke_string);
     mvprintw(BATTLE_BOX_ENEMY_Y+1, BATTLE_BOX_ENEMY_X, "HP: % 3d/%d ", enemy_pok->currentHP, enemy_pok->maxHP);
+
+    hp_per_half_symbol = enemy_pok->maxHP / 40.0;
+    num_symbols = enemy_pok->currentHP / hp_per_half_symbol;
+    for (i = 0; i < num_symbols / 2; i++) {
+        mvprintw(BATTLE_BOX_ENEMY_Y+2, BATTLE_BOX_ENEMY_X + i, "=");
+    }
+    if ((int) hp_per_half_symbol % 2) mvprintw(BATTLE_BOX_ENEMY_Y+2, BATTLE_BOX_ENEMY_X + i, "-");
+
 
     //Display Indication if Pokemon is uncaught
     if (player.is_uncaught_pokemon) {
         mvprintw(BATTLE_BOX_ENEMY_Y, BATTLE_BOX_ENEMY_X - 4, "*");
     }
 
+    //Draw Player Pokemon Information
     sprintf(poke_string,  "%s  Lvl %d  ", player_pok->nickname, player_pok->level);
     add_condition_string(poke_string, player_pok);
     mvprintw(BATTLE_BOX_PLAYER_Y, BATTLE_BOX_PLAYER_X, poke_string);
     mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "HP: % 3d/%d ", player_pok->currentHP, player_pok->maxHP);
+
+    hp_per_half_symbol = enemy_pok->maxHP / 40.0;
+    num_symbols = enemy_pok->currentHP / hp_per_half_symbol;
+    for (i = 0; i < num_symbols / 2; i++) {
+        mvprintw(BATTLE_BOX_PLAYER_Y+2, BATTLE_BOX_PLAYER_X + i, "=");
+    }
+    if ((int) hp_per_half_symbol % 2) mvprintw(BATTLE_BOX_PLAYER_Y+2, BATTLE_BOX_PLAYER_X + i, "-");
+
 
     print_btn_instructions(false);
 
