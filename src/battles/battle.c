@@ -524,10 +524,14 @@ void handle_exp(int exp, int ev_stat_id) {
     int num_exp_earned_pokemon = 0;
 
     for (int i = 0; i < 6; i++) { 
-        if (pokemon_needing_exp[i]) num_exp_earned_pokemon++;
+        if (pokemon_needing_exp[i]) {
+            if (player.party[i].currentHP == 0) { pokemon_needing_exp[i] = false; }
+            else { num_exp_earned_pokemon++; }
+        }
     }
 
-    if (num_exp_earned_pokemon == 0) { printw("Problem in handle_exp()!\n"); refresh(); sleep(2); return; }
+    //Do not proceed if no pokemon have earned exp
+    if (num_exp_earned_pokemon == 0) return;
 
     exp = (exp / num_exp_earned_pokemon) + 1;
 
