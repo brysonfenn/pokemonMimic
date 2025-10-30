@@ -267,9 +267,11 @@ int perform_struggle(struct Pokemon *perp, struct Pokemon *victim, bool enemy) {
 
     blinkPokemon(enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
     victim->currentHP -= (perp->maxHP / 16 + 1);
+    if (victim->currentHP < 0) victim->currentHP = 0;
     printBattle();
 
     blinkPokemon(!enemy, DAMAGED_COLOR, DAMAGE_BLINK_TIMES, victim);
     perp->currentHP -= (perp->maxHP / 16 + 1);
+    if (perp->currentHP < 0) perp->currentHP = 0;
     printBattle();
 }

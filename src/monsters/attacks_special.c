@@ -354,6 +354,15 @@ int transform_move_func(int nothing1, int nothing2, struct Pokemon * victim, int
     if (victim == player.current_pokemon) { self = player.enemy_pokemon; }
     else { self = player.current_pokemon; }
 
+    //Don't allow transform if the victim has transform
+    for (int i = 0; i < victim->numAttacks; i++) {
+        if (victim->attacks[i].id_num == 209) {
+            text_box_cursors(TEXT_BOX_NEXT_LINE);
+            printw("But it failed!"); refresh(); sleep(2);
+            return ATTACK_FAIL;
+        }
+    }
+
     //Save old pokemon data, save address in hidden conditions value of TRANSFORMED
     Pokemon * tempPok = (Pokemon *) malloc(sizeof(Pokemon));
     *tempPok = *self; 

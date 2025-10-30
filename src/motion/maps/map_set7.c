@@ -75,7 +75,7 @@ void draw_safari4() {
 
 void draw_route16() {
     draw_big_map("Route 16");
-    audio_loop_file("beach.mp3");
+    audio_loop_file("sea.mp3");
 
     add_connection_to_big_map(MAP_TOP, 36, MAP_FU_CITY);
     add_connection_to_big_map(MAP_LEFT, 5, MAP_CIN_ISLAND);

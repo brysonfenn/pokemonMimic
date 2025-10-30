@@ -17,7 +17,7 @@
 
 void draw_cinnabar_island() {
     draw_big_map("Cinnabar Island");
-    audio_loop_file("beach.mp3");
+    audio_loop_file("cinnabar.mp3");
 
     add_connection_to_big_map(MAP_RIGHT, 5, MAP_R16);
     add_connection_to_big_map(MAP_TOP, 48, MAP_R17);
@@ -39,21 +39,27 @@ void draw_cinnabar_island() {
 
 void draw_mansion1() {
     draw_big_map("Pokemon Mansion");
-    audio_loop_file("beach.mp3");
+    audio_loop_file("mansion.mp3");
     
     add_portal_big_map_to_building(MAP_X+6, MAP_Y+3, MAP_CIN_ISLAND, MAP_BOTTOM, 6);
 }
 
 void draw_mansion2() {
+    draw_big_map("Pokemon Mansion");
+    audio_loop_file("mansion.mp3");
 
 }
 
 void draw_mansion3() {
+    draw_big_map("Pokemon Mansion");
+    audio_loop_file("mansion.mp3");
 
 }
 
 void draw_mansion4() {
-
+    draw_big_map("Pokemon Mansion");
+    audio_loop_file("mansion.mp3");
+    
 }
 
 void draw_gym7() {
@@ -71,7 +77,7 @@ void draw_gym7() {
 
 void draw_route17() {
     draw_big_map("Route 16");
-    audio_loop_file("beach.mp3");
+    audio_loop_file("sea.mp3");
 
     add_connection_to_big_map(MAP_TOP, 10, MAP_STARTER_TOWN);
     add_connection_to_big_map(MAP_BOTTOM, 48, MAP_CIN_ISLAND);
