@@ -130,7 +130,6 @@ void control_c_handler() {
     free(player.bag);
     free(player.key_items);
     free(player.hm_tms);
-    free(player.loc);
     free(player.blackout_center);
     for (int i = 0; i < player.numInParty; i++) {
         destroy_pokemon(&(player.party[i]));
