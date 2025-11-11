@@ -172,3 +172,14 @@ int player_get_key_item_index(int id) {
     }
     return -1;
 }
+
+//Returns false if bit was already set to 1, returns true if bit was set from 0 to 1
+bool player_set_record_bit(record_bit_int record_bit_num) {
+    if ((player.record_bits >> record_bit_num) & 1) {
+        return false;
+    }
+    else {
+        player.record_bits |= ((long long) 1 << record_bit_num);
+        return true;
+    }
+}

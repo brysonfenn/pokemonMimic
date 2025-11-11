@@ -88,4 +88,7 @@ bool player_has_pokemon(int id);
 // Returns -1 if key_item not in list, else returns the index of the key item
 int player_get_key_item_index(int id);
 
+//Returns false if bit was already set to 1, returns true if bit was set from 0 to 1
+bool player_set_record_bit(record_bit_int record_bit_num);
+
 #endif // PLAYER_H
