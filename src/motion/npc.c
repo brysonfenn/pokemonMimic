@@ -17,7 +17,7 @@
 #define NUM_NPCS 30
 char message[LINE_SIZE];
 
-enum {NPC_ACTION_NONE, NPC_ACTION_RESET_MAP };
+enum {NPC_ACTION_NONE, NPC_ACTION_RESET_MAP, NPC_ACTION_SWITCH_R_BIT };
 
 static NPC n00 = {  0, "No Name", NO_ITEM, 0, NPC_ACTION_NONE};
 static NPC n01 = {  1, "Finn", FIRE_STONE, RECORD_BIT_1, NPC_ACTION_NONE};
@@ -137,16 +137,21 @@ void handle_npc_selection(struct NPC * npc_ptr) {
     await_user();
     begin_message_box();
 
-    //Record that npc has been talked to if not, and then reset map
-    if (npc_ptr->record_bit_num != 0 && !((player.record_bits >> npc_ptr->record_bit_num) & 1)) {
-        player.record_bits |= ((long long) 1 << npc_ptr->record_bit_num);
-
+    //Record that npc has been talked to
+    if (npc_ptr->record_bit_num != 0) {
+        
         switch (npc_ptr->action) {
         case NPC_ACTION_RESET_MAP:
-            change_map(player.loc->map, player.loc->x, player.loc->y);
+            if (player_set_record_bit(npc_ptr->record_bit_num)) {
+                change_map(player.loc->map, player.loc->x, player.loc->y);
+            }  
+            break;
+        case NPC_ACTION_SWITCH_R_BIT:
+            player_switch_record_bit(npc_ptr->record_bit_num);
             break;
         case NPC_ACTION_NONE:
         default:
+            player_set_record_bit(npc_ptr->record_bit_num);
             break;
         }
     }

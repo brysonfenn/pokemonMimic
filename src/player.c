@@ -183,3 +183,17 @@ bool player_set_record_bit(record_bit_int record_bit_num) {
         return true;
     }
 }
+
+//Switch Record bit from 1 to 0 or from 0 to 1: Returns false if bit was set to 0, returns true if bit was set to 1;
+bool player_switch_record_bit(record_bit_int record_bit_num) {
+    long long mask = (long long) 1 << record_bit_num;
+
+    player.record_bits ^= mask;
+    
+    if ((player.record_bits >> record_bit_num) & 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
