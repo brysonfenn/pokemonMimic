@@ -197,3 +197,13 @@ bool player_switch_record_bit(record_bit_int record_bit_num) {
         return false;
     }
 }
+
+//Returns false if Record bit is set to 0, returns true if bit is set to 1;
+bool player_record_bit_is_set(record_bit_int record_bit_num) {
+    if ((player.record_bits >> record_bit_num) & 1) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}

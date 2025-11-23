@@ -14,7 +14,7 @@
 
 #define GIVE_POK_START_INDEX 300
 
-#define NUM_NPCS 30
+#define NUM_NPCS 40
 char message[LINE_SIZE];
 
 enum {NPC_ACTION_NONE, NPC_ACTION_RESET_MAP, NPC_ACTION_SWITCH_R_BIT };
@@ -48,11 +48,12 @@ static NPC n25 = { 25, "Rocket Grunt", NO_ITEM, 0, NPC_ACTION_NONE };
 static NPC n26 = { 26, "Silph Co. Worker", K_ITEM_KEY_SILPH, RECORD_BIT_16, NPC_ACTION_NONE };
 static NPC n27 = { 27, "Silph Co. CEO", MASTER_BALL, RECORD_BIT_15, NPC_ACTION_RESET_MAP };
 static NPC n28 = { 28, "Silph Co. Researcher", THUNDER_STONE, RECORD_BIT_17, NPC_ACTION_NONE };
+static NPC n29 = { 29, "Statue", NO_ITEM, RECORD_BIT_18, NPC_ACTION_SWITCH_R_BIT };
 
 
 static NPC * npcs[NUM_NPCS] = 
     { &n00, &n01, &n02, &n03, &n04, &n05, &n06, &n07, &n08, &n09, &n10, &n11, &n12, &n13, &n14, &n15, &n16, &n17, &n18, &n19, &n20,
-            &n21, &n22, &n23, &n24, &n25, &n26, &n27, &n28 };
+            &n21, &n22, &n23, &n24, &n25, &n26, &n27, &n28, &n29 };
 
 
 struct NPC * get_npc(int npc_id) {
@@ -148,6 +149,7 @@ void handle_npc_selection(struct NPC * npc_ptr) {
             break;
         case NPC_ACTION_SWITCH_R_BIT:
             player_switch_record_bit(npc_ptr->record_bit_num);
+            change_map(player.loc->map, player.loc->x, player.loc->y);
             break;
         case NPC_ACTION_NONE:
         default:

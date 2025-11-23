@@ -42,6 +42,17 @@ void draw_mansion1() {
     audio_loop_file("mansion.mp3");
     
     add_portal_big_map_to_building(MAP_X+6, MAP_Y+3, MAP_CIN_ISLAND, MAP_BOTTOM, 6);
+
+    add_npc_by_id(MAP_X+4, MAP_Y+8, 29, PLAYER_MOVING_DOWN);
+
+    if (player_record_bit_is_set(RECORD_BIT_18)) {
+        
+    }
+    else {
+        mvaddch(MAP_Y+8,MAP_X+8,'|');
+        mvaddch(MAP_Y+9,MAP_X+8,'|');
+        mvaddch(MAP_Y+10,MAP_X+8,'|');
+    }
 }
 
 void draw_mansion2() {

@@ -27,4 +27,5 @@
 26: This is awful! Team Rocket has infiltrated Silph Co. Are you here to defeat team rocket? You seem like a great trainer. The Silph Master Key should help you to get around in here.
 27: I am the CEO here at Silph Co. Thank you for helping out with Team Rocket. Now that Giovanni is defeated, it shouldn't be a problem to make them leave. Have you heard of a Master Ball? It is a ball that will catch any Pokemon on the first try! Use it wisely.
 28: Wow! You're a tough trainer. I can't believe you battled all those team rocket folks. And you succeeded! I have been working with evolution stones here at Silph Co. I bet you can make use of some of those.
+29: Each time you speak with a statue, the walls will change.
 777: Reached End of npc_messages.txt file

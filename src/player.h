@@ -13,7 +13,7 @@ struct Item;
 
 typedef enum { RECORD_BIT_0, RECORD_BIT_1, RECORD_BIT_2, RECORD_BIT_3, RECORD_BIT_4, RECORD_BIT_5, RECORD_BIT_6, RECORD_BIT_7, 
                 RECORD_BIT_8, RECORD_BIT_9, RECORD_BIT_10, RECORD_BIT_11, RECORD_BIT_12, RECORD_BIT_13, RECORD_BIT_14, RECORD_BIT_15, 
-                RECORD_BIT_16, RECORD_BIT_17
+                RECORD_BIT_16, RECORD_BIT_17, RECORD_BIT_18
 } record_bit_int;
 
 
@@ -93,5 +93,8 @@ bool player_set_record_bit(record_bit_int record_bit_num);
 
 //Switch Record bit from 1 to 0 or from 0 to 1: Returns false if bit was set to 0, returns true if bit was set to 1;
 bool player_switch_record_bit(record_bit_int record_bit_num);
+
+//Returns false if Record bit is set to 0, returns true if bit is set to 1;
+bool player_record_bit_is_set(record_bit_int record_bit_num);
 
 #endif // PLAYER_H
