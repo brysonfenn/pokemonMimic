@@ -201,3 +201,16 @@ void blink_screen(int num_times, void (*draw_map_func) ()) {
 bool is_text_in_message_box() {
     return text_in_message_box;
 }
+
+//Draw wall (made of char c, of length l) either down (vertical=true) or right (vertical=false) from starting point (x,y)
+bool draw_wall(int x, int y, bool vertical, int l, char c) {
+    if (vertical) {
+        for (int i = 0; i < l; i++) mvaddch(y+i, x, c);
+    }
+    else {
+        for (int i = 0; i < l; i++) mvaddch(y, x+i, c);
+    }
+    
+    refresh();
+}
+    

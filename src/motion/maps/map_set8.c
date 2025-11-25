@@ -49,9 +49,7 @@ void draw_mansion1() {
         
     }
     else {
-        mvaddch(MAP_Y+8,MAP_X+8,'|');
-        mvaddch(MAP_Y+9,MAP_X+8,'|');
-        mvaddch(MAP_Y+10,MAP_X+8,'|');
+        draw_wall(MAP_X+8, MAP_Y+8, true, 3, '|');
     }
 }
 

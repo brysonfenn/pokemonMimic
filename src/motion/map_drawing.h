@@ -62,4 +62,7 @@ void blink_screen(int num_times, void (*draw_map_func) ());
 
 bool is_text_in_message_box();
 
+//Draw wall (of length l) either down (vertical=true) or right (vertical=false) from starting point (x,y)
+bool draw_wall(int x, int y, bool vertical, int l, char c);
+
 #endif //MAP_DRAWING_H

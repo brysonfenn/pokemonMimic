@@ -50,8 +50,8 @@ void printBattle() {
     mvprintw(BATTLE_BOX_PLAYER_Y, BATTLE_BOX_PLAYER_X, poke_string);
     mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "HP: % 3d/%d ", player_pok->currentHP, player_pok->maxHP);
 
-    hp_per_half_symbol = enemy_pok->maxHP / 40.0;
-    num_symbols = enemy_pok->currentHP / hp_per_half_symbol;
+    hp_per_half_symbol = player_pok->maxHP / 40.0;
+    num_symbols = player_pok->currentHP / hp_per_half_symbol;
     for (i = 0; i < num_symbols / 2; i++) {
         mvprintw(BATTLE_BOX_PLAYER_Y+2, BATTLE_BOX_PLAYER_X + i, "=");
     }
