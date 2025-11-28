@@ -37,19 +37,34 @@ void draw_cinnabar_island() {
     add_portal_building_to_big_map(MAP_X+6, MAP_Y+3, MAP_MANSION1, MAP_BOTTOM, 6);
 }
 
+// Mansion layout: 3 4
+//                 1 2
 void draw_mansion1() {
     draw_big_map("Pokemon Mansion");
     audio_loop_file("mansion.mp3");
     
     add_portal_big_map_to_building(MAP_X+6, MAP_Y+3, MAP_CIN_ISLAND, MAP_BOTTOM, 6);
+    add_connection_to_big_map(MAP_RIGHT, 8, MAP_MANSION2);
+    add_connection_to_big_map(MAP_RIGHT, 15, MAP_MANSION2);
+    add_connection_to_big_map(MAP_TOP, 53, MAP_MANSION3);
+    add_connection_to_big_map(MAP_TOP, 41, MAP_MANSION3);
+    add_connection_to_big_map(MAP_TOP, 3, MAP_MANSION3);
 
-    add_npc_by_id(MAP_X+4, MAP_Y+8, 29, PLAYER_MOVING_DOWN);
+    add_npc_by_id(MAP_X+1, MAP_Y+10, 29, PLAYER_MOVING_RIGHT);
+    add_npc_by_id(MAP_X+34, MAP_Y+13, 29, PLAYER_MOVING_LEFT);
+    add_npc_by_id(MAP_X+37, MAP_Y+1, 29, PLAYER_MOVING_LEFT);
+    add_npc_by_id(MAP_X+37, MAP_Y+5, 30, PLAYER_MOVING_LEFT);
 
+    //Wall Switch 1
     if (player_record_bit_is_set(RECORD_BIT_18)) {
-        
+        draw_wall(MAP_X+1, MAP_Y+7, false, 5, '-');
+        draw_wall(MAP_X+30, MAP_Y+11, false, 5, '=');
+        draw_wall(MAP_X+23, MAP_Y+3, false, 5, '=');
     }
+    //Wall Switch 0
     else {
         draw_wall(MAP_X+8, MAP_Y+8, true, 3, '|');
+        draw_wall(MAP_X+1, MAP_Y+7, false, 5, '=');
     }
 }
 
@@ -57,17 +72,82 @@ void draw_mansion2() {
     draw_big_map("Pokemon Mansion");
     audio_loop_file("mansion.mp3");
 
+    add_connection_to_big_map(MAP_LEFT, 8, MAP_MANSION1);
+    add_connection_to_big_map(MAP_LEFT, 15, MAP_MANSION1);
+    add_portal_big_map_to_building(MAP_X+6, MAP_Y+3, MAP_CIN_ISLAND, MAP_BOTTOM, 45);
+    add_connection_to_big_map(MAP_TOP, 53, MAP_MANSION4);
+    add_connection_to_big_map(MAP_TOP, 42, MAP_MANSION4);
+
+    add_npc_by_id(MAP_X+17, MAP_Y+11, 29, PLAYER_MOVING_LEFT);
+    add_npc_by_id(MAP_X+49, MAP_Y+8, 29, PLAYER_MOVING_DOWN);
+
+    //Wall Switch 1
+    if (player_record_bit_is_set(RECORD_BIT_18)) {
+        draw_wall(MAP_X+1, MAP_Y+13, false, 9, '-');
+        draw_wall(MAP_X+51, MAP_Y+12, true, 5, '|');
+    }
+    //Wall Switch 0
+    else {
+        draw_wall(MAP_X+1, MAP_Y+13, false, 9, '=');
+        draw_wall(MAP_X+23, MAP_Y+14, true, 3, '|');
+    }
 }
 
 void draw_mansion3() {
     draw_big_map("Pokemon Mansion");
     audio_loop_file("mansion.mp3");
 
+    add_connection_to_big_map(MAP_RIGHT, 2, MAP_MANSION4);
+    add_connection_to_big_map(MAP_RIGHT, 9, MAP_MANSION4);
+    add_connection_to_big_map(MAP_RIGHT, 15, MAP_MANSION4);
+    add_connection_to_big_map(MAP_BOTTOM, 53, MAP_MANSION1);
+    add_connection_to_big_map(MAP_BOTTOM, 41, MAP_MANSION1);
+    add_connection_to_big_map(MAP_BOTTOM, 3, MAP_MANSION1);
+
+    add_npc_by_id(MAP_X+21, MAP_Y+2, 29, PLAYER_MOVING_RIGHT);
+    add_npc_by_id(MAP_X+31, MAP_Y+12, 29, PLAYER_MOVING_DOWN);
+    add_npc_by_id(MAP_X+56, MAP_Y+5, 31, PLAYER_MOVING_LEFT);
+    add_npc_by_id(MAP_X+25, MAP_Y+12, 32, PLAYER_MOVING_UP);
+    add_npc_by_id(MAP_X+1, MAP_Y+3, 33, PLAYER_MOVING_RIGHT);
+
+    //Wall Switch 1
+    if (player_record_bit_is_set(RECORD_BIT_18)) {
+        draw_wall(MAP_X+39, MAP_Y+3, false, 8, '=');
+        draw_wall(MAP_X+23, MAP_Y+11, false, 8, '=');
+        draw_wall(MAP_X+10, MAP_Y+1, true, 4, '|');
+    }
+    //Wall Switch 0
+    else {
+        draw_wall(MAP_X+34, MAP_Y+8, true, 3, '|');
+        draw_wall(MAP_X+22, MAP_Y+14, true, 3, '|');
+    }
+
 }
 
 void draw_mansion4() {
     draw_big_map("Pokemon Mansion");
     audio_loop_file("mansion.mp3");
+
+    add_connection_to_big_map(MAP_BOTTOM, 53, MAP_MANSION2);
+    add_connection_to_big_map(MAP_BOTTOM, 42, MAP_MANSION2);
+    add_connection_to_big_map(MAP_LEFT, 2, MAP_MANSION3);
+    add_connection_to_big_map(MAP_LEFT, 9, MAP_MANSION3);
+    add_connection_to_big_map(MAP_LEFT, 15, MAP_MANSION3);
+
+    add_npc_by_id(MAP_X+56, MAP_Y+4, 29, PLAYER_MOVING_LEFT);
+    add_npc_by_id(MAP_X+46, MAP_Y+7, 29, PLAYER_MOVING_LEFT);
+
+    //Wall Switch 1
+    if (player_record_bit_is_set(RECORD_BIT_18)) {
+        
+        draw_wall(MAP_X+38, MAP_Y+13, true, 4, '|');
+        draw_wall(MAP_X+27, MAP_Y+9, false, 7, '=');
+    }
+    //Wall Switch 0
+    else {
+        draw_wall(MAP_X+47, MAP_Y+1, true, 2, '|');
+        draw_wall(MAP_X+27, MAP_Y+9, false, 7, '-');
+    }
     
 }
 

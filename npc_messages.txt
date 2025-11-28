@@ -28,4 +28,8 @@
 27: I am the CEO here at Silph Co. Thank you for helping out with Team Rocket. Now that Giovanni is defeated, it shouldn't be a problem to make them leave. Have you heard of a Master Ball? It is a ball that will catch any Pokemon on the first try! Use it wisely.
 28: Wow! You're a tough trainer. I can't believe you battled all those team rocket folks. And you succeeded! I have been working with evolution stones here at Silph Co. I bet you can make use of some of those.
 29: Each time you speak with a statue, the walls will change.
+30: Hi there. I take care of several sites here on Cinnabar Island, including this Mansion. What? You say the Cinnabar Island Gym has been locked? Well, since you have several badges, I think I can trust you with this key to the gym.
+31: Hello, I'm a doctor. Have you used a revive in battle before? They're very useful, but expensive.
+32: How did you find me in this closet? I'm impressed.
+33: I own this mansion. You're looking to defeat the gym leader on the island? He's very tough, and he specializes in fire type Pokemon. If you want to defeat him, you'll need Pokemon that are strong against fire types, like water types! This might help your progress with certain Pokemon.
 777: Reached End of npc_messages.txt file
