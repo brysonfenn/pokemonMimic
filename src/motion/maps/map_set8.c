@@ -81,6 +81,9 @@ void draw_mansion2() {
     add_npc_by_id(MAP_X+17, MAP_Y+11, 29, PLAYER_MOVING_LEFT);
     add_npc_by_id(MAP_X+49, MAP_Y+8, 29, PLAYER_MOVING_DOWN);
 
+    add_trainer_by_id(MAP_X+34, MAP_Y+8, 126, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+51, MAP_Y+3, 127, PLAYER_MOVING_UP);
+
     //Wall Switch 1
     if (player_record_bit_is_set(RECORD_BIT_18)) {
         draw_wall(MAP_X+1, MAP_Y+13, false, 9, '-');
@@ -110,6 +113,9 @@ void draw_mansion3() {
     add_npc_by_id(MAP_X+25, MAP_Y+12, 32, PLAYER_MOVING_UP);
     add_npc_by_id(MAP_X+1, MAP_Y+3, 33, PLAYER_MOVING_RIGHT);
 
+    add_trainer_by_id(MAP_X+34, MAP_Y+8, 129, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+8, MAP_Y+8, 131, PLAYER_MOVING_DOWN);
+
     //Wall Switch 1
     if (player_record_bit_is_set(RECORD_BIT_18)) {
         draw_wall(MAP_X+39, MAP_Y+3, false, 8, '=');
@@ -136,6 +142,9 @@ void draw_mansion4() {
 
     add_npc_by_id(MAP_X+56, MAP_Y+4, 29, PLAYER_MOVING_LEFT);
     add_npc_by_id(MAP_X+46, MAP_Y+7, 29, PLAYER_MOVING_LEFT);
+
+    add_trainer_by_id(MAP_X+20, MAP_Y+1, 128, PLAYER_MOVING_DOWN);
+    add_trainer_by_id(MAP_X+8, MAP_Y+8, 130, PLAYER_MOVING_DOWN);
 
     //Wall Switch 1
     if (player_record_bit_is_set(RECORD_BIT_18)) {

@@ -144,6 +144,13 @@ static Trainer t123 = {123,"Rocket Grunt", "We're not evil. Just ambitious.", 2,
 static Trainer t124 = {124,"Rocket Grunt", "You'll have to go through me!", 3, {POKEMON_GRIMER, POKEMON_WEEZING, POKEMON_MACHAMP}, {32,34,36} };
 static Trainer t125 = {125,"Giovanni", "You keep standing in my way. You need to stop!", 4, 
                                             {POKEMON_NIDORINO, POKEMON_KANGASKHAN, POKEMON_RHYHORN, POKEMON_NIDOQUEEN}, {37,35,37,41} };
+static Trainer t126 = {126,"Trainer Mary", "This Mansion is creepy!", 3, {POKEMON_DITTO, POKEMON_KADABRA, POKEMON_HAUNTER}, {34,35,36} };
+static Trainer t127 = {127,"Trainer Johnson", "Who owns this place?", 3, {POKEMON_EKANS, POKEMON_BEEDRILL, POKEMON_ARBOK}, {34,35,36} };
+static Trainer t128 = {128,"Trainer Dwight", "I like water Pokemon!", 3, {POKEMON_SEAKING, POKEMON_KINGLER, POKEMON_SEADRA}, {35,36,37} };
+static Trainer t129 = {129,"Sir Ian", "How do you do?", 3, {POKEMON_MR_MIME, POKEMON_JYNX, POKEMON_HYPNO}, {35,36,37} };
+static Trainer t130 = {130,"Madame Perry", "Aren't you a little young to be a Pokemon Trainer?", 3, {POKEMON_BUTTERFREE, POKEMON_FEAROW, POKEMON_NIDOQUEEN}, {36,36,37} };
+
+static Trainer t131 = {131,"Youngster Harry", "It's a great time to be a Pokemon Trainer!", 3, {POKEMON_BUTTERFREE, POKEMON_BEEDRILL, POKEMON_NIDOKING}, {36,36,38} };
 
 
 static Trainer * trainers[NUM_TRAINERS] = { &t000, 
@@ -153,7 +160,7 @@ static Trainer * trainers[NUM_TRAINERS] = { &t000,
     &t061, &t062, &t063, &t064, &t065, &t066, &t067, &t068, &t069, &t070, &t071, &t072, &t073, &t074, &t075, &t076, &t077, &t078, &t079, &t080,
     &t081, &t082, &t083, &t084, &t085, &t086, &t087, &t088, &t089, &t090, &t091, &t092, &t093, &t094, &t095, &t096, &t097, &t098, &t099, &t100,
     &t101, &t102, &t103, &t104, &t105, &t106, &t107, &t108, &t109, &t110, &t111, &t112, &t113, &t114, &t115, &t116, &t117, &t118, &t119, &t120, 
-    &t121, &t122, &t123, &t124, &t125
+    &t121, &t122, &t123, &t124, &t125, &t126, &t127, &t128, &t129, &t130, &t131
 };
 
 static Trainer leader201 = {201, "Leader Brock", "I am Brock, Gym Leader of Pewter. Let's Battle!", 2, {POKEMON_GEODUDE, POKEMON_ONIX}, {12,14} };
