@@ -7,7 +7,7 @@ SRCS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.c' 
 HEADERS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.h' -print)
 
 pokemonBeige: $(SRCS) $(HEADERS)
-	$(CC) $(CFLAGS) $(SRCS) -o "$@" -lncurses
+	$(CC) $(CFLAGS) $(SRCS) -o "$@" -lncursesw
 
 main-debug: $(SRCS) $(HEADERS)
 	$(CC) $(CFLAGS) -O0 $(SRCS) -o "$@"
