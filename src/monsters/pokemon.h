@@ -126,6 +126,8 @@ void learn_move(Pokemon * pok, attack * new_attack);
 
 void handle_evolve_outside_battle(Pokemon * pok, int next_pok_id);
 
+int get_pokemon_base_exp(Pokemon * pok);
+
 
 
 //pokemon_list.c

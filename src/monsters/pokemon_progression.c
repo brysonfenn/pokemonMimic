@@ -67,13 +67,11 @@ uint32_t pokemon_get_next_level_exp(Pokemon *pok) {
 
 //Return exp yield of a defeated pokemon
 uint32_t pokemon_get_exp_yield(Pokemon *pok) {
-    uint32_t avg_stat = pok->baseAttack + pok->baseDefense + pok->baseSpeed;
-    avg_stat += pok->baseSpAttack + pok->baseSpDefense;
-    avg_stat /= 5;
+    int base_exp = get_pokemon_base_exp(pok);
 
-    //Equation chosen for yield is ((avg_stat + level / 5)^2) / 3
-    uint32_t exp_yield = (avg_stat + (pok->level / 5));
-    exp_yield = (exp_yield * exp_yield) / 2;
+    //Equation chosen for yield is (base_exp * level) / 7
+    int exp_yield = base_exp * pok->level / 7;
+    
     return exp_yield;
 }
 
@@ -496,4 +494,47 @@ int pokemon_increment_ev(Pokemon * pok, char type) {
     pok->ev += inc_val;
 
     return 0;
+}
+
+
+int get_pokemon_base_exp(Pokemon * pok) {
+    // Open the file for reading
+    FILE *fp;
+    char filename[50];
+    sprintf(filename, "pokemon_list.txt");
+    char line[LINE_SIZE];
+    fp = fopen(filename, "r");
+
+    // Check if the file was opened successfully
+    if (fp == NULL) {
+        printw("pokemon_list.txt could not be found.\n"); refresh(); sleep(2);
+        exit(0);
+    }
+
+    //pok_id is the line number in "pokemon_list.txt"
+    for (int i = 0; i <= pok->id_num; i++) {
+        fgets(line, LINE_SIZE, fp);
+    }
+    
+    //Prepare variables
+    int var,base_exp;
+    char name[LINE_SIZE];
+    char type1[LINE_SIZE];
+    char type2[LINE_SIZE];
+
+    //Check if there is only one type
+    sscanf(line, "%d,%49[^,],%49[^,],%s", &var, &name, &type1, &type2);
+    if (type2[0] == ',') {
+        sscanf(line, "%d,%49[^,],%49[^,],,%d,%d,%d,%d,%d,%d,%d", &var, &name, &type1,
+                &var, &var, &var, &var, &var, &var, &base_exp);
+        sprintf(type2, "NONE");
+    }
+    else {
+        sscanf(line, "%d,%49[^,],%49[^,],%49[^,],%d,%d,%d,%d,%d,%d,%d", &var, &name, &type1,
+                &type2, &var, &var, &var, &var, &var, &var, &base_exp);
+    }
+
+    fclose(fp);
+
+    return base_exp;
 }
