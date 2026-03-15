@@ -1,12 +1,12 @@
-Last Saved: 02/21/2026 13:59:29
+Last Saved: 02/28/2026 09:57:44
 Player: Oliver H.
-6 15 12 14040 17d 0 0 0 7 Blue.
-Location: {15,(19,8)}
-Heal Center: {15,(19,7)}
+6 15 12 28200 17d 0 0 0 7 Blue.
+Location: {33,(37,2)}
+Heal Center: {30,(42,5)}
 Pokemon: 
-Aerodactyl Aerodactyl. 142 76 76 4 56 39 27 35 70 23 12331 ROCK FLYING 2753cd7b 13070603 0 3
-	Wing Attack. 26 35
-	Agility. 43 20
+Aerodactyl Aerodactyl. 142 113 100 4 86 59 27 35 107 36 49070 ROCK FLYING 2753cd7b 170c1406 0 3
+	Wing Attack. 26 31
+	Ancient Power. 203 4
 	Bite. 29 25
 	Supersonic. 35 20
 Nidoran(m) Dude. 32 31 31 2 18 13 12 11 16 10 1036 POISON NONE 22589a3a 1000602 0 5
@@ -27,9 +27,11 @@ Beedrill Beedrill. 15 68 68 4 47 27 14 23 43 22 10649 BUG POISON 2390c17f 1d1509
 	Fury Attack. 41 20
 	Cut. 206 30
 	Twineedle. 44 20
-Nidoran(f) Dudette. 29 21 21 2 10 10 9 8 9 5 154 POISON NONE 548b9ef4 2010001 0 0
-	Growl. 3 40
-	Scratch. 2 35
+Wartortle Bam. 8 78 78 4 47 65 28 36 53 31 29844 WATER NONE 7fd958e0 2538150d 0 0
+	Water Gun. 28 25
+	Bite. 29 25
+	Rapid Spin. 30 40
+	Protect. 31 10
 PC: 
 Paras Cute. 46 25 25 2 18 15 13 17 10 9 729 BUG GRASS 61c294e7 0 0 0
 	Scratch. 2 35
@@ -43,11 +45,9 @@ Spearow Ax. 21 19 19 2 12 9 8 8 12 5 125 NORMAL FLYING 2702d740 0 0 0
 Pidgey Pidgey. 16 23 23 2 12 11 7 8 13 7 501 NORMAL FLYING 5ae1cf13 2030104 0 0
 	Tackle. 1 35
 	Sand Attack. 7 15
-Wartortle Bam. 8 78 78 4 47 65 28 36 53 31 29844 WATER NONE 7fd958e0 2538150d 0 0
-	Water Gun. 28 25
-	Bite. 29 25
-	Rapid Spin. 30 40
-	Protect. 31 10
+Nidoran(f) Dudette. 29 21 21 2 10 10 9 8 9 5 154 POISON NONE 548b9ef4 2010001 0 0
+	Growl. 3 40
+	Scratch. 2 35
 Jigglypuff Sleep. 39 34 34 2 12 8 13 9 9 7 343 NORMAL NONE 70cdb615 0 0 0
 	Sing. 70 15
 	Defense Curl. 9 40
@@ -93,11 +93,11 @@ Thunder Stone. 14 1
 Super Potion. 2 2
 Leaf Stone. 15 1
 Poke Ball. 3 1
-Repel. 17 2
+Repel. 17 1
 Awakening. 8 2
 Paralyze Heal. 7 2
 Great Ball. 4 2
-Super Repel. 18 2
+Super Repel. 18 1
 
 Key Items: 1
   207 
@@ -105,5 +105,5 @@ Key Items: 1
 HM/TMs: 1
   101 
 
-Trainers Battled: 38
-  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 20 21 202 23 24 25 26 27 28 29 30 32 31 34 253 41 251 33 35 
+Trainers Battled: 50
+  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 20 21 202 23 24 25 26 27 28 29 30 32 31 34 253 41 251 33 35 46 45 44 47 49 51 53 54 62 55 56 57 
