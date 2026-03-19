@@ -127,7 +127,7 @@ int handle_pokemon_menu(int input_num1) {
         begin_list();
         // print_to_list(" \n");
         printParty(); sleep(1);
-        sprintf(print_str, " \n \n%s switched %s with %s!", player.name, player.party[input_num2].name, player.party[input_num1].name);
+        sprintf(print_str, " \n \n%s switched %s with %s!", player.name, player.party[input_num2].nickname, player.party[input_num1].nickname);
         print_to_list(print_str); sleep(2);
         
         return RETURN_TO_PARTY;
@@ -137,14 +137,14 @@ int handle_pokemon_menu(int input_num1) {
     else if (input_num2 == 1) {
         begin_list();
         if (player.numInParty <= 1) { print_to_list("You only have 1 Pokémon!\n"); sleep(2); return RETURN_TO_SUMMARY; }
-        sprintf(print_str, "Are you sure you want to release %s?\n  Yes\n  No\n", player.party[input_num1].name);
+        sprintf(print_str, "Are you sure you want to release %s?\n  Yes\n  No\n", player.party[input_num1].nickname);
         print_to_list(print_str);
         input_num2 = get_selection(1, 1, 0);
         if (input_num2 == 1 || input_num2 == PRESSED_B) { 
             return RETURN_TO_SUMMARY; 
         }
         else {
-            sprintf(print_str, " \nBye Bye, %s!\n", player.party[input_num1].name);
+            sprintf(print_str, " \nBye Bye, %s!\n", player.party[input_num1].nickname);
             print_to_list(print_str); sleep(2);
             player.numInParty--;
             for (int i = input_num1; i < player.numInParty; i++) {

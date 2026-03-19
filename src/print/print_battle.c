@@ -10,6 +10,7 @@
 #define BLINK_TIME_MICROS 100000
 
 void adjust_cursors(int selection, int start_x, int start_y);
+void print_pokemon_battle_info(Pokemon * pok, int x, int y);
 
 static int cursor_x;
 static int cursor_y;
@@ -20,23 +21,13 @@ void printBattle() {
     Pokemon * enemy_pok = player.enemy_pokemon;
     char poke_string[128];
     int i, num_symbols;
-    double hp_per_half_symbol;
+    double hp_percentage;
 
     //Draw battle box
     draw_box(BATTLE_BOX_X, BATTLE_BOX_Y, BATTLE_BOX_WIDTH, BATTLE_BOX_HEIGHT);
 
     //Draw Enemy Pokemon Information
-    sprintf(poke_string, "%s  Lvl %d  ", enemy_pok->nickname, enemy_pok->level);
-    add_condition_string(poke_string, enemy_pok);
-    mvprintw(BATTLE_BOX_ENEMY_Y, BATTLE_BOX_ENEMY_X, poke_string);
-    mvprintw(BATTLE_BOX_ENEMY_Y+1, BATTLE_BOX_ENEMY_X, "HP: % 3d/%d ", enemy_pok->currentHP, enemy_pok->maxHP);
-
-    hp_per_half_symbol = enemy_pok->maxHP / 40.0;
-    num_symbols = enemy_pok->currentHP / hp_per_half_symbol;
-    for (i = 0; i < num_symbols / 2; i++) {
-        mvprintw(BATTLE_BOX_ENEMY_Y+2, BATTLE_BOX_ENEMY_X + i, "=");
-    }
-    if ((int) hp_per_half_symbol % 2) mvprintw(BATTLE_BOX_ENEMY_Y+2, BATTLE_BOX_ENEMY_X + i, "-");
+    print_pokemon_battle_info(enemy_pok, BATTLE_BOX_ENEMY_X, BATTLE_BOX_ENEMY_Y);
 
 
     //Display Indication if Pokemon is uncaught
@@ -45,17 +36,7 @@ void printBattle() {
     }
 
     //Draw Player Pokemon Information
-    sprintf(poke_string,  "%s  Lvl %d  ", player_pok->nickname, player_pok->level);
-    add_condition_string(poke_string, player_pok);
-    mvprintw(BATTLE_BOX_PLAYER_Y, BATTLE_BOX_PLAYER_X, poke_string);
-    mvprintw(BATTLE_BOX_PLAYER_Y+1, BATTLE_BOX_PLAYER_X, "HP: % 3d/%d ", player_pok->currentHP, player_pok->maxHP);
-
-    hp_per_half_symbol = player_pok->maxHP / 40.0;
-    num_symbols = player_pok->currentHP / hp_per_half_symbol;
-    for (i = 0; i < num_symbols / 2; i++) {
-        mvprintw(BATTLE_BOX_PLAYER_Y+2, BATTLE_BOX_PLAYER_X + i, "=");
-    }
-    if ((int) hp_per_half_symbol % 2) mvprintw(BATTLE_BOX_PLAYER_Y+2, BATTLE_BOX_PLAYER_X + i, "-");
+    print_pokemon_battle_info(player_pok, BATTLE_BOX_PLAYER_X, BATTLE_BOX_PLAYER_Y);
 
 
     print_btn_instructions(false);
@@ -120,9 +101,11 @@ void blinkPokemon(bool blink_player, int color, int num_times, Pokemon * victim)
         refresh(); usleep(BLINK_TIME_MICROS);
     }
     attrset(COLOR_PAIR(DEFAULT_COLOR));
-    mvprintw(text_y, text_x, poke_string);
-    mvprintw(text_y+1, text_x, "HP: % 3d/%d ", pok->currentHP, pok->maxHP);
-    refresh();
+    // mvprintw(text_y, text_x, poke_string);
+    // mvprintw(text_y+1, text_x, "HP: % 3d/%d ", pok->currentHP, pok->maxHP);
+    // refresh();
+
+    printBattle();
 }
 
 
@@ -311,5 +294,22 @@ void clear_selection_text() {
 void clear_text_box() {
     for (int i = 0; i < 4; i++) {
         mvprintw(TEXT_BOX_Y+5+i, TEXT_BOX_X+1, "                                                      ");                           
+    }
+}
+
+void print_pokemon_battle_info(Pokemon * pok, int x, int y) {
+    char poke_string[128];
+    double hp_percentage;
+    int num_symbols;
+    
+    sprintf(poke_string, "%s  Lvl %d  ", pok->nickname, pok->level);
+    add_condition_string(poke_string, pok);
+    mvprintw(y, x, poke_string);
+    mvprintw(y+1, x, "HP: % 3d/%d ", pok->currentHP, pok->maxHP);
+
+    hp_percentage = (pok->currentHP * 1.0) / (pok->maxHP * 1.0);
+    num_symbols = hp_percentage * 40;
+    for (int i = 0; i < num_symbols / 2; i++) {
+        mvprintw(y+2, x + i, "=");
     }
 }
