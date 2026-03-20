@@ -253,7 +253,7 @@ void handle_motion() {
             continue;
         }
 
-        draw_static_elements();
+        draw_static_elements(MAPS_STATIC_ELEMENTS_CURR_MAP);
 
         int curr_map = player.loc->map;
 
@@ -307,6 +307,8 @@ void handle_motion() {
 
         Selectable * curr_sel = get_triggered_selectable(*player_x, *player_y, &x_inc, &y_inc, &next_player_char);
         if (curr_sel->selectable_id == SELECTABLE_TRAINER) {
+            if (DISABLE_TRAINER_ENCOUNTERS) continue;
+            
             trainer_ptr = (Trainer *) curr_sel->data;
             trainer_x = &(curr_sel->x);
             trainer_y = &(curr_sel->y);
@@ -374,7 +376,7 @@ void init_map() {
 
     draw_map();
     print_btn_instructions(true);
-    draw_static_elements();
+    draw_static_elements(MAPS_STATIC_ELEMENTS_CURR_MAP);
     draw_box(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5); //Draw message box
     leave_msg_count = 0;    //leave map label for 5 movements
 

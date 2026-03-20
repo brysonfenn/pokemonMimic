@@ -21,9 +21,12 @@ typedef enum { MAP_GENERIC,
 //Change when adding a map
 #define MAX_MAP_NUM MAP_MANSION4
 
+#define MAPS_STATIC_ELEMENTS_CURR_MAP 0
+#define MAPS_STATIC_ELEMENTS_REGION_MAP 1
+
 
 //Draw elements (like grass, trees, etc) according to map text file
-void draw_static_elements();
+void draw_static_elements(char map_type);
 
 int * get_wild_pok_list();
 

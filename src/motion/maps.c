@@ -369,9 +369,13 @@ int * get_wild_pok_list() {
 
 
 //Draw elements (like grass, trees, etc) according to map text file
-void draw_static_elements() {
+void draw_static_elements(char map_type) {
     char file_name[64] = "maps/empty_map.txt";
-    sprintf(file_name, "%s", map_file_name);
+
+    //Check whether this is a current map or the region map
+    if (map_type == MAPS_STATIC_ELEMENTS_CURR_MAP) sprintf(file_name, "%s", map_file_name);
+    else if (map_type == MAPS_STATIC_ELEMENTS_REGION_MAP) sprintf(file_name, "kanto_map.txt");
+
     FILE *file = fopen(file_name, "r");  // Open the file for reading
 
     if (file == NULL) {

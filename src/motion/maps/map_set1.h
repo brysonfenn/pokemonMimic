@@ -7,4 +7,6 @@ void draw_route1();
 
 void draw_lab();
 
+void handle_region_map();
+
 #endif //MAP_SET1_H

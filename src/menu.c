@@ -12,7 +12,7 @@
 #include "items/hm_tms.h"
 #include "motion/maps.h"
 
-static enum display { EXIT_MENU, POKEMON, BAG, KEY_ITEMS, HM_or_TMs, PLAYER, SAVE, LOAD,
+static enum display { EXIT_MENU, POKEMON, BAG, KEY_ITEMS, HM_or_TMs, PLAYER, SAVE, LOAD, MAP,
     POWER_OFF, MENU } current_display = MENU;
 
 static bool power_off = false;
@@ -39,10 +39,10 @@ int main_menu() {
         case MENU:
             begin_list();
             sprintf(print_str, "  Back\n  Pokemon\n  Bag\n  Key Items\n  HMs/TMs\n  %s\n", player.name);
-            sprintf(print_str, "%s  Save Game\n  Load Game\n  Power Off\n\n", print_str);
+            sprintf(print_str, "%s  Save Game\n  Load Game\n  Map\n  Power Off\n\n", print_str);
             print_to_list(print_str);
 
-            inputNum = get_selection(0, 8, last_selection);
+            inputNum = get_selection(0, 9, last_selection);
             if (inputNum == PRESSED_B) inputNum = EXIT_MENU;
 
             last_selection = inputNum;
@@ -167,6 +167,12 @@ int main_menu() {
             current_display = MENU;
 
             return MENU_LOADED_GAME;
+        
+        //Show Region Map
+        case MAP:
+            handle_region_map();
+            current_display = MENU;
+            break;
 
         //Allow loop to break and end game
         case POWER_OFF:
