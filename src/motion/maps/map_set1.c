@@ -53,14 +53,99 @@ void draw_lab() {
 }
 
 
+
+
+typedef struct Region_loc {
+    Map_id map_id;
+    char map_name[32];
+    char x;
+    char y;
+    char up_map;
+    char right_map;
+    char down_map;
+    char left_map;
+    bool has_poke_center;
+} Region_loc;
+
+Region_loc region_list[MAX_MAP_NUM+1] = {
+    {MAP_GENERIC, "LOCATION NOT FOUND", 0, 0, MAP_GENERIC, 0, 0, 0, false},
+    {MAP_VIR_CITY, "Viridian City", 12, 11, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, true},
+    {MAP_R2, "Route 1", 12, 10, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R1, "Route 2", 12, 12, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_STARTER_TOWN, "Starter Town", 12, 13, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, true},
+    {MAP_LAB, "Starter Town", 0, 0, MAP_STARTER_TOWN, 0, 0, 0, false},
+    {MAP_VIR_FOREST, "Viridian Forest", 12, 8, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_PEW_CITY, "Pewter City", 12, 7, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, true},
+    {MAP_GYM1, "Pewter City", 0, 0, MAP_PEW_CITY, 0, 0, 0, false},
+    {MAP_R3, "Route 3", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_MT_MOON_N, "Mt. Moon", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_CER_CITY, "Cerulean City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_GYM2, "Cerulean City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R4, "Route 4", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_UNDERGROUND, "Underground", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_VERM_CITY, "Vermillion City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R5, "Route 5", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SS_ANNE1, "Vermillion City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SS_ANNE2, "Vermillion City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_GYM3, "Vermillion City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_MT_MOON_S, "Mt. Moon", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R6, "Route 6", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_DIG_CAVE, "Diglett's Cave", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R7, "Route 7", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_MUSEUM, "Pewter City", 0, 0, MAP_PEW_CITY, 0, 0, 0, false},
+    {MAP_R8, "Route 8", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R9, "Route 9", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_ROCK_TUNNEL_N, "Rock Tunnel", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_ROCK_TUNNEL_S, "Rock Tunnel", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_LAV_TOWN, "Lavender Town", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_CEL_CITY, "Celadon City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R10, "Route 10", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_ROCKET1, "Celadon City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_ROCKET2, "Celadon City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_ROCKET3, "Celadon City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_GAME_CORNER, "Celadon City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_GYM4, "Celadon City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_TOWER1, "Lavender Town", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_TOWER2, "Lavender Town", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_TOWER3, "Lavender Town", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R11, "Route 11", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R12, "Route 12", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_FU_CITY, "Fuschia City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_GYM5, "Fuschia City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R13, "Route 13", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R14, "Route 14", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R15, "Route 15", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SAFARI1, "Fuschia City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SAFARI2, "Fuschia City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SAFARI3, "Fuschia City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SAFARI4, "Fuschia City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R16, "Route 16", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SAFF_CITY, "Saffron City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_GYM6, "Saffron City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_CIN_ISLAND, "Cinnabar Island", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_R17, "Route 17", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_GYM7, "Cinnabar Island", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_GYM8, "Viridian City", 0, 0, MAP_VIR_CITY, 0, 0, 0, false},
+    {MAP_SILPH1, "Saffron City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SILPH2, "Saffron City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SILPH3, "Saffron City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SILPH4, "Saffron City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SILPH5, "Saffron City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_SILPH6, "Saffron City", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_MANSION1, "Cinnabar Island", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_MANSION2, "Cinnabar Island", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_MANSION3, "Cinnabar Island", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false},
+    {MAP_MANSION4, "Cinnabar Island", 0, 0, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false}
+};
+
 void handle_region_map() {
     int ch = 0;
-    int player_x = 0;
-    int player_y = 0;
-    bool location_has_poke_center = false;
-    char map_name[32];
+
+    Region_loc region_loc = region_list[player.loc->map];
     
-    sprintf(map_name, "LOCATION NOT FOUND");
+    //If this is a secondary location within a main location, switch to main location
+    if (region_loc.x == 0) 
+        region_loc = region_list[region_loc.up_map];
     
 
     draw_big_map("");
@@ -68,22 +153,23 @@ void handle_region_map() {
     begin_message_box();
 
     //Find Player location
-    update_values_for_region_map(player.loc->map, &player_x, &player_y, &location_has_poke_center, map_name);
+    // update_values_for_region_map(player.loc->map, &player_x, &player_y, &location_has_poke_center, );
+
 
     //Draw Player location AND write player location
-    if (location_has_poke_center) {
+    if (region_loc.has_poke_center) {
         attrset(COLOR_PAIR(PLAYER_COLOR));
-        draw_box(MAP_X+player_x-1, MAP_Y+player_y-1, 3, 3);
+        draw_box(MAP_X+region_loc.x-1, MAP_Y+region_loc.y-1, 3, 3);
         attrset(COLOR_PAIR(DEFAULT_COLOR));
     }
     else {
         attrset(COLOR_PAIR(PLAYER_COLOR));
-        mvaddch(MAP_Y+player_y, MAP_X+player_x, 'v');
+        mvaddch(MAP_Y+region_loc.y, MAP_X+region_loc.x, 'v');
         attrset(COLOR_PAIR(DEFAULT_COLOR));
     }
     begin_message_box();
     draw_box(MAP_X,MAP_Y+MAP_HEIGHT,MAP_WIDTH,5); //Draw message box
-    draw_big_map(map_name);
+    draw_big_map(region_loc.map_name);
     
 
     //Get player input
