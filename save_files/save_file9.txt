@@ -1,7 +1,7 @@
-Last Saved: 04/04/2026 07:45:43
+Last Saved: 04/04/2026 14:11:32
 Player: Test_Player.
-3 26 3 5720 4 0 0 0 1 Test_Rival.
-Location: {15,(10,15)}
+4 26 3 5720 4 0 0 0 1 Test_Rival.
+Location: {42,(41,13)}
 Heal Center: {11,(37,11)}
 Pokemon: 
 Charizard Charizard. 6 257 253 4 180 166 216 162 193 90 736541 FIRE FLYING 12bcdf73 2040100 0 0
@@ -14,6 +14,11 @@ Caterpie Jack. 10 25 25 2 10 10 9 10 13 8 552 BUG NONE 2df200a1 100 0 0
 	String Shot. 5 40
 Abra Abra. 63 16 16 1 7 6 14 9 13 4 64 PSYCHIC NONE 3a4b33f6 0 0 0
 	Teleport. 129 20
+Shellder Sheldon. 90 49 49 4 39 56 26 21 26 23 12167 WATER NONE 5f526acd 0 0 0
+	Aurora Beam. 148 20
+	Surf. 207 15
+	Icicle Spear. 156 30
+	Supersonic. 35 20
 PC: 
 Pidgey Pidgey. 16 19 19 2 10 9 9 9 11 5 125 NORMAL FLYING 73883553 0 0 0
 	Tackle. 1 350
@@ -105,8 +110,8 @@ Moon Stone. 16 1
 Key Items: 0
   
 
-HM/TMs: 1
-  101 
+HM/TMs: 2
+  101 102 
 
 Trainers Battled: 4
   12 6 201 202 

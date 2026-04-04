@@ -174,7 +174,7 @@ void draw_gym7() {
 }
 
 void draw_route17() {
-    draw_big_map("Route 16");
+    draw_big_map("Route 17");
     audio_loop_file("sea.mp3");
 
     add_connection_to_big_map(MAP_TOP, 10, MAP_STARTER_TOWN);
