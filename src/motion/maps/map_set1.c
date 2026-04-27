@@ -138,8 +138,9 @@ Region_loc region_list[MAX_MAP_NUM+1] = {
     {MAP_MANSION4, "LOCATION NOT FOUND", 0, 0, MAP_CIN_ISLAND, MAP_GENERIC, MAP_GENERIC, MAP_GENERIC, false}
 };
 
-void handle_region_map() {
+Map_id handle_region_map() {
     int ch = 0;
+    Map_id selected_map;
 
     Region_loc region_loc = region_list[player.loc->map];
 
@@ -187,8 +188,22 @@ void handle_region_map() {
         else if (ch == KEY_LEFT && (region_list[region_loc.left_map].map_id != MAP_GENERIC)) {
             region_loc = region_list[region_loc.left_map];
         }
+
+        else if (ch == SELECT_CHAR || ch == SELECT_CHAR_2) {
+            begin_message_box();
+            if (region_loc.has_poke_center) {
+                print_to_message_box("Can Fly Here");
+            }
+            else {
+                print_to_message_box("Cannot Fly Here");
+            }
+            await_user();
+        }
+
         
     }
+
+    
     
 }
 

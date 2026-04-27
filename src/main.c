@@ -141,4 +141,4 @@ void control_c_handler() {
     free(player.pc_storage);
 
     exit(0);
-}
+} 
