@@ -1,4 +1,4 @@
-Last Saved: 10/30/2025 11:39:46
+Last Saved: 06/13/2026 08:32:40
 Player: B Test Man.
 6 1 12 15780 12d 0 0 0 4 G Test Man.
 Location: {59,(32,11)}
@@ -60,3 +60,6 @@ HM/TMs: 0
 
 Trainers Battled: 36
   251 1 8 2 3 5 7 36 9 12 10 6 11 201 14 13 37 15 16 22 20 23 24 25 26 27 21 28 69 70 202 29 252 30 31 109 
+
+Flyable Cities: 2
+  1 4 

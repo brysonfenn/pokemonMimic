@@ -1,4 +1,4 @@
-Last Saved: 06/12/2025 08:56:11
+Last Saved: 06/13/2026 08:43:02
 Player: Hailey H.
 1 0 2 1000 0 0 0 0 1 Lydia.
 Location: {4,(13,10)}
@@ -20,3 +20,6 @@ HM/TMs: 0
 
 Trainers Battled: 0
   
+
+Flyable Cities: 2
+  1 4 

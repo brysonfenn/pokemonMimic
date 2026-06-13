@@ -33,6 +33,7 @@ void player_init(int save_file) {
     player.pc_storage = malloc(sizeof(Pokemon) * 150);
 
     player.num_trainers_battled = 0;
+    player.num_flyable_cities = 0;
     player.player_char = PLAYER_MOVING_DOWN;
     player.original_starter = POKEMON_BULBASAUR;
     player.safari_balls = 0;
@@ -206,4 +207,22 @@ bool player_record_bit_is_set(record_bit_int record_bit_num) {
     else {
         return false;
     }
+}
+
+//Returns true if city id is flyable
+bool player_is_flyable_city(int id) {
+    for (int i = 0; i < player.num_flyable_cities; i++) {
+        if (player.flyable_cities[i] == id)
+            return true;
+    }
+    return false;
+}
+
+//Returns false if city id was already flyable
+bool player_add_flyable_city(int id) {
+    if (player_is_flyable_city(id)) return false;
+    
+    player.flyable_cities[player.num_flyable_cities] = id;
+    player.num_flyable_cities++;
+    return true;
 }

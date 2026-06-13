@@ -1,4 +1,4 @@
-Last Saved: 04/04/2026 07:20:21
+Last Saved: 06/13/2026 08:43:23
 Player: A.
 2 0 2 1000 0 0 0 0 4 Khaki.
 Location: {7,(41,11)}
@@ -25,3 +25,6 @@ HM/TMs: 0
 
 Trainers Battled: 0
   
+
+Flyable Cities: 2
+  1 4 

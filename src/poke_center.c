@@ -19,6 +19,8 @@ int handle_poke_center() {
     audio_save_looping_file(0);
     audio_loop_file("poke_center.mp3");
 
+    player_add_flyable_city(player.loc->map);
+
     while (1) {
         begin_list();
         print_to_list("Welcome to the Pokémon Center\n \n");

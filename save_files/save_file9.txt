@@ -1,4 +1,4 @@
-Last Saved: 04/04/2026 14:11:32
+Last Saved: 06/13/2026 08:43:33
 Player: Test_Player.
 4 26 3 5720 4 0 0 0 1 Test_Rival.
 Location: {42,(41,13)}
@@ -115,3 +115,6 @@ HM/TMs: 2
 
 Trainers Battled: 4
   12 6 201 202 
+
+Flyable Cities: 2
+  1 4 

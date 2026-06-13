@@ -126,6 +126,13 @@ int save_game(int file_num) {
 	}
 	fprintf(fp, "\n");
 
+	fprintf(fp, "\nFlyable Cities: %d\n", player.num_flyable_cities);
+	fprintf(fp, "  ");
+	for (int i = 0; i < player.num_flyable_cities; i++) {
+		fprintf(fp, "%d ", player.flyable_cities[i]);
+	}
+	fprintf(fp, "\n");
+
 	// Close the file
 	fclose(fp);
 
@@ -264,6 +271,7 @@ int load_game(int file_num) {
     }
 
 
+	//Handle Trainers Battled
 	fgets(line, LINE_SIZE, fp); //Empty line
 	fgets(line, LINE_SIZE, fp); //Trainers Battled
 	// sscanf(line, "Trainers Battled: %d\n", &(player.num_trainers_battled));
@@ -285,6 +293,31 @@ int load_game(int file_num) {
             break;
         }
         trainer_id_str++;	//Move up a space
+    }
+
+
+
+	//Handle Flyable Cities
+	fgets(line, LINE_SIZE, fp); //Empty line
+	fgets(line, LINE_SIZE, fp); //Flyable Cities
+
+	fgets(line, LINE_SIZE, fp);
+	char * flyable_cities_str = line;
+	flyable_cities_str += 2;	//Move up two spaces
+	player.num_flyable_cities = 0; //Reset num flyable cities
+	
+
+	// Scan the string for integers
+    while (sscanf(flyable_cities_str, "%d", &id) == 1) {
+        player.flyable_cities[player.num_flyable_cities] = id;
+		player.num_flyable_cities++;
+
+        // Move to the next number in the string
+        flyable_cities_str = strchr(flyable_cities_str, ' ');
+        if (flyable_cities_str == NULL) {
+            break;
+        }
+        flyable_cities_str++;	//Move up a space
     }
 
     // Close the file

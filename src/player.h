@@ -40,6 +40,8 @@ struct playerCharacter {
 
   unsigned char trainers_battled_id[256];
   int num_trainers_battled;
+  unsigned char flyable_cities[32];
+  int num_flyable_cities;
   int money;
   int repel_steps;
   int safari_balls;
@@ -96,5 +98,11 @@ bool player_switch_record_bit(record_bit_int record_bit_num);
 
 //Returns false if Record bit is set to 0, returns true if bit is set to 1;
 bool player_record_bit_is_set(record_bit_int record_bit_num);
+
+//Returns true if city id is flyable
+bool player_is_flyable_city(int id);
+
+//Returns false if city id was already flyable
+bool player_add_flyable_city(int id);
 
 #endif // PLAYER_H

@@ -449,3 +449,17 @@ void move_player_to_poke_center() {
 
     sleep(1);
 }
+
+
+void get_poke_center_coordinates(int id, int * x, int * y) {
+    switch (id) {
+        case MAP_STARTER_TOWN:
+            *x = 5;
+            *y = 5;
+        default:
+            *x = 1;
+            *y = 1;
+    }
+
+    return;
+}

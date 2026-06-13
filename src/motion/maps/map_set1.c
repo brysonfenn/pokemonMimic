@@ -173,7 +173,8 @@ Map_id handle_region_map() {
 
         //Get player input
         flushinp();
-        ch = getch();
+        ch = getch(); 
+        
 
         if (ch == CANCEL_CHAR || ch == CANCEL_CHAR_2) break;
         else if (ch == KEY_UP && (region_list[region_loc.up_map].map_id != MAP_GENERIC)) {
@@ -192,10 +193,13 @@ Map_id handle_region_map() {
         else if (ch == SELECT_CHAR || ch == SELECT_CHAR_2) {
             begin_message_box();
             if (region_loc.has_poke_center) {
-                print_to_message_box("Can Fly Here");
+                if (player_is_flyable_city(region_loc.map_id))
+                    print_to_message_box("Can Fly Here");
+                else
+                    print_to_message_box("Cannot Fly Here");
             }
             else {
-                print_to_message_box("Cannot Fly Here");
+                print_to_message_box("Not a City");
             }
             await_user();
         }
