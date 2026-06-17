@@ -170,8 +170,14 @@ int main_menu() {
         
         //Show Region Map
         case MAP:
-            handle_region_map();
-            current_display = MENU;
+            int map_id = handle_region_map();
+            if (map_id == 0) {
+                current_display = MENU;
+                return MENU_LOADED_GAME;
+            }
+            else {
+                current_display = MENU;
+            }
             break;
 
         //Allow loop to break and end game

@@ -94,7 +94,7 @@ Region_loc region_list[MAX_MAP_NUM+1] = {
     {MAP_R7, "Route 7", 17, 11, MAP_VIR_FOREST, MAP_DIG_CAVE, MAP_DIG_CAVE, MAP_VIR_FOREST, false},
     {MAP_MUSEUM, "LOCATION NOT FOUND", 0, 0, MAP_PEW_CITY, 0, 0, 0, false},
     {MAP_R8, "Route 8", 39, 4, MAP_GENERIC, MAP_R9, MAP_GENERIC, MAP_CER_CITY, false},
-    {MAP_R9, "Route 9", 42, 4, MAP_GENERIC, MAP_ROCK_TUNNEL_N, MAP_ROCK_TUNNEL_N, MAP_R8, false},
+    {MAP_R9, "Route 9", 42, 4, MAP_GENERIC, MAP_ROCK_TUNNEL_N, MAP_ROCK_TUNNEL_N, MAP_R8, true},
     {MAP_ROCK_TUNNEL_N, "Rock Tunnel", 45, 4, MAP_R9, MAP_ROCK_TUNNEL_S, MAP_ROCK_TUNNEL_S, MAP_R9, true},
     {MAP_ROCK_TUNNEL_S, "Rock Tunnel", 45, 5, MAP_ROCK_TUNNEL_N, MAP_LAV_TOWN, MAP_LAV_TOWN, MAP_ROCK_TUNNEL_N, false},
     {MAP_LAV_TOWN, "Lavender Town", 45, 7, MAP_ROCK_TUNNEL_S, MAP_GENERIC, MAP_R10, MAP_SAFF_CITY, true},
@@ -193,10 +193,18 @@ Map_id handle_region_map() {
         else if (ch == SELECT_CHAR || ch == SELECT_CHAR_2) {
             begin_message_box();
             if (region_loc.has_poke_center) {
-                if (player_is_flyable_city(region_loc.map_id))
+                if (player_is_flyable_city(region_loc.map_id)) {
                     print_to_message_box("Can Fly Here");
-                else
+
+                    int x, y;
+                    get_poke_center_coordinates(region_loc.map_id, &x, &y);
+                    change_map(region_loc.map_id, x + DEFAULT_BUILDING_WIDTH / 2, y + DEFAULT_BUILDING_HEIGHT);
+                    return 0;
+                }
+                    
+                else {
                     print_to_message_box("Cannot Fly Here");
+                }
             }
             else {
                 print_to_message_box("Not a City");

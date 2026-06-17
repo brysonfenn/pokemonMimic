@@ -14,8 +14,8 @@
 #include "../../player.h"
 
 
-#define VIR_POKE_CENTER_X 28
-#define VIR_POKE_CENTER_Y 7
+#define VIR_POKE_CENTER_X MAP_X+25
+#define VIR_POKE_CENTER_Y MAP_Y+6
 #define VIR_MART_X 44
 #define VIR_MART_Y 14
 

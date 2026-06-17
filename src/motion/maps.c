@@ -454,11 +454,57 @@ void move_player_to_poke_center() {
 void get_poke_center_coordinates(int id, int * x, int * y) {
     switch (id) {
         case MAP_STARTER_TOWN:
-            *x = 5;
-            *y = 5;
+            *x = MAP_X+6;
+            *y = MAP_Y+2;
+            break;
+        case MAP_VIR_CITY:
+            *x = MAP_X+25;
+            *y = MAP_Y+6;
+            break;
+        case MAP_PEW_CITY:
+            *x = MAP_X+33;
+            *y = MAP_Y+1;
+            break;
+        case MAP_R3:
+            *x = MAP_X+42;
+            *y = MAP_Y+1;
+            break;
+        case MAP_CER_CITY:
+            *x = MAP_X+30;
+            *y = MAP_Y+7;
+            break;
+        case MAP_VERM_CITY:
+            *x = MAP_X+12;
+            *y = MAP_Y+3;
+            break;
+        case MAP_R9:
+            *x = MAP_X+13;
+            *y = MAP_Y+9;
+            break;
+        case MAP_LAV_TOWN:
+            *x = MAP_X+15;
+            *y = MAP_Y+5;
+            break;
+        case MAP_CEL_CITY:
+            *x = MAP_X+35;
+            *y = MAP_Y+1;
+            break;
+        case MAP_FU_CITY:
+            *x = MAP_X+13;
+            *y = MAP_Y+8;
+            break;
+        case MAP_SAFF_CITY:
+            *x = MAP_X+11;
+            *y = MAP_Y+3;
+            break;
+        case MAP_CIN_ISLAND:
+            *x = MAP_X+6;
+            *y = MAP_Y+8;
+            break;
         default:
-            *x = 1;
-            *y = 1;
+            *x = MAP_X+1;
+            *y = MAP_Y+1;
+            break;
     }
 
     return;
