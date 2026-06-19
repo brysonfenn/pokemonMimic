@@ -8,6 +8,7 @@
 #include "monsters/pokemon.h"
 #include "motion/location.h"
 #include "motion/map_drawing.h"
+#include "motion/maps.h"
 #include "print/print_utils.h"
 #include "print/print_defines.h"
 #include "print/print_battle.h"
@@ -225,4 +226,27 @@ bool player_add_flyable_city(int id) {
     player.flyable_cities[player.num_flyable_cities] = id;
     player.num_flyable_cities++;
     return true;
+}
+
+//Returns true only if player is inside
+bool player_is_inside() {
+    int map = player.loc->map;
+    if (
+        map == MAP_LAB || map == MAP_GYM1 || map == MAP_MT_MOON_N || map == MAP_GYM2 || 
+        map == MAP_UNDERGROUND || map == MAP_SS_ANNE1 || map == MAP_SS_ANNE2 ||
+        map == MAP_GYM3 || map == MAP_MT_MOON_S || map == MAP_DIG_CAVE || 
+        map == MAP_MUSEUM || map == MAP_ROCK_TUNNEL_N || map == MAP_ROCK_TUNNEL_S ||
+        map == MAP_ROCKET1 || map == MAP_ROCKET2 || map == MAP_ROCKET3 ||
+        map == MAP_GAME_CORNER || map == MAP_GYM4 || map == MAP_TOWER1 ||
+        map == MAP_TOWER2 || map == MAP_TOWER3 || map == MAP_GYM5 || MAP_GYM6 ||
+        map == MAP_GYM7 || map == MAP_GYM8 || map == MAP_SILPH1 || map == MAP_SILPH2 ||
+        map == MAP_SILPH3 || map == MAP_SILPH4 || map == MAP_SILPH5 || map == MAP_SILPH6 ||
+        map == MAP_MANSION1 || map == MAP_MANSION2 || map == MAP_MANSION3 || 
+        map == MAP_MANSION4
+    ) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

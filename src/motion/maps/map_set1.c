@@ -15,7 +15,7 @@
 #include "../../print/print_defines.h"
 #include "../../player.h"
 
-void update_values_for_region_map(int map, int * x_val, int * y_val, bool * poke_center, char * name);
+int get_fly_pokemon_index();
 
 void draw_starter_town() {
     draw_big_map("Starter Town");
@@ -190,45 +190,55 @@ Map_id handle_region_map() {
             region_loc = region_list[region_loc.left_map];
         }
 
+        //Handle Fly
         else if (ch == SELECT_CHAR || ch == SELECT_CHAR_2) {
             begin_message_box();
             if (region_loc.has_poke_center) {
                 if (player_is_flyable_city(region_loc.map_id)) {
-                    print_to_message_box("Can Fly Here");
+                    //Check if player has fly
+                    Pokemon * curr_pok;
+                    Pokemon * fly_pok;
+                    bool has_fly = false;
 
-                    int x, y;
-                    get_poke_center_coordinates(region_loc.map_id, &x, &y);
-                    change_map(region_loc.map_id, x + DEFAULT_BUILDING_WIDTH / 2, y + DEFAULT_BUILDING_HEIGHT);
-                    return 0;
+                    for (int i = 0; i < player.numInParty; i++) {
+                        curr_pok = &(player.party[i]);
+                        for (int j = 0; j < curr_pok->numAttacks; j++) {
+                            if (curr_pok->attacks[j].id_num == 206) {
+                                fly_pok = curr_pok;
+                                has_fly = true;
+                            }
+                        }
+                    }
+
+                    if (!has_fly) {
+                        print_to_message_box("No Pokemon in Your Party Knows Fly"); await_user();
+                    }
+                    //Check if player is inside
+                    else if (player_is_inside()) {
+                        print_to_message_box("You Cannot Fly While Inside"); await_user();
+                    }
+                    else {
+                        int x, y;
+                        get_poke_center_coordinates(region_loc.map_id, &x, &y);
+                        change_map(region_loc.map_id, x + DEFAULT_BUILDING_WIDTH / 2, y + DEFAULT_BUILDING_HEIGHT);
+                        return 0;
+                    }
+                    
                 }
                     
                 else {
-                    print_to_message_box("Cannot Fly Here");
+                    print_to_message_box("You Cannot Fly Here Yet"); await_user();
                 }
             }
             else {
-                print_to_message_box("Not a City");
+                print_to_message_box("Not a City"); await_user();
             }
-            await_user();
         }
-
-        
     }
-
-    
-    
+    return 1;
 }
 
-void update_values_for_region_map(int map, int * x_val, int * y_val, bool * poke_center, char * name) {
-    switch (map) {
-        case MAP_STARTER_TOWN:
-        case MAP_LAB:
-            *x_val = 12;
-            *y_val = 13;
-            *poke_center = true;
-            sprintf(name, "Starter Town");
-            break;
-        default:
-            break;
-    }
+
+int get_fly_pokemon_index() {
+
 }

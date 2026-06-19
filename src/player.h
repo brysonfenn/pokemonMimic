@@ -105,4 +105,7 @@ bool player_is_flyable_city(int id);
 //Returns false if city id was already flyable
 bool player_add_flyable_city(int id);
 
+//Returns true only if player is inside
+bool player_is_inside();
+
 #endif // PLAYER_H

@@ -26,7 +26,7 @@ Geodude Geodude. 74 46 46 4 41 46 11 10 12 19 7998 ROCK GROUND 36dcb8a 5020b01 0
 Aerodactyl Aerodactyl. 142 72 72 4 61 40 37 41 72 24 14011 ROCK FLYING 688a4301 20000 0 0
 	Wing Attack. 26 35
 	Agility. 43 20
-	Bite. 29 25
+	Fly. 208 25
 	Supersonic. 35 20
 Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
 	Thunder Shock. 55 30
