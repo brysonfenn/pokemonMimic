@@ -53,11 +53,12 @@ static NPC n30 = { 30, "Cinnabar Serviceman", K_ITEM_SECRET_KEY, RECORD_BIT_19, 
 static NPC n31 = { 31, "Dr. Susenhogen", REVIVE, RECORD_BIT_20, NPC_ACTION_NONE };
 static NPC n32 = { 32, "Terrence", HYPER_POTION, RECORD_BIT_21, NPC_ACTION_NONE };
 static NPC n33 = { 33, "Mansion Owner Sam", WATER_STONE, RECORD_BIT_22, NPC_ACTION_NONE };
+static NPC n34 = { 34, "Birdcatcher Lucy", HM_FLY, RECORD_BIT_23, NPC_ACTION_NONE };
 
 
 static NPC * npcs[NUM_NPCS] = 
     { &n00, &n01, &n02, &n03, &n04, &n05, &n06, &n07, &n08, &n09, &n10, &n11, &n12, &n13, &n14, &n15, &n16, &n17, &n18, &n19, &n20,
-            &n21, &n22, &n23, &n24, &n25, &n26, &n27, &n28, &n29, &n30, &n31, &n32, &n33 };
+            &n21, &n22, &n23, &n24, &n25, &n26, &n27, &n28, &n29, &n30, &n31, &n32, &n33, &n34 };
 
 
 struct NPC * get_npc(int npc_id) {

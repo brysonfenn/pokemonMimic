@@ -1,7 +1,7 @@
-Last Saved: 06/13/2026 08:32:40
+Last Saved: 06/18/2026 17:41:19
 Player: B Test Man.
-6 1 12 15780 12d 0 0 0 4 G Test Man.
-Location: {59,(32,11)}
+6 1 12 15780 80012d 0 0 0 4 G Test Man.
+Location: {30,(29,3)}
 Heal Center: {52,(18,7)}
 Pokemon: 
 Ditto Ditto. 132 66 66 3 37 42 41 42 27 24 13938 NORMAL NONE 19b2348e c100c03 0 2
@@ -23,11 +23,11 @@ Geodude Geodude. 74 46 46 4 41 46 11 10 12 19 7998 ROCK GROUND 36dcb8a 5020b01 0
 	Defense Curl. 9 40
 	Rock Throw. 76 15
 	Magnitude. 106 30
-Mankey Mankey. 56 39 39 4 35 17 9 9 29 16 4490 FIGHTING NONE 567c1363 3070b05 0 0
-	Scratch. 2 35
-	Fury Swipes. 50 15
-	Low Kick. 116 20
-	Karate Chop. 117 20
+Aerodactyl Aerodactyl. 142 72 72 4 61 40 37 41 72 24 14011 ROCK FLYING 688a4301 20000 0 0
+	Wing Attack. 26 35
+	Agility. 43 20
+	Bite. 29 25
+	Supersonic. 35 20
 Pikachu Pikachu. 25 32 32 4 19 15 8 8 28 13 2638 ELECTRIC NONE 1b9b26a1 0 0 0
 	Thunder Shock. 55 30
 	Quick Attack. 8 30
@@ -55,8 +55,8 @@ Super Repel. 18 2
 Key Items: 1
   207 
 
-HM/TMs: 0
-  
+HM/TMs: 3
+  103 102 101
 
 Trainers Battled: 36
   251 1 8 2 3 5 7 36 9 12 10 6 11 201 14 13 37 15 16 22 20 23 24 25 26 27 21 28 69 70 202 29 252 30 31 109 

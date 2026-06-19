@@ -10,7 +10,7 @@
 #include "../monsters/attacks.h"
 
 
-static char key_item_names[10][32] = {"Empty HM/TM", "HM01 Cut", "HM02 Surf" };
+static char key_item_names[10][32] = {"Empty HM/TM", "HM01 Cut", "HM02 Surf", "HM03 Fly" };
 
 
 char * get_hm_tm_name(int id) {
@@ -60,6 +60,8 @@ void teach_hm_tm(HM_TM id) {
     for (i = 0; i < strlen(line); i++) if (line[i] == '~') break;
     hm_tm_str = &(line[i+2]);
 
+    
+
     while (sscanf(hm_tm_str, "%d", &id) == 1) {
         //Check which pokemon in party can learn the move
         for (int i = 0; i < player.numInParty; i++) {
@@ -98,6 +100,8 @@ void teach_hm_tm(HM_TM id) {
         begin_list(); print_to_list(print_str); sleep(2);
         return;
     }
+    
+
     learn_move(&(player.party[selected_pok]), get_attack_by_id(attack_num_index));
     return;
 }

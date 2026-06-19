@@ -37,6 +37,8 @@ void draw_cel_city() {
 
     add_cuttable_tree(MAP_X+31, MAP_Y+15);
     add_cuttable_tree(MAP_X+31, MAP_Y+16);
+
+    add_npc_by_id(MAP_X+25, MAP_Y+4, 34, PLAYER_MOVING_UP);
 }
 
 

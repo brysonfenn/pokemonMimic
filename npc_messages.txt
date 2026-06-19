@@ -32,4 +32,5 @@
 31: Hello, I'm a doctor. Have you used a revive in battle before? They're very useful, but expensive.
 32: How did you find me in this closet? I'm impressed.
 33: I own this mansion. You're looking to defeat the gym leader on the island? He's very tough, and he specializes in fire type Pokemon. If you want to defeat him, you'll need Pokemon that are strong against fire types, like water types! This might help your progress with certain Pokemon.
+34: You need a flying pokemon that can fly you from city to city! Pokemon like Pidgey, Doduo, and Aerodactyl can Fly. You will also need the HM for Fly.
 777: Reached End of npc_messages.txt file
