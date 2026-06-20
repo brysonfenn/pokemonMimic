@@ -268,7 +268,7 @@ void exec_fly_animation(Map_id selected_city) {
     begin_message_box();
 
     attrset(COLOR_PAIR(PLAYER_COLOR));
-    mvaddch(MAP_Y+y, MAP_X+x, fly_char); refresh(); sleep(1);
+    mvaddch(MAP_Y+y, MAP_X+x, fly_char); refresh(); usleep(500000);
     attrset(COLOR_PAIR(DEFAULT_COLOR));
 
     while (x != end_x || y != end_y) {
@@ -292,7 +292,7 @@ void exec_fly_animation(Map_id selected_city) {
         draw_static_elements(MAPS_STATIC_ELEMENTS_REGION_MAP);
 
         attrset(COLOR_PAIR(PLAYER_COLOR));
-        mvaddch(MAP_Y+y, MAP_X+x, fly_char); refresh(); sleep(1);
+        mvaddch(MAP_Y+y, MAP_X+x, fly_char); refresh(); usleep(500000);
         attrset(COLOR_PAIR(DEFAULT_COLOR));
     }
 }
