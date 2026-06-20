@@ -95,7 +95,7 @@ Region_loc region_list[MAX_MAP_NUM+1] = {
     {MAP_MUSEUM, "LOCATION NOT FOUND", 0, 0, MAP_PEW_CITY, 0, 0, 0, false},
     {MAP_R8, "Route 8", 39, 4, MAP_GENERIC, MAP_R9, MAP_GENERIC, MAP_CER_CITY, false},
     {MAP_R9, "Route 9", 42, 4, MAP_GENERIC, MAP_ROCK_TUNNEL_N, MAP_ROCK_TUNNEL_N, MAP_R8, true},
-    {MAP_ROCK_TUNNEL_N, "Rock Tunnel", 45, 4, MAP_R9, MAP_ROCK_TUNNEL_S, MAP_ROCK_TUNNEL_S, MAP_R9, true},
+    {MAP_ROCK_TUNNEL_N, "Rock Tunnel", 45, 4, MAP_R9, MAP_ROCK_TUNNEL_S, MAP_ROCK_TUNNEL_S, MAP_R9, false},
     {MAP_ROCK_TUNNEL_S, "Rock Tunnel", 45, 5, MAP_ROCK_TUNNEL_N, MAP_LAV_TOWN, MAP_LAV_TOWN, MAP_ROCK_TUNNEL_N, false},
     {MAP_LAV_TOWN, "Lavender Town", 45, 7, MAP_ROCK_TUNNEL_S, MAP_GENERIC, MAP_R10, MAP_SAFF_CITY, true},
     {MAP_CEL_CITY, "Celadon City", 27, 7, MAP_GENERIC, MAP_SAFF_CITY, MAP_GENERIC, MAP_R15, true},
@@ -194,28 +194,32 @@ Map_id handle_region_map() {
         //Handle Fly
         else if (ch == SELECT_CHAR || ch == SELECT_CHAR_2) {
             begin_message_box();
-            if (region_loc.has_poke_center) {
-                if (player_is_flyable_city(region_loc.map_id)) {
-                    //Check if player has fly
-                    Pokemon * curr_pok;
-                    Pokemon * fly_pok;
-                    bool has_fly = false;
 
-                    for (int i = 0; i < player.numInParty; i++) {
-                        curr_pok = &(player.party[i]);
-                        for (int j = 0; j < curr_pok->numAttacks; j++) {
-                            if (curr_pok->attacks[j].id_num == 208) {
-                                fly_pok = curr_pok;
-                                has_fly = true;
-                            }
+
+            if (region_loc.has_poke_center) {
+                //Check if player has fly
+                Pokemon * curr_pok;
+                Pokemon * fly_pok;
+                bool has_fly = false;
+
+                for (int i = 0; i < player.numInParty; i++) {
+                    curr_pok = &(player.party[i]);
+                    for (int j = 0; j < curr_pok->numAttacks; j++) {
+                        if (curr_pok->attacks[j].id_num == 208) {
+                            fly_pok = curr_pok;
+                            has_fly = true;
                         }
                     }
+                }
 
-                    if (!has_fly) {
-                        print_to_message_box("No Pokemon in Your Party Knows Fly"); await_user();
-                    }
+                if (!has_fly) {
+                    print_to_message_box("No Pokemon in Your Party Knows Fly"); await_user();
+                    continue;
+                }
+
+                if (player_is_flyable_city(region_loc.map_id)) {
                     //Check if player is inside
-                    else if (player_is_inside()) {
+                    if (player_is_inside()) {
                         print_to_message_box("You Cannot Fly While Inside"); await_user();
                     }
                     else {
@@ -241,7 +245,7 @@ Map_id handle_region_map() {
                 }
             }
             else {
-                print_to_message_box("Not a City"); await_user();
+                print_to_message_box("There is No Pokemon Center Here"); await_user();
             }
         }
     }
