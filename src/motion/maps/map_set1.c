@@ -15,7 +15,7 @@
 #include "../../print/print_defines.h"
 #include "../../player.h"
 
-int get_fly_pokemon_index();
+void exec_fly_animation(Map_id selected_city);
 
 void draw_starter_town() {
     draw_big_map("Starter Town");
@@ -141,6 +141,7 @@ Region_loc region_list[MAX_MAP_NUM+1] = {
 Map_id handle_region_map() {
     int ch = 0;
     Map_id selected_map;
+    char print_str[64];
 
     Region_loc region_loc = region_list[player.loc->map];
 
@@ -203,7 +204,7 @@ Map_id handle_region_map() {
                     for (int i = 0; i < player.numInParty; i++) {
                         curr_pok = &(player.party[i]);
                         for (int j = 0; j < curr_pok->numAttacks; j++) {
-                            if (curr_pok->attacks[j].id_num == 206) {
+                            if (curr_pok->attacks[j].id_num == 208) {
                                 fly_pok = curr_pok;
                                 has_fly = true;
                             }
@@ -218,6 +219,15 @@ Map_id handle_region_map() {
                         print_to_message_box("You Cannot Fly While Inside"); await_user();
                     }
                     else {
+                        sprintf(print_str, "Would you like %s to Fly you here?\n  Yes\n  No", fly_pok->nickname);
+                        print_to_message_box(print_str);
+                        if (get_selection(MAP_HEIGHT+1, 1, 0) == 1) {
+                            begin_message_box();
+                            continue;
+                        }
+
+                        exec_fly_animation(region_loc.map_id);
+
                         int x, y;
                         get_poke_center_coordinates(region_loc.map_id, &x, &y);
                         change_map(region_loc.map_id, x + DEFAULT_BUILDING_WIDTH / 2, y + DEFAULT_BUILDING_HEIGHT);
@@ -239,6 +249,50 @@ Map_id handle_region_map() {
 }
 
 
-int get_fly_pokemon_index() {
+void exec_fly_animation(Map_id selected_city) {
+    int x, y, end_x, end_y;
+    char fly_char = '+';
 
+    Region_loc curr_loc = region_list[player.loc->map];
+    Region_loc selected_loc = region_list[selected_city];
+
+    x = curr_loc.x;
+    y = curr_loc.y;
+    end_x = selected_loc.x;
+    end_y = selected_loc.y;
+
+    clear();
+    draw_big_map("");
+    draw_static_elements(MAPS_STATIC_ELEMENTS_REGION_MAP);
+    print_btn_instructions(false);
+    begin_message_box();
+
+    attrset(COLOR_PAIR(PLAYER_COLOR));
+    mvaddch(MAP_Y+y, MAP_X+x, fly_char); refresh(); sleep(1);
+    attrset(COLOR_PAIR(DEFAULT_COLOR));
+
+    while (x != end_x || y != end_y) {
+        if (x > end_x) {
+            x-= 2;
+            if (x < end_x) x = end_x;
+        }
+        else if (x < end_x) {
+            x+= 2;
+            if (x > end_x) x = end_x;
+        }
+
+        if (y > end_y) y--;
+        else if (y < end_y) y++;
+
+        clear();
+        draw_big_map("");
+        draw_static_elements(MAPS_STATIC_ELEMENTS_REGION_MAP);
+        print_btn_instructions(false);
+        begin_message_box();
+        draw_static_elements(MAPS_STATIC_ELEMENTS_REGION_MAP);
+
+        attrset(COLOR_PAIR(PLAYER_COLOR));
+        mvaddch(MAP_Y+y, MAP_X+x, fly_char); refresh(); sleep(1);
+        attrset(COLOR_PAIR(DEFAULT_COLOR));
+    }
 }

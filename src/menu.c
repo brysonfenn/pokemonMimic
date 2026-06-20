@@ -21,7 +21,7 @@ static bool power_off = false;
 //Handle start menu
 int main_menu() {
 
-    int inputNum, inputNum2, return_execute, num_files, selected_item;
+    int inputNum, inputNum2, return_execute, num_files, selected_item, map_id;
     char print_str[1024] = "";
     int last_selection = 0;
     selected_item = 0;
@@ -170,7 +170,7 @@ int main_menu() {
         
         //Show Region Map
         case MAP:
-            int map_id = handle_region_map();
+            map_id = handle_region_map();
             if (map_id == 0) {
                 current_display = MENU;
                 return MENU_LOADED_GAME;
