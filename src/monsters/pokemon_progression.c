@@ -204,7 +204,7 @@ void learn_move(Pokemon * pok, attack * new_attack) {
         printw("1...2...and...poof!"); refresh(); sleep(2);
 
         text_box_cursors(TEXT_BOX_NEXT_LINE);
-        printw("%s forgot %s, and...", pok->nickname, pok->attacks[input_num]); refresh(); sleep(2);
+        printw("%s forgot %s, and...", pok->nickname, pok->attacks[input_num].name); refresh(); sleep(2);
         pok->attacks[input_num] = *new_attack;
     }
 

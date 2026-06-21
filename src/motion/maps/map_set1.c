@@ -8,6 +8,7 @@
 #include "../maps.h"
 #include "../selectables.h"
 #include "../../print/print_utils.h"
+#include "../../items/key_items.h"
 
 #include "../../battles/trainer.h"
 #include "../../monsters/pokemon_id_list.h"
@@ -235,6 +236,8 @@ Map_id handle_region_map() {
                         int x, y;
                         get_poke_center_coordinates(region_loc.map_id, &x, &y);
                         change_map(region_loc.map_id, x + DEFAULT_BUILDING_WIDTH / 2, y + DEFAULT_BUILDING_HEIGHT);
+
+                        remove_key_item(K_ITEM_SURF_FLAG);
                         return 0;
                     }
                     
