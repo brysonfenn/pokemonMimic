@@ -1,26 +1,18 @@
-Last Saved: 06/13/2026 08:43:13
-Player: Olivia.
-4 0 2 2335 0 0 0 0 4 B man.
-Location: {2,(10,2)}
-Heal Center: {1,(32,9)}
+Last Saved: 06/22/2026 05:53:32
+Player: PQR.
+2 0 2 1375 0 0 0 0 7 TUV.
+Location: {1,(32,12)}
+Heal Center: {1,(32,10)}
 Pokemon: 
-Charmander Charmander. 4 31 31 3 17 15 11 10 20 12 1728 FIRE NONE 76bc4c2d 0 0 0
-	Scratch. 2 35
-	Growl. 3 40
-	Ember. 12 25
-Pidgey Pidgey. 16 17 17 1 8 8 6 6 9 4 64 NORMAL FLYING 442d5b41 0 0 0
+Squirtle Squirtle. 7 20 20 2 10 11 10 12 10 5 195 WATER NONE 26f325b2 100 0 0
 	Tackle. 1 35
-Sandshrew Sandshrew. 27 22 22 2 14 15 8 8 9 6 216 GROUND NONE 7dc22b5e 0 0 0
+	Tail Whip. 4 30
+Pidgey Pidgey. 16 18 18 1 9 9 8 8 10 4 64 NORMAL FLYING 7598eaf8 0 0 0
 	Tackle. 1 35
-	Defense Curl. 9 40
-Bulbasaur Bulbasaur. 1 25 25 3 12 12 14 14 12 8 512 GRASS POISON 56ad68d2 0 0 0
-	Tackle. 1 35
-	Growl. 3 40
-	Leech seed. 11 10
 PC: 
 Bag:
-Poke Ball. 3 6
-Potion. 1 3
+Potion. 1 2
+Poke Ball. 3 4
 
 Key Items: 0
   
@@ -28,8 +20,8 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 0
-  
+Trainers Battled: 1
+  251 
 
-Flyable Cities: 2
-  1 4 
+Flyable Cities: 1
+  1 

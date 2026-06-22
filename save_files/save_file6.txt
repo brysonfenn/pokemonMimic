@@ -1,12 +1,12 @@
-Last Saved: 06/13/2026 08:43:02
-Player: Hailey H.
-1 0 2 1000 0 0 0 0 1 Lydia.
-Location: {4,(13,10)}
+Last Saved: 06/22/2026 05:48:29
+Player: ABC.
+1 0 2 1345 0 0 0 0 4 XYZ.
+Location: {4,(37,9)}
 Heal Center: {4,(13,6)}
 Pokemon: 
-Bulbasaur Bulbasaur. 1 20 20 2 11 11 12 12 9 5 125 GRASS POISON 118c62d4 0 0 0
-	Tackle. 1 35
-	Growl. 3 40
+Charmander Charmander. 4 19 5 2 10 10 12 11 11 5 195 FIRE NONE bfe454f 10000 0 0
+	Scratch. 2 30
+	Growl. 3 38
 PC: 
 Bag:
 Potion. 1 2
@@ -18,8 +18,8 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 0
-  
+Trainers Battled: 1
+  251 
 
-Flyable Cities: 2
-  1 4 
+Flyable Cities: 0
+  
