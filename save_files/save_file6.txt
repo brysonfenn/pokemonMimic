@@ -1,16 +1,20 @@
-Last Saved: 06/22/2026 06:19:17
+Last Saved: 06/22/2026 06:38:54
 Player: ABC.
-1 0 2 1345 0 0 0 0 4 XYZ.
-Location: {2,(14,17)}
-Heal Center: {1,(32,10)}
+2 0 2 1535 0 0 0 0 4 XYZ.
+Location: {2,(16,8)}
+Heal Center: {1,(33,10)}
 Pokemon: 
-Charmander Charmander. 4 19 19 2 10 10 12 11 11 5 195 FIRE NONE bfe454f 10000 0 0
+Charmander Charmander. 4 23 23 3 12 12 12 11 14 7 465 FIRE NONE bfe454f 6020000 0 0
 	Scratch. 2 35
 	Growl. 3 40
+	Ember. 12 25
+Pidgey Bird. 16 19 19 2 9 10 9 8 10 5 125 NORMAL FLYING 43d5046 0 0 0
+	Tackle. 1 35
+	Sand Attack. 7 15
 PC: 
 Bag:
 Potion. 1 2
-Poke Ball. 3 5
+Poke Ball. 3 3
 
 Key Items: 0
   
@@ -18,8 +22,8 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 1
-  251 
+Trainers Battled: 2
+  251 1 
 
 Flyable Cities: 1
   1 
