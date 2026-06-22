@@ -1,7 +1,7 @@
-Last Saved: 06/18/2026 17:41:19
+Last Saved: 06/22/2026 06:11:46
 Player: B Test Man.
 6 1 12 15780 80012d 0 0 0 4 G Test Man.
-Location: {30,(29,3)}
+Location: {30,(24,3)}
 Heal Center: {52,(18,7)}
 Pokemon: 
 Ditto Ditto. 132 66 66 3 37 42 41 42 27 24 13938 NORMAL NONE 19b2348e c100c03 0 2
@@ -56,7 +56,7 @@ Key Items: 1
   207 
 
 HM/TMs: 3
-  103 102 101
+  103 102 101 
 
 Trainers Battled: 36
   251 1 8 2 3 5 7 36 9 12 10 6 11 201 14 13 37 15 16 22 20 23 24 25 26 27 21 28 69 70 202 29 252 30 31 109 
