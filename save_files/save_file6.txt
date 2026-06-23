@@ -1,27 +1,38 @@
-Last Saved: 06/22/2026 10:03:13
+Last Saved: 06/22/2026 19:51:18
 Player: LyDIbUg.
-4 0 3 2550 0 0 0 0 1 BOOBOOBUT.
-Location: {7,(25,5)}
-Heal Center: {7,(41,5)}
+6 2 2 3640 4 0 0 0 1 BOOBOOBUT.
+Location: {11,(4,8)}
+Heal Center: {11,(37,11)}
 Pokemon: 
-Bulbasaur Bulbasaur. 1 36 36 4 18 19 12 12 17 13 2456 GRASS POISON 4f16a4f1 b070502 0 0
+Ivysaur Ivy. 2 47 47 4 26 26 33 33 25 16 4243 GRASS POISON 4f16a4f1 120b0b03 0 0
 	Tackle. 1 35
-	Growl. 3 40
+	Sleep Powder. 15 15
 	Leech seed. 11 10
 	Vine whip. 10 25
-Rattata IEEEEEEEEE. 19 28 28 3 17 12 8 7 22 10 1043 NORMAL NONE 6c4f2198 13020100 0 0
+Rattata IEEEEEEEEE. 19 28 28 3 17 12 8 7 22 10 1206 NORMAL NONE 6c4f2198 14030100 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 	Quick Attack. 8 30
-Oddish OPOP. 43 16 16 1 8 8 9 9 7 3 27 GRASS POISON 56d42ebc 0 0 0
-	Absorb. 100 20
+Clefairy Clefairy. 35 30 30 2 13 13 16 15 11 8 512 NORMAL NONE 5e3e2a15 0 0 0
+	Pound. 69 35
+	Growl. 3 40
+Sandshrew SEESEE. 27 24 24 2 16 18 8 10 11 7 353 GROUND NONE fc97609 100 0 0
+	Tackle. 1 35
+	Defense Curl. 9 40
+Spearow ^u^SP. 21 17 17 2 10 8 7 8 11 4 64 NORMAL FLYING 6995bdb2 0 0 0
+	Peck. 51 35
+	Growl. 3 40
+Nidoran(f) Nia. 29 20 20 2 11 10 10 9 9 5 125 POISON NONE 60ba2788 0 0 0
+	Growl. 3 40
+	Scratch. 2 35
+PC: 
 Pidgey ABC. 16 15 15 1 8 8 7 7 8 3 27 NORMAL FLYING 5f73eb11 0 0 0
 	Tackle. 1 35
-PC: 
+Oddish OPOP. 43 16 16 1 8 8 9 9 7 3 27 GRASS POISON 56d42ebc 0 0 0
+	Absorb. 100 20
 Bag:
-Poke Ball. 3 2
-Repel. 17 1
 Potion. 1 4
+Moon Stone. 16 1
 
 Key Items: 0
   
@@ -29,8 +40,8 @@ Key Items: 0
 HM/TMs: 0
   
 
-Trainers Battled: 11
-  251 2 8 5 7 1 3 36 6 201 13 
+Trainers Battled: 18
+  251 2 8 5 7 1 3 36 6 201 13 9 10 11 14 37 15 16 
 
-Flyable Cities: 3
-  4 1 7 
+Flyable Cities: 5
+  4 1 7 9 11 
