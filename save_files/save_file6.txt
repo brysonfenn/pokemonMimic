@@ -1,18 +1,18 @@
-Last Saved: 06/22/2026 19:51:18
+Last Saved: 06/23/2026 13:33:13
 Player: LyDIbUg.
-6 2 2 3640 4 0 0 0 1 BOOBOOBUT.
-Location: {11,(4,8)}
-Heal Center: {11,(37,11)}
+6 2 3 2990 4 0 0 0 1 BOOBOOBUT.
+Location: {13,(57,15)}
+Heal Center: {11,(38,11)}
 Pokemon: 
-Ivysaur Ivy. 2 47 47 4 26 26 33 33 25 16 4243 GRASS POISON 4f16a4f1 120b0b03 0 0
-	Tackle. 1 35
-	Sleep Powder. 15 15
-	Leech seed. 11 10
-	Vine whip. 10 25
 Rattata IEEEEEEEEE. 19 28 28 3 17 12 8 7 22 10 1206 NORMAL NONE 6c4f2198 14030100 0 0
 	Tackle. 1 35
 	Tail Whip. 4 30
 	Quick Attack. 8 30
+Ivysaur Ivy. 2 47 47 4 26 26 33 33 25 16 4317 GRASS POISON 4f16a4f1 120b0c03 0 0
+	Tackle. 1 35
+	Sleep Powder. 15 15
+	Leech seed. 11 10
+	Vine whip. 10 25
 Clefairy Clefairy. 35 30 30 2 13 13 16 15 11 8 512 NORMAL NONE 5e3e2a15 0 0 0
 	Pound. 69 35
 	Growl. 3 40
@@ -31,8 +31,9 @@ Pidgey ABC. 16 15 15 1 8 8 7 7 8 3 27 NORMAL FLYING 5f73eb11 0 0 0
 Oddish OPOP. 43 16 16 1 8 8 9 9 7 3 27 GRASS POISON 56d42ebc 0 0 0
 	Absorb. 100 20
 Bag:
-Potion. 1 4
+Potion. 1 5
 Moon Stone. 16 1
+Repel. 17 1
 
 Key Items: 0
   
