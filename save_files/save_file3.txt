@@ -1,36 +1,38 @@
-Last Saved: 06/22/2026 09:28:51
+Last Saved: 06/23/2026 15:46:58
 Player: Elliot H.
-6 36 12 128150 83fffd 0 26 28 4 Gary.
-Location: {15,(20,7)}
-Heal Center: {15,(20,7)}
+6 38 11 128150 83fffd 0 26 28 4 Gary.
+Location: {15,(19,7)}
+Heal Center: {15,(19,7)}
 Pokemon: 
-Poliwag Poliwag. 60 29 29 2 16 13 14 12 24 11 1552 WATER NONE 7e0bfcc1 20000 0 0
-	Bubble. 13 30
-	Hypnosis. 125 20
-Butterfree Bungo. 12 57 57 4 27 29 23 22 35 19 7483 BUG FLYING 2cf05e9d 6141a02 0 5
+Butterfree Bungo. 12 59 59 4 28 30 23 22 37 20 9095 BUG FLYING 2cf05e9d 61b2203 0 5
 	Tackle. 1 35
 	Sleep Powder. 15 15
 	Supersonic. 35 20
 	Confusion. 36 25
-Psyduck Ayesie. 54 71 71 4 37 43 44 36 39 30 27038 WATER NONE c517c85 10000 0 0
-	Screech. 84 40
-	Tail Whip. 4 30
-	Disable. 115 20
-	Confusion. 36 25
-Kadabra Kabot Psyc. 64 45 45 3 18 19 43 30 43 18 5923 PSYCHIC NONE 100cc91 c120902 0 0
+Kadabra Kabot Psyc. 64 45 45 3 18 19 43 30 43 18 6741 PSYCHIC NONE 100cc91 e140a02 0 0
 	Teleport. 129 20
 	Confusion. 36 25
 	Disable. 115 20
-Gastly Gengster. 92 50 50 4 21 22 49 25 44 22 10908 GHOST POISON 29d5d496 2010202 0 0
+Pikachu Pikachu. 25 80 80 4 48 41 11 11 80 35 44118 ELECTRIC NONE 78e5409f 26242707 0 2
+	Surf. 207 15
+	Thunderbolt. 59 15
+	Quick Attack. 8 30
+	Slam. 58 20
+Scyther Scyther. 123 74 74 4 69 51 35 52 69 27 20595 BUG FLYING 3d83b260 20300 0 0
+	Agility. 43 20
+	Cut. 206 30
+	Pursuit. 42 10
+	False Swipe. 145 40
+Gastly Gengster. 92 50 50 4 21 22 49 25 44 22 11072 GHOST POISON 29d5d496 2020202 0 0
 	Confuse Ray. 93 10
 	Lick. 159 30
 	Curse. 160 10
 	Night Shade. 161 15
-Shellder Sheldon. 90 49 49 4 39 56 26 21 26 23 12257 WATER NONE 5f526acd 10000 0 0
-	Aurora Beam. 148 20
-	Withdraw. 27 40
-	Icicle Spear. 156 30
-	Surf. 207 15
+Charizard Inferspark. 6 117 117 4 93 74 98 75 102 41 70048 FIRE FLYING 772e8be0 2b324819 0 3
+	Wing Attack. 26 35
+	Flame Thrower. 22 15
+	Fly. 208 15
+	Metal Claw. 17 35
 PC: 
 Paras Paras. 46 28 28 2 19 16 14 18 12 10 1182 BUG GRASS 71700850 1010101 0 2
 	Scratch. 2 35
@@ -62,11 +64,11 @@ Mankey BOCK. 56 29 29 3 23 12 14 16 20 10 1000 FIGHTING NONE 177d838f 0 0 0
 	Scratch. 2 35
 	Leer. 52 30
 	Low Kick. 116 20
-Charizard Inferspark. 6 117 117 4 93 74 98 75 102 41 69425 FIRE FLYING 772e8be0 2a2e4819 0 3
-	Wing Attack. 26 35
-	Flame Thrower. 22 15
-	Fly. 208 15
-	Metal Claw. 17 35
+Shellder Sheldon. 90 49 49 4 39 56 26 21 26 23 12257 WATER NONE 5f526acd 10000 0 0
+	Aurora Beam. 148 20
+	Withdraw. 27 40
+	Icicle Spear. 156 30
+	Surf. 207 15
 Drowzee Ditch. 96 32 32 3 13 13 14 23 14 9 729 PSYCHIC NONE 77d79c1f 0 0 0
 	Pound. 69 35
 	Hypnosis. 125 20
@@ -89,11 +91,9 @@ Doduo Two`san. 84 29 29 3 24 16 13 14 22 11 1372 NORMAL FLYING 50e32d6a 2 0 0
 Bellsprout Brush. 69 28 28 2 20 13 18 12 13 9 729 GRASS POISON 23b44e60 0 0 0
 	Vine whip. 10 25
 	Growth. 20 40
-Nidoking Thorn. 34 125 125 4 110 75 46 38 78 41 70809 POISON GROUND 42cd13d1 2744600c 0 0
-	Thrash. 67 20
-	Peck. 51 35
-	Double Kick. 61 30
-	Megahorn. 68 10
+Poliwag Poliwag. 60 29 29 2 16 13 14 12 24 11 1552 WATER NONE 7e0bfcc1 20000 0 0
+	Bubble. 13 30
+	Hypnosis. 125 20
 Koffing Bleh. 109 30 30 3 19 27 19 16 14 11 1331 POISON NONE 1927b80a 0 0 0
 	Poison Gas. 152 40
 	Tackle. 1 35
@@ -141,16 +141,16 @@ Arcanine Arcanine. 59 82 82 4 61 49 57 47 55 25 15625 FIRE NONE 56944c88 0 0 0
 Magikarp Eweek. 129 35 35 2 8 27 14 17 36 18 5832 WATER NONE 23ea3840 0 0 0
 	Splash. 201 40
 	Tackle. 1 35
-Scyther Scyther. 123 74 74 4 69 51 35 52 69 27 20595 BUG FLYING 3d83b260 20300 0 0
-	Agility. 43 20
-	Wing Attack. 26 35
-	Pursuit. 42 10
-	False Swipe. 145 40
-Pikachu Pikachu. 25 80 80 4 48 41 11 11 80 35 44118 ELECTRIC NONE 78e5409f 26242707 0 2
-	Surf. 207 15
-	Thunderbolt. 59 15
-	Quick Attack. 8 30
-	Slam. 58 20
+Nidoking Thorn. 34 125 125 4 110 75 46 38 78 41 71726 POISON GROUND 42cd13d1 2845610c 0 0
+	Thrash. 67 20
+	Peck. 51 35
+	Double Kick. 61 30
+	Megahorn. 68 10
+Psyduck Ayesie. 54 71 71 4 37 43 44 36 39 30 27038 WATER NONE c517c85 10000 0 0
+	Screech. 84 40
+	Tail Whip. 4 30
+	Disable. 115 20
+	Confusion. 36 25
 Aerodactyl Aerodactyl. 142 72 72 4 61 40 37 41 72 24 14011 ROCK FLYING 688a4301 20000 0 0
 	Wing Attack. 26 35
 	Agility. 43 20
@@ -185,6 +185,15 @@ Seel Soel. 86 87 87 4 40 41 32 53 35 30 27000 WATER NONE 5541b77b 0 0 0
 	Growl. 3 40
 	Icy Wind. 147 15
 	Aurora Beam. 148 20
+Tentacool Cool Tence. 72 45 45 3 22 18 25 42 33 18 5832 WATER POISON 64961a72 0 0 0
+	Poison Sting. 6 35
+	Supersonic. 35 20
+	Constrict. 133 35
+Rhyhorn Riri. 111 81 81 4 55 56 21 26 24 26 17576 GROUND ROCK 7571a30e 0 0 0
+	Scary Face. 21 15
+	Tail Whip. 4 30
+	Stomp. 127 20
+	Fury Attack. 41 20
 Bag:
 Paralyze Heal. 7 2
 Burn Heal. 9 4
@@ -193,11 +202,10 @@ Poke Ball. 3 4
 Super Potion. 2 6
 Max Repel. 19 1
 Repel. 17 2
-Antidote. 6 2
+Antidote. 6 1
 Thunder Stone. 14 1
 Master Ball. 21 1
 Potion. 1 2
-Great Ball. 4 3
 
 Key Items: 5
   207 209 208 433 211 
