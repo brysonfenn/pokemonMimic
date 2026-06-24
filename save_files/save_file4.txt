@@ -1,13 +1,14 @@
-Last Saved: 06/23/2026 14:40:35
+Last Saved: 06/23/2026 15:03:56
 Player: Oliver H.
-6 25 9 30080 80077d 0 0 0 7 Blue.
-Location: {23,(14,3)}
+6 25 9 33735 80077d 20 0 0 7 Blue.
+Location: {39,(30,17)}
 Heal Center: {7,(40,5)}
 Pokemon: 
-Kadabra Phsy abra. 64 44 34 3 18 21 49 33 45 18 6115 PSYCHIC NONE 1f9bf86b 1050701 0 1
-	Teleport. 129 20
-	Confusion. 36 21
-	Disable. 115 19
+Aerodactyl Aerodactyl. 142 119 119 4 91 62 27 35 113 38 58528 ROCK FLYING 2753cd7b 1d0d1e08 0 5
+	Wing Attack. 26 35
+	Ancient Power. 203 5
+	Bite. 29 25
+	Fly. 208 13
 Beedrill Beedrill. 15 68 68 4 47 27 14 23 43 22 10886 BUG POISON 2390c17f 1e150b0c 0 0
 	Harden. 34 30
 	Fury Attack. 41 20
@@ -22,16 +23,15 @@ Kabuto Kabuto. 140 39 39 3 37 40 19 18 27 17 5318 ROCK WATER 6cb26bcb 5050201 0 
 	Scratch. 2 35
 	Harden. 34 30
 	Absorb. 100 20
-Aerodactyl Aerodactyl. 142 119 119 4 91 62 27 35 113 38 56736 ROCK FLYING 2753cd7b 1d0d1c08 0 5
-	Wing Attack. 26 35
-	Ancient Power. 203 5
-	Bite. 29 25
-	Fly. 208 15
-Wartortle Bam. 8 78 78 4 47 65 28 36 53 31 31740 WATER NONE 7fd958e0 273d170d 0 2
-	Water Gun. 28 25
-	Bite. 29 25
+Wartortle Bam. 8 80 16 4 49 68 28 36 54 32 33635 WATER NONE 7fd958e0 273d1b0d 0 2
+	Water Gun. 28 22
+	Bite. 29 21
 	Rapid Spin. 30 40
 	Protect. 31 10
+Kadabra Phsy abra. 64 46 46 3 19 22 49 33 47 19 7440 PSYCHIC NONE 1f9bf86b 2060e01 0 1
+	Teleport. 129 20
+	Confusion. 36 25
+	Disable. 115 20
 PC: 
 Paras Cute. 46 25 25 2 18 15 13 17 10 9 729 BUG GRASS 61c294e7 0 0 0
 	Scratch. 2 35
@@ -133,7 +133,7 @@ Moon Stone. 16 1
 Thunder Stone. 14 1
 Super Potion. 2 2
 Leaf Stone. 15 1
-Repel. 17 5
+Repel. 17 4
 Paralyze Heal. 7 1
 Poke Ball. 3 2
 
@@ -143,8 +143,8 @@ Key Items: 2
 HM/TMs: 2
   101 103 
 
-Trainers Battled: 55
-  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 20 21 202 23 24 25 26 27 28 29 30 32 31 34 253 41 251 33 35 46 45 44 47 49 51 53 54 62 55 56 57 58 59 60 52 63 
+Trainers Battled: 58
+  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 20 21 202 23 24 25 26 27 28 29 30 32 31 34 253 41 251 33 35 46 45 44 47 49 51 53 54 62 55 56 57 58 59 60 52 63 71 73 75 
 
 Flyable Cities: 9
   1 4 7 9 11 15 26 29 30 
