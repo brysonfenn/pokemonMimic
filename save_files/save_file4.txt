@@ -1,14 +1,14 @@
-Last Saved: 06/24/2026 14:17:38
+Last Saved: 06/25/2026 08:00:33
 Player: Oliver H.
-6 27 9 61190 802ffd 0 12 17 7 Blue.
-Location: {42,(20,12)}
+6 30 8 63420 807ffd 0 12 17 7 Blue.
+Location: {30,(42,5)}
 Heal Center: {42,(20,12)}
 Pokemon: 
-Arcanine Arcanine. 59 97 97 4 76 53 65 58 66 30 27000 FIRE NONE 1d200a4d 0 0 0
-	Bite. 29 25
-	Ember. 12 25
-	Leer. 52 30
-	Take Down. 120 20
+Nidoking Thorn jr. 34 81 81 4 63 47 57 53 58 27 19683 POISON GROUND 79cd0d84 0 0 0
+	Horn Attack. 65 25
+	Peck. 51 35
+	Double Kick. 61 30
+	Poison Sting. 6 35
 Beedrill Beedrill. 15 68 68 4 47 27 14 23 43 22 10886 BUG POISON 2390c17f 1e150b0c 0 0
 	Harden. 34 30
 	Fury Attack. 41 20
@@ -19,20 +19,21 @@ Wartortle Bam. 8 80 80 4 49 68 28 36 54 32 33635 WATER NONE 7fd958e0 273d1b0d 0 
 	Surf. 207 15
 	Rapid Spin. 30 40
 	Protect. 31 10
-Aerodactyl Aerodactyl. 142 134 134 4 104 70 27 35 129 43 80349 ROCK FLYING 2753cd7b 2d112b09 0 5
+Aerodactyl Aerodactyl. 142 134 127 4 104 70 27 35 129 43 81572 ROCK FLYING 2753cd7b 2d122c09 0 5
 	Wing Attack. 26 35
 	Ancient Power. 203 5
 	Take Down. 120 20
-	Fly. 208 15
+	Fly. 208 13
 Butterfree Butter. 12 53 53 4 24 30 26 23 37 19 6936 BUG FLYING 398f7d65 10140e0f 0 5
 	Sleep Powder. 15 15
 	Supersonic. 35 20
 	Poison Powder. 14 35
 	Confusion. 36 25
-Kadabra Phsy abra. 64 46 46 3 19 22 49 33 47 19 7738 PSYCHIC NONE 1f9bf86b 3060e01 0 1
-	Teleport. 129 20
-	Confusion. 36 25
-	Disable. 115 20
+Jolteon Thunder. 135 71 71 4 44 38 62 55 74 25 15625 ELECTRIC NONE 62a53371 0 0 0
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Sand Attack. 7 15
+	Growl. 3 40
 PC: 
 Paras Cute. 46 25 25 2 18 15 13 17 10 9 729 BUG GRASS 61c294e7 0 0 0
 	Scratch. 2 35
@@ -122,39 +123,51 @@ Ekans Poison. 23 26 26 3 16 13 14 14 16 9 729 POISON NONE 5c3ead6e 0 0 0
 	Wrap. 89 20
 	Leer. 52 30
 	Poison Sting. 6 35
-Haunter Ghost. 93 58 58 4 30 29 48 29 47 22 11672 GHOST POISON 4940525d 70f0401 0 4
-	Hypnosis. 125 20
-	Lick. 159 30
-	Confuse Ray. 93 10
-	Night Shade. 161 15
-Nidorino Nidorino. 33 71 71 4 47 36 41 42 47 27 19683 POISON NONE 79cd0d84 0 0 0
-	Horn Attack. 65 25
-	Peck. 51 35
-	Double Kick. 61 30
-	Poison Sting. 6 35
+Arcanine Arcanine. 59 97 97 4 76 53 65 58 66 30 28869 FIRE NONE 1d200a4d 2000002 0 0
+	Bite. 29 25
+	Ember. 12 25
+	Leer. 52 30
+	Take Down. 120 20
+Kadabra Phsy abra. 64 46 46 3 19 22 49 33 47 19 7738 PSYCHIC NONE 1f9bf86b 3060e01 0 1
+	Teleport. 129 20
+	Confusion. 36 25
+	Disable. 115 20
 Kabuto Kabuto. 140 39 39 3 37 40 19 18 27 17 5318 ROCK WATER 6cb26bcb 5050201 0 0
 	Scratch. 2 35
 	Harden. 34 30
 	Absorb. 100 20
+Growlithe Growl. 58 63 63 3 42 28 44 33 34 23 12167 FIRE NONE f9f3b16 0 0 0
+	Bite. 29 25
+	Ember. 12 25
+	Leer. 52 30
+Haunter Ghost. 93 58 58 4 30 29 48 29 47 22 11672 GHOST POISON 4940525d 70f0401 0 4
+	Hypnosis. 125 19
+	Lick. 159 30
+	Confuse Ray. 93 10
+	Night Shade. 161 15
+Snorlax Snore. 143 140 99 4 74 46 45 80 26 30 28590 NORMAL NONE 57e221ae 50200 0 1
+	Yawn. 136 10
+	Rest. 94 10
+	Defense Curl. 9 40
+	Headbutt. 137 13
 Bag:
 Potion. 1 1
 Antidote. 6 1
-Moon Stone. 16 1
-Thunder Stone. 14 1
 Super Potion. 2 2
 Leaf Stone. 15 1
 Repel. 17 1
 Paralyze Heal. 7 1
-Poke Ball. 3 2
+Poke Ball. 3 1
+Great Ball. 4 1
 
-Key Items: 3
-  207 209 208 
+Key Items: 4
+  207 209 208 433 
 
 HM/TMs: 3
   101 103 102 
 
-Trainers Battled: 73
-  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 20 21 202 23 24 25 26 27 28 29 30 32 31 34 253 41 251 33 35 46 45 44 47 49 51 53 54 62 55 56 57 58 59 60 52 63 71 73 75 76 77 79 74 38 39 40 203 65 66 204 80 81 82 83 
+Trainers Battled: 75
+  1 2 3 5 7 36 9 10 11 12 6 201 13 14 37 15 16 252 22 20 21 202 23 24 25 26 27 28 29 30 32 31 34 253 41 251 33 35 46 45 44 47 49 51 53 54 62 55 56 57 58 59 60 52 63 71 73 75 76 77 79 74 38 39 40 203 65 66 204 80 81 82 83 95 84 
 
-Flyable Cities: 10
-  1 4 7 9 11 15 26 29 30 42 
+Flyable Cities: 11
+  1 4 7 9 11 15 26 29 30 42 52 

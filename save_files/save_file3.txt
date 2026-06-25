@@ -1,34 +1,35 @@
-Last Saved: 06/25/2026 06:40:39
+Last Saved: 06/25/2026 08:22:36
 Player: Elliot H.
-6 38 11 128150 83fffd 0 26 28 4 Gary.
-Location: {10,(21,9)}
-Heal Center: {7,(40,5)}
+6 39 11 127150 83fffd 0 26 28 4 Gary.
+Location: {26,(20,13)}
+Heal Center: {26,(20,13)}
 Pokemon: 
-Butterfree Bungo. 12 65 46 4 31 33 23 22 40 22 10930 BUG FLYING 2cf05e9d 71f2805 0 5
-	Tackle. 1 34
-	Sleep Powder. 15 9
-	Supersonic. 35 20
-	Confusion. 36 17
-Kadabra Kabot Psyc. 64 45 40 3 18 19 43 30 43 18 6772 PSYCHIC NONE 100cc91 e150a02 0 0
-	Teleport. 129 20
-	Confusion. 36 24
-	Disable. 115 19
-Pikachu Pikachu. 25 80 80 4 48 41 11 11 80 35 44118 ELECTRIC NONE 78e5409f 26242707 0 2
+Eevee Eevee. 133 67 67 4 39 32 29 43 40 27 19962 NORMAL NONE 2b940e02 6010901 0 0
+	Quick Attack. 8 30
+	Tail Whip. 4 30
+	Sand Attack. 7 15
+	Growl. 3 40
+Nidoking Thorn. 34 125 125 4 110 75 46 38 78 41 73034 POISON GROUND 42cd13d1 2945660c 0 0
+	Thrash. 67 20
+	Peck. 51 35
+	Double Kick. 61 30
+	Megahorn. 68 10
+Pikachu Pikachu. 25 80 80 4 48 41 11 11 80 35 44458 ELECTRIC NONE 78e5409f 27242807 0 2
 	Surf. 207 15
 	Thunderbolt. 59 15
 	Quick Attack. 8 30
 	Slam. 58 20
-Scyther Scyther. 123 74 72 4 69 51 35 52 69 27 20630 BUG FLYING 3d83b260 20400 0 0
+Scyther Scyther. 123 74 74 4 69 51 35 52 69 27 20630 BUG FLYING 3d83b260 20400 0 0
 	Agility. 43 20
 	Cut. 206 30
-	Pursuit. 42 9
+	Pursuit. 42 10
 	False Swipe. 145 40
-Gastly Gengster. 92 50 50 4 21 22 49 25 44 22 11155 GHOST POISON 29d5d496 2030302 0 0
+Gastly Gengster. 92 50 50 4 21 22 49 25 44 22 11555 GHOST POISON 29d5d496 3040402 0 0
 	Confuse Ray. 93 10
-	Lick. 159 29
+	Lick. 159 30
 	Curse. 160 10
-	Night Shade. 161 12
-Charizard Inferspark. 6 117 117 4 93 74 98 75 102 41 70048 FIRE FLYING 772e8be0 2b324819 0 3
+	Night Shade. 161 15
+Charizard Inferspark. 6 117 117 4 93 74 98 75 102 41 71040 FIRE FLYING 772e8be0 2f324819 0 3
 	Wing Attack. 26 35
 	Flame Thrower. 22 15
 	Fly. 208 15
@@ -48,11 +49,11 @@ Clefairy Clefairy. 35 37 37 3 17 17 19 20 15 11 1361 NONE NONE 31dccf2e 1000402 
 	Pound. 69 35
 	Growl. 3 40
 	Sing. 70 15
-Eevee Eevee. 133 63 63 4 36 30 29 43 37 25 17144 NORMAL NONE 2b940e02 10201 0 0
-	Quick Attack. 8 30
-	Tail Whip. 4 30
-	Sand Attack. 7 15
-	Growl. 3 40
+Butterfree Bungo. 12 65 65 4 31 33 23 22 40 22 11075 BUG FLYING 2cf05e9d 8202905 0 5
+	Tackle. 1 35
+	Sleep Powder. 15 15
+	Supersonic. 35 20
+	Confusion. 36 25
 Pidgey Pidgey. 16 19 19 2 9 9 7 7 10 5 192 NORMAL FLYING 669bd0ab 0 0 1
 	Tackle. 1 35
 	Sand Attack. 7 15
@@ -141,11 +142,10 @@ Arcanine Arcanine. 59 82 82 4 61 49 57 47 55 25 15625 FIRE NONE 56944c88 0 0 0
 Magikarp Eweek. 129 35 35 2 8 27 14 17 36 18 5832 WATER NONE 23ea3840 0 0 0
 	Splash. 201 40
 	Tackle. 1 35
-Nidoking Thorn. 34 125 125 4 110 75 46 38 78 41 71726 POISON GROUND 42cd13d1 2845610c 0 0
-	Thrash. 67 20
-	Peck. 51 35
-	Double Kick. 61 30
-	Megahorn. 68 10
+Kadabra Kabot Psyc. 64 45 45 3 18 19 43 30 43 18 6806 PSYCHIC NONE 100cc91 e150b02 0 0
+	Teleport. 129 20
+	Confusion. 36 25
+	Disable. 115 20
 Psyduck Ayesie. 54 71 71 4 37 43 44 36 39 30 27038 WATER NONE c517c85 10000 0 0
 	Screech. 84 40
 	Tail Whip. 4 30
@@ -194,12 +194,17 @@ Rhyhorn Riri. 111 81 81 4 55 56 21 26 24 26 17576 GROUND ROCK 7571a30e 0 0 0
 	Tail Whip. 4 30
 	Stomp. 127 20
 	Fury Attack. 41 20
+Farfetch'd Leeki. 83 48 48 4 38 24 27 32 27 18 5832 NORMAL FLYING ff500eb 0 0 0
+	Peck. 51 35
+	Sand Attack. 7 15
+	Leer. 52 30
+	Fury Attack. 41 20
 Bag:
 Paralyze Heal. 7 1
 Burn Heal. 9 4
 Leaf Stone. 15 1
-Poke Ball. 3 4
-Super Potion. 2 6
+Poke Ball. 3 3
+Super Potion. 2 5
 Max Repel. 19 1
 Repel. 17 2
 Antidote. 6 1
