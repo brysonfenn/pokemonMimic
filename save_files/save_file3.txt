@@ -1,33 +1,33 @@
-Last Saved: 06/23/2026 15:46:58
+Last Saved: 06/25/2026 06:40:39
 Player: Elliot H.
 6 38 11 128150 83fffd 0 26 28 4 Gary.
-Location: {15,(19,7)}
-Heal Center: {15,(19,7)}
+Location: {10,(21,9)}
+Heal Center: {7,(40,5)}
 Pokemon: 
-Butterfree Bungo. 12 59 59 4 28 30 23 22 37 20 9095 BUG FLYING 2cf05e9d 61b2203 0 5
-	Tackle. 1 35
-	Sleep Powder. 15 15
+Butterfree Bungo. 12 65 46 4 31 33 23 22 40 22 10930 BUG FLYING 2cf05e9d 71f2805 0 5
+	Tackle. 1 34
+	Sleep Powder. 15 9
 	Supersonic. 35 20
-	Confusion. 36 25
-Kadabra Kabot Psyc. 64 45 45 3 18 19 43 30 43 18 6741 PSYCHIC NONE 100cc91 e140a02 0 0
+	Confusion. 36 17
+Kadabra Kabot Psyc. 64 45 40 3 18 19 43 30 43 18 6772 PSYCHIC NONE 100cc91 e150a02 0 0
 	Teleport. 129 20
-	Confusion. 36 25
-	Disable. 115 20
+	Confusion. 36 24
+	Disable. 115 19
 Pikachu Pikachu. 25 80 80 4 48 41 11 11 80 35 44118 ELECTRIC NONE 78e5409f 26242707 0 2
 	Surf. 207 15
 	Thunderbolt. 59 15
 	Quick Attack. 8 30
 	Slam. 58 20
-Scyther Scyther. 123 74 74 4 69 51 35 52 69 27 20595 BUG FLYING 3d83b260 20300 0 0
+Scyther Scyther. 123 74 72 4 69 51 35 52 69 27 20630 BUG FLYING 3d83b260 20400 0 0
 	Agility. 43 20
 	Cut. 206 30
-	Pursuit. 42 10
+	Pursuit. 42 9
 	False Swipe. 145 40
-Gastly Gengster. 92 50 50 4 21 22 49 25 44 22 11072 GHOST POISON 29d5d496 2020202 0 0
+Gastly Gengster. 92 50 50 4 21 22 49 25 44 22 11155 GHOST POISON 29d5d496 2030302 0 0
 	Confuse Ray. 93 10
-	Lick. 159 30
+	Lick. 159 29
 	Curse. 160 10
-	Night Shade. 161 15
+	Night Shade. 161 12
 Charizard Inferspark. 6 117 117 4 93 74 98 75 102 41 70048 FIRE FLYING 772e8be0 2b324819 0 3
 	Wing Attack. 26 35
 	Flame Thrower. 22 15
@@ -195,7 +195,7 @@ Rhyhorn Riri. 111 81 81 4 55 56 21 26 24 26 17576 GROUND ROCK 7571a30e 0 0 0
 	Stomp. 127 20
 	Fury Attack. 41 20
 Bag:
-Paralyze Heal. 7 2
+Paralyze Heal. 7 1
 Burn Heal. 9 4
 Leaf Stone. 15 1
 Poke Ball. 3 4
